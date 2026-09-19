@@ -1,13 +1,18 @@
 export interface Box { x: number; y: number; width: number; height: number }
-export interface Detection { box: Box; score: number; classId: number }
+export interface FeatureSpace { id: string; dimension: number }
+export interface Detection { box: Box; score: number; classId: number; embedding?: readonly number[] | Float32Array }
 export interface TrackingFrame {
   timestampMs: number;
   imageSize: { width: number; height: number };
+  featureSpaceId?: string;
   detections: Detection[];
 }
-export type TrackerAlgorithm = 'bytetrack' | 'ocsort';
+export type TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort';
 export interface TrackerOptions {
   algorithm?: TrackerAlgorithm;
+  featureSpace?: FeatureSpace;
+  maxCosineDistance?: number;
+  gallerySize?: number;
   lowScoreThreshold?: number;
   highScoreThreshold?: number;
   newTrackThreshold?: number;

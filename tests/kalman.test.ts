@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { initialize, predict, correct } from '../src/kalman';
+import { initialize, predict, correct, squaredMahalanobisDistance } from '../src/kalman';
 import reference from './fixtures/math-reference.json';
 
 test('预测与连续更新在不同 dt 下符合独立 NumPy 参考', () => {
@@ -25,4 +25,14 @@ test('长期重复更新协方差有限、对称，尺寸保持正数', () => {
       for (let k = 0; k < 8; k++) expect(state.covariance[j][k]).toBeCloseTo(state.covariance[k][j], 10);
     }
   }
+});
+
+test('四维运动平方距离使用预测协方差加 4I', () => {
+  const state = initialize({ x: 0, y: 0, width: 20, height: 40 });
+  expect(squaredMahalanobisDistance(state, [20, 20, 20, 40])).toBeCloseTo(100 / 104, 12);
+});
+
+test('运动平方距离溢出时报告数值失败', () => {
+  const state = initialize({ x: 0, y: 0, width: 20, height: 40 });
+  expect(() => squaredMahalanobisDistance(state, [Number.MAX_VALUE, 20, 20, 40])).toThrowError(expect.objectContaining({ code: 'NUMERICAL_FAILURE' }));
 });

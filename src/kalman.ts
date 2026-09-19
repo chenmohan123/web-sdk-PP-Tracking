@@ -63,6 +63,16 @@ export function correct(state: GaussianState, measurement: number[]): GaussianSt
   return checked(mean, add(multiply(multiply(A, P), transpose(A)), multiply(K.map(row => row.map(value => value * 4)), transpose(K))));
 }
 
+export function squaredMahalanobisDistance(state: GaussianState, measurement: number[]): number {
+  if (measurement.length !== 4 || !measurement.every(Number.isFinite)) throw new TrackingError('NUMERICAL_FAILURE', '运动门控观测不可表示');
+  const covariance = state.covariance.slice(0, 4).map((row, i) => row.slice(0, 4).map((value, j) => value + (i === j ? 4 : 0)));
+  const innovation = measurement.map((value, i) => value - state.mean[i]);
+  const weighted = multiply([innovation], inverse(covariance))[0];
+  const distance = weighted.reduce((sum, value, i) => sum + value * innovation[i], 0);
+  if (!Number.isFinite(distance) || distance < 0) throw new TrackingError('NUMERICAL_FAILURE', '运动门控距离不可表示');
+  return distance;
+}
+
 export function toBox(state: GaussianState): Box {
   const [cx, cy, width, height] = state.mean;
   const box = { x: cx - width / 2, y: cy - height / 2, width, height };

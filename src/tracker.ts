@@ -1,19 +1,22 @@
 import { assign, iou } from './assignment.js';
+import { appendToGallery, minimumCosineDistance, MOTION_GATE_THRESHOLD, normalizeEmbedding } from './deepsort.js';
 import { TrackingError } from './errors.js';
-import { correct, initialize, predict, toBox, type GaussianState } from './kalman.js';
+import { correct, initialize, predict, squaredMahalanobisDistance, toBox, type GaussianState } from './kalman.js';
 import { ocmScoreFromHistory, replayObservationFilter, type Observation } from './ocsort.js';
-import type { Detection, RemovedTrack, Track, Tracker, TrackerOptions, TrackingFrame, TrackingResult, UpdateOptions } from './types.js';
+import type { Detection, FeatureSpace, RemovedTrack, Track, Tracker, TrackerOptions, TrackingFrame, TrackingResult, UpdateOptions } from './types.js';
 
-const defaults: Required<TrackerOptions> = {
+type ParsedOptions = Omit<Required<TrackerOptions>, 'featureSpace'> & { featureSpace: FeatureSpace | null };
+const defaults: ParsedOptions = {
   algorithm: 'bytetrack', lowScoreThreshold: 0.1, highScoreThreshold: 0.5, newTrackThreshold: 0.6,
   minHits: 2, matchIouThreshold: 0.3, lowMatchIouThreshold: 0.2,
   maxLostMs: 1000, largeGapMs: 2000, maxDetections: 100, maxTracks: 200,
   ocmWeight: 0.2, ocmDeltaMs: 300, ocmHistoryLength: 30, oruMaxReplaySteps: 30,
+  featureSpace: null, maxCosineDistance: 0.2, gallerySize: 30,
 };
 type Entry = {
   id: number; classId: number; state: Track['state']; filter: GaussianState; lastObservedFilter: GaussianState;
   firstMs: number; lastSeenMs: number; hits: number; score: number | null;
-  observations: Observation[]; missingTimestamps: number[];
+  observations: Observation[]; missingTimestamps: number[]; gallery: number[][];
 };
 const record = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
 const finite = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value);
@@ -25,17 +28,28 @@ function copyFilter(state: GaussianState): GaussianState {
   return { mean: [...state.mean], covariance: state.covariance.map(row => [...row]) };
 }
 
-function parseOptions(value: TrackerOptions): Required<TrackerOptions> {
+function parseOptions(value: TrackerOptions): ParsedOptions {
   const fail = () => { throw new TrackingError('INVALID_OPTIONS', '跟踪参数不满足范围或阈值顺序约束'); };
   if (!record(value)) return fail();
-  if (Object.keys(value).some(key => !Object.hasOwn(defaults, key))) return fail();
+  if (Reflect.ownKeys(value).some(key => !Object.hasOwn(defaults, key))) return fail();
   const algorithm = (Object.hasOwn(value, 'algorithm') ? value.algorithm : defaults.algorithm) as TrackerOptions['algorithm'];
-  if (algorithm !== 'bytetrack' && algorithm !== 'ocsort') return fail();
+  if (algorithm !== 'bytetrack' && algorithm !== 'ocsort' && algorithm !== 'deepsort') return fail();
   const byteTrackOnly = ['lowScoreThreshold', 'lowMatchIouThreshold'];
   const ocSortOnly = ['ocmWeight', 'ocmDeltaMs', 'ocmHistoryLength', 'oruMaxReplaySteps'];
-  if (algorithm === 'ocsort' && byteTrackOnly.some(key => Object.hasOwn(value, key))) return fail();
-  if (algorithm === 'bytetrack' && ocSortOnly.some(key => Object.hasOwn(value, key))) return fail();
-  const options: Required<TrackerOptions> = { ...defaults, ...value, algorithm } as Required<TrackerOptions>;
+  const deepSortOnly = ['featureSpace', 'maxCosineDistance', 'gallerySize'];
+  if (algorithm === 'ocsort' && [...byteTrackOnly, ...deepSortOnly].some(key => Object.hasOwn(value, key))) return fail();
+  if (algorithm === 'bytetrack' && [...ocSortOnly, ...deepSortOnly].some(key => Object.hasOwn(value, key))) return fail();
+  if (algorithm === 'deepsort' && [...byteTrackOnly, ...ocSortOnly].some(key => Object.hasOwn(value, key))) return fail();
+  let featureSpace: FeatureSpace | null = null;
+  if (algorithm === 'deepsort') {
+    if (!Object.hasOwn(value, 'featureSpace') || !record(value.featureSpace)) return fail();
+    if (Reflect.ownKeys(value.featureSpace).length !== 2 || !Object.hasOwn(value.featureSpace, 'id') || !Object.hasOwn(value.featureSpace, 'dimension')) return fail();
+    const { id, dimension } = value.featureSpace;
+    if (typeof id !== 'string' || id.length < 1 || id.length > 256 || id.trim() !== id) return fail();
+    if (typeof dimension !== 'number' || !Number.isSafeInteger(dimension) || dimension < 1 || dimension > 2048) return fail();
+    featureSpace = { id, dimension };
+  }
+  const options = { ...defaults, ...value, algorithm, featureSpace } as ParsedOptions;
   for (const key of ['lowScoreThreshold', 'highScoreThreshold', 'newTrackThreshold', 'matchIouThreshold', 'lowMatchIouThreshold'] as const) if (!probability(options[key])) return fail();
   if ((algorithm === 'bytetrack' && options.highScoreThreshold < options.lowScoreThreshold) || options.newTrackThreshold < options.highScoreThreshold) return fail();
   for (const key of ['minHits', 'maxDetections', 'maxTracks'] as const) if (!Number.isSafeInteger(options[key]) || options[key] < 1 || options[key] > (key === 'minHits' ? 100 : 500)) return fail();
@@ -43,24 +57,29 @@ function parseOptions(value: TrackerOptions): Required<TrackerOptions> {
   if (!probability(options.ocmWeight) || !finite(options.ocmDeltaMs) || options.ocmDeltaMs < 1 || options.ocmDeltaMs > 10000) return fail();
   if (!Number.isSafeInteger(options.ocmHistoryLength) || options.ocmHistoryLength < 2 || options.ocmHistoryLength > 120) return fail();
   if (!Number.isSafeInteger(options.oruMaxReplaySteps) || options.oruMaxReplaySteps < 1 || options.oruMaxReplaySteps > 60) return fail();
+  if (!finite(options.maxCosineDistance) || options.maxCosineDistance < 0 || options.maxCosineDistance > 2) return fail();
+  if (!Number.isSafeInteger(options.gallerySize) || options.gallerySize < 1 || options.gallerySize > 100) return fail();
+  if (featureSpace && options.maxTracks * options.gallerySize * featureSpace.dimension > 4_000_000) return fail();
   return options;
 }
 
-function validateFrame(value: TrackingFrame, previous: number | null, size: TrackingFrame['imageSize'] | null, limit: number): TrackingFrame {
+function validateFrame(value: TrackingFrame, previous: number | null, size: TrackingFrame['imageSize'] | null, options: ParsedOptions): TrackingFrame {
   const fail = () => { throw new TrackingError('INVALID_INPUT', '帧、时间戳、图像尺寸或检测框非法；跳转或尺寸变化请先 reset'); };
   if (!record(value) || !finite(value.timestampMs) || value.timestampMs < 0 || (previous !== null && value.timestampMs <= previous)) return fail();
   if (!record(value.imageSize) || !positive(value.imageSize.width) || !positive(value.imageSize.height)) return fail();
   if (size && (value.imageSize.width !== size.width || value.imageSize.height !== size.height)) return fail();
-  if (!Array.isArray(value.detections) || value.detections.length > limit) return fail();
+  if (!Array.isArray(value.detections) || value.detections.length > options.maxDetections) return fail();
+  if (options.algorithm === 'deepsort' && value.featureSpaceId !== options.featureSpace?.id) return fail();
   const detections: Detection[] = [];
   for (const detection of value.detections) {
     if (!record(detection) || !probability(detection.score) || !Number.isSafeInteger(detection.classId) || detection.classId < 0 || !record(detection.box)) return fail();
     const box = detection.box;
     if (!finite(box.x) || !finite(box.y) || box.x < 0 || box.y < 0 || !positive(box.width) || !positive(box.height)) return fail();
     if (box.width > value.imageSize.width || box.height > value.imageSize.height || box.x > value.imageSize.width - box.width || box.y > value.imageSize.height - box.height) return fail();
-    detections.push({ box: { ...box }, score: detection.score, classId: detection.classId });
+    const embedding = options.algorithm === 'deepsort' ? normalizeEmbedding(detection.embedding, options.featureSpace!.dimension) : undefined;
+    detections.push({ box: { ...box }, score: detection.score, classId: detection.classId, ...(embedding ? { embedding } : {}) });
   }
-  return { timestampMs: value.timestampMs, imageSize: { ...value.imageSize }, detections };
+  return { timestampMs: value.timestampMs, imageSize: { ...value.imageSize }, detections, ...(options.algorithm === 'deepsort' ? { featureSpaceId: value.featureSpaceId } : {}) };
 }
 
 function snapshot(entry: Entry, timestamp: number): Track {
@@ -71,7 +90,7 @@ function cloneEntry(entry: Entry): Entry {
   return {
     ...entry, score: null, filter: copyFilter(entry.filter), lastObservedFilter: copyFilter(entry.lastObservedFilter),
     observations: entry.observations.map(observation => ({ ...observation, box: { ...observation.box } })),
-    missingTimestamps: [...entry.missingTimestamps],
+    missingTimestamps: [...entry.missingTimestamps], gallery: entry.gallery.map(sample => [...sample]),
   };
 }
 
@@ -86,7 +105,7 @@ export function createTracker(input: TrackerOptions = {}): Tracker {
       const start = now();
       if (!record(updateOptions) || (updateOptions.signal !== undefined && (!record(updateOptions.signal) || typeof updateOptions.signal.aborted !== 'boolean'))) throw new TrackingError('INVALID_INPUT', '取消参数非法');
       if (updateOptions.signal?.aborted) throw new TrackingError('ABORTED', '计算开始前已取消');
-      const frame = validateFrame(inputFrame, timestamp, size, options.maxDetections);
+      const frame = validateFrame(inputFrame, timestamp, size, options);
       const validationEnd = now(), time = frame.timestampMs;
       const dt = timestamp === null ? 0 : (time - timestamp) / 1000;
       const gap = timestamp !== null && time - timestamp > options.largeGapMs;
@@ -118,10 +137,31 @@ export function createTracker(input: TrackerOptions = {}): Tracker {
           : undefined);
         for (const [row, col] of pairs) { matches.set(candidates[row], observations[col].detection); used.add(observations[col].index); }
       };
-      associate(working.filter(entry => entry.state !== 'tentative'), high, options.matchIouThreshold);
-      if (options.algorithm === 'ocsort') associate(working.filter(entry => entry.state !== 'tentative' && !matches.has(entry)), high.filter(({ index }) => !used.has(index)), options.matchIouThreshold, true);
-      if (options.algorithm === 'bytetrack') associate(working.filter(entry => entry.state === 'tracked' && !matches.has(entry)), low, options.lowMatchIouThreshold);
-      associate(working.filter(entry => entry.state === 'tentative'), high.filter(({ index }) => !used.has(index)), options.matchIouThreshold);
+      if (options.algorithm === 'deepsort') {
+        const confirmed = working.filter(entry => entry.state !== 'tentative');
+        const groups = [...new Set(confirmed.map(entry => entry.lastSeenMs))].sort((a, b) => b - a);
+        for (const lastSeenMs of groups) {
+          const candidates = confirmed.filter(entry => entry.lastSeenMs === lastSeenMs);
+          const observations = high.filter(({ index }) => !used.has(index));
+          const similarities = candidates.map(entry => observations.map(({ detection }) => 1 - minimumCosineDistance(detection.embedding!, entry.gallery)));
+          const eligible = candidates.map((entry, row) => observations.map(({ detection }, column) => {
+            if (entry.classId !== detection.classId || 1 - similarities[row][column] > options.maxCosineDistance) return false;
+            const box = detection.box;
+            return squaredMahalanobisDistance(entry.filter, [box.x + box.width / 2, box.y + box.height / 2, box.width, box.height]) <= MOTION_GATE_THRESHOLD;
+          }));
+          const pairs = assign(similarities, -1, (_score, row, column) => eligible[row][column]);
+          for (const [row, column] of pairs) {
+            matches.set(candidates[row], observations[column].detection);
+            used.add(observations[column].index);
+          }
+        }
+        associate(working.filter(entry => (entry.state === 'tentative' || entry.state === 'tracked') && !matches.has(entry)), high.filter(({ index }) => !used.has(index)), options.matchIouThreshold);
+      } else {
+        associate(working.filter(entry => entry.state !== 'tentative'), high, options.matchIouThreshold);
+        if (options.algorithm === 'ocsort') associate(working.filter(entry => entry.state !== 'tentative' && !matches.has(entry)), high.filter(({ index }) => !used.has(index)), options.matchIouThreshold, true);
+        if (options.algorithm === 'bytetrack') associate(working.filter(entry => entry.state === 'tracked' && !matches.has(entry)), low, options.lowMatchIouThreshold);
+        associate(working.filter(entry => entry.state === 'tentative'), high.filter(({ index }) => !used.has(index)), options.matchIouThreshold);
+      }
       const associationEnd = now();
       working = working.filter(entry => {
         const detection = matches.get(entry);
@@ -139,6 +179,7 @@ export function createTracker(input: TrackerOptions = {}): Tracker {
           if (entry.observations.length > options.ocmHistoryLength) entry.observations.shift();
           entry.lastObservedFilter = copyFilter(entry.filter);
           entry.missingTimestamps = [];
+          if (options.algorithm === 'deepsort') appendToGallery(entry.gallery, detection.embedding!, options.gallerySize);
           if (entry.hits >= options.minHits) entry.state = 'tracked';
           return true;
         }
@@ -160,6 +201,7 @@ export function createTracker(input: TrackerOptions = {}): Tracker {
           id: localNextId++, classId: detection.classId, state: options.minHits === 1 ? 'tracked' : 'tentative', filter,
           lastObservedFilter: copyFilter(filter), firstMs: time, lastSeenMs: time, hits: 1, score: detection.score,
           observations: [{ timestampMs: time, box: { ...detection.box }, score: detection.score }], missingTimestamps: [],
+          gallery: options.algorithm === 'deepsort' ? [[...detection.embedding!]] : [],
         });
       }
       const tracks = working.map(entry => snapshot(entry, time));

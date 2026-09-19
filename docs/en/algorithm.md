@@ -6,8 +6,9 @@ This implementation uses the high/low confidence association idea from the
 [ByteTrack paper](https://arxiv.org/abs/2110.06864). The Kalman filter, assignment
 solver and lifecycle were independently written from mathematical definitions;
 no old Kalman/SORT source was read or translated. This is not an official port.
-There is no model, ReID or camera-motion compensation, and no guarantee of identity
-through crossings or turns. No real-sequence MOT accuracy is claimed.
+There is no built-in feature-extraction model or camera-motion compensation. DeepSORT
+only consumes caller-provided vectors; vector quality, identity through crossings or
+turns, and real-sequence MOT accuracy are not established.
 
 ## Mathematical definition
 
@@ -147,3 +148,13 @@ paper uses a seven-dimensional state and frame intervals, so this implementation
 documents mechanism correspondence without claiming official value compatibility
 or MOT metrics. CPU/main, reset, dispose, instance isolation and synchronous
 cancellation semantics match the original strategy.
+
+## DeepSORT (external vectors, local alpha)
+
+`createTracker({algorithm:'deepsort',featureSpace})` independently implements concepts from the [Deep SORT paper](https://arxiv.org/abs/1703.07402). The SDK loads no ReID weights, crops no images and generates no embeddings. Callers provide a matching feature-space ID on every frame and a compatible vector on every detection. Vectors are scale-normalized to avoid norm overflow and copied. Missing, wrong-dimensional, non-finite or zero-norm vectors reject the whole frame with `INVALID_INPUT` and commit no state. Each track stores the newest `gallerySize` vectors; detection-to-track distance is the minimum cosine distance to any gallery sample.
+
+Confirmed tracks are grouped by `lastSeenMs` from newest to oldest for cascade matching. An edge requires the same class, minimum cosine distance no greater than `maxCosineDistance`, and four-dimensional squared Mahalanobis distance no greater than `9.487729036781154`. Observation covariance is the predicted positional covariance plus `4I`. Each group uses the same deterministic maximum-cardinality, minimum-cost assignment.
+
+After appearance matching, only tentative tracks and unmatched tracks that entered the frame as tracked can use class/IoU fallback. A track already lost cannot bypass the appearance threshold. Matches and births update the gallery; misses do not, and the oldest sample is removed at capacity. Scalar gallery capacity is bounded by `maxTracks * gallerySize * dimension <= 4_000_000`; reset, dispose and track removal release state.
+
+Explicit differences from the paper implementation are the eight-dimensional `cx/cy/w/h` state instead of aspect-ratio/height, millisecond `lastSeenMs` groups instead of fixed frame ages, and this document's Kalman noise, thresholds and lifecycle. This is mechanism correspondence, not an official value-for-value reproduction. Current evidence uses original synthetic vectors plus contract/browser verification. Historical MOT17 reports contain no external appearance embeddings and provide no real-data DeepSORT accuracy evidence.

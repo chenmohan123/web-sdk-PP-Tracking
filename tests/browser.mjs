@@ -36,6 +36,8 @@ try {
   assert.equal(await page.locator('[data-track-state=tracked]').count(), 1);
   await click('播放'); await waitFrame(4);
   await page.locator('#algorithm').selectOption('ocsort');
+  await page.waitForFunction(() => document.querySelector('#algorithm').value === 'ocsort' || document.querySelector('[role=alert]'));
+  assert.equal(await page.locator('#algorithm').inputValue(), 'ocsort', await page.locator('[role=alert]').textContent().catch(() => '算法切换未提交'));
   assert.match(await frame(), /0\/40/);
   assert.equal(await page.getByTestId('lowScoreThreshold').count(), 0);
   assert.equal(await page.getByTestId('ocmWeight').count(), 1);
@@ -59,7 +61,44 @@ try {
   assert(ocImported.results.every(result => result.algorithm === 'ocsort'));
   checks.push('算法切换停止播放、清空状态；OC-SORT 仅显示有效参数并完成播放、导入和导出；未应用草稿不混入导出');
 
+  await page.locator('#sample').selectOption('crossing');
+  await page.locator('#algorithm').selectOption('deepsort');
+  await page.waitForFunction(() => document.querySelector('#algorithm').value === 'deepsort' || document.querySelector('[role=alert]'));
+  assert.equal(await page.locator('#algorithm').inputValue(), 'deepsort');
+  assert.equal(await page.getByTestId('maxCosineDistance').count(), 1);
+  assert.equal(await page.getByTestId('gallerySize').count(), 1);
+  assert.match(await page.getByTestId('feature-space').textContent(), /original-vectors.*4D/);
+  await click('单步');
+  const deepOutput = await exportResult();
+  assert.equal(deepOutput.algorithm, 'deepsort');
+  assert.equal(deepOutput.options.maxCosineDistance, 0.2);
+  assert.equal(deepOutput.options.gallerySize, 30);
+  assert.deepEqual(deepOutput.options.featureSpace, deepOutput.featureSpace);
+  assert.equal(deepOutput.frames[0].detections[0].embedding.length, 4);
+  const importedSpace = { id: 'imported-long-feature-space-id-for-390px-layout-verification-0123456789', dimension: 2 };
+  const deepImport = { featureSpace: importedSpace, frames: [
+    { timestampMs: 3, imageSize: { width: 100, height: 100 }, featureSpaceId: importedSpace.id, detections: [{ box: { x: 10, y: 10, width: 20, height: 20 }, score: 0.9, classId: 0, embedding: [1, 0] }] },
+    { timestampMs: 13, imageSize: { width: 100, height: 100 }, featureSpaceId: importedSpace.id, detections: [{ box: { x: 11, y: 10, width: 20, height: 20 }, score: 0.9, classId: 0, embedding: [1, 0] }] },
+  ] };
+  await upload(deepImport); await click('单步');
+  const importedDeep = await exportResult();
+  assert.deepEqual(importedDeep.featureSpace, importedSpace);
+  assert.deepEqual(importedDeep.frames, deepImport.frames);
+  await upload({ ...deepImport, frames: [...deepImport.frames, { ...deepImport.frames[1], timestampMs: 23, featureSpaceId: 'wrong-space' }] });
+  assert.match(await page.getByRole('alert').textContent(), /INVALID_SEQUENCE/);
+  const preservedDeep = await exportResult();
+  assert.deepEqual(preservedDeep.results, importedDeep.results);
+  assert.deepEqual(preservedDeep.featureSpace, importedSpace);
+  await page.getByTestId('language').click();
+  assert.match(await page.getByTestId('feature-space').textContent(), /2D/);
+  await page.getByTestId('language').click();
+  assert.deepEqual((await exportResult()).results, importedDeep.results);
+  await page.screenshot({ path: '.tmp/browser/deepsort.png', fullPage: true });
+  checks.push('DeepSORT 合成向量运行；有效参数、特征空间和原序列导出；合法包装导入；非法末帧与语言切换保留状态');
+
   await page.locator('#algorithm').selectOption('bytetrack');
+  await page.waitForFunction(() => document.querySelector('#algorithm').value === 'bytetrack' || document.querySelector('[role=alert]'));
+  assert.equal(await page.locator('#algorithm').inputValue(), 'bytetrack');
   await page.locator('#sample').selectOption('straight');
   assert.match(await frame(), /0\/40/);
   await click('单步');
@@ -125,6 +164,10 @@ try {
   const single = await exportResult(); assert.equal(single.processedFrames, 1); assert.equal(single.results[0].timestampMs, 17);
   await upload(one); assert.match(await frame(), /0\/1/); await click('单步');
   const unchanged = await exportResult();
+  await page.locator('#algorithm').selectOption('deepsort');
+  assert.match(await page.getByRole('alert').textContent(), /INVALID_SEQUENCE/);
+  assert.equal(await page.locator('#algorithm').inputValue(), 'bytetrack');
+  assert.deepEqual((await exportResult()).results, unchanged.results);
   await upload({ frames: [...one.frames, { ...one.frames[0], timestampMs: 16 }] });
   assert.match(await page.getByRole('alert').textContent(), /INVALID_SEQUENCE/);
   assert.deepEqual((await exportResult()).results, unchanged.results);
@@ -134,7 +177,7 @@ try {
   await page.getByTestId('import').setInputFiles({ name: 'large.json', mimeType: 'application/json', buffer: Buffer.alloc(5 * 1024 * 1024 + 1, 32) });
   await page.waitForFunction(() => document.querySelector('[role=alert]').textContent.includes('FILE_TOO_LARGE'));
   assert.deepEqual((await exportResult()).results, unchanged.results);
-  checks.push('异步读取时算法选择禁用；单帧导入/重复同文件/导出；逆序、坏JSON、超5MiB失败均保留原结果');
+  checks.push('异步读取时算法选择禁用；单帧导入/重复同文件/导出；无向量切换、逆序、坏JSON、超5MiB失败均保留原结果');
 
   if (!(await page.locator('.parameters').evaluate(element => element.open))) await page.locator('.parameters summary').click();
   await page.getByTestId('highScoreThreshold').fill('0.05');
@@ -151,6 +194,11 @@ try {
   await click('单步'); assert.equal(await page.locator('[data-track-state]').count(), 0);
   assert.match(await page.locator('.track-list').textContent(), /本帧无活动轨迹/);
   checks.push('空检测序列真实空结果');
+
+  await page.locator('#sample').selectOption('straight');
+  await page.locator('#algorithm').selectOption('deepsort');
+  await page.waitForFunction(() => document.querySelector('#algorithm').value === 'deepsort' || document.querySelector('[role=alert]'));
+  assert.equal(await page.locator('#algorithm').inputValue(), 'deepsort');
 
   await page.setViewportSize({ width: 390, height: 844 });
   for (let i = 0; i < 2; i++) {
@@ -170,7 +218,7 @@ try {
   await page.screenshot({ path: '.tmp/browser/vanilla.png', fullPage: true });
   checks.push('Vanilla构建包单步/复位/CPU实际结果');
   assert.deepEqual(errors, []);
-  const report = { testedAt: new Date().toISOString(), browser: browser.version(), platform: process.platform, runtimeVersion: 'web-sdk-pp-tracking@0.2.0-alpha.0', checks, pageErrors: errors, screenshots: ['desktop', 'english', 'occlusion', 'mobile', 'vanilla'].map(s => resolve(`.tmp/browser/${s}.png`)) };
+  const report = { testedAt: new Date().toISOString(), browser: browser.version(), platform: process.platform, runtimeVersion: 'web-sdk-pp-tracking@0.2.0-alpha.0', checks, pageErrors: errors, screenshots: ['desktop', 'english', 'deepsort', 'occlusion', 'mobile', 'vanilla'].map(s => resolve(`.tmp/browser/${s}.png`)) };
   await writeFile('.tmp/browser/report.json', JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify(report, null, 2));
 } finally {

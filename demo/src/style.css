@@ -57,6 +57,8 @@ input[type=range] { width: 100%; margin: 0 0 var(--space-4); accent-color: var(-
 details { padding: var(--space-4); line-height: 1.6; overflow-wrap: anywhere; }
 summary { cursor: pointer; font-weight: 600; }
 details p { color: var(--mutedText); font-size: 12px; }
+.feature-space, .feature-space code { min-width: 0; overflow-wrap: anywhere; word-break: break-word; }
+.feature-space code { color: var(--text); }
 dl { font-size: 12px; }
 dl div { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding: 4px 0; }
 dd { margin: 0; }

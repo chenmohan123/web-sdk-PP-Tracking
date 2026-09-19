@@ -2,7 +2,7 @@ schemaVersion: "1.2.0"
 kind: algorithm
 id: pp-tracking
 name: PP-Tracking 多目标跟踪
-summary: 独立实现高低分两阶段关联的框架无关 CPU 主线程跟踪算法，含合成 Demo 和 MOT17 训练序列评测。
+summary: 独立实现 ByteTrack、OC-SORT 与外部向量 DeepSORT 关联的框架无关 CPU 主线程跟踪算法，含合成 Demo 和历史 MOT17 训练序列评测。
 package:
   name: web-sdk-pp-tracking
   version: 0.2.0-alpha.0
@@ -24,8 +24,8 @@ runtime:
 algorithm:
   id: pp-tracking
   version: 0.2.0-alpha.0
-  family: ByteTrack 与 OC-SORT 机制多目标跟踪
-  source: 独立实现；ByteTrack论文 https://arxiv.org/abs/2110.06864、OC-SORT论文 https://arxiv.org/abs/2203.14360；实现差异与来源见 docs/zh-CN/algorithm.md 和 NOTICE，非官方移植。
+  family: ByteTrack、OC-SORT 与 DeepSORT 机制多目标跟踪
+  source: 独立实现；ByteTrack论文 https://arxiv.org/abs/2110.06864、OC-SORT论文 https://arxiv.org/abs/2203.14360、Deep SORT论文 https://arxiv.org/abs/1703.07402；实现差异与来源见 docs/zh-CN/algorithm.md 和 NOTICE，非官方移植。
   license: Apache-2.0
   input: docs/zh-CN/api.md#输入
   output: docs/zh-CN/api.md#输出

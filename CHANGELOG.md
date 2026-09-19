@@ -2,15 +2,17 @@
 
 ## 0.2.0-alpha.0 — 2026-09-19（仅本地候选）
 
-- 在同一框输入 SDK 中新增 OC-SORT 观察中心策略；`TrackerOptions.algorithm` 支持 `bytetrack` / `ocsort`，`TrackingResult.algorithm` 返回实际策略，`TrackerAlgorithm` 作为类型导出。
-- Demo 可切换两种已实现算法，切换停止播放并以当前算法的有效默认参数重建；ByteTrack 低分字段与 OC-SORT 四项专属参数互斥，导出只包含已应用配置和实际算法。
-- 本地 tarball、实际 ESM/CJS 消费和浏览器验证覆盖两算法；线上 npm、GitHub Release 与 HTTPS Demo 仍为 0.1.0，本条不构成远程 alpha 发布说明。
+- 在同一框输入 SDK 中新增 OC-SORT 观察中心策略；`TrackerOptions.algorithm` 支持 `bytetrack` / `ocsort` / `deepsort`，`TrackingResult.algorithm` 返回实际策略，`TrackerAlgorithm` 作为类型导出。
+- 新增消费调用者外部向量的 DeepSORT 策略、严格 `FeatureSpace`/embedding 契约、最近邻图库、运动门控、新鲜度级联和有限 IoU 后备；不内置或运行 ReID 模型。
+- Demo 可切换三种已实现算法，完整验证后原子提交导入/切换，导出实际参数、特征空间与可重新导入的帧；内置 DeepSORT 外观向量为原创合成数据。
+- 本地 tarball、实际 ESM/CJS/类型消费和浏览器验证覆盖三算法；线上 npm、GitHub Release 与 HTTPS Demo 仍为 0.1.0，本条不构成远程 alpha 发布说明。
 
 English equivalent:
 
-- Added the OC-SORT observation-centric strategy to the same box-input SDK. `TrackerOptions.algorithm` accepts `bytetrack` / `ocsort`, `TrackingResult.algorithm` reports the actual strategy, and `TrackerAlgorithm` is exported as a type.
-- The Demo switches between the two implemented algorithms, stops playback and rebuilds from algorithm-valid defaults. ByteTrack low-score fields and the four OC-SORT-specific fields are mutually exclusive; export includes only applied options and the actual algorithm.
-- Local tarball, actual ESM/CJS consumption and browser verification cover both algorithms. Published npm, GitHub Release and HTTPS Demo remain 0.1.0; this entry does not announce a remote alpha release.
+- Added the OC-SORT observation-centric strategy to the same box-input SDK. `TrackerOptions.algorithm` accepts `bytetrack` / `ocsort` / `deepsort`, `TrackingResult.algorithm` reports the actual strategy, and `TrackerAlgorithm` is exported as a type.
+- Added DeepSORT over caller-provided vectors with strict `FeatureSpace`/embedding contracts, nearest-neighbour galleries, motion gating, recency cascade and a limited IoU fallback. No ReID model is bundled or run.
+- The Demo switches among all three implementations, validates imports/switches before atomic commit, and exports actual options, feature space and re-importable frames. Built-in DeepSORT vectors are original synthetic data.
+- Local tarball ESM/CJS/declaration consumption and browser verification cover all three algorithms. Published npm, GitHub Release and HTTPS Demo remain 0.1.0; this entry does not announce a remote alpha release.
 
 ## 0.1.0 — 2026-09-19
 

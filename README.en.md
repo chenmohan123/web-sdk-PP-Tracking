@@ -2,7 +2,7 @@
 
 [中文（默认）](README.md)
 
-Local candidate version **0.2.0-alpha.0**. A framework-neutral CPU/main-thread multi-object tracker independently implementing ByteTrack high/low-score association and OC-SORT observation-centric mechanisms. No model download, inference or React runtime dependency. The published npm package and hosted HTTPS Demo remain **0.1.0**; no remote alpha package is available.
+Local candidate version **0.2.0-alpha.0**. A framework-neutral CPU/main-thread multi-object tracker independently implementing ByteTrack, OC-SORT and DeepSORT association over caller-provided appearance vectors. It has no built-in feature extractor, model download, model inference or React runtime dependency. The published npm package and hosted HTTPS Demo remain **0.1.0**; no remote alpha package is available.
 
 ## Installation and usage
 
@@ -35,8 +35,8 @@ npm install /absolute/path/web-sdk-pp-tracking/web-sdk-pp-tracking-0.2.0-alpha.0
 ## Standalone Demo and examples
 
 Run `npm run dev:demo` and open http://127.0.0.1:4196. Run `npm run build:demo` for the static build.
-Chinese by default; language switching preserves state. Includes ByteTrack/OC-SORT selection with algorithm-valid parameters, original straight-motion, low-score, occlusion and crossing/turning sequences, JSON import, SVG paths, play/pause, step, reset, seek and actual-result export. Switching stops playback, rebuilds from valid defaults and clears results; export contains only applied options and the actual algorithm.
-Input: `{ "frames": TrackingFrame[] }`, limited to 5MiB, 3000 frames, 100 boxes/frame. Failed validation preserves previous input and results. Processing stays in local memory.
+Chinese by default; language switching preserves state. Includes ByteTrack/OC-SORT/DeepSORT selection with algorithm-valid parameters, original straight-motion, low-score, occlusion and crossing/turning sequences, JSON import, SVG paths, play/pause, step, reset, seek and actual-result export. DeepSORT's built-in boxes and appearance vectors are synthetic originals, not derived from images. Switching validates the full current sequence before rebuilding; failure preserves options, input and results.
+Input remains compatible with `{ "frames": TrackingFrame[] }`; appearance input may use `{ "featureSpace": {"id":"...","dimension":4}, "frames": [...] }`. Limits are 5MiB, 3000 frames and 100 boxes/frame. Export includes the actual algorithm, applied options, feature space, re-importable source sequence and run results. Processing stays in local memory.
 
 - [Vanilla TypeScript](examples/vanilla/README.en.md)
 - [Complete React reference](examples/react/README.en.md)
@@ -50,8 +50,8 @@ The manifest and package metadata use these same project URLs.
 
 [Quick start](docs/en/quick-start.md) · [API](docs/en/api.md) · [Algorithm](docs/en/algorithm.md) · [Compatibility](docs/en/compatibility.md) · [Troubleshooting](docs/en/troubleshooting.md) · [Privacy/deployment](docs/en/privacy-deployment.md) · [Performance](docs/en/performance.md)
 
-Omitting `algorithm` selects ByteTrack; `createTracker({ algorithm: 'ocsort' })` selects OC-SORT. Only ByteTrack uses low-score detections for second-stage association; OC-SORT rejects `lowScoreThreshold` and `lowMatchIouThreshold`. Both result forms report the actual `algorithm`. Seek requires reset followed by ordered replay.
-Track IDs are local to an instance and generation, not personal identities. There is no ReID, and crossing/turning may switch IDs.
+Omitting `algorithm` selects ByteTrack; `algorithm: 'ocsort'` selects OC-SORT; `algorithm: 'deepsort'` also requires a `featureSpace`, with matching IDs and vectors on every frame/detection. Only ByteTrack uses low-score detections for second-stage association; strategy-specific options are mutually exclusive. All results report the actual `algorithm`. Seek requires reset followed by ordered replay.
+Track IDs are local to an instance and generation, not personal identities. The SDK has no built-in ReID/feature-extraction model and does not establish the quality of caller vectors or real crossing/turning identity.
 On 2026-09-19, the same 5316 frames from seven fixed MOT17 FRCNN training sequences produced ByteTrack IDF1 **48.2922%**, IDSW **1101**, MOTA **44.4010%**, FP **4169**, FN **57166**; OC-SORT produced **48.4107%**, **881**, **39.5434%**, **6751**, **60259**. OC-SORT reduced identity switches by 220 and slightly increased IDF1, but MOTA fell 4.8577 percentage points, FP/FN increased, and cumulative Node tracking time was 8.19% higher, so ByteTrack remains the default. All seven candidate ByteTrack MOT outputs byte-match the historical 0.1.0 baseline. Both algorithms passed repeated determinism and separately matched Node over a complete 600-frame sequence in Chromium 153. See the [candidate comparison](reports/2026-09-19-ocsort/README.en.md). These are not test-set leaderboard scores, official algorithm reproductions, end-to-end video or cross-device measurements.
 
 ## Verification and release preparation
@@ -61,7 +61,7 @@ pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versi
 npm run verify
 ```
 
-`verify` builds the SDK, checks types and units, consumes the actual npm tarball through ESM/CJS and declarations, builds the Demo and both examples, then tests real browser interactions. Screenshots and outputs go to `.tmp/browser/`.
+`verify` builds the SDK, checks types and units, consumes all three algorithms from the actual npm tarball through ESM/CJS and declarations, builds the Demo and both examples, then tests real browser interactions. Screenshots and outputs go to `.tmp/browser/`.
 See the [release checklist](docs/en/release-checklist.md) for portal standard verification and local evidence.
 Pages deployment follows CI validation. Release first checks the immutable tag against the package version, then publishes via OIDC in the `npm` environment. After a manual first publication, it skips duplicate publication only when npm `dist.integrity` exactly matches the built tarball; network/permission errors and mismatches fail. Manual publication does not automatically carry provenance; future OIDC publication requests it. See the release checklist for evidence and remote verification items.
 

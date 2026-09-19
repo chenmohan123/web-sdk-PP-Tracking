@@ -5,9 +5,9 @@
 Based on portal `standards/v1/templates/release-checklist.md`. Version 0.1.0 completed its first publication and dated remote verification on 2026-09-19. This checklist does not promise the same state for future versions or unverified environments.
 
 - [x] Chinese README and equivalent English guides link reciprocally; source/license, input/output, state/reset and cold/warm are documented.
-- [x] Algorithm1.2.0 manifest without model/cache; CHANGELOG includes sources, implementation differences and limits.
+- [x] Algorithm1.2.0 manifest without model/cache; CHANGELOG includes ByteTrack, OC-SORT and DeepSORT sources, implementation differences and limits.
 - [x] `npm run verify` is the complete local check; CI covers types, units, package consumption, Demo/examples and browser interactions.
-- [x] Published files are restricted to dist, READMEs, LICENSE, NOTICE and package.json; no React production dependency.
+- [x] Published files are restricted to dist, READMEs, LICENSE, NOTICE and package.json; no React production dependency. Local actual-tarball checks consume all three algorithms through ESM/CJS/declarations.
 - [x] Compatibility records date, OS, device, browser, actual backend and runtime.
 - [x] The portal checker ran before and after the documentation update with separate reports. Local required failures are zero; remote rules are verified by API receipts.
 - [x] First publication is explicitly authorized for this task, without extending authorization to future versions or unrelated repositories.
@@ -19,5 +19,7 @@ Based on portal `standards/v1/templates/release-checklist.md`. Version 0.1.0 com
 - [x] GitHub, npm, and HTTPS Demo links were exercised, with credential-free dated receipts in the [first release record](../../reports/2026-09-19-release/README.md).
 
 The local checker preserves remote rules as skip. No local required failures means locally-compliant only. Model assets are inapplicable. Unchecked items do not trigger remote actions.
+
+The three-strategy, external-vector and Demo changes in 0.2.0-alpha.0 remain a local candidate. No push, Release, npm publication or Pages deployment occurred; the checked remote items above record historical 0.1.0 facts and do not prove that the alpha was published.
 
 Release text uses LF; historical reports preserve original bytes. Actual ESM/CJS/declaration consumption, SHA256, sha512 integrity, and the LF-checkout comparison are archived separately. The old desktop package size is not evidence for the final package. The locally authenticated first publication has `provenance: null`; Trusted Publisher is configured, while a future OIDC publication has not yet been exercised by a new version. Its final status must come from that version's npm receipt. Real-sequence metrics and limitations are in the [MOT17 report](../../reports/2026-09-19-mot17/README.en.md).

@@ -4,7 +4,7 @@
 
 本实现参考 [ByteTrack 论文](https://arxiv.org/abs/2110.06864) 的高低分两阶段关联思想。
 运动模型、分配器、状态机均按本文公式独立编写，未读取或翻译旧 Kalman/SORT 代码。
-不是官方移植；无模型、ReID、运动补偿，不承诺交叉掉头的身份正确性或 MOT 精度。
+不是官方移植；无内置特征提取模型或运动补偿。DeepSORT 只消费调用者外部向量，不承诺向量质量、交叉掉头的身份正确性或 MOT 精度。
 
 ## 数学定义
 
@@ -119,3 +119,13 @@ OC-SORT 复用本项目独立的八维 `cx/cy/w/h` 恒速滤波、秒级 `dt`、
 生命周期。论文使用七维状态和帧间隔；因此本实现只声明机制对应关系，不承诺
 与官方代码的逐值结果或 MOT 指标兼容。CPU/main、reset、dispose、实例隔离
 和同步取消语义与原算法一致。
+
+## DeepSORT（外部向量，本地 alpha）
+
+`createTracker({algorithm:'deepsort',featureSpace})` 依据 [Deep SORT 论文](https://arxiv.org/abs/1703.07402) 的概念独立实现。SDK 不加载 ReID 权重、不裁剪图片、不生成 embedding；调用者必须为每帧和每个检测提供与 `featureSpace` 一致的标识和向量。向量经缩放避免范数溢出后归一化并复制；缺失、错维、非有限或零范数使整帧以 `INVALID_INPUT` 失败且不提交状态。每条轨迹保存最近 `gallerySize` 个向量，距离为检测向量与图库样本的最小余弦距离。
+
+已确认轨迹按 `lastSeenMs` 从新到旧分组级联。候选边同时要求类别相同、最小余弦距离不大于 `maxCosineDistance`，且四维观测的平方 Mahalanobis 距离不大于 `9.487729036781154`；观测协方差使用预测位置协方差加 `4I`。每组继续使用最大可行匹配数、再最小代价的确定性全局分配。
+
+外观阶段后，只让 tentative 轨迹和进入本帧时仍为 tracked 的未匹配轨迹参与类别/IoU 后备；已经 lost 的轨迹不能绕过外观门限。成功匹配和新建写入图库，失配不写；超出容量移除最旧样本。图库标量上限为 `maxTracks * gallerySize * dimension <= 4_000_000`，reset、dispose 和轨迹移除释放状态。
+
+与论文实现的明确差异：本项目使用 `cx/cy/w/h` 八维状态而非 aspect-ratio/height，按毫秒 `lastSeenMs` 分组而非固定帧年龄，并沿用本文的 Kalman 噪声、门限和状态生命周期。因此只声明机制对应关系，不保证官方逐值复现。当前证据是原创合成向量和契约/浏览器验证；历史 MOT17 报告没有外部 appearance embedding，不能作为 DeepSORT 真实精度证据。

@@ -25,9 +25,15 @@ for (const format of ['esm', 'cjs']) {
   const code = `${format === 'esm' ? "import * as api from 'web-sdk-pp-tracking';" : "const api = require('web-sdk-pp-tracking');"}
 const assert = ${format === 'esm' ? "(await import('node:assert/strict')).default" : "require('node:assert/strict')"};
 assert.deepEqual(Object.keys(api).sort(), ['TrackingError', 'createTracker']);
-for (const [algorithm, options] of Object.entries({ bytetrack: { minHits: 1 }, ocsort: { minHits: 1, ocmWeight: 0.2, ocmDeltaMs: 300, ocmHistoryLength: 30, oruMaxReplaySteps: 30 } })) {
+const featureSpace = { id: 'package-consumer-appearance-v1', dimension: 2 };
+const cases = {
+  bytetrack: { options: { minHits: 1 }, frame: { timestampMs: 0, imageSize: { width: 10, height: 10 }, detections: [{ box: { x: 0, y: 0, width: 2, height: 2 }, score: 1, classId: 0 }] } },
+  ocsort: { options: { minHits: 1, ocmWeight: 0.2, ocmDeltaMs: 300, ocmHistoryLength: 30, oruMaxReplaySteps: 30 }, frame: { timestampMs: 0, imageSize: { width: 10, height: 10 }, detections: [{ box: { x: 0, y: 0, width: 2, height: 2 }, score: 1, classId: 0 }] } },
+  deepsort: { options: { minHits: 1, featureSpace, maxCosineDistance: 0.2, gallerySize: 30 }, frame: { timestampMs: 0, imageSize: { width: 10, height: 10 }, featureSpaceId: featureSpace.id, detections: [{ box: { x: 0, y: 0, width: 2, height: 2 }, score: 1, classId: 0, embedding: [1, 0] }] } },
+};
+for (const [algorithm, { options, frame }] of Object.entries(cases)) {
   const tracker = api.createTracker({ algorithm, ...options });
-  const result = tracker.update({ timestampMs: 0, imageSize: { width: 10, height: 10 }, detections: [{ box: { x: 0, y: 0, width: 2, height: 2 }, score: 1, classId: 0 }] });
+  const result = tracker.update(frame);
   assert.equal(result.algorithm, algorithm);
   assert.equal(result.tracks[0].id, 1);
   assert.equal(result.runtime.actualBackend, 'cpu');
@@ -39,12 +45,12 @@ for (const [algorithm, options] of Object.entries({ bytetrack: { minHits: 1 }, o
   assert.equal(result.status, 0, result.stderr);
 }
 for (const extension of ['mts', 'cts']) {
-  await writeFile(join(consumer, `consumer.${extension}`), "import { createTracker, type Tracker, type TrackerAlgorithm, type TrackingResult } from 'web-sdk-pp-tracking';\nconst byteAlgorithm: TrackerAlgorithm = 'bytetrack';\nconst byteTracker: Tracker = createTracker({ algorithm: byteAlgorithm });\nconst byteResult: TrackingResult = byteTracker.update({ timestampMs: 0, imageSize: { width: 1, height: 1 }, detections: [] });\nconst byteActual: TrackerAlgorithm = byteResult.algorithm;\nif (byteActual !== byteAlgorithm) throw new Error('ByteTrack 类型消费失败');\nbyteTracker.dispose();\nconst ocAlgorithm: TrackerAlgorithm = 'ocsort';\nconst ocTracker: Tracker = createTracker({ algorithm: ocAlgorithm, ocmWeight: 0.2, ocmDeltaMs: 300, ocmHistoryLength: 30, oruMaxReplaySteps: 30 });\nconst ocResult: TrackingResult = ocTracker.update({ timestampMs: 0, imageSize: { width: 1, height: 1 }, detections: [] });\nconst ocActual: TrackerAlgorithm = ocResult.algorithm;\nif (ocActual !== ocAlgorithm) throw new Error('OC-SORT 类型消费失败');\nocTracker.dispose();\n");
+  await writeFile(join(consumer, `consumer.${extension}`), "import { createTracker, type FeatureSpace, type Tracker, type TrackerAlgorithm, type TrackingResult } from 'web-sdk-pp-tracking';\nconst byteAlgorithm: TrackerAlgorithm = 'bytetrack';\nconst byteTracker: Tracker = createTracker({ algorithm: byteAlgorithm });\nconst byteResult: TrackingResult = byteTracker.update({ timestampMs: 0, imageSize: { width: 1, height: 1 }, detections: [] });\nconst byteActual: TrackerAlgorithm = byteResult.algorithm;\nif (byteActual !== byteAlgorithm) throw new Error('ByteTrack 类型消费失败');\nbyteTracker.dispose();\nconst ocAlgorithm: TrackerAlgorithm = 'ocsort';\nconst ocTracker: Tracker = createTracker({ algorithm: ocAlgorithm, ocmWeight: 0.2, ocmDeltaMs: 300, ocmHistoryLength: 30, oruMaxReplaySteps: 30 });\nconst ocResult: TrackingResult = ocTracker.update({ timestampMs: 0, imageSize: { width: 1, height: 1 }, detections: [] });\nconst ocActual: TrackerAlgorithm = ocResult.algorithm;\nif (ocActual !== ocAlgorithm) throw new Error('OC-SORT 类型消费失败');\nocTracker.dispose();\nconst featureSpace: FeatureSpace = { id: 'typed-consumer-v1', dimension: 2 };\nconst deepAlgorithm: TrackerAlgorithm = 'deepsort';\nconst deepTracker: Tracker = createTracker({ algorithm: deepAlgorithm, featureSpace, maxCosineDistance: 0.2, gallerySize: 30 });\nconst deepResult: TrackingResult = deepTracker.update({ timestampMs: 0, imageSize: { width: 2, height: 2 }, featureSpaceId: featureSpace.id, detections: [{ box: { x: 0, y: 0, width: 1, height: 1 }, score: 1, classId: 0, embedding: new Float32Array([1, 0]) }] });\nconst deepActual: TrackerAlgorithm = deepResult.algorithm;\nif (deepActual !== deepAlgorithm) throw new Error('DeepSORT 类型消费失败');\ndeepTracker.dispose();\n");
   const typed = spawnSync(process.execPath, ['node_modules/typescript/bin/tsc', '--noEmit', '--strict', '--target', 'ES2022', '--module', 'NodeNext', '--moduleResolution', 'NodeNext', join(consumer, `consumer.${extension}`)], { encoding: 'utf8' });
   assert.equal(typed.status, 0, typed.stdout + typed.stderr);
 }
 const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
 assert.equal(Object.keys(packageJson.dependencies ?? {}).length, 0, '生产依赖必须为空');
-await writeFile('.tmp/package-check.json', JSON.stringify({ filename: info.filename, integrity: info.integrity, sha256: createHash('sha256').update(tarballBytes).digest('hex'), size: info.size, unpackedSize: info.unpackedSize, files, checks: ['ByteTrack 与 OC-SORT 实际包 ESM', 'ByteTrack 与 OC-SORT 实际包 CommonJS', 'ByteTrack 与 OC-SORT TypeScript 类型消费', '无生产依赖', '发行文件白名单'] }, null, 2) + '\n');
+await writeFile('.tmp/package-check.json', JSON.stringify({ filename: info.filename, integrity: info.integrity, sha256: createHash('sha256').update(tarballBytes).digest('hex'), size: info.size, unpackedSize: info.unpackedSize, files, checks: ['三算法实际包 ESM', '三算法实际包 CommonJS', '三算法 TypeScript 类型消费', '无生产依赖', '发行文件白名单'] }, null, 2) + '\n');
 console.log(JSON.stringify({ filename: info.filename, size: info.size, unpackedSize: info.unpackedSize, files }, null, 2));
-console.log('两算法实际 npm pack、双格式导入、类型与发行文件检查通过。');
+console.log('三算法实际 npm pack、双格式导入、类型与发行文件检查通过。');

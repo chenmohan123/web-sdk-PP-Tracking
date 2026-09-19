@@ -2,11 +2,11 @@
 
 [中文](../zh-CN/api.md) · [Home](../../README.en.md)
 
-`createTracker(options?: TrackerOptions): Tracker` returns synchronous `update(frame, {signal}?)`, `reset()` and `dispose()`. ESM/CJS export createTracker and TrackingError; declarations also export `TrackerAlgorithm = 'bytetrack' | 'ocsort'`. The local candidate is 0.2.0-alpha.0; the published installable package remains 0.1.0.
+`createTracker(options?: TrackerOptions): Tracker` returns synchronous `update(frame, {signal}?)`, `reset()` and `dispose()`. ESM/CJS export createTracker and TrackingError; declarations also export `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort'` and `FeatureSpace`. The local candidate is 0.2.0-alpha.0; the published installable package remains 0.1.0.
 
 ## Input
 
-`TrackingFrame = {timestampMs, imageSize:{width,height}, detections:[{box:{x,y,width,height},score,classId}]}`.
+`TrackingFrame = {timestampMs, imageSize:{width,height}, featureSpaceId?, detections:[{box:{x,y,width,height},score,classId,embedding?}]}`.
 Coordinates are pixel xywh, not xyxy. Boxes must be fully in-bounds with positive sizes and nonnegative x/y; no automatic clipping.
 Image dimensions are finite and positive, timestamps finite, nonnegative and strictly increasing; dimensions stay fixed per sequence. Scores are in[0,1], classes are nonnegative safe integers. All numbers must be finite.
 Default maximum:100 detections/frame, configurable up to500. The Demo retains its separate100-box limit. Categories never associate across classes.
@@ -14,7 +14,7 @@ Invalid input, cancellation or numerical failures do not advance clock, tracks o
 
 | Option | Default | Constraint |
 | --- | --- | --- |
-| algorithm | bytetrack | `'bytetrack'` or `'ocsort'`; fixed when an instance is created |
+| algorithm | bytetrack | `'bytetrack'`, `'ocsort'` or `'deepsort'`; fixed when an instance is created |
 | lowScoreThreshold | 0.1 | [0,1] |
 | highScoreThreshold | 0.5 | ByteTrack: [low,1]; OC-SORT: [0,1]; both must be <= new |
 | newTrackThreshold | 0.6 | [high,1] |
@@ -35,7 +35,17 @@ Invalid input, cancellation or numerical failures do not advance clock, tracks o
 | ocmHistoryLength | 30 | Integer2–120 |
 | oruMaxReplaySteps | 30 | Integer1–60 |
 
-Unknown options are rejected; explicit undefined is not omission; explicit strategy-exclusive options also return `INVALID_OPTIONS`. Only ByteTrack tracked candidates may continue through low scores, while lost tracks require high scores. Unconfirmed tracks are removed on the first miss. Full capacity skips new tracks without evicting existing tracks.
+`algorithm: 'deepsort'` requires `featureSpace: {id,dimension}`. `id` is a 1–256-character string without surrounding whitespace; callers should bind it to the weight digest, preprocessing version and output definition, while the SDK only compares the identifier. `dimension` is an integer from1 to2048. Every frame, including empty frames, must carry the matching `featureSpaceId`; every detection, including score-filtered ones, needs a finite, non-zero-norm plain array or `Float32Array` of exactly that dimension. Inputs are robustly normalized and copied without mutation.
+
+| DeepSORT option | Default | Constraint |
+| --- | --- | --- |
+| featureSpace | Required | Exactly id and dimension |
+| maxCosineDistance | 0.2 | [0,2] |
+| gallerySize | 30 | Integer1–100 |
+
+Gallery capacity must satisfy `maxTracks * gallerySize * dimension <= 4_000_000`. DeepSORT rejects ByteTrack low-score fields and OC-SORT-specific fields. Only matches and births update galleries; reset, dispose and removal release their vectors.
+
+Unknown options are rejected; explicit undefined is not omission; explicit strategy-exclusive options also return `INVALID_OPTIONS`. Only ByteTrack tracked candidates may continue through low scores, while lost tracks require high scores. DeepSORT lost tracks also cannot bypass appearance matching through IoU fallback. Unconfirmed tracks are removed on the first miss. Full capacity skips new tracks without evicting existing tracks.
 
 ## Output
 

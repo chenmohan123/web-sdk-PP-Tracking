@@ -31,11 +31,21 @@ const result = tracker.update({ timestampMs: 0, imageSize: { width: 640, height:
 console.log(result.algorithm); // 'ocsort'
 ```
 
+DeepSORT only consumes caller-provided vectors. Bind the feature-space ID to the weight digest, preprocessing version and output definition; include it on every frame, including empty frames, and include a valid vector on every detection, including low-score detections:
+
+```ts
+const featureSpace = { id: 'my-reid-sha256-preprocess-v1-output-v1', dimension: 4 };
+const tracker = createTracker({ algorithm: 'deepsort', featureSpace, maxCosineDistance: 0.2, gallerySize: 30 });
+const result = tracker.update({ timestampMs: 0, imageSize: { width: 640, height: 360 },
+  featureSpaceId: featureSpace.id,
+  detections: [{ box: { x: 20, y: 100, width: 60, height: 80 }, score: 0.9, classId: 0, embedding: [1, 0, 0, 0] }] });
+```
+
 Keep the0.25 detection so confirmed ByteTrack tracks can use low-score association. Do not discard all inputs below0.5 beforehand; OC-SORT uses high-score association only and cannot receive ByteTrack low-score options.
 Sequence dimensions must stay fixed and timestamps must strictly increase. Reset before restart, seek or resizing. Seeking to frame k requires replaying every frame from the beginning to k.
 
-Run `npm run dev:demo` for four original synthetic scenarios. JSON must be an object `{"frames":[...]}`; limits: 5MiB, 1–3000 frames, 0–100 boxes/frame.
-A single-frame file supports step and export. Exports include only frames actually processed since the last reset, with time/runtime information. Unprocessed results are never fabricated.
+Run `npm run dev:demo` for four original synthetic scenarios. DeepSORT appearance vectors in these samples are also synthetic and are not derived from images. JSON must be an object `{"frames":[...]}` and may add a top-level `featureSpace` for appearance input; limits: 5MiB, 1–3000 frames, 0–100 boxes/frame. Without the top-level declaration, the Demo only infers a space from consistent IDs and vector dimensions across all frames; it never fabricates embeddings for user data.
+A single-frame file supports step and export. Exports include the source sequence, actual options/feature space, and only results actually processed since reset with time/runtime information. Unprocessed results are never fabricated.
 Language changes preserve state; the same file can be imported again. Refresh restores Chinese and clears memory.
 
 See [API](api.md) and [Vanilla](../../examples/vanilla/README.en.md).

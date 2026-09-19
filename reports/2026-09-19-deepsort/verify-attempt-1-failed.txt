@@ -1,0 +1,14 @@
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 verify
+> npm run build && npm run typecheck && npm test && npm run check:package && npm run typecheck:demo && npm run build:demo && npm run build:vanilla && npm run build:react && npm run test:browser
+
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 build
+> node scripts/build.mjs
+
+ESM、CommonJS 与类型声明构建完成。
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 typecheck
+> tsc --noEmit
+
+tests/demo.test.ts(2,29): error TS6142: Module '../demo/src/App' was resolved to 'C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking/demo/src/App.tsx', but '--jsx' is not set.

@@ -1,0 +1,53 @@
+{
+  "date": "2026-09-19",
+  "sdkVerifyExitCode": 0,
+  "sdkTests": 104,
+  "browserGroups": 12,
+  "browserErrors": [],
+  "portalTests": 99,
+  "portalBuildPages": 21,
+  "portalErrors": 0,
+  "portalWarnings": 0,
+  "portalExistingHints": 7,
+  "standard": {
+    "before": {
+      "requiredPassed": 17,
+      "requiredFailed": 0,
+      "requiredSkipped": 7,
+      "requiredUnknown": 0,
+      "requiredNotApplicable": 0,
+      "recommendedPassed": 3,
+      "recommendedFailed": 0,
+      "labs": 1,
+      "status": "locally-compliant"
+    },
+    "after": {
+      "requiredPassed": 17,
+      "requiredFailed": 0,
+      "requiredSkipped": 7,
+      "requiredUnknown": 0,
+      "requiredNotApplicable": 0,
+      "recommendedPassed": 3,
+      "recommendedFailed": 0,
+      "labs": 1,
+      "status": "locally-compliant"
+    }
+  },
+  "unchangedRuntimeAndTarball": {
+    "dist/index.js": {
+      "bytes": 28545,
+      "sha256": "8396ef79f22c6afd2690bd6413f2b32b25fd46ec67b9fabca8fcab44c9a82041"
+    },
+    "dist/index.cjs": {
+      "bytes": 29492,
+      "sha256": "f9bd94a1a63e97d424891436b974aafc1dff312c6ca8c183eb7ff74953af186b"
+    },
+    ".tmp/web-sdk-pp-tracking-0.2.0-alpha.0.tgz": {
+      "bytes": 22522,
+      "sha256": "2a8c4aa4be4ee02698835aae18d45e27a83497676ac6cf1c4b06d13634cb7c0f"
+    }
+  },
+  "sdkBaseline": "096c63f9c8834a5a00c134f19f7b6c616bec05de",
+  "productionChanges": false,
+  "remoteMutations": false
+}

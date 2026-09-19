@@ -33,7 +33,9 @@ Among threshold-valid edges, maximize cardinality, then minimize summed `1-IoU`.
 Input track/detection order deterministically resolves equal costs. Rectangular
 Hungarian assignment adds n dummy columns with unmatched cost `n+1`; forbidden
 edges cost `(n+1)^3`. Detections may remain unmatched. Classes never cross-match.
-Threshold equality is valid. IoU normalizes coordinates before calculating areas.
+Threshold equality is valid. IoU computes overlap from relative displacement,
+then normalizes areas by the maximum side length on each axis to avoid absolute
+coordinate cancellation and area overflow.
 Stages: tracked/lost with high scores; remaining tracked with low scores;
 tentative with remaining high scores. High means `score>=high`; low means
 `low<=score<high`; new tracks require `score>=new` among remaining high detections.

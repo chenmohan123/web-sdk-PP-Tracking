@@ -39,11 +39,16 @@ export function assign(similarities: number[][], threshold: number): [number, nu
 }
 
 export function iou(a: Box, b: Box): number {
-  // 归一化避免有限大坐标的面积乘积溢出。
-  const scale = Math.max(Math.abs(a.x), Math.abs(a.y), a.width, a.height, Math.abs(b.x), Math.abs(b.y), b.width, b.height, 1);
-  const ax = a.x / scale, ay = a.y / scale, aw = a.width / scale, ah = a.height / scale;
-  const bx = b.x / scale, by = b.y / scale, bw = b.width / scale, bh = b.height / scale;
-  const intersection = Math.max(0, Math.min(ax + aw, bx + bw) - Math.max(ax, bx)) * Math.max(0, Math.min(ay + ah, by + bh) - Math.max(ay, by));
+  // 先按相对位移求交集，避免绝对坐标缩放后再相减损失框宽精度。
+  const dx = b.x - a.x, dy = b.y - a.y;
+  const width = Math.max(0, Math.min(a.width, b.width, a.width - dx, b.width + dx));
+  const height = Math.max(0, Math.min(a.height, b.height, a.height - dy, b.height + dy));
+  if (width === 0 || height === 0) return 0;
+  // 各轴独立归一化面积；相同框的边长比例均精确为1，不给门限添加容差。
+  const scaleX = Math.max(a.width, b.width), scaleY = Math.max(a.height, b.height);
+  const aw = a.width / scaleX, ah = a.height / scaleY;
+  const bw = b.width / scaleX, bh = b.height / scaleY;
+  const intersection = (width / scaleX) * (height / scaleY);
   const union = aw * ah + bw * bh - intersection;
   return union > 0 ? Math.max(0, Math.min(1, intersection / union)) : 0;
 }

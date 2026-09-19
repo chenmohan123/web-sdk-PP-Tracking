@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { assign } from '../src/assignment';
+import { assign, iou } from '../src/assignment';
 
 test('全局分配避免最高 IoU 贪心占用另一轨迹唯一候选', () => {
   expect(assign([[0.9, 0.8], [0.85, 0.1]], 0.3)).toEqual([[0, 1], [1, 0]]);
@@ -31,4 +31,21 @@ test('729 个小矩阵的匹配数量与总 IoU 等于独立穷举最优值', ()
     expect(pairs).toHaveLength(bestCount);
     expect(pairs.reduce((sum, [i, j]) => sum + matrix[i][j], 0)).toBeCloseTo(bestSum, 12);
   }
+});
+
+test('相同框 IoU 严格为1，非相同框不能越过1门限', () => {
+  const box = { x: 100, y: 100, width: 20, height: 20 };
+  expect(iou(box, { ...box })).toBe(1);
+  expect(iou(box, { ...box, x: 100.000001 })).toBeLessThan(1);
+  expect(assign([[iou(box, { ...box, x: 100.000001 })]], 1)).toEqual([]);
+});
+
+test('IoU 使用相对位置，保持大坐标精度并避免面积溢出', () => {
+  const translated = { x: 1e15, y: 1e15, width: 20, height: 20 };
+  expect(iou(translated, { ...translated })).toBe(1);
+  expect(iou(translated, { ...translated, x: 1e15 + 10 })).toBeCloseTo(1 / 3, 15);
+  const large = { x: 1e200, y: 1e200, width: 1e200, height: 1e200 };
+  expect(iou(large, { ...large })).toBe(1);
+  expect(iou(large, { ...large, x: 1.5e200 })).toBeCloseTo(1 / 3, 15);
+  expect(iou({ ...large, x: -1e308 }, { ...large, x: 1e308 })).toBe(0);
 });

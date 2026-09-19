@@ -102,3 +102,13 @@ test('结果准确声明 CPU/main 与五项非负有限耗时', () => {
   expect(Object.keys(out.timings).sort()).toEqual(['associationMs', 'predictionMs', 'totalMs', 'updateMs', 'validationMs']);
   for (const value of Object.values(out.timings)) expect(Number.isFinite(value) && (value as number) >= 0).toBe(true);
 });
+
+test('IoU门限1保留相同框ID，但不会关联不同框', () => {
+  const a = createTracker({ minHits: 1, matchIouThreshold: 1 });
+  const input = { box: { x: 100, y: 100, width: 20, height: 20 }, score: 0.9, classId: 0 };
+  expect(a.update(frame(0, [input])).tracks[0].id).toBe(1);
+  expect(a.update(frame(100, [input])).tracks).toMatchObject([{ id: 1, state: 'tracked', hits: 2 }]);
+  expect(a.update(frame(200, [{ ...input, box: { ...input.box, x: 101 } }])).tracks).toMatchObject([
+    { id: 1, state: 'lost' }, { id: 2, state: 'tracked', hits: 1 },
+  ]);
+});

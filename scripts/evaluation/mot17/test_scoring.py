@@ -75,13 +75,13 @@ class ScoringTests(unittest.TestCase):
                                 main()
                             self.assertFalse((root / 'input').exists())
                 for target in targets:
-                    with self.subTest(scoring_target=target), patch.object(sys, 'argv', ['evaluator.py', 'score', '--run', str(target), '--trackeval', str(external)]):
+                    with self.subTest(scoring_target=target), patch.object(sys, 'argv', ['evaluator.py', 'score', '--run', str(target), '--trackeval', str(external), '--configuration', 'default']):
                         with self.assertRaisesRegex(ValueError, r'\.tmp'):
                             main()
                 run = root / 'existing-run'
                 run.mkdir()
                 (run / 'metrics.json').write_text('preserve')
-                with patch.object(sys, 'argv', ['evaluator.py', 'score', '--run', str(run), '--trackeval', str(external)]):
+                with patch.object(sys, 'argv', ['evaluator.py', 'score', '--run', str(run), '--trackeval', str(external), '--configuration', 'default']):
                     with self.assertRaises(FileExistsError):
                         main()
                 network.assert_not_called()

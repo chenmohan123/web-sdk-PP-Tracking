@@ -117,6 +117,7 @@ def main():
     scoring = subparsers.add_parser("score")
     scoring.add_argument("--trackeval", type=Path, required=True)
     scoring.add_argument("--run", type=Path, required=True)
+    scoring.add_argument("--configuration", action="append", choices=["default", "no-low", "bytetrack", "ocsort"], required=True)
     args = parser.parse_args()
     if args.command == "prepare":
         # 所有目标均在联网、读取归档、提取或创建目录之前预检。
@@ -131,13 +132,15 @@ def main():
             write_new(args.archive, content)
         result = prepare(args.archive, args.output)
     else:
+        if len(args.configuration) != len(set(args.configuration)):
+            parser.error("--configuration 不得重复")
         target = new_tmp_target(args.run / "metrics.json")
         sequences = {}
         for name in LOCK["dataset"]["sequences"]:
             info = configparser.ConfigParser()
             info.read(args.run / "input" / name / "seqinfo.ini")
             sequences[name] = int(info["Sequence"]["seqLength"])
-        result = score(args.trackeval.resolve(), args.run / "input", args.run / "trackers", sequences, ["default", "no-low"])
+        result = score(args.trackeval.resolve(), args.run / "input", args.run / "trackers", sequences, args.configuration)
     write_new(target, (json.dumps(result, ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
 
 

@@ -1,0 +1,190 @@
+{
+  "verifiedAt": "2026-09-19T04:31:51.4180508Z",
+  "repository": "chenmohan123/web-sdk-PP-Tracking",
+  "defaultBranch": "main",
+  "visibility": "public",
+  "homepage": "https://chenmohan123.github.io/web-sdk-PP-Tracking/",
+  "topics": [
+    "computer-vision",
+    "multi-object-tracking",
+    "tracking",
+    "typescript",
+    "web-sdk"
+  ],
+  "defaultBranchRuleset": {
+    "id": 23691947,
+    "name": "保护默认分支",
+    "target": "branch",
+    "source_type": "Repository",
+    "source": "chenmohan123/web-sdk-PP-Tracking",
+    "enforcement": "active",
+    "conditions": {
+      "ref_name": {
+        "exclude": [],
+        "include": [
+          "~DEFAULT_BRANCH"
+        ]
+      }
+    },
+    "rules": [
+      {
+        "type": "deletion"
+      },
+      {
+        "type": "non_fast_forward"
+      },
+      {
+        "type": "pull_request",
+        "parameters": {
+          "required_approving_review_count": 0,
+          "dismiss_stale_reviews_on_push": true,
+          "required_reviewers": [],
+          "require_code_owner_review": false,
+          "require_last_push_approval": false,
+          "required_review_thread_resolution": true,
+          "require_extra_approval_for_unattributed_changes": true,
+          "allowed_merge_methods": [
+            "merge",
+            "squash",
+            "rebase"
+          ]
+        }
+      },
+      {
+        "type": "required_status_checks",
+        "parameters": {
+          "strict_required_status_checks_policy": true,
+          "do_not_enforce_on_create": false,
+          "required_status_checks": [
+            {
+              "context": "verify",
+              "integration_id": 15368
+            }
+          ]
+        }
+      }
+    ],
+    "node_id": "RRS_lACqUmVwb3NpdG9yec5SDywCzgFpgqs",
+    "created_at": "2026-09-19T12:30:33.55+08:00",
+    "updated_at": "2026-09-19T12:30:33.62+08:00",
+    "bypass_actors": [],
+    "current_user_can_bypass": "never",
+    "_links": {
+      "self": {
+        "href": "https://api.github.com/repos/chenmohan123/web-sdk-PP-Tracking/rulesets/23691947"
+      },
+      "html": {
+        "href": "https://github.com/chenmohan123/web-sdk-PP-Tracking/rules/23691947"
+      }
+    }
+  },
+  "releaseTagRuleset": {
+    "id": 23691948,
+    "name": "保护发布标签",
+    "target": "tag",
+    "source_type": "Repository",
+    "source": "chenmohan123/web-sdk-PP-Tracking",
+    "enforcement": "active",
+    "conditions": {
+      "ref_name": {
+        "exclude": [],
+        "include": [
+          "refs/tags/v*"
+        ]
+      }
+    },
+    "rules": [
+      {
+        "type": "deletion"
+      },
+      {
+        "type": "update"
+      }
+    ],
+    "node_id": "RRS_lACqUmVwb3NpdG9yec5SDywCzgFpgqw",
+    "created_at": "2026-09-19T12:30:34.431+08:00",
+    "updated_at": "2026-09-19T12:30:34.454+08:00",
+    "bypass_actors": [],
+    "current_user_can_bypass": "never",
+    "_links": {
+      "self": {
+        "href": "https://api.github.com/repos/chenmohan123/web-sdk-PP-Tracking/rulesets/23691948"
+      },
+      "html": {
+        "href": "https://github.com/chenmohan123/web-sdk-PP-Tracking/rules/23691948"
+      }
+    }
+  },
+  "pages": {
+    "url": "https://api.github.com/repos/chenmohan123/web-sdk-PP-Tracking/pages",
+    "status": null,
+    "cname": null,
+    "custom_404": false,
+    "html_url": "https://chenmohan123.github.io/web-sdk-PP-Tracking/",
+    "build_type": "workflow",
+    "source": {
+      "branch": "main",
+      "path": "/"
+    },
+    "public": true,
+    "protected_domain_state": null,
+    "pending_domain_unverified_at": null,
+    "https_enforced": true
+  },
+  "environments": {
+    "npm": {
+      "id": 22274807111,
+      "node_id": "EN_kwDOUg8sAs8AAAAFL66VRw",
+      "name": "npm",
+      "url": "https://api.github.com/repos/chenmohan123/web-sdk-PP-Tracking/environments/npm",
+      "html_url": "https://github.com/chenmohan123/web-sdk-PP-Tracking/deployments/activity_log?environments_filter=npm",
+      "created_at": "2026-09-19T04:30:55Z",
+      "updated_at": "2026-09-19T04:30:55Z",
+      "can_admins_bypass": true,
+      "protection_rules": [
+        {
+          "id": 66058660,
+          "node_id": "GA_kwDOUg8sAs4D7_mk",
+          "type": "branch_policy"
+        }
+      ],
+      "deployment_branch_policy": {
+        "protected_branches": false,
+        "custom_branch_policies": true
+      }
+    },
+    "pages": {
+      "id": 22274806705,
+      "node_id": "EN_kwDOUg8sAs8AAAAFL66TsQ",
+      "name": "github-pages",
+      "url": "https://api.github.com/repos/chenmohan123/web-sdk-PP-Tracking/environments/github-pages",
+      "html_url": "https://github.com/chenmohan123/web-sdk-PP-Tracking/deployments/activity_log?environments_filter=github-pages",
+      "created_at": "2026-09-19T04:30:54Z",
+      "updated_at": "2026-09-19T04:30:54Z",
+      "can_admins_bypass": true,
+      "protection_rules": [
+        {
+          "id": 66058659,
+          "node_id": "GA_kwDOUg8sAs4D7_mj",
+          "type": "branch_policy"
+        }
+      ],
+      "deployment_branch_policy": {
+        "protected_branches": true,
+        "custom_branch_policies": false
+      }
+    },
+    "npmPolicies": {
+      "total_count": 1,
+      "branch_policies": [
+        {
+          "id": 60388939,
+          "node_id": "MDE2OkdhdGVCcmFuY2hQb2xpY3k2MDM4ODkzOQ==",
+          "name": "v*",
+          "type": "tag"
+        }
+      ]
+    }
+  },
+  "boundary": "仅证明仓库配置与保护状态；实际部署成功记录和线上访问另行验收。"
+}

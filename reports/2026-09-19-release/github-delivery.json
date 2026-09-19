@@ -1,0 +1,33 @@
+{
+  "verifiedAt": "2026-09-19T05:18:25.8067472Z",
+  "repository": "chenmohan123/web-sdk-PP-Tracking",
+  "pullRequest": {
+    "number": 1,
+    "mergeCommit": "c2ee347884426aa1a03962b76ac2915959397611",
+    "url": "https://github.com/chenmohan123/web-sdk-PP-Tracking/pull/1",
+    "merged": true,
+    "mergedAt": "2026-09-19T05:13:22Z",
+    "headSha": "1b8010600e44d08faa3f17fa00c40374756e86ca"
+  },
+  "tag": {
+    "name": "v0.1.0",
+    "immutableRuleset": 23691948,
+    "commit": "c2ee347884426aa1a03962b76ac2915959397611"
+  },
+  "pagesRun": {
+    "status": "completed",
+    "url": "https://github.com/chenmohan123/web-sdk-PP-Tracking/actions/runs/35423375204",
+    "event": "push",
+    "headSha": "c2ee347884426aa1a03962b76ac2915959397611",
+    "id": 35423375204,
+    "conclusion": "success"
+  },
+  "deployment": {
+    "url": "https://chenmohan123.github.io/web-sdk-PP-Tracking/",
+    "logUrl": "https://github.com/chenmohan123/web-sdk-PP-Tracking/actions/runs/35423375204/job/105845164453",
+    "state": "success",
+    "id": 6537416961,
+    "sha": "c2ee347884426aa1a03962b76ac2915959397611",
+    "environment": "github-pages"
+  }
+}

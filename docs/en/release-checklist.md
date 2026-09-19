@@ -2,22 +2,22 @@
 
 [中文](../zh-CN/release-checklist.md)
 
-Based on portal `standards/v1/templates/release-checklist.md`. This is the 0.1.0 release candidate, not an online compliance claim. The user authorized first publication in this task; execution and remote receipts belong to the publication phase.
+Based on portal `standards/v1/templates/release-checklist.md`. Version 0.1.0 completed its first publication and dated remote verification on 2026-09-19. This checklist does not promise the same state for future versions or unverified environments.
 
 - [x] Chinese README and equivalent English guides link reciprocally; source/license, input/output, state/reset and cold/warm are documented.
 - [x] Algorithm1.2.0 manifest without model/cache; CHANGELOG includes sources, implementation differences and limits.
 - [x] `npm run verify` is the complete local check; CI covers types, units, package consumption, Demo/examples and browser interactions.
 - [x] Published files are restricted to dist, READMEs, LICENSE, NOTICE and package.json; no React production dependency.
 - [x] Compatibility records date, OS, device, browser, actual backend and runtime.
-- [ ] Before release, run from the portal and save evidence: `pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false sdk:check -- --repo /path/to/web-sdk-PP-Tracking --format json --out reports/tracking-check.json`.
+- [x] The portal checker ran before and after the documentation update with separate reports. Local required failures are zero; remote rules are verified by API receipts.
 - [x] First publication is explicitly authorized for this task, without extending authorization to future versions or unrelated repositories.
-- [ ] Verify repository, npm trusted publisher (release.yml / npm environment), GitHub About, Homepage and topics.
-- [ ] Verify default-branch rules via API: PR, latest-commit CI, resolved discussions, deletion/force-push prevention and minimal bypass.
-- [ ] Verify immutable v* tags through API; tag version must match package version.
-- [ ] Publish a GitHub Release; the workflow checks the tag first, verifies, then publishes through OIDC in the npm environment. Never move published tags. A manual first publication must preserve the unique candidate SHA256 and sha512 integrity; the subsequent workflow skips publication only if existing dist.integrity matches. Only structured E404/ENOVERSIONS errors establish absence; network, permission, mismatch and publication errors fail.
-- [ ] Verify Pages Source=GitHub Actions, github-pages environment, HTTPS, serialized deployment, minimal permissions and commit-linked deployment record.
-- [ ] Verify GitHub/npm/Demo URLs work; archive dated API evidence without credentials.
+- [x] The repository, npm Trusted Publisher (`release.yml` / `npm` environment), GitHub About, Homepage, and topics are verified and archived.
+- [x] The default-branch Ruleset was verified by API: PRs, latest-commit CI, resolved conversations, deletion and force-push prevention, and no bypass actor.
+- [x] The `v*` tag Ruleset was verified by API to block updates and deletion. `v0.1.0` matches the package version and points to the merged commit.
+- [x] The GitHub Release is published. The first npm version used local authentication and preserved the unique candidate SHA256 and sha512 integrity. The later Linux workflow rebuilt the package, matched the existing dist.integrity, and safely skipped duplicate publication. Its result is `verified-existing`, not a new OIDC publication.
+- [x] Pages Source=GitHub Actions, the github-pages environment, HTTPS, serialized deployment, minimal permissions, and the commit-linked successful deployment were verified.
+- [x] GitHub, npm, and HTTPS Demo links were exercised, with credential-free dated receipts in the [first release record](../../reports/2026-09-19-release/README.md).
 
 The local checker preserves remote rules as skip. No local required failures means locally-compliant only. Model assets are inapplicable. Unchecked items do not trigger remote actions.
 
-Release text uses LF; historical reports preserve original bytes. Archive actual ESM/CJS/declaration consumption, SHA256, sha512 integrity and the LF-checkout comparison separately. The old desktop package size is not evidence for the new candidate. Manual publication does not automatically provide provenance; future OIDC publication requests it, with final status established by npm receipts. Real-sequence metrics and limitations are in the [MOT17 report](../../reports/2026-09-19-mot17/README.en.md).
+Release text uses LF; historical reports preserve original bytes. Actual ESM/CJS/declaration consumption, SHA256, sha512 integrity, and the LF-checkout comparison are archived separately. The old desktop package size is not evidence for the final package. The locally authenticated first publication has `provenance: null`; Trusted Publisher is configured, while a future OIDC publication has not yet been exercised by a new version. Its final status must come from that version's npm receipt. Real-sequence metrics and limitations are in the [MOT17 report](../../reports/2026-09-19-mot17/README.en.md).

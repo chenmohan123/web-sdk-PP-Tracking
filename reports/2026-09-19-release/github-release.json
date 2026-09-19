@@ -1,0 +1,29 @@
+{
+  "verifiedAt": "2026-09-19T05:52:51.7386765Z",
+  "release": {
+    "url": "https://github.com/chenmohan123/web-sdk-PP-Tracking/releases/tag/v0.1.0",
+    "id": 391930716,
+    "tag": "v0.1.0",
+    "prerelease": false,
+    "publishedAt": "2026-09-19T05:49:19Z",
+    "draft": false
+  },
+  "asset": {
+    "name": "web-sdk-pp-tracking-0.1.0.tgz",
+    "bytes": 16541,
+    "url": "https://github.com/chenmohan123/web-sdk-PP-Tracking/releases/download/v0.1.0/web-sdk-pp-tracking-0.1.0.tgz",
+    "digest": "sha256:4b532782a008a5ef411d6db00fb58900884fef0c1759c15c9441d30a3093b2bb"
+  },
+  "workflow": {
+    "url": "https://github.com/chenmohan123/web-sdk-PP-Tracking/actions/runs/35424969266",
+    "id": 35424969266,
+    "headSha": "c2ee347884426aa1a03962b76ac2915959397611",
+    "mode": "verified-existing",
+    "status": "completed",
+    "evidence": "publish\t核对已有版本或通过 OIDC 发布唯一候选\t2026-09-19T05:51:17.8543396Z npm 已存在相同完整性的版本，仅核验，不重复发布。",
+    "conclusion": "success"
+  },
+  "linuxRebuildMatchedNpm": true,
+  "oidcPublicationVerified": false,
+  "boundary": "首版为本机认证发布，无provenance；Linux正式发布工作流核对既有版本并跳过重复发布，不等同已通过OIDC发布新版本。"
+}

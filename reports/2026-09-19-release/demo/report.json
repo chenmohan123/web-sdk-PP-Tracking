@@ -1,0 +1,18 @@
+{
+  "verifiedAt": "2026-09-19T05:17:18.316Z",
+  "url": "https://chenmohan123.github.io/web-sdk-PP-Tracking/",
+  "status": 200,
+  "browser": "153.0.8010.12",
+  "checks": [
+    "HTTPS 200",
+    "正式 GitHub 链接",
+    "中文默认",
+    "单步得到跟踪轨迹",
+    "英文切换保留帧",
+    "播放推进与暂停保持",
+    "重新开始清空轨迹",
+    "390px 中英文无横向溢出"
+  ],
+  "pageErrors": [],
+  "boundary": "桌面 Chromium 的线上交互和窄屏布局，不扩大为手机设备兼容性。"
+}

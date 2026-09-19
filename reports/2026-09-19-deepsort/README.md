@@ -38,6 +38,8 @@
 
 ## 范围与后续
 
+最终交付：`4833dbf` 的有界输入导出已通过[最终范围复审](review/最终范围复审.md)，无未关闭的重要问题，可本地交付。[整阶段审查](review/整阶段审查.md)与之前的任务审查、修复复审一并保留在 `review/`。补丁后独立4204[预览报告](preview-acceptance/report.json)、[桌面截图](preview-acceptance/desktop.png)和窄屏截图另行保存；`preview-final/` 是草稿修复后、输入导出修复前的历史快照。门户最后 `tracking-deepsort-acceptance-20260919.json` 为17项required通过、0失败。没有重新声称整套verify在最终补丁后重跑；依据是原完整验证加覆盖所有补丁的聚焦验证。
+
 这批证据仅证明外部向量契约、关联机制、发行包与桌面交互；合成向量不来自图片，不代表真实行人质量或 DeepSORT 优于现有算法。390px是桌面视口，不是手机实测。历史MOT17两算法数据、OMZ探针失败证据均保持原样。
 
 下一阶段核验Paddle PPLCNet ReID具体checkpoint、权重依据、预处理和Python/浏览器数值，并使用真实图像及身份真值做同输入评测。同包提供模型加载前先扩展算法/模型混合标准。BoT-SORT、JDE、FairMOT、CenterTrack仍未接入。

@@ -38,6 +38,8 @@ The final-review F1 fix adds a separate compact input-sequence export and checks
 
 ## Scope and next steps
 
+Final delivery: bounded input export at `4833dbf` passed the [final scoped review](review/最终范围复审.md), with no open Important issues, and is ready for local delivery. The [whole-stage review](review/整阶段审查.md), task reviews and fix reviews are preserved in `review/`. The post-fix4204 [preview report](preview-acceptance/report.json), [desktop screenshot](preview-acceptance/desktop.png) and narrow screenshots are archived separately; `preview-final/` is the earlier snapshot after the draft-options fix and before the input-export fix. The portal's last `tracking-deepsort-acceptance-20260919.json` has17 required passes and0 failures. No claim is made that full verify was rerun after the final patch; acceptance combines the original complete run with focused verification covering every patch.
+
 Evidence covers the external-vector contract, association mechanisms, package and desktop interactions. Synthetic vectors are not image-derived and do not establish real person quality or superiority over existing algorithms.390px is a desktop viewport, not a physical phone test. Historical two-algorithm MOT17 results and failed OMZ probe evidence remain unchanged.
 
 Next evaluate the exact Paddle PPLCNet ReID checkpoint, weight terms, preprocessing and Python/browser alignment, then compare identical detections using real images and identity ground truth. Evolve the algorithm/model hybrid standard before adding model loading to this package. BoT-SORT, JDE, FairMOT and CenterTrack remain unimplemented.

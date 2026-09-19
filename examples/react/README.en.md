@@ -13,4 +13,4 @@ npm run dev:demo
 npm run build:react
 ```
 
-Development URL: http://127.0.0.1:4196. Output: `examples/react/dist`. The npm package and hosted Demo are not published yet.
+Development URL: http://127.0.0.1:4196. Output: `examples/react/dist`. Project links: [npm](https://www.npmjs.com/package/web-sdk-pp-tracking) · [standalone Demo](https://chenmohan123.github.io/web-sdk-PP-Tracking/).

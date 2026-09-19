@@ -2,7 +2,13 @@
 
 [English](../en/quick-start.md) · [首页](../../README.md)
 
-这是本地未发布的0.1.0算法包。先按首页安装开发依赖、运行 `npm run build`，再通过本地 tarball 安装到消费项目。Node >=22.12.0用于构建；浏览器只执行生成的 JavaScript。
+安装 0.1.0 算法包：
+
+```sh
+npm install web-sdk-pp-tracking@0.1.0
+```
+
+本地开发依赖和 tarball 消费流程见首页。Node >=22.12.0 用于构建；浏览器只执行生成的 JavaScript。
 
 ```ts
 import { createTracker } from 'web-sdk-pp-tracking';

@@ -2,7 +2,13 @@
 
 [中文](../zh-CN/quick-start.md) · [Home](../../README.en.md)
 
-This is local, unpublished version0.1.0. Follow the README to install development dependencies and run `npm run build`, then install the local tarball in a consumer. Building requires Node >=22.12.0; browsers execute generated JavaScript.
+Install algorithm package version 0.1.0:
+
+```sh
+npm install web-sdk-pp-tracking@0.1.0
+```
+
+See the README for local development dependencies and tarball consumption. Building requires Node >=22.12.0; browsers execute generated JavaScript.
 
 ```ts
 import { createTracker } from 'web-sdk-pp-tracking';

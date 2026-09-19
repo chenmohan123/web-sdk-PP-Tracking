@@ -13,4 +13,4 @@ npm run dev:demo
 npm run build:react
 ```
 
-开发地址为 http://127.0.0.1:4196。构建产物在 `examples/react/dist`。npm 和线上 Demo 尚未发布。
+开发地址为 http://127.0.0.1:4196。构建产物在 `examples/react/dist`。项目入口：[npm](https://www.npmjs.com/package/web-sdk-pp-tracking) · [独立 Demo](https://chenmohan123.github.io/web-sdk-PP-Tracking/)。

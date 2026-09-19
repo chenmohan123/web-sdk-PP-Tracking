@@ -5,7 +5,7 @@ import { Playback } from './playback';
 
 const copy = {
   zh: {
-    title: '目标跟踪', subtitle: 'PP-Tracking · ByteTrack 机制', planned: 'GitHub · 待发布', sample: '示例', parameters: '跟踪参数', apply: '应用并重新开始', lowLabel: '低分门限', highLabel: '高分门限', newLabel: '新建门限', hitsLabel: '确认命中次数', lostLabel: '丢失保留（ms）', parameterNote: '应用后新建实例并清空结果。须低 ≤ 高 ≤ 新建；丢失保留 ≤ 2000 ms。', optionsError: '参数不满足约束；原参数、序列和结果已保留。',
+    title: '目标跟踪', subtitle: 'PP-Tracking · ByteTrack 机制', sample: '示例', parameters: '跟踪参数', apply: '应用并重新开始', lowLabel: '低分门限', highLabel: '高分门限', newLabel: '新建门限', hitsLabel: '确认命中次数', lostLabel: '丢失保留（ms）', parameterNote: '应用后新建实例并清空结果。须低 ≤ 高 ≤ 新建；丢失保留 ≤ 2000 ms。', optionsError: '参数不满足约束；原参数、序列和结果已保留。',
     sequence: '输入序列', straight: '匀速直行', low: '低分关联', occlusion: '短时遮挡', crossing: '交叉与掉头', imported: '已导入序列',
     synthetic: '原创合成数据 · 非真实视频测评', upload: '导入 JSON', limits: '≤ 5 MiB · 3000 帧 · 100 框/帧',
     play: '播放', pause: '暂停', step: '单步', reset: '重新开始', export: '导出本轮结果', timeline: '跳转到帧',
@@ -25,7 +25,7 @@ const copy = {
     tooLarge: '文件超过 5 MiB；原序列与结果已保留。', failed: '计算未完成，请重新开始或检查输入。', generation: '代次', source: '论文来源',
   },
   en: {
-    title: 'Object tracking', subtitle: 'PP-Tracking · ByteTrack mechanism', planned: 'GitHub · planned', sample: 'Example', parameters: 'Tracking parameters', apply: 'Apply & restart', lowLabel: 'Low-score threshold', highLabel: 'High-score threshold', newLabel: 'New-track threshold', hitsLabel: 'Confirmation hits', lostLabel: 'Lost retention (ms)', parameterNote: 'Applying creates a new instance and clears results. Require low ≤ high ≤ new; lost retention ≤ 2000 ms.', optionsError: 'Invalid parameters. Previous options, input and results preserved.',
+    title: 'Object tracking', subtitle: 'PP-Tracking · ByteTrack mechanism', sample: 'Example', parameters: 'Tracking parameters', apply: 'Apply & restart', lowLabel: 'Low-score threshold', highLabel: 'High-score threshold', newLabel: 'New-track threshold', hitsLabel: 'Confirmation hits', lostLabel: 'Lost retention (ms)', parameterNote: 'Applying creates a new instance and clears results. Require low ≤ high ≤ new; lost retention ≤ 2000 ms.', optionsError: 'Invalid parameters. Previous options, input and results preserved.',
     sequence: 'Input sequence', straight: 'Straight motion', low: 'Low-score association', occlusion: 'Brief occlusion', crossing: 'Crossing & turning', imported: 'Imported sequence',
     synthetic: 'Original synthetic data · no real-video evaluation', upload: 'Import JSON', limits: '≤ 5 MiB · 3000 frames · 100 boxes/frame',
     play: 'Play', pause: 'Pause', step: 'Step', reset: 'Restart', export: 'Export this run', timeline: 'Seek to frame',

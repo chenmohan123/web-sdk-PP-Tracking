@@ -2,20 +2,12 @@
 
 [English](README.en.md)
 
-版本 **0.1.0（发布候选，线上状态待核验）**。框架无关的 CPU 主线程多目标跟踪算法，参考 ByteTrack 的高低分两阶段关联思想独立实现，无模型下载、推理或 React 运行依赖。
+版本 **0.1.0**。框架无关的 CPU 主线程多目标跟踪算法，参考 ByteTrack 的高低分两阶段关联思想独立实现，无模型下载、推理或 React 运行依赖。
 
-## 本地安装与运行
-
-发布后可安装 `npm install web-sdk-pp-tracking@0.1.0`；发布前使用下列本地 tarball。以下链接为正式发布目标，实际 npm、Release 和 Demo 可用性须以日期化远程回执为准。
-
-Node >=22.12.0；开发验证使用 Node24.16.0 / pnpm11.21.0。
+## 安装与运行
 
 ```sh
-pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile
-npm run build
-npm pack
-# 在消费项目中安装上一步生成的本地 tarball：
-npm install /absolute/path/web-sdk-pp-tracking/web-sdk-pp-tracking-0.1.0.tgz
+npm install web-sdk-pp-tracking@0.1.0
 ```
 
 ```ts
@@ -26,6 +18,18 @@ const result = tracker.update({ timestampMs: 0, imageSize: { width: 640, height:
 console.log(result.tracks, result.runtime, result.timings);
 tracker.reset(); // 跳转或图像尺寸改变前复位
 tracker.dispose();
+```
+
+## 本地开发
+
+Node >=22.12.0；开发验证使用 Node24.16.0 / pnpm11.21.0。在仓库根目录运行：
+
+```sh
+pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile
+npm run build
+npm pack
+# 在消费项目中安装上一步生成的本地 tarball：
+npm install /absolute/path/web-sdk-pp-tracking/web-sdk-pp-tracking-0.1.0.tgz
 ```
 
 ## 独立 Demo 与示例
@@ -40,7 +44,7 @@ tracker.dispose();
 - [npm 包](https://www.npmjs.com/package/web-sdk-pp-tracking)
 - [在线 Demo](https://chenmohan123.github.io/web-sdk-PP-Tracking/)
 
-manifest 与 package 元数据使用相同目标地址；本地验证不证明线上服务可用。
+manifest 与 package 元数据使用相同项目地址。
 
 ## 文档与边界
 
@@ -60,6 +64,6 @@ npm run verify
 
 `verify` 构建 SDK，检查类型、单测、实际 npm tarball 的 ESM/CJS/类型消费，构建 Demo 和两种示例，最后验证真实浏览器交互。
 浏览器截图和输出写 `.tmp/browser/`。门户标准检查命令与本地证据见 [发布清单](docs/zh-CN/release-checklist.md)。
-CI 验证后部署 Pages；Release 先核对不可变标签版本，在 `npm` 环境中通过 OIDC 发布。首次手工发布后，工作流仅在 npm `dist.integrity` 与构建 tarball 完全一致时跳过重复发布；查询网络/权限错误和不一致均失败。首次手工发布不自动具有 provenance，未来 OIDC 发布申请 provenance；具体声明以 npm 回执为准。远程治理和线上状态仍需单独核验。
+CI 验证后部署 Pages；Release 先核对不可变标签版本，在 `npm` 环境中通过 OIDC 发布。首次手工发布后，工作流仅在 npm `dist.integrity` 与构建 tarball 完全一致时跳过重复发布；查询网络/权限错误和不一致均失败。首次手工发布不自动具有 provenance，未来 OIDC 发布申请 provenance；具体证据及远程核验项见发布清单。
 
 本项目代码许可 Apache-2.0。[NOTICE](NOTICE) 与 [算法说明](docs/zh-CN/algorithm.md) 记录论文来源和实现差异；不是官方移植，不承诺逐值兼容。变更见 [CHANGELOG](CHANGELOG.md)。

@@ -2,20 +2,12 @@
 
 [中文（默认）](README.md)
 
-Version **0.1.0 (release candidate; online status pending verification)**. A framework-neutral CPU/main-thread multi-object tracker independently implementing ByteTrack's high/low-score association idea. No model download, inference or React runtime dependency.
+Version **0.1.0**. A framework-neutral CPU/main-thread multi-object tracker independently implementing ByteTrack's high/low-score association idea. No model download, inference or React runtime dependency.
 
-## Local installation and usage
-
-After publication, install with `npm install web-sdk-pp-tracking@0.1.0`; before publication, use the local tarball below. Links identify final release destinations; npm, Release and Demo availability require dated remote receipts.
-
-Node >=22.12.0. Development verification uses Node24.16.0 / pnpm11.21.0.
+## Installation and usage
 
 ```sh
-pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile
-npm run build
-npm pack
-# Install the generated local tarball in a consumer project:
-npm install /absolute/path/web-sdk-pp-tracking/web-sdk-pp-tracking-0.1.0.tgz
+npm install web-sdk-pp-tracking@0.1.0
 ```
 
 ```ts
@@ -26,6 +18,18 @@ const result = tracker.update({ timestampMs: 0, imageSize: { width: 640, height:
 console.log(result.tracks, result.runtime, result.timings);
 tracker.reset();
 tracker.dispose();
+```
+
+## Local development
+
+Node >=22.12.0. Development verification uses Node24.16.0 / pnpm11.21.0. From the repository root:
+
+```sh
+pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile
+npm run build
+npm pack
+# Install the generated local tarball in a consumer project:
+npm install /absolute/path/web-sdk-pp-tracking/web-sdk-pp-tracking-0.1.0.tgz
 ```
 
 ## Standalone Demo and examples
@@ -40,7 +44,7 @@ Input: `{ "frames": TrackingFrame[] }`, limited to 5MiB, 3000 frames, 100 boxes/
 - [npm package](https://www.npmjs.com/package/web-sdk-pp-tracking)
 - [Hosted Demo](https://chenmohan123.github.io/web-sdk-PP-Tracking/)
 
-The manifest and package metadata use these same destinations. Local validation does not establish online availability.
+The manifest and package metadata use these same project URLs.
 
 ## Documentation and limits
 
@@ -59,6 +63,6 @@ npm run verify
 
 `verify` builds the SDK, checks types and units, consumes the actual npm tarball through ESM/CJS and declarations, builds the Demo and both examples, then tests real browser interactions. Screenshots and outputs go to `.tmp/browser/`.
 See the [release checklist](docs/en/release-checklist.md) for portal standard verification and local evidence.
-Pages deployment follows CI validation. Release first checks the immutable tag against the package version, then publishes via OIDC in the `npm` environment. After a manual first publication, it skips duplicate publication only when npm `dist.integrity` exactly matches the built tarball; network/permission errors and mismatches fail. Manual publication does not automatically carry provenance; future OIDC publication requests it. Actual provenance claims depend on npm receipts. Remote governance and online status require separate verification.
+Pages deployment follows CI validation. Release first checks the immutable tag against the package version, then publishes via OIDC in the `npm` environment. After a manual first publication, it skips duplicate publication only when npm `dist.integrity` exactly matches the built tarball; network/permission errors and mismatches fail. Manual publication does not automatically carry provenance; future OIDC publication requests it. See the release checklist for evidence and remote verification items.
 
 Project code: Apache-2.0. [NOTICE](NOTICE) and the [algorithm guide](docs/en/algorithm.md) record paper sources and implementation differences. This is not an official port or a claim of numerical equivalence. See [CHANGELOG](CHANGELOG.md).

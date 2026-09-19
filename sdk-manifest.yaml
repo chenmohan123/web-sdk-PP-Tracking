@@ -39,6 +39,12 @@ examples:
   react: { status: available, path: examples/react }
 verification:
   environments:
+    - browser: Chromium 151.0.7922.34 / headless（仅合成性能测量）
+      os: Windows 11 专业版 10.0.26200
+      device: Intel Core i5-10400F @2.90GHz
+      testedAt: "2026-09-19"
+      backend: cpu/main
+      runtimeVersion: web-sdk-pp-tracking@0.1.0
     - browser: Chromium 153.0.8010.12 / Playwright 1.63.0
       os: Windows 11 专业版 10.0.26200
       device: Intel Core i5-10400F @2.90GHz

@@ -1,0 +1,5542 @@
+{
+  "verifiedAt": "2026-09-19T01:04:51.706Z",
+  "sdkRoot": "F:/git/00_chenmohan/github/web-sdk-PP-Tracking",
+  "sdkCommit": "518f94ada6c6f3cc0308b7970564e6a4053df429",
+  "entrySha256": "fdd721bf78b7dc2ea3c554619418c914041971e37a2274ef3851e251997d4935",
+  "inputPath": "reports/tracking/2026-09-18-feasibility/inputs.json",
+  "inputSha256": "714aea989ae3d4d4e88288cc74f3db893186353935774db72ebd8897e2ee2ebc",
+  "scope": "先前原创合成序列上的独立公开API复核；不是官方逐值一致性或MOT精度",
+  "scenes": [
+    {
+      "name": "translation",
+      "config": {
+        "maxLostMs": 166.66666666666666
+      },
+      "sourceNote": "匀速平移",
+      "outputs": [
+        {
+          "generation": 0,
+          "timestampMs": 0,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tentative",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 0,
+              "hits": 1,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.12530000000000285,
+            "predictionMs": 0.002600000000001046,
+            "associationMs": 0.2937000000000012,
+            "updateMs": 0.539200000000001,
+            "totalMs": 0.9846000000000004
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 33.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 11.93050193502631,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 33.333333,
+              "hits": 2,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.01640000000000441,
+            "predictionMs": 0.730799999999995,
+            "associationMs": 0.2972999999999999,
+            "updateMs": 0.9871000000000052,
+            "totalMs": 2.0568000000000026
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 66.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 13.59801574389908,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 66.666667,
+              "hits": 3,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.022599999999997067,
+            "predictionMs": 0.10139999999999816,
+            "associationMs": 0.056100000000000705,
+            "updateMs": 0.23060000000000258,
+            "totalMs": 0.4204000000000008
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 100,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 15.706523323512368,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 100,
+              "hits": 4,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0037999999999982492,
+            "predictionMs": 0.0771000000000015,
+            "associationMs": 0.03059999999999974,
+            "updateMs": 0.12270000000000181,
+            "totalMs": 0.2353999999999985
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 133.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 17.804225778543696,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 133.333333,
+              "hits": 5,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0038999999999944635,
+            "predictionMs": 0.12570000000000192,
+            "associationMs": 0.03979999999999961,
+            "updateMs": 0.13870000000000005,
+            "totalMs": 0.3089999999999975
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 166.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 19.864039652974384,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 166.666667,
+              "hits": 6,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0037999999999982492,
+            "predictionMs": 0.11570000000000391,
+            "associationMs": 0.02869999999999351,
+            "updateMs": 0.16490000000000293,
+            "totalMs": 0.3141999999999996
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 200,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 21.900985183308435,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 200,
+              "hits": 7,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0030000000000001137,
+            "predictionMs": 0.06759999999999877,
+            "associationMs": 0.013200000000004763,
+            "updateMs": 0.08359999999999701,
+            "totalMs": 0.16810000000000258
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 233.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 23.924950160372703,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 233.333333,
+              "hits": 8,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.004699999999999704,
+            "predictionMs": 0.1308000000000007,
+            "associationMs": 0.01999999999999602,
+            "updateMs": 0.2916000000000025,
+            "totalMs": 0.45069999999999766
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 266.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 25.94125603742991,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 266.666667,
+              "hits": 9,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.00460000000000349,
+            "predictionMs": 0.10999999999999943,
+            "associationMs": 0.017600000000001614,
+            "updateMs": 0.17559999999999576,
+            "totalMs": 0.31050000000000466
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 300,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 27.952812168047004,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 300,
+              "hits": 10,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0040000000000048885,
+            "predictionMs": 0.08749999999999858,
+            "associationMs": 0.01389999999999958,
+            "updateMs": 0.12749999999999773,
+            "totalMs": 0.23450000000000415
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 333.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 29.96128495532882,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 333.333333,
+              "hits": 11,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.003900000000001569,
+            "predictionMs": 0.0742000000000047,
+            "associationMs": 0.012299999999996203,
+            "updateMs": 0.11630000000000251,
+            "totalMs": 0.20780000000000598
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 366.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 31.9676755438337,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 366.666667,
+              "hits": 12,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0027000000000043656,
+            "predictionMs": 0.05889999999999418,
+            "associationMs": 0.010400000000004184,
+            "updateMs": 0.10119999999999862,
+            "totalMs": 0.17390000000000327
+          }
+        }
+      ]
+    },
+    {
+      "name": "low_score",
+      "config": {
+        "maxLostMs": 166.66666666666666
+      },
+      "sourceNote": "低分检测仍传入",
+      "outputs": [
+        {
+          "generation": 0,
+          "timestampMs": 0,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tentative",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 0,
+              "hits": 1,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0031000000000034333,
+            "predictionMs": 0.0005999999999986017,
+            "associationMs": 0.002899999999996794,
+            "updateMs": 0.028900000000000148,
+            "totalMs": 0.0362000000000009
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 33.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 11.93050193502631,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 33.333333,
+              "hits": 2,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.013199999999997658,
+            "predictionMs": 0.1998000000000033,
+            "associationMs": 0.0227999999999966,
+            "updateMs": 0.21760000000000446,
+            "totalMs": 0.4549999999999983
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 66.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 13.59801574389908,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 66.666667,
+              "hits": 3,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0035999999999987153,
+            "predictionMs": 0.0771000000000015,
+            "associationMs": 0.011499999999998067,
+            "updateMs": 0.17379999999999995,
+            "totalMs": 0.2676000000000016
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 100,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 15.706523323512368,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.2,
+              "ageMs": 100,
+              "hits": 4,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0037999999999982492,
+            "predictionMs": 0.10869999999999891,
+            "associationMs": 0.018200000000000216,
+            "updateMs": 0.14560000000000173,
+            "totalMs": 0.27770000000000294
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 133.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 17.804225778543696,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.2,
+              "ageMs": 133.333333,
+              "hits": 5,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002300000000005298,
+            "predictionMs": 0.06869999999999976,
+            "associationMs": 0.01379999999999626,
+            "updateMs": 0.11200000000000188,
+            "totalMs": 0.19790000000000418
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 166.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 19.864039652974384,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.2,
+              "ageMs": 166.666667,
+              "hits": 6,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.004599999999996385,
+            "predictionMs": 0.2656000000000063,
+            "associationMs": 0.022199999999998,
+            "updateMs": 0.14470000000000027,
+            "totalMs": 0.43849999999999767
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 200,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 21.900985183308435,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 200,
+              "hits": 7,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.004300000000000637,
+            "predictionMs": 0.11029999999999518,
+            "associationMs": 0.025600000000004286,
+            "updateMs": 0.17190000000000083,
+            "totalMs": 0.31389999999999674
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 233.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 23.924950160372703,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 233.333333,
+              "hits": 8,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0038999999999944635,
+            "predictionMs": 0.10849999999999937,
+            "associationMs": 0.01580000000000581,
+            "updateMs": 0.1255999999999986,
+            "totalMs": 0.25499999999999545
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 266.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 25.94125603742991,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 266.666667,
+              "hits": 9,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0037999999999982492,
+            "predictionMs": 0.10060000000000002,
+            "associationMs": 0.01659999999999684,
+            "updateMs": 0.12890000000000157,
+            "totalMs": 0.25099999999999767
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 300,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 27.952812168047004,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 300,
+              "hits": 10,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.003700000000002035,
+            "predictionMs": 0.3516000000000048,
+            "associationMs": 0.019099999999994566,
+            "updateMs": 0.1337000000000046,
+            "totalMs": 0.5094000000000065
+          }
+        }
+      ]
+    },
+    {
+      "name": "filtered_low_score",
+      "config": {
+        "maxLostMs": 166.66666666666666
+      },
+      "sourceNote": "调用者过滤低分后信息无法找回",
+      "outputs": [
+        {
+          "generation": 0,
+          "timestampMs": 0,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tentative",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 0,
+              "hits": 1,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.004199999999997317,
+            "predictionMs": 0.0009000000000014552,
+            "associationMs": 0.004400000000003956,
+            "updateMs": 0.0362000000000009,
+            "totalMs": 0.04679999999999751
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 33.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 11.93050193502631,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 33.333333,
+              "hits": 2,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0049999999999954525,
+            "predictionMs": 0.10330000000000439,
+            "associationMs": 0.024900000000002365,
+            "updateMs": 0.12959999999999638,
+            "totalMs": 0.2635000000000076
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 66.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 13.59801574389908,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 66.666667,
+              "hits": 3,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.003199999999992542,
+            "predictionMs": 0.07850000000000534,
+            "associationMs": 0.010599999999996612,
+            "updateMs": 0.109800000000007,
+            "totalMs": 0.20309999999999206
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 100,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "lost",
+              "box": {
+                "x": 14.83871297798234,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 100,
+              "hits": 3,
+              "missedMs": 33.333332999999996
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.00560000000000116,
+            "predictionMs": 0.09130000000000393,
+            "associationMs": 0.011600000000001387,
+            "updateMs": 0.014399999999994861,
+            "totalMs": 0.12370000000001369
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 133.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "lost",
+              "box": {
+                "x": 16.0794102120656,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 133.333333,
+              "hits": 3,
+              "missedMs": 66.666666
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0016999999999995907,
+            "predictionMs": 0.08910000000000196,
+            "associationMs": 0.003999999999990678,
+            "updateMs": 0.0027000000000043656,
+            "totalMs": 0.09829999999999472
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 166.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "lost",
+              "box": {
+                "x": 17.320107483369775,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 166.666667,
+              "hits": 3,
+              "missedMs": 99.99999999999999
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0018000000000029104,
+            "predictionMs": 0.08230000000000359,
+            "associationMs": 0.00359999999999161,
+            "updateMs": 0.0028000000000076852,
+            "totalMs": 0.09140000000000725
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 200,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 21.851284348925454,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 200,
+              "hits": 4,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0033000000000100727,
+            "predictionMs": 0.08459999999999468,
+            "associationMs": 0.019599999999996953,
+            "updateMs": 0.11790000000000589,
+            "totalMs": 0.22640000000001237
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 233.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 23.918928303827613,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 233.333333,
+              "hits": 5,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0024999999999977263,
+            "predictionMs": 0.0653999999999968,
+            "associationMs": 0.015600000000006276,
+            "updateMs": 0.3773000000000053,
+            "totalMs": 0.4621999999999957
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 266.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 25.94182816390102,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 266.666667,
+              "hits": 6,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002900000000011005,
+            "predictionMs": 0.05649999999999977,
+            "associationMs": 0.012899999999987699,
+            "updateMs": 0.07440000000001135,
+            "totalMs": 0.147199999999998
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 300,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 27.953765920648927,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 300,
+              "hits": 7,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002600000000001046,
+            "predictionMs": 0.13450000000000273,
+            "associationMs": 0.02200000000000557,
+            "updateMs": 0.12379999999998859,
+            "totalMs": 0.28410000000000935
+          }
+        }
+      ]
+    },
+    {
+      "name": "short_occlusion",
+      "config": {
+        "maxLostMs": 166.66666666666666
+      },
+      "sourceNote": "三次空更新后同目标恢复",
+      "outputs": [
+        {
+          "generation": 0,
+          "timestampMs": 0,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tentative",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 0,
+              "hits": 1,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0031000000000034333,
+            "predictionMs": 0.0009000000000014552,
+            "associationMs": 0.0040000000000048885,
+            "updateMs": 0.027899999999988268,
+            "totalMs": 0.03650000000000375
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 33.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 11.93050193502631,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 33.333333,
+              "hits": 2,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.04250000000000398,
+            "predictionMs": 0.09420000000000073,
+            "associationMs": 0.017299999999991655,
+            "updateMs": 0.12990000000000634,
+            "totalMs": 0.28480000000000416
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 66.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 13.59801574389908,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 66.666667,
+              "hits": 3,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.026799999999994384,
+            "predictionMs": 0.08720000000000994,
+            "associationMs": 0.014799999999993929,
+            "updateMs": 0.12109999999999843,
+            "totalMs": 0.2505000000000024
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 100,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 15.706523323512368,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 100,
+              "hits": 4,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0026999999999901547,
+            "predictionMs": 0.07780000000001053,
+            "associationMs": 0.009699999999995157,
+            "updateMs": 0.07920000000000016,
+            "totalMs": 0.1700000000000017
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 133.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "lost",
+              "box": {
+                "x": 17.420573079797506,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 133.333333,
+              "hits": 4,
+              "missedMs": 33.33333300000001
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0014000000000038426,
+            "predictionMs": 0.11379999999999768,
+            "associationMs": 0.005099999999998772,
+            "updateMs": 0.002899999999996794,
+            "totalMs": 0.1238999999999919
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 166.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "lost",
+              "box": {
+                "x": 19.134622887504136,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 166.666667,
+              "hits": 4,
+              "missedMs": 66.66666699999999
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0020999999999986585,
+            "predictionMs": 0.059699999999992315,
+            "associationMs": 0.003500000000002501,
+            "updateMs": 0.002899999999996794,
+            "totalMs": 0.06869999999999266
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 200,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "lost",
+              "box": {
+                "x": 20.84867264378928,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 200,
+              "hits": 4,
+              "missedMs": 100
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0014999999999929514,
+            "predictionMs": 0.08729999999999905,
+            "associationMs": 0.0036999999999949296,
+            "updateMs": 0.0027000000000043656,
+            "totalMs": 0.09590000000000032
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 233.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 23.873511842238074,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 233.333333,
+              "hits": 5,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0016999999999995907,
+            "predictionMs": 0.07379999999999143,
+            "associationMs": 0.01820000000000732,
+            "updateMs": 0.09899999999998954,
+            "totalMs": 0.1932999999999936
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 266.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 25.930762717436735,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 266.666667,
+              "hits": 6,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002600000000001046,
+            "predictionMs": 0.0700999999999965,
+            "associationMs": 0.013199999999997658,
+            "updateMs": 0.11710000000000775,
+            "totalMs": 0.20369999999999777
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 300,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 27.951082749603593,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 300,
+              "hits": 7,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0031000000000034333,
+            "predictionMs": 0.13230000000000075,
+            "associationMs": 0.03119999999999834,
+            "updateMs": 0.117999999999995,
+            "totalMs": 0.2857000000000056
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 333.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 29.96166790271898,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 333.333333,
+              "hits": 8,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0030000000000001137,
+            "predictionMs": 0.10209999999999297,
+            "associationMs": 0.03360000000000696,
+            "updateMs": 0.1080999999999932,
+            "totalMs": 0.24759999999999138
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 366.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 31.968339527812617,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 366.666667,
+              "hits": 9,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.004199999999997317,
+            "predictionMs": 0.08910000000000196,
+            "associationMs": 0.0169000000000068,
+            "updateMs": 0.0852999999999895,
+            "totalMs": 0.19639999999999702
+          }
+        }
+      ]
+    },
+    {
+      "name": "long_loss",
+      "config": {
+        "maxLostMs": 166.66666666666666
+      },
+      "sourceNote": "丢失十次，超过本实验五帧保留期",
+      "outputs": [
+        {
+          "generation": 0,
+          "timestampMs": 0,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tentative",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 0,
+              "hits": 1,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0024999999999977263,
+            "predictionMs": 0.0007999999999981355,
+            "associationMs": 0.003299999999995862,
+            "updateMs": 0.025400000000004752,
+            "totalMs": 0.03259999999998797
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 33.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 33.333333,
+              "hits": 2,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0030000000000001137,
+            "predictionMs": 0.08929999999999438,
+            "associationMs": 0.02400000000000091,
+            "updateMs": 0.12239999999999895,
+            "totalMs": 0.23989999999999156
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 66.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 66.666667,
+              "hits": 3,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.003200000000006753,
+            "predictionMs": 0.09249999999998693,
+            "associationMs": 0.015300000000010527,
+            "updateMs": 0.11019999999999186,
+            "totalMs": 0.22230000000000416
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 100,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 100,
+              "hits": 4,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002200000000001978,
+            "predictionMs": 0.06929999999999836,
+            "associationMs": 0.010699999999999932,
+            "updateMs": 0.08150000000000546,
+            "totalMs": 0.16429999999999723
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 133.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "lost",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 133.333333,
+              "hits": 4,
+              "missedMs": 33.33333300000001
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0018999999999920192,
+            "predictionMs": 0.09040000000000248,
+            "associationMs": 0.004899999999992133,
+            "updateMs": 0.0030000000000001137,
+            "totalMs": 0.10099999999999909
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 166.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "lost",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 166.666667,
+              "hits": 4,
+              "missedMs": 66.66666699999999
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0007999999999981355,
+            "predictionMs": 0.050900000000012824,
+            "associationMs": 0.0027999999999934744,
+            "updateMs": 0.0020999999999986585,
+            "totalMs": 0.05710000000000548
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 200,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "lost",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 200,
+              "hits": 4,
+              "missedMs": 100
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0009000000000014552,
+            "predictionMs": 0.06569999999999254,
+            "associationMs": 0.0031000000000034333,
+            "updateMs": 0.002200000000001978,
+            "totalMs": 0.0724999999999909
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 233.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "lost",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 233.333333,
+              "hits": 4,
+              "missedMs": 133.333333
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0014000000000038426,
+            "predictionMs": 0.2869000000000028,
+            "associationMs": 0.006199999999992656,
+            "updateMs": 0.004300000000000637,
+            "totalMs": 0.2997000000000014
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 266.666667,
+          "tracks": [],
+          "removed": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "removed",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 266.666667,
+              "hits": 4,
+              "missedMs": 166.66666700000002
+            }
+          ],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.001600000000010482,
+            "predictionMs": 0.02549999999999386,
+            "associationMs": 0.002899999999996794,
+            "updateMs": 0.004500000000007276,
+            "totalMs": 0.03530000000000655
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 300,
+          "tracks": [],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0018000000000029104,
+            "predictionMs": 0.0004999999999881766,
+            "associationMs": 0.0014000000000038426,
+            "updateMs": 0.0011000000000080945,
+            "totalMs": 0.005200000000002092
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 333.333333,
+          "tracks": [],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.001300000000000523,
+            "predictionMs": 0.0006999999999948159,
+            "associationMs": 0.00190000000000623,
+            "updateMs": 0.0005000000000023874,
+            "totalMs": 0.004899999999992133
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 366.666667,
+          "tracks": [],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0011999999999972033,
+            "predictionMs": 0.0006000000000057071,
+            "associationMs": 0.0018000000000029104,
+            "updateMs": 0.00039999999999906777,
+            "totalMs": 0.004400000000003956
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 400,
+          "tracks": [],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.001300000000000523,
+            "predictionMs": 0.0006999999999948159,
+            "associationMs": 0.0018000000000029104,
+            "updateMs": 0.0005000000000023874,
+            "totalMs": 0.004699999999999704
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 433.333333,
+          "tracks": [],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0011999999999972033,
+            "predictionMs": 0.0006000000000057071,
+            "associationMs": 0.001999999999995339,
+            "updateMs": 0.00039999999999906777,
+            "totalMs": 0.004699999999999704
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 466.666667,
+          "tracks": [
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tentative",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 0,
+              "hits": 1,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002300000000005298,
+            "predictionMs": 0.0006000000000057071,
+            "associationMs": 0.0023999999999944066,
+            "updateMs": 0.022700000000000387,
+            "totalMs": 0.028500000000008185
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 500,
+          "tracks": [
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 33.33333299999998,
+              "hits": 2,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002200000000001978,
+            "predictionMs": 0.08039999999999736,
+            "associationMs": 0.015100000000003888,
+            "updateMs": 0.08809999999999718,
+            "totalMs": 0.1863999999999919
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 533.333333,
+          "tracks": [
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 66.66666600000002,
+              "hits": 3,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.001599999999996271,
+            "predictionMs": 0.08630000000000848,
+            "associationMs": 0.008700000000004593,
+            "updateMs": 0.08459999999999468,
+            "totalMs": 0.18189999999999884
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 566.666667,
+          "tracks": [
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 99.99999999999994,
+              "hits": 4,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0023999999999944066,
+            "predictionMs": 0.08559999999999945,
+            "associationMs": 0.025200000000012324,
+            "updateMs": 0.11139999999998906,
+            "totalMs": 0.22560000000000002
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 600,
+          "tracks": [
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 133.33333299999998,
+              "hits": 5,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0037000000000091404,
+            "predictionMs": 0.10939999999999372,
+            "associationMs": 0.01999999999999602,
+            "updateMs": 0.10730000000000928,
+            "totalMs": 0.24150000000000205
+          }
+        }
+      ]
+    },
+    {
+      "name": "crossing",
+      "config": {
+        "maxLostMs": 166.66666666666666
+      },
+      "sourceNote": "交叉完全重叠帧不评分",
+      "outputs": [
+        {
+          "generation": 0,
+          "timestampMs": 0,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tentative",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 0,
+              "hits": 1,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tentative",
+              "box": {
+                "x": 110,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 0,
+              "hits": 1,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.003999999999990678,
+            "predictionMs": 0.0007999999999981355,
+            "associationMs": 0.004200000000011528,
+            "updateMs": 0.05289999999999395,
+            "totalMs": 0.06279999999999575
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 33.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 14.826254837565777,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 33.333333,
+              "hits": 2,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 105.17374516243422,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 33.333333,
+              "hits": 2,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.003200000000006753,
+            "predictionMs": 0.14390000000000214,
+            "associationMs": 0.06739999999999213,
+            "updateMs": 0.4895000000000067,
+            "totalMs": 0.7049999999999983
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 66.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 18.9950393597477,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 66.666667,
+              "hits": 3,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 101.00496064025229,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 66.666667,
+              "hits": 3,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.003199999999992542,
+            "predictionMs": 0.16740000000000066,
+            "associationMs": 0.0257000000000005,
+            "updateMs": 0.15140000000000953,
+            "totalMs": 0.34850000000000136
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 100,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 24.26630830878092,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 100,
+              "hits": 4,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 95.73369169121908,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 100,
+              "hits": 4,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002300000000005298,
+            "predictionMs": 0.14870000000000516,
+            "associationMs": 0.021099999999989905,
+            "updateMs": 0.19440000000000168,
+            "totalMs": 0.3674000000000035
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 133.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 29.510564446359247,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 133.333333,
+              "hits": 5,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 90.48943555364076,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 133.333333,
+              "hits": 5,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002600000000001046,
+            "predictionMs": 0.40739999999999554,
+            "associationMs": 0.03879999999999484,
+            "updateMs": 0.2377000000000038,
+            "totalMs": 0.6880999999999915
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 166.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 34.66009913243595,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 166.666667,
+              "hits": 6,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 85.33990086756405,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 166.666667,
+              "hits": 6,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.004100000000008208,
+            "predictionMs": 0.17600000000000193,
+            "associationMs": 0.039199999999993906,
+            "updateMs": 0.20720000000000027,
+            "totalMs": 0.4274000000000058
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 200,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 39.75246295827109,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 200,
+              "hits": 7,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 80.24753704172892,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 200,
+              "hits": 7,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.004100000000008208,
+            "predictionMs": 0.14239999999999498,
+            "associationMs": 0.01839999999999975,
+            "updateMs": 0.2120000000000033,
+            "totalMs": 0.3778000000000077
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 233.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 44.812375400931764,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 233.333333,
+              "hits": 8,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 75.18762459906824,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 233.333333,
+              "hits": 8,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0028000000000076852,
+            "predictionMs": 0.1033999999999935,
+            "associationMs": 0.01830000000001064,
+            "updateMs": 0.14109999999999445,
+            "totalMs": 0.2663000000000011
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 266.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 49.85314009357478,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 266.666667,
+              "hits": 9,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 70.14685990642522,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 266.666667,
+              "hits": 9,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0037000000000091404,
+            "predictionMs": 0.16509999999999536,
+            "associationMs": 0.023499999999998522,
+            "updateMs": 0.16989999999999839,
+            "totalMs": 0.3628000000000071
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 300,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 54.882030420117516,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 300,
+              "hits": 10,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 65.11796957988248,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 300,
+              "hits": 10,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0037999999999982492,
+            "predictionMs": 0.1875,
+            "associationMs": 0.028000000000005798,
+            "updateMs": 0.23040000000000305,
+            "totalMs": 0.4509000000000043
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 333.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 59.903212388322046,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 333.333333,
+              "hits": 11,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 60.096787611677954,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 333.333333,
+              "hits": 11,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.004100000000008208,
+            "predictionMs": 0.151299999999992,
+            "associationMs": 0.02940000000000964,
+            "updateMs": 0.16089999999999804,
+            "totalMs": 0.3469000000000051
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 366.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 64.91918885958425,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 366.666667,
+              "hits": 12,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 55.08081114041575,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 366.666667,
+              "hits": 12,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.003500000000002501,
+            "predictionMs": 0.17490000000000805,
+            "associationMs": 0.017399999999994975,
+            "updateMs": 0.17310000000000514,
+            "totalMs": 0.36990000000000123
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 400,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 69.9315294652401,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 400,
+              "hits": 13,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 50.068470534759896,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 400,
+              "hits": 13,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.003200000000006753,
+            "predictionMs": 0.17740000000000578,
+            "associationMs": 0.026099999999999568,
+            "updateMs": 0.2680000000000007,
+            "totalMs": 0.4761000000000024
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 433.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 74.94125683834437,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 433.333333,
+              "hits": 14,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 45.05874316165562,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 433.333333,
+              "hits": 14,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.004299999999986426,
+            "predictionMs": 0.1688000000000045,
+            "associationMs": 0.02740000000000009,
+            "updateMs": 0.16320000000000334,
+            "totalMs": 0.3645999999999958
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 466.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 79.94905914292377,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 466.666667,
+              "hits": 15,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 40.05094085707622,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 466.666667,
+              "hits": 15,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0024999999999977263,
+            "predictionMs": 0.13469999999999516,
+            "associationMs": 0.02559999999999718,
+            "updateMs": 0.2079999999999984,
+            "totalMs": 0.372099999999989
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 500,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 84.95541243997518,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 500,
+              "hits": 16,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 35.04458756002483,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 500,
+              "hits": 16,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0024999999999977263,
+            "predictionMs": 0.12069999999999936,
+            "associationMs": 0.018100000000004002,
+            "updateMs": 0.16310000000000002,
+            "totalMs": 0.30509999999999593
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 533.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 89.96065486941117,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 533.333333,
+              "hits": 17,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 30.039345130588835,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 533.333333,
+              "hits": 17,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0033999999999991815,
+            "predictionMs": 0.13339999999999463,
+            "associationMs": 0.020800000000008367,
+            "updateMs": 0.16209999999999525,
+            "totalMs": 0.3201999999999998
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 566.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 94.96503165378586,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 566.666667,
+              "hits": 18,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 25.03496834621415,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 566.666667,
+              "hits": 18,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0020000000000095497,
+            "predictionMs": 0.11260000000000048,
+            "associationMs": 0.013700000000000045,
+            "updateMs": 0.18599999999999284,
+            "totalMs": 0.3149999999999977
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 600,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 99.9687237234429,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 600,
+              "hits": 19,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 20.031276276557108,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 600,
+              "hits": 19,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.004300000000000637,
+            "predictionMs": 0.1659000000000077,
+            "associationMs": 0.022800000000003706,
+            "updateMs": 0.34739999999999327,
+            "totalMs": 0.5412000000000035
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 633.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 104.97186747866249,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 633.333333,
+              "hits": 20,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 15.028132521337518,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 633.333333,
+              "hits": 20,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002200000000001978,
+            "predictionMs": 0.13219999999999743,
+            "associationMs": 0.015699999999995384,
+            "updateMs": 0.1459000000000117,
+            "totalMs": 0.296599999999998
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 666.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 109.9745670753335,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 666.666667,
+              "hits": 21,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10.025432924666507,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 666.666667,
+              "hits": 21,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0020999999999986585,
+            "predictionMs": 0.09729999999998995,
+            "associationMs": 0.01820000000000732,
+            "updateMs": 0.21620000000000061,
+            "totalMs": 0.3347999999999871
+          }
+        }
+      ]
+    },
+    {
+      "name": "ambiguous_bounce",
+      "config": {
+        "maxLostMs": 166.66666666666666
+      },
+      "sourceNote": "相遇后掉头；无外观信息存在不可辨识性",
+      "outputs": [
+        {
+          "generation": 0,
+          "timestampMs": 0,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tentative",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 0,
+              "hits": 1,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tentative",
+              "box": {
+                "x": 110,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 0,
+              "hits": 1,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0020999999999986585,
+            "predictionMs": 0.0005000000000023874,
+            "associationMs": 0.0018000000000029104,
+            "updateMs": 0.02559999999999718,
+            "totalMs": 0.030400000000000205
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 33.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 14.826254837565777,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 33.333333,
+              "hits": 2,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 105.17374516243422,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 33.333333,
+              "hits": 2,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0031000000000034333,
+            "predictionMs": 0.3083999999999918,
+            "associationMs": 0.019300000000001205,
+            "updateMs": 0.1355000000000075,
+            "totalMs": 0.46689999999999543
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 66.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 18.9950393597477,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 66.666667,
+              "hits": 3,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 101.00496064025229,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 66.666667,
+              "hits": 3,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0023999999999944066,
+            "predictionMs": 0.10150000000000148,
+            "associationMs": 0.030400000000000205,
+            "updateMs": 0.13060000000000116,
+            "totalMs": 0.26539999999999964
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 100,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 24.26630830878092,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 100,
+              "hits": 4,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 95.73369169121908,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 100,
+              "hits": 4,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0024000000000086175,
+            "predictionMs": 0.09879999999999711,
+            "associationMs": 0.015299999999996317,
+            "updateMs": 0.1582000000000079,
+            "totalMs": 0.2751999999999981
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 133.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 29.510564446359247,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 133.333333,
+              "hits": 5,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 90.48943555364076,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 133.333333,
+              "hits": 5,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.005299999999991201,
+            "predictionMs": 0.5423000000000116,
+            "associationMs": 0.028299999999987335,
+            "updateMs": 0.15980000000000416,
+            "totalMs": 0.7365999999999957
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 166.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 34.66009913243595,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 166.666667,
+              "hits": 6,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 85.33990086756405,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 166.666667,
+              "hits": 6,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0023999999999944066,
+            "predictionMs": 0.09709999999999752,
+            "associationMs": 0.012500000000002842,
+            "updateMs": 0.12470000000000425,
+            "totalMs": 0.23729999999999052
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 200,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 39.75246295827109,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 200,
+              "hits": 7,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 80.24753704172892,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 200,
+              "hits": 7,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.001999999999995339,
+            "predictionMs": 0.0981000000000023,
+            "associationMs": 0.013800000000003365,
+            "updateMs": 0.17149999999999466,
+            "totalMs": 0.28589999999999804
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 233.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 44.812375400931764,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 233.333333,
+              "hits": 8,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 75.18762459906824,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 233.333333,
+              "hits": 8,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0027000000000043656,
+            "predictionMs": 0.09909999999999286,
+            "associationMs": 0.01630000000000109,
+            "updateMs": 0.15460000000000207,
+            "totalMs": 0.27360000000000184
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 266.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 49.85314009357478,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 266.666667,
+              "hits": 9,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 70.14685990642522,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 266.666667,
+              "hits": 9,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002200000000001978,
+            "predictionMs": 0.0952000000000055,
+            "associationMs": 0.012599999999991951,
+            "updateMs": 0.12640000000000384,
+            "totalMs": 0.23680000000000234
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 300,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 54.882030420117516,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 300,
+              "hits": 10,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 65.11796957988248,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 300,
+              "hits": 10,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0020999999999986585,
+            "predictionMs": 0.09619999999999607,
+            "associationMs": 0.016999999999995907,
+            "updateMs": 0.12400000000000944,
+            "totalMs": 0.23979999999998824
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 333.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 59.903212388322046,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 333.333333,
+              "hits": 11,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 60.096787611677954,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 333.333333,
+              "hits": 11,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002300000000005298,
+            "predictionMs": 0.09799999999999898,
+            "associationMs": 0.03249999999999886,
+            "updateMs": 0.13750000000000284,
+            "totalMs": 0.27080000000000837
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 366.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 64.91918885958425,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 366.666667,
+              "hits": 12,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 55.08081114041575,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 366.666667,
+              "hits": 12,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0018999999999920192,
+            "predictionMs": 0.09480000000000643,
+            "associationMs": 0.011099999999999,
+            "updateMs": 0.12199999999999989,
+            "totalMs": 0.23029999999999973
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 400,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 69.9315294652401,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 400,
+              "hits": 13,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 50.068470534759896,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 400,
+              "hits": 13,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0018999999999920192,
+            "predictionMs": 0.09749999999999659,
+            "associationMs": 0.011400000000008959,
+            "updateMs": 0.12259999999999138,
+            "totalMs": 0.23379999999998802
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 433.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 74.94125683834437,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 433.333333,
+              "hits": 14,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 45.05874316165562,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 433.333333,
+              "hits": 14,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002200000000001978,
+            "predictionMs": 0.09390000000000498,
+            "associationMs": 0.011700000000004707,
+            "updateMs": 0.12519999999999243,
+            "totalMs": 0.23340000000000316
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 466.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 79.94905914292377,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 466.666667,
+              "hits": 15,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 40.05094085707622,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 466.666667,
+              "hits": 15,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0020000000000095497,
+            "predictionMs": 0.10909999999999798,
+            "associationMs": 0.011600000000001387,
+            "updateMs": 0.13019999999998788,
+            "totalMs": 0.2533999999999992
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 500,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 84.95541243997518,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 500,
+              "hits": 16,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 35.04458756002483,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 500,
+              "hits": 16,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.00190000000000623,
+            "predictionMs": 0.09369999999999834,
+            "associationMs": 0.01099999999999568,
+            "updateMs": 0.1214999999999975,
+            "totalMs": 0.22860000000000014
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 533.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 89.96065486941117,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 533.333333,
+              "hits": 17,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 30.039345130588835,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 533.333333,
+              "hits": 17,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0023999999999944066,
+            "predictionMs": 0.09539999999999793,
+            "associationMs": 0.012299999999996203,
+            "updateMs": 0.12480000000000757,
+            "totalMs": 0.23550000000000182
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 566.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 94.96503165378586,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 566.666667,
+              "hits": 18,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 25.03496834621415,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 566.666667,
+              "hits": 18,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0018999999999920192,
+            "predictionMs": 0.10670000000000357,
+            "associationMs": 0.012199999999992883,
+            "updateMs": 0.12570000000000903,
+            "totalMs": 0.2469999999999999
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 600,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 99.9687237234429,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 600,
+              "hits": 19,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 20.031276276557108,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 600,
+              "hits": 19,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0017999999999886995,
+            "predictionMs": 0.09470000000000312,
+            "associationMs": 0.010699999999999932,
+            "updateMs": 0.26380000000000337,
+            "totalMs": 0.3719999999999999
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 633.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 104.97186747866249,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 633.333333,
+              "hits": 20,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 15.028132521337518,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 633.333333,
+              "hits": 20,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0021999999999877673,
+            "predictionMs": 0.10600000000000875,
+            "associationMs": 0.013599999999996726,
+            "updateMs": 0.12520000000000664,
+            "totalMs": 0.24749999999998806
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 666.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 109.9745670753335,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 666.666667,
+              "hits": 21,
+              "missedMs": 0
+            },
+            {
+              "id": 2,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10.025432924666507,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 666.666667,
+              "hits": 21,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0018999999999920192,
+            "predictionMs": 0.0929000000000002,
+            "associationMs": 0.011600000000001387,
+            "updateMs": 0.15919999999999845,
+            "totalMs": 0.2663999999999902
+          }
+        }
+      ]
+    },
+    {
+      "name": "multi_class",
+      "config": {
+        "maxLostMs": 166.66666666666666
+      },
+      "sourceNote": "同位置先后出现不同类别，诊断跨类ID复用",
+      "outputs": [
+        {
+          "generation": 0,
+          "timestampMs": 0,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tentative",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 0,
+              "hits": 1,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0016999999999995907,
+            "predictionMs": 0.0005000000000023874,
+            "associationMs": 0.0016999999999995907,
+            "updateMs": 0.013900000000006685,
+            "totalMs": 0.01820000000000732
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 33.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 33.333333,
+              "hits": 2,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.001299999999986312,
+            "predictionMs": 0.048500000000004206,
+            "associationMs": 0.007800000000003138,
+            "updateMs": 0.24849999999999284,
+            "totalMs": 0.30689999999999884
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 66.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 66.666667,
+              "hits": 3,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0013999999999896318,
+            "predictionMs": 0.04980000000000473,
+            "associationMs": 0.007099999999994111,
+            "updateMs": 0.0636000000000081,
+            "totalMs": 0.12229999999999563
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 100,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 100,
+              "hits": 4,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0014999999999929514,
+            "predictionMs": 0.04749999999999943,
+            "associationMs": 0.006300000000010186,
+            "updateMs": 0.06239999999999668,
+            "totalMs": 0.11809999999999832
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 133.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 133.333333,
+              "hits": 5,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0014000000000038426,
+            "predictionMs": 0.0490999999999957,
+            "associationMs": 0.006100000000003547,
+            "updateMs": 0.06319999999999482,
+            "totalMs": 0.12019999999999698
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 166.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "lost",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 166.666667,
+              "hits": 5,
+              "missedMs": 33.33333399999998
+            },
+            {
+              "id": 2,
+              "classId": 1,
+              "state": "tentative",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 0,
+              "hits": 1,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0015000000000071623,
+            "predictionMs": 0.04779999999999518,
+            "associationMs": 0.005000000000009663,
+            "updateMs": 0.013099999999994338,
+            "totalMs": 0.06770000000000209
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 200,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "lost",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 200,
+              "hits": 5,
+              "missedMs": 66.66666699999999
+            },
+            {
+              "id": 2,
+              "classId": 1,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 33.33333300000001,
+              "hits": 2,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.001600000000010482,
+            "predictionMs": 0.09129999999998972,
+            "associationMs": 0.007900000000006457,
+            "updateMs": 0.06799999999999784,
+            "totalMs": 0.16920000000000357
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 233.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "lost",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 233.333333,
+              "hits": 5,
+              "missedMs": 100
+            },
+            {
+              "id": 2,
+              "classId": 1,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 66.66666600000002,
+              "hits": 3,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0014999999999929514,
+            "predictionMs": 0.09960000000000946,
+            "associationMs": 0.008899999999997021,
+            "updateMs": 0.2441999999999922,
+            "totalMs": 0.3555999999999955
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 266.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "lost",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 266.666667,
+              "hits": 5,
+              "missedMs": 133.333334
+            },
+            {
+              "id": 2,
+              "classId": 1,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 100.00000000000003,
+              "hits": 4,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.00190000000000623,
+            "predictionMs": 0.09439999999999316,
+            "associationMs": 0.010000000000005116,
+            "updateMs": 0.06520000000000437,
+            "totalMs": 0.17199999999999704
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 300,
+          "tracks": [
+            {
+              "id": 2,
+              "classId": 1,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 133.333333,
+              "hits": 5,
+              "missedMs": 0
+            }
+          ],
+          "removed": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "removed",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": false,
+              "score": null,
+              "ageMs": 300,
+              "hits": 5,
+              "missedMs": 166.666667
+            }
+          ],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0015000000000071623,
+            "predictionMs": 0.04949999999999477,
+            "associationMs": 0.006799999999998363,
+            "updateMs": 0.0625,
+            "totalMs": 0.120900000000006
+          }
+        }
+      ]
+    },
+    {
+      "name": "sparse_gap",
+      "config": {
+        "maxLostMs": 166.66666666666666
+      },
+      "sourceNote": "时间戳跳过十七帧；原生与补空更新分别运行",
+      "outputs": [
+        {
+          "generation": 0,
+          "timestampMs": 0,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tentative",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 0,
+              "hits": 1,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002900000000011005,
+            "predictionMs": 0.0005999999999914962,
+            "associationMs": 0.002899999999996794,
+            "updateMs": 0.021500000000003183,
+            "totalMs": 0.028500000000008185
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 33.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 33.333333,
+              "hits": 2,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0014000000000038426,
+            "predictionMs": 0.048699999999996635,
+            "associationMs": 0.008400000000008845,
+            "updateMs": 0.06559999999998922,
+            "totalMs": 0.12460000000000093
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 66.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 66.666667,
+              "hits": 3,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0014000000000038426,
+            "predictionMs": 0.052499999999994884,
+            "associationMs": 0.006700000000009254,
+            "updateMs": 0.0630999999999915,
+            "totalMs": 0.12420000000000186
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 666.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 666.666667,
+              "hits": 4,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0015000000000071623,
+            "predictionMs": 0.04889999999998906,
+            "associationMs": 0.007000000000005002,
+            "updateMs": 0.23879999999999768,
+            "totalMs": 0.2973999999999961
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 700,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 700,
+              "hits": 5,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.002600000000001046,
+            "predictionMs": 0.05129999999999768,
+            "associationMs": 0.008499999999997954,
+            "updateMs": 0.06409999999999627,
+            "totalMs": 0.12699999999999534
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 733.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 733.333333,
+              "hits": 6,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0015000000000071623,
+            "predictionMs": 0.05389999999999873,
+            "associationMs": 0.007999999999995566,
+            "updateMs": 0.1583000000000112,
+            "totalMs": 0.2231000000000023
+          }
+        }
+      ]
+    },
+    {
+      "name": "score_boundary",
+      "config": {
+        "maxLostMs": 166.66666666666666
+      },
+      "sourceNote": "显式检测严格阈值边界",
+      "outputs": [
+        {
+          "generation": 0,
+          "timestampMs": 0,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tentative",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 0,
+              "hits": 1,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.001599999999996271,
+            "predictionMs": 0.0005000000000023874,
+            "associationMs": 0.0018000000000029104,
+            "updateMs": 0.013300000000000978,
+            "totalMs": 0.017600000000001614
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 33.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.5,
+              "ageMs": 33.333333,
+              "hits": 2,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.001300000000000523,
+            "predictionMs": 0.04840000000000089,
+            "associationMs": 0.00740000000000407,
+            "updateMs": 0.06390000000000384,
+            "totalMs": 0.12140000000000839
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 66.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.1,
+              "ageMs": 66.666667,
+              "hits": 3,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0013999999999896318,
+            "predictionMs": 0.04800000000000182,
+            "associationMs": 0.006799999999998363,
+            "updateMs": 0.06199999999999761,
+            "totalMs": 0.1185999999999865
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 100,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.100001,
+              "ageMs": 100,
+              "hits": 4,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0015000000000071623,
+            "predictionMs": 0.04809999999999093,
+            "associationMs": 0.006200000000006867,
+            "updateMs": 0.06119999999999948,
+            "totalMs": 0.1174000000000035
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 133.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.499999,
+              "ageMs": 133.333333,
+              "hits": 5,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0018000000000029104,
+            "predictionMs": 0.08020000000000493,
+            "associationMs": 0.0519999999999925,
+            "updateMs": 0.09440000000000737,
+            "totalMs": 0.22929999999999495
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 166.666667,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.500001,
+              "ageMs": 166.666667,
+              "hits": 6,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.001599999999996271,
+            "predictionMs": 0.05200000000000671,
+            "associationMs": 0.00740000000000407,
+            "updateMs": 0.06459999999999866,
+            "totalMs": 0.1261000000000081
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 200,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.6,
+              "ageMs": 200,
+              "hits": 7,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.001599999999996271,
+            "predictionMs": 0.04800000000000182,
+            "associationMs": 0.007099999999994111,
+            "updateMs": 0.06239999999999668,
+            "totalMs": 0.11949999999998795
+          }
+        },
+        {
+          "generation": 0,
+          "timestampMs": 233.333333,
+          "tracks": [
+            {
+              "id": 1,
+              "classId": 0,
+              "state": "tracked",
+              "box": {
+                "x": 10,
+                "y": 20,
+                "width": 30,
+                "height": 60
+              },
+              "observed": true,
+              "score": 0.9,
+              "ageMs": 233.333333,
+              "hits": 8,
+              "missedMs": 0
+            }
+          ],
+          "removed": [],
+          "droppedDetections": 0,
+          "runtime": {
+            "requestedBackend": "cpu",
+            "actualBackend": "cpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.1.0"
+          },
+          "timings": {
+            "validationMs": 0.0014000000000038426,
+            "predictionMs": 0.048599999999993315,
+            "associationMs": 0.006200000000006867,
+            "updateMs": 0.06269999999999243,
+            "totalMs": 0.11929999999999552
+          }
+        }
+      ]
+    }
+  ]
+}

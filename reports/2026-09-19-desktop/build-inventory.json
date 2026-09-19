@@ -1,0 +1,16 @@
+{
+  "archivedAt": "2026-09-19T01:44:23.986Z",
+  "coreCommit": "518f94ada6c6f3cc0308b7970564e6a4053df429",
+  "productCommit": "7241a714aaa8a3cbd5a74b3377fa965bafc77185",
+  "note": "归档时核对的完整构建；历史测量仅直接记录ESM入口hash，该入口与当前构建逐字节一致。",
+  "files": {
+    "dist/assignment.d.ts": "4acdf59bee8fdef33ddbeeead727efca7fdd153faf1fa86afe7044d6244d0ea9",
+    "dist/errors.d.ts": "efb9bff9e8698f0171447eff4beafbade0f5f2c8d3b1889033f1012d44f2ae92",
+    "dist/index.cjs": "ce29020fbf18e4c4bf830fa32ad45db694d8dfd0ae7d9e760766c52d4032e994",
+    "dist/index.d.ts": "26b07d7f1a54f80f56af08bbdf8023d031b53f989d970eefd1e5144d3563a068",
+    "dist/index.js": "fdd721bf78b7dc2ea3c554619418c914041971e37a2274ef3851e251997d4935",
+    "dist/kalman.d.ts": "41bae1cdecfcda4e8bd95c41359964cfdb1a7b5c7f06d472b90716d3641e93e2",
+    "dist/tracker.d.ts": "dfed1e8ffecb624806bb7022f1901651f2b0551d3cec599cbd86aa5aa94ad6a5",
+    "dist/types.d.ts": "9222b866d5860b5de0b15659cf1024dfe07200344579385b9662a36b9fad83ec"
+  }
+}

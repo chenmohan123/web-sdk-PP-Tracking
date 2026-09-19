@@ -1,0 +1,2654 @@
+[
+  {
+    "name": "translation",
+    "note": "匀速平移",
+    "frames": [
+      {
+        "frame_index": 0,
+        "timestamp_ms": 0.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 1,
+        "timestamp_ms": 33.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              12,
+              20,
+              42,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 2,
+        "timestamp_ms": 66.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              14,
+              20,
+              44,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 3,
+        "timestamp_ms": 100.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              16,
+              20,
+              46,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 4,
+        "timestamp_ms": 133.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              18,
+              20,
+              48,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 5,
+        "timestamp_ms": 166.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              20,
+              20,
+              50,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 6,
+        "timestamp_ms": 200.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              22,
+              20,
+              52,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 7,
+        "timestamp_ms": 233.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              24,
+              20,
+              54,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 8,
+        "timestamp_ms": 266.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              26,
+              20,
+              56,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 9,
+        "timestamp_ms": 300.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              28,
+              20,
+              58,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 10,
+        "timestamp_ms": 333.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              30,
+              20,
+              60,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 11,
+        "timestamp_ms": 366.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              32,
+              20,
+              62,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      }
+    ]
+  },
+  {
+    "name": "low_score",
+    "note": "低分检测仍传入",
+    "frames": [
+      {
+        "frame_index": 0,
+        "timestamp_ms": 0.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 1,
+        "timestamp_ms": 33.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              12,
+              20,
+              42,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 2,
+        "timestamp_ms": 66.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              14,
+              20,
+              44,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 3,
+        "timestamp_ms": 100.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.2,
+            "box": [
+              16,
+              20,
+              46,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 4,
+        "timestamp_ms": 133.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.2,
+            "box": [
+              18,
+              20,
+              48,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 5,
+        "timestamp_ms": 166.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.2,
+            "box": [
+              20,
+              20,
+              50,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 6,
+        "timestamp_ms": 200.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              22,
+              20,
+              52,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 7,
+        "timestamp_ms": 233.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              24,
+              20,
+              54,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 8,
+        "timestamp_ms": 266.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              26,
+              20,
+              56,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 9,
+        "timestamp_ms": 300.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              28,
+              20,
+              58,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      }
+    ]
+  },
+  {
+    "name": "filtered_low_score",
+    "note": "调用者过滤低分后信息无法找回",
+    "frames": [
+      {
+        "frame_index": 0,
+        "timestamp_ms": 0.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 1,
+        "timestamp_ms": 33.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              12,
+              20,
+              42,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 2,
+        "timestamp_ms": 66.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              14,
+              20,
+              44,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 3,
+        "timestamp_ms": 100.0,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 4,
+        "timestamp_ms": 133.333333,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 5,
+        "timestamp_ms": 166.666667,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 6,
+        "timestamp_ms": 200.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              22,
+              20,
+              52,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 7,
+        "timestamp_ms": 233.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              24,
+              20,
+              54,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 8,
+        "timestamp_ms": 266.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              26,
+              20,
+              56,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 9,
+        "timestamp_ms": 300.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              28,
+              20,
+              58,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      }
+    ]
+  },
+  {
+    "name": "short_occlusion",
+    "note": "三次空更新后同目标恢复",
+    "frames": [
+      {
+        "frame_index": 0,
+        "timestamp_ms": 0.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 1,
+        "timestamp_ms": 33.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              12,
+              20,
+              42,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 2,
+        "timestamp_ms": 66.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              14,
+              20,
+              44,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 3,
+        "timestamp_ms": 100.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              16,
+              20,
+              46,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 4,
+        "timestamp_ms": 133.333333,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 5,
+        "timestamp_ms": 166.666667,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 6,
+        "timestamp_ms": 200.0,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 7,
+        "timestamp_ms": 233.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              24,
+              20,
+              54,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 8,
+        "timestamp_ms": 266.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              26,
+              20,
+              56,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 9,
+        "timestamp_ms": 300.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              28,
+              20,
+              58,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 10,
+        "timestamp_ms": 333.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              30,
+              20,
+              60,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 11,
+        "timestamp_ms": 366.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              32,
+              20,
+              62,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      }
+    ]
+  },
+  {
+    "name": "long_loss",
+    "note": "丢失十次，超过本实验五帧保留期",
+    "frames": [
+      {
+        "frame_index": 0,
+        "timestamp_ms": 0.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 1,
+        "timestamp_ms": 33.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 2,
+        "timestamp_ms": 66.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 3,
+        "timestamp_ms": 100.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 4,
+        "timestamp_ms": 133.333333,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 5,
+        "timestamp_ms": 166.666667,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 6,
+        "timestamp_ms": 200.0,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 7,
+        "timestamp_ms": 233.333333,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 8,
+        "timestamp_ms": 266.666667,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 9,
+        "timestamp_ms": 300.0,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 10,
+        "timestamp_ms": 333.333333,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 11,
+        "timestamp_ms": 366.666667,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 12,
+        "timestamp_ms": 400.0,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 13,
+        "timestamp_ms": 433.333333,
+        "detections": [],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 14,
+        "timestamp_ms": 466.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 15,
+        "timestamp_ms": 500.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 16,
+        "timestamp_ms": 533.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 17,
+        "timestamp_ms": 566.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 18,
+        "timestamp_ms": 600.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      }
+    ]
+  },
+  {
+    "name": "crossing",
+    "note": "交叉完全重叠帧不评分",
+    "frames": [
+      {
+        "frame_index": 0,
+        "timestamp_ms": 0.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              110,
+              20,
+              140,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 1,
+        "timestamp_ms": 33.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              15,
+              20,
+              45,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              105,
+              20,
+              135,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 2,
+        "timestamp_ms": 66.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              20,
+              20,
+              50,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              100,
+              20,
+              130,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 3,
+        "timestamp_ms": 100.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              25,
+              20,
+              55,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              95,
+              20,
+              125,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 4,
+        "timestamp_ms": 133.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              30,
+              20,
+              60,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              90,
+              20,
+              120,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 5,
+        "timestamp_ms": 166.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              35,
+              20,
+              65,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              85,
+              20,
+              115,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 6,
+        "timestamp_ms": 200.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              40,
+              20,
+              70,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              80,
+              20,
+              110,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 7,
+        "timestamp_ms": 233.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              45,
+              20,
+              75,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              75,
+              20,
+              105,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 8,
+        "timestamp_ms": 266.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              50,
+              20,
+              80,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              70,
+              20,
+              100,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 9,
+        "timestamp_ms": 300.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              55,
+              20,
+              85,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              65,
+              20,
+              95,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 10,
+        "timestamp_ms": 333.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              60,
+              20,
+              90,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              60,
+              20,
+              90,
+              80
+            ]
+          }
+        ],
+        "ambiguous": true
+      },
+      {
+        "frame_index": 11,
+        "timestamp_ms": 366.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              65,
+              20,
+              95,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              55,
+              20,
+              85,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 12,
+        "timestamp_ms": 400.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              70,
+              20,
+              100,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              50,
+              20,
+              80,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 13,
+        "timestamp_ms": 433.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              75,
+              20,
+              105,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              45,
+              20,
+              75,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 14,
+        "timestamp_ms": 466.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              80,
+              20,
+              110,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              40,
+              20,
+              70,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 15,
+        "timestamp_ms": 500.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              85,
+              20,
+              115,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              35,
+              20,
+              65,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 16,
+        "timestamp_ms": 533.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              90,
+              20,
+              120,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              30,
+              20,
+              60,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 17,
+        "timestamp_ms": 566.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              95,
+              20,
+              125,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              25,
+              20,
+              55,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 18,
+        "timestamp_ms": 600.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              100,
+              20,
+              130,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              20,
+              20,
+              50,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 19,
+        "timestamp_ms": 633.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              105,
+              20,
+              135,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              15,
+              20,
+              45,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 20,
+        "timestamp_ms": 666.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              110,
+              20,
+              140,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      }
+    ]
+  },
+  {
+    "name": "ambiguous_bounce",
+    "note": "相遇后掉头；无外观信息存在不可辨识性",
+    "frames": [
+      {
+        "frame_index": 0,
+        "timestamp_ms": 0.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              110,
+              20,
+              140,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 1,
+        "timestamp_ms": 33.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              15,
+              20,
+              45,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              105,
+              20,
+              135,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 2,
+        "timestamp_ms": 66.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              20,
+              20,
+              50,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              100,
+              20,
+              130,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 3,
+        "timestamp_ms": 100.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              25,
+              20,
+              55,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              95,
+              20,
+              125,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 4,
+        "timestamp_ms": 133.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              30,
+              20,
+              60,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              90,
+              20,
+              120,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 5,
+        "timestamp_ms": 166.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              35,
+              20,
+              65,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              85,
+              20,
+              115,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 6,
+        "timestamp_ms": 200.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              40,
+              20,
+              70,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              80,
+              20,
+              110,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 7,
+        "timestamp_ms": 233.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              45,
+              20,
+              75,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              75,
+              20,
+              105,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 8,
+        "timestamp_ms": 266.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              50,
+              20,
+              80,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              70,
+              20,
+              100,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 9,
+        "timestamp_ms": 300.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              55,
+              20,
+              85,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              65,
+              20,
+              95,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 10,
+        "timestamp_ms": 333.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              60,
+              20,
+              90,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              60,
+              20,
+              90,
+              80
+            ]
+          }
+        ],
+        "ambiguous": true
+      },
+      {
+        "frame_index": 11,
+        "timestamp_ms": 366.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              55,
+              20,
+              85,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              65,
+              20,
+              95,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 12,
+        "timestamp_ms": 400.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              50,
+              20,
+              80,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              70,
+              20,
+              100,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 13,
+        "timestamp_ms": 433.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              45,
+              20,
+              75,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              75,
+              20,
+              105,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 14,
+        "timestamp_ms": 466.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              40,
+              20,
+              70,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              80,
+              20,
+              110,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 15,
+        "timestamp_ms": 500.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              35,
+              20,
+              65,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              85,
+              20,
+              115,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 16,
+        "timestamp_ms": 533.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              30,
+              20,
+              60,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              90,
+              20,
+              120,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 17,
+        "timestamp_ms": 566.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              25,
+              20,
+              55,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              95,
+              20,
+              125,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 18,
+        "timestamp_ms": 600.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              20,
+              20,
+              50,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              100,
+              20,
+              130,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 19,
+        "timestamp_ms": 633.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              15,
+              20,
+              45,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              105,
+              20,
+              135,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 20,
+        "timestamp_ms": 666.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          },
+          {
+            "subject": "B",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              110,
+              20,
+              140,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      }
+    ]
+  },
+  {
+    "name": "multi_class",
+    "note": "同位置先后出现不同类别，诊断跨类ID复用",
+    "frames": [
+      {
+        "frame_index": 0,
+        "timestamp_ms": 0.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 1,
+        "timestamp_ms": 33.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 2,
+        "timestamp_ms": 66.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 3,
+        "timestamp_ms": 100.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 4,
+        "timestamp_ms": 133.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 5,
+        "timestamp_ms": 166.666667,
+        "detections": [
+          {
+            "subject": "B",
+            "class_id": 1,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 6,
+        "timestamp_ms": 200.0,
+        "detections": [
+          {
+            "subject": "B",
+            "class_id": 1,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 7,
+        "timestamp_ms": 233.333333,
+        "detections": [
+          {
+            "subject": "B",
+            "class_id": 1,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 8,
+        "timestamp_ms": 266.666667,
+        "detections": [
+          {
+            "subject": "B",
+            "class_id": 1,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 9,
+        "timestamp_ms": 300.0,
+        "detections": [
+          {
+            "subject": "B",
+            "class_id": 1,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      }
+    ]
+  },
+  {
+    "name": "sparse_gap",
+    "note": "时间戳跳过十七帧；原生与补空更新分别运行",
+    "frames": [
+      {
+        "frame_index": 0,
+        "timestamp_ms": 0.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 1,
+        "timestamp_ms": 33.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 2,
+        "timestamp_ms": 66.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 20,
+        "timestamp_ms": 666.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 21,
+        "timestamp_ms": 700.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 22,
+        "timestamp_ms": 733.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      }
+    ]
+  },
+  {
+    "name": "score_boundary",
+    "note": "显式检测严格阈值边界",
+    "frames": [
+      {
+        "frame_index": 0,
+        "timestamp_ms": 0.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 1,
+        "timestamp_ms": 33.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.5,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 2,
+        "timestamp_ms": 66.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.1,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 3,
+        "timestamp_ms": 100.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.100001,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 4,
+        "timestamp_ms": 133.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.499999,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 5,
+        "timestamp_ms": 166.666667,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.500001,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 6,
+        "timestamp_ms": 200.0,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.6,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      },
+      {
+        "frame_index": 7,
+        "timestamp_ms": 233.333333,
+        "detections": [
+          {
+            "subject": "A",
+            "class_id": 0,
+            "score": 0.9,
+            "box": [
+              10,
+              20,
+              40,
+              80
+            ]
+          }
+        ],
+        "ambiguous": false
+      }
+    ]
+  }
+]

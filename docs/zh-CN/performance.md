@@ -18,4 +18,8 @@
 Demo导出包含已处理帧的五项实际耗时、原始timestampMs和运行信息；播放定时只用于呈现，不传浏览器墙钟给算法。同步main计算可能阻塞UI，AbortSignal只能开始前取消。
 导入结构校验是线性扫描，不为3000帧预先运行3000次关联。seek重新计算前缀，因此长序列跳到末尾可能等待。SVG仅保留最近100个结果位置绘制路径，导出仍保留本轮所有实际结果。
 
-目前仅[兼容性](compatibility.md)中环境的合成机制验证，无真实移动设备性能或MOT精度结论；不把页面帧率当作算法吞吐量。
+2026-09-19在Windows11 / i5-10400F / Chromium151.0.7922.34 headless实测：10、50、100框每档600个warm更新，totalMs p50/p95分别为1.0/1.3、5.3/8.9、11.3/14.9ms。每档3个cold新实例创建+首帧，p50约0.2/0.6/1.1ms；cold没有已有轨迹匹配，不与warm换算加速比。输入生成在计时外，不含检测模型与渲染。
+
+[桌面验收报告](../../reports/2026-09-19-desktop/README.md)提供固定输入、全部样本、分位数口径、核心commit、完整构建摘要及复跑命令。`node scripts/evaluation/verify-archive.mjs`校验固定证据并复跑公开API，`node scripts/evaluation/benchmark.mjs`另存新的性能报告。Chromium151性能与Chromium153完整Demo交互是两份不同证据，归档不是重新测量。
+
+仅限[兼容性](compatibility.md)中注明环境，无真实移动设备性能、最坏情况或MOT精度结论；不把页面帧率当作算法吞吐量。

@@ -1,0 +1,25 @@
+{
+  "testedAt": "2026-09-19T01:31:44.153Z",
+  "browser": "153.0.8010.12",
+  "platform": "win32",
+  "runtimeVersion": "web-sdk-pp-tracking@0.1.0",
+  "checks": [
+    "中文默认、英文切换不改变帧/ID/结果",
+    "单步、播放、暂停继续、重播清空轨迹和历史",
+    "四场景实际播放到末帧；低分续接和遮挡高分恢复；导出原始时间",
+    "真实键盘seek复位顺序重算，lost虚线、空分数",
+    "单帧导入/重复同文件/导出；逆序、坏JSON、超5MiB失败均保留原结果",
+    "参数错误原子性；合法参数实际生效并清空本轮",
+    "空检测序列真实空结果",
+    "390px中英文无横向溢出",
+    "Vanilla构建包单步/复位/CPU实际结果"
+  ],
+  "pageErrors": [],
+  "screenshots": [
+    "F:\\git\\00_chenmohan\\github\\web-sdk-PP-Tracking\\.tmp\\browser\\desktop.png",
+    "F:\\git\\00_chenmohan\\github\\web-sdk-PP-Tracking\\.tmp\\browser\\english.png",
+    "F:\\git\\00_chenmohan\\github\\web-sdk-PP-Tracking\\.tmp\\browser\\occlusion.png",
+    "F:\\git\\00_chenmohan\\github\\web-sdk-PP-Tracking\\.tmp\\browser\\mobile.png",
+    "F:\\git\\00_chenmohan\\github\\web-sdk-PP-Tracking\\.tmp\\browser\\vanilla.png"
+  ]
+}

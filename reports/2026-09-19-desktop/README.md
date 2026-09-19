@@ -55,6 +55,8 @@ node scripts/evaluation/benchmark.mjs --out .tmp/new-benchmark.json
 
 两个执行入口支持 `--sdk <SDK目录>`、`--out <新JSON路径>`，公开API还支持 `--input <输入JSON>`。API明确把旧输入xyxy转换为当前像素xywh，忽略subject评分真值，maxLostMs固定为5×1000/30；它不是旧参考实现逐值对照或MOT准确率。
 
+输出保护解析现有父目录的真实路径，并处理Windows大小写及symlink/junction别名；写入前重新检查，且使用排他创建。已有输出会报 `EEXIST`，再次复跑应指定新的 `--out` 文件名。归档验证器自行分配唯一临时目录，可重复执行。定向回归命令为 `node --test scripts/evaluation/check-output-path.mjs`。
+
 `verify-archive.mjs` 默认检查9份固定摘要、8个当前构建文件、源码相对测量commit没有变化、浏览器版本、样本数量/顺序/分位数，然后真实复跑10场景129次API更新并比较除timings外的完整结果。它不改写摘要、不跑性能。验证器允许 `--sdk` 和 `--archive` 定位副本；只要原始样本实质改变，即使重算统计也会被固定摘要拒绝。恶意同时编辑验证器的信任常量仍需Git审查，本工具不是外部数字签名。
 
 Task 4实际验证：上述归档校验和API复跑通过；临时副本单个warm totalMs增加100后校验退出1；新性能脚本语法检查通过且浏览器测量函数与原脚本逐字核对一致。仅文档、清单和归档工具变更，因此引用Task 3完整verify，不重复其29单测/9组浏览器或性能跑数。

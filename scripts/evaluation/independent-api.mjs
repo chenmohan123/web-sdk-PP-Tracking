@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
-import { options, sdkRoot as defaultRoot, archiveRoot } from './options.mjs';
+import { options, writeReport, sdkRoot as defaultRoot, archiveRoot } from './options.mjs';
 const args = options({ sdk: defaultRoot, input: path.join(archiveRoot, 'inputs.json'), out: path.join(defaultRoot, '.tmp/evaluation-api.json') });
 const sdkRoot = args.sdk;
 const {createTracker}=await import(pathToFileURL(sdkRoot+'/dist/index.js').href);
@@ -46,6 +46,5 @@ for(const scene of scenes){
   tracker.dispose();uninterrupted.dispose();noise.dispose();
 }
 const report={verifiedAt:new Date().toISOString(),sdkRoot,sdkCommit:execFileSync('git',['-C',sdkRoot,'rev-parse','HEAD'],{encoding:'utf8'}).trim(),entrySha256:createHash('sha256').update(await fs.readFile(sdkRoot+'/dist/index.js')).digest('hex'),inputPath,inputSha256:createHash('sha256').update(inputBytes).digest('hex'),scope:'先前原创合成序列上的独立公开API复核；不是官方逐值一致性或MOT精度',scenes:reports};
-await fs.mkdir(path.dirname(args.out), { recursive: true });
-await fs.writeFile(args.out,JSON.stringify(report,null,2)+'\n');
+await writeReport(args.out,JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({scenes:reports.length,updates:reports.reduce((n,s)=>n+s.outputs.length,0),assertions:'通过',evidence:args.out}));

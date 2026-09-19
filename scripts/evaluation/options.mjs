@@ -1,8 +1,10 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { protectOutput, writeReport as writeProtectedReport } from './output-path.mjs';
 
 export const sdkRoot = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
 export const archiveRoot = path.join(sdkRoot, 'reports/2026-09-19-desktop');
+export const writeReport = (output, content) => writeProtectedReport(output, content, archiveRoot);
 
 // 参数只控制本地输入输出；复跑结果默认写入忽略目录，不覆盖历史测量。
 export function options(defaults) {
@@ -15,8 +17,6 @@ export function options(defaults) {
     }
     result[key] = path.resolve(args[i + 1]);
   }
-  if (result.out && (result.out === archiveRoot || result.out.startsWith(archiveRoot + path.sep))) {
-    throw new Error('复跑输出不得覆盖固定历史归档，请写入 .tmp 或其他目录');
-  }
+  if (result.out) protectOutput(result.out, archiveRoot);
   return result;
 }

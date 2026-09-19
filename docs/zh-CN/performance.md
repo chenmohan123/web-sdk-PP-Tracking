@@ -23,3 +23,5 @@ Demo导出包含已处理帧的五项实际耗时、原始timestampMs和运行�
 [桌面验收报告](../../reports/2026-09-19-desktop/README.md)提供固定输入、全部样本、分位数口径、核心commit、完整构建摘要及复跑命令。`node scripts/evaluation/verify-archive.mjs`校验固定证据并复跑公开API，`node scripts/evaluation/benchmark.mjs`另存新的性能报告。Chromium151性能与Chromium153完整Demo交互是两份不同证据，归档不是重新测量。
 
 仅限[兼容性](compatibility.md)中注明环境，无真实移动设备性能、最坏情况或MOT精度结论；不把页面帧率当作算法吞吐量。
+
+输出保护解析现有父目录真实位置（含Windows大小写和symlink/junction别名），写入前重新检查，并排他创建文件。已有输出会报EEXIST，复跑请指定新的 `--out` 文件名；归档验证器自行分配唯一临时输出，可重复执行。用 `node --test scripts/evaluation/check-output-path.mjs` 验证输出保护边界。

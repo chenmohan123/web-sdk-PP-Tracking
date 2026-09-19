@@ -5,7 +5,7 @@ import os from 'node:os';
 import { createHash } from 'node:crypto';
 import { chromium } from 'playwright';
 import path from 'node:path';
-import { options, sdkRoot as defaultRoot } from './options.mjs';
+import { options, writeReport, sdkRoot as defaultRoot } from './options.mjs';
 const args = options({ sdk: defaultRoot, out: path.join(defaultRoot, '.tmp/evaluation-benchmark.json') });
 const sdkRoot = args.sdk;
 const entry=await fs.readFile(sdkRoot+'/dist/index.js');
@@ -46,7 +46,6 @@ try{
     return {userAgent:navigator.userAgent,hardwareConcurrency:navigator.hardwareConcurrency,timeOrigin:performance.timeOrigin,measurements};
   });
   const report={verifiedAt:new Date().toISOString(),browser:browser.version(),os:{platform:os.platform(),release:os.release()},cpu:os.cpus()[0].model,commit:execFileSync('git',['-C',sdkRoot,'rev-parse','HEAD'],{encoding:'utf8'}).trim(),entrySha256:createHash('sha256').update(entry).digest('hex'),scope:'Chromium headless CPU/main；原创规则网格+缓慢正弦平移，全部classId=0；30帧JIT预热，cold为新算法实例，非浏览器进程冷启动；warm每规模3×200帧；输入生成在计时范围外；不是视频精度/最坏情况/手机性能。',...result};
-  await fs.mkdir(path.dirname(args.out), { recursive: true });
-  await fs.writeFile(args.out,JSON.stringify(report,null,2)+'\n');
+  await writeReport(args.out,JSON.stringify(report,null,2)+'\n');
   console.log(JSON.stringify({browser:report.browser,cpu:report.cpu,measurements:result.measurements.map(({count,summary})=>({count,summary}))},null,2));
 }finally{if(browser)await browser.close();await new Promise(resolve=>server.close(resolve));}

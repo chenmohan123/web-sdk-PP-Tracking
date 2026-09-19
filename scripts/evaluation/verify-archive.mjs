@@ -67,7 +67,9 @@ const runnable = await fs.readFile(new URL('./benchmark.mjs', import.meta.url), 
 const measurement = text => text.replaceAll('\r\n', '\n').split('const result=await page.evaluate(async()=>{')[1].split('  const report=')[0];
 assert.ok(measurement(original));
 assert.equal(measurement(runnable), measurement(original));
-const replayPath = path.join(sdkRoot, '.tmp/evaluation-api.json');
+await fs.mkdir(path.join(sdkRoot, '.tmp'), { recursive: true });
+const replayDirectory = await fs.mkdtemp(path.join(sdkRoot, '.tmp/evaluation-api-'));
+const replayPath = path.join(replayDirectory, 'result.json');
 execFileSync(process.execPath, [path.join(sdkRoot, 'scripts/evaluation/independent-api.mjs'), '--sdk', args.sdk, '--input', path.join(args.archive, 'inputs.json'), '--out', replayPath], { stdio: 'inherit' });
 const replay = JSON.parse(await fs.readFile(replayPath, 'utf8'));
 const withoutTimings = report => report.scenes.map(scene => ({ ...scene, outputs: scene.outputs.map(({ timings, ...result }) => result) }));

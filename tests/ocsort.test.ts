@@ -9,10 +9,16 @@ const detection = (score = 0.9, x = 20, classId = 0) => ({ box: { x, y: 20, widt
 const frame = (timestampMs: number, detections = [detection()]) => ({ timestampMs, imageSize: { width: 640, height: 480 }, detections });
 const boxDetection = (x: number, y = 20, width = 40, height = 40, score = 0.9, classId = 0) => ({ box: { x, y, width, height }, score, classId });
 
-test('工厂默认 ByteTrack、OC-SORT 身份和未知算法拒绝', () => {
+test('省略算法选择器时默认 ByteTrack，合法 OC-SORT 保持原身份', () => {
   expect(createTracker({ minHits: 1 }).update(frame(0))).toMatchObject({ algorithm: 'bytetrack' });
   expect(createTracker({ algorithm: 'ocsort', minHits: 1 }).update(frame(0))).toMatchObject({ algorithm: 'ocsort' });
-  expect(() => createTracker({ algorithm: 'unknown' as never })).toThrowError(expect.objectContaining({ code: 'INVALID_OPTIONS' }));
+});
+
+test.each([
+  ['undefined', undefined], ['null', null], ['数字', 0], ['布尔值', false],
+  ['对象', {}], ['数组', []], ['未知字符串', 'unknown'],
+])('显式非法算法选择器 %s 拒绝', (_label, algorithm) => {
+  expect(() => createTracker({ algorithm } as never)).toThrowError(expect.objectContaining({ code: 'INVALID_OPTIONS' }));
 });
 
 test('省略算法与显式 ByteTrack 在多帧轨迹上保持确定等价', () => {

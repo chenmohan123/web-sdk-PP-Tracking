@@ -1,6 +1,6 @@
 # Same-input ByteTrack and OC-SORT evaluation
 
-[中文](README.md) · [Public machine summary](evaluation-summary.json)
+[中文](README.md) · [Public machine summary](evaluation-summary.json) · [Delivery status (Chinese)](交付状态.md)
 
 Date: 2026-09-19. Candidate: local `web-sdk-pp-tracking@0.2.0-alpha.0`. Decision: keep ByteTrack as the default strategy. OC-SORT reduced identity switches on these fixed training sequences, but did not provide an overall accuracy or timing improvement.
 

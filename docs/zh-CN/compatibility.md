@@ -14,8 +14,8 @@
 
 截图、浏览器版本和交互计数由 `tests/browser.mjs` 写入 `.tmp/browser/`。这是本地日期化证据，不是线上部署或跨设备兼容承诺。所有示例为合成机制，不证明真实场景MOT精度。
 
-原始JSON与完整verify日志已归档至[桌面验收目录](../../reports/2026-09-19-desktop/README.md)，截图仍在忽略目录。另一份同日Chromium151.0.7922.34 headless证据仅覆盖10/50/100框合成性能，不能用它替代153版本的9组产品交互验证。两者均为同一Windows/CPU环境、CPU/main；不存在真实手机验证。
+当前候选的[完整 verify 原始日志](../../reports/2026-09-19-ocsort/verification/task-2-verify.txt)和[10 组浏览器检查原始日志](../../reports/2026-09-19-ocsort/verification/task-2-browser-green.txt)覆盖 ByteTrack/OC-SORT；截图仍在忽略目录。`2026-09-19-desktop` 与 `2026-09-19-release-candidate` 目录只属于已发布 0.1.0 的历史证据。另一份同日 Chromium151.0.7922.34 headless 证据仅覆盖 10/50/100 框合成性能，不能替代候选 Chromium153 的 10 组产品交互验证。它们均为同一 Windows/CPU 环境、CPU/main；不存在真实手机验证。
 
-同日[真实序列报告](../../reports/2026-09-19-mot17/README.md)增加Node七段MOT17 FRCNN训练序列5316帧默认/消融及完整重复运行；Chromium153.0.8010.12的02序列600帧与Node非耗时结果逐字相同。范围仍限上述Windows桌面CPU/main；真实数据指标不扩展设备兼容性，也不构成测试集排行榜成绩。
+同日[两算法候选对比](../../reports/2026-09-19-ocsort/README.md)固定 Node 七段 MOT17 FRCNN 训练序列 5316 帧及两算法各自的 Chromium153 完整 02 序列 600 帧对齐；ByteTrack 历史默认/消融证据仍见[0.1.0 真实序列报告](../../reports/2026-09-19-mot17/README.md)。范围仍限上述 Windows 桌面 CPU/main；真实数据指标不扩展设备兼容性，也不构成测试集排行榜成绩。
 
-SDK 本地 required 检查通过仅表示 locally-compliant；离线检查器不验证远程 Rulesets、发布或托管。完整 verify 见[2026-09-19 验证记录](../../reports/2026-09-19-release-candidate/README.md)；最终[首版交付记录](../../reports/2026-09-19-release/README.md)包含公开 npm 包 ESM/CJS 实际消费、GitHub Release、治理、Pages 部署和线上 Demo 回执。线上 Demo 证据仍是同日桌面 Chromium 153 与 CPU/main，不扩展手机、Safari、Firefox、微信或其他后端兼容性。归档校验不会重新生成可信摘要，篡改样本会失败；当前构建须继续匹配测量入口 hash。各次记录独立保留，不覆盖历史桌面和 MOT17 报告。
+SDK 本地 required 检查通过仅表示 locally-compliant；离线检查器不验证远程 Rulesets、发布或托管。候选完整 verify 使用上方 `2026-09-19-ocsort/verification` 日志；[0.1.0 验证记录](../../reports/2026-09-19-release-candidate/README.md)和[首版交付记录](../../reports/2026-09-19-release/README.md)仅证明历史发布包、GitHub Release、治理、Pages 部署和线上 Demo。线上 Demo 证据仍是同日桌面 Chromium 153 与 CPU/main，不扩展手机、Safari、Firefox、微信或其他后端兼容性。历史归档校验须运行 `node scripts/evaluation/verify-archive.mjs --sdk <匹配历史提交及构建的独立目录>`；它固定旧入口 hash、不会重新生成可信摘要，故当前候选目录被拒绝是预期行为。各次记录独立保留，不覆盖历史桌面和 MOT17 报告。

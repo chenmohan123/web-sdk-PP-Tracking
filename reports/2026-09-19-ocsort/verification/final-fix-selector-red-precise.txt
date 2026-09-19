@@ -1,0 +1,48 @@
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ❯ tests/ocsort.test.ts (23 tests | 1 failed) 31ms
+   ✓ 省略算法选择器时默认 ByteTrack，合法 OC-SORT 保持原身份 4ms
+   ✓ 显式非法算法选择器 undefined 拒绝 1ms
+   × 显式非法算法选择器 null 拒绝 4ms
+     → expected function to throw an error, but it didn't
+   ✓ 显式非法算法选择器 数字 拒绝 0ms
+   ✓ 显式非法算法选择器 布尔值 拒绝 0ms
+   ✓ 显式非法算法选择器 对象 拒绝 0ms
+   ✓ 显式非法算法选择器 数组 拒绝 0ms
+   ✓ 显式非法算法选择器 未知字符串 拒绝 0ms
+   ✓ 省略算法与显式 ByteTrack 在多帧轨迹上保持确定等价 5ms
+   ✓ 两种算法的专属参数互斥，OC-SORT 不接受 ByteTrack 低分续接参数 1ms
+   ✓ OC-SORT 高分阈值可以低于 ByteTrack 默认低分阈值 0ms
+   ✓ OCM 方向差使用弧度且零运动不制造方向惩罚 0ms
+   ✓ OCM 方向分数不能越过原始 IoU 硬门限 1ms
+   ✓ OCM 在实际两轨迹方向歧义中选择各自一致的意图 3ms
+   ✓ OC-SORT 实际关联严格隔离类别 0ms
+   ✓ OCR 用最后真实观测二轮恢复，虚拟观测不增加 hits 或 score 1ms
+   ✓ OCR 只有在第一轮预测 IoU 失败后才用末次真实观测恢复 2ms
+   ✓ ORU 按实际缺失时间戳插值，缺失上限超出后结束轨迹 1ms
+   ✓ ORU 不规则重放从末次真实快照开始并只校正当前观测一次 1ms
+   ✓ OC-SORT 恢复过程中的异常保持下一帧可提交 1ms
+   ✓ 真实 ORU 故障注入后恢复函数可提交与对照相同的后续帧 4ms
+   ✓ OC-SORT 预取消、reset/dispose 和实例状态彼此隔离 1ms
+   ✓ OC-SORT 数值失败不提交时间、缺失历史或 ID 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/ocsort.test.ts > 显式非法算法选择器 null 拒绝
+AssertionError: expected function to throw an error, but it didn't
+ ❯ tests/ocsort.test.ts:21:55
+     19|   ['对象', {}], ['数组', []], ['未知字符串', 'unknown'],
+     20| ])('显式非法算法选择器 %s 拒绝', (_label, algorithm) => {
+     21|   expect(() => createTracker({ algorithm } as never)).toThrowError(exp…
+       |                                                       ^
+     22| });
+     23|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 22 passed (23)
+   Start at  18:25:18
+   Duration  717ms (transform 88ms, setup 0ms, collect 165ms, tests 31ms, environment 0ms, prepare 199ms)

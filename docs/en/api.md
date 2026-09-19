@@ -16,7 +16,7 @@ Invalid input, cancellation or numerical failures do not advance clock, tracks o
 | --- | --- | --- |
 | algorithm | bytetrack | `'bytetrack'` or `'ocsort'`; fixed when an instance is created |
 | lowScoreThreshold | 0.1 | [0,1] |
-| highScoreThreshold | 0.5 | [low,1] |
+| highScoreThreshold | 0.5 | ByteTrack: [low,1]; OC-SORT: [0,1]; both must be <= new |
 | newTrackThreshold | 0.6 | [high,1] |
 | matchIouThreshold | 0.3 | [0,1] |
 | lowMatchIouThreshold | 0.2 | [0,1] |

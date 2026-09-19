@@ -16,7 +16,7 @@
 | --- | --- | --- |
 | algorithm | bytetrack | `'bytetrack'` 或 `'ocsort'`；实例创建后固定 |
 | lowScoreThreshold | 0.1 | [0,1] |
-| highScoreThreshold | 0.5 | [low,1] |
+| highScoreThreshold | 0.5 | ByteTrack 为 [low,1]；OC-SORT 为 [0,1]；两者均须 <= new |
 | newTrackThreshold | 0.6 | [high,1] |
 | matchIouThreshold | 0.3 | [0,1] |
 | lowMatchIouThreshold | 0.2 | [0,1] |

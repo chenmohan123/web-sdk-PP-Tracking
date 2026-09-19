@@ -1,6 +1,6 @@
 # ByteTrack 与 OC-SORT 同输入评测
 
-[English](README.en.md) · [公开机器摘要](evaluation-summary.json)
+[English](README.en.md) · [公开机器摘要](evaluation-summary.json) · [交付状态](交付状态.md)
 
 日期：2026-09-19。对象：本地候选 `web-sdk-pp-tracking@0.2.0-alpha.0`。结论：继续保留 ByteTrack 为默认策略。OC-SORT 在这组固定训练序列上减少了 ID 切换，但没有形成整体精度或耗时优势。
 

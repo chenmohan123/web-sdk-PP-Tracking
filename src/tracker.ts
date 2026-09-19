@@ -29,7 +29,7 @@ function parseOptions(value: TrackerOptions): Required<TrackerOptions> {
   const fail = () => { throw new TrackingError('INVALID_OPTIONS', '跟踪参数不满足范围或阈值顺序约束'); };
   if (!record(value)) return fail();
   if (Object.keys(value).some(key => !Object.hasOwn(defaults, key))) return fail();
-  const algorithm = (value.algorithm === undefined && Object.hasOwn(value, 'algorithm') ? undefined : value.algorithm ?? defaults.algorithm) as TrackerOptions['algorithm'];
+  const algorithm = (Object.hasOwn(value, 'algorithm') ? value.algorithm : defaults.algorithm) as TrackerOptions['algorithm'];
   if (algorithm !== 'bytetrack' && algorithm !== 'ocsort') return fail();
   const byteTrackOnly = ['lowScoreThreshold', 'lowMatchIouThreshold'];
   const ocSortOnly = ['ocmWeight', 'ocmDeltaMs', 'ocmHistoryLength', 'oruMaxReplaySteps'];

@@ -1,11 +1,11 @@
 import type { Box } from './types.js';
 
 /** 门限内优先最大匹配数，再最小化 1-IoU；行列原顺序打破平局。 */
-export function assign(similarities: number[][], threshold: number): [number, number][] {
+export function assign(similarities: number[][], threshold: number, validEdge: (similarity: number, row: number, column: number) => boolean = similarity => similarity >= threshold): [number, number][] {
   const n = similarities.length, m = similarities[0]?.length ?? 0;
   if (!n || !m) return [];
   const columns = m + n, unmatched = n + 1, forbidden = (n + 1) ** 3;
-  const cost = (i: number, j: number) => j >= m ? unmatched : similarities[i][j] >= threshold ? 1 - similarities[i][j] : forbidden;
+  const cost = (i: number, j: number) => j >= m ? unmatched : validEdge(similarities[i][j], i, j) ? 1 - similarities[i][j] : forbidden;
   // 矩形匈牙利：虚拟列数量足以让每行均未匹配，真实检测也允许不被占用。
   const u = Array(n + 1).fill(0), v = Array(columns + 1).fill(0);
   const owner = Array(columns + 1).fill(0), previous = Array(columns + 1).fill(0);
@@ -34,7 +34,7 @@ export function assign(similarities: number[][], threshold: number): [number, nu
     } while (column !== 0);
   }
   const pairs: [number, number][] = [];
-  for (let j = 1; j <= m; j++) if (owner[j] !== 0 && similarities[owner[j] - 1][j - 1] >= threshold) pairs.push([owner[j] - 1, j - 1]);
+  for (let j = 1; j <= m; j++) if (owner[j] !== 0 && validEdge(similarities[owner[j] - 1][j - 1], owner[j] - 1, j - 1)) pairs.push([owner[j] - 1, j - 1]);
   return pairs.sort((a, b) => a[0] - b[0]);
 }
 

@@ -29,3 +29,16 @@ Ess、Leibe、Van Gool，Depth and Appearance for Mobile Scene Analysis，ICCV 2
 12c8791b303e0a0b50f753af204249e622d0281a；其源码与原LICENSE仅保留本地.tmp，不包含在npm包。
 工具引用：Luiten等，HOTA: A Higher Order Metric for Evaluating Multi-object Tracking，IJCV 2021。
 实际计算Identity/CLEAR，未宣称计算HOTA；第三方评分许可不替代数据使用条件。
+
+OC-SORT 思想来源：
+Jinkun Cao, Jiangmiao Pang, Xinshuo Weng, Rawal Khirodkar, Kris Kitani,
+Observation-Centric SORT: Rethinking SORT for Robust Multi-Object Tracking，
+arXiv:2203.14360v3，2023-03-16，CVPR 2023，
+https://arxiv.org/abs/2203.14360。
+论文摘要、正文第 4.1--4.2 节和附录伪代码用于推导 OCM、ORU、OCR；本项目没有
+复制或翻译 OC-SORT、SORT、DeepSORT 或 Paddle 的 Kalman/跟踪代码，不是官方移植。
+
+公开 OC-SORT 仓库 https://github.com/noahcao/OC_SORT 的 README 与 LICENSE
+（master，读取时提交 8462e7e729a93ccd3bd995c0a79a890336cb3a0b）声明 MIT
+许可。本项目不分发该仓库代码；该许可义务仅作为来源记录，不扩展本项目 Apache-2.0
+代码的许可范围。

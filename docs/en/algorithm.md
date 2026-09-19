@@ -84,3 +84,66 @@ reset clears the motion state.
 1.5 seconds cover prediction and successive corrections. Elementwise mean and
 covariance errors are below 5e-9; tests also check 500 repeated updates. Evidence
 is mathematical and synthetic only; no licensed real-video evaluation is available.
+
+## OC-SORT (local alpha)
+
+Use `createTracker({algorithm: 'ocsort'})` to select the box-input OC-SORT
+design; omitting `algorithm` keeps the existing ByteTrack-style strategy. The
+result reports the selected strategy in `algorithm`. OC-SORT uses high-score
+association only: explicit `lowScoreThreshold` or `lowMatchIouThreshold` is
+rejected with `INVALID_OPTIONS`. The shared high-score, new-track, IoU,
+lifecycle and capacity options remain available.
+
+The fixed source is Jinkun Cao, Jiangmiao Pang, Xinshuo Weng, Rawal Khirodkar
+and Kris Kitani, [Observation-Centric SORT: Rethinking SORT for Robust
+Multi-Object Tracking](https://arxiv.org/abs/2203.14360), arXiv
+`2203.14360v3`, updated 2023-03-16 and accepted at CVPR 2023. Its abstract
+describes virtual observation trajectories during occlusion to correct filter
+error; sections 4.1-4.2 and the appendix pseudocode define ORU, OCM and OCR.
+This SDK did not read or translate old SORT, DeepSORT, Paddle or OC-SORT
+Kalman/tracker implementations. It is an independent implementation, not an
+official port or value-for-value reproduction.
+
+### OCM, OCR and ORU
+
+For a track `i` and detection `j`, the class must match and the raw
+`IoU(i,j) >= tau` gate is checked first. Direction scoring cannot bypass that
+gate. The paper's direction consistency is represented as:
+
+`score(i,j) = IoU(i,j) - lambda * DeltaTheta(i,j) / pi`
+
+`DeltaTheta` is the minimum angular difference in radians between the historical
+observation direction and the current intention direction. Directions use
+`atan2(DeltaY, DeltaX)` between real observation centers; zero displacement has
+zero penalty. The defaults are `ocmWeight=lambda=0.2` and
+`ocmDeltaMs=300` milliseconds. The direction pair prefers two real observations
+at least that far apart. Real observation history is bounded by
+`ocmHistoryLength=30` (range 2-120). These are SDK milliseconds, unlike the
+paper's fixed frame interval.
+
+After the first high-score association, OCR performs a second IoU association
+between unmatched tracks and remaining high-score detections. It uses each
+track's last real observation and still applies the class and
+`matchIouThreshold` hard gates. This handles a short stop or return from
+occlusion.
+
+When a lost track is reactivated by either association, ORU restores the filter
+snapshot saved after its last real observation. It replays only the actual
+timestamps of missing updates, applying prediction and correction at each
+linearly interpolated virtual box:
+
+`z~(t) = z_last + (t - t_last) / (t_now - t_last) * (z_now - z_last)`
+
+Virtual boxes do not increment `hits`, enter real observation history or update
+`score`; the current real observation is corrected once and increments the real
+hit once. Replay is bounded by `oruMaxReplaySteps=30` (range 1-60). A track that
+exceeds the bound ends in that transaction, preventing unbounded history or
+loops. A failed or pre-cancelled update commits none of the clock, IDs, filter,
+observation history or missing timestamps.
+
+OC-SORT reuses this project's independent eight-dimensional `cx/cy/w/h`
+constant-velocity filter, second-based `dt`, class isolation and lifecycle. The
+paper uses a seven-dimensional state and frame intervals, so this implementation
+documents mechanism correspondence without claiming official value compatibility
+or MOT metrics. CPU/main, reset, dispose, instance isolation and synchronous
+cancellation semantics match the original strategy.

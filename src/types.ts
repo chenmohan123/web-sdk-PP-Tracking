@@ -5,7 +5,9 @@ export interface TrackingFrame {
   imageSize: { width: number; height: number };
   detections: Detection[];
 }
+export type TrackerAlgorithm = 'bytetrack' | 'ocsort';
 export interface TrackerOptions {
+  algorithm?: TrackerAlgorithm;
   lowScoreThreshold?: number;
   highScoreThreshold?: number;
   newTrackThreshold?: number;
@@ -16,6 +18,10 @@ export interface TrackerOptions {
   largeGapMs?: number;
   maxDetections?: number;
   maxTracks?: number;
+  ocmWeight?: number;
+  ocmDeltaMs?: number;
+  ocmHistoryLength?: number;
+  oruMaxReplaySteps?: number;
 }
 export type TrackState = 'tentative' | 'tracked' | 'lost';
 export interface Track {
@@ -31,7 +37,7 @@ export interface TrackingTimings {
   validationMs: number; predictionMs: number; associationMs: number; updateMs: number; totalMs: number;
 }
 export interface TrackingResult {
-  generation: number; timestampMs: number; tracks: Track[]; removed: RemovedTrack[];
+  generation: number; algorithm: TrackerAlgorithm; timestampMs: number; tracks: Track[]; removed: RemovedTrack[];
   droppedDetections: number; runtime: RuntimeInfo; timings: TrackingTimings;
 }
 export interface UpdateOptions { signal?: AbortSignal }

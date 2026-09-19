@@ -1,0 +1,6 @@
+命令：
+pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false exec vitest run tests/ocsort.test.ts
+
+阶段：先写测试、实现前。
+结果：退出码 1；测试收集失败，Vitest 报 `Cannot find module '../src/ocsort'`。
+该失败证明 OC-SORT 数学模块和工厂分支尚未存在，随后才开始实现。

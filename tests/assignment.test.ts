@@ -40,6 +40,11 @@ test('相同框 IoU 严格为1，非相同框不能越过1门限', () => {
   expect(assign([[iou(box, { ...box, x: 100.000001 })]], 1)).toEqual([]);
 });
 
+test('负方向分数仍优先保留最大可行匹配数', () => {
+  const valid = (value: number, row: number, column: number) => !(row === 1 && column === 1) && value > -Infinity;
+  expect(assign([[1, -0.9], [-0.9, -1]], 0, valid)).toEqual([[0, 1], [1, 0]]);
+});
+
 test('IoU 使用相对位置，保持大坐标精度并避免面积溢出', () => {
   const translated = { x: 1e15, y: 1e15, width: 20, height: 20 };
   expect(iou(translated, { ...translated })).toBe(1);

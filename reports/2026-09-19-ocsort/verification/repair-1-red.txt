@@ -1,0 +1,12 @@
+修复轮 1 红阶段（基线 f022d41）：
+
+命令：
+pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false exec vitest run tests/assignment.test.ts tests/ocsort.test.ts --reporter=verbose
+
+结果：退出码 1。
+- `负方向分数仍优先保留最大可行匹配数` 失败：实际 `[[0,0]]`，预期
+  `[[0,1],[1,0]]`。
+- `OC-SORT 高分阈值可以低于 ByteTrack 默认低分阈值` 失败：抛出
+  `INVALID_OPTIONS`。
+- 新增 OCR 第一轮失败、ORU 独立数值断言在修复前也未满足，随后按根因补充并校准
+  固定场景；没有把测试名称当作覆盖证明。

@@ -4,7 +4,13 @@ import type { Box } from './types.js';
 export function assign(similarities: number[][], threshold: number, validEdge: (similarity: number, row: number, column: number) => boolean = similarity => similarity >= threshold): [number, number][] {
   const n = similarities.length, m = similarities[0]?.length ?? 0;
   if (!n || !m) return [];
-  const columns = m + n, unmatched = n + 1, forbidden = (n + 1) ** 3;
+  const columns = m + n;
+  let maxValidCost = 1;
+  for (let i = 0; i < n; i++) for (let j = 0; j < m; j++) {
+    if (validEdge(similarities[i][j], i, j)) maxValidCost = Math.max(maxValidCost, 1 - similarities[i][j]);
+  }
+  const unmatched = maxValidCost <= 1 ? n + 1 : (n + 1) * maxValidCost + 1;
+  const forbidden = (n + 1) * unmatched + 1;
   const cost = (i: number, j: number) => j >= m ? unmatched : validEdge(similarities[i][j], i, j) ? 1 - similarities[i][j] : forbidden;
   // 矩形匈牙利：虚拟列数量足以让每行均未匹配，真实检测也允许不被占用。
   const u = Array(n + 1).fill(0), v = Array(columns + 1).fill(0);

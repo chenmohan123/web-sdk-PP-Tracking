@@ -37,7 +37,7 @@ function parseOptions(value: TrackerOptions): Required<TrackerOptions> {
   if (algorithm === 'bytetrack' && ocSortOnly.some(key => Object.hasOwn(value, key))) return fail();
   const options: Required<TrackerOptions> = { ...defaults, ...value, algorithm } as Required<TrackerOptions>;
   for (const key of ['lowScoreThreshold', 'highScoreThreshold', 'newTrackThreshold', 'matchIouThreshold', 'lowMatchIouThreshold'] as const) if (!probability(options[key])) return fail();
-  if (options.highScoreThreshold < options.lowScoreThreshold || options.newTrackThreshold < options.highScoreThreshold) return fail();
+  if ((algorithm === 'bytetrack' && options.highScoreThreshold < options.lowScoreThreshold) || options.newTrackThreshold < options.highScoreThreshold) return fail();
   for (const key of ['minHits', 'maxDetections', 'maxTracks'] as const) if (!Number.isSafeInteger(options[key]) || options[key] < 1 || options[key] > (key === 'minHits' ? 100 : 500)) return fail();
   if (!positive(options.maxLostMs) || !positive(options.largeGapMs) || options.largeGapMs < options.maxLostMs) return fail();
   if (!probability(options.ocmWeight) || !finite(options.ocmDeltaMs) || options.ocmDeltaMs < 1 || options.ocmDeltaMs > 10000) return fail();

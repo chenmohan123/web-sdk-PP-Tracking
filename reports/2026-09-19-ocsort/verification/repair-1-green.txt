@@ -1,0 +1,46 @@
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ✓ tests/assignment.test.ts > 全局分配避免最高 IoU 贪心占用另一轨迹唯一候选 2ms
+ ✓ tests/assignment.test.ts > 门限必须进入优化，不能先分配再过滤 0ms
+ ✓ tests/assignment.test.ts > 矩形、空候选、无有效边与相等代价保持确定 0ms
+ ✓ tests/assignment.test.ts > 729 个小矩阵的匹配数量与总 IoU 等于独立穷举最优值 58ms
+ ✓ tests/assignment.test.ts > 相同框 IoU 严格为1，非相同框不能越过1门限 1ms
+ ✓ tests/assignment.test.ts > 负方向分数仍优先保留最大可行匹配数 1ms
+ ✓ tests/assignment.test.ts > IoU 使用相对位置，保持大坐标精度并避免面积溢出 0ms
+ ✓ tests/ocsort.test.ts > 工厂默认 ByteTrack、OC-SORT 身份和未知算法拒绝 7ms
+ ✓ tests/ocsort.test.ts > 省略算法与显式 ByteTrack 在多帧轨迹上保持确定等价 7ms
+ ✓ tests/ocsort.test.ts > 两种算法的专属参数互斥，OC-SORT 不接受 ByteTrack 低分续接参数 2ms
+ ✓ tests/ocsort.test.ts > OC-SORT 高分阈值可以低于 ByteTrack 默认低分阈值 0ms
+ ✓ tests/ocsort.test.ts > OCM 方向差使用弧度且零运动不制造方向惩罚 1ms
+ ✓ tests/ocsort.test.ts > OCM 方向分数不能越过原始 IoU 硬门限 3ms
+ ✓ tests/ocsort.test.ts > OCM 在实际两轨迹方向歧义中选择各自一致的意图 3ms
+ ✓ tests/ocsort.test.ts > OC-SORT 实际关联严格隔离类别 1ms
+ ✓ tests/ocsort.test.ts > OCR 用最后真实观测二轮恢复，虚拟观测不增加 hits 或 score 2ms
+ ✓ tests/ocsort.test.ts > OCR 只有在第一轮预测 IoU 失败后才用末次真实观测恢复 4ms
+ ✓ tests/ocsort.test.ts > ORU 按实际缺失时间戳插值，缺失上限超出后结束轨迹 1ms
+ ✓ tests/ocsort.test.ts > ORU 不规则重放从末次真实快照开始并只校正当前观测一次 2ms
+ ✓ tests/ocsort.test.ts > OC-SORT 恢复过程中的异常保持下一帧可提交 2ms
+ ✓ tests/ocsort.test.ts > OC-SORT 预取消、reset/dispose 和实例状态彼此隔离 3ms
+ ✓ tests/ocsort.test.ts > OC-SORT 数值失败不提交时间、缺失历史或 ID 2ms
+ ✓ tests/tracker.test.ts > 实例私有 ID、reset 代次与严格时间戳 9ms
+ ✓ tests/tracker.test.ts > tentative 连续命中确认，失配只报告一次移除 6ms
+ ✓ tests/tracker.test.ts > tracked 可低分连续恢复，lost 不允许低分恢复 3ms
+ ✓ tests/tracker.test.ts > 超时在匹配前移除，等于上限仍可恢复 3ms
+ ✓ tests/tracker.test.ts > 大间隔直接移除且不复用同代 ID 1ms
+ ✓ tests/tracker.test.ts > 类别严格隔离且容量不足不驱逐原轨迹 1ms
+ ✓ tests/tracker.test.ts > 低分不创建，high 与 new 边界包含等号 2ms
+ ✓ tests/tracker.test.ts > 配置非法值稳定拒绝 2ms
+ ✓ tests/tracker.test.ts > 所有非法输入失败不推进时钟或 ID 2ms
+ ✓ tests/tracker.test.ts > 输入、结果及 runtime 均与内部状态引用隔离 1ms
+ ✓ tests/tracker.test.ts > 数值失败不提交时钟、轨迹或 ID，随后正常帧仍可继续 1ms
+ ✓ tests/tracker.test.ts > tentative 不使用低分确认，低于 low 的观测不能维持 tracked 1ms
+ ✓ tests/tracker.test.ts > 图像边界框合法、500容量可接收，超限整帧拒绝 20ms
+ ✓ tests/tracker.test.ts > 开始前取消不改变状态，释放幂等并稳定拒绝后续操作 1ms
+ ✓ tests/tracker.test.ts > 结果准确声明 CPU/main 与五项非负有限耗时 3ms
+ ✓ tests/tracker.test.ts > IoU门限1保留相同框ID，但不会关联不同框 3ms
+
+ Test Files  3 passed (3)
+      Tests  38 passed (38)
+   Start at  16:28:38
+   Duration  813ms (transform 163ms, setup 0ms, collect 455ms, tests 166ms, environment 1ms, prepare 702ms)

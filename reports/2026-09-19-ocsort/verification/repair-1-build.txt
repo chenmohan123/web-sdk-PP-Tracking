@@ -1,0 +1,2 @@
+$ node scripts/build.mjs
+ESM、CommonJS 与类型声明构建完成。

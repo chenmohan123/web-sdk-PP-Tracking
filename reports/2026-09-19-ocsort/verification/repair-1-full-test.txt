@@ -1,0 +1,23 @@
+$ vitest run
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 已有版本不发布，新版本发布后核验，真实发布错误不吞掉
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+npm OIDC 发布完成且完整性一致。
+
+ ✓ tests/release.test.ts (5 tests) 24ms
+ ✓ tests/assignment.test.ts (7 tests) 106ms
+ ✓ tests/ocsort.test.ts (15 tests) 38ms
+ ✓ tests/demo.test.ts (5 tests) 33ms
+ ✓ tests/tracker.test.ts (16 tests) 51ms
+ ✓ tests/mot17-adapter.test.ts (12 tests) 19ms
+ ✓ tests/kalman.test.ts (2 tests) 734ms
+   ✓ 长期重复更新协方差有限、对称，尺寸保持正数  711ms
+ ✓ tests/mot17-cli.test.ts (4 tests) 1491ms
+   ✓ 真实评测 CLI 输出保护 > 所有下载和自动源码目标先验检查：拒绝报告树、外部、junction及已有目标，且不创建运行目录  904ms
+
+ Test Files  8 passed (8)
+      Tests  66 passed (66)
+   Start at  16:29:34
+   Duration  2.29s (transform 536ms, setup 0ms, collect 1.45s, tests 2.49s, environment 3ms, prepare 2.57s)

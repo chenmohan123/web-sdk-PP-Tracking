@@ -20,6 +20,8 @@ The same package now provides ByteTrack (default), OC-SORT and external-vector D
 
 The [first full attempt](verify-attempt-1-failed.txt) failed with TS6142 because a unit test imported the React page from a root configuration without JSX support. The pure parameter conversion moved into the data module; the final full run passed. The log's npm OIDC success text comes from the existing mocked release.test.ts scenario, not an actual publication.
 
+Task review led to fix `5b7c714`: sample switching uses applied options and no longer silently applies draft parameters. The [regression RED](task-2-fix-1-red.txt) reproduced `0.9 !== 0.2`; after the fix, [Demo type checking/build](task-2-fix-1-typecheck-build.txt) and [11 browser GREEN checks](task-2-fix-1-browser-green.txt) passed, also covering switching a custom feature space back to the built-in synthetic space. This patch changes only the Demo and tests; runtime builds and the tarball remain unchanged. Original full verification and preview records are preserved.
+
 `sdk-check-before.txt` was taken before Task2 and already includes core `28cb83a`; the portal's whole-stage baseline is `1982e87`. The coordinator separately ran the whole-stage after check.
 
 ## Fixed build and screenshots

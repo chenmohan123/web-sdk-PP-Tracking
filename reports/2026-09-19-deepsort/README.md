@@ -20,6 +20,8 @@
 
 完整验证的[首次失败](verify-attempt-1-failed.txt)是测试从不支持 JSX 的根配置导入 React 页面导致 TS6142；已将纯参数转换逻辑移到数据模块，最终完整运行通过。日志中“npm OIDC 发布完成”是既有 release.test.ts 的模拟场景输出，并非真实发布。
 
+任务审查后另有修复 `5b7c714`：切换样例使用已生效配置，不再静默应用参数草稿。[回归 RED](task-2-fix-1-red.txt)复现 `0.9 !== 0.2`；修复后 [Demo 类型检查/构建](task-2-fix-1-typecheck-build.txt)及[11组浏览器 GREEN](task-2-fix-1-browser-green.txt)通过，同时覆盖自定义空间切回内置合成空间。该补丁只修改 Demo 和测试，核心构建和 tarball 不变；原始完整验证与预览记录不改写。
+
 `sdk-check-before.txt` 是 Task 2 开始前检查，已经包含核心 `28cb83a`；它不等同门户保存的整个阶段修改前 `1982e87` 基线。完整阶段修改后检查由协调者单独执行。
 
 ## 固定构建与截图

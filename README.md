@@ -52,7 +52,7 @@ manifest 与 package 元数据使用相同项目地址。
 
 默认省略 `algorithm` 时使用 ByteTrack；`createTracker({ algorithm: 'ocsort' })` 选择 OC-SORT。低分检测仅由 ByteTrack 用于第二阶段关联；OC-SORT 不接受 `lowScoreThreshold` 或 `lowMatchIouThreshold`。两种结果均报告实际 `algorithm`。seek 必须先 reset 再顺序重放。
 轨迹 ID 只在同一实例同一代次内有效，不是个人身份；无 ReID，不保证交叉/掉头时 ID 正确。
-2026-09-19 固定 MOT17 七段 FRCNN 训练序列 5316 帧，默认 IDF1 **48.2922%**、IDSW **1101**、MOTA **44.4010%**、FP **4169**、FN **57166**。low=high 消融 IDF1 48.3465%、IDSW 1066、MOTA 44.3405%、FP 3785、FN 57653。低分续接减少漏检但增加误检和切 ID，不承诺普遍改善精度。这不是测试集排行榜、官方 ByteTrack 复现或视频端到端评测；来源、许可边界、评分器与逐段结果见[真实序列报告](reports/2026-09-19-mot17/README.md)。
+2026-09-19 固定 MOT17 七段 FRCNN 训练序列 5316 帧同输入评测：ByteTrack IDF1 **48.2922%**、IDSW **1101**、MOTA **44.4010%**、FP **4169**、FN **57166**；OC-SORT 为 **48.4107%**、**881**、**39.5434%**、**6751**、**60259**。OC-SORT 减少 220 次 ID 切换且 IDF1 略增，但 MOTA 下降 4.8577 个百分点，误检/漏检增加，Node 跟踪累计耗时也高 8.19%，因此仍以 ByteTrack 为默认。候选 ByteTrack 七份 MOT 输出与 0.1.0 历史基线逐字节一致；两算法各重复确定性，并分别在 Chromium 153 完整对齐 600 帧 Node 输出。详见[候选对比报告](reports/2026-09-19-ocsort/README.md)；这不是测试集排行榜、官方算法复现、视频端到端或跨设备评测。
 
 ## 验证与发布准备
 

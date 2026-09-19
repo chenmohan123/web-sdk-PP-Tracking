@@ -83,7 +83,7 @@ reset clears the motion state.
 `solve` for the gain, unlike production elimination. dt values 0.1, 0.2, 0.05 and
 1.5 seconds cover prediction and successive corrections. Elementwise mean and
 covariance errors are below 5e-9; tests also check 500 repeated updates. Evidence
-is mathematical and synthetic only; no licensed real-video evaluation is available.
+is mathematical and synthetic only. A separate fixed MOT17 FRCNN training-sequence evaluation repeats ByteTrack and OC-SORT on the same 5316 detection frames; the [candidate comparison](../../reports/2026-09-19-ocsort/README.en.md) records metrics, input/output hashes, pinned TrackEval identity and limits. It is not a licensed end-to-end real-video evaluation, a test-set leaderboard result or an official algorithm reproduction.
 
 ## OC-SORT (local alpha)
 

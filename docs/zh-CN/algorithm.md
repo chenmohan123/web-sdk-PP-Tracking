@@ -67,7 +67,7 @@ cold 指新实例首帧，warm 指复用实例，reset 清除运动状态。
 `scripts/generate-math-reference.py` 用独立 NumPy 矩阵运算生成 fixture，使用 `solve` 求 K，
 与生产消元实现不同。dt 为0.1、0.2、0.05、1.5秒，覆盖纯预测与连续修正。
 测试逐元素均值/协方差绝对差小于5e-9，并做500轮稳定性检查。
-这里只验证数学与原创合成机制；尚无授权真实视频序列评测，不报告 MOT 指标。
+数学 fixture 仍只验证公式与原创合成机制。另有不含图像媒体的固定 MOT17 FRCNN 训练序列评测：ByteTrack 与 OC-SORT 在相同 5316 帧检测输入上分别重复运行，指标、输入/输出 SHA、固定 TrackEval 身份和限制见[候选对比报告](../../reports/2026-09-19-ocsort/README.md)。它不是授权真实视频端到端评测、测试集排行榜或官方算法复现。
 
 ## OC-SORT（本地 alpha）
 

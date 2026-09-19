@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "testedAt": "2026-09-19T09:51:02.993Z",
+  "scope": "MOT17 七段 FRCNN 训练序列，同输入 ByteTrack/OC-SORT 本地候选比较",
+  "source": {
+    "package": "web-sdk-pp-tracking@0.2.0-alpha.0",
+    "commit": "c036be8a5775c879e9062ba41e5b114460c6b16e",
+    "sourceClean": true,
+    "entrySha256": "7b5b1bfd715ea0541bc6dba7416589729bbe10af6ebdb280a95ab967ef20a7ea"
+  },
+  "input": {
+    "archiveBytes": 10107022,
+    "archiveSha256": "0aa79322e91583369f42f17c4d79a0b145380d8732487bba59272048dc82b2b9",
+    "frames": 5316,
+    "sequences": 7
+  },
+  "scorer": {
+    "name": "TrackEval MotChallenge2DBox Identity/CLEAR",
+    "commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+    "licenseSha256": "e7d2399dd1ce12eb5f5bb555f708bb0fdc1a95c1490cdb85b2f755b1a6b32019",
+    "doPreproc": true,
+    "class": "pedestrian",
+    "iouThreshold": 0.5,
+    "python": "3.11.15",
+    "numpy": "1.23.5",
+    "scipy": "1.10.1"
+  },
+  "environment": {
+    "node": "v24.16.0",
+    "os": "Windows 10.0.26200 x64",
+    "cpu": "Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz",
+    "actualBackend": "cpu",
+    "executionMode": "main",
+    "chromium": "153.0.8010.12",
+    "playwright": "1.63.0"
+  },
+  "configurations": {
+    "bytetrack": {
+      "algorithm": "bytetrack",
+      "lowScoreThreshold": 0.1,
+      "highScoreThreshold": 0.5,
+      "newTrackThreshold": 0.6,
+      "minHits": 2,
+      "matchIouThreshold": 0.3,
+      "lowMatchIouThreshold": 0.2,
+      "maxLostMs": 1000,
+      "largeGapMs": 2000,
+      "maxDetections": 100,
+      "maxTracks": 200
+    },
+    "ocsort": {
+      "algorithm": "ocsort",
+      "highScoreThreshold": 0.5,
+      "newTrackThreshold": 0.6,
+      "minHits": 2,
+      "matchIouThreshold": 0.3,
+      "maxLostMs": 1000,
+      "largeGapMs": 2000,
+      "maxDetections": 100,
+      "maxTracks": 200,
+      "privateDefaults": {
+        "ocmWeight": 0.2,
+        "ocmDeltaMs": 300,
+        "ocmHistoryLength": 30,
+        "oruMaxReplaySteps": 30
+      }
+    }
+  },
+  "combined": {
+    "bytetrack": {
+      "IDF1": 0.48292219560948035,
+      "IDSW": 1101,
+      "MOTA": 0.4440100804117652,
+      "FP": 4169,
+      "FN": 57166,
+      "sdkTotalMs": 8566.915899999982,
+      "driverElapsedMs": 8925.180700000004,
+      "cpuMs": 9580,
+      "maxTracks": 52,
+      "droppedDetections": 0
+    },
+    "ocsort": {
+      "IDF1": 0.4841074079702606,
+      "IDSW": 881,
+      "MOTA": 0.3954335378505214,
+      "FP": 6751,
+      "FN": 60259,
+      "sdkTotalMs": 9268.917000000001,
+      "driverElapsedMs": 9617.2483,
+      "cpuMs": 10033,
+      "maxTracks": 47,
+      "droppedDetections": 0
+    },
+    "ocsortMinusBytetrack": {
+      "IDF1PercentagePoints": 0.118521236078023,
+      "IDSW": -220,
+      "MOTAPercentagePoints": -4.857654256124383,
+      "FP": 2582,
+      "FN": 3093,
+      "sdkTotalPercent": 8.194327
+    }
+  },
+  "sequences": {
+    "MOT17-02-FRCNN": {
+      "frames": 600,
+      "framesSha256": "50665f436f848a4d4757e263be5353bb677e281f87dba2c65417a5a1c00071cc",
+      "bytetrack": { "IDF1": 0.39450606655187603, "IDSW": 56, "MOTA": 0.32172649480652277, "FP": 179, "FN": 12368, "motSha256": "4863a9877c6ea36685af524db63cc2db5bf3fbd4e637e01e1670935767a271c1" },
+      "ocsort": { "IDF1": 0.400707793774632, "IDSW": 57, "MOTA": 0.3173133846402239, "FP": 166, "FN": 12462, "motSha256": "b1ef6fcdd35cab4a64891212a1dbb0109299d38b874bc169972ae18cea64bac8" }
+    },
+    "MOT17-04-FRCNN": {
+      "frames": 1050,
+      "framesSha256": "61ce24cb7ba2656b6c1099c4f8c075f02afa8198b00a8a3d80fabda47d902d12",
+      "bytetrack": { "IDF1": 0.6169159655844776, "IDSW": 42, "MOTA": 0.5297642828605673, "FP": 273, "FN": 22048, "motSha256": "c7f8871cd98e41a39908e5719f454289e6228bbcf9fe44fb1c18ab0f3606ae10" },
+      "ocsort": { "IDF1": 0.6134991119005329, "IDSW": 43, "MOTA": 0.5269886662321004, "FP": 264, "FN": 22188, "motSha256": "61dcd121792c85daaf59a6a9e592d905d35e18069c2cd13d48856c527521d412" }
+    },
+    "MOT17-05-FRCNN": {
+      "frames": 837,
+      "framesSha256": "d30ab5c82df53124376a2c7b01bcdfb07f1d16bea663b7a8b67845f722195549",
+      "bytetrack": { "IDF1": 0.5013938287032587, "IDSW": 83, "MOTA": 0.4376174642185919, "FP": 188, "FN": 3619, "motSha256": "2a1880c6ade5ac7ae496ce9e3aa6eaee307fe10f443a40e5a764364f61997e21" },
+      "ocsort": { "IDF1": 0.498162120332753, "IDSW": 63, "MOTA": 0.3998843429232326, "FP": 296, "FN": 3792, "motSha256": "ef3460605c8be6f6f127b4dac48a630c9840f4ae1de54409f9277ef97fd8169a" }
+    },
+    "MOT17-09-FRCNN": {
+      "frames": 525,
+      "framesSha256": "804736b127bac917d3d3b9795b667272f8641a165f3b93b209b90faf8ac49526",
+      "bytetrack": { "IDF1": 0.4875513657239546, "IDSW": 44, "MOTA": 0.4824413145539906, "FP": 168, "FN": 2544, "motSha256": "8231a4de27e18590f7ae83c2e4e384b7ae52c2a5d2aa5e7e96c6bdd6fd1eb4ee" },
+      "ocsort": { "IDF1": 0.5060679611650486, "IDSW": 29, "MOTA": 0.40901408450704224, "FP": 354, "FN": 2764, "motSha256": "e4ec6dfddd899095fcdd588ec1b0a9a0abd3f6990a09db787f70e04c79603721" }
+    },
+    "MOT17-10-FRCNN": {
+      "frames": 654,
+      "framesSha256": "9256723957438c1e99693e2ca379af529bcd9be82d50d6108796ebdd7ad7f772",
+      "bytetrack": { "IDF1": 0.2276843467011643, "IDSW": 428, "MOTA": 0.36825297920398786, "FP": 1438, "FN": 6245, "motSha256": "3ee2abe756d7c6e67986a5b07736516e3d8c9d19e03f209d2302f4aae1db7b78" },
+      "ocsort": { "IDF1": 0.2549263439831643, "IDSW": 310, "MOTA": 0.19619908092530572, "FP": 2620, "FN": 7390, "motSha256": "70b0e42ff3547cdc9ced2ac84d8b77b0b084d3126684d66c37a022d258e87d0f" }
+    },
+    "MOT17-11-FRCNN": {
+      "frames": 900,
+      "framesSha256": "51072a325810713aa83f29d0670ab8ebd9e9dc18455936fb89793b8abd352526",
+      "bytetrack": { "IDF1": 0.5040424121935057, "IDSW": 77, "MOTA": 0.4649215769393811, "FP": 595, "FN": 4377, "motSha256": "b10c01ad2cdba47c781c36b99254c422d2d3d2eff34d1f8055c7e21f6be63793" },
+      "ocsort": { "IDF1": 0.5091587291014454, "IDSW": 57, "MOTA": 0.40546841882153456, "FP": 847, "FN": 4706, "motSha256": "8511183f1f7046f9001b5f52fd328b5d529bc789a1376ccfdf35985aeec7c75a" }
+    },
+    "MOT17-13-FRCNN": {
+      "frames": 750,
+      "framesSha256": "53f21eeead170904e03cce0caaa756319438d7bcdbb86c22a22a427db588f621",
+      "bytetrack": { "IDF1": 0.330562556979675, "IDSW": 371, "MOTA": 0.3416938670331558, "FP": 1328, "FN": 5965, "motSha256": "a3b72d4d821b8d695c8dfaee5df296af9dee5a4f1f77bf6eacb0ce26c0e0467c" },
+      "ocsort": { "IDF1": 0.3056499919054557, "IDSW": 322, "MOTA": 0.18544923552654183, "FP": 2204, "FN": 6957, "motSha256": "9187bb21b79c209a71c28afaf13c401d49b00c855f393faf31b013b44e6467a5" }
+    }
+  },
+  "browser": {
+    "sequence": "MOT17-02-FRCNN",
+    "framesPerAlgorithm": 600,
+    "bytetrackNodeEqual": true,
+    "ocsortNodeEqual": true,
+    "bytetrackNonTimingSha256": "b3013e309fdab10a191afd6f3bc328c02a6380d560089a2f95b0510c2b80cc7f",
+    "ocsortNonTimingSha256": "2853fa1b050ea664e64dd48972376b5765d722a86e0229319a1c1aa16336ea7f"
+  },
+  "scripts": {
+    "adapter.mjs": "4752633b663f42a144bb8d8f52bb8bf5861e4d42bc6764c9f7f4eca4725bba21",
+    "configurations.mjs": "154fc6c4ba5befa1e3d6d485db092b6cb5e82208c17820619f54775cfc503703",
+    "execute.mjs": "389ce7a2f3315b3f34441a9751692b89071dc92e29bf949c652a0dd449378012",
+    "evaluator.py": "b86269b667c7f66c70bfded979cfd05e724294fb8dee15757190f2ffbc1fc360",
+    "run.mjs": "32eede60576d3bc7927a01c1382441be21ebd44f708f9cb8dfb50a59ef00c4d7",
+    "lock.json": "9e88d9f2bca4e7a275a473c65709511484d1cd5c20a4b78f5f62b8ddd2d74495"
+  },
+  "determinism": {
+    "allSequenceAlgorithmPairsRepeated": true,
+    "pairs": 14,
+    "bytetrackBaselineMetricsEqual": true,
+    "bytetrackMotFilesByteEqual": 7
+  },
+  "artifacts": {
+    "rawSummarySha256": "cec4a61875ba68edb2103addf14da3a20fdbf94c5bdf3e1f524c9759219a32e3",
+    "rawMetricsSha256": "f9f0f117f2851921a344c8a167b1e53555c6d705229f8b14f48b9b6dd506d5bf",
+    "historicalSummarySha256": "a8aad88094132d28d9a17d9c75ec8e9ece3b792418deba7a0c0f333e9de1b52d"
+  }
+}

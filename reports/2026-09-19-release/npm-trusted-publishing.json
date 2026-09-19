@@ -1,0 +1,31 @@
+{
+  "verifiedAt": "2026-09-19T05:48:31.068Z",
+  "status": "configured",
+  "package": "web-sdk-pp-tracking",
+  "verificationMethod": "npm 官方 CLI 创建配置的成功响应，逐项校验固定发布绑定。",
+  "httpStatus": 201,
+  "configurations": [
+    {
+      "id": "da2f97a7-680c-4041-b902-26c74f639a3c",
+      "type": "github",
+      "claims": {
+        "repository": "chenmohan123/web-sdk-PP-Tracking",
+        "workflow_ref": {
+          "file": "release.yml"
+        },
+        "environment": "npm"
+      },
+      "permissions": [
+        "createPackage",
+        "createStagedPackage"
+      ]
+    }
+  ],
+  "requestedPermissions": [
+    "createPackage"
+  ],
+  "independentGetPerformed": false,
+  "cliSchemaVersion": "12.0.2",
+  "oidcPublicationVerified": false,
+  "boundary": "配置回执证明发布绑定已保存；实际新版本 OIDC 发布另行核验。"
+}

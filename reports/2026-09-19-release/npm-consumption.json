@@ -1,0 +1,19 @@
+{
+  "verifiedAt": "2026-09-19T05:48:43.255Z",
+  "package": "web-sdk-pp-tracking",
+  "version": "0.1.0",
+  "registry": "https://registry.npmjs.org",
+  "tarball": "https://registry.npmjs.org/web-sdk-pp-tracking/-/web-sdk-pp-tracking-0.1.0.tgz",
+  "integrity": "sha512-0ujJfrcXoDcynzIUYQRI7pcETWT1x2t4LkEqB1D2cGQrnT8JCfk9LNrEZwAIDnBh1TLILcPmOaUbCDxsjE+tTQ==",
+  "bytes": 16541,
+  "localCandidateMatched": true,
+  "checks": [
+    "发行包 ESM 导入",
+    "发行包 CommonJS 导入",
+    "连续帧 ID 保持",
+    "真实 CPU/main 后端",
+    "reset 世代变化",
+    "dispose 后拒绝调用"
+  ],
+  "provenance": null
+}

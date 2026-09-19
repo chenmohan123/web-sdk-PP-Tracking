@@ -126,7 +126,7 @@ export function App() {
     const request = ++importRequest.current;
     setPlaying(false); setReading(true);
     try {
-      const prepared = await prepareSequence({ featureSpace: SYNTHETIC_FEATURE_SPACE, frames: samples[next] }, algorithm, optionsFrom(algorithm, parameters, SYNTHETIC_FEATURE_SPACE));
+      const prepared = await prepareSequence({ featureSpace: SYNTHETIC_FEATURE_SPACE, frames: samples[next] }, algorithm, session.options);
       if (request !== importRequest.current) return;
       session.replace(prepared); setSelected(next); setError(null); refresh();
     } catch (e) {

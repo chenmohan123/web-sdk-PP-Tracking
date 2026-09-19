@@ -1,0 +1,19 @@
+{
+  "dataset": {
+    "url": "https://motchallenge.net/data/MOT17Labels.zip",
+    "bytes": 10107022,
+    "sha256": "0aa79322e91583369f42f17c4d79a0b145380d8732487bba59272048dc82b2b9",
+    "sequences": ["MOT17-02-FRCNN", "MOT17-04-FRCNN", "MOT17-05-FRCNN", "MOT17-09-FRCNN", "MOT17-10-FRCNN", "MOT17-11-FRCNN", "MOT17-13-FRCNN"]
+  },
+  "trackeval": {
+    "repository": "https://github.com/JonathonLuiten/TrackEval.git",
+    "commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+    "license": "MIT"
+  },
+  "pythonDependencies": { "numpy": "1.23.5", "scipy": "1.10.1" },
+  "defaultOptions": {
+    "lowScoreThreshold": 0.1, "highScoreThreshold": 0.5, "newTrackThreshold": 0.6,
+    "minHits": 2, "matchIouThreshold": 0.3, "lowMatchIouThreshold": 0.2,
+    "maxLostMs": 1000, "largeGapMs": 2000, "maxDetections": 100, "maxTracks": 200
+  }
+}

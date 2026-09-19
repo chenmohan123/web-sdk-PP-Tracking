@@ -1,0 +1,34 @@
+{
+  "retrievedDate": "2026-09-19",
+  "usage": "官方公开基准的训练集算法设置比较；不声明统一CC再分发许可，不发布媒体、原检测、GT或逐轨输出。",
+  "pages": [
+    {
+      "url": "https://motchallenge.net/data/MOT17/",
+      "retrievedAt": "2026-09-19T04:00:19.374Z",
+      "bytes": 27383,
+      "sha256": "cc11e72d3513ec07ea7d107bc895c6588493e5ef7d341ef3cf4306daf58c9017",
+      "localSnapshot": ".tmp/real-sequence-research/data-current-20260919.html",
+      "summary": "官方MOT17数据下载页，提供MOT17Labels.zip无图像包以及序列来源引用。"
+    },
+    {
+      "url": "https://web.archive.org/web/20251208063757id_/https://motchallenge.net/faq/",
+      "bytes": 18526,
+      "sha256": "79ba4211ae48553a5fb67a059603bec914a5b174df309dd566c8e7cf406ead20",
+      "localSnapshot": ".tmp/real-sequence-research/faq-decoded.html",
+      "summary": "历史官方FAQ解码快照：不同设置比较应使用训练集；使用基准应引用MOT16及相应序列来源论文。"
+    }
+  ],
+  "citations": [
+    {"title": "MOT16: A Benchmark for Multi-Object Tracking", "authors": "Anton Milan, Laura Leal-Taixé, Ian Reid, Stefan Roth, Konrad Schindler", "year": 2016, "url": "https://arxiv.org/abs/1603.00831"},
+    {"title": "MOTChallenge 2015: Towards a Benchmark for Multi-Target Tracking", "authors": "Laura Leal-Taixé, Anton Milan, Ian Reid, Stefan Roth, Konrad Schindler", "year": 2015, "url": "https://arxiv.org/abs/1504.01942"},
+    {"title": "Depth and Appearance for Mobile Scene Analysis", "authors": "Andreas Ess, Bastian Leibe, Luc Van Gool", "year": 2007, "venue": "ICCV", "sequence": "MOT17-05-FRCNN", "doi": "10.1109/ICCV.2007.4409092"},
+    {"title": "HOTA: A Higher Order Metric for Evaluating Multi-object Tracking", "authors": "Jonathon Luiten et al.", "year": 2021, "url": "https://doi.org/10.1007/s11263-020-01375-2", "note": "TrackEval工具引用；本报告实际运行Identity/CLEAR，未计算HOTA。"}
+  ],
+  "thirdPartyCode": {
+    "repository": "https://github.com/JonathonLuiten/TrackEval",
+    "commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+    "license": "MIT",
+    "copyright": "Copyright (c) 2020 Jonathon Luiten",
+    "distribution": "源码和原LICENSE仅保留.tmp；SDK包不包含TrackEval。"
+  }
+}

@@ -4,6 +4,7 @@ import configparser
 import hashlib
 import importlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -12,6 +13,28 @@ import urllib.request
 import zipfile
 
 LOCK = json.loads(Path(__file__).with_name("lock.json").read_text(encoding="utf-8"))
+REPO = Path(__file__).resolve().parents[3]
+TMP = REPO / ".tmp"
+# 已有评分源码允许来自只读目录；不能隐式在其旁边写 __pycache__。
+sys.dont_write_bytecode = True
+
+
+def new_tmp_target(target):
+    """先解析已有父目录/junction，再拒绝外部路径和任何已有目标。"""
+    resolved = target.resolve()
+    if resolved == TMP or not resolved.is_relative_to(TMP):
+        raise ValueError("所有评测写入目标必须位于本仓库 .tmp 内")
+    if os.path.lexists(target) or os.path.lexists(resolved):
+        raise FileExistsError(f"EEXIST: 不覆盖已有目标 {target}")
+    return resolved
+
+
+def write_new(target, content):
+    target = new_tmp_target(target)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target = new_tmp_target(target)
+    with target.open("xb") as stream:
+        stream.write(content)
 
 
 def digest(data):
@@ -19,11 +42,14 @@ def digest(data):
 
 
 def prepare(archive, output):
+    output = new_tmp_target(output)
     data = archive.read_bytes()
     expected = LOCK["dataset"]
     if len(data) != expected["bytes"] or digest(data) != expected["sha256"]:
         raise ValueError("数据包大小/SHA256 不匹配，拒绝提取")
     metadata = {}
+    output = new_tmp_target(output)
+    output.mkdir(parents=True)
     with zipfile.ZipFile(archive) as source:
         for name in expected["sequences"]:
             metadata[name] = {}
@@ -31,18 +57,17 @@ def prepare(archive, output):
             for relative in ["seqinfo.ini", "det/det.txt", "gt/gt.txt"]:
                 content = source.read(f"train/{name}/{relative}")
                 target = output / name / relative
-                target.parent.mkdir(parents=True, exist_ok=True)
-                with target.open("xb") as stream:
-                    stream.write(content)
+                write_new(target, content)
                 metadata[name][relative] = {"bytes": len(content), "sha256": digest(content)}
     return metadata
 
 
 def load_official(root):
-    actual = subprocess.check_output(["git", "-C", str(root), "rev-parse", "HEAD"], text=True).strip()
+    git_env = {**os.environ, "GIT_OPTIONAL_LOCKS": "0"}
+    actual = subprocess.check_output(["git", "-C", str(root), "rev-parse", "HEAD"], text=True, env=git_env).strip()
     if actual != LOCK["trackeval"]["commit"]:
         raise ValueError("TrackEval 提交不匹配")
-    subprocess.run(["git", "-C", str(root), "diff", "--exit-code", "HEAD", "--"], check=True, capture_output=True)
+    subprocess.run(["git", "-C", str(root), "diff", "--exit-code", "HEAD", "--"], check=True, capture_output=True, env=git_env)
     # 仅装载官方依赖闭包，避免顶层 __init__ 导入无关视频数据集、绘图和可选扩展。
     # 不修改任何评分源码、预处理、阈值或 NumPy 行为。
     for name, relative in [("trackeval", "trackeval"), ("trackeval.datasets", "trackeval/datasets"), ("trackeval.metrics", "trackeval/metrics")]:
@@ -94,27 +119,26 @@ def main():
     scoring.add_argument("--run", type=Path, required=True)
     args = parser.parse_args()
     if args.command == "prepare":
+        # 所有目标均在联网、读取归档、提取或创建目录之前预检。
+        args.output = new_tmp_target(args.output)
+        target = new_tmp_target(args.output.parent / "input-hashes.json")
         if args.download:
+            args.archive = new_tmp_target(args.archive)
             with urllib.request.urlopen(LOCK["dataset"]["url"], timeout=120) as response:
                 content = response.read()
             if len(content) != LOCK["dataset"]["bytes"] or digest(content) != LOCK["dataset"]["sha256"]:
                 raise ValueError("下载数据 SHA256 不匹配")
-            args.archive.parent.mkdir(parents=True, exist_ok=True)
-            with args.archive.open("xb") as stream:
-                stream.write(content)
+            write_new(args.archive, content)
         result = prepare(args.archive, args.output)
-        target = args.output.parent / "input-hashes.json"
     else:
+        target = new_tmp_target(args.run / "metrics.json")
         sequences = {}
         for name in LOCK["dataset"]["sequences"]:
             info = configparser.ConfigParser()
             info.read(args.run / "input" / name / "seqinfo.ini")
             sequences[name] = int(info["Sequence"]["seqLength"])
         result = score(args.trackeval.resolve(), args.run / "input", args.run / "trackers", sequences, ["default", "no-low"])
-        target = args.run / "metrics.json"
-    with target.open("x", encoding="utf-8") as stream:
-        json.dump(result, stream, ensure_ascii=False, indent=2)
-        stream.write("\n")
+    write_new(target, (json.dumps(result, ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 # MOT17 real detection sequence evaluation — 2026-09-19
 
-[中文 and per-sequence table](README.md) · [Full summary](summary.json) · [Sources and citations](sources.json) · [Reproduction CLI](../../scripts/evaluation/mot17/README.md)
+[中文 and per-sequence table](README.md) · [Full summary](summary.json) · [Sources and citations](sources.json) · [Reproduction CLI](../../scripts/evaluation/mot17/README.en.md)
 
 All seven MOT17 FRCNN **training** sequences were fixed before evaluation: 02/04/05/09/10/11/13, 5316 frames and 67639 public detections. Default parameters were not tuned on these sequences. This evaluates an independent SDK consuming existing detections, not the MOT17 test leaderboard, official ByteTrack accuracy, video pipeline speed, or cross-device support.
 

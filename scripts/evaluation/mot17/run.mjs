@@ -11,29 +11,45 @@ import { protectOutput, writeReport } from '../output-path.mjs';
 import { parseSequenceInfo, adaptDetections } from './adapter.mjs';
 import { runSequence } from './execute.mjs';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
+const root = await fs.realpath(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..'));
 const archive = path.join(root, 'reports');
 const lock = JSON.parse(await fs.readFile(new URL('./lock.json', import.meta.url), 'utf8'));
 const { values } = parseArgs({ options: { python: { type: 'string', default: 'python' }, zip: { type: 'string' }, trackeval: { type: 'string' }, out: { type: 'string' }, 'download-data': { type: 'boolean' }, 'skip-browser': { type: 'boolean' } }, strict: true });
 const sha256 = content => createHash('sha256').update(content).digest('hex');
-const output = protectOutput(path.resolve(values.out ?? path.join(root, '.tmp', `mot17-${new Date().toISOString().replaceAll(':', '-')}-${randomUUID().slice(0, 8)}`)), archive);
-await fs.mkdir(path.join(root, '.tmp'), { recursive: true });
-const tmp = await fs.realpath(path.join(root, '.tmp'));
-const relative = path.relative(tmp, output);
-if (!relative || relative.startsWith('..') || path.isAbsolute(relative)) throw new Error('真实数据输出必须使用本仓库 .tmp 内的新目录');
-await fs.mkdir(output);
-const save = (relative, value) => writeReport(path.join(output, relative), typeof value === 'string' ? value : JSON.stringify(value, null, 2) + '\n', archive);
+async function newTmpTarget(target) {
+  const actual = protectOutput(target, archive);
+  const relative = path.relative(path.join(root, '.tmp'), actual);
+  if (!relative || relative === '..' || relative.startsWith('..' + path.sep) || path.isAbsolute(relative)) throw new Error('所有评测写入目标必须位于本仓库 .tmp 内');
+  try { await fs.lstat(actual); }
+  catch (error) { if (error.code === 'ENOENT') return actual; throw error; }
+  throw new Error(`EEXIST: 不覆盖已有目标 ${actual}`);
+}
+// 下载和自动源码路径先验检查完成后才创建目录或执行任何子进程。
+const output = await newTmpTarget(path.resolve(values.out ?? path.join(root, '.tmp', `mot17-${new Date().toISOString().replaceAll(':', '-')}-${randomUUID().slice(0, 8)}`)));
+let zip = path.resolve(values.zip ?? path.join(output, 'MOT17Labels.zip'));
+if (values['download-data']) zip = await newTmpTarget(zip);
+let trackeval = path.resolve(values.trackeval ?? path.join(root, '.tmp', 'TrackEval-' + lock.trackeval.commit));
+let acquireTrackeval = false;
+try { await fs.lstat(trackeval); }
+catch (error) {
+  if (error.code !== 'ENOENT') throw error;
+  trackeval = await newTmpTarget(trackeval);
+  acquireTrackeval = true;
+}
+await fs.mkdir(path.dirname(output), { recursive: true });
+await fs.mkdir(await newTmpTarget(output));
+const save = async (relative, value) => writeReport(await newTmpTarget(path.join(output, relative)), typeof value === 'string' ? value : JSON.stringify(value, null, 2) + '\n', archive);
 const evaluator = path.join(root, 'scripts/evaluation/mot17/evaluator.py');
 async function command(name, executable, args) {
   const result = spawnSync(executable, args, { cwd: root, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
   await save(`${name}.log`, `$ ${executable} ${args.join(' ')}\n${result.stdout ?? ''}${result.stderr ?? ''}`);
   if (result.error || result.status !== 0) throw new Error(`${name} 失败，见 ${output}/${name}.log`, { cause: result.error });
 }
-const zip = path.resolve(values.zip ?? path.join(output, 'MOT17Labels.zip'));
-await command('prepare', values.python, [evaluator, 'prepare', '--archive', zip, '--output', path.join(output, 'input'), ...(values['download-data'] ? ['--download'] : [])]);
-const trackeval = path.resolve(values.trackeval ?? path.join(root, '.tmp', 'TrackEval-' + lock.trackeval.commit));
-try { await fs.access(trackeval); }
-catch {
+await command('prepare', values.python, ['-B', evaluator, 'prepare', '--archive', zip, '--output', path.join(output, 'input'), ...(values['download-data'] ? ['--download'] : [])]);
+if (acquireTrackeval) {
+  await newTmpTarget(trackeval);
+  await fs.mkdir(path.dirname(trackeval), { recursive: true });
+  await fs.mkdir(await newTmpTarget(trackeval));
   await command('trackeval-init', 'git', ['init', trackeval]);
   await command('trackeval-fetch', 'git', ['-C', trackeval, 'fetch', '--depth', '1', lock.trackeval.repository, lock.trackeval.commit]);
   await command('trackeval-checkout', 'git', ['-C', trackeval, 'checkout', '--detach', 'FETCH_HEAD']);
@@ -68,7 +84,7 @@ for (const name of lock.dataset.sequences) {
     console.log(`${name}/${configuration}: ${result.summary.frames} 帧；确定性通过；最大轨迹 ${result.summary.maxTracks}`);
   }
 }
-await command('score', values.python, [evaluator, 'score', '--trackeval', trackeval, '--run', output]);
+await command('score', values.python, ['-B', evaluator, 'score', '--trackeval', trackeval, '--run', output]);
 summary.metrics = JSON.parse(await fs.readFile(path.join(output, 'metrics.json'), 'utf8'));
 if (!values['skip-browser']) {
   const { chromium } = await import('playwright');

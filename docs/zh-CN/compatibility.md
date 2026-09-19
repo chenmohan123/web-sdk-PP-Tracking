@@ -18,4 +18,4 @@
 
 同日[真实序列报告](../../reports/2026-09-19-mot17/README.md)增加Node七段MOT17 FRCNN训练序列5316帧默认/消融及完整重复运行；Chromium153.0.8010.12的02序列600帧与Node非耗时结果逐字相同。范围仍限上述Windows桌面CPU/main；真实数据指标不扩展设备兼容性，也不构成测试集排行榜成绩。
 
-SDK本地required检查通过仅表示locally-compliant，远程Rulesets/发布/托管状态仍skip。npm、GitHub Release和在线Demo尚未发布；manifest中的计划地址不能作为可用性证据。归档校验不会重新生成可信摘要，篡改样本会失败；当前构建须继续匹配测量入口hash。
+SDK 本地 required 检查通过仅表示 locally-compliant，远程 Rulesets/发布/托管状态仍 skip。0.1.0 当前为发布候选；npm、GitHub Release 和在线 Demo 需以日期化远程回执核验，manifest 地址不能作为可用性证据。归档校验不会重新生成可信摘要，篡改样本会失败；当前构建须继续匹配测量入口 hash。候选打包与当前完整 verify 使用单独的发布候选证据，不覆盖历史桌面和 MOT17 报告。

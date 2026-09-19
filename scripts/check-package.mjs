@@ -2,6 +2,7 @@ import { spawnSync } from 'node:child_process';
 import { mkdtemp, mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 
 // 宿主 Windows 的 npm.cmd 需经 cmd 调用；命令与路径均为脚本内固定值。
 const runNpm = args => spawnSync(process.platform === 'win32' ? 'cmd.exe' : 'npm', process.platform === 'win32' ? ['/d', '/s', '/c', `npm ${args.join(' ')}`] : args, { encoding: 'utf8' });
@@ -9,6 +10,8 @@ await mkdir('.tmp', { recursive: true });
 const packed = runNpm(['pack', '--json', '--pack-destination', '.tmp']);
 if (packed.status !== 0) throw new Error(packed.stderr || 'npm pack 失败');
 const info = JSON.parse(packed.stdout)[0];
+const tarballBytes = await readFile(resolve('.tmp', info.filename));
+assert.equal(info.integrity, `sha512-${createHash('sha512').update(tarballBytes).digest('base64')}`);
 const files = info.files.map(file => file.path).sort();
 assert(files.includes('dist/index.js') && files.includes('dist/index.cjs') && files.includes('dist/index.d.ts'));
 assert(files.includes('LICENSE') && files.includes('NOTICE'));
@@ -39,6 +42,6 @@ for (const extension of ['mts', 'cts']) {
 }
 const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
 assert.equal(Object.keys(packageJson.dependencies ?? {}).length, 0, '生产依赖必须为空');
-await writeFile('.tmp/package-check.json', JSON.stringify({ filename: info.filename, size: info.size, unpackedSize: info.unpackedSize, files, checks: ['实际包 ESM', '实际包 CommonJS', '实际包 TypeScript', '无生产依赖', '发行文件白名单'] }, null, 2) + '\n');
+await writeFile('.tmp/package-check.json', JSON.stringify({ filename: info.filename, integrity: info.integrity, sha256: createHash('sha256').update(tarballBytes).digest('hex'), size: info.size, unpackedSize: info.unpackedSize, files, checks: ['实际包 ESM', '实际包 CommonJS', '实际包 TypeScript', '无生产依赖', '发行文件白名单'] }, null, 2) + '\n');
 console.log(JSON.stringify({ filename: info.filename, size: info.size, unpackedSize: info.unpackedSize, files }, null, 2));
 console.log('实际 npm pack、双格式导入与发行文件检查通过。');

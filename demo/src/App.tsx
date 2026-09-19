@@ -98,7 +98,7 @@ export function App() {
     window.setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
   return <div className="shell">
-    <header className="topbar"><div><h1>{t.title}</h1><div className="brand-note">{t.subtitle} <span>v0.1.0</span></div></div><nav><span className="planned">{t.planned}</span><button data-testid="language" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}>{language === 'zh' ? 'English' : '中文'}</button></nav></header>
+    <header className="topbar"><div><h1>{t.title}</h1><div className="brand-note">{t.subtitle} <span>v0.1.0</span></div></div><nav><a className="planned" href="https://github.com/chenmohan123/web-sdk-PP-Tracking">GitHub</a><a className="planned" href="https://www.npmjs.com/package/web-sdk-pp-tracking">npm</a><button data-testid="language" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}>{language === 'zh' ? 'English' : '中文'}</button></nav></header>
     <main>
       <aside className="panel controls"><h2>{t.sequence}</h2>
         <label htmlFor="sample">{t.sample}</label><select id="sample" disabled={reading} value={selected} onChange={e => { reset(); setSelected(e.target.value); session.frames = samples[e.target.value as Sample]; }}>

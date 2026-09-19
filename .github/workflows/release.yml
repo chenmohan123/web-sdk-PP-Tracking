@@ -8,13 +8,26 @@ concurrency:
   group: npm-release
   cancel-in-progress: false
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: 先核对不可变标签版本
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: node scripts/release.mjs --validate-tag
   verify:
-    if: startsWith(github.event.release.tag_name, 'v')
+    needs: prepare
     uses: ./.github/workflows/ci.yml
   publish:
     needs: verify
     runs-on: ubuntu-latest
-    environment: npm-release
+    environment: npm
     permissions:
       contents: read
       id-token: write
@@ -25,14 +38,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - run: npm install --global npm@11.13.0
       - uses: pnpm/action-setup@v4
         with:
           version: '11.21.0'
       - run: pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile
-      - name: 核对不可变标签版本
+      - run: npm run build && npm run check:package
+      - name: 核对已有版本或通过 OIDC 发布唯一候选
         env:
           RELEASE_TAG: ${{ github.event.release.tag_name }}
-        run: node -e "const p=require('./package.json');if(process.env.RELEASE_TAG!=='v'+p.version)process.exit(1)"
-      - run: npm run build && npm run check:package
-      # 启用前须获首次发布授权，并在 npm 配置此仓库/workflow/环境的 trusted publisher。
-      - run: npm publish --provenance --access public
+        run: node scripts/release.mjs

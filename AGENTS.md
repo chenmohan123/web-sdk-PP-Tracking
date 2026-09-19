@@ -7,4 +7,4 @@
 - 手工编辑使用 apply_patch；运行 typecheck、test、build、check:package 并记录证据。
 - pnpm 命令统一带 `--config.verify-deps-before-run=false --config.manage-package-manager-versions=false`，复用宿主工具版本。
 - SDK 完整阶段修改前后执行门户 sdk:check，保留证据及未完成项。
-- 不进行远程发布或 GitHub 修改；调用 gh 前复用宿主登录状态，使用后保持。
+- 远程发布或 GitHub 修改必须有当前任务的明确授权，只在该次授权范围内执行；历史首次发布授权不构成未来无限授权。调用 gh 前复用宿主登录状态，使用后保持。

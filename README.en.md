@@ -2,9 +2,11 @@
 
 [中文（默认）](README.md)
 
-Version **0.1.0 (local, unpublished)**. A framework-neutral CPU/main-thread multi-object tracker independently implementing ByteTrack's high/low-score association idea. No model download, inference or React runtime dependency.
+Version **0.1.0 (release candidate; online status pending verification)**. A framework-neutral CPU/main-thread multi-object tracker independently implementing ByteTrack's high/low-score association idea. No model download, inference or React runtime dependency.
 
 ## Local installation and usage
+
+After publication, install with `npm install web-sdk-pp-tracking@0.1.0`; before publication, use the local tarball below. Links identify final release destinations; npm, Release and Demo availability require dated remote receipts.
 
 Node >=22.12.0. Development verification uses Node24.16.0 / pnpm11.21.0.
 
@@ -34,11 +36,11 @@ Input: `{ "frames": TrackingFrame[] }`, limited to 5MiB, 3000 frames, 100 boxes/
 
 - [Vanilla TypeScript](examples/vanilla/README.en.md)
 - [Complete React reference](examples/react/README.en.md)
-- [GitHub (planned, not created/published)](https://github.com/chenmohan123/web-sdk-PP-Tracking)
-- [npm (planned, unpublished)](https://www.npmjs.com/package/web-sdk-pp-tracking)
-- [Hosted Demo (planned, not deployed)](https://chenmohan123.github.io/web-sdk-PP-Tracking/)
+- [GitHub repository](https://github.com/chenmohan123/web-sdk-PP-Tracking)
+- [npm package](https://www.npmjs.com/package/web-sdk-pp-tracking)
+- [Hosted Demo](https://chenmohan123.github.io/web-sdk-PP-Tracking/)
 
-Remote URLs in the manifest and package metadata are also planned destinations, not claims of availability.
+The manifest and package metadata use these same destinations. Local validation does not establish online availability.
 
 ## Documentation and limits
 
@@ -46,7 +48,7 @@ Remote URLs in the manifest and package metadata are also planned destinations, 
 
 Preserve low-score detections for the second association stage. Lost tracks require high scores to recover. Seek requires reset followed by ordered replay.
 Track IDs are local to an instance and generation, not personal identities. There is no ReID, and crossing/turning may switch IDs.
-Evidence currently covers original synthetic mechanisms and mathematics, not authorized real-video MOT accuracy.
+On 2026-09-19, seven fixed MOT17 FRCNN training sequences (5316 frames) produced default IDF1 **48.2922%**, IDSW **1101**, MOTA **44.4010%**, FP **4169**, FN **57166**. The low=high ablation produced IDF1 48.3465%, IDSW 1066, MOTA 44.3405%, FP 3785, FN 57653. Low-score continuation reduced misses but increased false positives and ID switches; it does not universally improve accuracy. These are not test-set leaderboard scores, official ByteTrack reproduction or end-to-end video measurements. See the [real-sequence report](reports/2026-09-19-mot17/README.en.md) for sources, licensing boundaries, scorer and per-sequence results.
 
 ## Verification and release preparation
 
@@ -57,6 +59,6 @@ npm run verify
 
 `verify` builds the SDK, checks types and units, consumes the actual npm tarball through ESM/CJS and declarations, builds the Demo and both examples, then tests real browser interactions. Screenshots and outputs go to `.tmp/browser/`.
 See the [release checklist](docs/en/release-checklist.md) for portal standard verification and local evidence.
-CI, Pages and OIDC npm workflows are prepared templates. First publication still requires explicit authorization, trusted-publisher setup and remote governance evidence. Local success is not online publication.
+Pages deployment follows CI validation. Release first checks the immutable tag against the package version, then publishes via OIDC in the `npm` environment. After a manual first publication, it skips duplicate publication only when npm `dist.integrity` exactly matches the built tarball; network/permission errors and mismatches fail. Manual publication does not automatically carry provenance; future OIDC publication requests it. Actual provenance claims depend on npm receipts. Remote governance and online status require separate verification.
 
 Project code: Apache-2.0. [NOTICE](NOTICE) and the [algorithm guide](docs/en/algorithm.md) record paper sources and implementation differences. This is not an official port or a claim of numerical equivalence. See [CHANGELOG](CHANGELOG.md).

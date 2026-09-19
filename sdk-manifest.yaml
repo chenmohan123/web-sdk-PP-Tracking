@@ -2,11 +2,11 @@ schemaVersion: "1.2.0"
 kind: algorithm
 id: pp-tracking
 name: PP-Tracking 多目标跟踪
-summary: 独立实现高低分两阶段关联的框架无关 CPU 主线程跟踪算法，含原创合成序列 Demo；当前本地未发布。
+summary: 独立实现高低分两阶段关联的框架无关 CPU 主线程跟踪算法，含合成 Demo 和 MOT17 训练序列评测；当前为发布候选。
 package:
   name: web-sdk-pp-tracking
   version: 0.1.0
-# 以下远程地址均为计划地址，未发布；本地状态见 README。
+# 以下为正式发布目标，线上状态需以日期化远程核验为准；当前候选状态见 README。
 repository: https://github.com/chenmohan123/web-sdk-PP-Tracking
 demo:
   url: https://chenmohan123.github.io/web-sdk-PP-Tracking/

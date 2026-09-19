@@ -1,0 +1,137 @@
+$ npm run build && npm run typecheck && npm test && npm run check:package && npm run typecheck:demo && npm run build:demo && npm run build:vanilla && npm run build:react && npm run test:browser
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 build
+> node scripts/build.mjs
+
+ESM、CommonJS 与类型声明构建完成。
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 typecheck
+> tsc --noEmit
+
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 test
+> vitest run
+
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ✓ tests/demo.test.ts (5 tests) 39ms
+ ✓ tests/assignment.test.ts (7 tests) 117ms
+ ✓ tests/ocsort.test.ts (16 tests) 49ms
+ ✓ tests/mot17-adapter.test.ts (12 tests) 19ms
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 已有版本不发布，新版本发布后核验，真实发布错误不吞掉
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+npm OIDC 发布完成且完整性一致。
+
+ ✓ tests/tracker.test.ts (16 tests) 58ms
+ ✓ tests/release.test.ts (5 tests) 23ms
+ ✓ tests/kalman.test.ts (2 tests) 686ms
+   ✓ 长期重复更新协方差有限、对称，尺寸保持正数  661ms
+ ✓ tests/mot17-cli.test.ts (4 tests) 1341ms
+   ✓ 真实评测 CLI 输出保护 > 所有下载和自动源码目标先验检查：拒绝报告树、外部、junction及已有目标，且不创建运行目录  840ms
+
+ Test Files  8 passed (8)
+      Tests  67 passed (67)
+   Start at  17:14:41
+   Duration  2.07s (transform 396ms, setup 0ms, collect 1.28s, tests 2.33s, environment 3ms, prepare 2.33s)
+
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 check:package
+> node scripts/check-package.mjs
+
+{
+  "filename": "web-sdk-pp-tracking-0.2.0-alpha.0.tgz",
+  "size": 19473,
+  "unpackedSize": 74448,
+  "files": [
+    "LICENSE",
+    "NOTICE",
+    "README.en.md",
+    "README.md",
+    "dist/assignment.d.ts",
+    "dist/errors.d.ts",
+    "dist/index.cjs",
+    "dist/index.d.ts",
+    "dist/index.js",
+    "dist/kalman.d.ts",
+    "dist/ocsort.d.ts",
+    "dist/tracker.d.ts",
+    "dist/types.d.ts",
+    "package.json"
+  ]
+}
+两算法实际 npm pack、双格式导入、类型与发行文件检查通过。
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 typecheck:demo
+> tsc --noEmit -p demo/tsconfig.json
+
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 build:demo
+> vite build --config demo/vite.config.ts
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 33 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.38 kB │ gzip:  0.29 kB
+dist/assets/index-C7m5-vlS.css    4.86 kB │ gzip:  1.50 kB
+dist/assets/index-Bwuejhgc.js   226.05 kB │ gzip: 73.27 kB
+✓ built in 930ms
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 build:vanilla
+> vite build examples/vanilla --base ./
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 5 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                 0.73 kB │ gzip: 0.52 kB
+dist/assets/index-CZEbmQMf.js  12.39 kB │ gzip: 5.16 kB
+✓ built in 196ms
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 build:react
+> vite build --config examples/react/vite.config.ts
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 33 modules transformed.
+rendering chunks...
+computing gzip size...
+../examples/react/dist/index.html                   0.38 kB │ gzip:  0.29 kB
+../examples/react/dist/assets/index-C7m5-vlS.css    4.86 kB │ gzip:  1.50 kB
+../examples/react/dist/assets/index-Bwuejhgc.js   226.05 kB │ gzip: 73.27 kB
+✓ built in 1.03s
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 test:browser
+> node tests/browser.mjs
+
+{
+  "testedAt": "2026-09-19T09:15:27.241Z",
+  "browser": "153.0.8010.12",
+  "platform": "win32",
+  "runtimeVersion": "web-sdk-pp-tracking@0.2.0-alpha.0",
+  "checks": [
+    "算法切换停止播放、清空状态；OC-SORT 仅显示有效参数并完成播放、导入和导出；未应用草稿不混入导出",
+    "中文默认、英文切换不改变帧/ID/结果",
+    "单步、播放、暂停继续、重播清空轨迹和历史",
+    "四场景实际播放到末帧；低分续接和遮挡高分恢复；导出原始时间",
+    "真实键盘seek复位顺序重算，lost虚线、空分数",
+    "异步读取时算法选择禁用；单帧导入/重复同文件/导出；逆序、坏JSON、超5MiB失败均保留原结果",
+    "参数错误原子性；合法参数实际生效并清空本轮",
+    "空检测序列真实空结果",
+    "390px中英文无横向溢出",
+    "Vanilla构建包单步/复位/CPU实际结果"
+  ],
+  "pageErrors": [],
+  "screenshots": [
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\desktop.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\english.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\occlusion.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\mobile.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\vanilla.png"
+  ]
+}
+
+退出码: 0

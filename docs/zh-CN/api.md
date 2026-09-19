@@ -1,8 +1,8 @@
-# API 0.1.0
+# API 0.2.0-alpha.0（本地候选）
 
 [English](../en/api.md) · [首页](../../README.md)
 
-`createTracker(options?: TrackerOptions): Tracker` 返回同步 `update(frame, {signal}?)`、`reset()`、`dispose()`。ESM/CJS 均导出 createTracker、TrackingError；所有输入输出类型见发行包声明。
+`createTracker(options?: TrackerOptions): Tracker` 返回同步 `update(frame, {signal}?)`、`reset()`、`dispose()`。ESM/CJS 均导出 createTracker、TrackingError；声明还导出 `TrackerAlgorithm = 'bytetrack' | 'ocsort'`。本地候选为 0.2.0-alpha.0；线上安装包仍是 0.1.0。
 
 ## 输入
 
@@ -14,6 +14,7 @@
 
 | 参数 | 默认 | 约束 |
 | --- | --- | --- |
+| algorithm | bytetrack | `'bytetrack'` 或 `'ocsort'`；实例创建后固定 |
 | lowScoreThreshold | 0.1 | [0,1] |
 | highScoreThreshold | 0.5 | [low,1] |
 | newTrackThreshold | 0.6 | [high,1] |
@@ -25,16 +26,25 @@
 | maxDetections | 100 | 整数1–500 |
 | maxTracks | 200 | 整数1–500 |
 
-未知参数拒绝，显式undefined不是缺省。低分检测应保留：tracked可用低分续接，lost只允许高分恢复。首次未确认轨迹失配立即移除。容量满时只跳过新建，不驱逐现存轨迹。
+`algorithm: 'bytetrack'` 使用低分二阶段关联；`lowScoreThreshold` 与 `lowMatchIouThreshold` 只允许该策略。`algorithm: 'ocsort'` 只使用高分关联，仍接受高分、新建、IoU、生命周期和容量参数，并额外接受：
+
+| OC-SORT 参数 | 默认 | 约束 |
+| --- | --- | --- |
+| ocmWeight | 0.2 | [0,1] |
+| ocmDeltaMs | 300 | 有限数1–10000 ms |
+| ocmHistoryLength | 30 | 整数2–120 |
+| oruMaxReplaySteps | 30 | 整数1–60 |
+
+未知参数拒绝，显式undefined不是缺省；将另一种策略的专属参数显式传入也返回 `INVALID_OPTIONS`。低分检测仅供 ByteTrack 的tracked续接，lost只允许高分恢复。首次未确认轨迹失配立即移除。容量满时只跳过新建，不驱逐现存轨迹。
 
 ## 输出
 
-`TrackingResult = {generation,timestampMs,tracks,removed,droppedDetections,runtime,timings}`。
+`TrackingResult = {generation,algorithm,timestampMs,tracks,removed,droppedDetections,runtime,timings}`。`algorithm` 为该次更新实际使用的固定实例策略。
 Track字段：`id,classId,box,state,observed,score,ageMs,hits,missedMs`。
 state为tentative/tracked/lost；removed数组仅包含本帧移除事件，state为removed。
 预测轨迹 observed=false、score=null；输出框可能超出画面，不裁剪。hits为累计实际观测次数，新建为1。
 droppedDetections只计算因容量满而跳过的新轨迹，不包含低分过滤数量。
-runtime实际报告cpu/main、`web-sdk-pp-tracking@0.1.0`。五项timings见 [性能](performance.md)。
+runtime实际报告cpu/main、`web-sdk-pp-tracking@0.2.0-alpha.0`。五项timings见 [性能](performance.md)。
 
 ## 生命周期
 

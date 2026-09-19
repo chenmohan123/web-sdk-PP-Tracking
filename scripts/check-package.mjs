@@ -25,23 +25,26 @@ for (const format of ['esm', 'cjs']) {
   const code = `${format === 'esm' ? "import * as api from 'web-sdk-pp-tracking';" : "const api = require('web-sdk-pp-tracking');"}
 const assert = ${format === 'esm' ? "(await import('node:assert/strict')).default" : "require('node:assert/strict')"};
 assert.deepEqual(Object.keys(api).sort(), ['TrackingError', 'createTracker']);
-const tracker = api.createTracker({ minHits: 1 });
-const result = tracker.update({ timestampMs: 0, imageSize: { width: 10, height: 10 }, detections: [{ box: { x: 0, y: 0, width: 2, height: 2 }, score: 1, classId: 0 }] });
-assert.equal(result.tracks[0].id, 1);
-assert.equal(result.runtime.actualBackend, 'cpu');
-tracker.dispose();`;
+for (const [algorithm, options] of Object.entries({ bytetrack: { minHits: 1 }, ocsort: { minHits: 1, ocmWeight: 0.2, ocmDeltaMs: 300, ocmHistoryLength: 30, oruMaxReplaySteps: 30 } })) {
+  const tracker = api.createTracker({ algorithm, ...options });
+  const result = tracker.update({ timestampMs: 0, imageSize: { width: 10, height: 10 }, detections: [{ box: { x: 0, y: 0, width: 2, height: 2 }, score: 1, classId: 0 }] });
+  assert.equal(result.algorithm, algorithm);
+  assert.equal(result.tracks[0].id, 1);
+  assert.equal(result.runtime.actualBackend, 'cpu');
+  tracker.dispose();
+}`;
   const path = join(consumer, `consumer.${format === 'esm' ? 'mjs' : 'cjs'}`);
   await writeFile(path, code);
   const result = spawnSync(process.execPath, [path], { encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr);
 }
 for (const extension of ['mts', 'cts']) {
-  await writeFile(join(consumer, `consumer.${extension}`), "import { createTracker, type Tracker, type TrackingResult } from 'web-sdk-pp-tracking';\nconst tracker: Tracker = createTracker();\nconst result: TrackingResult = tracker.update({ timestampMs: 0, imageSize: { width: 1, height: 1 }, detections: [] });\n");
+  await writeFile(join(consumer, `consumer.${extension}`), "import { createTracker, type Tracker, type TrackerAlgorithm, type TrackingResult } from 'web-sdk-pp-tracking';\nconst algorithm: TrackerAlgorithm = 'ocsort';\nconst tracker: Tracker = createTracker({ algorithm, ocmWeight: 0.2, ocmDeltaMs: 300, ocmHistoryLength: 30, oruMaxReplaySteps: 30 });\nconst result: TrackingResult = tracker.update({ timestampMs: 0, imageSize: { width: 1, height: 1 }, detections: [] });\nconst actual: TrackerAlgorithm = result.algorithm;\nvoid actual;\n");
   const typed = spawnSync(process.execPath, ['node_modules/typescript/bin/tsc', '--noEmit', '--strict', '--target', 'ES2022', '--module', 'NodeNext', '--moduleResolution', 'NodeNext', join(consumer, `consumer.${extension}`)], { encoding: 'utf8' });
   assert.equal(typed.status, 0, typed.stdout + typed.stderr);
 }
 const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
 assert.equal(Object.keys(packageJson.dependencies ?? {}).length, 0, '生产依赖必须为空');
-await writeFile('.tmp/package-check.json', JSON.stringify({ filename: info.filename, integrity: info.integrity, sha256: createHash('sha256').update(tarballBytes).digest('hex'), size: info.size, unpackedSize: info.unpackedSize, files, checks: ['实际包 ESM', '实际包 CommonJS', '实际包 TypeScript', '无生产依赖', '发行文件白名单'] }, null, 2) + '\n');
+await writeFile('.tmp/package-check.json', JSON.stringify({ filename: info.filename, integrity: info.integrity, sha256: createHash('sha256').update(tarballBytes).digest('hex'), size: info.size, unpackedSize: info.unpackedSize, files, checks: ['ByteTrack 与 OC-SORT 实际包 ESM', 'ByteTrack 与 OC-SORT 实际包 CommonJS', '两算法 TypeScript 类型', '无生产依赖', '发行文件白名单'] }, null, 2) + '\n');
 console.log(JSON.stringify({ filename: info.filename, size: info.size, unpackedSize: info.unpackedSize, files }, null, 2));
-console.log('实际 npm pack、双格式导入与发行文件检查通过。');
+console.log('两算法实际 npm pack、双格式导入、类型与发行文件检查通过。');

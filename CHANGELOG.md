@@ -1,5 +1,17 @@
 # 变更记录 / Changelog
 
+## 0.2.0-alpha.0 — 2026-09-19（仅本地候选）
+
+- 在同一框输入 SDK 中新增 OC-SORT 观察中心策略；`TrackerOptions.algorithm` 支持 `bytetrack` / `ocsort`，`TrackingResult.algorithm` 返回实际策略，`TrackerAlgorithm` 作为类型导出。
+- Demo 可切换两种已实现算法，切换停止播放并以当前算法的有效默认参数重建；ByteTrack 低分字段与 OC-SORT 四项专属参数互斥，导出只包含已应用配置和实际算法。
+- 本地 tarball、实际 ESM/CJS 消费和浏览器验证覆盖两算法；线上 npm、GitHub Release 与 HTTPS Demo 仍为 0.1.0，本条不构成远程 alpha 发布说明。
+
+English equivalent:
+
+- Added the OC-SORT observation-centric strategy to the same box-input SDK. `TrackerOptions.algorithm` accepts `bytetrack` / `ocsort`, `TrackingResult.algorithm` reports the actual strategy, and `TrackerAlgorithm` is exported as a type.
+- The Demo switches between the two implemented algorithms, stops playback and rebuilds from algorithm-valid defaults. ByteTrack low-score fields and the four OC-SORT-specific fields are mutually exclusive; export includes only applied options and the actual algorithm.
+- Local tarball, actual ESM/CJS consumption and browser verification cover both algorithms. Published npm, GitHub Release and HTTPS Demo remain 0.1.0; this entry does not announce a remote alpha release.
+
 ## 0.1.0 — 2026-09-19
 
 - 独立CPU/main跟踪算法：高低分关联、恒速Kalman、全局分配；公开update/reset/dispose、有状态代次和稳定错误码。

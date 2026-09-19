@@ -5,7 +5,7 @@
 | 错误/现象 | 处理 |
 | --- | --- |
 | INVALID_INPUT | 检查有限数值、xywh边界、分数/类别、数量、时间升序和尺寸一致；seek先reset |
-| INVALID_OPTIONS | 低≤高≤新建，阈值[0,1]，命中/容量整数，largeGapMs≥maxLostMs；不要传未知字段或undefined |
+| INVALID_OPTIONS | ByteTrack须低≤高≤新建，OC-SORT须高≤新建；阈值[0,1]，命中/容量整数，largeGapMs≥maxLostMs；不要传未知字段、undefined或另一策略的专属参数 |
 | ABORTED | 计算前signal已取消；新建AbortController重试 |
 | DISPOSED | 已释放实例不能重用，重新createTracker |
 | NUMERICAL_FAILURE | 检查极端数值和时间间隔，当前状态未提交；必要时reset后使用合理尺度 |

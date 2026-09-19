@@ -2,7 +2,7 @@
 
 [中文（默认）](README.md)
 
-Version **0.1.0**. A framework-neutral CPU/main-thread multi-object tracker independently implementing ByteTrack's high/low-score association idea. No model download, inference or React runtime dependency.
+Local candidate version **0.2.0-alpha.0**. A framework-neutral CPU/main-thread multi-object tracker independently implementing ByteTrack high/low-score association and OC-SORT observation-centric mechanisms. No model download, inference or React runtime dependency. The published npm package and hosted HTTPS Demo remain **0.1.0**; no remote alpha package is available.
 
 ## Installation and usage
 
@@ -29,13 +29,13 @@ pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versi
 npm run build
 npm pack
 # Install the generated local tarball in a consumer project:
-npm install /absolute/path/web-sdk-pp-tracking/web-sdk-pp-tracking-0.1.0.tgz
+npm install /absolute/path/web-sdk-pp-tracking/web-sdk-pp-tracking-0.2.0-alpha.0.tgz
 ```
 
 ## Standalone Demo and examples
 
 Run `npm run dev:demo` and open http://127.0.0.1:4196. Run `npm run build:demo` for the static build.
-Chinese by default; language switching preserves state. Includes original straight-motion, low-score, occlusion and crossing/turning sequences, JSON import, SVG paths, play/pause, step, reset, seek and actual-result export.
+Chinese by default; language switching preserves state. Includes ByteTrack/OC-SORT selection with algorithm-valid parameters, original straight-motion, low-score, occlusion and crossing/turning sequences, JSON import, SVG paths, play/pause, step, reset, seek and actual-result export. Switching stops playback, rebuilds from valid defaults and clears results; export contains only applied options and the actual algorithm.
 Input: `{ "frames": TrackingFrame[] }`, limited to 5MiB, 3000 frames, 100 boxes/frame. Failed validation preserves previous input and results. Processing stays in local memory.
 
 - [Vanilla TypeScript](examples/vanilla/README.en.md)
@@ -50,7 +50,7 @@ The manifest and package metadata use these same project URLs.
 
 [Quick start](docs/en/quick-start.md) · [API](docs/en/api.md) · [Algorithm](docs/en/algorithm.md) · [Compatibility](docs/en/compatibility.md) · [Troubleshooting](docs/en/troubleshooting.md) · [Privacy/deployment](docs/en/privacy-deployment.md) · [Performance](docs/en/performance.md)
 
-Preserve low-score detections for the second association stage. Lost tracks require high scores to recover. Seek requires reset followed by ordered replay.
+Omitting `algorithm` selects ByteTrack; `createTracker({ algorithm: 'ocsort' })` selects OC-SORT. Only ByteTrack uses low-score detections for second-stage association; OC-SORT rejects `lowScoreThreshold` and `lowMatchIouThreshold`. Both result forms report the actual `algorithm`. Seek requires reset followed by ordered replay.
 Track IDs are local to an instance and generation, not personal identities. There is no ReID, and crossing/turning may switch IDs.
 On 2026-09-19, seven fixed MOT17 FRCNN training sequences (5316 frames) produced default IDF1 **48.2922%**, IDSW **1101**, MOTA **44.4010%**, FP **4169**, FN **57166**. The low=high ablation produced IDF1 48.3465%, IDSW 1066, MOTA 44.3405%, FP 3785, FN 57653. Low-score continuation reduced misses but increased false positives and ID switches; it does not universally improve accuracy. These are not test-set leaderboard scores, official ByteTrack reproduction or end-to-end video measurements. See the [real-sequence report](reports/2026-09-19-mot17/README.en.md) for sources, licensing boundaries, scorer and per-sequence results.
 

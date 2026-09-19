@@ -167,7 +167,7 @@ export function createTracker(input: TrackerOptions = {}): Tracker {
       const updateEnd = now();
       const result: TrackingResult = {
         generation, algorithm: options.algorithm, timestampMs: time, tracks, removed, droppedDetections,
-        runtime: { requestedBackend: 'cpu', actualBackend: 'cpu', executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.1.0' },
+        runtime: { requestedBackend: 'cpu', actualBackend: 'cpu', executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-alpha.0' },
         timings: { validationMs: validationEnd - start, predictionMs: predictionEnd - validationEnd, associationMs: associationEnd - predictionEnd, updateMs: updateEnd - associationEnd, totalMs: now() - start },
       };
       entries = working; nextId = localNextId; timestamp = time; size = frame.imageSize;

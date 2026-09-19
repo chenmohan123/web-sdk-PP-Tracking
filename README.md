@@ -2,7 +2,7 @@
 
 [English](README.en.md)
 
-版本 **0.1.0**。框架无关的 CPU 主线程多目标跟踪算法，参考 ByteTrack 的高低分两阶段关联思想独立实现，无模型下载、推理或 React 运行依赖。
+本地候选版本 **0.2.0-alpha.0**。框架无关的 CPU 主线程多目标跟踪算法，独立实现 ByteTrack 高低分关联与 OC-SORT 观测中心机制，无模型下载、推理或 React 运行依赖。线上 npm 和 HTTPS Demo 仍为已发布的 **0.1.0**，尚未提供远程 alpha 安装包。
 
 ## 安装与运行
 
@@ -29,13 +29,13 @@ pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versi
 npm run build
 npm pack
 # 在消费项目中安装上一步生成的本地 tarball：
-npm install /absolute/path/web-sdk-pp-tracking/web-sdk-pp-tracking-0.1.0.tgz
+npm install /absolute/path/web-sdk-pp-tracking/web-sdk-pp-tracking-0.2.0-alpha.0.tgz
 ```
 
 ## 独立 Demo 与示例
 
 运行 `npm run dev:demo`，打开 http://127.0.0.1:4196。运行 `npm run build:demo` 构建静态站点。
-中文默认、语言切换保留状态；提供原创直行/低分/遮挡/交叉掉头序列、JSON 导入、SVG轨迹、播放暂停、单步、复位、跳转与实际结果导出。
+中文默认、语言切换保留状态；提供 ByteTrack/OC-SORT 选择、各自有效参数、原创直行/低分/遮挡/交叉掉头序列、JSON 导入、SVG轨迹、播放暂停、单步、复位、跳转与实际结果导出。切换算法会停止播放、以有效默认参数重建实例并清空结果；导出只含已应用配置和实际算法。
 导入格式 `{ "frames": TrackingFrame[] }`，上限5MiB、3000帧、每帧100框；验证失败保留原序列与结果。计算只在本地内存进行。
 
 - [Vanilla TypeScript](examples/vanilla/README.md)
@@ -50,7 +50,7 @@ manifest 与 package 元数据使用相同项目地址。
 
 [快速开始](docs/zh-CN/quick-start.md) · [API](docs/zh-CN/api.md) · [算法](docs/zh-CN/algorithm.md) · [兼容性](docs/zh-CN/compatibility.md) · [排错](docs/zh-CN/troubleshooting.md) · [隐私与部署](docs/zh-CN/privacy-deployment.md) · [性能](docs/zh-CN/performance.md)
 
-保留低分检测框供第二阶段关联；lost 轨迹仅允许高分恢复。seek 必须先 reset 再顺序重放。
+默认省略 `algorithm` 时使用 ByteTrack；`createTracker({ algorithm: 'ocsort' })` 选择 OC-SORT。低分检测仅由 ByteTrack 用于第二阶段关联；OC-SORT 不接受 `lowScoreThreshold` 或 `lowMatchIouThreshold`。两种结果均报告实际 `algorithm`。seek 必须先 reset 再顺序重放。
 轨迹 ID 只在同一实例同一代次内有效，不是个人身份；无 ReID，不保证交叉/掉头时 ID 正确。
 2026-09-19 固定 MOT17 七段 FRCNN 训练序列 5316 帧，默认 IDF1 **48.2922%**、IDSW **1101**、MOTA **44.4010%**、FP **4169**、FN **57166**。low=high 消融 IDF1 48.3465%、IDSW 1066、MOTA 44.3405%、FP 3785、FN 57653。低分续接减少漏检但增加误检和切 ID，不承诺普遍改善精度。这不是测试集排行榜、官方 ByteTrack 复现或视频端到端评测；来源、许可边界、评分器与逐段结果见[真实序列报告](reports/2026-09-19-mot17/README.md)。
 

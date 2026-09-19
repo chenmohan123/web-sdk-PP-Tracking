@@ -5,7 +5,7 @@
 | Error/symptom | Action |
 | --- | --- |
 | INVALID_INPUT | Check finite numbers, xywh bounds, scores/classes, counts, increasing timestamps and fixed sizes; reset before seek |
-| INVALID_OPTIONS | Require low≤high≤new, thresholds[0,1], integer hits/capacities, largeGapMs≥maxLostMs; omit unknown fields and explicit undefined |
+| INVALID_OPTIONS | ByteTrack requires low≤high≤new and OC-SORT high≤new; thresholds[0,1], integer hits/capacities, largeGapMs≥maxLostMs; omit unknown fields, explicit undefined and strategy-exclusive options |
 | ABORTED | Signal was cancelled before computation; retry with a new AbortController |
 | DISPOSED | Create a new tracker; disposed instances cannot be reused |
 | NUMERICAL_FAILURE | Check extreme numbers/time gaps; no state was committed. Reset with reasonable scales if needed |

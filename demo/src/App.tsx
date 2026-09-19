@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { TrackingError } from 'web-sdk-pp-tracking';
+import { TrackingError, type TrackerAlgorithm, type TrackerOptions } from 'web-sdk-pp-tracking';
 import { MAX_BYTES, parseSequence, samples, type Sample } from './data';
 import { Playback } from './playback';
 
 const copy = {
   zh: {
-    title: '目标跟踪', subtitle: 'PP-Tracking · ByteTrack 机制', sample: '示例', parameters: '跟踪参数', apply: '应用并重新开始', lowLabel: '低分门限', highLabel: '高分门限', newLabel: '新建门限', hitsLabel: '确认命中次数', lostLabel: '丢失保留（ms）', parameterNote: '应用后新建实例并清空结果。须低 ≤ 高 ≤ 新建；丢失保留 ≤ 2000 ms。', optionsError: '参数不满足约束；原参数、序列和结果已保留。',
+    title: '目标跟踪', subtitle: 'PP-Tracking · 多算法跟踪', algorithmSelect: '跟踪算法', bytetrack: 'ByteTrack', ocsort: 'OC-SORT', sample: '示例', parameters: '跟踪参数', apply: '应用并重新开始', lowLabel: '低分门限', highLabel: '高分门限', newLabel: '新建门限', hitsLabel: '确认命中次数', lostLabel: '丢失保留（ms）', ocmWeightLabel: '方向权重', ocmDeltaMsLabel: '方向历史间隔（ms）', ocmHistoryLengthLabel: '真实观测历史容量', oruMaxReplayStepsLabel: '最大缺失重放帧数', optionsError: '参数不满足约束；原参数、序列和结果已保留。',
     sequence: '输入序列', straight: '匀速直行', low: '低分关联', occlusion: '短时遮挡', crossing: '交叉与掉头', imported: '已导入序列',
     synthetic: '原创合成数据 · 非真实视频测评', upload: '导入 JSON', limits: '≤ 5 MiB · 3000 帧 · 100 框/帧',
     play: '播放', pause: '暂停', step: '单步', reset: '重新开始', export: '导出本轮结果', timeline: '跳转到帧',
@@ -14,7 +14,7 @@ const copy = {
     empty: '暂无轨迹，单步或播放开始跟踪', noTracks: '本帧无活动轨迹', active: '活动轨迹', removed: '本帧移除', dropped: '容量跳过',
     tracked: '跟踪中', tentative: '待确认', lost: '丢失', score: '分数', class: '类别', runtime: '运行与耗时',
     algorithm: '算法与限制', privacy: '文件仅在本机内存处理，不上传；刷新即清空。',
-    detail: '独立实现高低分两阶段关联、恒速 Kalman 和全局分配。Apache-2.0；算法版本 0.1.0。',
+    detail: '当前算法的独立实现、来源、参数边界和已知限制如下。Apache-2.0；本地候选版本 0.2.0-alpha.0，线上 npm 仍为 0.1.0。',
     contract: '输入：像素 xywh 检测框、分数、类别及严格递增的毫秒时间。输出：轨迹、状态、代次及耗时。',
     limitation: '无外观 ReID。交叉与掉头可能换 ID；轨迹 ID 不是人的身份。低分框应保留，不要提前按高分阈值过滤。',
     resetInfo: '重播、切换序列或跳转会 reset 并清空历史；跳转按顺序重算。语言切换保留状态。',
@@ -25,7 +25,7 @@ const copy = {
     tooLarge: '文件超过 5 MiB；原序列与结果已保留。', failed: '计算未完成，请重新开始或检查输入。', generation: '代次', source: '论文来源',
   },
   en: {
-    title: 'Object tracking', subtitle: 'PP-Tracking · ByteTrack mechanism', sample: 'Example', parameters: 'Tracking parameters', apply: 'Apply & restart', lowLabel: 'Low-score threshold', highLabel: 'High-score threshold', newLabel: 'New-track threshold', hitsLabel: 'Confirmation hits', lostLabel: 'Lost retention (ms)', parameterNote: 'Applying creates a new instance and clears results. Require low ≤ high ≤ new; lost retention ≤ 2000 ms.', optionsError: 'Invalid parameters. Previous options, input and results preserved.',
+    title: 'Object tracking', subtitle: 'PP-Tracking · Multi-algorithm tracking', algorithmSelect: 'Tracking algorithm', bytetrack: 'ByteTrack', ocsort: 'OC-SORT', sample: 'Example', parameters: 'Tracking parameters', apply: 'Apply & restart', lowLabel: 'Low-score threshold', highLabel: 'High-score threshold', newLabel: 'New-track threshold', hitsLabel: 'Confirmation hits', lostLabel: 'Lost retention (ms)', ocmWeightLabel: 'Observation direction weight', ocmDeltaMsLabel: 'Direction history interval (ms)', ocmHistoryLengthLabel: 'Observed history capacity', oruMaxReplayStepsLabel: 'Maximum missing-frame replay', optionsError: 'Invalid parameters. Previous options, input and results preserved.',
     sequence: 'Input sequence', straight: 'Straight motion', low: 'Low-score association', occlusion: 'Brief occlusion', crossing: 'Crossing & turning', imported: 'Imported sequence',
     synthetic: 'Original synthetic data · no real-video evaluation', upload: 'Import JSON', limits: '≤ 5 MiB · 3000 frames · 100 boxes/frame',
     play: 'Play', pause: 'Pause', step: 'Step', reset: 'Restart', export: 'Export this run', timeline: 'Seek to frame',
@@ -34,7 +34,7 @@ const copy = {
     empty: 'No tracks yet. Step or play to start.', noTracks: 'No active tracks in this frame', active: 'Active tracks', removed: 'Removed now', dropped: 'Capacity skipped',
     tracked: 'Tracked', tentative: 'Tentative', lost: 'Lost', score: 'Score', class: 'Class', runtime: 'Runtime & timings',
     algorithm: 'Algorithm & limitations', privacy: 'Files stay in local memory; no upload. Refresh clears all data.',
-    detail: 'Independent high/low-score association, constant-velocity Kalman and global assignment. Apache-2.0; algorithm version 0.1.0.',
+    detail: 'The selected algorithm\'s independent implementation, source, parameter bounds and limitations appear below. Apache-2.0; local candidate 0.2.0-alpha.0, while npm remains 0.1.0.',
     contract: 'Input: pixel xywh boxes, scores, classes and strictly increasing millisecond timestamps. Output: tracks, states, generation and timings.',
     limitation: 'No appearance ReID. Crossing and turning may switch IDs; track IDs are not personal identities. Preserve low-score detections before tracking.',
     resetInfo: 'Restart, sequence changes and seek reset state and history. Seek replays in order. Language changes preserve state.',
@@ -46,6 +46,39 @@ const copy = {
   },
 };
 const colors = ['#2563eb', '#15803d', '#7c3aed', '#b45309'];
+type ParameterKey = 'lowScoreThreshold' | 'highScoreThreshold' | 'newTrackThreshold' | 'minHits' | 'maxLostMs' | 'ocmWeight' | 'ocmDeltaMs' | 'ocmHistoryLength' | 'oruMaxReplaySteps';
+type ParameterDraft = Record<ParameterKey, string>;
+
+const defaultParameters: Record<TrackerAlgorithm, ParameterDraft> = {
+  bytetrack: { lowScoreThreshold: '0.1', highScoreThreshold: '0.5', newTrackThreshold: '0.6', minHits: '2', maxLostMs: '1000', ocmWeight: '0.2', ocmDeltaMs: '300', ocmHistoryLength: '30', oruMaxReplaySteps: '30' },
+  ocsort: { lowScoreThreshold: '0.1', highScoreThreshold: '0.5', newTrackThreshold: '0.6', minHits: '2', maxLostMs: '1000', ocmWeight: '0.2', ocmDeltaMs: '300', ocmHistoryLength: '30', oruMaxReplaySteps: '30' },
+};
+const parameterFields: Record<TrackerAlgorithm, readonly ParameterKey[]> = {
+  bytetrack: ['lowScoreThreshold', 'highScoreThreshold', 'newTrackThreshold', 'minHits', 'maxLostMs'],
+  ocsort: ['highScoreThreshold', 'newTrackThreshold', 'minHits', 'maxLostMs', 'ocmWeight', 'ocmDeltaMs', 'ocmHistoryLength', 'oruMaxReplaySteps'],
+};
+const parameterLabels: Record<ParameterKey, keyof typeof copy.zh> = {
+  lowScoreThreshold: 'lowLabel', highScoreThreshold: 'highLabel', newTrackThreshold: 'newLabel', minHits: 'hitsLabel', maxLostMs: 'lostLabel',
+  ocmWeight: 'ocmWeightLabel', ocmDeltaMs: 'ocmDeltaMsLabel', ocmHistoryLength: 'ocmHistoryLengthLabel', oruMaxReplaySteps: 'oruMaxReplayStepsLabel',
+};
+const algorithmInfo = {
+  zh: {
+    bytetrack: { detail: 'ByteTrack 高低分两阶段关联、恒速 Kalman 和全局分配。', defaults: '默认参数：低/高/新建分数 0.1 / 0.5 / 0.6；确认 2 次；丢失保留 1000 ms。', limitation: '无外观 ReID。低分框仅由 ByteTrack 用于续接，不要提前按高分阈值过滤。', source: 'ByteTrack', href: 'https://arxiv.org/abs/2110.06864' },
+    ocsort: { detail: 'OC-SORT 的观测中心关联、观测中心恢复和遮挡重现机制，复用独立八维 Kalman 状态。', defaults: '默认参数：高/新建分数 0.5 / 0.6；确认 2 次；方向权重 0.2；历史间隔 300 ms；历史容量与最大重放均为 30。', limitation: '无外观 ReID，也不使用 ByteTrack 低分续接。与论文七维固定帧间隔实现不逐值兼容，未声明真实 MOT 精度。', source: 'OC-SORT', href: 'https://arxiv.org/abs/2203.14360' },
+  },
+  en: {
+    bytetrack: { detail: 'ByteTrack high/low-score association, constant-velocity Kalman filtering and global assignment.', defaults: 'Defaults: low/high/new score 0.1 / 0.5 / 0.6; 2 hits to confirm; lost retention 1000 ms.', limitation: 'No appearance ReID. Only ByteTrack uses low-score detections for continuation; do not pre-filter them at the high-score threshold.', source: 'ByteTrack', href: 'https://arxiv.org/abs/2110.06864' },
+    ocsort: { detail: 'OC-SORT observation-centric association, recovery and re-association over the independent eight-dimensional Kalman state.', defaults: 'Defaults: high/new score 0.5 / 0.6; 2 hits; direction weight 0.2; history interval 300 ms; history and replay limits 30.', limitation: 'No appearance ReID and no ByteTrack low-score continuation. It is not value-compatible with the paper\'s seven-dimensional fixed-frame implementation and makes no real-MOT accuracy claim.', source: 'OC-SORT', href: 'https://arxiv.org/abs/2203.14360' },
+  },
+} as const;
+
+function optionsFrom(algorithm: TrackerAlgorithm, parameters: ParameterDraft): TrackerOptions {
+  const value = (key: ParameterKey) => parameters[key].trim() === '' ? NaN : Number(parameters[key]);
+  const shared = { algorithm, highScoreThreshold: value('highScoreThreshold'), newTrackThreshold: value('newTrackThreshold'), minHits: value('minHits'), maxLostMs: value('maxLostMs') };
+  return algorithm === 'bytetrack'
+    ? { ...shared, lowScoreThreshold: value('lowScoreThreshold') }
+    : { ...shared, ocmWeight: value('ocmWeight'), ocmDeltaMs: value('ocmDeltaMs'), ocmHistoryLength: value('ocmHistoryLength'), oruMaxReplaySteps: value('oruMaxReplaySteps') };
+}
 
 export function App() {
   const [language, setLanguage] = useState<'zh' | 'en'>('zh');
@@ -56,13 +89,16 @@ export function App() {
   const [playing, setPlaying] = useState(false);
   const [reading, setReading] = useState(false);
   const [error, setError] = useState<{ code: string; kind: 'invalid' | 'tooLarge' | 'failed' | 'optionsError' } | null>(null);
-  const [parameters, setParameters] = useState({ lowScoreThreshold: '0.1', highScoreThreshold: '0.5', newTrackThreshold: '0.6', minHits: '2', maxLostMs: '1000' });
+  const [algorithm, setAlgorithm] = useState<TrackerAlgorithm>('bytetrack');
+  const [parameters, setParameters] = useState<ParameterDraft>(defaultParameters.bytetrack);
   const importRequest = useRef(0);
   const refresh = () => render(v => v + 1);
   const current = session.results.at(-1);
   const frame = session.frames[Math.max(0, session.index)];
   const finished = session.index >= session.frames.length - 1;
   const status = error ? 'error' : playing ? 'running' : current ? 'success' : 'ready';
+  const displayedAlgorithm = current?.algorithm ?? algorithm;
+  const info = algorithmInfo[language][displayedAlgorithm];
   const step = () => {
     try { session.step(); setError(null); refresh(); }
     catch (e) { setPlaying(false); setError({ code: e instanceof TrackingError ? e.code : 'COMPUTATION_FAILED', kind: 'failed' }); }
@@ -78,6 +114,17 @@ export function App() {
   useEffect(() => { document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en'; document.title = `${t.title} · PP-Tracking`; }, [language]);
   useEffect(() => () => { importRequest.current++; session.dispose(); }, [session]);
   function reset() { setPlaying(false); session.reset(); setError(null); refresh(); }
+  function switchAlgorithm(next: TrackerAlgorithm) {
+    const nextParameters = defaultParameters[next];
+    importRequest.current++;
+    setPlaying(false);
+    try {
+      session.configure(optionsFrom(next, nextParameters));
+      setAlgorithm(next); setParameters(nextParameters); setError(null); refresh();
+    } catch {
+      setError({ code: 'INVALID_OPTIONS', kind: 'optionsError' });
+    }
+  }
   async function importFile(file?: File) {
     if (!file) return;
     const request = ++importRequest.current;
@@ -92,15 +139,18 @@ export function App() {
     } finally { if (request === importRequest.current) setReading(false); }
   }
   function download() {
-    const output = { schemaVersion: 1, sdkVersion: '0.1.0', sequence: selected, options: session.options, startedAt: session.startedAt, exportedAt: new Date().toISOString(), processedFrames: session.results.length, totalFrames: session.frames.length, results: session.results };
+    const output = { schemaVersion: 1, sdkVersion: '0.2.0-alpha.0', algorithm: current?.algorithm ?? session.options.algorithm ?? algorithm, sequence: selected, options: session.options, startedAt: session.startedAt, exportedAt: new Date().toISOString(), processedFrames: session.results.length, totalFrames: session.frames.length, results: session.results };
     const url = URL.createObjectURL(new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' }));
     const a = document.createElement('a'); a.href = url; a.download = 'pp-tracking-results.json'; a.click();
     window.setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
   return <div className="shell">
-    <header className="topbar"><div><h1>{t.title}</h1><div className="brand-note">{t.subtitle} <span>v0.1.0</span></div></div><nav><a className="planned" href="https://github.com/chenmohan123/web-sdk-PP-Tracking">GitHub</a><a className="planned" href="https://www.npmjs.com/package/web-sdk-pp-tracking">npm</a><button data-testid="language" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}>{language === 'zh' ? 'English' : '中文'}</button></nav></header>
+    <header className="topbar"><div><h1>{t.title}</h1><div className="brand-note">{t.subtitle} <span>v0.2.0-alpha.0</span></div></div><nav><a className="planned" href="https://github.com/chenmohan123/web-sdk-PP-Tracking">GitHub</a><a className="planned" href="https://www.npmjs.com/package/web-sdk-pp-tracking">npm 0.1.0</a><button data-testid="language" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}>{language === 'zh' ? 'English' : '中文'}</button></nav></header>
     <main>
       <aside className="panel controls"><h2>{t.sequence}</h2>
+        <label htmlFor="algorithm">{t.algorithmSelect}</label><select id="algorithm" disabled={reading} value={algorithm} onChange={e => switchAlgorithm(e.target.value as TrackerAlgorithm)}>
+          <option value="bytetrack">{t.bytetrack}</option><option value="ocsort">{t.ocsort}</option>
+        </select>
         <label htmlFor="sample">{t.sample}</label><select id="sample" disabled={reading} value={selected} onChange={e => { reset(); setSelected(e.target.value); session.frames = samples[e.target.value as Sample]; }}>
           {Object.keys(samples).map(key => <option key={key} value={key}>{t[key as Sample]}</option>)}{selected === 'imported' && <option value="imported">{t.imported}</option>}
         </select>
@@ -113,11 +163,11 @@ export function App() {
         <button className="export" disabled={!current || reading || playing} onClick={download}>{t.export}</button>
         <details className="parameters"><summary>{t.parameters}</summary><form onSubmit={e => {
           e.preventDefault(); setPlaying(false);
-          try { session.configure(Object.fromEntries(Object.entries(parameters).map(([key, value]) => [key, value.trim() === '' ? NaN : Number(value)]))); setError(null); refresh(); }
+          try { session.configure(optionsFrom(algorithm, parameters)); setError(null); refresh(); }
           catch { setError({ code: 'INVALID_OPTIONS', kind: 'optionsError' }); }
         }}>
-          {([['lowScoreThreshold', 'lowLabel'], ['highScoreThreshold', 'highLabel'], ['newTrackThreshold', 'newLabel'], ['minHits', 'hitsLabel'], ['maxLostMs', 'lostLabel']] as const).map(([key, label]) => <label key={key}>{t[label]}<input data-testid={key} type="number" step={key.includes('Threshold') ? '0.01' : '1'} value={parameters[key]} disabled={reading || playing} onChange={e => setParameters({ ...parameters, [key]: e.target.value })} /></label>)}
-          <p>{t.parameterNote}</p><button disabled={reading || playing} type="submit">{t.apply}</button>
+          {parameterFields[algorithm].map(key => <label key={key}>{t[parameterLabels[key]]}<input data-testid={key} type="number" step={key === 'ocmWeight' || key.includes('Threshold') ? '0.01' : '1'} value={parameters[key]} disabled={reading || playing} onChange={e => setParameters({ ...parameters, [key]: e.target.value })} /></label>)}
+          <button disabled={reading || playing} type="submit">{t.apply}</button>
         </form></details><p className="privacy">{t.privacy}</p>
       </aside>
       <section className="panel workspace"><div className="section-title"><h2>{current ? t.result : t.preview}</h2><span className="runtime-chip">CPU / JavaScript / Main</span></div>
@@ -139,8 +189,8 @@ export function App() {
         <div className="track-list">{current?.tracks.length ? current.tracks.map(track => <article className="track" key={track.id}><div><b style={{ color: colors[(track.id - 1) % colors.length] }}>#{track.id}</b><span>{t[track.state]}</span></div><p>{t.class} {track.classId} · {t.score} {track.score?.toFixed(2) ?? '—'}</p><small>{track.observed ? t.observation : t.prediction} · {track.hits} hits</small></article>) : <p className="muted">{current ? t.noTracks : t.empty}</p>}</div>
         <div className="counts">{t.generation}: {current?.generation ?? '—'}<br />{t.removed}: {current?.removed.length ?? 0}<br />{t.dropped}: {current?.droppedDetections ?? 0}</div>
       </aside>
-      <section className="details"><details data-sdk-runtime-info><summary>{t.runtime}</summary><p>requestedBackend: cpu · actualBackend: cpu · executionMode: main<br />web-sdk-pp-tracking@0.1.0</p><dl data-sdk-timing>{(['validationMs', 'predictionMs', 'associationMs', 'updateMs', 'totalMs'] as const).map(key => <div key={key}><dt>{key}</dt><dd>{current ? current.timings[key].toFixed(3) : '—'} ms</dd></div>)}</dl><p>{t.timing}</p><p>{t.verified}</p></details>
-      <details data-sdk-algorithm-info><summary>{t.algorithm}</summary><p>{t.detail}</p><p>{t.contract}</p><p>{t.defaults}</p><p>{t.limitation}</p><p>{t.resetInfo}</p><a href="https://arxiv.org/abs/2110.06864" target="_blank" rel="noreferrer">{t.source}: ByteTrack</a></details></section>
+      <section className="details"><details data-sdk-runtime-info><summary>{t.runtime}</summary><p>requestedBackend: cpu · actualBackend: cpu · executionMode: main<br />web-sdk-pp-tracking@0.2.0-alpha.0</p><dl data-sdk-timing>{(['validationMs', 'predictionMs', 'associationMs', 'updateMs', 'totalMs'] as const).map(key => <div key={key}><dt>{key}</dt><dd>{current ? current.timings[key].toFixed(3) : '—'} ms</dd></div>)}</dl><p>{t.timing}</p><p>{t.verified}</p></details>
+      <details data-sdk-algorithm-info><summary>{t.algorithm}</summary><p>{t.detail}</p><p>{info.detail}</p><p>{t.contract}</p><p>{info.defaults}</p><p>{info.limitation}</p><p>{t.resetInfo}</p><a href={info.href} target="_blank" rel="noreferrer">{t.source}: {info.source}</a></details></section>
     </main>
   </div>;
 }

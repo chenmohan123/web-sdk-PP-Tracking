@@ -1,0 +1,9 @@
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ✓ tests/tracker.test.ts (16 tests) 35ms
+
+ Test Files  1 passed (1)
+      Tests  16 passed (16)
+   Start at  17:14:27
+   Duration  760ms (transform 81ms, setup 0ms, collect 159ms, tests 35ms, environment 0ms, prepare 212ms)

@@ -35,8 +35,8 @@ npm install /absolute/path/web-sdk-pp-tracking/web-sdk-pp-tracking-0.2.0-alpha.0
 ## 独立 Demo 与示例
 
 运行 `npm run dev:demo`，打开 http://127.0.0.1:4196。运行 `npm run build:demo` 构建静态站点。
-中文默认、语言切换保留状态；提供 ByteTrack/OC-SORT/DeepSORT 选择、各自有效参数、原创直行/低分/遮挡/交叉掉头序列、JSON 导入、SVG轨迹、播放暂停、单步、复位、跳转与实际结果导出。DeepSORT 内置样例的框和外观向量均为原创合成数据，不来自图片。切换算法会先完整校验当前序列，成功后重建实例并清空结果；失败保留配置、序列和结果。
-导入兼容 `{ "frames": TrackingFrame[] }`，带外观时可用 `{ "featureSpace": {"id":"...","dimension":4}, "frames": [...] }`；上限5MiB、3000帧、每帧100框。导出包含实际算法、已应用参数、特征空间、可重新导入的原序列和本轮结果。计算只在本地内存进行。
+中文默认、语言切换保留状态；提供 ByteTrack/OC-SORT/DeepSORT 选择、各自有效参数、原创直行/低分/遮挡/交叉掉头序列、JSON 导入、SVG轨迹、播放暂停、单步、复位、跳转、紧凑输入序列导出与实际结果导出。DeepSORT 内置样例的框和外观向量均为原创合成数据，不来自图片。切换算法会先完整校验当前序列，成功后重建实例并清空结果；失败保留配置、序列和结果。
+导入兼容 `{ "frames": TrackingFrame[] }`，带外观时可用 `{ "featureSpace": {"id":"...","dimension":4}, "frames": [...] }`；上限5MiB、3000帧、每帧100框。紧凑输入序列导出受同一5MiB上限约束，可直接重新导入；结果报告保留实际算法、已应用参数、特征空间、源序列和本轮结果，可能超过5MiB，不保证可重新导入。计算只在本地内存进行。
 
 - [Vanilla TypeScript](examples/vanilla/README.md)
 - [React 完整参考](examples/react/README.md)

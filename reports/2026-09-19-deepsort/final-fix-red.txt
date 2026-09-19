@@ -1,0 +1,65 @@
+$ vitest run "tests/demo.test.ts"
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ❯ tests/demo.test.ts (14 tests | 2 failed) 497ms
+   ✓ Demo 数据与回放 > 原创示例都满足输入结构，低分和遮挡确实出现 7ms
+   ✓ Demo 数据与回放 > 拒绝结构、时钟、尺寸、分数、类别、框和配额错误 2ms
+   ✓ Demo 数据与回放 > 完整校验3000帧而不进行跟踪计算 3ms
+   ✓ Demo 数据与回放 > 准备带外观的包装对象并深复制特征空间、帧和向量 3ms
+   × Demo 数据与回放 > 紧凑导出千帧512维输入并可按相同特征空间重新准备 45ms
+     → Demo 应提供紧凑输入序列化函数: expected undefined to be type of 'function'
+   × Demo 数据与回放 > 按UTF-8字节限制紧凑序列，并在规范化输入超限时保留现有会话 373ms
+     → Demo 应提供紧凑输入序列化函数: expected undefined to be type of 'function'
+   ✓ Demo 数据与回放 > 完整验证在非法末帧失败，且不改变此前回放结果和时间 4ms
+   ✓ Demo 数据与回放 > 旧的无向量 {frames} 包装仍可供 ByteTrack 使用 0ms
+   ✓ Demo 数据与回放 > 从全部帧的一致标识与向量推导内置合成特征空间 17ms
+   ✓ Demo 数据与回放 > 三种算法都能用各自默认配置完整准备内置样例 19ms
+   ✓ Demo 数据与回放 > Demo 参数映射不会把其他算法专用字段带入 tracker 19ms
+   ✓ Demo 数据与回放 > 没有可推导向量时拒绝 DeepSORT 且不补造 embedding 1ms
+   ✓ Demo 数据与回放 > 回放保持记录时间，seek复位并重算，复位清空导出 2ms
+   ✓ Demo 数据与回放 > 错误参数保留当前结果，合法参数开启新实例 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/demo.test.ts > Demo 数据与回放 > 紧凑导出千帧512维输入并可按相同特征空间重新准备
+AssertionError: Demo 应提供紧凑输入序列化函数: expected undefined to be type of 'function'
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 12 passed (14)
+   Start at  21:47:11
+   Duration  1.24s (transform 87ms, setup 0ms, collect 160ms, tests 497ms, environment 0ms, prepare 288ms)
+
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ serializeSequence tests/demo.test.ts:9:42
+      7| const serializeSequence = (frames: readonly TrackingFrame[], featureSp…
+      8|   const serialize = (demoData as unknown as { serializeSequence?: (inp…
+      9|   expect(serialize, 'Demo 应提供紧凑输入序列化函数').toBeTypeOf('function');
+       |                                          ^
+     10|   return serialize!(frames, featureSpace);
+     11| };
+ ❯ tests/demo.test.ts:62:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/demo.test.ts > Demo 数据与回放 > 按UTF-8字节限制紧凑序列，并在规范化输入超限时保留现有会话
+AssertionError: Demo 应提供紧凑输入序列化函数: expected undefined to be type of 'function'
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ serializeSequence tests/demo.test.ts:9:42
+      7| const serializeSequence = (frames: readonly TrackingFrame[], featureSp…
+      8|   const serialize = (demoData as unknown as { serializeSequence?: (inp…
+      9|   expect(serialize, 'Demo 应提供紧凑输入序列化函数').toBeTypeOf('function');
+       |                                          ^
+     10|   return serialize!(frames, featureSpace);
+     11| };
+ ❯ tests/demo.test.ts:85:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+[ELIFECYCLE] Test failed. See above for more details.

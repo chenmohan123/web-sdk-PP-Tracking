@@ -56,6 +56,8 @@ state为tentative/tracked/lost；removed数组仅包含本帧移除事件，stat
 droppedDetections只计算因容量满而跳过的新轨迹，不包含低分过滤数量。
 runtime实际报告cpu/main、`web-sdk-pp-tracking@0.2.0-alpha.0`。五项timings见 [性能](performance.md)。
 
+Demo 的紧凑输入序列导出只包含规范化后的 `frames` 与可选顶层 `featureSpace`，按 UTF-8 字节限制为5MiB并可重新导入。结果报告另含实际参数和已处理结果，可能超过5MiB，不保证可重新导入。
+
 ## 生命周期
 
 初始generation=0。reset清空轨迹、时钟和状态，generation加1，ID从1重新开始。同代ID不复用，跨实例独立。ID非身份。Demo的reset同时清空路径和导出历史。

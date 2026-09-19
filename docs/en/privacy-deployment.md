@@ -2,7 +2,7 @@
 
 [中文](../zh-CN/privacy-deployment.md) · [Home](../../README.en.md)
 
-The SDK has no network requests, telemetry, model downloads, persistent caches or built-in feature extractor. The Demo reads files and computes in memory without uploading boxes or embeddings; refresh clears data. User-triggered JSON exports include source boxes/timestamps and may include appearance vectors that can correlate individuals, so share them accordingly. Track IDs do not identify people, and a feature-space ID does not prove vector provenance.
+The SDK has no network requests, telemetry, model downloads, persistent caches or built-in feature extractor. The Demo reads files and computes in memory without uploading boxes or embeddings; refresh clears data. Both the compact input sequence and result report are user-triggered exports containing source boxes/timestamps and possibly appearance vectors that can correlate individuals; the result report also includes tracks and actual options. Share them accordingly. Track IDs do not identify people, and a feature-space ID does not prove vector provenance.
 
 `npm run build:demo` emits `demo/dist` for any static HTTPS host with relative assets. Initial page load requests its own JS/CSS; clicking the paper visits arxiv. Hosts should configure CSP, HTTPS and access controls for their needs.
 

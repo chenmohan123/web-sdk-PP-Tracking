@@ -56,6 +56,8 @@ Predictions have observed=false and score=null. Output boxes may extend outside 
 droppedDetections counts only new tracks skipped at capacity, not score filtering.
 Runtime reports actual cpu/main and `web-sdk-pp-tracking@0.2.0-alpha.0`. See [performance](performance.md) for five timing fields.
 
+The Demo's compact input-sequence export contains only normalized `frames` and an optional top-level `featureSpace`. It is limited to 5MiB by UTF-8 byte size and can be re-imported. The separate result report also contains actual options and processed results; it can exceed 5MiB and is not guaranteed to be re-importable.
+
 ## Lifecycle
 
 Initial generation=0. Reset clears tracks, clock and state, increments generation and restarts IDs at1. IDs are never reused within a generation and are independent across instances. IDs are not identities. Demo reset also clears paths and export history.

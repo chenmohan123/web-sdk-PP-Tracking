@@ -10,10 +10,10 @@
 | DISPOSED | Create a new tracker; disposed instances cannot be reused |
 | NUMERICAL_FAILURE | Check extreme numbers/time gaps; no state was committed. Reset with reasonable scales if needed |
 | ID_EXHAUSTED | Reset for a new generation; IDs are not permanent identities |
-| FILE_TOO_LARGE / INVALID_SEQUENCE | Demo input≤5MiB,1–3000 frames,≤100 boxes/frame. A DeepSORT all-empty sequence must declare top-level featureSpace because dimension cannot be inferred. Failure preserves previous options/input/results |
+| FILE_TOO_LARGE / INVALID_SEQUENCE | Both the original Demo file and normalized compact input sequence must be≤5MiB by UTF-8 byte size, with1–3000 frames and≤100 boxes/frame. A DeepSORT all-empty sequence must declare top-level featureSpace because dimension cannot be inferred. Failure preserves previous options/input/results |
 | Low scores do not recover lost tracks | Lost tracks need high scores; second-stage low association only applies to still-tracked candidates |
 | IDs switch at crossings | ByteTrack/OC-SORT have no appearance; DeepSORT depends on caller vector quality. The SDK has no built-in ReID model or identity guarantee. See algorithm limits |
 | Missing package build | Run npm run build before Demo, tests or packing |
 
-Invalid Demo parameter changes preserve the current run. Valid changes create a new instance and clear history. Restart before playing after the last frame. Export is enabled only with processed results while paused.
+Invalid Demo parameter changes preserve the current run. Valid changes create a new instance and clear history. Restart before playing after the last frame. Compact input export is available before processing and disabled while reading or playing. Result reports require processed results while paused, can exceed5MiB, and should not be used for replay; use the input-sequence export instead.
 Install Playwright browsers as in the README, or set PLAYWRIGHT_BROWSERS_PATH to a matching cache. Never skip browser tests while claiming they passed.

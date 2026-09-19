@@ -22,11 +22,14 @@ The [first full attempt](verify-attempt-1-failed.txt) failed with TS6142 because
 
 Task review led to fix `5b7c714`: sample switching uses applied options and no longer silently applies draft parameters. The [regression RED](task-2-fix-1-red.txt) reproduced `0.9 !== 0.2`; after the fix, [Demo type checking/build](task-2-fix-1-typecheck-build.txt) and [11 browser GREEN checks](task-2-fix-1-browser-green.txt) passed, also covering switching a custom feature space back to the built-in synthetic space. This patch changes only the Demo and tests; runtime builds and the tarball remain unchanged. Original full verification and preview records are preserved.
 
+The final-review F1 fix adds a separate compact input-sequence export and checks normalized input against the same 5MiB UTF-8 limit before expensive simulation. The result report keeps its existing content but is no longer promised to be re-importable. The [RED](final-fix-red.txt) had the two expected new failures; [GREEN](final-fix-green.txt) is14/14 with Demo type checking and build; the [Chromium report](final-fix-browser.txt) has12 checks and `pageErrors=[]`, including real download and re-import of1000 512-dimensional frames before and after a step. The [final package check](final-fix-package.txt) and [package report](package-final.json) retain three-algorithm ESM/CJS/TypeScript consumption, zero production dependencies and the release-file allowlist.
+
 `sdk-check-before.txt` was taken before Task2 and already includes core `28cb83a`; the portal's whole-stage baseline is `1982e87`. The coordinator separately ran the whole-stage after check.
 
 ## Fixed build and screenshots
 
-- Tarball SHA256:`58eaf180579d0bdfae0351513978b7a6dff189aa22a921c1c945082977a5f739`.
+- The original `package-check.json` and tarball SHA256 `58eaf180579d0bdfae0351513978b7a6dff189aa22a921c1c945082977a5f739` correspond to the `fc3adeb` documentation and remain unchanged.
+- Tarball SHA256 after the final input-export fix:`2a8c4aa4be4ee02698835aae18d45e27a83497676ac6cf1c4b06d13634cb7c0f`,22,522bytes; see `package-final.json`.
 - `dist/index.js` SHA256:`8396ef79f22c6afd2690bd6413f2b32b25fd46ec67b9fabca8fcab44c9a82041`.
 - `dist/index.cjs` SHA256:`f9bd94a1a63e97d424891436b974aafc1dff312c6ca8c183eb7ff74953af186b`.
 - [Desktop](preview/desktop.png),[390px Chinese](preview/narrow.png),[390px English](preview/narrow-en.png). The menu uses the short name DeepSORT; the sample description identifies synthetic appearance vectors to avoid truncation in the desktop sidebar.

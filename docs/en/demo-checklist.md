@@ -5,7 +5,7 @@
 Based on portal `standards/v1/templates/demo-checklist.md`, applicable algorithm items in1.2.0. Verify against `npm run test:browser` evidence; DOM markers do not substitute for interactions.
 
 - [x] One independent SDK; Chinese default, state-preserving English toggle, version and GitHub/npm project links in the brand bar.
-- [x] Three strategies and original sequences (synthetic DeepSORT appearance vectors), local JSON import/switch committed atomically after full validation, parameters, play/pause/step, restart, seek and export of actual options/feature space/sequence/results.
+- [x] Three strategies and original sequences (synthetic DeepSORT appearance vectors), local JSON import/switch committed atomically after full validation including the normalized 5MiB UTF-8 limit, parameters, play/pause/step, restart, seek, re-importable compact input-sequence export and actual result-report export.
 - [x] ready/running/success/error states and stable error codes; meaningful preview/empty state without broken images.
 - [x] Observations and dashed predictions are distinct; desktop results fit the first viewport and390px has no horizontal overflow.
 - [x] data-sdk-algorithm-info exposes source, license, input/output and limits.

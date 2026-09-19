@@ -22,11 +22,14 @@
 
 任务审查后另有修复 `5b7c714`：切换样例使用已生效配置，不再静默应用参数草稿。[回归 RED](task-2-fix-1-red.txt)复现 `0.9 !== 0.2`；修复后 [Demo 类型检查/构建](task-2-fix-1-typecheck-build.txt)及[11组浏览器 GREEN](task-2-fix-1-browser-green.txt)通过，同时覆盖自定义空间切回内置合成空间。该补丁只修改 Demo 和测试，核心构建和 tarball 不变；原始完整验证与预览记录不改写。
 
+最终审查 F1 修复增加独立紧凑输入序列导出，并在昂贵模拟前按同一 UTF-8 5MiB 上限检查规范化输入；结果报告保留原内容，但不再承诺可重新导入。[RED](final-fix-red.txt)新增2项按预期失败；[GREEN](final-fix-green.txt)为14/14，并通过 Demo 类型检查和构建；[Chromium 报告](final-fix-browser.txt)为12组、`pageErrors=[]`，覆盖512维1000帧在单步前后真实下载再导入。[最终包检查](final-fix-package.txt)和[包报告](package-final.json)保留三算法 ESM/CJS/TypeScript 消费、零生产依赖及发行文件白名单。
+
 `sdk-check-before.txt` 是 Task 2 开始前检查，已经包含核心 `28cb83a`；它不等同门户保存的整个阶段修改前 `1982e87` 基线。完整阶段修改后检查由协调者单独执行。
 
 ## 固定构建与截图
 
-- tarball SHA256：`58eaf180579d0bdfae0351513978b7a6dff189aa22a921c1c945082977a5f739`。
+- 原 `package-check.json` 与 tarball SHA256 `58eaf180579d0bdfae0351513978b7a6dff189aa22a921c1c945082977a5f739` 对应 `fc3adeb` 文档内容，保持不变。
+- 最终输入导出修复后的 tarball SHA256：`2a8c4aa4be4ee02698835aae18d45e27a83497676ac6cf1c4b06d13634cb7c0f`，22,522字节；见 `package-final.json`。
 - `dist/index.js` SHA256：`8396ef79f22c6afd2690bd6413f2b32b25fd46ec67b9fabca8fcab44c9a82041`。
 - `dist/index.cjs` SHA256：`f9bd94a1a63e97d424891436b974aafc1dff312c6ca8c183eb7ff74953af186b`。
 - [桌面截图](preview/desktop.png)、[390px中文](preview/narrow.png)、[390px英文](preview/narrow-en.png)。菜单使用简短 DeepSORT；合成外观向量标识保留在样例信息中，避免桌面窄侧栏截字。

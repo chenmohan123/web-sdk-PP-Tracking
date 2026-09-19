@@ -45,7 +45,7 @@ Keep the0.25 detection so confirmed ByteTrack tracks can use low-score associati
 Sequence dimensions must stay fixed and timestamps must strictly increase. Reset before restart, seek or resizing. Seeking to frame k requires replaying every frame from the beginning to k.
 
 Run `npm run dev:demo` for four original synthetic scenarios. DeepSORT appearance vectors in these samples are also synthetic and are not derived from images. JSON must be an object `{"frames":[...]}` and may add a top-level `featureSpace` for appearance input; limits: 5MiB, 1–3000 frames, 0–100 boxes/frame. Without the top-level declaration, the Demo only infers a space from consistent IDs and vector dimensions across all frames; it never fabricates embeddings for user data.
-A single-frame file supports step and export. Exports include the source sequence, actual options/feature space, and only results actually processed since reset with time/runtime information. Unprocessed results are never fabricated.
+A single-frame file supports step and export. The compact input-sequence export can be re-imported directly and is limited to 5MiB. The result report includes the source sequence, actual options/feature space and only results actually processed since reset with time/runtime information; it can exceed 5MiB and is not guaranteed to be re-importable. Unprocessed results are never fabricated.
 Language changes preserve state; the same file can be imported again. Refresh restores Chinese and clears memory.
 
 See [API](api.md) and [Vanilla](../../examples/vanilla/README.en.md).

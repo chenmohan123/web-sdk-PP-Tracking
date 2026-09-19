@@ -49,6 +49,15 @@ export interface PreparedSequence {
   options: TrackerOptions;
 }
 
+export function serializeSequence(frames: readonly TrackingFrame[], featureSpace?: FeatureSpace): string {
+  const serialized = JSON.stringify(
+    { ...(featureSpace ? { featureSpace } : {}), frames },
+    (_key, value) => value instanceof Float32Array ? Array.from(value) : value,
+  );
+  if (new TextEncoder().encode(serialized).byteLength > MAX_BYTES) throw new Error('FILE_TOO_LARGE');
+  return serialized;
+}
+
 // 仅做线性结构校验；完整算法校验由 prepareSequence 在临时实例中完成。
 export function parseSequence(value: unknown): TrackingFrame[] {
   const fail = (): never => { throw new Error('INVALID_SEQUENCE'); };
@@ -108,6 +117,7 @@ export async function prepareSequence(value: unknown, algorithm: TrackerAlgorith
   const frames = parseSequence(value);
   const declaredFeatureSpace = readFeatureSpace(value.featureSpace);
   const featureSpace = algorithm === 'deepsort' ? declaredFeatureSpace ?? inferFeatureSpace(frames) : declaredFeatureSpace;
+  serializeSequence(frames, featureSpace);
   const options: TrackerOptions = algorithm === 'deepsort'
     ? { ...currentOptions, algorithm, featureSpace }
     : { ...currentOptions, algorithm };

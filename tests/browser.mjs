@@ -27,14 +27,24 @@ try {
     const path = await download.path();
     return JSON.parse(await readFile(path, 'utf8'));
   };
+  const exportSequence = async () => {
+    const downloadPromise = page.waitForEvent('download');
+    await click('导出输入序列');
+    const download = await downloadPromise;
+    const path = await download.path();
+    const buffer = await readFile(path);
+    return { buffer, value: JSON.parse(buffer.toString('utf8')) };
+  };
   await page.goto('http://127.0.0.1:4198');
   assert.equal(await page.locator('html').getAttribute('lang'), 'zh-CN');
   assert.equal(await page.locator('.stage rect').count(), 2);
   assert.match(await frame(), /0\/40/);
+  assert.equal(await page.getByRole('button', { name: '导出输入序列', exact: true }).isDisabled(), false);
   await page.screenshot({ path: '.tmp/browser/desktop.png', fullPage: true });
   await click('单步'); await waitFrame(1); await click('单步');
   assert.equal(await page.locator('[data-track-state=tracked]').count(), 1);
   await click('播放'); await waitFrame(4);
+  assert.equal(await page.getByRole('button', { name: '导出输入序列', exact: true }).isDisabled(), true);
   await page.locator('#algorithm').selectOption('ocsort');
   await page.waitForFunction(() => document.querySelector('#algorithm').value === 'ocsort' || document.querySelector('[role=alert]'));
   assert.equal(await page.locator('#algorithm').inputValue(), 'ocsort', await page.locator('[role=alert]').textContent().catch(() => '算法切换未提交'));
@@ -88,6 +98,25 @@ try {
   const importedDeep = await exportResult();
   assert.deepEqual(importedDeep.featureSpace, importedSpace);
   assert.deepEqual(importedDeep.frames, deepImport.frames);
+  const largeSpace = { id: 'browser-roundtrip-512d', dimension: 512 };
+  const largeEmbedding = Array(largeSpace.dimension).fill(0); largeEmbedding[0] = 1;
+  const largeInput = { featureSpace: largeSpace, frames: Array.from({ length: 1000 }, (_, timestampMs) => ({ timestampMs, imageSize: { width: 100, height: 100 }, featureSpaceId: largeSpace.id, detections: [{ box: { x: 10, y: 10, width: 20, height: 20 }, score: 0.9, classId: 0, embedding: largeEmbedding }] })) };
+  await upload(largeInput);
+  const beforeStepSequence = await exportSequence();
+  assert(beforeStepSequence.buffer.byteLength <= 5 * 1024 * 1024);
+  assert.deepEqual(beforeStepSequence.value.featureSpace, largeSpace);
+  assert.equal(beforeStepSequence.value.frames.length, 1000);
+  assert.equal(beforeStepSequence.value.frames.at(-1).timestampMs, 999);
+  await page.getByTestId('import').setInputFiles({ name: 'roundtrip-before-step.json', mimeType: 'application/json', buffer: beforeStepSequence.buffer });
+  await page.waitForFunction(() => document.querySelector('input[type=file]').disabled === false);
+  assert.match(await frame(), /0\/1000/);
+  await click('单步');
+  const afterStepSequence = await exportSequence();
+  await page.getByTestId('import').setInputFiles({ name: 'roundtrip-after-step.json', mimeType: 'application/json', buffer: afterStepSequence.buffer });
+  await page.waitForFunction(() => document.querySelector('input[type=file]').disabled === false);
+  assert.match(await frame(), /0\/1000/);
+  assert.deepEqual(afterStepSequence.value.frames[0].detections[0].embedding, largeEmbedding);
+  checks.push('512维千帧输入在单步前后均可紧凑下载并重新导入，特征空间、时间和向量往返一致');
   const syntheticSpace = { id: 'pp-tracking-demo-synthetic-appearance-v1-original-vectors', dimension: 4 };
   await page.locator('#sample').selectOption('straight');
   await page.waitForFunction(() => document.querySelector('#sample').value === 'straight' && document.querySelector('#sample').disabled === false);
@@ -106,7 +135,7 @@ try {
   await page.getByTestId('language').click();
   assert.deepEqual((await exportResult()).results, builtInAfterCustomImport.results);
   await page.screenshot({ path: '.tmp/browser/deepsort.png', fullPage: true });
-  checks.push('DeepSORT 合成向量运行；有效参数、特征空间和原序列导出；自定义空间导入后切内置样例恢复合成空间；非法末帧与语言切换保留状态');
+  checks.push('DeepSORT 合成向量运行；有效参数、特征空间和结果报告导出；自定义空间导入后切内置样例恢复合成空间；非法末帧与语言切换保留状态');
 
   await page.locator('#algorithm').selectOption('bytetrack');
   await page.waitForFunction(() => document.querySelector('#algorithm').value === 'bytetrack' || document.querySelector('[role=alert]'));
@@ -169,6 +198,7 @@ try {
   const delayedUpload = page.getByTestId('import').setInputFiles({ name: 'delayed.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(one)) });
   await page.waitForFunction(() => document.querySelector('#algorithm').disabled === true);
   assert.equal(await page.locator('#algorithm').isDisabled(), true);
+  assert.equal(await page.getByRole('button', { name: '导出输入序列', exact: true }).isDisabled(), true);
   await delayedUpload;
   await page.waitForFunction(() => document.querySelector('#algorithm').disabled === false);
   await page.evaluate(() => window.__restoreTrackingFileText());

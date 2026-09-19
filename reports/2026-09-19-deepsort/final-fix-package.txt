@@ -1,0 +1,24 @@
+$ node scripts/check-package.mjs
+{
+  "filename": "web-sdk-pp-tracking-0.2.0-alpha.0.tgz",
+  "size": 22522,
+  "unpackedSize": 90713,
+  "files": [
+    "LICENSE",
+    "NOTICE",
+    "README.en.md",
+    "README.md",
+    "dist/assignment.d.ts",
+    "dist/deepsort.d.ts",
+    "dist/errors.d.ts",
+    "dist/index.cjs",
+    "dist/index.d.ts",
+    "dist/index.js",
+    "dist/kalman.d.ts",
+    "dist/ocsort.d.ts",
+    "dist/tracker.d.ts",
+    "dist/types.d.ts",
+    "package.json"
+  ]
+}
+三算法实际 npm pack、双格式导入、类型与发行文件检查通过。

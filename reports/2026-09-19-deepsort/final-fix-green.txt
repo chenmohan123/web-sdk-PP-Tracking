@@ -1,0 +1,37 @@
+$ vitest run "tests/demo.test.ts"
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ✓ tests/demo.test.ts (14 tests) 1880ms
+   ✓ Demo 数据与回放 > 紧凑导出千帧512维输入并可按相同特征空间重新准备  465ms
+   ✓ Demo 数据与回放 > 按UTF-8字节限制紧凑序列，并在规范化输入超限时保留现有会话  1334ms
+
+ Test Files  1 passed (1)
+      Tests  14 passed (14)
+   Start at  21:48:20
+   Duration  3.06s (transform 145ms, setup 0ms, collect 220ms, tests 1.88s, environment 0ms, prepare 358ms)
+
+$ vitest run "tests/demo.test.ts"
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ✓ tests/demo.test.ts (14 tests) 2411ms
+   ✓ Demo 数据与回放 > 紧凑导出千帧512维输入并可按相同特征空间重新准备  637ms
+   ✓ Demo 数据与回放 > 按UTF-8字节限制紧凑序列，并在规范化输入超限时保留现有会话  1660ms
+
+ Test Files  1 passed (1)
+      Tests  14 passed (14)
+   Start at  21:50:19
+   Duration  3.97s (transform 114ms, setup 0ms, collect 200ms, tests 2.41s, environment 0ms, prepare 515ms)
+
+$ tsc --noEmit -p demo/tsconfig.json
+$ vite build --config demo/vite.config.ts
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 33 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.38 kB │ gzip:  0.29 kB
+dist/assets/index-xo2S0Okl.css    5.03 kB │ gzip:  1.55 kB
+dist/assets/index-C_wcGM0g.js   236.10 kB │ gzip: 76.24 kB
+✓ built in 1.43s

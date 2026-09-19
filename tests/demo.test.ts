@@ -1,6 +1,18 @@
 import { describe, expect, it } from 'vitest';
-import { DEMO_DEFAULT_OPTIONS, optionsFrom, parseSequence, prepareSequence, samples, SYNTHETIC_FEATURE_SPACE } from '../demo/src/data';
+import { DEMO_DEFAULT_OPTIONS, MAX_BYTES, optionsFrom, parseSequence, prepareSequence, samples, serializeSequence, SYNTHETIC_FEATURE_SPACE } from '../demo/src/data';
+import type { TrackingFrame } from '../src/types';
 import { Playback } from '../demo/src/playback';
+
+const appearanceSequence = (count: number, dimension: number, id: string): TrackingFrame[] => {
+  const embedding = Array<number>(dimension).fill(0);
+  embedding[0] = 1;
+  return Array.from({ length: count }, (_, timestampMs) => ({
+    timestampMs,
+    imageSize: { width: 100, height: 100 },
+    featureSpaceId: id,
+    detections: [{ box: { x: 1, y: 1, width: 20, height: 20 }, score: 0.9, classId: 0, embedding }],
+  }));
+};
 
 describe('Demo 数据与回放', () => {
   it('原创示例都满足输入结构，低分和遮挡确实出现', () => {
@@ -32,6 +44,58 @@ describe('Demo 数据与回放', () => {
     expect(prepared.frames[0].detections[0].embedding).toEqual([3, 4]);
     expect(prepared.frames[0].detections[0].embedding).not.toBe(embedding);
     expect(prepared.options).toMatchObject({ algorithm: 'deepsort', featureSpace: { id: 'imported-appearance-v1', dimension: 2 }, minHits: 1 });
+  });
+  it('紧凑导出千帧512维输入并可按相同特征空间重新准备', async () => {
+    const featureSpace = { id: 'review-roundtrip-512d', dimension: 512 };
+    const frames = appearanceSequence(1000, featureSpace.dimension, featureSpace.id);
+    frames[0].detections[0].embedding = new Float32Array(frames[0].detections[0].embedding!);
+    const oldReport = JSON.stringify({ featureSpace, frames, results: [] }, null, 2);
+    expect(new TextEncoder().encode(oldReport).byteLength).toBeGreaterThan(MAX_BYTES);
+
+    const serialized = serializeSequence(frames, featureSpace);
+    expect(new TextEncoder().encode(serialized).byteLength).toBeLessThanOrEqual(MAX_BYTES);
+    const exported = JSON.parse(serialized);
+    expect(Array.isArray(exported.frames[0].detections[0].embedding)).toBe(true);
+    const prepared = await prepareSequence(exported, 'deepsort', { algorithm: 'deepsort', minHits: 1, gallerySize: 1 });
+    expect(prepared.featureSpace).toEqual(featureSpace);
+    expect(prepared.frames).toHaveLength(frames.length);
+    expect(prepared.frames[0].timestampMs).toBe(0);
+    expect(prepared.frames.at(-1)?.timestampMs).toBe(999);
+    expect(prepared.frames[0].detections[0].embedding).toEqual(Array.from(frames[0].detections[0].embedding!));
+    expect(prepared.frames.at(-1)?.detections[0].embedding).toEqual(frames.at(-1)?.detections[0].embedding);
+  });
+  it('按UTF-8字节限制紧凑序列，并在规范化输入超限时保留现有会话', async () => {
+    const asciiSpace = { id: 'near-limit', dimension: 2048 };
+    let low = 1;
+    let high = 3000;
+    while (low < high) {
+      const middle = Math.ceil((low + high) / 2);
+      const bytes = new TextEncoder().encode(JSON.stringify({ featureSpace: asciiSpace, frames: appearanceSequence(middle, asciiSpace.dimension, asciiSpace.id) })).byteLength;
+      if (bytes <= MAX_BYTES) low = middle;
+      else high = middle - 1;
+    }
+    const nearLimitFrames = appearanceSequence(low, asciiSpace.dimension, asciiSpace.id);
+    const nearLimit = serializeSequence(nearLimitFrames, asciiSpace);
+    expect(new TextEncoder().encode(nearLimit).byteLength).toBeLessThanOrEqual(MAX_BYTES);
+    expect(new TextEncoder().encode(JSON.stringify({ featureSpace: asciiSpace, frames: appearanceSequence(low + 1, asciiSpace.dimension, asciiSpace.id) })).byteLength).toBeGreaterThan(MAX_BYTES);
+    expect(JSON.parse(nearLimit).frames.at(-1).timestampMs).toBe(low - 1);
+
+    const multibyteSpace = { id: '界'.repeat(256), dimension: 512 };
+    const oversizedFrames = appearanceSequence(3000, multibyteSpace.dimension, multibyteSpace.id);
+    const compact = JSON.stringify({ featureSpace: multibyteSpace, frames: oversizedFrames });
+    expect(compact.length).toBeLessThan(MAX_BYTES);
+    expect(new TextEncoder().encode(compact).byteLength).toBeGreaterThan(MAX_BYTES);
+    expect(() => serializeSequence(oversizedFrames, multibyteSpace)).toThrow('FILE_TOO_LARGE');
+
+    const playback = new Playback(samples.straight);
+    playback.step();
+    const previousResults = playback.results;
+    const previousStartedAt = playback.startedAt;
+    await expect(prepareSequence({ featureSpace: multibyteSpace, frames: oversizedFrames }, 'deepsort', { algorithm: 'deepsort', gallerySize: 1 })).rejects.toThrow('FILE_TOO_LARGE');
+    expect(playback.results).toBe(previousResults);
+    expect(playback.startedAt).toBe(previousStartedAt);
+    expect(playback.index).toBe(0);
+    playback.dispose();
   });
   it('完整验证在非法末帧失败，且不改变此前回放结果和时间', async () => {
     const playback = new Playback(samples.straight);

@@ -65,4 +65,6 @@ Task 4实际验证：上述归档校验和API复跑通过；临时副本单个wa
 
 Chromium153主线程真实交互覆盖中文/英文状态保持、四场景、单步/播放暂停/重播、键盘seek、导入导出及错误原子性、390px无横向溢出、Vanilla单步与复位。390px是桌面视口，不能当手机实测。源码、实际包和NOTICE共同支持无生产依赖及独立实现声明，不承诺上游逐值等价。
 
-门户的7个既有SDK标准回归、93单测、18页构建及生产preview14 e2e摘要位于门户 `reports/tracking/2026-09-19-foundation/`。`sdk:check` after报告位于门户 `reports/sdk-standard/pp-tracking-after.json`，本地required失败0，远程required仍skip，仅 `locally-compliant`。后续须独立整分支审查；发布授权、远程设置核验及真实授权视频质量另行安排，不登记未发布的第8个门户在线SDK。
+门户的7个既有SDK标准回归、93单测、18页构建及生产preview14 e2e摘要位于门户 `reports/tracking/2026-09-19-foundation/`。`sdk:check` after报告位于门户 `reports/sdk-standard/pp-tracking-after.json`，本地required失败0，远程required仍skip，仅 `locally-compliant`。
+
+2026-09-19独立整分支审查通过，SDK审查提交 `96f32f0`、门户 `72ca1e5`，无严重或重要问题；1项轻微检查器标记后缀误匹配留待后续修补，当前真实Demo不受影响。最终记录保存在门户 `reports/tracking/2026-09-19-foundation/final-review.md`。本地Demo `http://127.0.0.1:4196/` 已交付，可在SDK目录运行 `npm run dev:demo` 重新启动。发布授权、远程设置核验及真实授权视频质量另行安排，不登记未发布的第8个门户在线SDK。

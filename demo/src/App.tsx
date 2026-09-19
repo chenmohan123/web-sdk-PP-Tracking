@@ -64,11 +64,11 @@ const parameterLabels: Record<ParameterKey, keyof typeof copy.zh> = {
 const algorithmInfo = {
   zh: {
     bytetrack: { detail: 'ByteTrack 高低分两阶段关联、恒速 Kalman 和全局分配。', defaults: '默认参数：低/高/新建分数 0.1 / 0.5 / 0.6；确认 2 次；丢失保留 1000 ms。', limitation: '无外观 ReID。低分框仅由 ByteTrack 用于续接，不要提前按高分阈值过滤。', source: 'ByteTrack', href: 'https://arxiv.org/abs/2110.06864' },
-    ocsort: { detail: 'OC-SORT 的观测中心关联、观测中心恢复和遮挡重现机制，复用独立八维 Kalman 状态。', defaults: '默认参数：高/新建分数 0.5 / 0.6；确认 2 次；方向权重 0.2；历史间隔 300 ms；历史容量与最大重放均为 30。', limitation: '无外观 ReID，也不使用 ByteTrack 低分续接。与论文七维固定帧间隔实现不逐值兼容，未声明真实 MOT 精度。', source: 'OC-SORT', href: 'https://arxiv.org/abs/2203.14360' },
+    ocsort: { detail: 'OC-SORT 的观测中心关联、观测中心恢复和遮挡重现机制，复用独立八维 Kalman 状态。', defaults: '默认参数：高/新建分数 0.5 / 0.6；确认 2 次；丢失保留 1000 ms；方向权重 0.2；历史间隔 300 ms；历史容量与最大重放均为 30。', limitation: '无外观 ReID，也不使用 ByteTrack 低分续接。与论文七维固定帧间隔实现不逐值兼容，未声明真实 MOT 精度。', source: 'OC-SORT', href: 'https://arxiv.org/abs/2203.14360' },
   },
   en: {
     bytetrack: { detail: 'ByteTrack high/low-score association, constant-velocity Kalman filtering and global assignment.', defaults: 'Defaults: low/high/new score 0.1 / 0.5 / 0.6; 2 hits to confirm; lost retention 1000 ms.', limitation: 'No appearance ReID. Only ByteTrack uses low-score detections for continuation; do not pre-filter them at the high-score threshold.', source: 'ByteTrack', href: 'https://arxiv.org/abs/2110.06864' },
-    ocsort: { detail: 'OC-SORT observation-centric association, recovery and re-association over the independent eight-dimensional Kalman state.', defaults: 'Defaults: high/new score 0.5 / 0.6; 2 hits; direction weight 0.2; history interval 300 ms; history and replay limits 30.', limitation: 'No appearance ReID and no ByteTrack low-score continuation. It is not value-compatible with the paper\'s seven-dimensional fixed-frame implementation and makes no real-MOT accuracy claim.', source: 'OC-SORT', href: 'https://arxiv.org/abs/2203.14360' },
+    ocsort: { detail: 'OC-SORT observation-centric association, recovery and re-association over the independent eight-dimensional Kalman state.', defaults: 'Defaults: high/new score 0.5 / 0.6; 2 hits; lost retention 1000 ms; direction weight 0.2; history interval 300 ms; history and replay limits 30.', limitation: 'No appearance ReID and no ByteTrack low-score continuation. It is not value-compatible with the paper\'s seven-dimensional fixed-frame implementation and makes no real-MOT accuracy claim.', source: 'OC-SORT', href: 'https://arxiv.org/abs/2203.14360' },
   },
 } as const;
 

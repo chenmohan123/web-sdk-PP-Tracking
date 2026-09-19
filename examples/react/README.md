@@ -1,8 +1,8 @@
-# React 示例（0.1.0）
+# React 示例（本地候选 0.2.0-alpha.0）
 
 [English](README.en.md)
 
-完整实现位于 [demo/src/App.tsx](../../demo/src/App.tsx)，通过公开包入口 `web-sdk-pp-tracking` 消费本地构建的 SDK。React 仅为开发依赖，发行 runtime 无框架依赖。
+完整实现位于 [demo/src/App.tsx](../../demo/src/App.tsx)，通过公开包入口 `web-sdk-pp-tracking` 消费本地候选构建的 SDK。React 仅为开发依赖，发行 runtime 无框架依赖；线上 npm 与独立 Demo 仍为已发布的 0.1.0。
 
 在仓库根目录使用 Node >=22.12.0，运行：
 

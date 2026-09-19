@@ -2,3 +2,4 @@
 # 原始证据逐字节归档，避免 Windows 换行转换改变固定摘要。
 reports/2026-09-19-desktop/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol
 reports/2026-09-19-mot17/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol
+reports/2026-09-19-reid-feasibility/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol

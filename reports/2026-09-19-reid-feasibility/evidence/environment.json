@@ -1,0 +1,18 @@
+{
+  "testedAt": "2026-09-19",
+  "os": {
+    "Caption": "Microsoft Windows 11 专业版",
+    "Version": "10.0.26200"
+  },
+  "cpu": {
+    "Name": "Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz",
+    "NumberOfCores": 6,
+    "NumberOfLogicalProcessors": 12
+  },
+  "gpu": {
+    "Name": "NVIDIA GeForce RTX 5060 Ti",
+    "DriverVersion": "32.0.16.1692"
+  },
+  "sdkBaseCommit": "4f6cc5d86914fb1f4ba0bd914c820652e378e16f",
+  "probePurpose": "只用于本地可行性，未集成 SDK 或发布模型"
+}

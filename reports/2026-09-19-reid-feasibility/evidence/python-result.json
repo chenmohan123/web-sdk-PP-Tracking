@@ -1,0 +1,192 @@
+{
+  "date": "2026-09-19",
+  "purpose": "一次性转换/执行成本探针，非行人识别或跟踪质量验证",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "versions": {
+    "numpy": "1.26.4",
+    "onnx": "1.17.0",
+    "onnxruntime": "1.23.2",
+    "openvino": "2025.4.1",
+    "openvino2onnx": "1.1.0"
+  },
+  "model": {
+    "bytes": 991822,
+    "sha256": "50ec57f754c2e277a309607ef2b27f3ce67fe89dd637bf156c9be0b7bb6362e4",
+    "opset": 17,
+    "input": {
+      "name": "data",
+      "shape": [
+        1,
+        3,
+        256,
+        128
+      ],
+      "dtype": "float32",
+      "color": "BGR",
+      "range": [
+        0,
+        255
+      ]
+    },
+    "output": {
+      "name": "reid_embedding/sink_port_0",
+      "shape": [
+        1,
+        256
+      ]
+    },
+    "operators": {
+      "Constant": 376,
+      "Gather": 1,
+      "Sub": 15,
+      "Mul": 68,
+      "ReduceMean": 52,
+      "Add": 157,
+      "Sqrt": 14,
+      "Div": 14,
+      "Conv": 164,
+      "Relu": 88,
+      "MaxPool": 1,
+      "Sigmoid": 24,
+      "Reshape": 27,
+      "AveragePool": 2,
+      "MatMul": 1,
+      "LeakyRelu": 1
+    },
+    "firstOperations": [
+      {
+        "op": "Gather",
+        "inputs": [
+          "data",
+          "Range_5275_output0"
+        ],
+        "constants": {
+          "Range_5275_output0": [
+            2,
+            1,
+            0
+          ]
+        }
+      },
+      {
+        "op": "Sub",
+        "inputs": [
+          "Gather_5277_output3",
+          "Constant_5278_output0"
+        ],
+        "constants": {
+          "Constant_5278_output0": [
+            [
+              [
+                [
+                  123.67500305175781
+                ]
+              ],
+              [
+                [
+                  116.27999877929688
+                ]
+              ],
+              [
+                [
+                  103.52999877929688
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "op": "Mul",
+        "inputs": [
+          "Subtract_5279_output2",
+          "Constant_12813_output0"
+        ],
+        "constants": {
+          "Constant_12813_output0": [
+            [
+              [
+                [
+                  0.017124753445386887
+                ]
+              ],
+              [
+                [
+                  0.017507003620266914
+                ]
+              ],
+              [
+                [
+                  0.01742919348180294
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "op": "ReduceMean",
+        "inputs": [
+          "Divide_5281_output2"
+        ],
+        "constants": {}
+      },
+      {
+        "op": "Sub",
+        "inputs": [
+          "Divide_5281_output2",
+          "MVN_565/explicit_mvn/mean"
+        ],
+        "constants": {}
+      }
+    ]
+  },
+  "validation": {
+    "fixtureCount": 8,
+    "maxAbs": 0.0003406703472137451,
+    "maxCosineDistance": 1.5390648866464574e-08,
+    "tolerance": {
+      "maxAbs": 0.001,
+      "cosineDistance": 1e-05
+    },
+    "passed": true
+  },
+  "pythonOrtSingleThread": {
+    "warmup": 5,
+    "iterations": 30,
+    "medianMs": 9.086949998163618,
+    "p95Ms": 11.3129650009796,
+    "rawMs": [
+      10.226199985481799,
+      9.432999999262393,
+      8.786699996562675,
+      8.865200012223795,
+      8.97249998524785,
+      9.58600000012666,
+      8.854599989717826,
+      10.020300018368289,
+      9.05100000090897,
+      10.653899982571602,
+      11.651500011794269,
+      14.905399992130697,
+      8.670099981827661,
+      9.63769998634234,
+      8.844299998600036,
+      9.34459999552928,
+      10.899199987761676,
+      8.664100023452193,
+      9.287499997299165,
+      9.122899995418265,
+      9.021300007589161,
+      9.325899998657405,
+      10.071700002299622,
+      8.931300020776689,
+      9.04969999101013,
+      8.693700016010553,
+      9.137999993981794,
+      8.918300009099767,
+      8.936099999118596,
+      8.79039999563247
+    ]
+  }
+}

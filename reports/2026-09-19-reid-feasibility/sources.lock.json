@@ -1,0 +1,150 @@
+{
+  "date": "2026-09-19",
+  "sources": [
+    {
+      "id": "paddle",
+      "repository": "PaddlePaddle/PaddleDetection",
+      "requestedRef": "release/2.9",
+      "revision": "b25522a0f4bde8c80603f3ba5e3472059972e3b5",
+      "files": [
+        {
+          "path": "LICENSE",
+          "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/LICENSE",
+          "file": "paddle-LICENSE",
+          "bytes": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "configs/mot/deepsort/README_cn.md",
+          "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/configs/mot/deepsort/README_cn.md",
+          "file": "paddle-configs__mot__deepsort__README_cn.md",
+          "bytes": 16744,
+          "sha256": "8b6982d9a8fed6e2e0714c2778e9d0f852e3d96212875c688d558dbf2acac95d"
+        },
+        {
+          "path": "configs/mot/deepsort/reid/deepsort_pplcnet.yml",
+          "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/configs/mot/deepsort/reid/deepsort_pplcnet.yml",
+          "file": "paddle-configs__mot__deepsort__reid__deepsort_pplcnet.yml",
+          "bytes": 1139,
+          "sha256": "9c8e05ac7317d440d5244f95ede4aa3f51b326699e0444be681e28bf024d31f0"
+        }
+      ]
+    },
+    {
+      "id": "deepsort",
+      "repository": "nwojke/deep_sort",
+      "requestedRef": "master",
+      "revision": "f08cf1dc470eeb1cd2add1cbf077d95ac6c48aab",
+      "files": [
+        {
+          "path": "LICENSE",
+          "url": "https://raw.githubusercontent.com/nwojke/deep_sort/f08cf1dc470eeb1cd2add1cbf077d95ac6c48aab/LICENSE",
+          "file": "deepsort-LICENSE",
+          "bytes": 35141,
+          "sha256": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2"
+        },
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/nwojke/deep_sort/f08cf1dc470eeb1cd2add1cbf077d95ac6c48aab/README.md",
+          "file": "deepsort-README.md",
+          "bytes": 5751,
+          "sha256": "7627abdbd58397e189a21a017fb1da84c5674f3a064d56e1b80201d8557ad218"
+        }
+      ]
+    },
+    {
+      "id": "omz",
+      "repository": "openvinotoolkit/open_model_zoo",
+      "requestedRef": "master",
+      "revision": "6697dead54ed1cdd664b0313189c2cb52ee6335e",
+      "files": [
+        {
+          "path": "LICENSE",
+          "url": "https://raw.githubusercontent.com/openvinotoolkit/open_model_zoo/6697dead54ed1cdd664b0313189c2cb52ee6335e/LICENSE",
+          "file": "omz-LICENSE",
+          "bytes": 11357,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/openvinotoolkit/open_model_zoo/6697dead54ed1cdd664b0313189c2cb52ee6335e/README.md",
+          "file": "omz-README.md",
+          "bytes": 4089,
+          "sha256": "2f7cc832f77418f1dbc746da092be11b16e9e3ac56b9808d2efa4b8e343db1ba"
+        },
+        {
+          "path": "models/intel/index.md",
+          "url": "https://raw.githubusercontent.com/openvinotoolkit/open_model_zoo/6697dead54ed1cdd664b0313189c2cb52ee6335e/models/intel/index.md",
+          "file": "omz-models__intel__index.md",
+          "bytes": 35560,
+          "sha256": "3f1240dcf954d50fc3328ffb63dc7abf0c22e67f4c781eb0be8fcc86af54eb99"
+        },
+        {
+          "path": "models/intel/person-reidentification-retail-0288/README.md",
+          "url": "https://raw.githubusercontent.com/openvinotoolkit/open_model_zoo/6697dead54ed1cdd664b0313189c2cb52ee6335e/models/intel/person-reidentification-retail-0288/README.md",
+          "file": "omz-models__intel__person-reidentification-retail-0288__README.md",
+          "bytes": 2713,
+          "sha256": "418b31669202581492a527e6ba53cef943046cd2af26eabe77f7c27002d92e70"
+        },
+        {
+          "path": "models/intel/person-reidentification-retail-0288/model.yml",
+          "url": "https://raw.githubusercontent.com/openvinotoolkit/open_model_zoo/6697dead54ed1cdd664b0313189c2cb52ee6335e/models/intel/person-reidentification-retail-0288/model.yml",
+          "file": "omz-models__intel__person-reidentification-retail-0288__model.yml",
+          "bytes": 2316,
+          "sha256": "7d151082bd54c7a4b2e32b4149c17d633d86050b9383983e52c829312843ad2d"
+        }
+      ]
+    },
+    {
+      "id": "torchreid",
+      "repository": "KaiyangZhou/deep-person-reid",
+      "requestedRef": "master",
+      "revision": "f8cd150fdf77e8d9e1ed143b7f308c2c609ded50",
+      "files": [
+        {
+          "path": "LICENSE",
+          "url": "https://raw.githubusercontent.com/KaiyangZhou/deep-person-reid/f8cd150fdf77e8d9e1ed143b7f308c2c609ded50/LICENSE",
+          "file": "torchreid-LICENSE",
+          "bytes": 1069,
+          "sha256": "3ac8ce2a83d170cb1c7c84152e0c1faca1f187794303514383960d2441716247"
+        },
+        {
+          "path": "README.rst",
+          "url": "https://raw.githubusercontent.com/KaiyangZhou/deep-person-reid/f8cd150fdf77e8d9e1ed143b7f308c2c609ded50/README.rst",
+          "file": "torchreid-README.rst",
+          "bytes": 17379,
+          "sha256": "20b769511aa854ae74f303a9e7f7281e1d9509d335df4bf3043e0151313d8b25"
+        },
+        {
+          "path": "docs/MODEL_ZOO.md",
+          "url": "https://raw.githubusercontent.com/KaiyangZhou/deep-person-reid/f8cd150fdf77e8d9e1ed143b7f308c2c609ded50/docs/MODEL_ZOO.md",
+          "file": "torchreid-docs__MODEL_ZOO.md",
+          "bytes": 11716,
+          "sha256": "6c7efc08326beab05431e06282a8efdfb278b4c0960761cd347f96c5816491c1"
+        }
+      ]
+    },
+    {
+      "id": "converter",
+      "repository": "LoSealL/openvino2onnx",
+      "requestedRef": "v1.1.0",
+      "revision": "1f398d81fd628cea5a4c4df0e363743cd6bed55b",
+      "files": [
+        {
+          "path": "LICENSE",
+          "url": "https://raw.githubusercontent.com/LoSealL/openvino2onnx/1f398d81fd628cea5a4c4df0e363743cd6bed55b/LICENSE",
+          "file": "converter-LICENSE",
+          "bytes": 10184,
+          "sha256": "6fe7dec2042f4383ff73183385af9e155d2964884f70b0d5dc9f830383c2b81b"
+        },
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/LoSealL/openvino2onnx/1f398d81fd628cea5a4c4df0e363743cd6bed55b/README.md",
+          "file": "converter-README.md",
+          "bytes": 1877,
+          "sha256": "1d628137787a801f1c09b08e70bf8510322c646eb9e88884f44d86b317f513f9"
+        }
+      ]
+    }
+  ]
+}

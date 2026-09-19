@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-19",
+  "baseCommit": "0e9baf9786346ccff961b85dc04d38199f439a14",
+  "scope": "公开文档时态收尾及发行包身份固定；不代表远程交付通过",
+  "package": {
+    "name": "web-sdk-pp-tracking",
+    "version": "0.1.0",
+    "path": "F:/git/00_chenmohan/github/web-sdk-PP-Tracking/.tmp/release-final-2026-09-19/web-sdk-pp-tracking-0.1.0.tgz",
+    "bytes": 16541,
+    "unpackedBytes": 57289,
+    "fileCount": 13,
+    "sha256": "4b532782a008a5ef411d6db00fb58900884fef0c1759c15c9441d30a3093b2bb",
+    "integrity": "sha512-0ujJfrcXoDcynzIUYQRI7pcETWT1x2t4LkEqB1D2cGQrnT8JCfk9LNrEZwAIDnBh1TLILcPmOaUbCDxsjE+tTQ=="
+  },
+  "checks": {
+    "documentation": { "files": 10, "localLinks": 62, "installationDocs": 4, "status": "通过" },
+    "build": { "command": "npm run build", "exitCode": 0 },
+    "packageConsumption": { "command": "npm run check:package", "exitCode": 0, "record": "package-check-final.json", "formats": ["ESM", "CommonJS", "TypeScript mts/cts"] },
+    "sdkChecker": { "before": "sdk-check-before.json", "after": "sdk-check-after.json", "exitCodes": [0, 0], "requiredPassed": 17, "requiredFailed": 0, "requiredSkipped": 7, "status": "locally-compliant" },
+    "lfCheckout": { "path": ".tmp/release-final-lf-checkout", "commands": ["git -c core.autocrlf=false checkout-index --all --prefix=.tmp/release-final-lf-checkout/", "npm run build", "npm pack --json"], "byteIdentical": true, "allPackageFilesUseLf": true, "environment": "Windows 本机与 LF checkout；未声称已在 Linux 执行" },
+    "tarballContents": { "readmesHaveStandardInstallCommand": true, "readmesHaveNoCandidateWording": true, "unchangedNonReadmeFiles": 11 },
+    "fullVerifyRerun": false,
+    "browserSuiteRerun": false,
+    "realEvaluationRerun": false
+  },
+  "previousCandidate": {
+    "path": ".tmp/release-candidate-2026-09-19/web-sdk-pp-tracking-0.1.0.tgz",
+    "sha256": "fac25d8c0fc394f2b989b94e1448670b386cac3425106c6c8e7f546d2c18180c",
+    "preserved": true
+  },
+  "historicalReportsChanged": false,
+  "remoteOperationsPerformed": false
+}

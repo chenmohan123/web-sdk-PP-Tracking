@@ -1,0 +1,31 @@
+web-sdk-pp-tracking
+Copyright 2026 chen mohan
+
+本项目独立实现，采用 Apache License 2.0。不是 Paddle、ByteTrack 或其作者的官方移植。
+
+算法思想来源：
+Yifu Zhang, Peize Sun, Yi Jiang, Dongdong Yu, Fucheng Weng, Zehuan Yuan,
+Ping Luo, Wenyu Liu, Xinggang Wang.
+ByteTrack: Multi-Object Tracking by Associating Every Detection Box.
+arXiv:2110.06864，2021-10-13。https://arxiv.org/abs/2110.06864
+
+采用高低置信度两阶段关联思想；生产 Kalman、全局分配和生命周期依据数学定义独立编写。
+没有复制或翻译 ByteTrack、DeepSORT、Paddle Kalman、SORT 或 OC-SORT 源码。
+前期评估只用于识别来源风险与机制限制；本发行包不包含这些实现或模型资产。
+独立 NumPy 参考通过标准矩阵公式验证本项目数值，不使用上游跟踪实现。
+
+主要差异：像素 cx/cy/w/h 八维恒速状态、时间戳 dt、固定噪声、Joseph 更新、
+门限内最大基数最小代价分配、毫秒超时、实例私有 ID、事务性更新。
+无 ReID，无相机运动补偿，不承诺上游逐值兼容或普遍真实序列 MOT 精度；固定训练集评测见日期化报告。
+论文引用不替代第三方代码许可；本项目 Apache 声明仅覆盖本项目独立代码。
+
+离线评测来源（不进入运行时）：MOT17 官方公开 FRCNN 训练检测与GT，无图像包。
+使用依据为官方公开基准及历史FAQ的训练集设置比较说明，不声明统一CC或Apache数据许可。
+引用：Milan等，MOT16: A Benchmark for Multi-Object Tracking，arXiv:1603.00831；
+Leal-Taixé等，MOTChallenge 2015，arXiv:1504.01942；
+Ess、Leibe、Van Gool，Depth and Appearance for Mobile Scene Analysis，ICCV 2007（05序列）。
+原检测/GT/逐轨结果和媒体不随本项目分发，来源摘要见reports/2026-09-19-mot17/sources.json。
+评分工具TrackEval，MIT，Copyright (c) 2020 Jonathon Luiten，固定提交
+12c8791b303e0a0b50f753af204249e622d0281a；其源码与原LICENSE仅保留本地.tmp，不包含在npm包。
+工具引用：Luiten等，HOTA: A Higher Order Metric for Evaluating Multi-object Tracking，IJCV 2021。
+实际计算Identity/CLEAR，未宣称计算HOTA；第三方评分许可不替代数据使用条件。

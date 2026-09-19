@@ -1,0 +1,710 @@
+{
+  "testedAt": "2026-09-19T03:56:59.936Z",
+  "dataset": {
+    "url": "https://motchallenge.net/data/MOT17Labels.zip",
+    "bytes": 10107022,
+    "sha256": "0aa79322e91583369f42f17c4d79a0b145380d8732487bba59272048dc82b2b9",
+    "sequences": [
+      "MOT17-02-FRCNN",
+      "MOT17-04-FRCNN",
+      "MOT17-05-FRCNN",
+      "MOT17-09-FRCNN",
+      "MOT17-10-FRCNN",
+      "MOT17-11-FRCNN",
+      "MOT17-13-FRCNN"
+    ]
+  },
+  "sdk": {
+    "version": "web-sdk-pp-tracking@0.1.0",
+    "commit": "8d4a55430fede56c395b3444fcec2098720afba0",
+    "entrySha256": "fdd721bf78b7dc2ea3c554619418c914041971e37a2274ef3851e251997d4935"
+  },
+  "environment": {
+    "node": "v24.16.0",
+    "platform": "win32",
+    "release": "10.0.26200",
+    "architecture": "x64",
+    "cpu": "Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz",
+    "actualBackend": "cpu",
+    "executionMode": "main"
+  },
+  "configurations": {
+    "default": {
+      "lowScoreThreshold": 0.1,
+      "highScoreThreshold": 0.5,
+      "newTrackThreshold": 0.6,
+      "minHits": 2,
+      "matchIouThreshold": 0.3,
+      "lowMatchIouThreshold": 0.2,
+      "maxLostMs": 1000,
+      "largeGapMs": 2000,
+      "maxDetections": 100,
+      "maxTracks": 200
+    },
+    "no-low": {
+      "lowScoreThreshold": 0.5,
+      "highScoreThreshold": 0.5,
+      "newTrackThreshold": 0.6,
+      "minHits": 2,
+      "matchIouThreshold": 0.3,
+      "lowMatchIouThreshold": 0.2,
+      "maxLostMs": 1000,
+      "largeGapMs": 2000,
+      "maxDetections": 100,
+      "maxTracks": 200
+    }
+  },
+  "inputHashes": {
+    "MOT17-02-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "669c5135aa1b7f1726ee50ab6cec86780fc448dadaf93ea9c4fb6e2a0d4256aa"
+      },
+      "det/det.txt": {
+        "bytes": 267111,
+        "sha256": "1e46e773a7297b975291884266ca728f56347e700c44f10ad96f207e1f6995ae"
+      },
+      "gt/gt.txt": {
+        "bytes": 916738,
+        "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+      }
+    },
+    "MOT17-04-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 109,
+        "sha256": "f2d5bbe2c4d2a884422571987bc5363b61bb7e2c6748d1cff444e55b4886b888"
+      },
+      "det/det.txt": {
+        "bytes": 894422,
+        "sha256": "e1494db52e85cc13dad52ac01e7efe972e4e432f6ce788da8a4dfa0d38edce75"
+      },
+      "gt/gt.txt": {
+        "bytes": 3473246,
+        "sha256": "f8cfbe36ef38a2e1857d7ebfe7d754b2355a3ffb9e1f9cedea435e86e4fbc948"
+      }
+    },
+    "MOT17-05-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 106,
+        "sha256": "2f49de730bcdfcd684069aed291627d2e5f13f8524e5163129e4bac88af815d0"
+      },
+      "det/det.txt": {
+        "bytes": 121432,
+        "sha256": "6dfc37078b989f9e7f0e2f0492836ef28a2b51ffcf30ded428fd61d53e3aca98"
+      },
+      "gt/gt.txt": {
+        "bytes": 251681,
+        "sha256": "ed74c54176b21b38cb690eda79a4755cf16e4c4a9ca2f019b0ba8904636174f5"
+      }
+    },
+    "MOT17-09-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "96cec357e5661afad673cc2259310d2c0fb93854ffe18b765fd973c38f3957d9"
+      },
+      "det/det.txt": {
+        "bytes": 100965,
+        "sha256": "d4bf28e2ccb4c46a5e36ecb6b35177ac27ad1ac3c74fc09a601c0a9d4cf9ec6d"
+      },
+      "gt/gt.txt": {
+        "bytes": 324307,
+        "sha256": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d"
+      }
+    },
+    "MOT17-10-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "7af062d088f3b7a88522f8095246eb01a6113d89823a96b7099a09d54421ecbd"
+      },
+      "det/det.txt": {
+        "bytes": 318265,
+        "sha256": "4ad164363e6985e6ffbcae65963397d0d0f2cbb6313a33e0913fa8d1473e304c"
+      },
+      "gt/gt.txt": {
+        "bytes": 541756,
+        "sha256": "f8cca05d98fa36d8b6f2b807e03d32407d00d40299d679e4da320e42862677c0"
+      }
+    },
+    "MOT17-11-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "5e376f2489be7c5c5e64456a3842e9f62aa79ce7455903820c9bd218ff0c806f"
+      },
+      "det/det.txt": {
+        "bytes": 198413,
+        "sha256": "0559214506fe189b4ebe81e38538c4fdc04cd0cde6b28d9ab6c8c94fb04b8b65"
+      },
+      "gt/gt.txt": {
+        "bytes": 338857,
+        "sha256": "4952d6e4efc705c90688e434fd138a55ada2c0d5f576ba3847ee102fc18aff93"
+      }
+    },
+    "MOT17-13-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "a7a0f607a31e3f311be6e9836214e23d4642c088db56126f51f150f13fe7a3af"
+      },
+      "det/det.txt": {
+        "bytes": 280547,
+        "sha256": "d95a3a26b64a2164d6608ed5cc732fe7f63fc5157c884f218e43cd04507b9989"
+      },
+      "gt/gt.txt": {
+        "bytes": 637671,
+        "sha256": "4827603ef87bbd61123cb4c5f194b3bf23531bd78ed9cd916084e53dca998013"
+      }
+    }
+  },
+  "adapter": {
+    "MOT17-02-FRCNN": {
+      "name": "MOT17-02-FRCNN",
+      "fps": 30,
+      "length": 600,
+      "width": 1920,
+      "height": 1080,
+      "inputRows": 8186,
+      "clipped": 0,
+      "empty": 0,
+      "accepted": 8186,
+      "maxDetections": 18,
+      "numericalClamps": 37,
+      "framesSha256": "50665f436f848a4d4757e263be5353bb677e281f87dba2c65417a5a1c00071cc"
+    },
+    "MOT17-04-FRCNN": {
+      "name": "MOT17-04-FRCNN",
+      "fps": 30,
+      "length": 1050,
+      "width": 1920,
+      "height": 1080,
+      "inputRows": 28406,
+      "clipped": 0,
+      "empty": 0,
+      "accepted": 28406,
+      "maxDetections": 34,
+      "numericalClamps": 0,
+      "framesSha256": "61ce24cb7ba2656b6c1099c4f8c075f02afa8198b00a8a3d80fabda47d902d12"
+    },
+    "MOT17-05-FRCNN": {
+      "name": "MOT17-05-FRCNN",
+      "fps": 14,
+      "length": 837,
+      "width": 640,
+      "height": 480,
+      "inputRows": 3848,
+      "clipped": 0,
+      "empty": 0,
+      "accepted": 3848,
+      "maxDetections": 10,
+      "numericalClamps": 217,
+      "framesSha256": "d30ab5c82df53124376a2c7b01bcdfb07f1d16bea663b7a8b67845f722195549"
+    },
+    "MOT17-09-FRCNN": {
+      "name": "MOT17-09-FRCNN",
+      "fps": 30,
+      "length": 525,
+      "width": 1920,
+      "height": 1080,
+      "inputRows": 3049,
+      "clipped": 0,
+      "empty": 0,
+      "accepted": 3049,
+      "maxDetections": 10,
+      "numericalClamps": 27,
+      "framesSha256": "804736b127bac917d3d3b9795b667272f8641a165f3b93b209b90faf8ac49526"
+    },
+    "MOT17-10-FRCNN": {
+      "name": "MOT17-10-FRCNN",
+      "fps": 30,
+      "length": 654,
+      "width": 1920,
+      "height": 1080,
+      "inputRows": 9701,
+      "clipped": 0,
+      "empty": 0,
+      "accepted": 9701,
+      "maxDetections": 21,
+      "numericalClamps": 1,
+      "framesSha256": "9256723957438c1e99693e2ca379af529bcd9be82d50d6108796ebdd7ad7f772"
+    },
+    "MOT17-11-FRCNN": {
+      "name": "MOT17-11-FRCNN",
+      "fps": 30,
+      "length": 900,
+      "width": 1920,
+      "height": 1080,
+      "inputRows": 6007,
+      "clipped": 0,
+      "empty": 0,
+      "accepted": 6007,
+      "maxDetections": 18,
+      "numericalClamps": 96,
+      "framesSha256": "51072a325810713aa83f29d0670ab8ebd9e9dc18455936fb89793b8abd352526"
+    },
+    "MOT17-13-FRCNN": {
+      "name": "MOT17-13-FRCNN",
+      "fps": 25,
+      "length": 750,
+      "width": 1920,
+      "height": 1080,
+      "inputRows": 8442,
+      "clipped": 0,
+      "empty": 0,
+      "accepted": 8442,
+      "maxDetections": 30,
+      "numericalClamps": 0,
+      "framesSha256": "53f21eeead170904e03cce0caaa756319438d7bcdbb86c22a22a427db588f621"
+    }
+  },
+  "runs": {
+    "default": {
+      "MOT17-02-FRCNN": {
+        "frames": 600,
+        "maxTracks": 26,
+        "droppedDetections": 0,
+        "sdkTotalMs": 1142.3527000000004,
+        "p50Ms": 1.7786999999998443,
+        "p95Ms": 3.0032000000001062,
+        "elapsedMs": 1195.1141000000002,
+        "cpuMs": 1407,
+        "deterministicRepeat": true,
+        "nonTimingSha256": "9990c41121d920e775fd3b259cc768954af75b52005836479de7c9f6e05f623d",
+        "motSha256": "4863a9877c6ea36685af524db63cc2db5bf3fbd4e637e01e1670935767a271c1"
+      },
+      "MOT17-04-FRCNN": {
+        "frames": 1050,
+        "maxTracks": 36,
+        "droppedDetections": 0,
+        "sdkTotalMs": 3135.662000000004,
+        "p50Ms": 2.932199999999284,
+        "p95Ms": 3.9945999999999913,
+        "elapsedMs": 3262.7712999999994,
+        "cpuMs": 3281,
+        "deterministicRepeat": true,
+        "nonTimingSha256": "8b8d058fe17874dc94b1d1f3ceaf4bd0626763927cf5d527fa9c67f1ee373c70",
+        "motSha256": "c7f8871cd98e41a39908e5719f454289e6228bbcf9fe44fb1c18ab0f3606ae10"
+      },
+      "MOT17-05-FRCNN": {
+        "frames": 837,
+        "maxTracks": 15,
+        "droppedDetections": 0,
+        "sdkTotalMs": 522.6373000000312,
+        "p50Ms": 0.5751999999993131,
+        "p95Ms": 1.0812000000005355,
+        "elapsedMs": 554.2508999999991,
+        "cpuMs": 484,
+        "deterministicRepeat": true,
+        "nonTimingSha256": "c6ab14e6c674f98fa759106955ea61bb17169e44dd92f4a346e6e74097fa5b91",
+        "motSha256": "2a1880c6ade5ac7ae496ce9e3aa6eaee307fe10f443a40e5a764364f61997e21"
+      },
+      "MOT17-09-FRCNN": {
+        "frames": 525,
+        "maxTracks": 14,
+        "droppedDetections": 0,
+        "sdkTotalMs": 369.7869999999857,
+        "p50Ms": 0.650100000002567,
+        "p95Ms": 1.1398999999983062,
+        "elapsedMs": 388.9624999999978,
+        "cpuMs": 406,
+        "deterministicRepeat": true,
+        "nonTimingSha256": "a2f1774417e1ab0edb2a30c38027d28c09b1d467dab1edf1cfbd8827a5b7bc03",
+        "motSha256": "8231a4de27e18590f7ae83c2e4e384b7ae52c2a5d2aa5e7e96c6bdd6fd1eb4ee"
+      },
+      "MOT17-10-FRCNN": {
+        "frames": 654,
+        "maxTracks": 52,
+        "droppedDetections": 0,
+        "sdkTotalMs": 1402.6025999999656,
+        "p50Ms": 2.0210000000006403,
+        "p95Ms": 3.193299999998999,
+        "elapsedMs": 1462.2554999999993,
+        "cpuMs": 1499,
+        "deterministicRepeat": true,
+        "nonTimingSha256": "0fc4262eeec136cdef3fb7b5a9bfc67f307f57a18f0ff8d82fe1c53d0d0af4de",
+        "motSha256": "3ee2abe756d7c6e67986a5b07736516e3d8c9d19e03f209d2302f4aae1db7b78"
+      },
+      "MOT17-11-FRCNN": {
+        "frames": 900,
+        "maxTracks": 31,
+        "droppedDetections": 0,
+        "sdkTotalMs": 754.0904000000482,
+        "p50Ms": 0.7214999999996508,
+        "p95Ms": 1.4719000000004598,
+        "elapsedMs": 793.3186999999998,
+        "cpuMs": 827,
+        "deterministicRepeat": true,
+        "nonTimingSha256": "020ae4a79dc60bbcc9617f5921942a43384dc2d29abab9c1726aafa98f3c5e20",
+        "motSha256": "b10c01ad2cdba47c781c36b99254c422d2d3d2eff34d1f8055c7e21f6be63793"
+      },
+      "MOT17-13-FRCNN": {
+        "frames": 750,
+        "maxTracks": 51,
+        "droppedDetections": 0,
+        "sdkTotalMs": 1300.458099999949,
+        "p50Ms": 1.2934999999997672,
+        "p95Ms": 4.3069999999970605,
+        "elapsedMs": 1353.4069999999992,
+        "cpuMs": 1359,
+        "deterministicRepeat": true,
+        "nonTimingSha256": "d55dabc59429b8c1cc1694aeaad0a4ad504319707b1eb93f2576231b28c1a684",
+        "motSha256": "a3b72d4d821b8d695c8dfaee5df296af9dee5a4f1f77bf6eacb0ce26c0e0467c"
+      }
+    },
+    "no-low": {
+      "MOT17-02-FRCNN": {
+        "frames": 600,
+        "maxTracks": 26,
+        "droppedDetections": 0,
+        "sdkTotalMs": 945.5292000000036,
+        "p50Ms": 1.5142000000000735,
+        "p95Ms": 2.3211999999998625,
+        "elapsedMs": 986.7388000000001,
+        "cpuMs": 1126,
+        "deterministicRepeat": true,
+        "nonTimingSha256": "749606618f674d04483f57080ee48ef2d763f62057edfe9cd7aaea4c991c91de",
+        "motSha256": "a05a4a563c8b07020128773552ae278e8c779edcf59218684abded817dcbe603"
+      },
+      "MOT17-04-FRCNN": {
+        "frames": 1050,
+        "maxTracks": 36,
+        "droppedDetections": 0,
+        "sdkTotalMs": 3129.461800000041,
+        "p50Ms": 2.9479000000010274,
+        "p95Ms": 3.9387000000006083,
+        "elapsedMs": 3255.9902,
+        "cpuMs": 3359,
+        "deterministicRepeat": true,
+        "nonTimingSha256": "8fe41571bbfffd85973a27e83a294259f9409abcb006e929c1b220b21c5602b0",
+        "motSha256": "6999c460272a1e63b68af2564d7f7470f63fdd7d8dfeb43d301605f4a38b258a"
+      },
+      "MOT17-05-FRCNN": {
+        "frames": 837,
+        "maxTracks": 16,
+        "droppedDetections": 0,
+        "sdkTotalMs": 440.36949999994613,
+        "p50Ms": 0.4949000000015076,
+        "p95Ms": 0.9349000000001979,
+        "elapsedMs": 462.52310000000216,
+        "cpuMs": 468,
+        "deterministicRepeat": true,
+        "nonTimingSha256": "fe2c584768bab7ce3ddf1bf7e029022664313222a4d351dd5e2bfc6b5f5cd17b",
+        "motSha256": "7f84526da58e46ab5d86b9043a2722808ec32518205cc22ce894385e1931bf51"
+      },
+      "MOT17-09-FRCNN": {
+        "frames": 525,
+        "maxTracks": 14,
+        "droppedDetections": 0,
+        "sdkTotalMs": 372.39400000002934,
+        "p50Ms": 0.6610000000000582,
+        "p95Ms": 1.1264999999984866,
+        "elapsedMs": 390.64990000000034,
+        "cpuMs": 406,
+        "deterministicRepeat": true,
+        "nonTimingSha256": "00aeb8e42a8627abf067abbf97fe21de5e6b8b157985e42c06e0af12266ea94c",
+        "motSha256": "ad1f440ed102254c9b8a36e7161b39754267a66c330ceaa60b28c23ba225e7ab"
+      },
+      "MOT17-10-FRCNN": {
+        "frames": 654,
+        "maxTracks": 51,
+        "droppedDetections": 0,
+        "sdkTotalMs": 1413.8833000000195,
+        "p50Ms": 2.0372999999999593,
+        "p95Ms": 3.4275000000016007,
+        "elapsedMs": 1475.7396000000008,
+        "cpuMs": 1563,
+        "deterministicRepeat": true,
+        "nonTimingSha256": "fd41d6da0d9805eb316f9fb0c88f951e11c65c64bd0033944e23a5d6f5a3f0f1",
+        "motSha256": "64f13014137dcf0ffab069f0b86c181bd702d22ac32fbe022da70dca11dcab93"
+      },
+      "MOT17-11-FRCNN": {
+        "frames": 900,
+        "maxTracks": 31,
+        "droppedDetections": 0,
+        "sdkTotalMs": 688.3033000000323,
+        "p50Ms": 0.6510000000016589,
+        "p95Ms": 1.470099999998638,
+        "elapsedMs": 720.0991999999969,
+        "cpuMs": 671,
+        "deterministicRepeat": true,
+        "nonTimingSha256": "124394e2c415b13da3b59a3da215d8f1e2029005bea1ba23271c7ca0731d28bb",
+        "motSha256": "a6aacb208cd2fb35a8d0b73e2d0c8b4db15d883cdbe2e7307983a85841f73d65"
+      },
+      "MOT17-13-FRCNN": {
+        "frames": 750,
+        "maxTracks": 51,
+        "droppedDetections": 0,
+        "sdkTotalMs": 1190.6876000000411,
+        "p50Ms": 1.3142000000007101,
+        "p95Ms": 3.46650000000227,
+        "elapsedMs": 1239.6443999999974,
+        "cpuMs": 1265,
+        "deterministicRepeat": true,
+        "nonTimingSha256": "7fcf9e88a7d0b7295eb714528857cbc6245b56be346ef26625c1beba00e47502",
+        "motSha256": "3ebd9a346767714f1eb8e418030e723190f82bb6e5774da8e56b4e8fd669a662"
+      }
+    }
+  },
+  "browser": {
+    "status": "通过",
+    "version": "153.0.8010.12",
+    "playwright": "1.63.0",
+    "sequence": "MOT17-02-FRCNN",
+    "frames": 600,
+    "maxTracks": 26,
+    "droppedDetections": 0,
+    "sdkTotalMs": 1015.5,
+    "p50Ms": 1.6000000089406967,
+    "p95Ms": 2.4000000059604645,
+    "nonTimingSha256": "9990c41121d920e775fd3b259cc768954af75b52005836479de7c9f6e05f623d",
+    "nodeEqual": true,
+    "actualBackend": "cpu",
+    "executionMode": "main"
+  },
+  "scripts": {
+    "adapter.mjs": "4752633b663f42a144bb8d8f52bb8bf5861e4d42bc6764c9f7f4eca4725bba21",
+    "execute.mjs": "62946622db7b5260a0220c3b194f21e908e025b044ade6581191735e317066b2",
+    "evaluator.py": "950ed7c7bc324ac416077eed57e654ed8986224be97e90952ad1b4eab2e5863b",
+    "run.mjs": "5fce8d58107b7c6cb4288c52cdc377c2adfeb565e77d1f740884d5f9e25c5fb9",
+    "lock.json": "9e88d9f2bca4e7a275a473c65709511484d1cd5c20a4b78f5f62b8ddd2d74495"
+  },
+  "metrics": {
+    "scorer": {
+      "commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+      "licenseSha256": "e7d2399dd1ce12eb5f5bb555f708bb0fdc1a95c1490cdb85b2f755b1a6b32019",
+      "loadedFiles": {
+        "trackeval/_timing.py": "8bd796826de1bd636d798795696bfe7e9bdc9c91baa4d753cb4283197dfadcd3",
+        "trackeval/utils.py": "84f324de538b4364af2e4ec5b83966df0f260fd8adbfd6b20a386bfa9a0e48bb",
+        "trackeval/datasets/_base_dataset.py": "f36c60dcb70d209c2145ab9408e2497eb3f7844b30f697cf7f42794205e3bf23",
+        "trackeval/datasets/mot_challenge_2d_box.py": "e269f145caf4db54848412cc6b0ce9f0cb45787b28522ebaee4cdaeaae3aef44",
+        "trackeval/metrics/_base_metric.py": "0f7a13d9a7465ff29a70e8f5ab33f884462bf19d941c7935d0a8a634bec736a2",
+        "trackeval/metrics/identity.py": "9e38466a88fb88581a85a8aac7814ea4f95e2a6a3b95eb2a23481d929f536af2",
+        "trackeval/metrics/clear.py": "da78468866f61ecf84e197446e630382e0c976ca1f47b70e1dd4904ab7ba598e"
+      },
+      "python": "3.11.15 (main, Jul 18 2026, 17:06:27) [MSC v.1944 64 bit (AMD64)]",
+      "dependencies": {
+        "numpy": "1.23.5",
+        "scipy": "1.10.1"
+      }
+    },
+    "protocol": {
+      "dataset": "MotChallenge2DBox",
+      "DO_PREPROC": true,
+      "class": "pedestrian",
+      "iouThreshold": 0.5
+    },
+    "default": {
+      "sequences": {
+        "MOT17-02-FRCNN": {
+          "IDF1": 0.39450606655187603,
+          "IDSW": 56,
+          "MOTA": 0.32172649480652277,
+          "FP": 179,
+          "FN": 12368,
+          "TP": 6213,
+          "GT": 18581,
+          "Frag": 89,
+          "IDTP": 4926,
+          "IDFP": 1466,
+          "IDFN": 13655
+        },
+        "MOT17-04-FRCNN": {
+          "IDF1": 0.6169159655844776,
+          "IDSW": 42,
+          "MOTA": 0.5297642828605673,
+          "FP": 273,
+          "FN": 22048,
+          "TP": 25509,
+          "GT": 47557,
+          "Frag": 97,
+          "IDTP": 22622,
+          "IDFP": 3160,
+          "IDFN": 24935
+        },
+        "MOT17-05-FRCNN": {
+          "IDF1": 0.5013938287032587,
+          "IDSW": 83,
+          "MOTA": 0.4376174642185919,
+          "FP": 188,
+          "FN": 3619,
+          "TP": 3298,
+          "GT": 6917,
+          "Frag": 104,
+          "IDTP": 2608,
+          "IDFP": 878,
+          "IDFN": 4309
+        },
+        "MOT17-09-FRCNN": {
+          "IDF1": 0.4875513657239546,
+          "IDSW": 44,
+          "MOTA": 0.4824413145539906,
+          "FP": 168,
+          "FN": 2544,
+          "TP": 2781,
+          "GT": 5325,
+          "Frag": 60,
+          "IDTP": 2017,
+          "IDFP": 932,
+          "IDFN": 3308
+        },
+        "MOT17-10-FRCNN": {
+          "IDF1": 0.2276843467011643,
+          "IDSW": 428,
+          "MOTA": 0.36825297920398786,
+          "FP": 1438,
+          "FN": 6245,
+          "TP": 6594,
+          "GT": 12839,
+          "Frag": 438,
+          "IDTP": 2376,
+          "IDFP": 5656,
+          "IDFN": 10463
+        },
+        "MOT17-11-FRCNN": {
+          "IDF1": 0.5040424121935057,
+          "IDSW": 77,
+          "MOTA": 0.4649215769393811,
+          "FP": 595,
+          "FN": 4377,
+          "TP": 5059,
+          "GT": 9436,
+          "Frag": 117,
+          "IDTP": 3803,
+          "IDFP": 1851,
+          "IDFN": 5633
+        },
+        "MOT17-13-FRCNN": {
+          "IDF1": 0.330562556979675,
+          "IDSW": 371,
+          "MOTA": 0.3416938670331558,
+          "FP": 1328,
+          "FN": 5965,
+          "TP": 5677,
+          "GT": 11642,
+          "Frag": 413,
+          "IDTP": 3082,
+          "IDFP": 3923,
+          "IDFN": 8560
+        }
+      },
+      "combined": {
+        "IDF1": 0.48292219560948035,
+        "IDSW": 1101,
+        "MOTA": 0.4440100804117652,
+        "FP": 4169,
+        "FN": 57166,
+        "TP": 55131,
+        "GT": 112297,
+        "Frag": 1318,
+        "IDTP": 41434,
+        "IDFP": 17866,
+        "IDFN": 70863
+      }
+    },
+    "no-low": {
+      "sequences": {
+        "MOT17-02-FRCNN": {
+          "IDF1": 0.39192179265398075,
+          "IDSW": 56,
+          "MOTA": 0.3190355739734137,
+          "FP": 146,
+          "FN": 12451,
+          "TP": 6130,
+          "GT": 18581,
+          "Frag": 96,
+          "IDTP": 4871,
+          "IDFP": 1405,
+          "IDFN": 13710
+        },
+        "MOT17-04-FRCNN": {
+          "IDF1": 0.6183780829404932,
+          "IDSW": 42,
+          "MOTA": 0.5276615429905166,
+          "FP": 246,
+          "FN": 22175,
+          "TP": 25382,
+          "GT": 47557,
+          "Frag": 111,
+          "IDTP": 22628,
+          "IDFP": 3000,
+          "IDFN": 24929
+        },
+        "MOT17-05-FRCNN": {
+          "IDF1": 0.49907829630348305,
+          "IDSW": 91,
+          "MOTA": 0.43472603729940723,
+          "FP": 146,
+          "FN": 3673,
+          "TP": 3244,
+          "GT": 6917,
+          "Frag": 109,
+          "IDTP": 2572,
+          "IDFP": 818,
+          "IDFN": 4345
+        },
+        "MOT17-09-FRCNN": {
+          "IDF1": 0.478181597180017,
+          "IDSW": 43,
+          "MOTA": 0.47530516431924885,
+          "FP": 164,
+          "FN": 2587,
+          "TP": 2738,
+          "GT": 5325,
+          "Frag": 65,
+          "IDTP": 1967,
+          "IDFP": 935,
+          "IDFN": 3358
+        },
+        "MOT17-10-FRCNN": {
+          "IDF1": 0.22516172636863957,
+          "IDSW": 405,
+          "MOTA": 0.37012228366695227,
+          "FP": 1359,
+          "FN": 6323,
+          "TP": 6516,
+          "GT": 12839,
+          "Frag": 444,
+          "IDTP": 2332,
+          "IDFP": 5543,
+          "IDFN": 10507
+        },
+        "MOT17-11-FRCNN": {
+          "IDF1": 0.5112149532710281,
+          "IDSW": 77,
+          "MOTA": 0.46916066129715983,
+          "FP": 520,
+          "FN": 4412,
+          "TP": 5024,
+          "GT": 9436,
+          "Frag": 120,
+          "IDTP": 3829,
+          "IDFP": 1715,
+          "IDFN": 5607
+        },
+        "MOT17-13-FRCNN": {
+          "IDF1": 0.33279150411790204,
+          "IDSW": 352,
+          "MOTA": 0.3482219549905515,
+          "FP": 1204,
+          "FN": 6032,
+          "TP": 5610,
+          "GT": 11642,
+          "Frag": 403,
+          "IDTP": 3071,
+          "IDFP": 3743,
+          "IDFN": 8571
+        }
+      },
+      "combined": {
+        "IDF1": 0.4834647329639305,
+        "IDSW": 1066,
+        "MOTA": 0.44340454330926027,
+        "FP": 3785,
+        "FN": 57653,
+        "TP": 54644,
+        "GT": 112297,
+        "Frag": 1348,
+        "IDTP": 41270,
+        "IDFP": 17159,
+        "IDFN": 71027
+      }
+    }
+  }
+}

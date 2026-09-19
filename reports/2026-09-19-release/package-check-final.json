@@ -1,0 +1,29 @@
+{
+  "filename": "web-sdk-pp-tracking-0.1.0.tgz",
+  "integrity": "sha512-0ujJfrcXoDcynzIUYQRI7pcETWT1x2t4LkEqB1D2cGQrnT8JCfk9LNrEZwAIDnBh1TLILcPmOaUbCDxsjE+tTQ==",
+  "sha256": "4b532782a008a5ef411d6db00fb58900884fef0c1759c15c9441d30a3093b2bb",
+  "size": 16541,
+  "unpackedSize": 57289,
+  "files": [
+    "LICENSE",
+    "NOTICE",
+    "README.en.md",
+    "README.md",
+    "dist/assignment.d.ts",
+    "dist/errors.d.ts",
+    "dist/index.cjs",
+    "dist/index.d.ts",
+    "dist/index.js",
+    "dist/kalman.d.ts",
+    "dist/tracker.d.ts",
+    "dist/types.d.ts",
+    "package.json"
+  ],
+  "checks": [
+    "实际包 ESM",
+    "实际包 CommonJS",
+    "实际包 TypeScript",
+    "无生产依赖",
+    "发行文件白名单"
+  ]
+}

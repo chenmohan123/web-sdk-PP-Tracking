@@ -1,0 +1,47 @@
+schemaVersion: "1.2.0"
+kind: algorithm
+id: pp-tracking
+name: PP-Tracking 多目标跟踪
+summary: 独立实现高低分两阶段关联的框架无关 CPU 主线程跟踪算法，含原创合成序列 Demo；当前本地未发布。
+package:
+  name: web-sdk-pp-tracking
+  version: 0.1.0
+# 以下远程地址均为计划地址，未发布；本地状态见 README。
+repository: https://github.com/chenmohan123/web-sdk-PP-Tracking
+demo:
+  url: https://chenmohan123.github.io/web-sdk-PP-Tracking/
+  defaultLanguage: zh-CN
+  framework: react
+  localProcessing: true
+docs:
+  zhCN: docs/zh-CN/quick-start.md
+  en: docs/en/quick-start.md
+runtime:
+  backends: [cpu]
+  executionModes: [main]
+  actualBackendReported: true
+  runtimeVersion: web-sdk-pp-tracking@0.1.0
+algorithm:
+  id: pp-tracking
+  version: 0.1.0
+  family: ByteTrack 机制多目标跟踪
+  source: 独立实现；ByteTrack论文 https://arxiv.org/abs/2110.06864；实现差异与来源见 docs/zh-CN/algorithm.md 和 NOTICE，非官方移植。
+  license: Apache-2.0
+  input: docs/zh-CN/api.md#输入
+  output: docs/zh-CN/api.md#输出
+  stateful: true
+performance:
+  timings: [validationMs, predictionMs, associationMs, updateMs, totalMs]
+  coldStartDefined: true
+  warmRunDefined: true
+examples:
+  vanilla: { status: available, path: examples/vanilla }
+  react: { status: available, path: examples/react }
+verification:
+  environments:
+    - browser: Chromium 153.0.8010.12 / Playwright 1.63.0
+      os: Windows 11 专业版 10.0.26200
+      device: Intel Core i5-10400F @2.90GHz
+      testedAt: "2026-09-19"
+      backend: cpu/main
+      runtimeVersion: web-sdk-pp-tracking@0.1.0

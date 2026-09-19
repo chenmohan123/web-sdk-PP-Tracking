@@ -1,5 +1,7 @@
 # Independent tracking algorithm
 
+[中文](../zh-CN/algorithm.md)
+
 This implementation uses the high/low confidence association idea from the
 [ByteTrack paper](https://arxiv.org/abs/2110.06864). The Kalman filter, assignment
 solver and lifecycle were independently written from mathematical definitions;

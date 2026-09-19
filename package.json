@@ -7,15 +7,52 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "require": "./dist/index.cjs" } },
-  "files": ["dist", "README.md", "README.en.md", "LICENSE", "NOTICE"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.en.md",
+    "LICENSE",
+    "NOTICE"
+  ],
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chenmohan123/web-sdk-PP-Tracking.git"
+  },
+  "homepage": "https://chenmohan123.github.io/web-sdk-PP-Tracking/",
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "build": "node scripts/build.mjs",
-    "check:package": "node scripts/check-package.mjs"
+    "check:package": "node scripts/check-package.mjs",
+    "dev:demo": "vite --config demo/vite.config.ts --host 127.0.0.1 --port 4196",
+    "typecheck:demo": "tsc --noEmit -p demo/tsconfig.json",
+    "build:demo": "vite build --config demo/vite.config.ts",
+    "build:vanilla": "vite build examples/vanilla --base ./",
+    "build:react": "vite build --config examples/react/vite.config.ts",
+    "test:browser": "node tests/browser.mjs",
+    "verify": "npm run build && npm run typecheck && npm test && npm run check:package && npm run typecheck:demo && npm run build:demo && npm run build:vanilla && npm run build:react && npm run test:browser"
   },
-  "devDependencies": { "esbuild": "0.25.12", "typescript": "5.9.3", "vitest": "3.2.4" },
-  "engines": { "node": ">=20" }
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "esbuild": "0.25.12",
+    "playwright": "1.63.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "typescript": "5.9.3",
+    "vite": "7.3.6",
+    "vitest": "3.2.4"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
 }

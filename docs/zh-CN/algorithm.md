@@ -1,5 +1,7 @@
 # 独立跟踪算法与数值定义
 
+[English](../en/algorithm.md)
+
 本实现参考 [ByteTrack 论文](https://arxiv.org/abs/2110.06864) 的高低分两阶段关联思想。
 运动模型、分配器、状态机均按本文公式独立编写，未读取或翻译旧 Kalman/SORT 代码。
 不是官方移植；无模型、ReID、运动补偿，不承诺交叉掉头的身份正确性或 MOT 精度。

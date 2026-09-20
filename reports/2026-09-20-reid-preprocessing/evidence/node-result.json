@@ -1,0 +1,244 @@
+{
+  "date": "2026-09-20",
+  "node": "v24.16.0",
+  "rows": [
+    {
+      "id": 0,
+      "name": "red-single",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "72a80eb535153c43b960be9285b34c11da9e0fb1ad66045e51a03607343aa70d"
+    },
+    {
+      "id": 1,
+      "name": "transparent",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "7c4c3912fd7b916414587409829d7f0c4364d90607de0b14230e7d5a6faf5034"
+    },
+    {
+      "id": 2,
+      "name": "black",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "e7077986f40571a6e0f0e4d1825b8d53565b849a2c78f5ff0d686a2c4e6e119f"
+    },
+    {
+      "id": 3,
+      "name": "white",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "0d2feaa023d672e303be9c3856ac5f4843b245a39e8e0a2c08a38f4eeb7c1fa0"
+    },
+    {
+      "id": 4,
+      "name": "fractional",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "f2b1b5fd307038b84b4cb1a83f8b73bb034cbe2baa1699e3e2a87404c618b282"
+    },
+    {
+      "id": 5,
+      "name": "clipped",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "24556bb7bac4f351496646043aa329b63ac342c6ea6f6418aad09d488311a07e"
+    },
+    {
+      "id": 6,
+      "name": "single-column",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "1ed8c759eb1a98ef1653b7bb4f0b0d47320ae2eab703089614e8d9e154fba1e9"
+    },
+    {
+      "id": 7,
+      "name": "single-row",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "53f282bcaa4c223332fba539d29b87500fdba678ec63ef10ff24f4f970de5b82"
+    },
+    {
+      "id": 8,
+      "name": "MOT17-05-FRCNN-f1-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "48b6dcb736d3c1ae5f0d5b7f55631ab9daabc267c149a4d4dca8ed586a90e71a"
+    },
+    {
+      "id": 9,
+      "name": "MOT17-05-FRCNN-f31-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "8f0b5c8f931feeaceec2a09aed24d9fcc031696d88be0ac43b73f025b63746ee"
+    },
+    {
+      "id": 10,
+      "name": "MOT17-09-FRCNN-f1-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "947408c2cbce90886f75379e99b7c83ac0c2142f187a5bddc7d723090759a2be"
+    },
+    {
+      "id": 11,
+      "name": "MOT17-09-FRCNN-f31-id19",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "69f0baac816f1330288a9f95e31d41094e6085aa5a52222856cdef9651c9fd83"
+    },
+    {
+      "id": 12,
+      "name": "MOT17-09-FRCNN-f61-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "ae4a7441ad28a36a56279cecae5336c82b9dc5e13d240f6b8e23bf2c873e687d"
+    },
+    {
+      "id": 13,
+      "name": "MOT17-09-FRCNN-f91-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "f0ebf5fae178a06ec2fdcaa5d769ff99edbd6be57af296b1e7d76259c6f26025"
+    },
+    {
+      "id": 14,
+      "name": "MOT17-09-FRCNN-f121-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "edd23e26672ad9fe7bd938d33ac23db7732c20315088df88f1893d27a301e8f3"
+    },
+    {
+      "id": 15,
+      "name": "MOT17-09-FRCNN-f151-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "baad4a061988a036918e75935bcfa2df396f74e4534a61989d576375033edec6"
+    },
+    {
+      "id": 16,
+      "name": "MOT17-10-FRCNN-f1-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "d689bac5ae6b5cdd580c8056b99e8a014cac6487ddd8ba713a0bd89e92309a22"
+    },
+    {
+      "id": 17,
+      "name": "MOT17-10-FRCNN-f31-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "d16f9f984d612b04dccefeb28f3483a269a77a71f53992bee80b488fa65c62d2"
+    },
+    {
+      "id": 18,
+      "name": "MOT17-10-FRCNN-f61-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "6d917566ba1f71348a5140694cb2823392ceabbc9f5479f7bd070450a5f8bac3"
+    },
+    {
+      "id": 19,
+      "name": "MOT17-10-FRCNN-f91-id2",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "3b277ddf295407fee2dd5c2e6deb81810f22abb7a2daa485c79680c2f7933dea"
+    },
+    {
+      "id": 20,
+      "name": "MOT17-10-FRCNN-f121-id2",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "0ea320dcd36814b0ce69e5ecfa9e9be8637f5799f50b0900e151da4c57b84849"
+    },
+    {
+      "id": 21,
+      "name": "MOT17-10-FRCNN-f151-id2",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "2ebe698bf4d00cc036e63d4c6e456bfad20faf4883afc5e580532a64a6704d6f"
+    },
+    {
+      "id": 22,
+      "name": "MOT17-11-FRCNN-f1-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "d7835bcd5fba5ad990df5ca08a94b1e002c177b9e0d8710ea692f558e612eafc"
+    },
+    {
+      "id": 23,
+      "name": "MOT17-11-FRCNN-f31-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "07a5a1a6e3dcdd3993008089ab36f3def1bcc4fc8caac82811167a40353e0cf7"
+    },
+    {
+      "id": 24,
+      "name": "MOT17-11-FRCNN-f61-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "fd8512e506e42d43a3034a5f9a47c0e6077dace1cb470985cc08555e0fb43ab3"
+    },
+    {
+      "id": 25,
+      "name": "MOT17-11-FRCNN-f91-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "1e0e5249f81e180658006488e498a625fa4cc5bd7bed8b7661b5dda6adda69c5"
+    },
+    {
+      "id": 26,
+      "name": "MOT17-11-FRCNN-f121-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "5c70e8433eb0558b16f7ab72e831e6b47dc361c7f3ea9ee03c71b24bb1de7c62"
+    },
+    {
+      "id": 27,
+      "name": "MOT17-11-FRCNN-f151-id1",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "fe6f12c81213c296214bf97ee304d6b97e3ee007a53094facd6503da1caa4ca9"
+    },
+    {
+      "id": 28,
+      "name": "MOT17-13-FRCNN-f1-id4",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "0def614f1fbfbd2572a9afe0ec36a21f42a9907b390c33e74ac382b7acc3fc4e"
+    },
+    {
+      "id": 29,
+      "name": "MOT17-13-FRCNN-f31-id2",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "02e3ae5fafcaa0cea19690fffc729d7c75983a23488f65e112a23d0c86d157ab"
+    },
+    {
+      "id": 30,
+      "name": "MOT17-13-FRCNN-f61-id2",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "cdf985844b0b31770b2806970c29d8f304ef84388f9b77a6b5570838c2239048"
+    },
+    {
+      "id": 31,
+      "name": "MOT17-13-FRCNN-f91-id2",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "ef45ca9a3b7fb4d386d1f3cb0439f085603fbe08375ceab6c56fef02ed28c812"
+    },
+    {
+      "id": 32,
+      "name": "MOT17-13-FRCNN-f121-id2",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "f9629ac004e55d06cf294d3c73f17d7c2752df4c4c1634c840dd71fa63defb90"
+    },
+    {
+      "id": 33,
+      "name": "MOT17-13-FRCNN-f151-id4",
+      "maxAbs": 0,
+      "different": 0,
+      "tensorSha256": "5235fb71c7c8d1f3bab8d18b7449a9a661e37af53b527fd2d74b38dfc43b4db7"
+    }
+  ]
+}

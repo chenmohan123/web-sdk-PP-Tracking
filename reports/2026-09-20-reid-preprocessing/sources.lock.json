@@ -1,0 +1,54 @@
+{
+  "date": "2026-09-20",
+  "upstreamRevision": "b25522a0f4bde8c80603f3ba5e3472059972e3b5",
+  "sources": [
+    {
+      "name": "paddle-readme",
+      "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/README_en.md",
+      "finalUrl": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/README_en.md",
+      "status": 200,
+      "bytes": 43684,
+      "sha256": "938020128412436ba0f1fa2481670924b73a17ef60d258642792e2dbad166261"
+    },
+    {
+      "name": "paddle-license",
+      "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/LICENSE",
+      "finalUrl": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/LICENSE",
+      "status": 200,
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "name": "paddle-reid-readme",
+      "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/configs/mot/deepsort/README_cn.md",
+      "finalUrl": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/configs/mot/deepsort/README_cn.md",
+      "status": 200,
+      "bytes": 16744,
+      "sha256": "8b6982d9a8fed6e2e0714c2778e9d0f852e3d96212875c688d558dbf2acac95d"
+    },
+    {
+      "name": "weight-directory-readme",
+      "url": "https://paddledet.bj.bcebos.com/models/mot/deepsort/README.md",
+      "status": 404
+    },
+    {
+      "name": "market1501-author-page",
+      "url": "https://zheng-lab-anu.github.io/Project/project_reid.html",
+      "finalUrl": "https://zheng-lab-anu.github.io/Project/project_reid.html",
+      "status": 200,
+      "bytes": 13336,
+      "sha256": "7e3d41a3f00627de879bdbc2f26171b5687462068d6ae78b9ece995ffc69577d"
+    },
+    {
+      "name": "mot17-archive",
+      "url": "https://motchallenge.net/data/MOT17/",
+      "finalUrl": "https://motchallenge.net/data/MOT17/",
+      "status": 200,
+      "bytes": 27383,
+      "sha256": "cc11e72d3513ec07ea7d107bc895c6588493e5ef7d341ef3cf4306daf58c9017"
+    }
+  ],
+  "licenseEvidence": "固定根README的License章节写明 PaddlePaddle is provided under the Apache 2.0 license；LICENSE和模型/预处理文件头相符。具体checkpoint独立许可/模型卡未在所读取资料中找到。检查权重目录README的404仅证明该URL不存在，不能证明其他位置没有条款。",
+  "trainingEvidence": "官方ReID README记载PaddleClas提供、Market1501 751类、训练细节待公布。作者数据页面描述1501身份/32668框/6摄像头并要求研究使用时引用论文；本轮未在该页面找到完整权重再分发许可声明，不能把数据集说明当作checkpoint许可。",
+  "redistribution": "本阶段完成本地模型卡草案及来源链说明；不声称已取得checkpoint专属授权，不分发权重、原图和完整GT。未来发布前应明确记录所采用许可依据与尚未披露信息；不预填虚构ModelScope/Hugging Face revision。"
+}

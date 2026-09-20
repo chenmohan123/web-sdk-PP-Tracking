@@ -180,6 +180,38 @@ describe('ReID 固定身份与生命周期', () => {
 });
 
 describe('ReID 资产边界', () => {
+  it.each(['gzip', 'br', 'cors-hidden'])('接收 %s 解压后的模型，不把传输长度当作明文字节数', async encoding => {
+    const headers: Record<string, string> = { 'content-length': '10000000' };
+    // 跨源服务可以不暴露 Content-Encoding；Response body 模拟浏览器已解压字节。
+    if (encoding !== 'cors-hidden') headers['content-encoding'] = encoding;
+    vi.mocked(fetch).mockResolvedValueOnce(new Response(raw.slice(0), { headers }));
+    const instance = createReIdExtractor({ modelId: 'pplcnet-reid-fp32', backend: 'wasm', source });
+    const result = await instance.load();
+    expect(result.runtime.actualBackend).toBe('wasm'); expect(digest).toHaveBeenCalledTimes(1);
+    expect(new Uint8Array(digest.mock.calls[0][1]).length).toBe(BYTES); expect(mock.create).toHaveBeenCalledTimes(1);
+    await instance.dispose();
+  });
+  it.each(['short', 'oversized', 'wrong-hash'])('忽略传输长度后仍拒绝 %s 的实际模型内容', async kind => {
+    const body = new Uint8Array(kind === 'short' ? 10 : kind === 'oversized' ? BYTES + 1 : BYTES);
+    vi.mocked(fetch).mockResolvedValueOnce(new Response(body, { headers: { 'content-length': '10000000' } }));
+    const instance = createReIdExtractor({ modelId: 'pplcnet-reid-fp32', backend: 'wasm', source });
+    await expect(instance.load()).rejects.toMatchObject({ code: 'INTEGRITY_FAILED' });
+    expect(mock.create).not.toHaveBeenCalled();
+    if (kind === 'wrong-hash') expect(digest).toHaveBeenCalledTimes(1);
+    else expect(digest).not.toHaveBeenCalled();
+    await instance.dispose();
+  });
+  it('cache.match 完成时取消会关闭已取得的响应体且不下载', async () => {
+    const controller = new AbortController(), cancel = vi.fn();
+    const cache = await caches.open('web-sdk-pp-tracking-reid-v1');
+    vi.mocked(cache.match).mockImplementationOnce(async () => {
+      controller.abort(); return new Response(new ReadableStream({ pull() {}, cancel }));
+    });
+    const instance = createReIdExtractor({ modelId: 'pplcnet-reid-fp32', backend: 'wasm', source });
+    await expect(instance.load({ signal: controller.signal })).rejects.toMatchObject({ code: 'ABORTED' });
+    expect(cancel).toHaveBeenCalledTimes(1); expect(fetch).not.toHaveBeenCalled(); expect(digest).not.toHaveBeenCalled(); expect(mock.create).not.toHaveBeenCalled();
+    await instance.dispose();
+  });
   it('来源固定版本/大小/SHA/HTTPS 校验且同步复制来源 metadata', async () => {
     for (const patch of [{ revision: 'main' }, { sha256: '0'.repeat(64) }, { bytes: 1 }, { downloadUrl: 'http://example.com/model' }, { downloadUrl: 'https://user:pass@example.com/model' }]) {
       expect(() => createReIdExtractor({ modelId: 'pplcnet-reid-fp32', backend: 'wasm', source: { ...source, ...patch } })).toThrowError(expect.objectContaining({ code: 'INVALID_MANIFEST' }));

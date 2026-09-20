@@ -16,8 +16,8 @@ async function readBounded(response: Response, signal: AbortSignal, notify?: Not
   signal.addEventListener('abort', cancel, { once: true });
   try {
     aborted(signal);
-    const declared = response.headers.get('content-length');
-    if (declared !== null && (!/^\d+$/.test(declared) || Number(declared) !== MODEL_BYTES)) throw new ReIdError('INTEGRITY_FAILED', '模型响应大小与固定资产不符');
+    // fetch 返回解压后的正文，传输长度可能不同，且跨源时编码头可能不可见。
+    // 只以实际读取的明文字节硬上限、最终长度和随后 SHA 校验确认资产身份。
     const bytes = new Uint8Array(MODEL_BYTES);
     let offset = 0;
     while (true) {
@@ -62,7 +62,6 @@ export async function acquireModel(source: Readonly<ReIdSource>, signal: AbortSi
     if (typeof caches !== 'undefined') { cache = await caches.open(CACHE_NAME); response = await cache.match(CACHE_KEY); }
   } catch { cache = undefined; }
   finally { timings.modelCacheReadMs += clock() - cacheStart; }
-  aborted(signal);
   if (response) {
     let bytes: ArrayBuffer;
     const readStart = clock();
@@ -79,6 +78,7 @@ export async function acquireModel(source: Readonly<ReIdSource>, signal: AbortSi
     notify({ stage: 'cache', status: 'complete', loaded: MODEL_BYTES, total: MODEL_BYTES });
     return { bytes, cache: { status: 'hit', bytes: MODEL_BYTES } };
   }
+  aborted(signal);
   notify({ stage: 'cache', status: cache ? 'miss' : 'unavailable' });
   const downloadStart = clock();
   let bytes: ArrayBuffer;

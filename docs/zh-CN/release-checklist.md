@@ -20,6 +20,8 @@
 
 本地检查器将远程规则保留skip；没有required本地失败只能称locally-compliant。模型资产项不适用。清单中的待办不会自动触发任何远程动作。
 
+以上 algorithm 清单只覆盖发行核心。[ReID 源码候选](reid-candidate.md)单独构建、尚未加入 npm exports/dist；其浏览器证据不能替代正式模型源、许可说明或 Demo 验收。启用公开模型入口时，必须同步启用标准1.3.0 hybrid声明和模型发布门槛，不得继续用纯algorithm豁免模型要求。
+
 0.2.0-alpha.0 的三策略、外部向量与 Demo 变更仍是本地候选，未执行 push、Release、npm 发布或 Pages 部署；上述远程勾选项只记录 0.1.0 历史事实，不能作为该 alpha 已发布的证据。
 
 发布包使用 LF 文本换行；历史 reports 保持原始字节。最终包的实际 ESM/CJS/类型消费、SHA256、sha512 integrity 与 LF checkout 对比单独归档，不拿旧桌面报告的包大小作为最终证据。首版本机认证发布的 `provenance` 为 `null`；Trusted Publisher 仅已保存配置，未来 OIDC 发布尚未由新版本实测，最终状态须以对应版本 npm 回执为准。真实序列指标和局限见 [MOT17 报告](../../reports/2026-09-19-mot17/README.md)。

@@ -20,6 +20,8 @@ Based on portal `standards/v1/templates/release-checklist.md`. Version 0.1.0 com
 
 The local checker preserves remote rules as skip. No local required failures means locally-compliant only. Model assets are inapplicable. Unchecked items do not trigger remote actions.
 
+The algorithm manifest above covers only the release core. The [ReID source candidate](reid-candidate.md) is built separately and is absent from npm exports/dist. Its browser evidence does not replace production model sources, license documentation or Demo acceptance. Enabling a public model entry must also enable the standard 1.3.0 hybrid declaration and model release gates; the pure algorithm exemption cannot cover that capability.
+
 The three-strategy, external-vector and Demo changes in 0.2.0-alpha.0 remain a local candidate. No push, Release, npm publication or Pages deployment occurred; the checked remote items above record historical 0.1.0 facts and do not prove that the alpha was published.
 
 Release text uses LF; historical reports preserve original bytes. Actual ESM/CJS/declaration consumption, SHA256, sha512 integrity, and the LF-checkout comparison are archived separately. The old desktop package size is not evidence for the final package. The locally authenticated first publication has `provenance: null`; Trusted Publisher is configured, while a future OIDC publication has not yet been exercised by a new version. Its final status must come from that version's npm receipt. Real-sequence metrics and limitations are in the [MOT17 report](../../reports/2026-09-19-mot17/README.en.md).

@@ -1,0 +1,71 @@
+$ vitest run "tests/reid-lifecycle.test.ts"
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ❯ tests/reid-lifecycle.test.ts (30 tests | 2 failed) 976ms
+   ✓ ReID 固定身份与生命周期 > 工厂同步复制模型，校验完整 SHA 后才建 session，ready load 幂等 33ms
+   ✓ ReID 固定身份与生命周期 > 无效配置和 hash 在 session 前拒绝 18ms
+   ✓ ReID 固定身份与生命周期 > 加载中 load/extract 返回 BUSY，失败可重试 26ms
+   ✓ ReID 固定身份与生命周期 > 调用前取消、未加载、释放后均稳定拒绝 11ms
+   ✓ ReID 固定身份与生命周期 > session 创建期间取消等待并释放半成品，随后可重试 70ms
+   ✓ ReID 固定身份与生命周期 > 完整帧验证先于推理，输入数量/分数/类别/图外框失败不会部分运行 11ms
+   ✓ ReID 固定身份与生命周期 > 稀疏检测数组在任何推理前拒绝 11ms
+   ✓ ReID 固定身份与生命周期 > SHA 等待期间取消不会创建会话，可重新加载 69ms
+   ✓ ReID 固定身份与生命周期 > session 完成进度回调取消释放会话，不提交 ready 9ms
+   ✓ ReID 固定身份与生命周期 > dispose 等待加载中的会话创建再释放，不提前 release 66ms
+   ✓ ReID 固定身份与生命周期 > 多检测一一绑定不同方向的向量，后续失败不提交部分结果 29ms
+   ✓ ReID 固定身份与生命周期 > GPU 输出回读期间取消继续等待并释放所有输出 64ms
+   × ReID 固定身份与生命周期 > 个别 Tensor 释放报错仍尝试释放其余输出和输入 20ms
+     → expected "spy" to be called 1 times, but got 0 times
+   × ReID 固定身份与生命周期 > featureSpace 在运行时只读且不能替换，结果改写不污染内部身份 10ms
+     → expected [Function] to throw an error
+   ✓ ReID 固定身份与生命周期 > WebGPU 禁止 CPU fallback，WASM 固定单线程 basic 20ms
+   ✓ ReID 固定身份与生命周期 > 明确 OOM 稳定归类，未知设备错误不猜测 OOM 14ms
+   ✓ ReID 固定身份与生命周期 > 图像和元数据在入口复制，输出按顺序绑定且保留分数框 23ms
+   ✓ ReID 固定身份与生命周期 > 运行取消等待 run，释放所有 Tensor，丢弃整帧且下一帧可恢复 70ms
+   ✓ ReID 固定身份与生命周期 > dispose 等待 run 再 release，立即拒绝新工作且幂等 74ms
+   ✓ ReID 固定身份与生命周期 > 输出 zero 失败整帧原子性与下一帧恢复 10ms
+   ✓ ReID 固定身份与生命周期 > 输出 nan 失败整帧原子性与下一帧恢复 12ms
+   ✓ ReID 固定身份与生命周期 > 输出 short 失败整帧原子性与下一帧恢复 12ms
+   ✓ ReID 固定身份与生命周期 > 输出 run 失败整帧原子性与下一帧恢复 12ms
+   ✓ ReID 资产边界 > 来源固定版本/大小/SHA/HTTPS 校验且同步复制来源 metadata 66ms
+   ✓ ReID 资产边界 > 下载缓存仍校验 SHA，错误缓存删除且不换源 84ms
+   ✓ ReID 资产边界 > 本地模型不缓存，缓存不可用明确报告 57ms
+   ✓ ReID 资产边界 > 网络错误使用安全原因且仅请求显式来源 2ms
+   ✓ ReID 资产边界 > 下载硬上限触发 reader 取消，短文件拒绝 4ms
+   ✓ ReID 资产边界 > 下载 pending read 取消能结束读取并释放 reader 64ms
+   ✓ ReID 资产边界 > fetch 刚返回响应时取消也会关闭响应体 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > 个别 Tensor 释放报错仍尝试释放其余输出和输入
+AssertionError: expected "spy" to be called 1 times, but got 0 times
+ ❯ tests/reid-lifecycle.test.ts:125:26
+    123|     mock.run.mockResolvedValueOnce({ ...first, extra: { dispose: extra…
+    124|     const instance = createReIdExtractor(options()); await instance.lo…
+    125|     expect(extraDispose).toHaveBeenCalledTimes(1); expect(mock.tensors…
+       |                          ^
+    126|   });
+    127|   it('featureSpace 在运行时只读且不能替换，结果改写不污染内部身份', async () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > featureSpace 在运行时只读且不能替换，结果改写不污染内部身份
+AssertionError: expected [Function] to throw an error
+ ❯ tests/reid-lifecycle.test.ts:129:82
+    127|   it('featureSpace 在运行时只读且不能替换，结果改写不污染内部身份', async () => {
+    128|     const instance = createReIdExtractor(options());
+    129|     expect(() => { (instance as { featureSpace: unknown }).featureSpac…
+       |                                                                                  ^
+    130|     expect(() => { (instance.featureSpace as { id: string }).id = 'wro…
+    131|     const loaded = await instance.load(); loaded.runtime.actualBackend…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 28 passed (30)
+   Start at  01:09:55
+   Duration  1.85s (transform 141ms, setup 0ms, collect 265ms, tests 976ms, environment 0ms, prepare 236ms)
+
+[ELIFECYCLE] Test failed. See above for more details.

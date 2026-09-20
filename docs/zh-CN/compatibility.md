@@ -4,6 +4,8 @@
 
 本地候选验证日期：2026-09-19。环境：Windows11专业版10.0.26200，Intel Core i5-10400F @2.90GHz；Node24.16.0、pnpm11.21.0；Playwright1.63.0桌面Chromium153.0.8010.12。runtime为 `web-sdk-pp-tracking@0.2.0-alpha.0`，实际CPU / JavaScript / main，无GPU/驱动依赖；线上已发布版本仍为0.1.0。
 
+本页矩阵描述发行核心及当时的Demo。[ReID源码候选](reid-candidate.md)的WASM/WebGPU、输入及日期证据单独记录，不扩展本页CPU关联器的后端声明，也不表示npm模型入口已发布。
+
 | 范围 | 证据与边界 |
 | --- | --- |
 | 桌面Chromium | `npm run test:browser` 验证 ByteTrack/OC-SORT/DeepSORT 切换、参数互斥、外观包装导入与失败原子性、实际参数/特征空间/序列导出、中文/英文、单步、播放暂停、重播、seek、四种合成场景与Vanilla |

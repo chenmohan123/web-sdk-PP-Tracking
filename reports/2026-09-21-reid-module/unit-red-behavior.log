@@ -1,0 +1,280 @@
+$ vitest run "tests/reid-preprocess.test.ts" "tests/reid-lifecycle.test.ts"
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ❯ tests/reid-preprocess.test.ts (4 tests | 4 failed) 15ms
+   × ReID 像素契约 > 单个红像素使用 RGB 平面与 ImageNet 手算值 6ms
+     → ReID 尚未实现
+   × ReID 像素契约 > 透明像素先合成白底，半透明在浮点域合成 1ms
+     → ReID 尚未实现
+   × ReID 像素契约 > 非方形方向和分数框按 floor/ceil 覆盖，half-pixel 不转置 0ms
+     → ReID 尚未实现
+   × ReID 像素契约 > 拒绝图外框、错误尺寸与共享缓冲 6ms
+     → expected error to match asymmetric matcher
+ ❯ tests/reid-lifecycle.test.ts (18 tests | 18 failed) 47ms
+   × ReID 固定身份与生命周期 > 工厂同步复制模型，校验完整 SHA 后才建 session，ready load 幂等 21ms
+     → ReID 尚未实现
+   × ReID 固定身份与生命周期 > 无效配置和 hash 在 session 前拒绝 3ms
+     → ReID 尚未实现
+   × ReID 固定身份与生命周期 > 加载中 load/extract 返回 BUSY，失败可重试 1ms
+     → ReID 尚未实现
+   × ReID 固定身份与生命周期 > 调用前取消、未加载、释放后均稳定拒绝 1ms
+     → ReID 尚未实现
+   × ReID 固定身份与生命周期 > session 创建期间取消等待并释放半成品，随后可重试 1ms
+     → ReID 尚未实现
+   × ReID 固定身份与生命周期 > 完整帧验证先于推理，输入数量/分数/类别/图外框失败不会部分运行 1ms
+     → ReID 尚未实现
+   × ReID 固定身份与生命周期 > 图像和元数据在入口复制，输出按顺序绑定且保留分数框 1ms
+     → ReID 尚未实现
+   × ReID 固定身份与生命周期 > 运行取消等待 run，释放所有 Tensor，丢弃整帧且下一帧可恢复 1ms
+     → ReID 尚未实现
+   × ReID 固定身份与生命周期 > dispose 等待 run 再 release，立即拒绝新工作且幂等 2ms
+     → ReID 尚未实现
+   × ReID 固定身份与生命周期 > 输出 zero 失败整帧原子性与下一帧恢复 1ms
+     → ReID 尚未实现
+   × ReID 固定身份与生命周期 > 输出 nan 失败整帧原子性与下一帧恢复 1ms
+     → ReID 尚未实现
+   × ReID 固定身份与生命周期 > 输出 short 失败整帧原子性与下一帧恢复 1ms
+     → ReID 尚未实现
+   × ReID 固定身份与生命周期 > 输出 run 失败整帧原子性与下一帧恢复 1ms
+     → ReID 尚未实现
+   × ReID 资产边界 > 下载缓存仍校验 SHA，错误缓存删除且不换源 1ms
+     → ReID 尚未实现
+   × ReID 资产边界 > 本地模型不缓存，缓存不可用明确报告 1ms
+     → ReID 尚未实现
+   × ReID 资产边界 > 网络错误使用安全原因且仅请求显式来源 1ms
+     → ReID 尚未实现
+   × ReID 资产边界 > 下载硬上限触发 reader 取消，短文件拒绝 3ms
+     → ReID 尚未实现
+   × ReID 资产边界 > 下载 pending read 取消能结束读取并释放 reader 2ms
+     → ReID 尚未实现
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 22 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > 工厂同步复制模型，校验完整 SHA 后才建 session，ready load 幂等
+Error: ReID 尚未实现
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:35:44
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/22]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > 无效配置和 hash 在 session 前拒绝
+Error: ReID 尚未实现
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:48:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/22]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > 加载中 load/extract 返回 BUSY，失败可重试
+Error: ReID 尚未实现
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:53:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/22]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > 调用前取消、未加载、释放后均稳定拒绝
+Error: ReID 尚未实现
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:60:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/22]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > session 创建期间取消等待并释放半成品，随后可重试
+Error: ReID 尚未实现
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:68:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/22]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > 完整帧验证先于推理，输入数量/分数/类别/图外框失败不会部分运行
+Error: ReID 尚未实现
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:74:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/22]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > 图像和元数据在入口复制，输出按顺序绑定且保留分数框
+Error: ReID 尚未实现
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:85:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/22]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > 运行取消等待 run，释放所有 Tensor，丢弃整帧且下一帧可恢复
+Error: ReID 尚未实现
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:96:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/22]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > dispose 等待 run 再 release，立即拒绝新工作且幂等
+Error: ReID 尚未实现
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:106:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/22]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > 输出 zero 失败整帧原子性与下一帧恢复
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > 输出 nan 失败整帧原子性与下一帧恢复
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > 输出 short 失败整帧原子性与下一帧恢复
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > 输出 run 失败整帧原子性与下一帧恢复
+Error: ReID 尚未实现
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:112:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/22]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 资产边界 > 下载缓存仍校验 SHA，错误缓存删除且不换源
+Error: ReID 尚未实现
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:122:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/22]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 资产边界 > 本地模型不缓存，缓存不可用明确报告
+Error: ReID 尚未实现
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:132:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/22]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 资产边界 > 网络错误使用安全原因且仅请求显式来源
+
+Error: ReID 尚未实现
+ Test Files  2 failed (2)
+      Tests  22 failed (22)
+   Start at  01:00:49
+   Duration  721ms (transform 81ms, setup 0ms, collect 185ms, tests 62ms, environment 0ms, prepare 418ms)
+
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:138:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/22]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 资产边界 > 下载硬上限触发 reader 取消，短文件拒绝
+Error: ReID 尚未实现
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:144:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/22]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 资产边界 > 下载 pending read 取消能结束读取并释放 reader
+Error: ReID 尚未实现
+ ❯ Module.createReIdExtractor src/reid/index.ts:1:71
+      1| export function createReIdExtractor(..._args: unknown[]): any { throw …
+       |                                                                       ^
+      2| export function clearReIdCache(): any { throw new Error('ReID 尚未实现'); }
+      3| export function estimateReIdCache(): any { throw new Error('ReID 尚未实现'…
+ ❯ tests/reid-lifecycle.test.ts:150:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/22]⎯
+
+ FAIL  tests/reid-preprocess.test.ts > ReID 像素契约 > 单个红像素使用 RGB 平面与 ImageNet 手算值
+Error: ReID 尚未实现
+ ❯ preprocessRgba src/reid/preprocess.ts:1:66
+      1| export function preprocessRgba(..._args: unknown[]): any { throw new E…
+       |                                                                  ^
+      2| 
+ ❯ tests/reid-preprocess.test.ts:7:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/22]⎯
+
+ FAIL  tests/reid-preprocess.test.ts > ReID 像素契约 > 透明像素先合成白底，半透明在浮点域合成
+Error: ReID 尚未实现
+ ❯ preprocessRgba src/reid/preprocess.ts:1:66
+      1| export function preprocessRgba(..._args: unknown[]): any { throw new E…
+       |                                                                  ^
+      2| 
+ ❯ tests/reid-preprocess.test.ts:15:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/22]⎯
+
+ FAIL  tests/reid-preprocess.test.ts > ReID 像素契约 > 非方形方向和分数框按 floor/ceil 覆盖，half-pixel 不转置
+Error: ReID 尚未实现
+ ❯ preprocessRgba src/reid/preprocess.ts:1:66
+      1| export function preprocessRgba(..._args: unknown[]): any { throw new E…
+       |                                                                  ^
+      2| 
+ ❯ tests/reid-preprocess.test.ts:21:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/22]⎯
+
+ FAIL  tests/reid-preprocess.test.ts > ReID 像素契约 > 拒绝图外框、错误尺寸与共享缓冲
+AssertionError: expected error to match asymmetric matcher
+
+- Expected
++ Received
+
+- ObjectContaining {
+-   "code": "INVALID_INPUT",
++ Error {
++   "message": "ReID 尚未实现",
+  }
+
+ ❯ tests/reid-preprocess.test.ts:31:50
+     29|     const image = { width: 1, height: 1, data: new Uint8Array(4) };
+     30|     for (const invalid of [{ ...image, width: 8193 }, { ...image, widt…
+     31|       expect(() => preprocessRgba(invalid, box)).toThrowError(expect.o…
+       |                                                  ^
+     32|     }
+     33|     expect(() => preprocessRgba(image, { ...box, x: -0.1 })).toThrowEr…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/22]⎯
+
+[ELIFECYCLE] Test failed. See above for more details.

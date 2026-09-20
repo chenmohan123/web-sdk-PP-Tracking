@@ -1,0 +1,6 @@
+# 原始日志和机器证据保留字节，便于跨平台核验。
+evidence/** -text -whitespace
+evidence/*.log -whitespace
+protocol.md -text
+*.mjs -text
+*.log -text -whitespace

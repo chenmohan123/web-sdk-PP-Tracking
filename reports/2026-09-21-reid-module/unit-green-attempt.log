@@ -1,0 +1,58 @@
+$ vitest run "tests/reid-preprocess.test.ts" "tests/reid-lifecycle.test.ts"
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ✓ tests/reid-preprocess.test.ts (4 tests) 27ms
+ ❯ tests/reid-lifecycle.test.ts (18 tests | 1 failed) 536ms
+   ✓ ReID 固定身份与生命周期 > 工厂同步复制模型，校验完整 SHA 后才建 session，ready load 幂等 25ms
+   ✓ ReID 固定身份与生命周期 > 无效配置和 hash 在 session 前拒绝 14ms
+   ✓ ReID 固定身份与生命周期 > 加载中 load/extract 返回 BUSY，失败可重试 25ms
+   ✓ ReID 固定身份与生命周期 > 调用前取消、未加载、释放后均稳定拒绝 8ms
+   ✓ ReID 固定身份与生命周期 > session 创建期间取消等待并释放半成品，随后可重试 62ms
+   ✓ ReID 固定身份与生命周期 > 完整帧验证先于推理，输入数量/分数/类别/图外框失败不会部分运行 10ms
+   ✓ ReID 固定身份与生命周期 > 图像和元数据在入口复制，输出按顺序绑定且保留分数框 23ms
+   ✓ ReID 固定身份与生命周期 > 运行取消等待 run，释放所有 Tensor，丢弃整帧且下一帧可恢复 63ms
+   ✓ ReID 固定身份与生命周期 > dispose 等待 run 再 release，立即拒绝新工作且幂等 74ms
+   ✓ ReID 固定身份与生命周期 > 输出 zero 失败整帧原子性与下一帧恢复 12ms
+   ✓ ReID 固定身份与生命周期 > 输出 nan 失败整帧原子性与下一帧恢复 12ms
+   ✓ ReID 固定身份与生命周期 > 输出 short 失败整帧原子性与下一帧恢复 12ms
+   ✓ ReID 固定身份与生命周期 > 输出 run 失败整帧原子性与下一帧恢复 13ms
+   × ReID 资产边界 > 下载缓存仍校验 SHA，错误缓存删除且不换源 72ms
+     → expected { bytes: +0, entries: +0 } to deeply equal { bytes: 33704835, entries: 1 }
+   ✓ ReID 资产边界 > 本地模型不缓存，缓存不可用明确报告 46ms
+   ✓ ReID 资产边界 > 网络错误使用安全原因且仅请求显式来源 1ms
+   ✓ ReID 资产边界 > 下载硬上限触发 reader 取消，短文件拒绝 8ms
+   ✓ ReID 资产边界 > 下载 pending read 取消能结束读取并释放 reader 55ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 资产边界 > 下载缓存仍校验 SHA，错误缓存删除且不换源
+AssertionError: expected { bytes: +0, entries: +0 } to deeply equal { bytes: 33704835, entries: 1 }
+
+- Expected
++ Received
+
+  {
+-   "bytes": 33704835,
+-   "entries": 1,
++   "bytes": 0,
++   "entries": 0,
+  }
+
+ ❯ tests/reid-lifecycle.test.ts:123:39
+    121|   it('下载缓存仍校验 SHA，错误缓存删除且不换源', async () => {
+    122|     const first = createReIdExtractor({ modelId: 'pplcnet-reid-fp32', …
+    123|     expect(await estimateReIdCache()).toEqual({ bytes: BYTES, entries:…
+       |                                       ^
+    124|     const second = createReIdExtractor({ modelId: 'pplcnet-reid-fp32',…
+    125|     expect(hit.cache.status).toBe('hit'); expect(fetch).toHaveBeenCall…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 21 passed (22)
+   Start at  01:05:55
+   Duration  1.31s (transform 172ms, setup 0ms, collect 355ms, tests 563ms, environment 0ms, prepare 433ms)
+
+[ELIFECYCLE] Test failed. See above for more details.

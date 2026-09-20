@@ -4,6 +4,8 @@
 
 Local candidate verification date:2026-09-19. Environment: Windows11 Pro10.0.26200, Intel Core i5-10400F @2.90GHz; Node24.16.0, pnpm11.21.0; Playwright1.63.0 desktop Chromium153.0.8010.12. Runtime: `web-sdk-pp-tracking@0.2.0-alpha.0`, actual CPU / JavaScript / main. No GPU/driver dependency; the published version remains 0.1.0.
 
+This matrix describes the release core and its Demo at that date. WASM/WebGPU, input limits and dated evidence for the [ReID source candidate](reid-candidate.md) are recorded separately. They neither change this CPU association backend declaration nor establish a published npm model entry.
+
 | Scope | Evidence and limits |
 | --- | --- |
 | Desktop Chromium | `npm run test:browser` covers ByteTrack/OC-SORT/DeepSORT switching, exclusive options, appearance-envelope import and failure atomicity, actual-option/feature-space/sequence export, Chinese/English, step, play/pause, restart, seek, four synthetic scenarios and Vanilla |

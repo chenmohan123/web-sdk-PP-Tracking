@@ -4,6 +4,8 @@
 
 Local candidate version **0.2.0-alpha.0**. A framework-neutral CPU/main-thread multi-object tracker independently implementing ByteTrack, OC-SORT and DeepSORT association over caller-provided appearance vectors. It has no built-in feature extractor, model download, model inference or React runtime dependency. The published npm package and hosted HTTPS Demo remain **0.1.0**; no remote alpha package is available.
 
+The repository also contains an optional [ReID source candidate](docs/en/reid-candidate.md) that converts decoded person crops into appearance vectors. It is built and validated separately, and is not included in the release package, public npm subpaths or Demo. The core algorithm manifest's compliance does not cover model distribution requirements.
+
 ## Installation and usage
 
 ```sh

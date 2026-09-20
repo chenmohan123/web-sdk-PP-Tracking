@@ -39,6 +39,8 @@ Full SDK verify at module commit `6fc6e5a` passes 138 unit tests, type checks, c
 
 Portal standard 1.3.0 is implemented locally. Before/after checks each pass 17 required rules with zero failures, establishing only locally-compliant status for the current algorithm release core. The model candidate does not use the algorithm manifest to bypass distribution or Demo requirements.
 
+The [independent final review](evidence/final-review.md) passes without remaining Critical, Important or Minor findings. It covers this stage's standard, source and integrated documentation. Including the review receipt, 28 evidence files are locked; archive recomputation and staged-byte checks pass.
+
 With the fixed local model and RGBA resources:
 
 ```powershell

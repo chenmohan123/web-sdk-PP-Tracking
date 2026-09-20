@@ -20,6 +20,11 @@
     "sha256": "f56e73b297b6e1c3633c4afc350316271b13e55158a935c6a43265581af13908"
   },
   {
+    "path": "evidence/final-review.md",
+    "bytes": 4984,
+    "sha256": "3807977c24e4dea345eef4ee17deb6c6d0876b28b624a738cc746decd3f159f7"
+  },
+  {
     "path": "evidence/module-review.md",
     "bytes": 6786,
     "sha256": "d4246f56c736a3998203729f02cbd6c234e1ac38093533e8d12f820800cd666e"

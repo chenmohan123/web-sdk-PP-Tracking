@@ -39,6 +39,8 @@ load 单独记录下载、缓存读取、SHA、会话与总耗时；extract 记�
 
 对应门户标准已本地实施 1.3.0；before/after 各 17 项 required 通过、0 失败，仅证明当前 algorithm 发行核心 locally-compliant。候选模型没有用算法清单豁免正式分发与 Demo 门槛。
 
+[最终独立审查](evidence/final-review.md)通过，无遗留 Critical/Important/Minor。终审覆盖本轮标准、源码及集成文档；补入回执后共锁定28份证据，归档复算与暂存字节核对通过。
+
 有固定本地模型和 RGBA 资源时：
 
 ```powershell

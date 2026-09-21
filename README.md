@@ -8,6 +8,8 @@
 
 ## 安装与运行
 
+2026-09-21已完成[三算法真实画面评测](reports/2026-09-21-mot-reid/README.md)：七段5316帧、67639检测，DeepSORT+PPLCNet IDF1为45.4637%，低于默认ByteTrack的48.2922%；完整指标与图片获取/解码/ReID/关联成本已归档。建议进入0.2本地候选收口，继续ByteTrack默认、OC-SORT/DeepSORT显式可选，ReID作为人体场景实验能力；尚未发布，也不承诺手机、跨设备或视频端到端性能。
+
 ```sh
 npm install web-sdk-pp-tracking@0.1.0
 ```

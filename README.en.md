@@ -8,6 +8,8 @@ Local builds now expose [the ReID subpath](docs/en/reid-candidate.md), `web-sdk-
 
 ## Installation and usage
 
+The [2026-09-21 real-image comparison](reports/2026-09-21-mot-reid/README.en.md) covers seven sequences,5316 frames and67639 detections. DeepSORT+PPLCNet IDF1 is45.4637%, below default ByteTrack48.2922%; full metrics and image-fetch/decode/ReID/tracking costs are archived. Proceed toward local0.2 candidate closure with ByteTrack default, OC-SORT/DeepSORT explicit options and experimental human ReID. It remains unpublished, with no mobile, cross-device or end-to-end video-performance promise.
+
 ```sh
 npm install web-sdk-pp-tracking@0.1.0
 ```

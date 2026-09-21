@@ -14,7 +14,9 @@ Based on portal `standards/v1/templates/release-checklist.md`. The local candida
 - [x] The candidate passes independent final and scoped fix review; three Minor issues are fixed and the documented lazy ORT resource cost is retained.
 - [ ] Once this version's release is explicitly authorized, publish through PR, current-commit CI, merge and a new immutable tag, then refresh npm/hosted-Demo receipts.
 
-Model distribution is not SDK/npm/Demo publication. Identical-input three-algorithm IDF1/IDSW/MOTA and complete cost, and video/camera scheduling, remain later evaluations.
+- [x] The [three-tracker real-image evaluation](../../reports/2026-09-21-mot-reid/README.en.md) covers5316 frames/67639 detections, official combined/per-sequence metrics, browser/two-Node equality, zero capacity drops and complete measured costs.
+
+Model distribution and evaluation are not SDK/npm/Demo publication. Proceed toward local0.2 candidate closure with ByteTrack default, OC-SORT/DeepSORT explicit options and experimental human ReID. First settle candidate version, changelog and release preflight, then obtain authorization for this version. Video/camera scheduling and cross-device compatibility require separate design and verification.
 
 ## Historical delivery and baseline checks
 

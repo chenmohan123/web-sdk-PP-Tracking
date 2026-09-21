@@ -17,7 +17,7 @@
 
 截图、浏览器版本和交互计数由 `tests/browser.mjs` 写入 `.tmp/browser/`。这是本地日期化证据，不是线上部署或跨设备兼容承诺。所有示例为合成机制，不证明真实场景MOT精度。
 
-2026-09-19三策略候选的完整 verify 原始日志保存于 `reports/2026-09-19-deepsort/verify.txt`，当时包含11组浏览器检查。`2026-09-19-ocsort` 只证明此前两策略候选；`2026-09-19-desktop` 与 `2026-09-19-release-candidate` 只属于已发布0.1.0历史证据。Chromium151 headless仅覆盖10/50/100框合成性能。当前ReID已有真实裁剪数值与双源证据，但没有真实手机或完整时间序列精度结论。
+2026-09-19三策略候选的完整 verify 原始日志保存于 `reports/2026-09-19-deepsort/verify.txt`，当时包含11组浏览器检查。`2026-09-19-ocsort` 只证明此前两策略候选；`2026-09-19-desktop` 与 `2026-09-19-release-candidate` 只属于已发布0.1.0历史证据。Chromium151 headless仅覆盖10/50/100框合成性能。2026-09-21新增[真实时间序列证据](../../reports/2026-09-21-mot-reid/README.md)：同机Chromium153/ORT1.27.0/RTX5060Ti WebGPU提取全部5316帧、67639检测，三算法CPU/main均与Node两次结果一致、零容量丢弃。固定02前30帧433检测的WASM/WebGPU最大向量差3.5763e-7、三算法结果一致；该子集不是全量WASM评测。没有真实手机或新增跨设备结论。
 
 同日[两算法候选对比](../../reports/2026-09-19-ocsort/README.md)固定 Node 七段 MOT17 FRCNN 训练序列 5316 帧及两算法各自的 Chromium153 完整 02 序列 600 帧对齐；ByteTrack 历史默认/消融证据仍见[0.1.0 真实序列报告](../../reports/2026-09-19-mot17/README.md)。范围仍限上述 Windows 桌面 CPU/main；真实数据指标不扩展设备兼容性，也不构成测试集排行榜成绩。
 

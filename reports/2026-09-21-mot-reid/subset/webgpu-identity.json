@@ -1,0 +1,154 @@
+{
+  "files": {
+    "dist/index.js": "8396ef79f22c6afd2690bd6413f2b32b25fd46ec67b9fabca8fcab44c9a82041",
+    "dist/reid/index.js": "730ee84f2827100baf06a782b6cbf391c00c2cbd4c0645f9df08cb91187f4754",
+    "models/pplcnet-reid/0.1.0/model.json": "0b0b68babcf55d2f4432f0123308a41d2b0da4802407aea6724387eb3bfaa7c1",
+    "scripts/evaluation/mot17-reid/browser.mjs": "80779aa3d5677aa824c5656ed3ecca56ae09c35bc00dc4e0121e02029a92fc78",
+    "scripts/evaluation/mot17-reid/compare.mjs": "9d2b7da0858edad8a36486c1e9062214b6530c86492d58b61bcfdd90f7560855",
+    "scripts/evaluation/mot17-reid/core.mjs": "33b6bf695d750840bc5a85cbd1f4c59d514e2ad3e40a73aada0b4af1d7bed497",
+    "scripts/evaluation/mot17-reid/io.mjs": "637899870df9ddee3cbf2829d6a8243d277c2e7a00cf4b3313f483e61941a316",
+    "scripts/evaluation/mot17-reid/merge.mjs": "f548a1065eca0777546cc6c1d60dd3837b56bff04ea1bc159461a32e4779d1fc",
+    "scripts/evaluation/mot17-reid/run.mjs": "d8eff20d570475b57e6531d0cfb0802fd482680869f746cddd8f9112ff9a1849",
+    "scripts/evaluation/mot17-reid/score.py": "9fba6ce489bd2ccf7eddf4937828dd2a0c4364eb257da6e6ea518013d457a9b8",
+    "scripts/evaluation/mot17/adapter.mjs": "4752633b663f42a144bb8d8f52bb8bf5861e4d42bc6764c9f7f4eca4725bba21",
+    "scripts/evaluation/mot17/configurations.mjs": "154fc6c4ba5befa1e3d6d485db092b6cb5e82208c17820619f54775cfc503703",
+    "scripts/evaluation/mot17/evaluator.py": "b86269b667c7f66c70bfded979cfd05e724294fb8dee15757190f2ffbc1fc360",
+    "scripts/evaluation/mot17/lock.json": "9e88d9f2bca4e7a275a473c65709511484d1cd5c20a4b78f5f62b8ddd2d74495",
+    "src/assignment.ts": "8f2b6a1ffbb1ba3dae79f1ed240b678ec49121a90cd9a16255806572f6500b0d",
+    "src/deepsort.ts": "ded5e2964769330870c59f8f28ab46de6d529f8608cf2225d934916b88eaf8d5",
+    "src/errors.ts": "23a2c3863354b96ecffebf63f7c4652091b4165bc26c2860beefa06a18c8b3cc",
+    "src/index.ts": "8d6165b4df146e9e74b5847dd0b7c4ea3874e8c0a29a5a5c3a64735ab591eda7",
+    "src/kalman.ts": "e331f6540a5f3533cff2aa2b9f8cb58a2b97536c437eb24d32ecf58d59a621a6",
+    "src/ocsort.ts": "3e9c294c3b3593dbfe4dbf27cba3c121d38fed2f524a59d96c2f467af0ee19f4",
+    "src/reid/assets.ts": "2af1669c2e142a252972f669b10ae0f7f30324058d95bc7829bb43e926abba46",
+    "src/reid/errors.ts": "63a411b9b4eb14161658c7aa4ac34d3eae590947e3feeb2c9d35e8f29848614f",
+    "src/reid/extractor.ts": "89336e59d6e14fe7255d2888294bcda14476fe2af944e52f5c8c220a5ca06a16",
+    "src/reid/index.ts": "064a700725eb615e46a87a377505a68a3baa14aad1aa98956fd8b3e2faa3027c",
+    "src/reid/model.ts": "4113269eea8595672465f081247fd7ec047351086a1dfc7b127c423ab34acad2",
+    "src/reid/ort.ts": "5ffcf7da4703d447660cb2a7db262e8ac7ae4fd08479cdfc3635a8e936d757fb",
+    "src/reid/preprocess.ts": "086766dd092492c2d1da66d0f714fd4f002f570699f72372eb249deb61c32069",
+    "src/reid/sources.ts": "1584459e22734474d49e3310a6db3f7fd156a8f169c01f5674b2993c99256229",
+    "src/reid/types.ts": "8dc7a008ae06456742108eb0500b9456be8fe9345389ac2f32f991b0bd5ab63d",
+    "src/tracker.ts": "95b43c88dcb087d7ea1e20f5e16af6c458303326d31873f89b78a109bf12d049",
+    "src/types.ts": "aa7bb56e038d285f753f47cc409d6ff5111c5ccb77081cbd8bfed518a687fc44"
+  },
+  "model": {
+    "bytes": 33704835,
+    "sha256": "24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4"
+  },
+  "mediaLockSha256": "906491d5d02912f38cea5014b2b687fd8b5ae4a3ec55499439ad7c049b328cb5",
+  "inputHashes": {
+    "MOT17-02-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "669c5135aa1b7f1726ee50ab6cec86780fc448dadaf93ea9c4fb6e2a0d4256aa"
+      },
+      "det/det.txt": {
+        "bytes": 267111,
+        "sha256": "1e46e773a7297b975291884266ca728f56347e700c44f10ad96f207e1f6995ae"
+      },
+      "gt/gt.txt": {
+        "bytes": 916738,
+        "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+      }
+    },
+    "MOT17-04-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 109,
+        "sha256": "f2d5bbe2c4d2a884422571987bc5363b61bb7e2c6748d1cff444e55b4886b888"
+      },
+      "det/det.txt": {
+        "bytes": 894422,
+        "sha256": "e1494db52e85cc13dad52ac01e7efe972e4e432f6ce788da8a4dfa0d38edce75"
+      },
+      "gt/gt.txt": {
+        "bytes": 3473246,
+        "sha256": "f8cfbe36ef38a2e1857d7ebfe7d754b2355a3ffb9e1f9cedea435e86e4fbc948"
+      }
+    },
+    "MOT17-05-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 106,
+        "sha256": "2f49de730bcdfcd684069aed291627d2e5f13f8524e5163129e4bac88af815d0"
+      },
+      "det/det.txt": {
+        "bytes": 121432,
+        "sha256": "6dfc37078b989f9e7f0e2f0492836ef28a2b51ffcf30ded428fd61d53e3aca98"
+      },
+      "gt/gt.txt": {
+        "bytes": 251681,
+        "sha256": "ed74c54176b21b38cb690eda79a4755cf16e4c4a9ca2f019b0ba8904636174f5"
+      }
+    },
+    "MOT17-09-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "96cec357e5661afad673cc2259310d2c0fb93854ffe18b765fd973c38f3957d9"
+      },
+      "det/det.txt": {
+        "bytes": 100965,
+        "sha256": "d4bf28e2ccb4c46a5e36ecb6b35177ac27ad1ac3c74fc09a601c0a9d4cf9ec6d"
+      },
+      "gt/gt.txt": {
+        "bytes": 324307,
+        "sha256": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d"
+      }
+    },
+    "MOT17-10-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "7af062d088f3b7a88522f8095246eb01a6113d89823a96b7099a09d54421ecbd"
+      },
+      "det/det.txt": {
+        "bytes": 318265,
+        "sha256": "4ad164363e6985e6ffbcae65963397d0d0f2cbb6313a33e0913fa8d1473e304c"
+      },
+      "gt/gt.txt": {
+        "bytes": 541756,
+        "sha256": "f8cca05d98fa36d8b6f2b807e03d32407d00d40299d679e4da320e42862677c0"
+      }
+    },
+    "MOT17-11-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "5e376f2489be7c5c5e64456a3842e9f62aa79ce7455903820c9bd218ff0c806f"
+      },
+      "det/det.txt": {
+        "bytes": 198413,
+        "sha256": "0559214506fe189b4ebe81e38538c4fdc04cd0cde6b28d9ab6c8c94fb04b8b65"
+      },
+      "gt/gt.txt": {
+        "bytes": 338857,
+        "sha256": "4952d6e4efc705c90688e434fd138a55ada2c0d5f576ba3847ee102fc18aff93"
+      }
+    },
+    "MOT17-13-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "a7a0f607a31e3f311be6e9836214e23d4642c088db56126f51f150f13fe7a3af"
+      },
+      "det/det.txt": {
+        "bytes": 280547,
+        "sha256": "d95a3a26b64a2164d6608ed5cc732fe7f63fc5157c884f218e43cd04507b9989"
+      },
+      "gt/gt.txt": {
+        "bytes": 637671,
+        "sha256": "4827603ef87bbd61123cb4c5f194b3bf23531bd78ed9cd916084e53dca998013"
+      }
+    }
+  },
+  "dataset": {
+    "url": "https://motchallenge.net/data/MOT17Labels.zip",
+    "bytes": 10107022,
+    "sha256": "0aa79322e91583369f42f17c4d79a0b145380d8732487bba59272048dc82b2b9",
+    "sequences": [
+      "MOT17-02-FRCNN",
+      "MOT17-04-FRCNN",
+      "MOT17-05-FRCNN",
+      "MOT17-09-FRCNN",
+      "MOT17-10-FRCNN",
+      "MOT17-11-FRCNN",
+      "MOT17-13-FRCNN"
+    ]
+  }
+}

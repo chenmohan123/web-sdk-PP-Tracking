@@ -1,0 +1,814 @@
+{
+  "note": "归档文本统一LF；source SHA指原始文件字节，归档字节SHA见evidence.lock.json。outputHashes于归档时实际重新读取校验；不分发原轨迹。",
+  "files": {
+    "raw/summary.json": {
+      "source": ".tmp/mot17-reid-combined-0194ea5/summary.json",
+      "bytes": 41195,
+      "sha256": "34c3d89ed0f8c5df66f4732cd17e39100cba268f0688c5660efe196807a3a8c5"
+    },
+    "raw/metrics.json": {
+      "source": ".tmp/mot17-reid-combined-0194ea5/metrics.json",
+      "bytes": 8355,
+      "sha256": "434bae268957a40ebe70535d4b32fb8665bc793b602fa1686d10035f960540ac"
+    },
+    "raw/identity.json": {
+      "source": ".tmp/mot17-reid-combined-0194ea5/identity.json",
+      "bytes": 6905,
+      "sha256": "c465223dadcfcad66b15d399733ca96e9386797e112c7215895798fb9242e0c2"
+    },
+    "raw/score.log": {
+      "source": ".tmp/mot17-reid-combined-0194ea5/score.log",
+      "bytes": 35,
+      "sha256": "2bdd9e21579c529674f4c453a722976c45dc7383d2f87ddbc7e9d5335cbaea36"
+    },
+    "validation/environment.json": {
+      "source": ".tmp/mot17-reid-media/environment.json",
+      "bytes": 425,
+      "sha256": "0b896c0ae33b87f2a2077b7442ae4480b0f4ca847922c027b2e2ed59a3ecaddc"
+    },
+    "validation/historical-validation.json": {
+      "source": ".tmp/mot17-reid-media/historical-validation.json",
+      "bytes": 167,
+      "sha256": "eac7dd38a83fbb83d512988ec44fe507305a65045e6c5e500340a1755f53e4f2"
+    },
+    "validation/subset-output-validation.json": {
+      "source": ".tmp/mot17-reid-media/subset-output-validation.json",
+      "bytes": 131,
+      "sha256": "e37580dbd12575ae567abe557e8e05711058fc53219273473a5ff56fed4dd75b"
+    },
+    "validation/task-1-report.md": {
+      "source": "C:/Users/chenm/.codex/worktrees/segmentation-portal/chenmohan123.github.io/.superpowers/sdd/2026-09-21-tracking-mot-reid/task-1-report.md",
+      "bytes": 7230,
+      "sha256": "cedd97214a3d2f873fb9f5fab5ae7f195b7e50ef1338c6c063b24184dfdbe069"
+    },
+    "validation/task-1-review.md": {
+      "source": "C:/Users/chenm/.codex/worktrees/segmentation-portal/chenmohan123.github.io/.superpowers/sdd/2026-09-21-tracking-mot-reid/task-1-review.md",
+      "bytes": 5799,
+      "sha256": "578867d19ba1a71487feb714bc1a5350c8e34e5c285aee6ca8cafb800539f909"
+    },
+    "subset/comparison.json": {
+      "source": ".tmp/mot17-reid-compare-20260921-c/comparison.json",
+      "bytes": 2130,
+      "sha256": "5d84c489599ed7fce74e464f23c3afe6269ca3e0a941ade56cdb909bbbf1b336"
+    },
+    "subset/webgpu-summary.json": {
+      "source": ".tmp/mot17-reid-smoke-20260921-c/summary.json",
+      "bytes": 8371,
+      "sha256": "b261ed646a1394535671e012459a4cd9b9b1c34954fbde93748559b2734e6f07"
+    },
+    "subset/webgpu-identity.json": {
+      "source": ".tmp/mot17-reid-smoke-20260921-c/identity.json",
+      "bytes": 6905,
+      "sha256": "c465223dadcfcad66b15d399733ca96e9386797e112c7215895798fb9242e0c2"
+    },
+    "subset/wasm-summary.json": {
+      "source": ".tmp/mot17-reid-wasm-20260921-c/summary.json",
+      "bytes": 8014,
+      "sha256": "def3f4746cff5830b05132a1a29124492e376b3930071ff9451a3aa315149ddc"
+    },
+    "subset/wasm-identity.json": {
+      "source": ".tmp/mot17-reid-wasm-20260921-c/identity.json",
+      "bytes": 6905,
+      "sha256": "c465223dadcfcad66b15d399733ca96e9386797e112c7215895798fb9242e0c2"
+    },
+    "raw/sequences/MOT17-02-FRCNN-summary.json": {
+      "source": ".tmp/mot17-reid-official-02-0194ea5/summary.json",
+      "bytes": 8356,
+      "sha256": "d45d6a3b15260c16f1ee6430ddc39567befb6bf9c20b720946e0c790cc5c607f"
+    },
+    "raw/sequences/MOT17-04-FRCNN-summary.json": {
+      "source": ".tmp/mot17-reid-official-04-0194ea5/summary.json",
+      "bytes": 8314,
+      "sha256": "71d55d0b5e9d2913b220e5175932484ed8e21b9fe386c7a4d86106da2faaa272"
+    },
+    "raw/sequences/MOT17-05-FRCNN-summary.json": {
+      "source": ".tmp/mot17-reid-official-05-0194ea5/summary.json",
+      "bytes": 8318,
+      "sha256": "e24d6dce95ca83d24b6a978dad2f15ad78076cee2ad6dad61c8f389456eb6d3b"
+    },
+    "raw/sequences/MOT17-09-FRCNN-summary.json": {
+      "source": ".tmp/mot17-reid-official-09-0194ea5/summary.json",
+      "bytes": 8376,
+      "sha256": "0a417ada6add26a33e5c7e16e2d401422c319608f7b64eadfdb1aba3df17a426"
+    },
+    "raw/sequences/MOT17-10-FRCNN-summary.json": {
+      "source": ".tmp/mot17-reid-official-10-0194ea5/summary.json",
+      "bytes": 8363,
+      "sha256": "3d2118a308cd9b9c6995a89a3ea101e90d93ed25d31edc476c37cbf4c88e666c"
+    },
+    "raw/sequences/MOT17-11-FRCNN-summary.json": {
+      "source": ".tmp/mot17-reid-official-11-0194ea5/summary.json",
+      "bytes": 8344,
+      "sha256": "1052b0bfa27a11b65bb6b86dfb77565da981fea5f1d42bea709cb180dd4f5e69"
+    },
+    "raw/sequences/MOT17-13-FRCNN-summary.json": {
+      "source": ".tmp/mot17-reid-official-13-0194ea5/summary.json",
+      "bytes": 8395,
+      "sha256": "c6ffe24a6fec4026f8a70a922755c99277a5e5aab570231b908c82be9d68013f"
+    }
+  },
+  "rawTimingSources": {
+    ".tmp/mot17-reid-official-02-0194ea5/browser/MOT17-02-FRCNN-timings.jsonl": {
+      "bytes": 583577,
+      "sha256": "1200f277a2f3923db1f4cdf8aba6d928bf44b5c125ab47989bf552b40e6bf481"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/node-1/bytetrack/MOT17-02-FRCNN-timings.jsonl": {
+      "bytes": 99945,
+      "sha256": "f013451672aeb4b234a54236f08002ef700b55474d52e07a6c474abce6f5372e"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/node-2/bytetrack/MOT17-02-FRCNN-timings.jsonl": {
+      "bytes": 100209,
+      "sha256": "a6765a6520740be0c8861376cd39dfe7cdfc22d26098f9ae77ba6192c5db6d10"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/node-1/ocsort/MOT17-02-FRCNN-timings.jsonl": {
+      "bytes": 99803,
+      "sha256": "5cead59dad53d934062d545dfefad213883b537e9427d9a067031bb00e27e9dc"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/node-2/ocsort/MOT17-02-FRCNN-timings.jsonl": {
+      "bytes": 99963,
+      "sha256": "8c6a363400207f5dc6b9f4db67dc25b82010f95e3136fa6266c0e6d3906c78f7"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/node-1/deepsort/MOT17-02-FRCNN-timings.jsonl": {
+      "bytes": 97747,
+      "sha256": "a276013d713873f9d731bae0ce0628ecfc2a89943b0e1c2c31cf574ad3994dd6"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/node-2/deepsort/MOT17-02-FRCNN-timings.jsonl": {
+      "bytes": 97759,
+      "sha256": "4fbf85da6e4984965d4d3987baf5b70c987bc045dba1c5f7936d4984e32232cd"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/browser/MOT17-04-FRCNN-timings.jsonl": {
+      "bytes": 1016397,
+      "sha256": "a4e6a27dd7c07e3e9e7433d66f19d6d82b732f76e79b79a3e9996fd6d3052835"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/node-1/bytetrack/MOT17-04-FRCNN-timings.jsonl": {
+      "bytes": 174000,
+      "sha256": "0b3a3a5f0e1f06713cc14110d00e868eeb0f9f7acce964644f113f5476ece243"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/node-2/bytetrack/MOT17-04-FRCNN-timings.jsonl": {
+      "bytes": 174106,
+      "sha256": "f3bb588551aba87ef9359eef927e3c413353e5c16d4641fdaf785f4d8df57cc1"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/node-1/ocsort/MOT17-04-FRCNN-timings.jsonl": {
+      "bytes": 173643,
+      "sha256": "86c4b696fde3f66ffbf8cceb4f5310492af3d45892d85fc30a5d9e762ff5a62b"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/node-2/ocsort/MOT17-04-FRCNN-timings.jsonl": {
+      "bytes": 173571,
+      "sha256": "7a6923e51524d225ed98a06cb35f6826fd59c3120fb2bbd6e886e01b2274f4c0"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/node-1/deepsort/MOT17-04-FRCNN-timings.jsonl": {
+      "bytes": 170771,
+      "sha256": "763b3907178b6152d43c1257a1cc2b6f0f5fe7640cad878fe2559f86e754d8c9"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/node-2/deepsort/MOT17-04-FRCNN-timings.jsonl": {
+      "bytes": 170885,
+      "sha256": "c125cfb91246afbfd7a282c619a9e9a19b3520f107786a994c018d168d1971bb"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/browser/MOT17-05-FRCNN-timings.jsonl": {
+      "bytes": 796844,
+      "sha256": "1f0724287ef99c17fef9440fb3df4521a9eecd3050ba6d010d13bd562fe1961e"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/node-2/bytetrack/MOT17-05-FRCNN-timings.jsonl": {
+      "bytes": 141684,
+      "sha256": "cd8dc071debbbb7a6f1748d95d4608faafa2e4d8e72086a9e8a0c25cfde49f6a"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/node-1/bytetrack/MOT17-05-FRCNN-timings.jsonl": {
+      "bytes": 141602,
+      "sha256": "2533870bb2e5b4e12bc0834a089f99e5e379810dec5d3f913bc2a57feb7004f6"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/node-1/ocsort/MOT17-05-FRCNN-timings.jsonl": {
+      "bytes": 141269,
+      "sha256": "89198f213bd3b35368ada2d68392d4b8f4e734b2114a77494921ba9d82cbae3c"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/node-2/ocsort/MOT17-05-FRCNN-timings.jsonl": {
+      "bytes": 141553,
+      "sha256": "41ebe52e9ffcfe76da3dd18e6ac0caaa00a15623fe38af0049bd2b671d0b8c53"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/node-1/deepsort/MOT17-05-FRCNN-timings.jsonl": {
+      "bytes": 138889,
+      "sha256": "a1f3b956997d977aaacb712e8bdf0985bc4e8b1d8796e3e42a14a6502041aa86"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/node-2/deepsort/MOT17-05-FRCNN-timings.jsonl": {
+      "bytes": 139130,
+      "sha256": "74ce367b4f9a2cfb54a47f701f44ae81688fbe0ecfa6a655d4e77b063244a84c"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/browser/MOT17-09-FRCNN-timings.jsonl": {
+      "bytes": 500759,
+      "sha256": "7763272745743794156c47c5de42d759d5171842f8eeb1dacba49f0b12bd41d1"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/node-1/bytetrack/MOT17-09-FRCNN-timings.jsonl": {
+      "bytes": 88477,
+      "sha256": "8a1e16a9af068ada59f4a83a279e3388029513203ea4e9c67efa08a5b715cf04"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/node-2/bytetrack/MOT17-09-FRCNN-timings.jsonl": {
+      "bytes": 88590,
+      "sha256": "bee12ea900b4dfc41bb8af676aed742fa7b0e54d3f152a920236e5ea16f70d0c"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/node-1/ocsort/MOT17-09-FRCNN-timings.jsonl": {
+      "bytes": 88295,
+      "sha256": "22966b4d1b30f5a8ba5deb1e685a2ee1940eb2f9524fb9da12923118ea1617ab"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/node-2/ocsort/MOT17-09-FRCNN-timings.jsonl": {
+      "bytes": 88428,
+      "sha256": "7762b0680afd01e24717361daa3876a709bb0c8fbdf0c62f105a0c31d3d29bb5"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/node-1/deepsort/MOT17-09-FRCNN-timings.jsonl": {
+      "bytes": 86559,
+      "sha256": "d69404e87d2bb3304156fe88c1330136a280ffcb029dadae10099f3829e22396"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/node-2/deepsort/MOT17-09-FRCNN-timings.jsonl": {
+      "bytes": 86668,
+      "sha256": "e5dfc1f7457271859cad8d9f84b31f27597239387db2a4caf86be40fe715d287"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/browser/MOT17-10-FRCNN-timings.jsonl": {
+      "bytes": 637039,
+      "sha256": "d4cc366603792a86ca29b85dbb1e54e1162789a23292e14a6880026c0d4823aa"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/node-2/bytetrack/MOT17-10-FRCNN-timings.jsonl": {
+      "bytes": 108839,
+      "sha256": "bf183e9b2bc64fcdaa6eecc27eb1c200a33289839a38334db6c82f64dc566dbb"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/node-1/bytetrack/MOT17-10-FRCNN-timings.jsonl": {
+      "bytes": 108637,
+      "sha256": "12ea8070e61a794657a48584e69f72f7b9ebf0e098f64c4edea28116547802bb"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/node-1/ocsort/MOT17-10-FRCNN-timings.jsonl": {
+      "bytes": 108472,
+      "sha256": "10a3593751a5cd32d1c9fc58e672f2db1159a886a8623250d5f08f96f079feae"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/node-2/ocsort/MOT17-10-FRCNN-timings.jsonl": {
+      "bytes": 108525,
+      "sha256": "968ab7dfcb5ea5ffc4d7062148f379220d25f36c321d9f95b6591bc5a583cf34"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/node-1/deepsort/MOT17-10-FRCNN-timings.jsonl": {
+      "bytes": 106301,
+      "sha256": "24e26e989b3d66dd1a494972a67e67453fdf72e0d4f0ab9c99fcc83a80178dd8"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/node-2/deepsort/MOT17-10-FRCNN-timings.jsonl": {
+      "bytes": 106277,
+      "sha256": "ce6fdbe76584e9a5e584fc4c76395f3dcd94eff2e03fa2f456ca1e2a7666cf7f"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/browser/MOT17-11-FRCNN-timings.jsonl": {
+      "bytes": 862771,
+      "sha256": "ceb024a1e37b25ed739d68c2ea4fca71c9c80aba0455ef389c0100434c6e3517"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/node-2/bytetrack/MOT17-11-FRCNN-timings.jsonl": {
+      "bytes": 151623,
+      "sha256": "5f4f18664871e5b16abaa369c98ff9ae130940c5590d630d0ceb06f38174e851"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/node-1/bytetrack/MOT17-11-FRCNN-timings.jsonl": {
+      "bytes": 151509,
+      "sha256": "fba375b85d3eec38095967f84c55e6f4e7085ff128080277d8504aca2b654dfb"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/node-1/ocsort/MOT17-11-FRCNN-timings.jsonl": {
+      "bytes": 151397,
+      "sha256": "514c17d4f73b272719c07ce505bc081f5d176efe8b624b2925fe31b93e76e6cc"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/node-2/ocsort/MOT17-11-FRCNN-timings.jsonl": {
+      "bytes": 151388,
+      "sha256": "2aaad77ee23ebc74397a4ec42d14e9a552673434eb88dcaf6463cd552ddfac99"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/node-1/deepsort/MOT17-11-FRCNN-timings.jsonl": {
+      "bytes": 148211,
+      "sha256": "183b20720357b355ed44612b9de6487435672dea074ba1187345cafeaefa2b6f"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/node-2/deepsort/MOT17-11-FRCNN-timings.jsonl": {
+      "bytes": 148173,
+      "sha256": "783165d7e105b6d9000918672df9ff8674df0488e4b6a060a253815b55209b69"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/browser/MOT17-13-FRCNN-timings.jsonl": {
+      "bytes": 720878,
+      "sha256": "6d3620c2e8e5fe7e2f80a7e39d8140c4221f1feaed0bd5bb0d8c7b209694f46c"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/node-2/bytetrack/MOT17-13-FRCNN-timings.jsonl": {
+      "bytes": 125510,
+      "sha256": "952170b0fc485c2f290fd702e8e80b702f3587854afe4ccf980272dc40ca1cd0"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/node-1/bytetrack/MOT17-13-FRCNN-timings.jsonl": {
+      "bytes": 125329,
+      "sha256": "2d56bfebeb2b19e842fbf6e0c6efdc0dbcee8db340719ec0927d74d875981b63"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/node-1/ocsort/MOT17-13-FRCNN-timings.jsonl": {
+      "bytes": 125073,
+      "sha256": "245c02c98f5fb9d9e3566cd5110f7457bc3e7af018fc69a4320ca949a8f5415e"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/node-2/ocsort/MOT17-13-FRCNN-timings.jsonl": {
+      "bytes": 125261,
+      "sha256": "2b78caa227cc0ef603813287ababc35cf6e02c66fcf95ba31a065c47c1346eb6"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/node-1/deepsort/MOT17-13-FRCNN-timings.jsonl": {
+      "bytes": 122932,
+      "sha256": "dbcd9acfcfce233426fadaa25dbb92f158574f9854f67691856b4e3f92a4a70a"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/node-2/deepsort/MOT17-13-FRCNN-timings.jsonl": {
+      "bytes": 122956,
+      "sha256": "2e22dd1ea1e83517131bfb923aa5c0015dde493598964c216d234b3aae1e10b8"
+    }
+  },
+  "outputHashes": {
+    ".tmp/mot17-reid-official-02-0194ea5/browser/bytetrack/MOT17-02-FRCNN.jsonl": {
+      "bytes": 2569205,
+      "sha256": "b3013e309fdab10a191afd6f3bc328c02a6380d560089a2f95b0510c2b80cc7f"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/browser/bytetrack/MOT17-02-FRCNN.txt": {
+      "bytes": 697206,
+      "sha256": "4863a9877c6ea36685af524db63cc2db5bf3fbd4e637e01e1670935767a271c1"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/node-1/bytetrack/MOT17-02-FRCNN.jsonl": {
+      "bytes": 2569205,
+      "sha256": "b3013e309fdab10a191afd6f3bc328c02a6380d560089a2f95b0510c2b80cc7f"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/trackers/bytetrack/data/MOT17-02-FRCNN.txt": {
+      "bytes": 697206,
+      "sha256": "4863a9877c6ea36685af524db63cc2db5bf3fbd4e637e01e1670935767a271c1"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/node-2/bytetrack/MOT17-02-FRCNN.jsonl": {
+      "bytes": 2569205,
+      "sha256": "b3013e309fdab10a191afd6f3bc328c02a6380d560089a2f95b0510c2b80cc7f"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/trackers-repeat/bytetrack/data/MOT17-02-FRCNN.txt": {
+      "bytes": 697206,
+      "sha256": "4863a9877c6ea36685af524db63cc2db5bf3fbd4e637e01e1670935767a271c1"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/browser/ocsort/MOT17-02-FRCNN.jsonl": {
+      "bytes": 2535034,
+      "sha256": "2853fa1b050ea664e64dd48972376b5765d722a86e0229319a1c1aa16336ea7f"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/browser/ocsort/MOT17-02-FRCNN.txt": {
+      "bytes": 685533,
+      "sha256": "b1ef6fcdd35cab4a64891212a1dbb0109299d38b874bc169972ae18cea64bac8"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/node-1/ocsort/MOT17-02-FRCNN.jsonl": {
+      "bytes": 2535034,
+      "sha256": "2853fa1b050ea664e64dd48972376b5765d722a86e0229319a1c1aa16336ea7f"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/trackers/ocsort/data/MOT17-02-FRCNN.txt": {
+      "bytes": 685533,
+      "sha256": "b1ef6fcdd35cab4a64891212a1dbb0109299d38b874bc169972ae18cea64bac8"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/node-2/ocsort/MOT17-02-FRCNN.jsonl": {
+      "bytes": 2535034,
+      "sha256": "2853fa1b050ea664e64dd48972376b5765d722a86e0229319a1c1aa16336ea7f"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/trackers-repeat/ocsort/data/MOT17-02-FRCNN.txt": {
+      "bytes": 685533,
+      "sha256": "b1ef6fcdd35cab4a64891212a1dbb0109299d38b874bc169972ae18cea64bac8"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/browser/deepsort/MOT17-02-FRCNN.jsonl": {
+      "bytes": 2680290,
+      "sha256": "aed3e2340565e5eb60f1c86ac0f93c8c3ba8b301e45354b950f405156a9c7713"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/browser/deepsort/MOT17-02-FRCNN.txt": {
+      "bytes": 682783,
+      "sha256": "0db54a5db87aadadcd2e61ecf7479fc7e7ba97b59a6b4c58bc5b8a4d22922bdb"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/node-1/deepsort/MOT17-02-FRCNN.jsonl": {
+      "bytes": 2680290,
+      "sha256": "aed3e2340565e5eb60f1c86ac0f93c8c3ba8b301e45354b950f405156a9c7713"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/trackers/deepsort/data/MOT17-02-FRCNN.txt": {
+      "bytes": 682783,
+      "sha256": "0db54a5db87aadadcd2e61ecf7479fc7e7ba97b59a6b4c58bc5b8a4d22922bdb"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/node-2/deepsort/MOT17-02-FRCNN.jsonl": {
+      "bytes": 2680290,
+      "sha256": "aed3e2340565e5eb60f1c86ac0f93c8c3ba8b301e45354b950f405156a9c7713"
+    },
+    ".tmp/mot17-reid-official-02-0194ea5/trackers-repeat/deepsort/data/MOT17-02-FRCNN.txt": {
+      "bytes": 682783,
+      "sha256": "0db54a5db87aadadcd2e61ecf7479fc7e7ba97b59a6b4c58bc5b8a4d22922bdb"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/browser/bytetrack/MOT17-04-FRCNN.jsonl": {
+      "bytes": 7076765,
+      "sha256": "92446da7d5d143e6016546a640e294ae35077765d04c545216a0522c93f07ff1"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/browser/bytetrack/MOT17-04-FRCNN.txt": {
+      "bytes": 2555196,
+      "sha256": "c7f8871cd98e41a39908e5719f454289e6228bbcf9fe44fb1c18ab0f3606ae10"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/node-1/bytetrack/MOT17-04-FRCNN.jsonl": {
+      "bytes": 7076765,
+      "sha256": "92446da7d5d143e6016546a640e294ae35077765d04c545216a0522c93f07ff1"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/trackers/bytetrack/data/MOT17-04-FRCNN.txt": {
+      "bytes": 2555196,
+      "sha256": "c7f8871cd98e41a39908e5719f454289e6228bbcf9fe44fb1c18ab0f3606ae10"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/node-2/bytetrack/MOT17-04-FRCNN.jsonl": {
+      "bytes": 7076765,
+      "sha256": "92446da7d5d143e6016546a640e294ae35077765d04c545216a0522c93f07ff1"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/trackers-repeat/bytetrack/data/MOT17-04-FRCNN.txt": {
+      "bytes": 2555196,
+      "sha256": "c7f8871cd98e41a39908e5719f454289e6228bbcf9fe44fb1c18ab0f3606ae10"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/browser/ocsort/MOT17-04-FRCNN.jsonl": {
+      "bytes": 7051686,
+      "sha256": "429007a899d3ec284b3d36b7a2d73456216978556ac73b5c29f38c853c96900c"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/browser/ocsort/MOT17-04-FRCNN.txt": {
+      "bytes": 2540797,
+      "sha256": "61dcd121792c85daaf59a6a9e592d905d35e18069c2cd13d48856c527521d412"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/node-1/ocsort/MOT17-04-FRCNN.jsonl": {
+      "bytes": 7051686,
+      "sha256": "429007a899d3ec284b3d36b7a2d73456216978556ac73b5c29f38c853c96900c"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/trackers/ocsort/data/MOT17-04-FRCNN.txt": {
+      "bytes": 2540797,
+      "sha256": "61dcd121792c85daaf59a6a9e592d905d35e18069c2cd13d48856c527521d412"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/node-2/ocsort/MOT17-04-FRCNN.jsonl": {
+      "bytes": 7051686,
+      "sha256": "429007a899d3ec284b3d36b7a2d73456216978556ac73b5c29f38c853c96900c"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/trackers-repeat/ocsort/data/MOT17-04-FRCNN.txt": {
+      "bytes": 2540797,
+      "sha256": "61dcd121792c85daaf59a6a9e592d905d35e18069c2cd13d48856c527521d412"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/browser/deepsort/MOT17-04-FRCNN.jsonl": {
+      "bytes": 7215673,
+      "sha256": "387a8d95619dac3c55340261f8653c97faea09b6a7dc426f4358df66154408e6"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/browser/deepsort/MOT17-04-FRCNN.txt": {
+      "bytes": 2542816,
+      "sha256": "9a597c650777ca4c6a4443a805702892a3db8caa1ffdb8a6500d323297cb5f7f"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/node-1/deepsort/MOT17-04-FRCNN.jsonl": {
+      "bytes": 7215673,
+      "sha256": "387a8d95619dac3c55340261f8653c97faea09b6a7dc426f4358df66154408e6"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/trackers/deepsort/data/MOT17-04-FRCNN.txt": {
+      "bytes": 2542816,
+      "sha256": "9a597c650777ca4c6a4443a805702892a3db8caa1ffdb8a6500d323297cb5f7f"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/node-2/deepsort/MOT17-04-FRCNN.jsonl": {
+      "bytes": 7215673,
+      "sha256": "387a8d95619dac3c55340261f8653c97faea09b6a7dc426f4358df66154408e6"
+    },
+    ".tmp/mot17-reid-official-04-0194ea5/trackers-repeat/deepsort/data/MOT17-04-FRCNN.txt": {
+      "bytes": 2542816,
+      "sha256": "9a597c650777ca4c6a4443a805702892a3db8caa1ffdb8a6500d323297cb5f7f"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/browser/bytetrack/MOT17-05-FRCNN.jsonl": {
+      "bytes": 1519199,
+      "sha256": "b24c01727c1a3be24b006d61cc2a65c7fff98cea5b31af08a3596d710ea321cb"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/browser/bytetrack/MOT17-05-FRCNN.txt": {
+      "bytes": 325151,
+      "sha256": "2a1880c6ade5ac7ae496ce9e3aa6eaee307fe10f443a40e5a764364f61997e21"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/node-1/bytetrack/MOT17-05-FRCNN.jsonl": {
+      "bytes": 1519199,
+      "sha256": "b24c01727c1a3be24b006d61cc2a65c7fff98cea5b31af08a3596d710ea321cb"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/trackers/bytetrack/data/MOT17-05-FRCNN.txt": {
+      "bytes": 325151,
+      "sha256": "2a1880c6ade5ac7ae496ce9e3aa6eaee307fe10f443a40e5a764364f61997e21"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/node-2/bytetrack/MOT17-05-FRCNN.jsonl": {
+      "bytes": 1519199,
+      "sha256": "b24c01727c1a3be24b006d61cc2a65c7fff98cea5b31af08a3596d710ea321cb"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/trackers-repeat/bytetrack/data/MOT17-05-FRCNN.txt": {
+      "bytes": 325151,
+      "sha256": "2a1880c6ade5ac7ae496ce9e3aa6eaee307fe10f443a40e5a764364f61997e21"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/browser/ocsort/MOT17-05-FRCNN.jsonl": {
+      "bytes": 1436298,
+      "sha256": "d3859979005725d7a58374a6c599a08d14272bd313c620129bf31f7005cdf523"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/browser/ocsort/MOT17-05-FRCNN.txt": {
+      "bytes": 318485,
+      "sha256": "ef3460605c8be6f6f127b4dac48a630c9840f4ae1de54409f9277ef97fd8169a"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/node-1/ocsort/MOT17-05-FRCNN.jsonl": {
+      "bytes": 1436298,
+      "sha256": "d3859979005725d7a58374a6c599a08d14272bd313c620129bf31f7005cdf523"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/trackers/ocsort/data/MOT17-05-FRCNN.txt": {
+      "bytes": 318485,
+      "sha256": "ef3460605c8be6f6f127b4dac48a630c9840f4ae1de54409f9277ef97fd8169a"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/node-2/ocsort/MOT17-05-FRCNN.jsonl": {
+      "bytes": 1436298,
+      "sha256": "d3859979005725d7a58374a6c599a08d14272bd313c620129bf31f7005cdf523"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/trackers-repeat/ocsort/data/MOT17-05-FRCNN.txt": {
+      "bytes": 318485,
+      "sha256": "ef3460605c8be6f6f127b4dac48a630c9840f4ae1de54409f9277ef97fd8169a"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/browser/deepsort/MOT17-05-FRCNN.jsonl": {
+      "bytes": 1541379,
+      "sha256": "0395b9f06bbe6ba04dd778ee8f20f39ba0fc12ccd17b6289d3894e385ead0429"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/browser/deepsort/MOT17-05-FRCNN.txt": {
+      "bytes": 313419,
+      "sha256": "4dce4b9f1152d15092f70b759e3f2616aa8e6e15fbb923c9031fedbfdfa068a1"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/node-1/deepsort/MOT17-05-FRCNN.jsonl": {
+      "bytes": 1541379,
+      "sha256": "0395b9f06bbe6ba04dd778ee8f20f39ba0fc12ccd17b6289d3894e385ead0429"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/trackers/deepsort/data/MOT17-05-FRCNN.txt": {
+      "bytes": 313419,
+      "sha256": "4dce4b9f1152d15092f70b759e3f2616aa8e6e15fbb923c9031fedbfdfa068a1"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/node-2/deepsort/MOT17-05-FRCNN.jsonl": {
+      "bytes": 1541379,
+      "sha256": "0395b9f06bbe6ba04dd778ee8f20f39ba0fc12ccd17b6289d3894e385ead0429"
+    },
+    ".tmp/mot17-reid-official-05-0194ea5/trackers-repeat/deepsort/data/MOT17-05-FRCNN.txt": {
+      "bytes": 313419,
+      "sha256": "4dce4b9f1152d15092f70b759e3f2616aa8e6e15fbb923c9031fedbfdfa068a1"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/browser/bytetrack/MOT17-09-FRCNN.jsonl": {
+      "bytes": 1080440,
+      "sha256": "b41e480ca95720cbcb683ffc92b456114bfa2e27d59c12c4f228cfa6c240a8e5"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/browser/bytetrack/MOT17-09-FRCNN.txt": {
+      "bytes": 270898,
+      "sha256": "8231a4de27e18590f7ae83c2e4e384b7ae52c2a5d2aa5e7e96c6bdd6fd1eb4ee"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/node-1/bytetrack/MOT17-09-FRCNN.jsonl": {
+      "bytes": 1080440,
+      "sha256": "b41e480ca95720cbcb683ffc92b456114bfa2e27d59c12c4f228cfa6c240a8e5"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/trackers/bytetrack/data/MOT17-09-FRCNN.txt": {
+      "bytes": 270898,
+      "sha256": "8231a4de27e18590f7ae83c2e4e384b7ae52c2a5d2aa5e7e96c6bdd6fd1eb4ee"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/node-2/bytetrack/MOT17-09-FRCNN.jsonl": {
+      "bytes": 1080440,
+      "sha256": "b41e480ca95720cbcb683ffc92b456114bfa2e27d59c12c4f228cfa6c240a8e5"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/trackers-repeat/bytetrack/data/MOT17-09-FRCNN.txt": {
+      "bytes": 270898,
+      "sha256": "8231a4de27e18590f7ae83c2e4e384b7ae52c2a5d2aa5e7e96c6bdd6fd1eb4ee"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/browser/ocsort/MOT17-09-FRCNN.jsonl": {
+      "bytes": 1006990,
+      "sha256": "65de5f27e8c0563b344e91df0a0f0175d58ec69f7786813db85b4cd86336e843"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/browser/ocsort/MOT17-09-FRCNN.txt": {
+      "bytes": 267694,
+      "sha256": "e4ec6dfddd899095fcdd588ec1b0a9a0abd3f6990a09db787f70e04c79603721"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/node-1/ocsort/MOT17-09-FRCNN.jsonl": {
+      "bytes": 1006990,
+      "sha256": "65de5f27e8c0563b344e91df0a0f0175d58ec69f7786813db85b4cd86336e843"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/trackers/ocsort/data/MOT17-09-FRCNN.txt": {
+      "bytes": 267694,
+      "sha256": "e4ec6dfddd899095fcdd588ec1b0a9a0abd3f6990a09db787f70e04c79603721"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/node-2/ocsort/MOT17-09-FRCNN.jsonl": {
+      "bytes": 1006990,
+      "sha256": "65de5f27e8c0563b344e91df0a0f0175d58ec69f7786813db85b4cd86336e843"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/trackers-repeat/ocsort/data/MOT17-09-FRCNN.txt": {
+      "bytes": 267694,
+      "sha256": "e4ec6dfddd899095fcdd588ec1b0a9a0abd3f6990a09db787f70e04c79603721"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/browser/deepsort/MOT17-09-FRCNN.jsonl": {
+      "bytes": 1119769,
+      "sha256": "57e9ca44e659aa1aa407f4ed3bfa6e987cdb0ce46f6059d766903e598df24c0b"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/browser/deepsort/MOT17-09-FRCNN.txt": {
+      "bytes": 264135,
+      "sha256": "23682488c2b057c63a4e9a9d3f983f6a835dd28e5280abe891137690f582d609"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/node-1/deepsort/MOT17-09-FRCNN.jsonl": {
+      "bytes": 1119769,
+      "sha256": "57e9ca44e659aa1aa407f4ed3bfa6e987cdb0ce46f6059d766903e598df24c0b"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/trackers/deepsort/data/MOT17-09-FRCNN.txt": {
+      "bytes": 264135,
+      "sha256": "23682488c2b057c63a4e9a9d3f983f6a835dd28e5280abe891137690f582d609"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/node-2/deepsort/MOT17-09-FRCNN.jsonl": {
+      "bytes": 1119769,
+      "sha256": "57e9ca44e659aa1aa407f4ed3bfa6e987cdb0ce46f6059d766903e598df24c0b"
+    },
+    ".tmp/mot17-reid-official-09-0194ea5/trackers-repeat/deepsort/data/MOT17-09-FRCNN.txt": {
+      "bytes": 264135,
+      "sha256": "23682488c2b057c63a4e9a9d3f983f6a835dd28e5280abe891137690f582d609"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/browser/bytetrack/MOT17-10-FRCNN.jsonl": {
+      "bytes": 4439370,
+      "sha256": "bdf253222097d6e0ed8aa17948f29a8ce1f6fe654d48213b92b5af9c520d7a0f"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/browser/bytetrack/MOT17-10-FRCNN.txt": {
+      "bytes": 802420,
+      "sha256": "3ee2abe756d7c6e67986a5b07736516e3d8c9d19e03f209d2302f4aae1db7b78"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/node-1/bytetrack/MOT17-10-FRCNN.jsonl": {
+      "bytes": 4439370,
+      "sha256": "bdf253222097d6e0ed8aa17948f29a8ce1f6fe654d48213b92b5af9c520d7a0f"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/trackers/bytetrack/data/MOT17-10-FRCNN.txt": {
+      "bytes": 802420,
+      "sha256": "3ee2abe756d7c6e67986a5b07736516e3d8c9d19e03f209d2302f4aae1db7b78"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/node-2/bytetrack/MOT17-10-FRCNN.jsonl": {
+      "bytes": 4439370,
+      "sha256": "bdf253222097d6e0ed8aa17948f29a8ce1f6fe654d48213b92b5af9c520d7a0f"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/trackers-repeat/bytetrack/data/MOT17-10-FRCNN.txt": {
+      "bytes": 802420,
+      "sha256": "3ee2abe756d7c6e67986a5b07736516e3d8c9d19e03f209d2302f4aae1db7b78"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/browser/ocsort/MOT17-10-FRCNN.jsonl": {
+      "bytes": 3645322,
+      "sha256": "8ad132f948a9ee926626a3b501151183d8cc5b2cfd88c88b86bf137621c1795a"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/browser/ocsort/MOT17-10-FRCNN.txt": {
+      "bytes": 797665,
+      "sha256": "70b0e42ff3547cdc9ced2ac84d8b77b0b084d3126684d66c37a022d258e87d0f"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/node-1/ocsort/MOT17-10-FRCNN.jsonl": {
+      "bytes": 3645322,
+      "sha256": "8ad132f948a9ee926626a3b501151183d8cc5b2cfd88c88b86bf137621c1795a"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/trackers/ocsort/data/MOT17-10-FRCNN.txt": {
+      "bytes": 797665,
+      "sha256": "70b0e42ff3547cdc9ced2ac84d8b77b0b084d3126684d66c37a022d258e87d0f"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/node-2/ocsort/MOT17-10-FRCNN.jsonl": {
+      "bytes": 3645322,
+      "sha256": "8ad132f948a9ee926626a3b501151183d8cc5b2cfd88c88b86bf137621c1795a"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/trackers-repeat/ocsort/data/MOT17-10-FRCNN.txt": {
+      "bytes": 797665,
+      "sha256": "70b0e42ff3547cdc9ced2ac84d8b77b0b084d3126684d66c37a022d258e87d0f"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/browser/deepsort/MOT17-10-FRCNN.jsonl": {
+      "bytes": 4680782,
+      "sha256": "90d6aa740e06b72fc9572a81898675035cde72a2fc6c8a5b21fc2fefef025742"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/browser/deepsort/MOT17-10-FRCNN.txt": {
+      "bytes": 776630,
+      "sha256": "e1f0a96003be054afca12bf4c3866bb2dca4ac779a4aab1602f445783b73df6e"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/node-1/deepsort/MOT17-10-FRCNN.jsonl": {
+      "bytes": 4680782,
+      "sha256": "90d6aa740e06b72fc9572a81898675035cde72a2fc6c8a5b21fc2fefef025742"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/trackers/deepsort/data/MOT17-10-FRCNN.txt": {
+      "bytes": 776630,
+      "sha256": "e1f0a96003be054afca12bf4c3866bb2dca4ac779a4aab1602f445783b73df6e"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/node-2/deepsort/MOT17-10-FRCNN.jsonl": {
+      "bytes": 4680782,
+      "sha256": "90d6aa740e06b72fc9572a81898675035cde72a2fc6c8a5b21fc2fefef025742"
+    },
+    ".tmp/mot17-reid-official-10-0194ea5/trackers-repeat/deepsort/data/MOT17-10-FRCNN.txt": {
+      "bytes": 776630,
+      "sha256": "e1f0a96003be054afca12bf4c3866bb2dca4ac779a4aab1602f445783b73df6e"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/browser/bytetrack/MOT17-11-FRCNN.jsonl": {
+      "bytes": 2126053,
+      "sha256": "626ca617f07c0e9625b62f8b63b59cc02112017b5e75b70e9619929d13dd4736"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/browser/bytetrack/MOT17-11-FRCNN.txt": {
+      "bytes": 521837,
+      "sha256": "b10c01ad2cdba47c781c36b99254c422d2d3d2eff34d1f8055c7e21f6be63793"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/node-1/bytetrack/MOT17-11-FRCNN.jsonl": {
+      "bytes": 2126053,
+      "sha256": "626ca617f07c0e9625b62f8b63b59cc02112017b5e75b70e9619929d13dd4736"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/trackers/bytetrack/data/MOT17-11-FRCNN.txt": {
+      "bytes": 521837,
+      "sha256": "b10c01ad2cdba47c781c36b99254c422d2d3d2eff34d1f8055c7e21f6be63793"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/node-2/bytetrack/MOT17-11-FRCNN.jsonl": {
+      "bytes": 2126053,
+      "sha256": "626ca617f07c0e9625b62f8b63b59cc02112017b5e75b70e9619929d13dd4736"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/trackers-repeat/bytetrack/data/MOT17-11-FRCNN.txt": {
+      "bytes": 521837,
+      "sha256": "b10c01ad2cdba47c781c36b99254c422d2d3d2eff34d1f8055c7e21f6be63793"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/browser/ocsort/MOT17-11-FRCNN.jsonl": {
+      "bytes": 1943633,
+      "sha256": "3f702343278725d4c8eab2d6cf9edf01fcd0f49fddebe01508f778467cfcb901"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/browser/ocsort/MOT17-11-FRCNN.txt": {
+      "bytes": 514186,
+      "sha256": "8511183f1f7046f9001b5f52fd328b5d529bc789a1376ccfdf35985aeec7c75a"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/node-1/ocsort/MOT17-11-FRCNN.jsonl": {
+      "bytes": 1943633,
+      "sha256": "3f702343278725d4c8eab2d6cf9edf01fcd0f49fddebe01508f778467cfcb901"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/trackers/ocsort/data/MOT17-11-FRCNN.txt": {
+      "bytes": 514186,
+      "sha256": "8511183f1f7046f9001b5f52fd328b5d529bc789a1376ccfdf35985aeec7c75a"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/node-2/ocsort/MOT17-11-FRCNN.jsonl": {
+      "bytes": 1943633,
+      "sha256": "3f702343278725d4c8eab2d6cf9edf01fcd0f49fddebe01508f778467cfcb901"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/trackers-repeat/ocsort/data/MOT17-11-FRCNN.txt": {
+      "bytes": 514186,
+      "sha256": "8511183f1f7046f9001b5f52fd328b5d529bc789a1376ccfdf35985aeec7c75a"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/browser/deepsort/MOT17-11-FRCNN.jsonl": {
+      "bytes": 2236006,
+      "sha256": "399186c3c0a80328ebb906317b9a7936f1b301b67d6c7ed92d545e2f4fb849fe"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/browser/deepsort/MOT17-11-FRCNN.txt": {
+      "bytes": 508036,
+      "sha256": "9f66589893114c72a3c4b32208267e23764090666bb0e324e2b21275de2c26b1"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/node-1/deepsort/MOT17-11-FRCNN.jsonl": {
+      "bytes": 2236006,
+      "sha256": "399186c3c0a80328ebb906317b9a7936f1b301b67d6c7ed92d545e2f4fb849fe"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/trackers/deepsort/data/MOT17-11-FRCNN.txt": {
+      "bytes": 508036,
+      "sha256": "9f66589893114c72a3c4b32208267e23764090666bb0e324e2b21275de2c26b1"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/node-2/deepsort/MOT17-11-FRCNN.jsonl": {
+      "bytes": 2236006,
+      "sha256": "399186c3c0a80328ebb906317b9a7936f1b301b67d6c7ed92d545e2f4fb849fe"
+    },
+    ".tmp/mot17-reid-official-11-0194ea5/trackers-repeat/deepsort/data/MOT17-11-FRCNN.txt": {
+      "bytes": 508036,
+      "sha256": "9f66589893114c72a3c4b32208267e23764090666bb0e324e2b21275de2c26b1"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/browser/bytetrack/MOT17-13-FRCNN.jsonl": {
+      "bytes": 3617305,
+      "sha256": "e3aecaccb3a8541d7efe7393cb9a589311800bab3166c4f2f13ab2f051fd7938"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/browser/bytetrack/MOT17-13-FRCNN.txt": {
+      "bytes": 655899,
+      "sha256": "a3b72d4d821b8d695c8dfaee5df296af9dee5a4f1f77bf6eacb0ce26c0e0467c"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/node-1/bytetrack/MOT17-13-FRCNN.jsonl": {
+      "bytes": 3617305,
+      "sha256": "e3aecaccb3a8541d7efe7393cb9a589311800bab3166c4f2f13ab2f051fd7938"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/trackers/bytetrack/data/MOT17-13-FRCNN.txt": {
+      "bytes": 655899,
+      "sha256": "a3b72d4d821b8d695c8dfaee5df296af9dee5a4f1f77bf6eacb0ce26c0e0467c"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/node-2/bytetrack/MOT17-13-FRCNN.jsonl": {
+      "bytes": 3617305,
+      "sha256": "e3aecaccb3a8541d7efe7393cb9a589311800bab3166c4f2f13ab2f051fd7938"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/trackers-repeat/bytetrack/data/MOT17-13-FRCNN.txt": {
+      "bytes": 655899,
+      "sha256": "a3b72d4d821b8d695c8dfaee5df296af9dee5a4f1f77bf6eacb0ce26c0e0467c"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/browser/ocsort/MOT17-13-FRCNN.jsonl": {
+      "bytes": 3246423,
+      "sha256": "5b0c5fe9e31b44d611cbaf7a8c14c963c57e94b2a36c721006799fa457bd9423"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/browser/ocsort/MOT17-13-FRCNN.txt": {
+      "bytes": 643856,
+      "sha256": "9187bb21b79c209a71c28afaf13c401d49b00c855f393faf31b013b44e6467a5"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/node-1/ocsort/MOT17-13-FRCNN.jsonl": {
+      "bytes": 3246423,
+      "sha256": "5b0c5fe9e31b44d611cbaf7a8c14c963c57e94b2a36c721006799fa457bd9423"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/trackers/ocsort/data/MOT17-13-FRCNN.txt": {
+      "bytes": 643856,
+      "sha256": "9187bb21b79c209a71c28afaf13c401d49b00c855f393faf31b013b44e6467a5"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/node-2/ocsort/MOT17-13-FRCNN.jsonl": {
+      "bytes": 3246423,
+      "sha256": "5b0c5fe9e31b44d611cbaf7a8c14c963c57e94b2a36c721006799fa457bd9423"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/trackers-repeat/ocsort/data/MOT17-13-FRCNN.txt": {
+      "bytes": 643856,
+      "sha256": "9187bb21b79c209a71c28afaf13c401d49b00c855f393faf31b013b44e6467a5"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/browser/deepsort/MOT17-13-FRCNN.jsonl": {
+      "bytes": 3736854,
+      "sha256": "03958c568f0561b8bcc98b78b4b1b26e9a27a5e53530f863dce2530afa5b720a"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/browser/deepsort/MOT17-13-FRCNN.txt": {
+      "bytes": 629770,
+      "sha256": "791b2c1585d3d462047b840135334a3d332e13196f45e3dc8afc6a15f8d631ff"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/node-1/deepsort/MOT17-13-FRCNN.jsonl": {
+      "bytes": 3736854,
+      "sha256": "03958c568f0561b8bcc98b78b4b1b26e9a27a5e53530f863dce2530afa5b720a"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/trackers/deepsort/data/MOT17-13-FRCNN.txt": {
+      "bytes": 629770,
+      "sha256": "791b2c1585d3d462047b840135334a3d332e13196f45e3dc8afc6a15f8d631ff"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/node-2/deepsort/MOT17-13-FRCNN.jsonl": {
+      "bytes": 3736854,
+      "sha256": "03958c568f0561b8bcc98b78b4b1b26e9a27a5e53530f863dce2530afa5b720a"
+    },
+    ".tmp/mot17-reid-official-13-0194ea5/trackers-repeat/deepsort/data/MOT17-13-FRCNN.txt": {
+      "bytes": 629770,
+      "sha256": "791b2c1585d3d462047b840135334a3d332e13196f45e3dc8afc6a15f8d631ff"
+    }
+  }
+}

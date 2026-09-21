@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-09-21T06:00:47.348Z",
+  "capturedAt": "2026-09-21T06:16:04.254Z",
   "files": {
     "browser/deepsort.png": {
       "bytes": 78844,
@@ -29,13 +29,17 @@
       "bytes": 26587,
       "sha256": "c2f563a4ce74f9bb09fa238e2b74153268b0e17f333a9637bf8cbd0b7b7fd76b"
     },
+    "closure/final-review.md": {
+      "bytes": 7443,
+      "sha256": "139baa80b40923a201bc8e77fe015ff01629811b42fa322daceb4322a70d22db"
+    },
     "closure/identity-generation.mjs": {
       "bytes": 5466,
       "sha256": "2c9418e2174060534520abdafc4879d927314bc1b8ced93f69331bda1e5e7047"
     },
     "closure/progress.md": {
-      "bytes": 2338,
-      "sha256": "1a3d959046b3ad70e2ce4fa11e43f600087b68ddd1e691e6c9fde838b77dc951"
+      "bytes": 3047,
+      "sha256": "537d688eaf5cdf319221a4d2a8ebe1eda5fc71727737ba2387b4ac2dab133eae"
     },
     "closure/task-1-report.md": {
       "bytes": 8558,

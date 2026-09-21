@@ -1,0 +1,24 @@
+{
+  "node_id": "TA_kwDOUg8sAtoAKDk4MDY3NmM5YWUwMTgxMWM0MmQyNWRiNDRjOGYwNTQyMzZiMWE4ODI",
+  "sha": "980676c9ae01811c42d25db44c8f054236b1a882",
+  "url": "https://api.github.com/repos/chenmohan123/web-sdk-PP-Tracking/git/tags/980676c9ae01811c42d25db44c8f054236b1a882",
+  "tagger": {
+    "name": "陈默涵",
+    "email": "21739308@qq.com",
+    "date": "2026-09-21T07:44:25Z"
+  },
+  "object": {
+    "sha": "041686f6c335a66dbe1f3796d6be5b5ae908c2cb",
+    "type": "commit",
+    "url": "https://api.github.com/repos/chenmohan123/web-sdk-PP-Tracking/git/commits/041686f6c335a66dbe1f3796d6be5b5ae908c2cb"
+  },
+  "tag": "v0.2.0-rc.0",
+  "message": "Tracking 0.2 首个发布候选：多算法与可选人体 ReID\n",
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

@@ -1,0 +1,19 @@
+# Tracking 0.2.0-rc.0 delivery receipt
+
+[中文](README.md). Verified on 2026-09-21. This record covers remote publication; older candidate and alpha evaluation archives retain their original identities.
+
+[PR #3](https://github.com/chenmohan123/web-sdk-PP-Tracking/pull/3) passed current-commit CI and merged. Immutable tag `v0.2.0-rc.0` identifies `041686f6c335a66dbe1f3796d6be5b5ae908c2cb`. The [GitHub prerelease](https://github.com/chenmohan123/web-sdk-PP-Tracking/releases/tag/v0.2.0-rc.0) and [npm RC](https://www.npmjs.com/package/web-sdk-pp-tracking/v/0.2.0-rc.0) are live: `next=0.2.0-rc.0`, `latest=0.1.0`.
+
+[Release run 35574391794](https://github.com/chenmohan123/web-sdk-PP-Tracking/actions/runs/35574391794) completed prepare, verify and publish. This was a new OIDC publication, unlike 0.1.0's verified-existing workflow result. [Pages run 35574347075](https://github.com/chenmohan123/web-sdk-PP-Tracking/actions/runs/35574347075) deployed the same commit to the [HTTPS Demo](https://chenmohan123.github.io/web-sdk-PP-Tracking/). These are release-commit snapshots; later documentation commits may trigger newer deployments.
+
+The public tarball is 46,274 bytes (152,483 unpacked), SHA256 `fe42d3ee4c5626ad823e8bd16288b079d6bd7dfd07e79fcff4e987ead8509e12`, integrity `sha512-PF+ZyXJwoRQwnxWOd6tJyWLjZB2ICXsWlhEIlCYO27CEMCO7yvKAJt13KSARq+/pZ2Jzrdqc/tHC2dwLk1pTbA==`. Public bytes match the final candidate. See [package-check.json](package-check.json) and [registry metadata](registry/version.json). Final README edits changed the earlier 46,313-byte candidate identity; that old hash is not the published hash.
+
+An isolated consumer installed this exact public version without ORT. [npm audit signatures](npm-signatures.log) verified one registry signature and one attestation. The [public SLSA attestation](registry/attestations.json) binds the same SHA512 to this repository's `.github/workflows/release.yml`, `refs/tags/v0.2.0-rc.0`, commit `041686f…`, and the release run above.
+
+Final product verification passed 176 unit tests, real tarball ESM/CJS/NodeNext/no-ORT consumption, Demo/example builds and 12 browser groups. Clean CI initially rejected undeclared protobufjs postinstall behavior; its script only emits version warnings, so an explicit `false` policy fixed installation without globally permitting scripts. Clean installation and PR CI then passed.
+
+The [hosted browser report](online/report.json) covers HTTPS, RC branding/exact npm link, all three algorithms, no default model requests, real ModelScope/WASM and Hugging Face/WebGPU sessions, language/390px layout, cancellation, invalid-input state preservation, source/backend resets and isolated cache cleanup, with no browser errors. Environment: Windows 11 10.0.26200, i5-10400F, RTX 5060 Ti driver 32.0.16.1692, Chromium 153.0.8010.12 / Playwright 1.63, ORT 1.27.0. Synthetic images validate sessions and UI, not quality; 390px is a desktop viewport.
+
+Before/after standards checks had 21 required local passes and four remote skips. [Read-only API receipts](remote/queries.json) confirm active default-branch PR/current-CI/conversation/deletion/force-push protection without bypass, immutable `v*` tags, and Actions-based HTTPS Pages with protected source and a successful deployment.
+
+ByteTrack remains default; OC-SORT/DeepSORT are explicit options and human ReID is experimental. See [RC notes](../../docs/en/releases/0.2.0-rc.0.md) for model identity, source revisions and licensing limits. The historical 5316-frame evaluation was not rerun. No phone, NPU, Worker, video/camera scheduling or cross-SDK Workflow claim is added. Optional ORT startup resources remain large. [Reproduction scripts](scripts/) contain no credentials. This evidence-only follow-up changes no published package, runtime, model or tag.

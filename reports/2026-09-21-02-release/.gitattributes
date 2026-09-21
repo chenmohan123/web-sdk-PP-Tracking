@@ -1,0 +1,5 @@
+*.log -text -whitespace
+*.json -text
+remote/*.json -text
+registry/*.json -text
+online/*.json -text

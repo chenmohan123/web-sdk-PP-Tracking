@@ -1,0 +1,70 @@
+{
+  "operation": "复用宿主 gh 登录，只读 API",
+  "results": [
+    {
+      "name": "repository",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking",
+      "observedAt": "2026-09-21T08:07:30.812Z"
+    },
+    {
+      "name": "branchRules",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/rulesets/23691947",
+      "observedAt": "2026-09-21T08:07:30.486Z"
+    },
+    {
+      "name": "tagRules",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/rulesets/23691948",
+      "observedAt": "2026-09-21T08:07:29.059Z"
+    },
+    {
+      "name": "pages",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/pages",
+      "observedAt": "2026-09-21T08:07:29.262Z"
+    },
+    {
+      "name": "environments",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/environments",
+      "observedAt": "2026-09-21T08:07:29.618Z"
+    },
+    {
+      "name": "release",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/releases/tags/v0.2.0-rc.0",
+      "observedAt": "2026-09-21T08:07:29.146Z"
+    },
+    {
+      "name": "pull",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/pulls/3",
+      "observedAt": "2026-09-21T08:07:29.779Z"
+    },
+    {
+      "name": "releaseRun",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/actions/runs/35574391794",
+      "observedAt": "2026-09-21T08:07:29.227Z"
+    },
+    {
+      "name": "pagesRun",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/actions/runs/35574347075",
+      "observedAt": "2026-09-21T08:07:29.299Z"
+    },
+    {
+      "name": "deployments",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/deployments?sha=041686f6c335a66dbe1f3796d6be5b5ae908c2cb&environment=github-pages&per_page=10",
+      "observedAt": "2026-09-21T08:07:30.594Z"
+    },
+    {
+      "name": "tag",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/git/ref/tags/v0.2.0-rc.0",
+      "observedAt": "2026-09-21T08:07:31.180Z"
+    },
+    {
+      "name": "deploymentStatuses",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/deployments/6563905325/statuses",
+      "observedAt": "2026-09-21T08:07:32.398Z"
+    },
+    {
+      "name": "tagObject",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/git/tags/980676c9ae01811c42d25db44c8f054236b1a882",
+      "observedAt": "2026-09-21T08:07:33.493Z"
+    }
+  ]
+}

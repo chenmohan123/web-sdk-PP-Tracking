@@ -1,0 +1,126 @@
+{
+  "observedAt": "2026-09-21T07:50:12.982Z",
+  "distTags": {
+    "latest": "0.1.0",
+    "next": "0.2.0-rc.0"
+  },
+  "version": {
+    "_id": "web-sdk-pp-tracking@0.2.0-rc.0",
+    "bugs": {
+      "url": "https://github.com/chenmohan123/web-sdk-PP-Tracking/issues"
+    },
+    "dist": {
+      "shasum": "06f784e69644218c7f43d337898d13a6918a9094",
+      "tarball": "https://registry.npmjs.org/web-sdk-pp-tracking/-/web-sdk-pp-tracking-0.2.0-rc.0.tgz",
+      "fileCount": 26,
+      "integrity": "sha512-PF+ZyXJwoRQwnxWOd6tJyWLjZB2ICXsWlhEIlCYO27CEMCO7yvKAJt13KSARq+/pZ2Jzrdqc/tHC2dwLk1pTbA==",
+      "signatures": [
+        {
+          "sig": "MEQCIGebn4jpwAmfG3AMghHgSvSWYZ8cAEAPPo8NS2Xu6FqAAiBj7h2sZO72eNBgXjtcjn1PVsfUgcZ717ubhr5zYNyAVw==",
+          "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+        },
+        {
+          "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+          "sig": "MEYCIQCo+yeN31jl3pnMWrPDW0qgxleqZ4BiNm8Ki00RK3mjpwIhAP8JT8hy+VL2X1F0GY0GbFCgFg8HzyR3IPOipyCU0ttw"
+        }
+      ],
+      "attestations": {
+        "url": "https://registry.npmjs.org/-/npm/v1/attestations/web-sdk-pp-tracking@0.2.0-rc.0",
+        "provenance": {
+          "predicateType": "https://slsa.dev/provenance/v1"
+        }
+      },
+      "unpackedSize": 152483
+    },
+    "main": "./dist/index.cjs",
+    "name": "web-sdk-pp-tracking",
+    "type": "module",
+    "_from": "file:.tmp/web-sdk-pp-tracking-0.2.0-rc.0.tgz",
+    "types": "./dist/index.d.ts",
+    "module": "./dist/index.js",
+    "engines": {
+      "node": ">=22.12.0"
+    },
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs"
+      },
+      "./reid": {
+        "types": "./dist/reid/index.d.ts",
+        "import": "./dist/reid/index.js",
+        "require": "./dist/reid/index.cjs"
+      }
+    },
+    "license": "Apache-2.0",
+    "scripts": {
+      "test": "vitest run",
+      "build": "node scripts/build.mjs",
+      "verify": "npm run build && npm run typecheck && npm test && npm run check:package && npm run typecheck:demo && npm run build:demo && npm run build:vanilla && npm run build:react && npm run test:browser",
+      "dev:demo": "vite --config demo/vite.config.ts --host 127.0.0.1 --port 4196",
+      "typecheck": "tsc --noEmit",
+      "build:demo": "vite build --config demo/vite.config.ts",
+      "build:react": "vite build --config examples/react/vite.config.ts",
+      "test:browser": "node tests/browser.mjs",
+      "build:vanilla": "vite build examples/vanilla --base ./",
+      "check:package": "node scripts/check-package.mjs",
+      "typecheck:demo": "tsc --noEmit -p demo/tsconfig.json",
+      "build:reid-candidate": "node scripts/build-reid-candidate.mjs"
+    },
+    "version": "0.2.0-rc.0",
+    "_npmUser": {
+      "name": "GitHub Actions",
+      "email": "npm-oidc-no-reply@github.com",
+      "trustedPublisher": {
+        "id": "github",
+        "oidcConfigId": "oidc:da2f97a7-680c-4041-b902-26c74f639a3c"
+      }
+    },
+    "homepage": "https://chenmohan123.github.io/web-sdk-PP-Tracking/",
+    "_resolved": "/home/runner/work/web-sdk-PP-Tracking/web-sdk-PP-Tracking/.tmp/web-sdk-pp-tracking-0.2.0-rc.0.tgz",
+    "_integrity": "sha512-PF+ZyXJwoRQwnxWOd6tJyWLjZB2ICXsWlhEIlCYO27CEMCO7yvKAJt13KSARq+/pZ2Jzrdqc/tHC2dwLk1pTbA==",
+    "repository": {
+      "url": "git+https://github.com/chenmohan123/web-sdk-PP-Tracking.git",
+      "type": "git"
+    },
+    "_npmVersion": "11.13.0",
+    "description": "框架无关的独立 CPU 多目标跟踪算法",
+    "directories": {},
+    "maintainers": [
+      {
+        "name": "chenmohan",
+        "email": "21739308@qq.com"
+      }
+    ],
+    "sideEffects": false,
+    "_nodeVersion": "24.20.0",
+    "_hasShrinkwrap": false,
+    "readmeFilename": "README.md",
+    "devDependencies": {
+      "vite": "7.3.6",
+      "react": "19.2.4",
+      "vitest": "3.2.4",
+      "esbuild": "0.25.12",
+      "react-dom": "19.2.4",
+      "playwright": "1.63.0",
+      "typescript": "5.9.3",
+      "@types/node": "24.10.0",
+      "@types/react": "19.2.14",
+      "onnxruntime-web": "1.27.0",
+      "@types/react-dom": "19.2.3"
+    },
+    "peerDependencies": {
+      "onnxruntime-web": "1.27.0"
+    },
+    "peerDependenciesMeta": {
+      "onnxruntime-web": {
+        "optional": true
+      }
+    },
+    "_npmOperationalInternal": {
+      "host": "s3://npm-registry-packages-npm-production",
+      "tmp": "tmp/web-sdk-pp-tracking_0.2.0-rc.0_1789976918465_0.7692142412056875"
+    }
+  }
+}

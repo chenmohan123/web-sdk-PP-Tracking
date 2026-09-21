@@ -1,0 +1,309 @@
+{
+  "date": "2026-09-20",
+  "model": {
+    "bytes": 33704835,
+    "sha256": "24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4"
+  },
+  "samples": 103,
+  "fixtures": 34,
+  "quality": {
+    "opencv-rgb": {
+      "queries": 67,
+      "correct": 52,
+      "rank1": 0.7761194029850746,
+      "macroRank1": 0.8308333333333333,
+      "bySequence": {
+        "MOT17-05-FRCNN": {
+          "gallery": 2,
+          "queries": 2,
+          "correct": 2,
+          "rank1": 1.0
+        },
+        "MOT17-09-FRCNN": {
+          "gallery": 4,
+          "queries": 10,
+          "correct": 9,
+          "rank1": 0.9
+        },
+        "MOT17-10-FRCNN": {
+          "gallery": 13,
+          "queries": 24,
+          "correct": 17,
+          "rank1": 0.7083333333333334
+        },
+        "MOT17-11-FRCNN": {
+          "gallery": 6,
+          "queries": 15,
+          "correct": 11,
+          "rank1": 0.7333333333333333
+        },
+        "MOT17-13-FRCNN": {
+          "gallery": 11,
+          "queries": 16,
+          "correct": 13,
+          "rank1": 0.8125
+        }
+      },
+      "thresholdDiagnostics": [
+        {
+          "threshold": 0.1,
+          "positivePairs": 67,
+          "positiveRejected": 60,
+          "negativePairs": 555,
+          "negativeAccepted": 0
+        },
+        {
+          "threshold": 0.2,
+          "positivePairs": 67,
+          "positiveRejected": 37,
+          "negativePairs": 555,
+          "negativeAccepted": 8
+        },
+        {
+          "threshold": 0.3,
+          "positivePairs": 67,
+          "positiveRejected": 15,
+          "negativePairs": 555,
+          "negativeAccepted": 34
+        },
+        {
+          "threshold": 0.4,
+          "positivePairs": 67,
+          "positiveRejected": 7,
+          "negativePairs": 555,
+          "negativeAccepted": 97
+        }
+      ]
+    },
+    "opencv-bgr": {
+      "queries": 67,
+      "correct": 50,
+      "rank1": 0.746268656716418,
+      "macroRank1": 0.7883333333333333,
+      "bySequence": {
+        "MOT17-05-FRCNN": {
+          "gallery": 2,
+          "queries": 2,
+          "correct": 2,
+          "rank1": 1.0
+        },
+        "MOT17-09-FRCNN": {
+          "gallery": 4,
+          "queries": 10,
+          "correct": 8,
+          "rank1": 0.8
+        },
+        "MOT17-10-FRCNN": {
+          "gallery": 13,
+          "queries": 24,
+          "correct": 19,
+          "rank1": 0.7916666666666666
+        },
+        "MOT17-11-FRCNN": {
+          "gallery": 6,
+          "queries": 15,
+          "correct": 9,
+          "rank1": 0.6
+        },
+        "MOT17-13-FRCNN": {
+          "gallery": 11,
+          "queries": 16,
+          "correct": 12,
+          "rank1": 0.75
+        }
+      },
+      "thresholdDiagnostics": [
+        {
+          "threshold": 0.1,
+          "positivePairs": 67,
+          "positiveRejected": 64,
+          "negativePairs": 555,
+          "negativeAccepted": 0
+        },
+        {
+          "threshold": 0.2,
+          "positivePairs": 67,
+          "positiveRejected": 46,
+          "negativePairs": 555,
+          "negativeAccepted": 6
+        },
+        {
+          "threshold": 0.3,
+          "positivePairs": 67,
+          "positiveRejected": 23,
+          "negativePairs": 555,
+          "negativeAccepted": 42
+        },
+        {
+          "threshold": 0.4,
+          "positivePairs": 67,
+          "positiveRejected": 5,
+          "negativePairs": 555,
+          "negativeAccepted": 133
+        }
+      ]
+    },
+    "float-rgb": {
+      "queries": 67,
+      "correct": 53,
+      "rank1": 0.7910447761194029,
+      "macroRank1": 0.8433333333333334,
+      "bySequence": {
+        "MOT17-05-FRCNN": {
+          "gallery": 2,
+          "queries": 2,
+          "correct": 2,
+          "rank1": 1.0
+        },
+        "MOT17-09-FRCNN": {
+          "gallery": 4,
+          "queries": 10,
+          "correct": 9,
+          "rank1": 0.9
+        },
+        "MOT17-10-FRCNN": {
+          "gallery": 13,
+          "queries": 24,
+          "correct": 17,
+          "rank1": 0.7083333333333334
+        },
+        "MOT17-11-FRCNN": {
+          "gallery": 6,
+          "queries": 15,
+          "correct": 11,
+          "rank1": 0.7333333333333333
+        },
+        "MOT17-13-FRCNN": {
+          "gallery": 11,
+          "queries": 16,
+          "correct": 14,
+          "rank1": 0.875
+        }
+      },
+      "thresholdDiagnostics": [
+        {
+          "threshold": 0.1,
+          "positivePairs": 67,
+          "positiveRejected": 60,
+          "negativePairs": 555,
+          "negativeAccepted": 0
+        },
+        {
+          "threshold": 0.2,
+          "positivePairs": 67,
+          "positiveRejected": 37,
+          "negativePairs": 555,
+          "negativeAccepted": 8
+        },
+        {
+          "threshold": 0.3,
+          "positivePairs": 67,
+          "positiveRejected": 15,
+          "negativePairs": 555,
+          "negativeAccepted": 34
+        },
+        {
+          "threshold": 0.4,
+          "positivePairs": 67,
+          "positiveRejected": 7,
+          "negativePairs": 555,
+          "negativeAccepted": 98
+        }
+      ]
+    },
+    "float-bgr": {
+      "queries": 67,
+      "correct": 50,
+      "rank1": 0.746268656716418,
+      "macroRank1": 0.7883333333333333,
+      "bySequence": {
+        "MOT17-05-FRCNN": {
+          "gallery": 2,
+          "queries": 2,
+          "correct": 2,
+          "rank1": 1.0
+        },
+        "MOT17-09-FRCNN": {
+          "gallery": 4,
+          "queries": 10,
+          "correct": 8,
+          "rank1": 0.8
+        },
+        "MOT17-10-FRCNN": {
+          "gallery": 13,
+          "queries": 24,
+          "correct": 19,
+          "rank1": 0.7916666666666666
+        },
+        "MOT17-11-FRCNN": {
+          "gallery": 6,
+          "queries": 15,
+          "correct": 9,
+          "rank1": 0.6
+        },
+        "MOT17-13-FRCNN": {
+          "gallery": 11,
+          "queries": 16,
+          "correct": 12,
+          "rank1": 0.75
+        }
+      },
+      "thresholdDiagnostics": [
+        {
+          "threshold": 0.1,
+          "positivePairs": 67,
+          "positiveRejected": 64,
+          "negativePairs": 555,
+          "negativeAccepted": 0
+        },
+        {
+          "threshold": 0.2,
+          "positivePairs": 67,
+          "positiveRejected": 46,
+          "negativePairs": 555,
+          "negativeAccepted": 6
+        },
+        {
+          "threshold": 0.3,
+          "positivePairs": 67,
+          "positiveRejected": 23,
+          "negativePairs": 555,
+          "negativeAccepted": 43
+        },
+        {
+          "threshold": 0.4,
+          "positivePairs": 67,
+          "positiveRejected": 5,
+          "negativePairs": 555,
+          "negativeAccepted": 134
+        }
+      ]
+    }
+  },
+  "browser": [
+    {
+      "backend": "wasm",
+      "passed": 34,
+      "maxTensorError": 0,
+      "maxVectorError": 1.817941665649414e-06,
+      "timingMedian": {
+        "preprocessMs": 1.1899999976158142,
+        "inferenceMs": 58.93000000715256,
+        "postprocessMs": 0.0949999988079071,
+        "totalMs": 60.26250000298023
+      }
+    },
+    {
+      "backend": "webgpu",
+      "passed": 34,
+      "maxTensorError": 0,
+      "maxVectorError": 2.4437904357910156e-06,
+      "timingMedian": {
+        "preprocessMs": 1.2100000083446503,
+        "inferenceMs": 9.239999994635582,
+        "postprocessMs": 0.08500000834465027,
+        "totalMs": 10.524999991059303
+      }
+    }
+  ]
+}

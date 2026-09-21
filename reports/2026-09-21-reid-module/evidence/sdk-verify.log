@@ -1,0 +1,147 @@
+$ npm run build && npm run typecheck && npm test && npm run check:package && npm run typecheck:demo && npm run build:demo && npm run build:vanilla && npm run build:react && npm run test:browser
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 build
+> node scripts/build.mjs
+
+ESM、CommonJS 与类型声明构建完成。
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 typecheck
+> tsc --noEmit
+
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 test
+> vitest run
+
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ✓ tests/assignment.test.ts (7 tests) 98ms
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 已有版本不发布，新版本发布后核验，真实发布错误不吞掉
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+npm OIDC 发布完成且完整性一致。
+
+ ✓ tests/release.test.ts (5 tests) 25ms
+ ✓ tests/reid-preprocess.test.ts (4 tests) 46ms
+ ✓ tests/deepsort.test.ts (15 tests) 37ms
+ ✓ tests/ocsort.test.ts (23 tests) 50ms
+ ✓ tests/tracker.test.ts (16 tests) 54ms
+ ✓ tests/mot17-adapter.test.ts (13 tests) 22ms
+ ✓ tests/kalman.test.ts (4 tests) 1071ms
+   ✓ 长期重复更新协方差有限、对称，尺寸保持正数  1046ms
+ ✓ tests/reid-lifecycle.test.ts (30 tests) 1452ms
+ ✓ tests/mot17-cli.test.ts (7 tests) 2404ms
+   ✓ 真实评测 CLI 配置模式 > 未知模式在创建输出目录前失败  305ms
+   ✓ 真实评测 CLI 输出保护 > 在读取数据或调用 Python 之前拒绝历史报告目录  306ms
+   ✓ 真实评测 CLI 输出保护 > 在已有输出目录上失败，防止覆盖原始结果  313ms
+   ✓ 真实评测 CLI 输出保护 > 所有下载和自动源码目标先验检查：拒绝报告树、外部、junction及已有目标，且不创建运行目录  1287ms
+ ✓ tests/demo.test.ts (14 tests) 2700ms
+   ✓ Demo 数据与回放 > 紧凑导出千帧512维输入并可按相同特征空间重新准备  978ms
+   ✓ Demo 数据与回放 > 按UTF-8字节限制紧凑序列，并在规范化输入超限时保留现有会话  1630ms
+
+ Test Files  11 passed (11)
+      Tests  138 passed (138)
+   Start at  01:10:27
+   Duration  4.19s (transform 2.72s, setup 0ms, collect 6.48s, tests 7.96s, environment 3ms, prepare 4.44s)
+
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 check:package
+> node scripts/check-package.mjs
+
+{
+  "filename": "web-sdk-pp-tracking-0.2.0-alpha.0.tgz",
+  "size": 22861,
+  "unpackedSize": 91452,
+  "files": [
+    "LICENSE",
+    "NOTICE",
+    "README.en.md",
+    "README.md",
+    "dist/assignment.d.ts",
+    "dist/deepsort.d.ts",
+    "dist/errors.d.ts",
+    "dist/index.cjs",
+    "dist/index.d.ts",
+    "dist/index.js",
+    "dist/kalman.d.ts",
+    "dist/ocsort.d.ts",
+    "dist/tracker.d.ts",
+    "dist/types.d.ts",
+    "package.json"
+  ]
+}
+三算法实际 npm pack、双格式导入、类型与发行文件检查通过。
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 typecheck:demo
+> tsc --noEmit -p demo/tsconfig.json
+
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 build:demo
+> vite build --config demo/vite.config.ts
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 33 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.38 kB │ gzip:  0.29 kB
+dist/assets/index-xo2S0Okl.css    5.03 kB │ gzip:  1.55 kB
+dist/assets/index-C_wcGM0g.js   236.10 kB │ gzip: 76.24 kB
+✓ built in 1.01s
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 build:vanilla
+> vite build examples/vanilla --base ./
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 5 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                 0.84 kB │ gzip: 0.60 kB
+dist/assets/index-DWyG8Rrw.js  15.78 kB │ gzip: 6.31 kB
+✓ built in 211ms
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 build:react
+> vite build --config examples/react/vite.config.ts
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 33 modules transformed.
+rendering chunks...
+computing gzip size...
+../examples/react/dist/index.html                   0.38 kB │ gzip:  0.29 kB
+../examples/react/dist/assets/index-xo2S0Okl.css    5.03 kB │ gzip:  1.55 kB
+../examples/react/dist/assets/index-C_wcGM0g.js   236.10 kB │ gzip: 76.24 kB
+✓ built in 997ms
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 test:browser
+> node tests/browser.mjs
+
+{
+  "testedAt": "2026-09-20T17:11:50.327Z",
+  "browser": "153.0.8010.12",
+  "platform": "win32",
+  "runtimeVersion": "web-sdk-pp-tracking@0.2.0-alpha.0",
+  "checks": [
+    "算法切换停止播放、清空状态；OC-SORT 仅显示有效参数并完成播放、导入和导出；未应用草稿不混入导出",
+    "512维千帧输入在单步前后均可紧凑下载并重新导入，特征空间、时间和向量往返一致",
+    "DeepSORT 合成向量运行；有效参数、特征空间和结果报告导出；自定义空间导入后切内置样例恢复合成空间；非法末帧与语言切换保留状态",
+    "中文默认、英文切换不改变帧/ID/结果",
+    "单步、播放、暂停继续、重播清空轨迹和历史",
+    "四场景实际播放到末帧；低分续接和遮挡高分恢复；导出原始时间",
+    "真实键盘seek复位顺序重算，lost虚线、空分数",
+    "异步读取时算法选择禁用；单帧导入/重复同文件/导出；无向量切换、逆序、坏JSON、超5MiB失败均保留原结果",
+    "参数错误原子性；合法参数实际生效并清空本轮",
+    "空检测序列真实空结果",
+    "390px中英文无横向溢出",
+    "Vanilla构建包单步/复位/CPU实际结果"
+  ],
+  "pageErrors": [],
+  "screenshots": [
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\desktop.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\english.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\deepsort.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\occlusion.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\mobile.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\vanilla.png"
+  ]
+}

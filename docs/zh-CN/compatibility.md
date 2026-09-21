@@ -2,20 +2,29 @@
 
 [English](../en/compatibility.md) · [首页](../../README.md)
 
-本地验证日期：2026-09-19。环境：Windows11专业版10.0.26200，Intel Core i5-10400F @2.90GHz；Node24.16.0、pnpm11.21.0；Playwright1.63.0桌面Chromium153.0.8010.12。runtime为 `web-sdk-pp-tracking@0.1.0`，实际CPU / JavaScript / main，无GPU/驱动依赖。
+## 当前RC验证
+
+2026-09-21本地0.2.0-rc.0完整verify通过：176单测、三算法与ReID实际tarball双格式/类型消费、无ORT隔离、12组Chromium153.0.8010.12浏览器检查。真实生产图像Demo另外通过ModelScope/WASM和Hugging Face/WebGPU（ORT1.27.0、Windows11、Intel i5-10400F、RTX5060Ti驱动32.0.16.1692），两者关联均CPU/main。1440px中英文与390px中英文截图已检查，页面无横向溢出、未捕获页面错误；人工生成图片仅用于接口验收，不是人体精度评测。当前本地证据位于`.tmp/tracking-02-rc/verify.txt`、`browser/report.json`和`reid-demo/report.json`；[RC说明](releases/0.2.0-rc.0.md)记录发布边界。
+
+## 历史alpha与0.1证据
+
+本地候选验证日期：2026-09-19。环境：Windows11专业版10.0.26200，Intel Core i5-10400F @2.90GHz；Node24.16.0、pnpm11.21.0；Playwright1.63.0桌面Chromium153.0.8010.12。runtime为 `web-sdk-pp-tracking@0.2.0-alpha.0`，实际CPU / JavaScript / main，无GPU/驱动依赖；此行为历史验证环境记录。
+
+下表保留2026-09-19的CPU关联器证据。2026-09-21已将[可选ReID子入口](reid-candidate.md)接入本地发布候选：同机 Chromium153、ORT Web1.27.0、RTX5060Ti（驱动32.0.16.1692）通过真实ModelScope/Hugging Face各WASM/WebGPU共四组下载、SHA校验和512维提取；GPU为非fallback适配器。模型后端和CPU关联后端分别报告，见[当前阶段报告](../../reports/2026-09-21-reid-distribution/README.md)。远程交付状态见[发布清单](release-checklist.md)。
 
 | 范围 | 证据与边界 |
 | --- | --- |
-| 桌面Chromium | `npm run test:browser` 验证中文/英文、单步、播放暂停、重播、seek、导入导出、四种合成场景与Vanilla |
+| 桌面Chromium | `npm run test:browser` 验证 ByteTrack/OC-SORT/DeepSORT 切换、参数互斥、外观包装导入与失败原子性、实际参数/特征空间/序列导出、中文/英文、单步、播放暂停、重播、seek、四种合成场景与Vanilla |
 | 390px布局 | 桌面浏览器调整视口验证无横向溢出，不等同真实移动设备验证 |
-| ESM/CJS/TypeScript | `npm run check:package` 从实际tarball安装并消费 |
+| ESM/CJS/TypeScript | `npm run check:package` 从实际tarball安装并消费三种算法，运行时导出白名单不变 |
 | Safari/Firefox/移动设备/微信 | 尚未验证，不声明支持 |
-| Worker/WebGPU/WASM/NPU | 首版不实现，不声明兼容 |
+| 算法Worker/GPU/WASM/NPU | 根算法仍只实现CPU/main；可选模型的WASM/WebGPU不改变关联后端 |
+| 可选模型Worker/NPU | 尚未实现，不声明兼容 |
 
 截图、浏览器版本和交互计数由 `tests/browser.mjs` 写入 `.tmp/browser/`。这是本地日期化证据，不是线上部署或跨设备兼容承诺。所有示例为合成机制，不证明真实场景MOT精度。
 
-原始JSON与完整verify日志已归档至[桌面验收目录](../../reports/2026-09-19-desktop/README.md)，截图仍在忽略目录。另一份同日Chromium151.0.7922.34 headless证据仅覆盖10/50/100框合成性能，不能用它替代153版本的9组产品交互验证。两者均为同一Windows/CPU环境、CPU/main；不存在真实手机验证。
+2026-09-19三策略候选的完整 verify 原始日志保存于 `reports/2026-09-19-deepsort/verify.txt`，当时包含11组浏览器检查。`2026-09-19-ocsort` 只证明此前两策略候选；`2026-09-19-desktop` 与 `2026-09-19-release-candidate` 只属于已发布0.1.0历史证据。Chromium151 headless仅覆盖10/50/100框合成性能。2026-09-21新增[真实时间序列证据](../../reports/2026-09-21-mot-reid/README.md)：同机Chromium153/ORT1.27.0/RTX5060Ti WebGPU提取全部5316帧、67639检测，三算法CPU/main均与Node两次结果一致、零容量丢弃。固定02前30帧433检测的WASM/WebGPU最大向量差3.5763e-7、三算法结果一致；该子集不是全量WASM评测。没有真实手机或新增跨设备结论。
 
-同日[真实序列报告](../../reports/2026-09-19-mot17/README.md)增加Node七段MOT17 FRCNN训练序列5316帧默认/消融及完整重复运行；Chromium153.0.8010.12的02序列600帧与Node非耗时结果逐字相同。范围仍限上述Windows桌面CPU/main；真实数据指标不扩展设备兼容性，也不构成测试集排行榜成绩。
+同日[两算法候选对比](../../reports/2026-09-19-ocsort/README.md)固定 Node 七段 MOT17 FRCNN 训练序列 5316 帧及两算法各自的 Chromium153 完整 02 序列 600 帧对齐；ByteTrack 历史默认/消融证据仍见[0.1.0 真实序列报告](../../reports/2026-09-19-mot17/README.md)。范围仍限上述 Windows 桌面 CPU/main；真实数据指标不扩展设备兼容性，也不构成测试集排行榜成绩。
 
-SDK 本地 required 检查通过仅表示 locally-compliant；离线检查器不验证远程 Rulesets、发布或托管。完整 verify 见[2026-09-19 验证记录](../../reports/2026-09-19-release-candidate/README.md)；最终[首版交付记录](../../reports/2026-09-19-release/README.md)包含公开 npm 包 ESM/CJS 实际消费、GitHub Release、治理、Pages 部署和线上 Demo 回执。线上 Demo 证据仍是同日桌面 Chromium 153 与 CPU/main，不扩展手机、Safari、Firefox、微信或其他后端兼容性。归档校验不会重新生成可信摘要，篡改样本会失败；当前构建须继续匹配测量入口 hash。各次记录独立保留，不覆盖历史桌面和 MOT17 报告。
+SDK 本地 required 检查通过仅表示 locally-compliant；离线检查器不验证远程 Rulesets、发布或托管。本次三策略候选使用上方 `2026-09-19-deepsort` 日志；[0.1.0 验证记录](../../reports/2026-09-19-release-candidate/README.md)和[首版交付记录](../../reports/2026-09-19-release/README.md)仅证明历史发布包、GitHub Release、治理、Pages 部署和线上 Demo。线上 Demo 证据仍是同日桌面 Chromium 153 与 CPU/main，不扩展手机、Safari、Firefox、微信或其他后端兼容性。历史归档校验须运行 `node scripts/evaluation/verify-archive.mjs --sdk <匹配历史提交及构建的独立目录>`；它固定旧入口 hash、不会重新生成可信摘要，故当前候选目录被拒绝是预期行为。各次记录独立保留，不覆盖历史桌面和 MOT17 报告。

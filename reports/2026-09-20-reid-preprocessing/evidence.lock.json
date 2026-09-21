@@ -1,0 +1,137 @@
+[
+  {
+    "path": "data.lock.json",
+    "bytes": 11256,
+    "sha256": "f1454791fc747972999ea466cbe7cb9f35f1b01c670afffb7eae5fadef28bb2f"
+  },
+  {
+    "path": "evidence/browser-result.json.gz",
+    "bytes": 387455,
+    "sha256": "c6f2c6c7d06790cdbb24e51a0c213df687ccc4c742f51b9a92dab7c7f4a1e51d"
+  },
+  {
+    "path": "evidence/decode-diagnostics.json",
+    "bytes": 728,
+    "sha256": "5ed0a439ff3ac67029070cd91d0c584643bc75318df46bde3c007df5a0fe406b"
+  },
+  {
+    "path": "evidence/node-result.json",
+    "bytes": 6720,
+    "sha256": "b2cd9db4a67ad9b092b70dd185f32a450dfed72009b3368377cec9f1ed219bf6"
+  },
+  {
+    "path": "evidence/preprocess-green.log",
+    "bytes": 702,
+    "sha256": "8105908b6d6dccdd3d37dfc8d7fc6306107ca637799c8b9fa271eb1c7192eb80"
+  },
+  {
+    "path": "evidence/preprocess-red.log",
+    "bytes": 9276,
+    "sha256": "69215b001dbf50bca30620032cd77469c495fa3c4c184de2a5806ab4be1ac25a"
+  },
+  {
+    "path": "evidence/python-evaluate.log",
+    "bytes": 7289,
+    "sha256": "d776dcb4b78bd78386a03a6f9a2fb7e76833a4329152fce88683e8bc491656cc"
+  },
+  {
+    "path": "evidence/python-result.json.gz",
+    "bytes": 2258436,
+    "sha256": "86c40eaf1448f29c0130e1f5e8bff9eec30a722a9f69e26dec2cc2946df9095d"
+  },
+  {
+    "path": "evidence/review.md",
+    "bytes": 1985,
+    "sha256": "79b08667dec33658e3a671c4e993f54026d1c44e9aba6e3bfdee060806c65b3d"
+  },
+  {
+    "path": "evidence/sdk-browser.json",
+    "bytes": 1984,
+    "sha256": "3d8d5fe6984291115a28c176a1d8a74f6d6e18672abfb0395359d02e77c211bb"
+  },
+  {
+    "path": "evidence/sdk-verify.log",
+    "bytes": 6141,
+    "sha256": "8e608113d69228a8336f0d2a8da838e1aceb18cb0b7d11c866032810a0b633f7"
+  },
+  {
+    "path": "evidence/summary.json",
+    "bytes": 7714,
+    "sha256": "e963652d8eda7383456d8a200fdeadc0d50c699b4ab80d984b2345908a9f0e69"
+  },
+  {
+    "path": "evidence/validation.json",
+    "bytes": 2411,
+    "sha256": "bda348953dc423c8da87316082f697ac6cb795500a9851c22a965a7333b7ee68"
+  },
+  {
+    "path": "probe/archive.py",
+    "bytes": 2137,
+    "sha256": "5892209e5d41459fc9d8cab0d3de2f979211fff1cdefd55c5202b82217f413d0"
+  },
+  {
+    "path": "probe/browser.mjs",
+    "bytes": 9903,
+    "sha256": "019ca20fe074c37e95975f0bc3781614245084535dbcc23b127ee39338bd575f"
+  },
+  {
+    "path": "probe/data.py",
+    "bytes": 2268,
+    "sha256": "a4c6761ab19f428399e1cd3305f715d49e740f764d72547450369acb6e30eb8e"
+  },
+  {
+    "path": "probe/decode-diagnostics.mjs",
+    "bytes": 2021,
+    "sha256": "2629c51a31480000be31f5f2d7fc35c99f6501d42c0c5d11804a450c560304fd"
+  },
+  {
+    "path": "probe/evaluate.py",
+    "bytes": 10818,
+    "sha256": "8acadd6d23043ff33ff239d5eff7bd143b33fee55a04357193156618dc2fbb36"
+  },
+  {
+    "path": "probe/node-check.mjs",
+    "bytes": 1828,
+    "sha256": "c7689f7fc91e6029adb55608ae3fc41bd140aa6c4189ece6864678662f6458d5"
+  },
+  {
+    "path": "probe/prepare-diagnostic.py",
+    "bytes": 715,
+    "sha256": "f13d0f344a887f920aa94b245250eb122cbf9c4cce27e679a10a2708c6796bbb"
+  },
+  {
+    "path": "probe/preprocess.mjs",
+    "bytes": 2640,
+    "sha256": "a6f39d2bdd4c80b1c48cb15e3199991ae7983daafd2463134af509614633cdc9"
+  },
+  {
+    "path": "probe/preprocess.test.mjs",
+    "bytes": 3726,
+    "sha256": "42295be2bbabfc94c93faa7651e78f01562eb73356e83ab41f49b885812431ab"
+  },
+  {
+    "path": "probe/provenance.py",
+    "bytes": 2879,
+    "sha256": "64cc6fd7f3c23cfb2f4201c3fe3309c29debfbd62ca18acfab95acf6943f0666"
+  },
+  {
+    "path": "probe/reference.py",
+    "bytes": 1649,
+    "sha256": "b039d1e099e0578230b46cbf6897a952880ba5457c15adef582c536d777e7b27"
+  },
+  {
+    "path": "protocol.md",
+    "bytes": 4961,
+    "sha256": "7d7c9d01de842032f5ad520ab7d1947b5c5fd0c7c5d8282cad34fa1af87f335a"
+  },
+  {
+    "path": "sources.lock.json",
+    "bytes": 3226,
+    "sha256": "dbcc5adfcd960b861a731110c205e978d57538f4c523f1a696c41beed5f0d443"
+  },
+  {
+    "path": "verify_archive.py",
+    "bytes": 6483,
+    "sha256": "7492f72771489581279e5d21e3d698ef2b6395f961b92cb626b81795badd350e"
+  }
+]

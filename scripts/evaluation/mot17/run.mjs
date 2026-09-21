@@ -9,12 +9,15 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
 import { protectOutput, writeReport } from '../output-path.mjs';
 import { parseSequenceInfo, adaptDetections } from './adapter.mjs';
+import { selectEvaluationMode } from './configurations.mjs';
 import { runSequence } from './execute.mjs';
 
 const root = await fs.realpath(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..'));
 const archive = path.join(root, 'reports');
 const lock = JSON.parse(await fs.readFile(new URL('./lock.json', import.meta.url), 'utf8'));
-const { values } = parseArgs({ options: { python: { type: 'string', default: 'python' }, zip: { type: 'string' }, trackeval: { type: 'string' }, out: { type: 'string' }, 'download-data': { type: 'boolean' }, 'skip-browser': { type: 'boolean' } }, strict: true });
+const { values } = parseArgs({ options: { mode: { type: 'string' }, python: { type: 'string', default: 'python' }, zip: { type: 'string' }, trackeval: { type: 'string' }, out: { type: 'string' }, 'download-data': { type: 'boolean' }, 'skip-browser': { type: 'boolean' } }, strict: true });
+const evaluation = selectEvaluationMode(values.mode, lock.defaultOptions);
+const configurations = evaluation.configurations;
 const sha256 = content => createHash('sha256').update(content).digest('hex');
 async function newTmpTarget(target) {
   const actual = protectOutput(target, archive);
@@ -56,35 +59,38 @@ if (acquireTrackeval) {
 }
 const sdk = path.join(root, 'dist/index.js');
 const { createTracker } = await import(pathToFileURL(sdk));
-const configurations = { default: lock.defaultOptions, 'no-low': { ...lock.defaultOptions, lowScoreThreshold: lock.defaultOptions.highScoreThreshold } };
+const packageMetadata = JSON.parse(await fs.readFile(path.join(root, 'package.json'), 'utf8'));
+const runtimeVersion = `${packageMetadata.name}@${packageMetadata.version}`;
+const sourceCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
+const sourceClean = !execFileSync('git', ['status', '--porcelain', '--untracked-files=no'], { cwd: root, encoding: 'utf8' }).trim();
 const summary = {
-  testedAt: new Date().toISOString(), dataset: lock.dataset,
-  sdk: { version: 'web-sdk-pp-tracking@0.1.0', commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), entrySha256: sha256(await fs.readFile(sdk)) },
+  testedAt: new Date().toISOString(), evaluationMode: evaluation.mode, dataset: lock.dataset,
+  sdk: { version: runtimeVersion, commit: sourceCommit, sourceClean, entrySha256: sha256(await fs.readFile(sdk)) },
   environment: { node: process.version, platform: process.platform, release: os.release(), architecture: os.arch(), cpu: os.cpus()[0]?.model, actualBackend: 'cpu', executionMode: 'main' },
   configurations, inputHashes: JSON.parse(await fs.readFile(path.join(output, 'input-hashes.json'), 'utf8')), adapter: {}, runs: {}, browser: { status: '未运行' }, scripts: {},
 };
-for (const name of ['adapter.mjs', 'execute.mjs', 'evaluator.py', 'run.mjs', 'lock.json']) summary.scripts[name] = sha256(await fs.readFile(new URL(name, import.meta.url)));
-let browserInput, expectedBrowser;
+for (const name of ['adapter.mjs', 'configurations.mjs', 'execute.mjs', 'evaluator.py', 'run.mjs', 'lock.json']) summary.scripts[name] = sha256(await fs.readFile(new URL(name, import.meta.url)));
+const browserCases = {};
 for (const name of lock.dataset.sequences) {
   const input = path.join(output, 'input', name);
   const sequence = adaptDetections(await fs.readFile(path.join(input, 'det/det.txt'), 'utf8'), parseSequenceInfo(await fs.readFile(path.join(input, 'seqinfo.ini'), 'utf8')));
   summary.adapter[name] = { ...sequence.info, ...sequence.statistics, framesSha256: sha256(JSON.stringify(sequence.frames)) };
   for (const [configuration, options] of Object.entries(configurations)) {
     const cpuStart = process.cpuUsage(), started = performance.now();
-    const result = runSequence(createTracker, sequence.frames, options);
+    const result = runSequence(createTracker, sequence.frames, options, runtimeVersion);
     const elapsedMs = performance.now() - started, cpu = process.cpuUsage(cpuStart);
-    const repeat = runSequence(createTracker, sequence.frames, options);
+    const repeat = runSequence(createTracker, sequence.frames, options, runtimeVersion);
     assert.equal(result.deterministic, repeat.deterministic, `${name}/${configuration} 非耗时输出不确定`);
     assert.equal(result.mot, repeat.mot);
     await save(`trackers/${configuration}/data/${name}.txt`, result.mot);
     await save(`raw/${configuration}/${name}.jsonl`, result.deterministic);
     await save(`raw/${configuration}/${name}-timings.json`, result.timings);
     (summary.runs[configuration] ??= {})[name] = { ...result.summary, elapsedMs, cpuMs: (cpu.user + cpu.system) / 1000, deterministicRepeat: true, nonTimingSha256: sha256(result.deterministic), motSha256: sha256(result.mot) };
-    if (name === lock.dataset.sequences[0] && configuration === 'default') { browserInput = sequence.frames; expectedBrowser = result; }
+    if (name === lock.dataset.sequences[0]) browserCases[configuration] = { frames: sequence.frames, options, expected: result };
     console.log(`${name}/${configuration}: ${result.summary.frames} 帧；确定性通过；最大轨迹 ${result.summary.maxTracks}`);
   }
 }
-await command('score', values.python, ['-B', evaluator, 'score', '--trackeval', trackeval, '--run', output]);
+await command('score', values.python, ['-B', evaluator, 'score', '--trackeval', trackeval, '--run', output, ...Object.keys(configurations).flatMap(configuration => ['--configuration', configuration])]);
 summary.metrics = JSON.parse(await fs.readFile(path.join(output, 'metrics.json'), 'utf8'));
 if (!values['skip-browser']) {
   const { chromium } = await import('playwright');
@@ -104,16 +110,19 @@ if (!values['skip-browser']) {
     browser = await chromium.launch({ headless: true });
     const page = await browser.newPage();
     await page.goto(`http://127.0.0.1:${server.address().port}/`);
-    const result = await page.evaluate(async ({ frames, options }) => {
-      const { createTracker } = await import('/sdk.mjs');
-      const { runSequence } = await import('/execute.mjs');
-      return runSequence(createTracker, frames, options);
-    }, { frames: browserInput, options: configurations.default });
-    assert.equal(result.deterministic, expectedBrowser.deterministic, 'Chromium/Node 非耗时输出不一致');
-    assert.equal(result.mot, expectedBrowser.mot);
-    await save('raw/chromium/MOT17-02-FRCNN.jsonl', result.deterministic);
-    await save('raw/chromium/MOT17-02-FRCNN-timings.json', result.timings);
-    summary.browser = { status: '通过', version: browser.version(), playwright: JSON.parse(await fs.readFile(path.join(root, 'node_modules/playwright/package.json'), 'utf8')).version, sequence: lock.dataset.sequences[0], ...result.summary, nonTimingSha256: sha256(result.deterministic), nodeEqual: true, actualBackend: 'cpu', executionMode: 'main' };
+    summary.browser = { status: '通过', version: browser.version(), playwright: JSON.parse(await fs.readFile(path.join(root, 'node_modules/playwright/package.json'), 'utf8')).version, sequence: lock.dataset.sequences[0], configurations: {} };
+    for (const [configuration, browserCase] of Object.entries(browserCases)) {
+      const result = await page.evaluate(async ({ frames, options, runtimeVersion }) => {
+        const { createTracker } = await import('/sdk.mjs');
+        const { runSequence } = await import('/execute.mjs');
+        return runSequence(createTracker, frames, options, runtimeVersion);
+      }, { frames: browserCase.frames, options: browserCase.options, runtimeVersion });
+      assert.equal(result.deterministic, browserCase.expected.deterministic, `${configuration} Chromium/Node 非耗时输出不一致`);
+      assert.equal(result.mot, browserCase.expected.mot);
+      await save(`raw/chromium/${configuration}/${lock.dataset.sequences[0]}.jsonl`, result.deterministic);
+      await save(`raw/chromium/${configuration}/${lock.dataset.sequences[0]}-timings.json`, result.timings);
+      summary.browser.configurations[configuration] = { ...result.summary, nonTimingSha256: sha256(result.deterministic), motSha256: sha256(result.mot), nodeEqual: true, actualBackend: 'cpu', executionMode: 'main' };
+    }
   } finally { await browser?.close(); await new Promise(resolve => server.close(resolve)); }
 }
 await save('summary.json', summary);

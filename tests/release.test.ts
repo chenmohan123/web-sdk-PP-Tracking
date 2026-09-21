@@ -5,6 +5,22 @@ import { createHash } from 'node:crypto';
 
 describe('发布候选完整性门禁', () => {
   const integrity = 'sha512-YWJj';
+  it.each([['0.2.0-alpha.0', 'next'], ['0.2.0-rc.0', 'next'], ['0.2.0', 'latest']])('版本 %s 显式发布到 %s 通道且已有版本只读', (version, tag) => {
+    const bytes = Buffer.from('发布通道候选字节');
+    const hash = `sha512-${createHash('sha512').update(bytes).digest('base64')}`;
+    const candidate = { bytes, packageInfo: { name: 'web-sdk-pp-tracking', version }, info: { filename: `web-sdk-pp-tracking-${version}.tgz`, integrity: hash } };
+    const present = { status: 0, stdout: JSON.stringify(hash), stderr: '' };
+    const missing = { status: 1, stdout: '{"error":{"code":"E404"}}', stderr: '' };
+    const calls: string[][] = [];
+    const results = [missing, { status: 0, stdout: '', stderr: '' }, present];
+    expect(publishCandidate({ ...candidate, runNpm: (args: string[]) => { calls.push(args); return results.shift(); } })).toBe('published');
+    expect(calls[1]).toEqual(['publish', `.tmp/${candidate.info.filename}`, '--provenance', '--access', 'public', '--tag', tag, '--registry=https://registry.npmjs.org']);
+    calls.length = 0;
+    expect(publishCandidate({ ...candidate, runNpm: (args: string[]) => { calls.push(args); return present; } })).toBe('verified-existing');
+    expect(calls.map(args => args[0])).toEqual(['view']);
+    expect(() => validateReleaseTag(`v${version}`, version)).not.toThrow();
+    expect(() => validateReleaseTag('v0.1.0', version)).toThrow();
+  });
   it('标签必须精确匹配包版本', () => {
     expect(() => validateReleaseTag('v0.1.0', '0.1.0')).not.toThrow();
     for (const tag of ['', '0.1.0', 'v0.2.0']) expect(() => validateReleaseTag(tag, '0.1.0')).toThrow();

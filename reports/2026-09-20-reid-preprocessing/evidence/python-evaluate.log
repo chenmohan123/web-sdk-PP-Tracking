@@ -1,0 +1,285 @@
+W0920 12:19:30.842247 63432 tensor.cc:399] The `is_initialized` method is deprecated since version 2.3, and will be removed in version 2.4! Please use `initialized` method instead.
+I0920 12:19:30.842247 63432 program_interpreter.cc:212] New Executor is Running.
+MOT17-05-FRCNN 裁剪 4 图库 2
+MOT17-09-FRCNN 裁剪 14 图库 4
+MOT17-10-FRCNN 裁剪 37 图库 13
+MOT17-11-FRCNN 裁剪 21 图库 6
+MOT17-13-FRCNN 裁剪 27 图库 11
+{
+  "samples": 103,
+  "fixtures": 34,
+  "quality": {
+    "opencv-rgb": {
+      "queries": 67,
+      "correct": 52,
+      "rank1": 0.7761194029850746,
+      "macroRank1": 0.8308333333333333,
+      "bySequence": {
+        "MOT17-05-FRCNN": {
+          "gallery": 2,
+          "queries": 2,
+          "correct": 2,
+          "rank1": 1.0
+        },
+        "MOT17-09-FRCNN": {
+          "gallery": 4,
+          "queries": 10,
+          "correct": 9,
+          "rank1": 0.9
+        },
+        "MOT17-10-FRCNN": {
+          "gallery": 13,
+          "queries": 24,
+          "correct": 17,
+          "rank1": 0.7083333333333334
+        },
+        "MOT17-11-FRCNN": {
+          "gallery": 6,
+          "queries": 15,
+          "correct": 11,
+          "rank1": 0.7333333333333333
+        },
+        "MOT17-13-FRCNN": {
+          "gallery": 11,
+          "queries": 16,
+          "correct": 13,
+          "rank1": 0.8125
+        }
+      },
+      "thresholdDiagnostics": [
+        {
+          "threshold": 0.1,
+          "positivePairs": 67,
+          "positiveRejected": 60,
+          "negativePairs": 555,
+          "negativeAccepted": 0
+        },
+        {
+          "threshold": 0.2,
+          "positivePairs": 67,
+          "positiveRejected": 37,
+          "negativePairs": 555,
+          "negativeAccepted": 8
+        },
+        {
+          "threshold": 0.3,
+          "positivePairs": 67,
+          "positiveRejected": 15,
+          "negativePairs": 555,
+          "negativeAccepted": 34
+        },
+        {
+          "threshold": 0.4,
+          "positivePairs": 67,
+          "positiveRejected": 7,
+          "negativePairs": 555,
+          "negativeAccepted": 97
+        }
+      ]
+    },
+    "opencv-bgr": {
+      "queries": 67,
+      "correct": 50,
+      "rank1": 0.746268656716418,
+      "macroRank1": 0.7883333333333333,
+      "bySequence": {
+        "MOT17-05-FRCNN": {
+          "gallery": 2,
+          "queries": 2,
+          "correct": 2,
+          "rank1": 1.0
+        },
+        "MOT17-09-FRCNN": {
+          "gallery": 4,
+          "queries": 10,
+          "correct": 8,
+          "rank1": 0.8
+        },
+        "MOT17-10-FRCNN": {
+          "gallery": 13,
+          "queries": 24,
+          "correct": 19,
+          "rank1": 0.7916666666666666
+        },
+        "MOT17-11-FRCNN": {
+          "gallery": 6,
+          "queries": 15,
+          "correct": 9,
+          "rank1": 0.6
+        },
+        "MOT17-13-FRCNN": {
+          "gallery": 11,
+          "queries": 16,
+          "correct": 12,
+          "rank1": 0.75
+        }
+      },
+      "thresholdDiagnostics": [
+        {
+          "threshold": 0.1,
+          "positivePairs": 67,
+          "positiveRejected": 64,
+          "negativePairs": 555,
+          "negativeAccepted": 0
+        },
+        {
+          "threshold": 0.2,
+          "positivePairs": 67,
+          "positiveRejected": 46,
+          "negativePairs": 555,
+          "negativeAccepted": 6
+        },
+        {
+          "threshold": 0.3,
+          "positivePairs": 67,
+          "positiveRejected": 23,
+          "negativePairs": 555,
+          "negativeAccepted": 42
+        },
+        {
+          "threshold": 0.4,
+          "positivePairs": 67,
+          "positiveRejected": 5,
+          "negativePairs": 555,
+          "negativeAccepted": 133
+        }
+      ]
+    },
+    "float-rgb": {
+      "queries": 67,
+      "correct": 53,
+      "rank1": 0.7910447761194029,
+      "macroRank1": 0.8433333333333334,
+      "bySequence": {
+        "MOT17-05-FRCNN": {
+          "gallery": 2,
+          "queries": 2,
+          "correct": 2,
+          "rank1": 1.0
+        },
+        "MOT17-09-FRCNN": {
+          "gallery": 4,
+          "queries": 10,
+          "correct": 9,
+          "rank1": 0.9
+        },
+        "MOT17-10-FRCNN": {
+          "gallery": 13,
+          "queries": 24,
+          "correct": 17,
+          "rank1": 0.7083333333333334
+        },
+        "MOT17-11-FRCNN": {
+          "gallery": 6,
+          "queries": 15,
+          "correct": 11,
+          "rank1": 0.7333333333333333
+        },
+        "MOT17-13-FRCNN": {
+          "gallery": 11,
+          "queries": 16,
+          "correct": 14,
+          "rank1": 0.875
+        }
+      },
+      "thresholdDiagnostics": [
+        {
+          "threshold": 0.1,
+          "positivePairs": 67,
+          "positiveRejected": 60,
+          "negativePairs": 555,
+          "negativeAccepted": 0
+        },
+        {
+          "threshold": 0.2,
+          "positivePairs": 67,
+          "positiveRejected": 37,
+          "negativePairs": 555,
+          "negativeAccepted": 8
+        },
+        {
+          "threshold": 0.3,
+          "positivePairs": 67,
+          "positiveRejected": 15,
+          "negativePairs": 555,
+          "negativeAccepted": 34
+        },
+        {
+          "threshold": 0.4,
+          "positivePairs": 67,
+          "positiveRejected": 7,
+          "negativePairs": 555,
+          "negativeAccepted": 98
+        }
+      ]
+    },
+    "float-bgr": {
+      "queries": 67,
+      "correct": 50,
+      "rank1": 0.746268656716418,
+      "macroRank1": 0.7883333333333333,
+      "bySequence": {
+        "MOT17-05-FRCNN": {
+          "gallery": 2,
+          "queries": 2,
+          "correct": 2,
+          "rank1": 1.0
+        },
+        "MOT17-09-FRCNN": {
+          "gallery": 4,
+          "queries": 10,
+          "correct": 8,
+          "rank1": 0.8
+        },
+        "MOT17-10-FRCNN": {
+          "gallery": 13,
+          "queries": 24,
+          "correct": 19,
+          "rank1": 0.7916666666666666
+        },
+        "MOT17-11-FRCNN": {
+          "gallery": 6,
+          "queries": 15,
+          "correct": 9,
+          "rank1": 0.6
+        },
+        "MOT17-13-FRCNN": {
+          "gallery": 11,
+          "queries": 16,
+          "correct": 12,
+          "rank1": 0.75
+        }
+      },
+      "thresholdDiagnostics": [
+        {
+          "threshold": 0.1,
+          "positivePairs": 67,
+          "positiveRejected": 64,
+          "negativePairs": 555,
+          "negativeAccepted": 0
+        },
+        {
+          "threshold": 0.2,
+          "positivePairs": 67,
+          "positiveRejected": 46,
+          "negativePairs": 555,
+          "negativeAccepted": 6
+        },
+        {
+          "threshold": 0.3,
+          "positivePairs": 67,
+          "positiveRejected": 23,
+          "negativePairs": 555,
+          "negativeAccepted": 43
+        },
+        {
+          "threshold": 0.4,
+          "positivePairs": 67,
+          "positiveRejected": 5,
+          "negativePairs": 555,
+          "negativeAccepted": 134
+        }
+      ]
+    }
+  }
+}

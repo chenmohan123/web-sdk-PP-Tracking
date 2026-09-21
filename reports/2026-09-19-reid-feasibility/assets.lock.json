@@ -1,0 +1,18 @@
+[
+  {
+    "file": "person-reidentification-retail-0288.xml",
+    "url": "https://storage.openvinotoolkit.org/repositories/open_model_zoo/2023.0/models_bin/1/person-reidentification-retail-0288/FP32/person-reidentification-retail-0288.xml",
+    "bytes": 450664,
+    "sha256": "30f452b2ed2763f7bf429eea23f8f243ad0e7f3cdd7226db6888f1660efb3424",
+    "sha384": "25082c8e783ad358396039d6c3969f9d862512de0cd3dd87b23c2e5790fabc64e288336e5d42369fcc4c347be15c19f2",
+    "officialChecksumPassed": true
+  },
+  {
+    "file": "person-reidentification-retail-0288.bin",
+    "url": "https://storage.openvinotoolkit.org/repositories/open_model_zoo/2023.0/models_bin/1/person-reidentification-retail-0288/FP32/person-reidentification-retail-0288.bin",
+    "bytes": 728052,
+    "sha256": "6496b8d51741703c9e9c7f6474cb96c60de1856d7b4fd77235e48cea146066a5",
+    "sha384": "ffc5956253b60f9fac52189976a2ceba2b69288715b35caeff05238840b6e87dcc314d777b612c54d55d976988d6b9d9",
+    "officialChecksumPassed": true
+  }
+]

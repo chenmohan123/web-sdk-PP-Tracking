@@ -1,0 +1,42 @@
+$ vitest run "tests/reid-preprocess.test.ts" "tests/reid-lifecycle.test.ts"
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/reid-lifecycle.test.ts [ tests/reid-lifecycle.test.ts ]
+Error: Cannot find module '../src/reid/index' imported from 'C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking/tests/reid-lifecycle.test.ts'
+ ❯ tests/reid-lifecycle.test.ts:2:1
+      1| import { beforeEach, afterEach, describe, expect, it, vi } from 'vites…
+      2| import { createReIdExtractor, clearReIdCache, estimateReIdCache } from…
+       | ^
+      3| import type { ReIdOptions, ReIdSource } from '../src/reid/types';
+      4| 
+
+Caused by: Error: Failed to load url ../src/reid/index (resolved id: ../src/reid/index) in C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking/tests/reid-lifecycle.test.ts. Does the file exist?
+ ❯ loadAndTransform node_modules/.pnpm/vite@7.3.6_@types+node@24.10.0/node_modules/vite/dist/node/chunks/config.js:22739:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/reid-preprocess.test.ts [ tests/reid-preprocess.test.ts ]
+Error: Cannot find module '../src/reid/preprocess' imported from 'C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking/tests/reid-preprocess.test.ts'
+ ❯ tests/reid-preprocess.test.ts:2:1
+      1| import { describe, expect, it } from 'vitest';
+      2| import { preprocessRgba } from '../src/reid/preprocess';
+       | ^
+      3| 
+      4| const box = { x: 0, y: 0, width: 1, height: 1 };
+
+Caused by: Error: Failed to load url ../src/reid/preprocess (resolved id: ../src/reid/preprocess) in C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking/tests/reid-preprocess.test.ts. Does the file exist?
+ ❯ loadAndTransform node_modules/.pnpm/vite@7.3.6_@types+node@24.10.0/node_modules/vite/dist/node/chunks/config.js:22739:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  no tests
+   Start at  01:00:28
+   Duration  832ms (transform 166ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 367ms)
+
+[ELIFECYCLE] Test failed. See above for more details.

@@ -1,0 +1,77 @@
+{
+  "testedAt": "2026-09-20T17:24:09.554Z",
+  "browser": "153.0.8010.12",
+  "sdkVersion": "0.2.0-alpha.0",
+  "fullVerify": {
+    "sourceCommit": "6fc6e5a",
+    "unitTests": 138,
+    "browserChecks": 12,
+    "exitCode": 0
+  },
+  "focusedFixVerification": {
+    "sourceCommit": "5dcd2d4",
+    "lifecycleTests": 37,
+    "exitCode": 0,
+    "typecheck": "通过",
+    "candidateBuild": "通过"
+  },
+  "runs": [
+    {
+      "backend": "wasm",
+      "fixtures": 34,
+      "maxAbs": 3.501772880554199e-7,
+      "maxCosineDistance": 2.8201885271528226e-12,
+      "maxNormError": 3.2019453755083305e-9,
+      "cancelledThenRecovered": true,
+      "importOnlyNetworkClean": true
+    },
+    {
+      "backend": "webgpu",
+      "adapter": {
+        "vendor": "nvidia",
+        "architecture": "blackwell",
+        "isFallbackAdapter": false
+      },
+      "fixtures": 34,
+      "maxAbs": 4.3958425521850586e-7,
+      "maxCosineDistance": 3.0964120156795616e-12,
+      "maxNormError": 4.374863360467884e-9,
+      "cancelledThenRecovered": true,
+      "importOnlyNetworkClean": true
+    }
+  ],
+  "sourceScope": "本机截获HTTPS与真实本机TLS压缩资源；未验证真实模型hub",
+  "cache": {
+    "first": "stored",
+    "second": "hit",
+    "interceptedRequests": 2,
+    "realTlsRequests": 1
+  },
+  "package": {
+    "bytes": 22861,
+    "sha256": "4d15a44fcdfde6bbf16a5309ad7fb91ecd5f40a30ed5ce3283ee70bab3e88ef9",
+    "core": {
+      "dist/index.js": "8396ef79f22c6afd2690bd6413f2b32b25fd46ec67b9fabca8fcab44c9a82041",
+      "dist/index.cjs": "f9bd94a1a63e97d424891436b974aafc1dff312c6ca8c183eb7ff74953af186b"
+    },
+    "exports": [
+      "."
+    ],
+    "containsModelOrEngine": false
+  },
+  "candidateSourceEncoding": "UTF-8，换行统一LF",
+  "candidateSourceSha256": {
+    "src/reid/assets.ts": "2af1669c2e142a252972f669b10ae0f7f30324058d95bc7829bb43e926abba46",
+    "src/reid/errors.ts": "63a411b9b4eb14161658c7aa4ac34d3eae590947e3feeb2c9d35e8f29848614f",
+    "src/reid/extractor.ts": "89336e59d6e14fe7255d2888294bcda14476fe2af944e52f5c8c220a5ca06a16",
+    "src/reid/index.ts": "4a61e00434ce7b14375522ce516221db3a0b1319838b0b4d098d2549e275d82e",
+    "src/reid/model.ts": "fc87e4469b77e6c34240ee6dc0eacdc192d9283904ccb6490ea48d148d64db53",
+    "src/reid/ort.ts": "5ffcf7da4703d447660cb2a7db262e8ac7ae4fd08479cdfc3635a8e936d757fb",
+    "src/reid/preprocess.ts": "086766dd092492c2d1da66d0f714fd4f002f570699f72372eb249deb61c32069",
+    "src/reid/types.ts": "3d5d901345dd29de87da5caa60f916e3a089783c7be4d1943a13cb5350bee662",
+    "tests/reid-browser.mjs": "2a58df2632b660081ad69a89456a299b16e1bac9c745cfb4839a3b390dc5bf97",
+    "tests/reid-lifecycle.test.ts": "c719907588cf8df230505e1cabab1e65b4d88bede74bdf8979237d12800ee1f2",
+    "tests/reid-preprocess.test.ts": "a8f1f72e77345dd356efe85dddfe3c65b5c211a420926de2bc20a50b7a47dce2",
+    "scripts/build-reid-candidate.mjs": "946f30360fc0c124c0088002832fa32106932ddbfb48a77dfca33cbb8679adf6"
+  }
+}

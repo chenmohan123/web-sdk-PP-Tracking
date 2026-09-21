@@ -1,0 +1,15 @@
+{
+  "testedAt": "2026-09-21T03:07:34.8865673Z",
+  "os": {
+    "Caption": "Microsoft Windows 11 专业版",
+    "Version": "10.0.26200"
+  },
+  "cpu": {
+    "Name": "Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz"
+  },
+  "gpu": {
+    "Name": "NVIDIA GeForce RTX 5060 Ti",
+    "DriverVersion": "32.0.16.1692"
+  },
+  "node": "v24.16.0"
+}

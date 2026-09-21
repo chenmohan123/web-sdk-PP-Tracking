@@ -1,0 +1,206 @@
+{
+  "sourceSha256": "8ecab27356d8f50a587e7e16dccf5364c511da8359108c8d8a349285ad7e22ef",
+  "targetSha256": "50ec57f754c2e277a309607ef2b27f3ce67fe89dd637bf156c9be0b7bb6362e4",
+  "changes": [
+    {
+      "node": "MVN_565",
+      "shape": [
+        1,
+        3,
+        256,
+        128
+      ],
+      "axes": [
+        2,
+        3
+      ],
+      "epsilon": 9.999999747378752e-06,
+      "replacement": "(x - mean(x)) / sqrt(mean((x - mean(x)) ** 2) + epsilon) * scale",
+      "reason": "明确保持原 IR 的 INSIDE_SQRT 与中心化方差语义，规避单元素限制和常量输入数值异常"
+    },
+    {
+      "node": "MVN_595",
+      "shape": [
+        1,
+        16,
+        128,
+        64
+      ],
+      "axes": [
+        2,
+        3
+      ],
+      "epsilon": 9.999999747378752e-06,
+      "replacement": "(x - mean(x)) / sqrt(mean((x - mean(x)) ** 2) + epsilon) * scale",
+      "reason": "明确保持原 IR 的 INSIDE_SQRT 与中心化方差语义，规避单元素限制和常量输入数值异常"
+    },
+    {
+      "node": "MVN_1912",
+      "shape": [
+        1,
+        16,
+        1
+      ],
+      "axes": [
+        2
+      ],
+      "epsilon": 9.999999747378752e-06,
+      "replacement": "(x - mean(x)) / sqrt(mean((x - mean(x)) ** 2) + epsilon) * scale",
+      "reason": "明确保持原 IR 的 INSIDE_SQRT 与中心化方差语义，规避单元素限制和常量输入数值异常"
+    },
+    {
+      "node": "MVN_1968",
+      "shape": [
+        1,
+        16,
+        1
+      ],
+      "axes": [
+        2
+      ],
+      "epsilon": 9.999999747378752e-06,
+      "replacement": "(x - mean(x)) / sqrt(mean((x - mean(x)) ** 2) + epsilon) * scale",
+      "reason": "明确保持原 IR 的 INSIDE_SQRT 与中心化方差语义，规避单元素限制和常量输入数值异常"
+    },
+    {
+      "node": "MVN_2025",
+      "shape": [
+        1,
+        16,
+        1
+      ],
+      "axes": [
+        2
+      ],
+      "epsilon": 9.999999747378752e-06,
+      "replacement": "(x - mean(x)) / sqrt(mean((x - mean(x)) ** 2) + epsilon) * scale",
+      "reason": "明确保持原 IR 的 INSIDE_SQRT 与中心化方差语义，规避单元素限制和常量输入数值异常"
+    },
+    {
+      "node": "MVN_2082",
+      "shape": [
+        1,
+        16,
+        1
+      ],
+      "axes": [
+        2
+      ],
+      "epsilon": 9.999999747378752e-06,
+      "replacement": "(x - mean(x)) / sqrt(mean((x - mean(x)) ** 2) + epsilon) * scale",
+      "reason": "明确保持原 IR 的 INSIDE_SQRT 与中心化方差语义，规避单元素限制和常量输入数值异常"
+    },
+    {
+      "node": "MVN_3424",
+      "shape": [
+        1,
+        8,
+        3
+      ],
+      "axes": [
+        2
+      ],
+      "epsilon": 9.999999747378752e-06,
+      "replacement": "(x - mean(x)) / sqrt(mean((x - mean(x)) ** 2) + epsilon) * scale",
+      "reason": "明确保持原 IR 的 INSIDE_SQRT 与中心化方差语义，规避单元素限制和常量输入数值异常"
+    },
+    {
+      "node": "MVN_3480",
+      "shape": [
+        1,
+        8,
+        3
+      ],
+      "axes": [
+        2
+      ],
+      "epsilon": 9.999999747378752e-06,
+      "replacement": "(x - mean(x)) / sqrt(mean((x - mean(x)) ** 2) + epsilon) * scale",
+      "reason": "明确保持原 IR 的 INSIDE_SQRT 与中心化方差语义，规避单元素限制和常量输入数值异常"
+    },
+    {
+      "node": "MVN_3537",
+      "shape": [
+        1,
+        8,
+        3
+      ],
+      "axes": [
+        2
+      ],
+      "epsilon": 9.999999747378752e-06,
+      "replacement": "(x - mean(x)) / sqrt(mean((x - mean(x)) ** 2) + epsilon) * scale",
+      "reason": "明确保持原 IR 的 INSIDE_SQRT 与中心化方差语义，规避单元素限制和常量输入数值异常"
+    },
+    {
+      "node": "MVN_3594",
+      "shape": [
+        1,
+        8,
+        3
+      ],
+      "axes": [
+        2
+      ],
+      "epsilon": 9.999999747378752e-06,
+      "replacement": "(x - mean(x)) / sqrt(mean((x - mean(x)) ** 2) + epsilon) * scale",
+      "reason": "明确保持原 IR 的 INSIDE_SQRT 与中心化方差语义，规避单元素限制和常量输入数值异常"
+    },
+    {
+      "node": "MVN_4936",
+      "shape": [
+        1,
+        16,
+        2
+      ],
+      "axes": [
+        2
+      ],
+      "epsilon": 9.999999747378752e-06,
+      "replacement": "(x - mean(x)) / sqrt(mean((x - mean(x)) ** 2) + epsilon) * scale",
+      "reason": "明确保持原 IR 的 INSIDE_SQRT 与中心化方差语义，规避单元素限制和常量输入数值异常"
+    },
+    {
+      "node": "MVN_4992",
+      "shape": [
+        1,
+        16,
+        2
+      ],
+      "axes": [
+        2
+      ],
+      "epsilon": 9.999999747378752e-06,
+      "replacement": "(x - mean(x)) / sqrt(mean((x - mean(x)) ** 2) + epsilon) * scale",
+      "reason": "明确保持原 IR 的 INSIDE_SQRT 与中心化方差语义，规避单元素限制和常量输入数值异常"
+    },
+    {
+      "node": "MVN_5049",
+      "shape": [
+        1,
+        16,
+        2
+      ],
+      "axes": [
+        2
+      ],
+      "epsilon": 9.999999747378752e-06,
+      "replacement": "(x - mean(x)) / sqrt(mean((x - mean(x)) ** 2) + epsilon) * scale",
+      "reason": "明确保持原 IR 的 INSIDE_SQRT 与中心化方差语义，规避单元素限制和常量输入数值异常"
+    },
+    {
+      "node": "MVN_5106",
+      "shape": [
+        1,
+        16,
+        2
+      ],
+      "axes": [
+        2
+      ],
+      "epsilon": 9.999999747378752e-06,
+      "replacement": "(x - mean(x)) / sqrt(mean((x - mean(x)) ** 2) + epsilon) * scale",
+      "reason": "明确保持原 IR 的 INSIDE_SQRT 与中心化方差语义，规避单元素限制和常量输入数值异常"
+    }
+  ]
+}

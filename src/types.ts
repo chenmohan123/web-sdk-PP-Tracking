@@ -1,11 +1,18 @@
 export interface Box { x: number; y: number; width: number; height: number }
-export interface Detection { box: Box; score: number; classId: number }
+export interface FeatureSpace { id: string; dimension: number }
+export interface Detection { box: Box; score: number; classId: number; embedding?: readonly number[] | Float32Array }
 export interface TrackingFrame {
   timestampMs: number;
   imageSize: { width: number; height: number };
+  featureSpaceId?: string;
   detections: Detection[];
 }
+export type TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort';
 export interface TrackerOptions {
+  algorithm?: TrackerAlgorithm;
+  featureSpace?: FeatureSpace;
+  maxCosineDistance?: number;
+  gallerySize?: number;
   lowScoreThreshold?: number;
   highScoreThreshold?: number;
   newTrackThreshold?: number;
@@ -16,6 +23,10 @@ export interface TrackerOptions {
   largeGapMs?: number;
   maxDetections?: number;
   maxTracks?: number;
+  ocmWeight?: number;
+  ocmDeltaMs?: number;
+  ocmHistoryLength?: number;
+  oruMaxReplaySteps?: number;
 }
 export type TrackState = 'tentative' | 'tracked' | 'lost';
 export interface Track {
@@ -25,13 +36,13 @@ export interface Track {
 export interface RemovedTrack extends Omit<Track, 'state'> { state: 'removed' }
 export interface RuntimeInfo {
   requestedBackend: 'cpu'; actualBackend: 'cpu'; executionMode: 'main';
-  runtimeVersion: 'web-sdk-pp-tracking@0.1.0';
+  runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.0';
 }
 export interface TrackingTimings {
   validationMs: number; predictionMs: number; associationMs: number; updateMs: number; totalMs: number;
 }
 export interface TrackingResult {
-  generation: number; timestampMs: number; tracks: Track[]; removed: RemovedTrack[];
+  generation: number; algorithm: TrackerAlgorithm; timestampMs: number; tracks: Track[]; removed: RemovedTrack[];
   droppedDetections: number; runtime: RuntimeInfo; timings: TrackingTimings;
 }
 export interface UpdateOptions { signal?: AbortSignal }

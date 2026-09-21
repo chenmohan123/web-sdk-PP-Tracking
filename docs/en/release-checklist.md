@@ -2,12 +2,32 @@
 
 [中文](../zh-CN/release-checklist.md)
 
-Based on portal `standards/v1/templates/release-checklist.md`. Version 0.1.0 completed its first publication and dated remote verification on 2026-09-19. This checklist does not promise the same state for future versions or unverified environments.
+Based on portal `standards/v1/templates/release-checklist.md`. The release target is 0.2.0-rc.0 on next, with stable latest remaining at 0.1.0. The user authorized this version's PR, merge and release; delivery results are recorded from actual receipts.
+
+## Current hybrid SDK candidate
+
+Existing checked evidence in this section belongs to the0.2.0-alpha.0 distribution stage and archive; it does not automatically establish RC verification or review. Check the current [RC notes](releases/0.2.0-rc.0.md) and separate RC tarball, browser and standards receipts.
+
+- [x] The root provides three CPU/main trackers; optional `./reid` independently exports ESM/CJS/types. ORT1.27.0 is an optional peer, unnecessary for root consumers.
+- [x] Fixed FP32 weights are distributed on ModelScope/Hugging Face, defaulting to ModelScope. Immutable revisions, bytes, SHA and anonymous readback appear in the [stage report](../../reports/2026-09-21-reid-distribution/README.en.md).
+- [x] The model card records reliance on the official repository's Apache-2.0 license, conversion attribution and training-disclosure gaps; parameterCount is null.
+- [x] Standard1.3 hybrid manifest and Demo pass the after-check, complete verify and real production-build browser acceptance; see the current stage report.
+- [x] Final tarball consumption, isolation without ORT and integrity are archived.
+- [x] The candidate passes independent final and scoped fix review; three Minor issues are fixed and the documented lazy ORT resource cost is retained.
+- [ ] Once this version's release is explicitly authorized, publish through PR, current-commit CI, merge and a new immutable tag, then refresh npm/hosted-Demo receipts.
+
+- [x] The [three-tracker real-image evaluation](../../reports/2026-09-21-mot-reid/README.en.md) covers5316 frames/67639 detections, official combined/per-sequence metrics, browser/two-Node equality, zero capacity drops and complete measured costs.
+
+Model distribution and evaluation are not SDK/npm/Demo publication. The current release candidate is 0.2.0-rc.0 with ByteTrack default, OC-SORT/DeepSORT explicit options and experimental human ReID. Candidate version, changelog and publication channels are prepared; remote publication is authorized for this version and completion requires actual receipts. Video/camera scheduling and cross-device compatibility require separate design and verification.
+
+## Historical delivery and baseline checks
+
+Remote checks below record only the2026-09-19 release of0.1.0; current local checks require the evidence above.
 
 - [x] Chinese README and equivalent English guides link reciprocally; source/license, input/output, state/reset and cold/warm are documented.
-- [x] Algorithm1.2.0 manifest without model/cache; CHANGELOG includes sources, implementation differences and limits.
+- [x] Version0.1.0 used the1.2.0 algorithm manifest without model/cache; later candidate CHANGELOG entries separately cover all three algorithms and ReID.
 - [x] `npm run verify` is the complete local check; CI covers types, units, package consumption, Demo/examples and browser interactions.
-- [x] Published files are restricted to dist, READMEs, LICENSE, NOTICE and package.json; no React production dependency.
+- [x] Published files are restricted to dist, READMEs, LICENSE, NOTICE and package.json; no React production dependency. Local actual-tarball checks consume all three algorithms through ESM/CJS/declarations.
 - [x] Compatibility records date, OS, device, browser, actual backend and runtime.
 - [x] The portal checker ran before and after the documentation update with separate reports. Local required failures are zero; remote rules are verified by API receipts.
 - [x] First publication is explicitly authorized for this task, without extending authorization to future versions or unrelated repositories.
@@ -18,6 +38,10 @@ Based on portal `standards/v1/templates/release-checklist.md`. Version 0.1.0 com
 - [x] Pages Source=GitHub Actions, the github-pages environment, HTTPS, serialized deployment, minimal permissions, and the commit-linked successful deployment were verified.
 - [x] GitHub, npm, and HTTPS Demo links were exercised, with credential-free dated receipts in the [first release record](../../reports/2026-09-19-release/README.md).
 
-The local checker preserves remote rules as skip. No local required failures means locally-compliant only. Model assets are inapplicable. Unchecked items do not trigger remote actions.
+The local checker preserves remote rules as skip. No local required failures means locally-compliant only. Model assets apply to the current hybrid candidate; historical algorithm exemptions do not. Unchecked items do not trigger remote actions.
+
+The [optional ReID module](reid-candidate.md) is now in local package.exports/dist, with real sources, licensing documentation and the1.3 hybrid manifest. Dated browser acceptance is archived independently and does not establish an updated npm package or hosted Demo.
+
+The three-strategy, external-vector and Demo changes in 0.2.0-rc.0 follow a separate candidate release process. Checked remote items above record historical 0.1.0 facts and do not prove RC delivery.
 
 Release text uses LF; historical reports preserve original bytes. Actual ESM/CJS/declaration consumption, SHA256, sha512 integrity, and the LF-checkout comparison are archived separately. The old desktop package size is not evidence for the final package. The locally authenticated first publication has `provenance: null`; Trusted Publisher is configured, while a future OIDC publication has not yet been exercised by a new version. Its final status must come from that version's npm receipt. Real-sequence metrics and limitations are in the [MOT17 report](../../reports/2026-09-19-mot17/README.en.md).

@@ -1,0 +1,27 @@
+$ vitest run "tests/release.test.ts"
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0-alpha.0 显式发布到 next 通道且已有版本只读
+npm OIDC 发布完成且完整性一致。
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0-rc.0 显式发布到 next 通道且已有版本只读
+npm OIDC 发布完成且完整性一致。
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0 显式发布到 latest 通道且已有版本只读
+npm OIDC 发布完成且完整性一致。
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 已有版本不发布，新版本发布后核验，真实发布错误不吞掉
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+npm OIDC 发布完成且完整性一致。
+
+ ✓ tests/release.test.ts (8 tests) 31ms
+
+ Test Files  1 passed (1)
+      Tests  8 passed (8)
+   Start at  13:37:27
+   Duration  1.07s (transform 93ms, setup 0ms, collect 148ms, tests 31ms, environment 0ms, prepare 348ms)
+

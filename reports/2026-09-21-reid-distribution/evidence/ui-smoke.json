@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "testedAt": "2026-09-21T03:09:39.614Z",
+  "browser": "153.0.8010.12",
+  "viewport": "390x844 desktop",
+  "checks": [
+    "default-no-ORT-or-model",
+    "lazy-image-mode-no-ORT-or-model",
+    "empty-preview",
+    "zh-en-no-overflow",
+    "local-png-preview",
+    "invalid-json-no-load",
+    "cancel-no-frame",
+    "clear-reset"
+  ],
+  "modelRequested": true,
+  "errors": []
+}

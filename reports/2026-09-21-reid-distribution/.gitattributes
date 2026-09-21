@@ -1,0 +1,4 @@
+# 机器回执按原始字节保留。
+*.json -text -whitespace
+*.log -text -whitespace
+evidence/** -text -whitespace

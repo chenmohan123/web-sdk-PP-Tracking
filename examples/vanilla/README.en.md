@@ -1,8 +1,8 @@
-# Vanilla TypeScript example (0.1.0)
+# Vanilla TypeScript example (RC 0.2.0-rc.0)
 
 [中文](README.md)
 
-No UI framework. The public `web-sdk-pp-tracking` entry resolves to the locally built package. Each step displays an actual `TrackingResult`. Reset clears state and restarts timestamps at zero.
+No UI framework. The public `web-sdk-pp-tracking` entry resolves to the locally built package. Each step displays an actual `TrackingResult`. Reset clears state and restarts timestamps at zero. See the [release checklist](../../docs/en/release-checklist.md) for delivery status.
 
 From the repository root (Node >=22.12.0):
 

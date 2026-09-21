@@ -1,0 +1,29 @@
+{
+  "testedAt": "2026-09-20T17:11:50.327Z",
+  "browser": "153.0.8010.12",
+  "platform": "win32",
+  "runtimeVersion": "web-sdk-pp-tracking@0.2.0-alpha.0",
+  "checks": [
+    "算法切换停止播放、清空状态；OC-SORT 仅显示有效参数并完成播放、导入和导出；未应用草稿不混入导出",
+    "512维千帧输入在单步前后均可紧凑下载并重新导入，特征空间、时间和向量往返一致",
+    "DeepSORT 合成向量运行；有效参数、特征空间和结果报告导出；自定义空间导入后切内置样例恢复合成空间；非法末帧与语言切换保留状态",
+    "中文默认、英文切换不改变帧/ID/结果",
+    "单步、播放、暂停继续、重播清空轨迹和历史",
+    "四场景实际播放到末帧；低分续接和遮挡高分恢复；导出原始时间",
+    "真实键盘seek复位顺序重算，lost虚线、空分数",
+    "异步读取时算法选择禁用；单帧导入/重复同文件/导出；无向量切换、逆序、坏JSON、超5MiB失败均保留原结果",
+    "参数错误原子性；合法参数实际生效并清空本轮",
+    "空检测序列真实空结果",
+    "390px中英文无横向溢出",
+    "Vanilla构建包单步/复位/CPU实际结果"
+  ],
+  "pageErrors": [],
+  "screenshots": [
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\desktop.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\english.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\deepsort.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\occlusion.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\mobile.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\vanilla.png"
+  ]
+}

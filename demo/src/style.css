@@ -19,6 +19,7 @@ h2 { font-size: 15px; margin: 0 0 var(--space-4); }
 label { display: block; margin-bottom: var(--space-2); font-size: 12px; }
 label b { float: right; font-weight: 500; }
 select { width: 100%; }
+#algorithm { margin-bottom: var(--space-3); }
 .muted { color: var(--mutedText); line-height: 1.6; }
 .small { font-size: 11px; }
 .file-button { display: block; text-align: center; position: relative; font-size: 14px; overflow: hidden; }
@@ -28,6 +29,7 @@ select { width: 100%; }
 .buttons button:last-child { width: 100%; }
 .primary { background: var(--action); color: var(--actionText); border-color: var(--action); }
 input[type=range] { width: 100%; margin: 0 0 var(--space-4); accent-color: var(--action); }
+.exports { display: grid; gap: var(--space-2); }
 .export { width: 100%; }
 .parameters { margin-top: 16px; padding: 10px; font-size: 12px; }
 .parameters label { margin-top: 10px; }
@@ -56,9 +58,22 @@ input[type=range] { width: 100%; margin: 0 0 var(--space-4); accent-color: var(-
 details { padding: var(--space-4); line-height: 1.6; overflow-wrap: anywhere; }
 summary { cursor: pointer; font-weight: 600; }
 details p { color: var(--mutedText); font-size: 12px; }
+.feature-space, .feature-space code { min-width: 0; overflow-wrap: anywhere; word-break: break-word; }
+.feature-space code { color: var(--text); }
 dl { font-size: 12px; }
 dl div { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding: 4px 0; }
 dd { margin: 0; }
 a { color: var(--action); }
+.mode-bar { max-width: 1600px; margin: auto; padding: var(--space-4) var(--space-5) 0; display: flex; align-items: center; gap: var(--space-3); }
+.mode-bar label { margin: 0; flex-shrink: 0; }
+.mode-bar select { max-width: 280px; min-width: 0; }
+.reid-workspace select { margin-bottom: var(--space-3); }
+.reid-workspace textarea { width: 100%; min-height: 120px; resize: vertical; font: 12px ui-monospace, monospace; color: var(--text); background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: var(--space-2); }
+.reid-workspace textarea:focus-visible { outline: 0; box-shadow: var(--focus-ring); }
+.reid-workspace .reid-stage { aspect-ratio: auto; min-height: 0; }
+.image-empty { min-height: 200px; padding: var(--space-5); display: grid; place-items: center; color: var(--mutedText); text-align: center; }
+.load-progress { padding: 0 var(--space-4); font-size: 12px; overflow-wrap: anywhere; }
+.compact { min-height: 28px; padding: 3px 6px; font-size: 11px; }
+.reid-workspace .status { flex-wrap: wrap; }
 @media(max-width: 1100px) { main { grid-template-columns: 220px minmax(0, 1fr); } .results { grid-column: 2; } .controls { grid-row: 1 / 3; } .track-list { display: flex; flex-wrap: wrap; gap: 16px; } .track { min-width: 130px; border: 0; } }
 @media(max-width: 700px) { .topbar { padding: 12px 16px; } .planned { display: none; } main { padding: 12px; grid-template-columns: minmax(0, 1fr); gap: 12px; } .controls, .results { grid-column: 1; grid-row: auto; } .controls { padding: 12px; } .workspace { grid-row: 1; } .controls h2 { display: none; } .buttons { margin: 12px 0; } .buttons button:last-child { width: auto; } .details { grid-template-columns: 1fr; } .file-button { margin-top: 8px; } .results { padding: 12px; } .stage { min-height: 190px; } }

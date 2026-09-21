@@ -1,0 +1,80 @@
+{
+  "date": "2026-09-20",
+  "sdkBaseline": "b29b0f1",
+  "portalBaseline": "4df6c38",
+  "scope": "单 SDK 图像预处理研究与门户设计；生产 runtime、Demo、manifest 和标准 1.2.0 未改变；无远程写操作",
+  "assets": {
+    "dist/index.js": {
+      "bytes": 28545,
+      "sha256": "8396ef79f22c6afd2690bd6413f2b32b25fd46ec67b9fabca8fcab44c9a82041",
+      "matchesBaseline": true
+    },
+    "dist/index.cjs": {
+      "bytes": 29492,
+      "sha256": "f9bd94a1a63e97d424891436b974aafc1dff312c6ca8c183eb7ff74953af186b",
+      "matchesBaseline": true
+    },
+    ".tmp/web-sdk-pp-tracking-0.2.0-alpha.0.tgz": {
+      "bytes": 22522,
+      "sha256": "2a8c4aa4be4ee02698835aae18d45e27a83497676ac6cf1c4b06d13634cb7c0f",
+      "matchesBaseline": true
+    }
+  },
+  "sdk": {
+    "command": "pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false verify",
+    "exitCode": 0,
+    "unitTests": 104,
+    "browserChecks": 12,
+    "pageErrors": [],
+    "log": "sdk-verify.log"
+  },
+  "portal": {
+    "tests": 99,
+    "testExitCode": 0,
+    "buildExitCode": 0,
+    "pages": 21,
+    "errors": 0,
+    "warnings": 0,
+    "existingHints": 7,
+    "logs": [
+      "portal-test.log",
+      "portal-build.log"
+    ]
+  },
+  "standard": {
+    "before": {
+      "path": "reports/sdk-standard/tracking-reid-preprocessing-before-20260920.json",
+      "sha256": "168c9c9dbc2dcb6b75dbada49b3e8f447141fbeb00f671ece763cea7f2dc8550",
+      "summary": {
+        "requiredPassed": 17,
+        "requiredFailed": 0,
+        "requiredSkipped": 7,
+        "requiredUnknown": 0,
+        "requiredNotApplicable": 0,
+        "recommendedPassed": 3,
+        "recommendedFailed": 0,
+        "labs": 1,
+        "status": "locally-compliant"
+      }
+    },
+    "after": {
+      "path": "reports/sdk-standard/tracking-reid-preprocessing-after-20260920.json",
+      "sha256": "168c9c9dbc2dcb6b75dbada49b3e8f447141fbeb00f671ece763cea7f2dc8550",
+      "summary": {
+        "requiredPassed": 17,
+        "requiredFailed": 0,
+        "requiredSkipped": 7,
+        "requiredUnknown": 0,
+        "requiredNotApplicable": 0,
+        "recommendedPassed": 3,
+        "recommendedFailed": 0,
+        "labs": 1,
+        "status": "locally-compliant"
+      }
+    }
+  },
+  "preprocessTests": {
+    "redFailed": 7,
+    "greenPassed": 7
+  }
+}

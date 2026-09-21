@@ -1,0 +1,81 @@
+[
+  {
+    "path": "sources/LICENSE",
+    "revision": "b25522a0f4bde8c80603f3ba5e3472059972e3b5",
+    "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/LICENSE",
+    "finalUrl": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/LICENSE",
+    "etag": "\"0f7ad233313d00f59c4f65f8c224ab2bfe14a8608ea59dc12ae4d7f13ba699e9\"",
+    "bytes": 11357,
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  },
+  {
+    "path": "sources/configs/mot/deepsort/README_cn.md",
+    "revision": "b25522a0f4bde8c80603f3ba5e3472059972e3b5",
+    "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/configs/mot/deepsort/README_cn.md",
+    "finalUrl": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/configs/mot/deepsort/README_cn.md",
+    "etag": "\"cbd9482064fd059b665a55c74a8acd16ec894e8ce20a04bb59c0db911ab07997\"",
+    "bytes": 16744,
+    "sha256": "8b6982d9a8fed6e2e0714c2778e9d0f852e3d96212875c688d558dbf2acac95d"
+  },
+  {
+    "path": "sources/configs/mot/deepsort/reid/deepsort_pplcnet.yml",
+    "revision": "b25522a0f4bde8c80603f3ba5e3472059972e3b5",
+    "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/configs/mot/deepsort/reid/deepsort_pplcnet.yml",
+    "finalUrl": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/configs/mot/deepsort/reid/deepsort_pplcnet.yml",
+    "etag": "\"b877a2d971252f867fa3b3f7c7e63cb977c8a5d03d0ebb5698f5b1bd7e2707c1\"",
+    "bytes": 1139,
+    "sha256": "9c8e05ac7317d440d5244f95ede4aa3f51b326699e0444be681e28bf024d31f0"
+  },
+  {
+    "path": "sources/ppdet/modeling/reid/pplcnet_embedding.py",
+    "revision": "b25522a0f4bde8c80603f3ba5e3472059972e3b5",
+    "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/ppdet/modeling/reid/pplcnet_embedding.py",
+    "finalUrl": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/ppdet/modeling/reid/pplcnet_embedding.py",
+    "etag": "\"c5a17c0fc8d158cf7c183bdbd7c64b126dcc98d65b676615de1fad292691706b\"",
+    "bytes": 8840,
+    "sha256": "aed9e8ad229386f79cef554f8817addd59d13e9ad352185e8530491fd5e04205"
+  },
+  {
+    "path": "sources/deploy/pptracking/python/mot/utils.py",
+    "revision": "b25522a0f4bde8c80603f3ba5e3472059972e3b5",
+    "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/deploy/pptracking/python/mot/utils.py",
+    "finalUrl": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/deploy/pptracking/python/mot/utils.py",
+    "etag": "\"0865b40c0a204c82259db8dadaa7e3940ea801eccd93ce2f85e8c344ab126927\"",
+    "bytes": 16630,
+    "sha256": "f6a0d315f23a8bb2340a1d285ec3d6fe3bb8b4b56009271e61e9433b4941ba15"
+  },
+  {
+    "path": "sources/deploy/pptracking/python/mot_sde_infer.py",
+    "revision": "b25522a0f4bde8c80603f3ba5e3472059972e3b5",
+    "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/deploy/pptracking/python/mot_sde_infer.py",
+    "finalUrl": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/deploy/pptracking/python/mot_sde_infer.py",
+    "etag": "\"f385cc5d080ccd9f85e4753099d4427bf28167564e4c931fa0eef84b8892151e\"",
+    "bytes": 40288,
+    "sha256": "0c88e24199e9a64c4f30f957bcf563a9fa896d7e21f95c80cc488c2b98f8652a"
+  },
+  {
+    "path": "sources/deploy/python/preprocess.py",
+    "revision": "b25522a0f4bde8c80603f3ba5e3472059972e3b5",
+    "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/deploy/python/preprocess.py",
+    "finalUrl": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/deploy/python/preprocess.py",
+    "etag": "\"2c8f0752645f515fcaacec84452a83572742d0a78f7e4031467821f3b8c38462\"",
+    "bytes": 18680,
+    "sha256": "5bf3c389dce88968740c792f9f5ccba77ee120f1463582204dad3a1fd8bd25c8"
+  },
+  {
+    "path": "assets/readme.pdparams",
+    "url": "https://paddledet.bj.bcebos.com/models/mot/deepsort/deepsort_pplcnet.pdparams",
+    "finalUrl": "https://paddledet.bj.bcebos.com/models/mot/deepsort/deepsort_pplcnet.pdparams",
+    "etag": "\"-072844005f61eaab789f89b0d1053ee5\"",
+    "bytes": 36769814,
+    "sha256": "abce7d12af14b5b5c10c287ba01517470db3247ee06e3beeaa5ffc1c76628758"
+  },
+  {
+    "path": "assets/config.pdparams",
+    "url": "https://paddledet.bj.bcebos.com/models/mot/deepsort_pplcnet.pdparams",
+    "finalUrl": "https://paddledet.bj.bcebos.com/models/mot/deepsort_pplcnet.pdparams",
+    "etag": "\"-072844005f61eaab789f89b0d1053ee5\"",
+    "bytes": 36769814,
+    "sha256": "abce7d12af14b5b5c10c287ba01517470db3247ee06e3beeaa5ffc1c76628758"
+  }
+]

@@ -1,0 +1,98 @@
+$ vitest run "tests/reid-lifecycle.test.ts"
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ❯ tests/reid-lifecycle.test.ts (37 tests | 5 failed) 1001ms
+   ✓ ReID 固定身份与生命周期 > 工厂同步复制模型，校验完整 SHA 后才建 session，ready load 幂等 24ms
+   ✓ ReID 固定身份与生命周期 > 无效配置和 hash 在 session 前拒绝 13ms
+   ✓ ReID 固定身份与生命周期 > 加载中 load/extract 返回 BUSY，失败可重试 21ms
+   ✓ ReID 固定身份与生命周期 > 调用前取消、未加载、释放后均稳定拒绝 8ms
+   ✓ ReID 固定身份与生命周期 > session 创建期间取消等待并释放半成品，随后可重试 61ms
+   ✓ ReID 固定身份与生命周期 > 完整帧验证先于推理，输入数量/分数/类别/图外框失败不会部分运行 10ms
+   ✓ ReID 固定身份与生命周期 > 稀疏检测数组在任何推理前拒绝 11ms
+   ✓ ReID 固定身份与生命周期 > SHA 等待期间取消不会创建会话，可重新加载 71ms
+   ✓ ReID 固定身份与生命周期 > session 完成进度回调取消释放会话，不提交 ready 10ms
+   ✓ ReID 固定身份与生命周期 > dispose 等待加载中的会话创建再释放，不提前 release 64ms
+   ✓ ReID 固定身份与生命周期 > 多检测一一绑定不同方向的向量，后续失败不提交部分结果 29ms
+   ✓ ReID 固定身份与生命周期 > GPU 输出回读期间取消继续等待并释放所有输出 62ms
+   ✓ ReID 固定身份与生命周期 > 个别 Tensor 释放报错仍尝试释放其余输出和输入 10ms
+   ✓ ReID 固定身份与生命周期 > featureSpace 在运行时只读且不能替换，结果改写不污染内部身份 12ms
+   ✓ ReID 固定身份与生命周期 > WebGPU 禁止 CPU fallback，WASM 固定单线程 basic 17ms
+   ✓ ReID 固定身份与生命周期 > 明确 OOM 稳定归类，未知设备错误不猜测 OOM 13ms
+   ✓ ReID 固定身份与生命周期 > 图像和元数据在入口复制，输出按顺序绑定且保留分数框 21ms
+   ✓ ReID 固定身份与生命周期 > 运行取消等待 run，释放所有 Tensor，丢弃整帧且下一帧可恢复 67ms
+   ✓ ReID 固定身份与生命周期 > dispose 等待 run 再 release，立即拒绝新工作且幂等 60ms
+   ✓ ReID 固定身份与生命周期 > 输出 zero 失败整帧原子性与下一帧恢复 10ms
+   ✓ ReID 固定身份与生命周期 > 输出 nan 失败整帧原子性与下一帧恢复 12ms
+   ✓ ReID 固定身份与生命周期 > 输出 short 失败整帧原子性与下一帧恢复 11ms
+   ✓ ReID 固定身份与生命周期 > 输出 run 失败整帧原子性与下一帧恢复 12ms
+   × ReID 资产边界 > 接收 gzip 解压后的模型，不把传输长度当作明文字节数 34ms
+     → 模型响应大小与固定资产不符
+   × ReID 资产边界 > 接收 br 解压后的模型，不把传输长度当作明文字节数 21ms
+     → 模型响应大小与固定资产不符
+   × ReID 资产边界 > 接收 cors-hidden 解压后的模型，不把传输长度当作明文字节数 24ms
+     → 模型响应大小与固定资产不符
+   ✓ ReID 资产边界 > 忽略传输长度后仍拒绝 short 的实际模型内容 1ms
+   ✓ ReID 资产边界 > 忽略传输长度后仍拒绝 oversized 的实际模型内容 20ms
+   × ReID 资产边界 > 忽略传输长度后仍拒绝 wrong-hash 的实际模型内容 25ms
+     → expected "spy" to be called 1 times, but got 0 times
+   × ReID 资产边界 > cache.match 完成时取消会关闭已取得的响应体且不下载 4ms
+     → expected "spy" to be called 1 times, but got 0 times
+   ✓ ReID 资产边界 > 来源固定版本/大小/SHA/HTTPS 校验且同步复制来源 metadata 52ms
+   ✓ ReID 资产边界 > 下载缓存仍校验 SHA，错误缓存删除且不换源 81ms
+   ✓ ReID 资产边界 > 本地模型不缓存，缓存不可用明确报告 43ms
+   ✓ ReID 资产边界 > 网络错误使用安全原因且仅请求显式来源 2ms
+   ✓ ReID 资产边界 > 下载硬上限触发 reader 取消，短文件拒绝 4ms
+   ✓ ReID 资产边界 > 下载 pending read 取消能结束读取并释放 reader 58ms
+   ✓ ReID 资产边界 > fetch 刚返回响应时取消也会关闭响应体 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 资产边界 > 接收 gzip 解压后的模型，不把传输长度当作明文字节数
+ FAIL  tests/reid-lifecycle.test.ts > ReID 资产边界 > 接收 br 解压后的模型，不把传输长度当作明文字节数
+ FAIL  tests/reid-lifecycle.test.ts > ReID 资产边界 > 接收 cors-hidden 解压后的模型，不把传输长度当作明文字节数
+ReIdError: 模型响应大小与固定资产不符
+ ❯ readBounded src/reid/assets.ts:20:99
+     18|     aborted(signal);
+     19|     const declared = response.headers.get('content-length');
+     20|     if (declared !== null && (!/^\d+$/.test(declared) || Number(declar…
+       |                                                                                                   ^
+     21|     const bytes = new Uint8Array(MODEL_BYTES);
+     22|     let offset = 0;
+ ❯ acquireModel src/reid/assets.ts:89:19
+ ❯ src/reid/extractor.ts:48:27
+ ❯ tests/reid-lifecycle.test.ts:189:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 资产边界 > 忽略传输长度后仍拒绝 wrong-hash 的实际模型内容
+AssertionError: expected "spy" to be called 1 times, but got 0 times
+ ❯ tests/reid-lifecycle.test.ts:200:47
+    198|     await expect(instance.load()).rejects.toMatchObject({ code: 'INTEG…
+    199|     expect(mock.create).not.toHaveBeenCalled();
+    200|     if (kind === 'wrong-hash') expect(digest).toHaveBeenCalledTimes(1);
+       |                                               ^
+    201|     else expect(digest).not.toHaveBeenCalled();
+    202|     await instance.dispose();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 资产边界 > cache.match 完成时取消会关闭已取得的响应体且不下载
+AssertionError: expected "spy" to be called 1 times, but got 0 times
+ ❯ tests/reid-lifecycle.test.ts:212:20
+    210|     const instance = createReIdExtractor({ modelId: 'pplcnet-reid-fp32…
+    211|     await expect(instance.load({ signal: controller.signal })).rejects…
+    212|     expect(cancel).toHaveBeenCalledTimes(1); expect(fetch).not.toHaveB…
+       |                    ^
+    213|     await instance.dispose();
+    214|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 32 passed (37)
+   Start at  01:18:32
+   Duration  1.76s (transform 122ms, setup 0ms, collect 218ms, tests 1.00s, environment 0ms, prepare 175ms)
+
+[ELIFECYCLE] Test failed. See above for more details.

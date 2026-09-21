@@ -1,0 +1,16 @@
+$ node tests/browser.mjs
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.selectOption: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('#algorithm')
+
+    at C:\Users\chenm\.codex\worktrees\tracking-algorithms\web-sdk-PP-Tracking\tests\browser.mjs:38:36 {
+  log: [ "  - waiting for locator('#algorithm')" ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.16.0
+[ELIFECYCLE] Command failed with exit code 1.

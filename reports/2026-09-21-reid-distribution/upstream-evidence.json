@@ -1,0 +1,48 @@
+{
+  "verifiedAt": "2026-09-21T02:45:57.380701+00:00",
+  "licenseBasis": "采用官方仓库整体Apache-2.0，不声明额外checkpoint专属授权",
+  "sources": [
+    {
+      "path": "configs/mot/deepsort/README_cn.md",
+      "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/configs/mot/deepsort/README_cn.md",
+      "status": 200,
+      "bytes": 16744,
+      "sha256": "8b6982d9a8fed6e2e0714c2778e9d0f852e3d96212875c688d558dbf2acac95d"
+    },
+    {
+      "path": "configs/mot/deepsort/reid/README.md",
+      "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/configs/mot/deepsort/reid/README.md",
+      "status": 200,
+      "bytes": 2097,
+      "sha256": "7d0a5d74917f90a6da056503ab74f315e2137fa1826b36fe9b8f41fc4e3ae0cf"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/LICENSE",
+      "status": 200,
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "NOTICE",
+      "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/NOTICE",
+      "status": 404,
+      "bytes": 14,
+      "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/README.md",
+      "status": 200,
+      "bytes": 12,
+      "sha256": "a1fe4b37313e4efe368fe4aa658b7ba99b2f027e3eb8b12beb7a8f19667fe8c6"
+    },
+    {
+      "path": "README_en.md",
+      "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/README_en.md",
+      "status": 200,
+      "bytes": 43684,
+      "sha256": "938020128412436ba0f1fa2481670924b73a17ef60d258642792e2dbad166261"
+    }
+  ]
+}

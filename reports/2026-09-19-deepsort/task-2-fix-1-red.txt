@@ -1,0 +1,22 @@
+
+> web-sdk-pp-tracking@0.2.0-alpha.0 test:browser
+> node tests/browser.mjs
+
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+0.9 !== 0.2
+
+    at file:///C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking/tests/browser.mjs:55:10 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 0.9,
+  expected: 0.2,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.16.0

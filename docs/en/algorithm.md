@@ -6,8 +6,9 @@ This implementation uses the high/low confidence association idea from the
 [ByteTrack paper](https://arxiv.org/abs/2110.06864). The Kalman filter, assignment
 solver and lifecycle were independently written from mathematical definitions;
 no old Kalman/SORT source was read or translated. This is not an official port.
-There is no model, ReID or camera-motion compensation, and no guarantee of identity
-through crossings or turns. No real-sequence MOT accuracy is claimed.
+The root entry has no model runtime or camera-motion compensation. DeepSORT
+only consumes caller-provided vectors; vector quality, identity through crossings or
+turns, and real-sequence MOT accuracy are not established.
 
 ## Mathematical definition
 
@@ -69,7 +70,7 @@ only before synchronous computation and raises ABORTED. Other stable codes:
 INVALID_OPTIONS, INVALID_INPUT, NUMERICAL_FAILURE, ID_EXHAUSTED. Unknown option keys
 are rejected; explicit undefined values are invalid rather than defaults.
 
-Runtime is CPU/main, version `web-sdk-pp-tracking@0.1.0`. Measured milliseconds:
+The RC runtime is CPU/main, version `web-sdk-pp-tracking@0.2.0-rc.0`; this does not rewrite historical published 0.1.0 evidence. Measured milliseconds:
 validationMs covers entry through validation; predictionMs includes cloning,
 pre-removal and prediction; associationMs includes grouping and all three stages;
 updateMs includes corrections, births and track snapshots; totalMs independently
@@ -83,4 +84,77 @@ reset clears the motion state.
 `solve` for the gain, unlike production elimination. dt values 0.1, 0.2, 0.05 and
 1.5 seconds cover prediction and successive corrections. Elementwise mean and
 covariance errors are below 5e-9; tests also check 500 repeated updates. Evidence
-is mathematical and synthetic only; no licensed real-video evaluation is available.
+is mathematical and synthetic only. A separate fixed MOT17 FRCNN training-sequence evaluation repeats ByteTrack and OC-SORT on the same 5316 detection frames; the [candidate comparison](../../reports/2026-09-19-ocsort/README.en.md) records metrics, input/output hashes, pinned TrackEval identity and limits. It is not a licensed end-to-end real-video evaluation, a test-set leaderboard result or an official algorithm reproduction.
+
+## OC-SORT (RC)
+
+Use `createTracker({algorithm: 'ocsort'})` to select the box-input OC-SORT
+design; omitting `algorithm` keeps the existing ByteTrack-style strategy. The
+result reports the selected strategy in `algorithm`. OC-SORT uses high-score
+association only: explicit `lowScoreThreshold` or `lowMatchIouThreshold` is
+rejected with `INVALID_OPTIONS`. The shared high-score, new-track, IoU,
+lifecycle and capacity options remain available.
+
+The fixed source is Jinkun Cao, Jiangmiao Pang, Xinshuo Weng, Rawal Khirodkar
+and Kris Kitani, [Observation-Centric SORT: Rethinking SORT for Robust
+Multi-Object Tracking](https://arxiv.org/abs/2203.14360), arXiv
+`2203.14360v3`, updated 2023-03-16 and accepted at CVPR 2023. Its abstract
+describes virtual observation trajectories during occlusion to correct filter
+error; sections 4.1-4.2 and the appendix pseudocode define ORU, OCM and OCR.
+This SDK did not read or translate old SORT, DeepSORT, Paddle or OC-SORT
+Kalman/tracker implementations. It is an independent implementation, not an
+official port or value-for-value reproduction.
+
+### OCM, OCR and ORU
+
+For a track `i` and detection `j`, the class must match and the raw
+`IoU(i,j) >= tau` gate is checked first. Direction scoring cannot bypass that
+gate. The paper's direction consistency is represented as:
+
+`score(i,j) = IoU(i,j) - lambda * DeltaTheta(i,j) / pi`
+
+`DeltaTheta` is the minimum angular difference in radians between the historical
+observation direction and the current intention direction. Directions use
+`atan2(DeltaY, DeltaX)` between real observation centers; zero displacement has
+zero penalty. The defaults are `ocmWeight=lambda=0.2` and
+`ocmDeltaMs=300` milliseconds. The direction pair prefers two real observations
+at least that far apart. Real observation history is bounded by
+`ocmHistoryLength=30` (range 2-120). These are SDK milliseconds, unlike the
+paper's fixed frame interval.
+
+After the first high-score association, OCR performs a second IoU association
+between unmatched tracks and remaining high-score detections. It uses each
+track's last real observation and still applies the class and
+`matchIouThreshold` hard gates. This handles a short stop or return from
+occlusion.
+
+When a lost track is reactivated by either association, ORU restores the filter
+snapshot saved after its last real observation. It replays only the actual
+timestamps of missing updates, applying prediction and correction at each
+linearly interpolated virtual box:
+
+`z~(t) = z_last + (t - t_last) / (t_now - t_last) * (z_now - z_last)`
+
+Virtual boxes do not increment `hits`, enter real observation history or update
+`score`; the current real observation is corrected once and increments the real
+hit once. Replay is bounded by `oruMaxReplaySteps=30` (range 1-60). A track that
+exceeds the bound ends in that transaction, preventing unbounded history or
+loops. A failed or pre-cancelled update commits none of the clock, IDs, filter,
+observation history or missing timestamps.
+
+OC-SORT reuses this project's independent eight-dimensional `cx/cy/w/h`
+constant-velocity filter, second-based `dt`, class isolation and lifecycle. The
+paper uses a seven-dimensional state and frame intervals, so this implementation
+documents mechanism correspondence without claiming official value compatibility
+or MOT metrics. CPU/main, reset, dispose, instance isolation and synchronous
+cancellation semantics match the original strategy.
+
+## DeepSORT (external vectors, RC)
+
+`createTracker({algorithm:'deepsort',featureSpace})` independently implements concepts from the [Deep SORT paper](https://arxiv.org/abs/1703.07402). The tracking root loads no model and generates no embeddings; the optional [ReID subpath](reid-candidate.md) extracts human-box features. Callers provide a matching feature-space ID on every frame and a compatible vector on every detection. Vectors are scale-normalized to avoid norm overflow and copied. Missing, wrong-dimensional, non-finite or zero-norm vectors reject the whole frame with `INVALID_INPUT` and commit no state. Each track stores the newest `gallerySize` vectors; detection-to-track distance is the minimum cosine distance to any gallery sample.
+
+Confirmed tracks are grouped by `lastSeenMs` from newest to oldest for cascade matching. An edge requires the same class, minimum cosine distance no greater than `maxCosineDistance`, and four-dimensional squared Mahalanobis distance no greater than `9.487729036781154`. Observation covariance is the predicted positional covariance plus `4I`. Each group uses the same deterministic maximum-cardinality, minimum-cost assignment.
+
+After appearance matching, only tentative tracks and unmatched tracks that entered the frame as tracked can use class/IoU fallback. A track already lost cannot bypass the appearance threshold. Matches and births update the gallery; misses do not, and the oldest sample is removed at capacity. Scalar gallery capacity is bounded by `maxTracks * gallerySize * dimension <= 4_000_000`; reset, dispose and track removal release state.
+
+Explicit differences from the paper implementation are the eight-dimensional `cx/cy/w/h` state instead of aspect-ratio/height, millisecond `lastSeenMs` groups instead of fixed frame ages, and this document's Kalman noise, thresholds and lifecycle. This is mechanism correspondence, not an official value-for-value reproduction. Current evidence uses original synthetic vectors plus contract/browser verification. Historical MOT17 reports contain no external appearance embeddings and provide no real-data DeepSORT accuracy evidence.

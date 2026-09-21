@@ -1,0 +1,4 @@
+$ node tools/sdk-standard-check/cli.mjs "--repo" "C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking" "--format" "table"
+Repository | Status | Required failed | Required skipped | Required unknown | Recommended failed
+--- | --- | ---: | ---: | ---: | ---:
+web-sdk-PP-Tracking | locally-compliant | 0 | 7 | 0 | 0

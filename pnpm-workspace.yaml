@@ -1,2 +1,4 @@
 allowBuilds:
   esbuild: true
+  # 该脚本仅提示依赖版本约束，无构建产物；显式跳过以支持干净 CI 安装。
+  protobufjs: false

@@ -36,7 +36,8 @@ export function publishCandidate({ packageInfo, info, bytes, runNpm = npm, wait 
     console.log('npm 已存在相同完整性的版本，仅核验，不重复发布。');
     return 'verified-existing';
   }
-  const published = runNpm(['publish', `.tmp/${info.filename}`, '--provenance', '--access', 'public', '--registry=https://registry.npmjs.org']);
+  const tag = packageInfo.version.split('+')[0].includes('-') ? 'next' : 'latest';
+  const published = runNpm(['publish', `.tmp/${info.filename}`, '--provenance', '--access', 'public', '--tag', tag, '--registry=https://registry.npmjs.org']);
   assert.equal(published.status, 0, `npm 发布失败：${published.stderr || published.stdout}`);
   for (let attempt = 0; attempt < attempts; attempt++) {
     if (registryVersionState(query(), integrity) === 'identical') {

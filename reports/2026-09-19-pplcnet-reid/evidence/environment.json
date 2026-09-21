@@ -1,0 +1,36 @@
+{
+  "date": "2026-09-19",
+  "os": {
+    "Caption": "Microsoft Windows 11 专业版",
+    "Version": "10.0.26200"
+  },
+  "cpu": {
+    "Name": "Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz",
+    "NumberOfCores": 6,
+    "NumberOfLogicalProcessors": 12
+  },
+  "gpu": [
+    {
+      "Name": "OrayIddDriver Device",
+      "DriverVersion": "17.50.19.949"
+    },
+    {
+      "Name": "Todesk Virtual Display Adapter",
+      "DriverVersion": "16.44.2.509"
+    },
+    {
+      "Name": "GameViewer Virtual Display Adapter",
+      "DriverVersion": "15.6.5.199"
+    },
+    {
+      "Name": "Todesk Virtual Display Adapter",
+      "DriverVersion": "16.44.2.509"
+    },
+    {
+      "Name": "NVIDIA GeForce RTX 5060 Ti",
+      "DriverVersion": "32.0.16.1692"
+    }
+  ],
+  "node": "v24.16.0",
+  "sdkCommit": "096c63f9c8834a5a00c134f19f7b6c616bec05de"
+}

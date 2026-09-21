@@ -1,0 +1,11 @@
+{
+  "baseline": "1e4d777",
+  "checkedRuntimeFiles": 17,
+  "versionOnlyChanges": [
+    "src/reid/ort.ts",
+    "src/reid/types.ts",
+    "src/tracker.ts",
+    "src/types.ts"
+  ],
+  "protectedHistoricalPathsUnchanged": true
+}

@@ -1,0 +1,258 @@
+{
+  "testedAt": "2026-09-21T04:41:48.112Z",
+  "complete": true,
+  "subset": false,
+  "backend": "webgpu",
+  "identitySha256": "007eded17b981a3326550d03f313b5de6ab8140d0f5e75b9415a4c1694036108",
+  "commit": "0194ea5f9c32dda786b9e4b0bb7394ac0e51c23e",
+  "environment": {
+    "node": "v24.16.0",
+    "platform": "win32",
+    "release": "10.0.26200",
+    "cpu": "Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz"
+  },
+  "configurations": {
+    "bytetrack": {
+      "lowScoreThreshold": 0.1,
+      "highScoreThreshold": 0.5,
+      "newTrackThreshold": 0.6,
+      "minHits": 2,
+      "matchIouThreshold": 0.3,
+      "lowMatchIouThreshold": 0.2,
+      "maxLostMs": 1000,
+      "largeGapMs": 2000,
+      "maxDetections": 100,
+      "maxTracks": 200,
+      "algorithm": "bytetrack"
+    },
+    "ocsort": {
+      "algorithm": "ocsort",
+      "highScoreThreshold": 0.5,
+      "newTrackThreshold": 0.6,
+      "minHits": 2,
+      "matchIouThreshold": 0.3,
+      "maxLostMs": 1000,
+      "largeGapMs": 2000,
+      "maxDetections": 100,
+      "maxTracks": 200
+    },
+    "deepsort": {
+      "algorithm": "deepsort",
+      "highScoreThreshold": 0.5,
+      "newTrackThreshold": 0.6,
+      "minHits": 2,
+      "matchIouThreshold": 0.3,
+      "maxLostMs": 1000,
+      "largeGapMs": 2000,
+      "maxDetections": 100,
+      "maxTracks": 200,
+      "featureSpace": {
+        "id": "pplcnet-reid:24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4:rgba8-white-upright-rgb-halfpixel-f64-imagenet-f32-v1:l2-f32-v1",
+        "dimension": 512
+      },
+      "maxCosineDistance": 0.2,
+      "gallerySize": 30
+    }
+  },
+  "sequences": {
+    "MOT17-11-FRCNN": {
+      "info": {
+        "name": "MOT17-11-FRCNN",
+        "fps": 30,
+        "length": 900,
+        "width": 1920,
+        "height": 1080
+      },
+      "frames": 900,
+      "detections": 6007,
+      "adapterStatistics": {
+        "inputRows": 6007,
+        "clipped": 0,
+        "empty": 0,
+        "accepted": 6007,
+        "maxDetections": 18,
+        "numericalClamps": 96
+      },
+      "droppedDetections": 0,
+      "browserLoad": {
+        "version": "153.0.8010.12",
+        "playwright": "1.63.0",
+        "loaded": {
+          "runtime": {
+            "requestedBackend": "webgpu",
+            "actualBackend": "webgpu",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.2.0-alpha.0",
+            "ortVersion": "1.27.0"
+          },
+          "timings": {
+            "modelDownloadMs": 0,
+            "modelCacheReadMs": 0,
+            "integrityMs": 92.69999998807907,
+            "sessionMs": 886,
+            "totalMs": 979.1000000238419
+          },
+          "source": {
+            "kind": "bytes"
+          },
+          "cache": {
+            "status": "not-applicable",
+            "bytes": 0
+          }
+        },
+        "adapter": {
+          "vendor": "nvidia",
+          "architecture": "blackwell",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": false
+        },
+        "modelFetchMs": 195.10000002384186,
+        "modelLoadOuterMs": 1182.7000000476837,
+        "featureSpace": {
+          "id": "pplcnet-reid:24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4:rgba8-white-upright-rgb-halfpixel-f64-imagenet-f32-v1:l2-f32-v1",
+          "dimension": 512
+        }
+      },
+      "browser": {
+        "bytetrack": {
+          "modelExecuted": false,
+          "outerTotalMs": 856.7000001072884,
+          "p50Ms": 0.800000011920929,
+          "p95Ms": 1.800000011920929,
+          "trackingTotalMs": 853.3000000715256
+        },
+        "ocsort": {
+          "modelExecuted": false,
+          "outerTotalMs": 866.7999995946884,
+          "p50Ms": 0.800000011920929,
+          "p95Ms": 2,
+          "trackingTotalMs": 865.1999996900558
+        },
+        "deepsort": {
+          "modelExecuted": true,
+          "outerTotalMs": 67449.0000000596,
+          "p50Ms": 70.19999998807907,
+          "p95Ms": 112.90000003576279,
+          "trackingTotalMs": 2101.6999992132187,
+          "stages": {
+            "imageFetchMs": 6394.900000095367,
+            "imageDecodeMs": 12354.299999892712,
+            "featureExtractMs": 46589.8000010252
+          }
+        }
+      },
+      "node": {
+        "bytetrack": [
+          {
+            "repetition": 1,
+            "sdkTotalMs": 778.022600000404,
+            "p50Ms": 0.7401000000099884,
+            "p95Ms": 1.6229000000021188,
+            "nonTimingSha256": "626ca617f07c0e9625b62f8b63b59cc02112017b5e75b70e9619929d13dd4736",
+            "motSha256": "b10c01ad2cdba47c781c36b99254c422d2d3d2eff34d1f8055c7e21f6be63793",
+            "browserEqual": true
+          },
+          {
+            "repetition": 2,
+            "sdkTotalMs": 734.7112999998935,
+            "p50Ms": 0.717400000008638,
+            "p95Ms": 1.5029999999969732,
+            "nonTimingSha256": "626ca617f07c0e9625b62f8b63b59cc02112017b5e75b70e9619929d13dd4736",
+            "motSha256": "b10c01ad2cdba47c781c36b99254c422d2d3d2eff34d1f8055c7e21f6be63793",
+            "browserEqual": true
+          }
+        ],
+        "ocsort": [
+          {
+            "repetition": 1,
+            "sdkTotalMs": 800.0105999999505,
+            "p50Ms": 0.7387000000016997,
+            "p95Ms": 1.8167000000103144,
+            "nonTimingSha256": "3f702343278725d4c8eab2d6cf9edf01fcd0f49fddebe01508f778467cfcb901",
+            "motSha256": "8511183f1f7046f9001b5f52fd328b5d529bc789a1376ccfdf35985aeec7c75a",
+            "browserEqual": true
+          },
+          {
+            "repetition": 2,
+            "sdkTotalMs": 752.5240999998932,
+            "p50Ms": 0.7030999999988126,
+            "p95Ms": 1.6947000000072876,
+            "nonTimingSha256": "3f702343278725d4c8eab2d6cf9edf01fcd0f49fddebe01508f778467cfcb901",
+            "motSha256": "8511183f1f7046f9001b5f52fd328b5d529bc789a1376ccfdf35985aeec7c75a",
+            "browserEqual": true
+          }
+        ],
+        "deepsort": [
+          {
+            "repetition": 1,
+            "sdkTotalMs": 1853.2885000000388,
+            "p50Ms": 1.8334999999933643,
+            "p95Ms": 3.795799999992596,
+            "nonTimingSha256": "399186c3c0a80328ebb906317b9a7936f1b301b67d6c7ed92d545e2f4fb849fe",
+            "motSha256": "9f66589893114c72a3c4b32208267e23764090666bb0e324e2b21275de2c26b1",
+            "browserEqual": true
+          },
+          {
+            "repetition": 2,
+            "sdkTotalMs": 1783.7466999999451,
+            "p50Ms": 1.7645999999949709,
+            "p95Ms": 3.5930999999982305,
+            "nonTimingSha256": "399186c3c0a80328ebb906317b9a7936f1b301b67d6c7ed92d545e2f4fb849fe",
+            "motSha256": "9f66589893114c72a3c4b32208267e23764090666bb0e324e2b21275de2c26b1",
+            "browserEqual": true
+          }
+        ]
+      },
+      "lifecycle": "每序列新会话和跟踪器；首帧cold，其余warm；模型本地读取及load单列",
+      "featureSha256": "6213cb8c91c1cb00dae7af91b1a73485e791e32088683bcc5f14b0874e66cdad"
+    }
+  },
+  "exclusions": [
+    "检测器",
+    "渲染",
+    "评分",
+    "落盘与Playwright IPC"
+  ],
+  "timingScope": "Node仅冻结特征关联；浏览器DeepSORT外围含本地图片获取/解码/ReID/关联，基线算法不执行模型",
+  "browser": {
+    "version": "153.0.8010.12",
+    "playwright": "1.63.0",
+    "loaded": {
+      "runtime": {
+        "requestedBackend": "webgpu",
+        "actualBackend": "webgpu",
+        "executionMode": "main",
+        "runtimeVersion": "web-sdk-pp-tracking@0.2.0-alpha.0",
+        "ortVersion": "1.27.0"
+      },
+      "timings": {
+        "modelDownloadMs": 0,
+        "modelCacheReadMs": 0,
+        "integrityMs": 92.69999998807907,
+        "sessionMs": 886,
+        "totalMs": 979.1000000238419
+      },
+      "source": {
+        "kind": "bytes"
+      },
+      "cache": {
+        "status": "not-applicable",
+        "bytes": 0
+      }
+    },
+    "adapter": {
+      "vendor": "nvidia",
+      "architecture": "blackwell",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": false
+    },
+    "modelFetchMs": 195.10000002384186,
+    "modelLoadOuterMs": 1182.7000000476837,
+    "featureSpace": {
+      "id": "pplcnet-reid:24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4:rgba8-white-upright-rgb-halfpixel-f64-imagenet-f32-v1:l2-f32-v1",
+      "dimension": 512
+    }
+  }
+}

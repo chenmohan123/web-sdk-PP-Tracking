@@ -1,0 +1,4 @@
+# 证据锁按文件原始字节计算，跨平台检出不得转换换行。
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# 日志保留工具原始空格和换行。
+evidence/*.log -whitespace

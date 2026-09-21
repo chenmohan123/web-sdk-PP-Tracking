@@ -1,0 +1,9 @@
+{
+  "historicalMotFilesIdentical": 14,
+  "historicalMetricsIdentical": [
+    "bytetrack",
+    "ocsort"
+  ],
+  "formalInputFrames": 5316,
+  "formalDetections": 67639
+}

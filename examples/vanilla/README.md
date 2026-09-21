@@ -1,8 +1,8 @@
-# Vanilla TypeScript 示例（0.1.0）
+# Vanilla TypeScript 示例（RC 0.2.0-rc.0）
 
 [English](README.en.md)
 
-无 UI 框架，通过 `web-sdk-pp-tracking` 公开入口使用本地构建包；每次单步显示实际 `TrackingResult`。复位清除状态，下一帧重新从时间0开始。
+无 UI 框架，通过 `web-sdk-pp-tracking` 公开入口使用本地构建包；每次单步显示实际 `TrackingResult`。复位清除状态，下一帧重新从时间0开始。发布状态见[发布清单](../../docs/zh-CN/release-checklist.md)。
 
 在仓库根目录（Node >=22.12.0）：
 

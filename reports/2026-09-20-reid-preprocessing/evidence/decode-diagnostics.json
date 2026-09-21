@@ -1,0 +1,49 @@
+{
+  "date": "2026-09-20",
+  "browserVersion": "153.0.8010.12",
+  "sourcePng": {
+    "path": "alpha-diagnostic.png",
+    "bytes": 82,
+    "sha256": "447f3cdbed4de2d6eebf7e7afd926b18ee54bad51b6ba17eedf7990b9ef9c1ea"
+  },
+  "rawRgba": [
+    19,
+    110,
+    247,
+    0,
+    0,
+    0,
+    0,
+    128,
+    1,
+    2,
+    3,
+    128,
+    255,
+    128,
+    1,
+    1
+  ],
+  "decodedRgba": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    128,
+    2,
+    2,
+    4,
+    128,
+    255,
+    255,
+    0,
+    1
+  ],
+  "maxAbs": 247,
+  "different": 7,
+  "byteExact": false,
+  "scope": "仅诊断透明PNG解码；透明度合成规则的数值验收使用调用者已解码的raw RGBA，不能扩展为原PNG隐藏颜色保真承诺。"
+}

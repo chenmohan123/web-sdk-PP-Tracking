@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-19",
+  "scope": "本地可行性归档和现有两算法 SDK 回归；不代表 ReID 模型验收通过",
+  "checks": [
+    { "command": "python -X utf8 reports/2026-09-19-reid-feasibility/verify_archive.py", "exitCode": 0, "result": "哈希及原始向量复算通过；浏览器模型验收仍失败" },
+    { "command": "pnpm typecheck", "exitCode": 0 },
+    { "command": "pnpm test", "exitCode": 0, "testFiles": 8, "passed": 78 },
+    { "command": "pnpm build", "exitCode": 0 },
+    { "command": "pnpm check:package", "exitCode": 0, "result": "实际 tarball 的 ESM/CJS/类型消费通过，研究报告和探针未包含在 npm 包内" },
+    { "command": "门户 sdk:check 前后两次", "exitCode": 0, "requiredPassed": 17, "requiredFailed": 0, "requiredSkipped": 7 },
+    { "command": "门户 pnpm build（包含 astro check）", "exitCode": 0, "pages": 21, "errors": 0, "hints": 7, "result": "原有历史脚本和 Zod 弃用提示保留" },
+    { "command": "Playwright 访问 http://127.0.0.1:4204/", "exitCode": 0, "httpStatus": 200, "algorithms": ["bytetrack", "ocsort"] },
+    { "command": "Python ast.parse 和 node --check 探针语法", "exitCode": 0 }
+  ],
+  "pnpmFlags": ["--config.verify-deps-before-run=false", "--config.manage-package-manager-versions=false"],
+  "unchangedSdkDistSha256": "a448208bc967aeebbb880fd84595f13bd93758888b6d975890f23dbbbb6046f9",
+  "remoteWrites": false,
+  "deepSortImplemented": false,
+  "reidBrowserAcceptancePassed": false
+}

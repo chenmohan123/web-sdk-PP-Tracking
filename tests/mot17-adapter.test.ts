@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
 // @ts-expect-error 评测适配器是独立于发行包的 JavaScript CLI 模块。
 import { parseSequenceInfo, adaptDetections, exportMot, withoutTiming } from '../scripts/evaluation/mot17/adapter.mjs';
 import { createTracker } from '../src/index';
@@ -35,12 +36,20 @@ describe('MOT17 数据边界', () => {
 
   it('真实 SDK 顺序更新空帧，未确认和 lost 不计入 MOT 检测', () => {
     const sequence = adaptDetections('1,-1,1,1,10,10,0.9\n2,-1,1,1,10,10,0.9\n', parseSequenceInfo(ini));
-    const first = runSequence(createTracker, sequence.frames, {});
-    const second = runSequence(createTracker, sequence.frames, {});
+    const packageInfo = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+    const runtimeVersion = `${packageInfo.name}@${packageInfo.version}`;
+    const first = runSequence(createTracker, sequence.frames, {}, runtimeVersion);
+    const second = runSequence(createTracker, sequence.frames, {}, runtimeVersion);
     expect(first.mot).toBe('2,1,1,1,10,10,0.9,-1,-1,-1\n');
     expect(first.deterministic).toBe(second.deterministic);
     expect(first.summary.frames).toBe(3);
     expect(first.summary.droppedDetections).toBe(0);
+    expect(first.summary.runtimeVersion).toBe(runtimeVersion);
+  });
+
+  it('实际运行时版本与候选 package 不一致时拒绝生成评测结果', () => {
+    const sequence = adaptDetections('1,-1,1,1,10,10,0.9\n', parseSequenceInfo(ini));
+    expect(() => runSequence(createTracker, sequence.frames, {}, 'web-sdk-pp-tracking@9.9.9')).toThrow(/运行时版本不匹配/);
   });
 
   it('小数框裁到下边界后仍满足 SDK 的浮点边界契约', () => {

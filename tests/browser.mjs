@@ -27,17 +27,126 @@ try {
     const path = await download.path();
     return JSON.parse(await readFile(path, 'utf8'));
   };
+  const exportSequence = async () => {
+    const downloadPromise = page.waitForEvent('download');
+    await click('导出输入序列');
+    const download = await downloadPromise;
+    const path = await download.path();
+    const buffer = await readFile(path);
+    return { buffer, value: JSON.parse(buffer.toString('utf8')) };
+  };
   await page.goto('http://127.0.0.1:4198');
   assert.equal(await page.locator('html').getAttribute('lang'), 'zh-CN');
   assert.equal(await page.locator('.stage rect').count(), 2);
   assert.match(await frame(), /0\/40/);
+  assert.equal(await page.getByRole('button', { name: '导出输入序列', exact: true }).isDisabled(), false);
   await page.screenshot({ path: '.tmp/browser/desktop.png', fullPage: true });
   await click('单步'); await waitFrame(1); await click('单步');
   assert.equal(await page.locator('[data-track-state=tracked]').count(), 1);
+  await click('播放'); await waitFrame(4);
+  assert.equal(await page.getByRole('button', { name: '导出输入序列', exact: true }).isDisabled(), true);
+  await page.locator('#algorithm').selectOption('ocsort');
+  await page.waitForFunction(() => document.querySelector('#algorithm').value === 'ocsort' || document.querySelector('[role=alert]'));
+  assert.equal(await page.locator('#algorithm').inputValue(), 'ocsort', await page.locator('[role=alert]').textContent().catch(() => '算法切换未提交'));
+  assert.match(await frame(), /0\/40/);
+  assert.equal(await page.getByTestId('lowScoreThreshold').count(), 0);
+  assert.equal(await page.getByTestId('ocmWeight').count(), 1);
+  if (!(await page.locator('.parameters').evaluate(element => element.open))) await page.locator('.parameters summary').click();
+  await click('应用并重新开始');
+  await click('单步');
+  const ocSortOutput = await exportResult();
+  assert.equal(ocSortOutput.options.algorithm, 'ocsort');
+  assert.equal(ocSortOutput.results[0].algorithm, 'ocsort');
+  await page.getByTestId('ocmWeight').fill('0.9');
+  assert.equal((await exportResult()).options.ocmWeight, 0.2);
+  await page.locator('#sample').selectOption('crossing');
+  await page.waitForFunction(() => document.querySelector('#sample').value === 'crossing' && document.querySelector('#sample').disabled === false);
+  await click('单步');
+  assert.equal((await exportResult()).options.ocmWeight, 0.2);
+  await click('重新开始'); await click('播放'); await waitFrame(40);
+  await page.waitForFunction(() => document.querySelector('.status').dataset.state !== 'running');
+  const ocSortPlayback = await exportResult();
+  assert.equal(ocSortPlayback.results.length, 40);
+  assert(ocSortPlayback.results.every(result => result.algorithm === 'ocsort'));
+  const ocImport = { frames: [{ timestampMs: 11, imageSize: { width: 100, height: 100 }, detections: [{ box: { x: 10, y: 10, width: 20, height: 20 }, score: 0.9, classId: 0 }] }] };
+  await upload(ocImport); await click('单步');
+  const ocImported = await exportResult();
+  assert.equal(ocImported.algorithm, 'ocsort');
+  assert(ocImported.results.every(result => result.algorithm === 'ocsort'));
+  checks.push('算法切换停止播放、清空状态；OC-SORT 仅显示有效参数并完成播放、导入和导出；未应用草稿不混入导出');
+
+  await page.locator('#sample').selectOption('crossing');
+  await page.locator('#algorithm').selectOption('deepsort');
+  await page.waitForFunction(() => document.querySelector('#algorithm').value === 'deepsort' || document.querySelector('[role=alert]'));
+  assert.equal(await page.locator('#algorithm').inputValue(), 'deepsort');
+  assert.equal(await page.getByTestId('maxCosineDistance').count(), 1);
+  assert.equal(await page.getByTestId('gallerySize').count(), 1);
+  assert.match(await page.getByTestId('feature-space').textContent(), /original-vectors.*4D/);
+  await click('单步');
+  const deepOutput = await exportResult();
+  assert.equal(deepOutput.algorithm, 'deepsort');
+  assert.equal(deepOutput.options.maxCosineDistance, 0.2);
+  assert.equal(deepOutput.options.gallerySize, 30);
+  assert.deepEqual(deepOutput.options.featureSpace, deepOutput.featureSpace);
+  assert.equal(deepOutput.frames[0].detections[0].embedding.length, 4);
+  const importedSpace = { id: 'imported-long-feature-space-id-for-390px-layout-verification-0123456789', dimension: 2 };
+  const deepImport = { featureSpace: importedSpace, frames: [
+    { timestampMs: 3, imageSize: { width: 100, height: 100 }, featureSpaceId: importedSpace.id, detections: [{ box: { x: 10, y: 10, width: 20, height: 20 }, score: 0.9, classId: 0, embedding: [1, 0] }] },
+    { timestampMs: 13, imageSize: { width: 100, height: 100 }, featureSpaceId: importedSpace.id, detections: [{ box: { x: 11, y: 10, width: 20, height: 20 }, score: 0.9, classId: 0, embedding: [1, 0] }] },
+  ] };
+  await upload(deepImport); await click('单步');
+  const importedDeep = await exportResult();
+  assert.deepEqual(importedDeep.featureSpace, importedSpace);
+  assert.deepEqual(importedDeep.frames, deepImport.frames);
+  const largeSpace = { id: 'browser-roundtrip-512d', dimension: 512 };
+  const largeEmbedding = Array(largeSpace.dimension).fill(0); largeEmbedding[0] = 1;
+  const largeInput = { featureSpace: largeSpace, frames: Array.from({ length: 1000 }, (_, timestampMs) => ({ timestampMs, imageSize: { width: 100, height: 100 }, featureSpaceId: largeSpace.id, detections: [{ box: { x: 10, y: 10, width: 20, height: 20 }, score: 0.9, classId: 0, embedding: largeEmbedding }] })) };
+  await upload(largeInput);
+  const beforeStepSequence = await exportSequence();
+  assert(beforeStepSequence.buffer.byteLength <= 5 * 1024 * 1024);
+  assert.deepEqual(beforeStepSequence.value.featureSpace, largeSpace);
+  assert.equal(beforeStepSequence.value.frames.length, 1000);
+  assert.equal(beforeStepSequence.value.frames.at(-1).timestampMs, 999);
+  await page.getByTestId('import').setInputFiles({ name: 'roundtrip-before-step.json', mimeType: 'application/json', buffer: beforeStepSequence.buffer });
+  await page.waitForFunction(() => document.querySelector('input[type=file]').disabled === false);
+  assert.match(await frame(), /0\/1000/);
+  await click('单步');
+  const afterStepSequence = await exportSequence();
+  await page.getByTestId('import').setInputFiles({ name: 'roundtrip-after-step.json', mimeType: 'application/json', buffer: afterStepSequence.buffer });
+  await page.waitForFunction(() => document.querySelector('input[type=file]').disabled === false);
+  assert.match(await frame(), /0\/1000/);
+  assert.deepEqual(afterStepSequence.value.frames[0].detections[0].embedding, largeEmbedding);
+  checks.push('512维千帧输入在单步前后均可紧凑下载并重新导入，特征空间、时间和向量往返一致');
+  const syntheticSpace = { id: 'pp-tracking-demo-synthetic-appearance-v1-original-vectors', dimension: 4 };
+  await page.locator('#sample').selectOption('straight');
+  await page.waitForFunction(() => document.querySelector('#sample').value === 'straight' && document.querySelector('#sample').disabled === false);
+  await click('单步');
+  const builtInAfterCustomImport = await exportResult();
+  assert.deepEqual(builtInAfterCustomImport.featureSpace, syntheticSpace);
+  assert.deepEqual(builtInAfterCustomImport.options.featureSpace, syntheticSpace);
+  assert.equal(builtInAfterCustomImport.frames[0].featureSpaceId, syntheticSpace.id);
+  await upload({ ...deepImport, frames: [...deepImport.frames, { ...deepImport.frames[1], timestampMs: 23, featureSpaceId: 'wrong-space' }] });
+  assert.match(await page.getByRole('alert').textContent(), /INVALID_SEQUENCE/);
+  const preservedDeep = await exportResult();
+  assert.deepEqual(preservedDeep.results, builtInAfterCustomImport.results);
+  assert.deepEqual(preservedDeep.featureSpace, syntheticSpace);
+  await page.getByTestId('language').click();
+  assert.match(await page.getByTestId('feature-space').textContent(), /4D/);
+  await page.getByTestId('language').click();
+  assert.deepEqual((await exportResult()).results, builtInAfterCustomImport.results);
+  await page.screenshot({ path: '.tmp/browser/deepsort.png', fullPage: true });
+  checks.push('DeepSORT 合成向量运行；有效参数、特征空间和结果报告导出；自定义空间导入后切内置样例恢复合成空间；非法末帧与语言切换保留状态');
+
+  await page.locator('#algorithm').selectOption('bytetrack');
+  await page.waitForFunction(() => document.querySelector('#algorithm').value === 'bytetrack' || document.querySelector('[role=alert]'));
+  assert.equal(await page.locator('#algorithm').inputValue(), 'bytetrack');
+  await page.locator('#sample').selectOption('straight');
+  assert.match(await frame(), /0\/40/);
+  await click('单步');
   const beforeLanguage = await exportResult();
   await page.getByTestId('language').click();
   assert.equal(await page.locator('html').getAttribute('lang'), 'en');
-  assert.match(await frame(), /2\/40/);
+  assert.match(await frame(), /1\/40/);
   assert.match(await page.locator('.track').textContent(), /#1/);
   await page.screenshot({ path: '.tmp/browser/english.png', fullPage: true });
   await page.getByTestId('language').click();
@@ -59,6 +168,8 @@ try {
     assert.equal(await page.getByRole('button', { name: '播放', exact: true }).isDisabled(), true);
     const output = await exportResult();
     assert.equal(output.results.length, 40);
+    assert.equal(output.algorithm, 'bytetrack');
+    assert(output.results.every(result => result.algorithm === 'bytetrack'));
     assert.deepEqual(output.results.map(r => r.timestampMs), Array.from({ length: 40 }, (_, i) => i * 100));
     if (sample === 'low') assert.equal(output.results[8].tracks[0].score, 0.25);
     if (sample === 'occlusion') {
@@ -79,10 +190,26 @@ try {
   checks.push('真实键盘seek复位顺序重算，lost虚线、空分数');
 
   const one = { frames: [{ timestampMs: 17, imageSize: { width: 100, height: 100 }, detections: [{ box: { x: 10, y: 10, width: 20, height: 20 }, score: 0.9, classId: 0 }] }] };
+  await page.evaluate(() => {
+    const original = File.prototype.text;
+    File.prototype.text = async function () { await new Promise(resolve => window.setTimeout(resolve, 100)); return original.call(this); };
+    window.__restoreTrackingFileText = () => { File.prototype.text = original; };
+  });
+  const delayedUpload = page.getByTestId('import').setInputFiles({ name: 'delayed.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(one)) });
+  await page.waitForFunction(() => document.querySelector('#algorithm').disabled === true);
+  assert.equal(await page.locator('#algorithm').isDisabled(), true);
+  assert.equal(await page.getByRole('button', { name: '导出输入序列', exact: true }).isDisabled(), true);
+  await delayedUpload;
+  await page.waitForFunction(() => document.querySelector('#algorithm').disabled === false);
+  await page.evaluate(() => window.__restoreTrackingFileText());
   await upload(one); assert.match(await frame(), /0\/1/); await click('单步');
   const single = await exportResult(); assert.equal(single.processedFrames, 1); assert.equal(single.results[0].timestampMs, 17);
   await upload(one); assert.match(await frame(), /0\/1/); await click('单步');
   const unchanged = await exportResult();
+  await page.locator('#algorithm').selectOption('deepsort');
+  assert.match(await page.getByRole('alert').textContent(), /INVALID_SEQUENCE/);
+  assert.equal(await page.locator('#algorithm').inputValue(), 'bytetrack');
+  assert.deepEqual((await exportResult()).results, unchanged.results);
   await upload({ frames: [...one.frames, { ...one.frames[0], timestampMs: 16 }] });
   assert.match(await page.getByRole('alert').textContent(), /INVALID_SEQUENCE/);
   assert.deepEqual((await exportResult()).results, unchanged.results);
@@ -92,9 +219,9 @@ try {
   await page.getByTestId('import').setInputFiles({ name: 'large.json', mimeType: 'application/json', buffer: Buffer.alloc(5 * 1024 * 1024 + 1, 32) });
   await page.waitForFunction(() => document.querySelector('[role=alert]').textContent.includes('FILE_TOO_LARGE'));
   assert.deepEqual((await exportResult()).results, unchanged.results);
-  checks.push('单帧导入/重复同文件/导出；逆序、坏JSON、超5MiB失败均保留原结果');
+  checks.push('异步读取时算法选择禁用；单帧导入/重复同文件/导出；无向量切换、逆序、坏JSON、超5MiB失败均保留原结果');
 
-  await page.locator('.parameters summary').click();
+  if (!(await page.locator('.parameters').evaluate(element => element.open))) await page.locator('.parameters summary').click();
   await page.getByTestId('highScoreThreshold').fill('0.05');
   await click('应用并重新开始');
   assert.match(await page.getByRole('alert').textContent(), /INVALID_OPTIONS/);
@@ -109,6 +236,11 @@ try {
   await click('单步'); assert.equal(await page.locator('[data-track-state]').count(), 0);
   assert.match(await page.locator('.track-list').textContent(), /本帧无活动轨迹/);
   checks.push('空检测序列真实空结果');
+
+  await page.locator('#sample').selectOption('straight');
+  await page.locator('#algorithm').selectOption('deepsort');
+  await page.waitForFunction(() => document.querySelector('#algorithm').value === 'deepsort' || document.querySelector('[role=alert]'));
+  assert.equal(await page.locator('#algorithm').inputValue(), 'deepsort');
 
   await page.setViewportSize({ width: 390, height: 844 });
   for (let i = 0; i < 2; i++) {
@@ -128,7 +260,7 @@ try {
   await page.screenshot({ path: '.tmp/browser/vanilla.png', fullPage: true });
   checks.push('Vanilla构建包单步/复位/CPU实际结果');
   assert.deepEqual(errors, []);
-  const report = { testedAt: new Date().toISOString(), browser: browser.version(), platform: process.platform, runtimeVersion: 'web-sdk-pp-tracking@0.1.0', checks, pageErrors: errors, screenshots: ['desktop', 'english', 'occlusion', 'mobile', 'vanilla'].map(s => resolve(`.tmp/browser/${s}.png`)) };
+  const report = { testedAt: new Date().toISOString(), browser: browser.version(), platform: process.platform, runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.0', checks, pageErrors: errors, screenshots: ['desktop', 'english', 'deepsort', 'occlusion', 'mobile', 'vanilla'].map(s => resolve(`.tmp/browser/${s}.png`)) };
   await writeFile('.tmp/browser/report.json', JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify(report, null, 2));
 } finally {

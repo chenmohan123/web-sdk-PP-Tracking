@@ -1,0 +1,58 @@
+{
+  "testedAt": "2026-09-21T04:22:31.948Z",
+  "scope": "预先固定02前30帧补充比较，不代表全量CPU模型评测",
+  "identitySha256": "007eded17b981a3326550d03f313b5de6ab8140d0f5e75b9415a4c1694036108",
+  "frames": 30,
+  "detections": 433,
+  "maxAbs": 3.5762786865234375e-7,
+  "maxCosineDistance": 2.7502444766014378e-12,
+  "meanCosineDistance": 1.0811205664348496e-12,
+  "tracks": {
+    "bytetrack": {
+      "nonTimingEqual": true,
+      "motEqual": true,
+      "hashes": [
+        {
+          "json": "d17b29e410b225ccfd69419417477ca1e764536c1eade75e3a3c2f22066ef130",
+          "mot": "2d3e55e0e080c9b941fdf708f7dcb081caaca1cefa832f2468cb7f3bb26a201e"
+        },
+        {
+          "json": "d17b29e410b225ccfd69419417477ca1e764536c1eade75e3a3c2f22066ef130",
+          "mot": "2d3e55e0e080c9b941fdf708f7dcb081caaca1cefa832f2468cb7f3bb26a201e"
+        }
+      ]
+    },
+    "ocsort": {
+      "nonTimingEqual": true,
+      "motEqual": true,
+      "hashes": [
+        {
+          "json": "de86abb8e903ca1b9363b02b443e31ad2870cd8f6a11b8a54c4094017990025b",
+          "mot": "08573d5b7abd40b53734e33dbdbbb5b9b8a4a6ca6837d6558250cbb02a2c1be0"
+        },
+        {
+          "json": "de86abb8e903ca1b9363b02b443e31ad2870cd8f6a11b8a54c4094017990025b",
+          "mot": "08573d5b7abd40b53734e33dbdbbb5b9b8a4a6ca6837d6558250cbb02a2c1be0"
+        }
+      ]
+    },
+    "deepsort": {
+      "nonTimingEqual": true,
+      "motEqual": true,
+      "hashes": [
+        {
+          "json": "2e5b8681d3ece74bc063c56ce1ad65a846ae44ab679774a3012d40bc0eddafad",
+          "mot": "95c7d7cf378e929add1bdd32bea93a650037f557481abb2a5e5f2e220ac78b25"
+        },
+        {
+          "json": "2e5b8681d3ece74bc063c56ce1ad65a846ae44ab679774a3012d40bc0eddafad",
+          "mot": "95c7d7cf378e929add1bdd32bea93a650037f557481abb2a5e5f2e220ac78b25"
+        }
+      ]
+    }
+  },
+  "sources": {
+    "gpu": "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\mot17-reid-smoke-20260921-c",
+    "wasm": "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\mot17-reid-wasm-20260921-c"
+  }
+}

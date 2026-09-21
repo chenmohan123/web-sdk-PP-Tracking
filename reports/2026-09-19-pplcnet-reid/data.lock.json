@@ -1,0 +1,130 @@
+{
+  "date": "2026-09-19",
+  "url": "https://motchallenge.net/data/MOT17.zip",
+  "archiveBytes": 5860214001,
+  "archiveEtag": "\"15d4bc4f1-5b6c01991f807\"",
+  "transferredBytes": 6930108,
+  "frames": [
+    1,
+    31,
+    61,
+    91,
+    121,
+    151
+  ],
+  "entries": [
+    {
+      "path": "data/MOT17-02-FRCNN/seqinfo.ini",
+      "zipMember": "MOT17/train/MOT17-02-FRCNN/seqinfo.ini",
+      "bytes": 108,
+      "sha256": "669c5135aa1b7f1726ee50ab6cec86780fc448dadaf93ea9c4fb6e2a0d4256aa",
+      "zipCrc32": 1310025503
+    },
+    {
+      "path": "data/MOT17-02-FRCNN/gt/gt.txt",
+      "zipMember": "MOT17/train/MOT17-02-FRCNN/gt/gt.txt",
+      "bytes": 916738,
+      "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440",
+      "zipCrc32": 2809161247
+    },
+    {
+      "path": "data/MOT17-02-FRCNN/img1/000001.jpg",
+      "zipMember": "MOT17/train/MOT17-02-FRCNN/img1/000001.jpg",
+      "bytes": 179070,
+      "sha256": "41ff65408c5338f4a83035fd12e9f5f7b658ee82feacf4512655677032636597",
+      "zipCrc32": 191066026
+    },
+    {
+      "path": "data/MOT17-02-FRCNN/img1/000031.jpg",
+      "zipMember": "MOT17/train/MOT17-02-FRCNN/img1/000031.jpg",
+      "bytes": 178776,
+      "sha256": "4b3c01ad61fb679fa6d6effe03c29d0be393fe3319dc2efd4589498f38bd095c",
+      "zipCrc32": 4017146215
+    },
+    {
+      "path": "data/MOT17-02-FRCNN/img1/000061.jpg",
+      "zipMember": "MOT17/train/MOT17-02-FRCNN/img1/000061.jpg",
+      "bytes": 173416,
+      "sha256": "aecd08dc0fecaa5405ba03e4cd4837cbfc91ba613b0be5dd33ea8ed385b990bf",
+      "zipCrc32": 2117433436
+    },
+    {
+      "path": "data/MOT17-02-FRCNN/img1/000091.jpg",
+      "zipMember": "MOT17/train/MOT17-02-FRCNN/img1/000091.jpg",
+      "bytes": 179740,
+      "sha256": "0a733a06eda4f1cd701cb95a6ac84ffda14e527158b2323ba776e08d5cc8ee30",
+      "zipCrc32": 3173510059
+    },
+    {
+      "path": "data/MOT17-02-FRCNN/img1/000121.jpg",
+      "zipMember": "MOT17/train/MOT17-02-FRCNN/img1/000121.jpg",
+      "bytes": 178716,
+      "sha256": "8b6f5efbe42d4523e91e1e558f37ccb7f66fe54a679d29b9eed54294b04b5f32",
+      "zipCrc32": 1564777658
+    },
+    {
+      "path": "data/MOT17-02-FRCNN/img1/000151.jpg",
+      "zipMember": "MOT17/train/MOT17-02-FRCNN/img1/000151.jpg",
+      "bytes": 175445,
+      "sha256": "c905cd02891102e9a3f44a02d869608ddb8e53acc38acc1fd7b18bd42f0fc998",
+      "zipCrc32": 4218252920
+    },
+    {
+      "path": "data/MOT17-04-FRCNN/seqinfo.ini",
+      "zipMember": "MOT17/train/MOT17-04-FRCNN/seqinfo.ini",
+      "bytes": 109,
+      "sha256": "f2d5bbe2c4d2a884422571987bc5363b61bb7e2c6748d1cff444e55b4886b888",
+      "zipCrc32": 311553211
+    },
+    {
+      "path": "data/MOT17-04-FRCNN/gt/gt.txt",
+      "zipMember": "MOT17/train/MOT17-04-FRCNN/gt/gt.txt",
+      "bytes": 3473246,
+      "sha256": "f8cfbe36ef38a2e1857d7ebfe7d754b2355a3ffb9e1f9cedea435e86e4fbc948",
+      "zipCrc32": 3305687821
+    },
+    {
+      "path": "data/MOT17-04-FRCNN/img1/000001.jpg",
+      "zipMember": "MOT17/train/MOT17-04-FRCNN/img1/000001.jpg",
+      "bytes": 230263,
+      "sha256": "53f3d86aad1aa4912b2919bae344919b54d193e72c1c7169ce8bc4685408053c",
+      "zipCrc32": 1609417015
+    },
+    {
+      "path": "data/MOT17-04-FRCNN/img1/000031.jpg",
+      "zipMember": "MOT17/train/MOT17-04-FRCNN/img1/000031.jpg",
+      "bytes": 232116,
+      "sha256": "baf3e586225f9d5f413569abe4ad6500898952e9fde7e795aad246eb4d05727b",
+      "zipCrc32": 313438040
+    },
+    {
+      "path": "data/MOT17-04-FRCNN/img1/000061.jpg",
+      "zipMember": "MOT17/train/MOT17-04-FRCNN/img1/000061.jpg",
+      "bytes": 232158,
+      "sha256": "9e7153ead93c8d9e25e2e61300cfa59d21ef3bf5d117825cca26f14d50d63997",
+      "zipCrc32": 136687560
+    },
+    {
+      "path": "data/MOT17-04-FRCNN/img1/000091.jpg",
+      "zipMember": "MOT17/train/MOT17-04-FRCNN/img1/000091.jpg",
+      "bytes": 229807,
+      "sha256": "4016c1c18de615fd5a50efb4c196a1a3f405452b94073b85de370248c0aff2bc",
+      "zipCrc32": 1296224539
+    },
+    {
+      "path": "data/MOT17-04-FRCNN/img1/000121.jpg",
+      "zipMember": "MOT17/train/MOT17-04-FRCNN/img1/000121.jpg",
+      "bytes": 230017,
+      "sha256": "a8fac3b3fccd0f0b964d4528d3f0b7fb3faa51151fc8d7485851faa36196933c",
+      "zipCrc32": 3452471434
+    },
+    {
+      "path": "data/MOT17-04-FRCNN/img1/000151.jpg",
+      "zipMember": "MOT17/train/MOT17-04-FRCNN/img1/000151.jpg",
+      "bytes": 231136,
+      "sha256": "3e5c1e56e1b693e64e097a712068b5b1a0b30c9e11e6e9ff4fdd0ddfad9243bb",
+      "zipCrc32": 2496353484
+    }
+  ],
+  "scope": "官方训练集预定样本，仅本地研究；原图和完整标注不归档、不分发。未取得当前站点完整许可页面。"
+}

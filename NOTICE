@@ -16,7 +16,7 @@ arXiv:2110.06864，2021-10-13。https://arxiv.org/abs/2110.06864
 
 主要差异：像素 cx/cy/w/h 八维恒速状态、时间戳 dt、固定噪声、Joseph 更新、
 门限内最大基数最小代价分配、毫秒超时、实例私有 ID、事务性更新。
-无 ReID，无相机运动补偿，不承诺上游逐值兼容或普遍真实序列 MOT 精度；固定训练集评测见日期化报告。
+无相机运动补偿；DeepSORT关联器消费调用者向量，可选ReID子入口从人体框提取向量。本项目不承诺向量真实性、上游逐值兼容或普遍真实序列 MOT 精度；固定训练集评测只覆盖对应报告明确列出的策略。
 论文引用不替代第三方代码许可；本项目 Apache 声明仅覆盖本项目独立代码。
 
 离线评测来源（不进入运行时）：MOT17 官方公开 FRCNN 训练检测与GT，无图像包。
@@ -29,3 +29,34 @@ Ess、Leibe、Van Gool，Depth and Appearance for Mobile Scene Analysis，ICCV 2
 12c8791b303e0a0b50f753af204249e622d0281a；其源码与原LICENSE仅保留本地.tmp，不包含在npm包。
 工具引用：Luiten等，HOTA: A Higher Order Metric for Evaluating Multi-object Tracking，IJCV 2021。
 实际计算Identity/CLEAR，未宣称计算HOTA；第三方评分许可不替代数据使用条件。
+
+OC-SORT 思想来源：
+Jinkun Cao, Jiangmiao Pang, Xinshuo Weng, Rawal Khirodkar, Kris Kitani,
+Observation-Centric SORT: Rethinking SORT for Robust Multi-Object Tracking，
+arXiv:2203.14360v3，2023-03-16，CVPR 2023，
+https://arxiv.org/abs/2203.14360。
+论文摘要、正文第 4.1--4.2 节和附录伪代码用于推导 OCM、ORU、OCR；本项目没有
+复制或翻译 OC-SORT、SORT、DeepSORT 或 Paddle 的 Kalman/跟踪代码，不是官方移植。
+
+公开 OC-SORT 仓库 https://github.com/noahcao/OC_SORT 的 README 与 LICENSE
+（master，读取时提交 8462e7e729a93ccd3bd995c0a79a890336cb3a0b）声明 MIT
+许可。本项目不分发该仓库代码；该许可义务仅作为来源记录，不扩展本项目 Apache-2.0
+代码的许可范围。
+
+Deep SORT 思想来源：
+Nicolai Wojke, Alex Bewley, Dietrich Paulus,
+Simple Online and Realtime Tracking with a Deep Association Metric，
+arXiv:1703.07402v1，2017-03-21，https://arxiv.org/abs/1703.07402。
+本项目依据论文概念独立实现外观最近邻图库、运动门控、级联关联与有限 IoU
+后备；没有读取、复制或翻译 DeepSORT、SORT、Paddle 或其他上游跟踪实现。
+差异包括 cx/cy/w/h 八维状态、毫秒年龄、本项目噪声与生命周期。npm 包不含
+ReID权重，包含独立可选的图像预处理和特征提取入口；调用者对外部向量来源、许可与质量负责。
+
+可选 PPLCNet ReID 模型：
+官方权重由 PaddleDetection 发布、PaddleClas 提供，固定仓库提交
+b25522a0f4bde8c80603f3ba5e3472059972e3b5；Apache-2.0仓库整体授权作为转换分发依据。
+本包只分发独立预处理/加载代码和模型来源元数据，不包含权重、上游模型代码或训练图像。
+模型卡、原许可和转换说明随双源模型另行分发：
+https://huggingface.co/chenmohan/web-sdk-pp-tracking
+https://modelscope.cn/models/chenmohan/web-sdk-pp-tracking
+固定FP32 ONNX SHA-256：24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4。

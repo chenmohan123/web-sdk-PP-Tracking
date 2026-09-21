@@ -1,6 +1,6 @@
 {
   "name": "web-sdk-pp-tracking",
-  "version": "0.1.0",
+  "version": "0.2.0-rc.0",
   "description": "框架无关的独立 CPU 多目标跟踪算法",
   "type": "module",
   "license": "Apache-2.0",
@@ -12,6 +12,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./reid": {
+      "types": "./dist/reid/index.d.ts",
+      "import": "./dist/reid/index.js",
+      "require": "./dist/reid/index.cjs"
     }
   },
   "files": [
@@ -31,6 +36,7 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "build": "node scripts/build.mjs",
+    "build:reid-candidate": "node scripts/build-reid-candidate.mjs",
     "check:package": "node scripts/check-package.mjs",
     "dev:demo": "vite --config demo/vite.config.ts --host 127.0.0.1 --port 4196",
     "typecheck:demo": "tsc --noEmit -p demo/tsconfig.json",
@@ -45,12 +51,21 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "esbuild": "0.25.12",
+    "onnxruntime-web": "1.27.0",
     "playwright": "1.63.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "typescript": "5.9.3",
     "vite": "7.3.6",
     "vitest": "3.2.4"
+  },
+  "peerDependencies": {
+    "onnxruntime-web": "1.27.0"
+  },
+  "peerDependenciesMeta": {
+    "onnxruntime-web": {
+      "optional": true
+    }
   },
   "engines": {
     "node": ">=22.12.0"

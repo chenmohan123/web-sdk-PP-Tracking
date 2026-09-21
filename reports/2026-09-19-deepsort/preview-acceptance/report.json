@@ -1,0 +1,19 @@
+{
+  "testedAt": "2026-09-19T13:57:22.787Z",
+  "url": "http://127.0.0.1:4204/",
+  "browser": "153.0.8010.12",
+  "platform": "win32",
+  "algorithms": [
+    "bytetrack",
+    "ocsort",
+    "deepsort"
+  ],
+  "confirmedTracks": 2,
+  "pageErrors": [],
+  "screenshots": [
+    "desktop.png",
+    "narrow.png",
+    "narrow-en.png"
+  ],
+  "scope": "本地预览第三算法与桌面窄屏布局；不是手机或真实 ReID 评测"
+}

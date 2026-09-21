@@ -2,12 +2,32 @@
 
 [English](../en/release-checklist.md)
 
-基于门户 `standards/v1/templates/release-checklist.md`。0.1.0 已于 2026-09-19 完成首次发布与日期化远程核验；本清单不承诺未来版本或未验证环境继续满足相同状态。
+基于门户 `standards/v1/templates/release-checklist.md`。当前发布目标为 0.2.0-rc.0，预发布使用 next，稳定 latest 保留 0.1.0。用户已授权本版本 PR、合并与发布；交付结果按实际回执补充。
+
+## 当前混合SDK候选
+
+本节已有勾选记录来自0.2.0-alpha.0分发阶段及其归档；不自动证明RC验证或审查通过。当前[RC说明](releases/0.2.0-rc.0.md)与本轮独立tarball、浏览器、标准检查回执需分别核对。
+
+- [x] 默认根入口提供三种CPU/main跟踪算法；可选 `./reid` 独立导出ESM/CJS/types，ORT1.27.0为optional peer，根调用者无需引擎。
+- [x] 固定FP32模型已分发到ModelScope/Hugging Face，默认ModelScope；固定revision、bytes、SHA及匿名回读证据见[阶段报告](../../reports/2026-09-21-reid-distribution/README.md)。
+- [x] 模型卡保留官方仓库整体Apache-2.0采用依据、转换署名和训练披露缺口；parameterCount为null。
+- [x] 1.3 hybrid清单、Demo完成标准after、完整verify和真实生产构建浏览器验收，见当前阶段报告。
+- [x] 最终实际tarball消费、无ORT隔离与完整性已归档。
+- [x] 当前候选通过最终独立审查与修复范围复审；三项Minor已修复，ORT惰性资源成本按报告保留。
+- [ ] 本版本获明确发布授权后，经PR、最新提交CI、合并及不可变新标签发布，并更新npm/线上Demo回执。
+
+- [x] [三算法真实画面评测](../../reports/2026-09-21-mot-reid/README.md)已完成5316帧/67639检测、官方七段合计、逐段指标、浏览器/两次Node一致、零容量丢弃与完整成本归档。
+
+模型分发和真实评测不等于SDK/npm/Demo发布。当前版本为 0.2.0-rc.0 发布候选：ByteTrack保持默认，OC-SORT/DeepSORT显式可选，ReID人体场景实验能力；候选版本、变更日志和发布通道已整理，本版本远程发布已获授权，完成状态须以实际回执为准。视频/摄像头调度与跨设备兼容仍待独立设计验证。
+
+## 历史交付与基础检查
+
+以下远程勾选项只记录0.1.0于2026-09-19的交付状态；本地通用检查须由上方当前阶段证据确认。
 
 - [x] 中文README和英文等价指南互链；算法来源、许可、输入输出、状态/reset和cold/warm已记录。
-- [x] 1.2.0 algorithm清单，无model/cache；CHANGELOG包含来源、实现差异及限制。
+- [x] 0.1.0使用1.2.0 algorithm清单，无model/cache；后续候选的CHANGELOG另记三算法与ReID变更。
 - [x] `npm run verify` 为完整本地验证命令；CI覆盖类型、单测、包产物、Demo、示例与浏览器。
-- [x] package发行文件仅dist、README、LICENSE、NOTICE和package.json，无React生产依赖。
+- [x] package发行文件仅dist、README、LICENSE、NOTICE和package.json，无React生产依赖；本地实际tarball已消费三种算法的ESM/CJS/类型声明。
 - [x] 兼容性包含日期、OS、设备、浏览器、实际后端与runtime。
 - [x] 已从门户根目录运行修改前后检查并保存独立报告；本地 required 失败为 0，远程规则仍由 API 回执核验。
 - [x] 用户本轮已明确授权首次发布；此授权不扩展至未来版本或无关仓库。
@@ -18,6 +38,10 @@
 - [x] Pages Source=GitHub Actions、github-pages 环境、HTTPS、串行部署、最小权限及提交关联的成功部署记录已核验。
 - [x] GitHub、npm 与 HTTPS Demo 链接已实际核验，日期化回执不含凭据，见[首版交付记录](../../reports/2026-09-19-release/README.md)。
 
-本地检查器将远程规则保留skip；没有required本地失败只能称locally-compliant。模型资产项不适用。清单中的待办不会自动触发任何远程动作。
+本地检查器将远程规则保留skip；没有required本地失败只能称locally-compliant。模型资产项对当前hybrid候选适用，不能沿用历史algorithm豁免。待办不会自动触发远程动作。
+
+当前[可选ReID模块](reid-candidate.md)已加入本地package.exports/dist，配套真实双源、许可说明与1.3 hybrid清单。其带日期浏览器验收独立归档，不能据此声称npm或线上Demo已更新。
+
+0.2.0-rc.0 的三策略、外部向量与 Demo 采用独立候选发布流程；上述远程勾选项只记录 0.1.0 历史事实，不能作为 RC 已发布的证据。
 
 发布包使用 LF 文本换行；历史 reports 保持原始字节。最终包的实际 ESM/CJS/类型消费、SHA256、sha512 integrity 与 LF checkout 对比单独归档，不拿旧桌面报告的包大小作为最终证据。首版本机认证发布的 `provenance` 为 `null`；Trusted Publisher 仅已保存配置，未来 OIDC 发布尚未由新版本实测，最终状态须以对应版本 npm 回执为准。真实序列指标和局限见 [MOT17 报告](../../reports/2026-09-19-mot17/README.md)。

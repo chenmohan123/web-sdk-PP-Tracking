@@ -1,0 +1,20 @@
+[
+  {
+    "kind": "modelscope",
+    "repository": "chenmohan/web-sdk-pp-tracking",
+    "revision": "dc3d9f7a97be4033e654525f0e9d3fbd5eaf7c9b",
+    "path": "pplcnet-reid/0.1.0/pplcnet-reid-fp32.onnx",
+    "downloadUrl": "https://modelscope.cn/models/chenmohan/web-sdk-pp-tracking/resolve/dc3d9f7a97be4033e654525f0e9d3fbd5eaf7c9b/pplcnet-reid/0.1.0/pplcnet-reid-fp32.onnx",
+    "bytes": 33704835,
+    "sha256": "24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4"
+  },
+  {
+    "kind": "huggingface",
+    "repository": "chenmohan/web-sdk-pp-tracking",
+    "revision": "02c299b5b5618315fc754002b7ea7c95c95e8a82",
+    "path": "pplcnet-reid/0.1.0/pplcnet-reid-fp32.onnx",
+    "downloadUrl": "https://huggingface.co/chenmohan/web-sdk-pp-tracking/resolve/02c299b5b5618315fc754002b7ea7c95c95e8a82/pplcnet-reid/0.1.0/pplcnet-reid-fp32.onnx",
+    "bytes": 33704835,
+    "sha256": "24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4"
+  }
+]

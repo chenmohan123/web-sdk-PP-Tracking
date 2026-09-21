@@ -1,0 +1,17 @@
+{"backend":"wasm","validated":34,"maxAbs":3.501772880554199e-7,"cancelledThenRecovered":true}
+{"backend":"webgpu","validated":34,"maxAbs":4.3958425521850586e-7,"cancelledThenRecovered":true}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.evaluate: ReIdError: 模型实际字节数不匹配
+    at readBounded (http://127.0.0.1:52770/reid.mjs:81:39)
+    at async acquireModel (http://127.0.0.1:52770/reid.mjs:153:13)
+    at async http://127.0.0.1:52770/reid.mjs:341:29
+    at async eval (eval at evaluate (:311:30), <anonymous>:4:18)
+    at async <anonymous>:337:30
+    at C:\Users\chenm\.codex\worktrees\tracking-algorithms\web-sdk-PP-Tracking\tests\reid-browser.mjs:195:38 {
+  log: []
+}
+
+Node.js v24.16.0

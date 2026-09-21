@@ -1,0 +1,82 @@
+$ vitest run "tests/reid-preprocess.test.ts" "tests/reid-lifecycle.test.ts"
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ✓ tests/reid-preprocess.test.ts (4 tests) 24ms
+ ❯ tests/reid-lifecycle.test.ts (28 tests | 2 failed) 901ms
+   ✓ ReID 固定身份与生命周期 > 工厂同步复制模型，校验完整 SHA 后才建 session，ready load 幂等 26ms
+   ✓ ReID 固定身份与生命周期 > 无效配置和 hash 在 session 前拒绝 15ms
+   ✓ ReID 固定身份与生命周期 > 加载中 load/extract 返回 BUSY，失败可重试 21ms
+   ✓ ReID 固定身份与生命周期 > 调用前取消、未加载、释放后均稳定拒绝 8ms
+   ✓ ReID 固定身份与生命周期 > session 创建期间取消等待并释放半成品，随后可重试 60ms
+   ✓ ReID 固定身份与生命周期 > 完整帧验证先于推理，输入数量/分数/类别/图外框失败不会部分运行 11ms
+   × ReID 固定身份与生命周期 > 稀疏检测数组在任何推理前拒绝 32ms
+     → expected ReIdError: 特征推理失败 { …(2) } to match object { code: 'INVALID_INPUT' }
+(2 matching properties omitted from actual)
+   ✓ ReID 固定身份与生命周期 > SHA 等待期间取消不会创建会话，可重新加载 65ms
+   ✓ ReID 固定身份与生命周期 > session 完成进度回调取消释放会话，不提交 ready 12ms
+   ✓ ReID 固定身份与生命周期 > dispose 等待加载中的会话创建再释放，不提前 release 63ms
+   ✓ ReID 固定身份与生命周期 > 多检测一一绑定不同方向的向量，后续失败不提交部分结果 25ms
+   ✓ ReID 固定身份与生命周期 > GPU 输出回读期间取消继续等待并释放所有输出 67ms
+   ✓ ReID 固定身份与生命周期 > WebGPU 禁止 CPU fallback，WASM 固定单线程 basic 18ms
+   ✓ ReID 固定身份与生命周期 > 明确 OOM 稳定归类，未知设备错误不猜测 OOM 11ms
+   ✓ ReID 固定身份与生命周期 > 图像和元数据在入口复制，输出按顺序绑定且保留分数框 19ms
+   ✓ ReID 固定身份与生命周期 > 运行取消等待 run，释放所有 Tensor，丢弃整帧且下一帧可恢复 76ms
+   ✓ ReID 固定身份与生命周期 > dispose 等待 run 再 release，立即拒绝新工作且幂等 61ms
+   ✓ ReID 固定身份与生命周期 > 输出 zero 失败整帧原子性与下一帧恢复 10ms
+   ✓ ReID 固定身份与生命周期 > 输出 nan 失败整帧原子性与下一帧恢复 12ms
+   ✓ ReID 固定身份与生命周期 > 输出 short 失败整帧原子性与下一帧恢复 11ms
+   ✓ ReID 固定身份与生命周期 > 输出 run 失败整帧原子性与下一帧恢复 14ms
+   ✓ ReID 资产边界 > 来源固定版本/大小/SHA/HTTPS 校验且同步复制来源 metadata 70ms
+   ✓ ReID 资产边界 > 下载缓存仍校验 SHA，错误缓存删除且不换源 81ms
+   ✓ ReID 资产边界 > 本地模型不缓存，缓存不可用明确报告 42ms
+   ✓ ReID 资产边界 > 网络错误使用安全原因且仅请求显式来源 2ms
+   ✓ ReID 资产边界 > 下载硬上限触发 reader 取消，短文件拒绝 6ms
+   ✓ ReID 资产边界 > 下载 pending read 取消能结束读取并释放 reader 59ms
+   × ReID 资产边界 > fetch 刚返回响应时取消也会关闭响应体 2ms
+     → expected "spy" to be called 1 times, but got 0 times
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 固定身份与生命周期 > 稀疏检测数组在任何推理前拒绝
+AssertionError: expected ReIdError: 特征推理失败 { …(2) } to match object { code: 'INVALID_INPUT' }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "INVALID_INPUT",
++ ReIdError {
++   "code": "INFERENCE_FAILED",
+  }
+
+ ❯ tests/reid-lifecycle.test.ts:85:5
+     83|   it('稀疏检测数组在任何推理前拒绝', async () => {
+     84|     const instance = createReIdExtractor(options()); await instance.lo…
+     85|     await expect(instance.extract(value)).rejects.toMatchObject({ code…
+       |     ^
+     86|   });
+     87|   it('SHA 等待期间取消不会创建会话，可重新加载', async () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/reid-lifecycle.test.ts > ReID 资产边界 > fetch 刚返回响应时取消也会关闭响应体
+AssertionError: expected "spy" to be called 1 times, but got 0 times
+ ❯ tests/reid-lifecycle.test.ts:214:123
+    212|     vi.mocked(fetch).mockImplementationOnce(async () => { controller.a…
+    213|     const instance = createReIdExtractor({ modelId: 'pplcnet-reid-fp32…
+    214|     await expect(instance.load({ signal: controller.signal })).rejects…
+       |                                                                                                                           ^
+    215|   });
+    216| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  2 failed | 30 passed (32)
+   Start at  01:08:04
+   Duration  1.78s (transform 159ms, setup 0ms, collect 314ms, tests 925ms, environment 0ms, prepare 433ms)
+
+[ELIFECYCLE] Test failed. See above for more details.

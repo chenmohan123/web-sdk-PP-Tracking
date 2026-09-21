@@ -13,11 +13,15 @@ python -m venv .tmp/mot17-venv
 .tmp/mot17-venv/Scripts/python.exe -m pip install -r scripts/evaluation/mot17/requirements.txt
 pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false exec playwright install chromium
 node scripts/evaluation/mot17/run.mjs --python .tmp/mot17-venv/Scripts/python.exe --download-data
+# ByteTrack 与 OC-SORT 同输入对比：
+node scripts/evaluation/mot17/run.mjs --mode algorithms --python .tmp/mot17-venv/Scripts/python.exe --download-data
 ```
 
 Linux 将 Python 路径换为 `.tmp/mot17-venv/bin/python`。已有匹配浏览器可设置 `PLAYWRIGHT_BROWSERS_PATH`。已有数据用 `--zip .tmp/real-sequence-research/MOT17Labels.zip` 代替 `--download-data`；已有评分源码用 `--trackeval .tmp/real-sequence-research/TrackEval`。`--out` 必须指向本仓库 `.tmp` 内尚不存在的目录，省略时生成唯一目录。下载ZIP、新获取评分源码、提取数据、日志和评分结果的所有写入目标均须位于本仓库`.tmp`内且尚不存在；先解析真实父目录与symlink/junction，再在网络/提取/评分或创建目录之前拒绝非法目标。已有ZIP和评分checkout是只读输入，允许位于其他目录，不产生Python字节码缓存。`--skip-browser` 仅便于没有浏览器的诊断，此时报告明确记为未运行，不等同完整发布验证。
 
-运行顺序为数据完整性核对和白名单提取、默认与 `lowScoreThreshold=highScoreThreshold` 两配置、每配置每段从新实例重复运行、官方评分、Chromium 完整 02 序列与 Node 对齐。输出 `summary.json`、输入摘要、评分结果和日志；原始 MOT 输出、非耗时 SDK JSONL 和逐帧耗时分别留在本次目录中。输出复用公共 `output-path.mjs` 保护，拒绝报告归档、symlink/junction 逃逸和已有目录/文件，不覆盖失败运行。
+省略 `--mode` 时保留历史 `default/no-low` 两配置。显式传 `--mode algorithms` 时，同一组公共参数分别运行 `bytetrack/ocsort`；OC-SORT 不接收 ByteTrack 专属的低分阈值。模式和配置名在任何输出创建、下载或子进程之前校验，并由 Node 显式传给 Python 评分器。
+
+运行顺序为数据完整性核对和白名单提取、每配置每段从新实例重复运行、官方评分、Chromium 完整 02 序列与各自 Node 结果对齐。输出 `summary.json`、输入摘要、评分结果和日志；原始 MOT 输出、非耗时 SDK JSONL 和逐帧耗时分别留在本次目录中。摘要从 `package.json` 读取候选版本，并核对每帧实际 `runtimeVersion`，同时记录源码提交、构建入口与评测脚本 SHA256。输出复用公共 `output-path.mjs` 保护，拒绝报告归档、symlink/junction 逃逸和已有目录/文件，不覆盖失败运行。
 
 输入 MOT 帧号为一基，timestampMs=`frame*1000/fps`；像素左上角减 1 后裁剪到图像半开边界，空框剔除，低分不预筛选。贴边浮点减法产生向外舍入时，宽/高向内收缩一个图像尺度机器精度并单独计数。空帧保留；乱序行按帧分组但保持同帧行序；坏行、缺字段、非有限值、越界帧号直接报错，不静默截断。GT 仅由 Python 评分器读取，从不参与 SDK 输入或参数选择。
 
@@ -35,5 +39,5 @@ Python底层入口也执行同一写入约束，可独立提取或对已有完�
 
 ```powershell
 .tmp/mot17-venv/Scripts/python.exe -B scripts/evaluation/mot17/evaluator.py prepare --archive .tmp/real-sequence-research/MOT17Labels.zip --output .tmp/new-extraction/input
-.tmp/mot17-venv/Scripts/python.exe -B scripts/evaluation/mot17/evaluator.py score --trackeval .tmp/real-sequence-research/TrackEval --run .tmp/an-unscored-run
+.tmp/mot17-venv/Scripts/python.exe -B scripts/evaluation/mot17/evaluator.py score --trackeval .tmp/real-sequence-research/TrackEval --run .tmp/an-unscored-run --configuration default --configuration no-low
 ```

@@ -2,7 +2,7 @@
 
 [中文](README.md)
 
-The complete implementation is [demo/src/App.tsx](../../demo/src/App.tsx). It consumes the local candidate build through the public `web-sdk-pp-tracking` package entry. React is a development dependency only; the shipped runtime is framework-neutral. See the root release checklist for delivery status.
+The complete implementation is [demo/src/App.tsx](../../demo/src/App.tsx). It consumes the local candidate build through the public `web-sdk-pp-tracking` package entry. React is a development dependency only; the shipped runtime is framework-neutral. See the [release checklist](../../docs/en/release-checklist.md) for delivery status.
 
 From the repository root, with Node >=22.12.0:
 

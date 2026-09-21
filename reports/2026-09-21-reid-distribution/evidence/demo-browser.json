@@ -1,5 +1,5 @@
 {
-  "testedAt": "2026-09-21T03:12:37.778Z",
+  "testedAt": "2026-09-21T03:34:21.237Z",
   "browser": "153.0.8010.12",
   "input": "人工生成128×192不透明PNG及人工框，非质量评测",
   "checks": [
@@ -15,14 +15,14 @@
       "backend": "wasm",
       "frames": 2,
       "trackId": 1,
-      "runtime": "运行与分层耗时ReID: requestedBackend=wasm · actualBackend=wasm · main · ORT 1.27.0DeepSORT: requestedBackend=cpu · actualBackend=cpu · main加载modelDownloadMs0.00 msmodelCacheReadMs0.00 msintegrityMs0.00 mssessionMs0.00 mstotalMs0.10 ms图像解码decodeMs5.10 ms模型提取decodeMs0.00 mspreprocessMs4.60 msinferenceMs54.40 mspostprocessMs0.10 mstotalMs59.10 msCPU DeepSORTvalidationMs0.30 mspredictionMs0.70 msassociationMs0.30 msupdateMs0.90 mstotalMs2.20 ms毫秒；加载、图像解码、模型提取、CPU关联分开计时。冷启动=新实例首次加载/首帧；热运行=复用模型和轨迹。2026-09-21 本机 Chromium 153 / Windows 11：双源 WASM/WebGPU 通过；其他浏览器、移动设备未验证。"
+      "runtime": "运行与分层耗时ReID: requestedBackend=wasm · actualBackend=wasm · main · ORT 1.27.0DeepSORT: requestedBackend=cpu · actualBackend=cpu · main本轮加载检查 / 会话复用modelDownloadMs0.00 msmodelCacheReadMs0.00 msintegrityMs0.00 mssessionMs0.00 mstotalMs0.00 ms图像解码decodeMs3.90 ms模型提取decodeMs0.00 mspreprocessMs2.40 msinferenceMs38.70 mspostprocessMs0.10 mstotalMs41.30 msCPU DeepSORTvalidationMs0.30 mspredictionMs0.70 msassociationMs0.30 msupdateMs0.50 mstotalMs1.80 ms毫秒；加载、图像解码、模型提取、CPU关联分开计时。冷启动=新实例首次加载/首帧；热运行=复用模型和轨迹。2026-09-21 本机 Chromium 153 / Windows 11：双源 WASM/WebGPU 通过；其他浏览器、移动设备未验证。"
     },
     {
       "source": "huggingface",
       "backend": "webgpu",
       "frames": 2,
       "trackId": 1,
-      "runtime": "运行与分层耗时ReID: requestedBackend=webgpu · actualBackend=webgpu · main · ORT 1.27.0DeepSORT: requestedBackend=cpu · actualBackend=cpu · main加载modelDownloadMs0.00 msmodelCacheReadMs0.00 msintegrityMs0.00 mssessionMs0.00 mstotalMs0.00 ms图像解码decodeMs1.40 ms模型提取decodeMs0.00 mspreprocessMs8.60 msinferenceMs13.50 mspostprocessMs0.10 mstotalMs22.20 msCPU DeepSORTvalidationMs0.50 mspredictionMs0.30 msassociationMs0.10 msupdateMs0.30 mstotalMs1.20 ms毫秒；加载、图像解码、模型提取、CPU关联分开计时。冷启动=新实例首次加载/首帧；热运行=复用模型和轨迹。2026-09-21 本机 Chromium 153 / Windows 11：双源 WASM/WebGPU 通过；其他浏览器、移动设备未验证。"
+      "runtime": "运行与分层耗时ReID: requestedBackend=webgpu · actualBackend=webgpu · main · ORT 1.27.0DeepSORT: requestedBackend=cpu · actualBackend=cpu · main本轮加载检查 / 会话复用modelDownloadMs0.00 msmodelCacheReadMs0.00 msintegrityMs0.00 mssessionMs0.00 mstotalMs0.00 ms图像解码decodeMs1.50 ms模型提取decodeMs0.00 mspreprocessMs3.20 msinferenceMs16.30 mspostprocessMs0.20 mstotalMs19.70 msCPU DeepSORTvalidationMs0.30 mspredictionMs0.20 msassociationMs0.10 msupdateMs0.30 mstotalMs0.90 ms毫秒；加载、图像解码、模型提取、CPU关联分开计时。冷启动=新实例首次加载/首帧；热运行=复用模型和轨迹。2026-09-21 本机 Chromium 153 / Windows 11：双源 WASM/WebGPU 通过；其他浏览器、移动设备未验证。"
     }
   ],
   "errors": [],

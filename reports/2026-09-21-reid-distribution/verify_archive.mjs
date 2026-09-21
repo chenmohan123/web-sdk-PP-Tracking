@@ -35,6 +35,8 @@ assert.deepEqual([...matrix].sort(), ['huggingface/wasm', 'huggingface/webgpu', 
 const demo = await json('evidence/demo-browser.json');
 assert.deepEqual(demo.errors, []); assert.equal(demo.runs.length, 2); assert(demo.checks.length >= 5);
 assert.deepEqual(demo.runs.map(run => [run.source, run.backend, run.trackId]), [['modelscope', 'wasm', 1], ['huggingface', 'webgpu', 1]]);
+const cacheUi = await json('evidence/final-fix-cache-ui.json');
+assert.deepEqual(cacheUi.errors, []); assert.equal(cacheUi.checks.length, 4);
 const pkg = await json('evidence/package-check.json');
 assert(pkg.files.includes('dist/reid/index.js') && pkg.files.includes('dist/reid/index.cjs'));
 assert(!pkg.files.some(path => /\.(onnx|wasm|png|jpg|env)$/.test(path)));

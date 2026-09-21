@@ -1,9 +1,9 @@
 {
-  "createdAt": "2026-09-21T03:19:47.796Z",
+  "createdAt": "2026-09-21T03:37:46.082Z",
   "sourceTextEncoding": "UTF-8/LF",
   "sourceSha256": {
     "demo/src/App.tsx": "1d02fbc946ddd2ce936b37e9ea2c758e178bd457c8d01752944a6c73ed099f92",
-    "demo/src/ReIdWorkspace.tsx": "1f454256ad1e34475a78517201104cdbd1994463b5f3c97712662036c00ccccd",
+    "demo/src/ReIdWorkspace.tsx": "5c9f9194b13c4c3169acbf15d9523942f3313dea6ef08cc865ce606259f78d40",
     "demo/src/data.ts": "eb50238e6861388f8aca8d066dfb4d30313d6fe54b28c3665a673dfb4ab9888d",
     "demo/src/main.tsx": "4060e3cf1b7d970facea19a78654e57da20c255c1c5beaf608f3cca493437ca5",
     "demo/src/playback.ts": "e22a18f4141de281a12e7c9d1c3c2f7ad90e6b6f29d601f02f48803a8529b84a",
@@ -33,6 +33,7 @@
     "src/reid/types.ts": "8dc7a008ae06456742108eb0500b9456be8fe9345389ac2f32f991b0bd5ab63d",
     "src/tracker.ts": "95b43c88dcb087d7ea1e20f5e16af6c458303326d31873f89b78a109bf12d049",
     "src/types.ts": "aa7bb56e038d285f753f47cc409d6ff5111c5ccb77081cbd8bfed518a687fc44",
+    "tests/reid-cache-ui-browser.mjs": "025c1b3fa03857ddb154bf666f42d9d70868b401f089d237c2293c35aa778567",
     "tests/reid-demo-browser.mjs": "48111ab7563e4d308eff2a5abc96c1d6055eb6b6b6f1b02b30fcb9af148e4ec2",
     "tests/reid-demo.test.ts": "2f0aef1c0797afcf06f90a3f7911dd4913d51d49b9d170967e0876a8687b2e51",
     "tests/reid-distribution-browser.mjs": "3c615e9809c32f120e491dc582e469b7c4d7ba29889986ade04b96b45910fbdc"

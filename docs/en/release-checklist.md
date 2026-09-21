@@ -11,7 +11,7 @@ Based on portal `standards/v1/templates/release-checklist.md`. The local candida
 - [x] The model card records reliance on the official repository's Apache-2.0 license, conversion attribution and training-disclosure gaps; parameterCount is null.
 - [x] Standard1.3 hybrid manifest and Demo pass the after-check, complete verify and real production-build browser acceptance; see the current stage report.
 - [x] Final tarball consumption, isolation without ORT and integrity are archived.
-- [ ] The current candidate passes independent final review.
+- [x] The candidate passes independent final and scoped fix review; three Minor issues are fixed and the documented lazy ORT resource cost is retained.
 - [ ] Once this version's release is explicitly authorized, publish through PR, current-commit CI, merge and a new immutable tag, then refresh npm/hosted-Demo receipts.
 
 Model distribution is not SDK/npm/Demo publication. Identical-input three-algorithm IDF1/IDSW/MOTA and complete cost, and video/camera scheduling, remain later evaluations.

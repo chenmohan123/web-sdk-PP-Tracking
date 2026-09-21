@@ -41,12 +41,15 @@ Source validation uses the previous stage's first real crop and independently no
 
 The actual tarball is45,703 bytes (151,027 unpacked), SHA-256 `2af81f61beda65c1256df01eb89c2f85f2414f8ba471e432b836b35deb6b0b1f`.[Package receipt](evidence/package-check.json) records sha512 and file allowlist. A system-temp consumer with no ORT successfully consumed both entry formats and NodeNext declarations. No weights,WASM,source images or React production dependency are packed.
 
+[Final review](evidence/final-review.md) found no Critical/Important issue. Commit8126365 then clarified the current-load label, rejected stale cache-usage writes and clarified the Chinese root-entry introduction, retaining the ORT size notice. Afterward,11 controller tests,Demo types/build,standard checks and4 real-CacheStorage race regressions passed, followed by a fresh production UI run on both model backends. The164-test full verify is the pre-fix stage record; the complete suite was not repeated or misrepresented. Root runtime and package artifacts are unchanged. See the[fix report](evidence/final-fix-report.md),[scoped review](evidence/final-fix-review.md) and[race evidence](evidence/final-fix-cache-ui.json).
+
 ## Reproduction and limits
 
 ```powershell
 pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false verify
 node tests/reid-distribution-browser.mjs
 node tests/reid-demo-browser.mjs
+node tests/reid-cache-ui-browser.mjs
 node reports/2026-09-21-reid-distribution/verify_archive.mjs
 node reports/2026-09-21-reid-distribution/verify_archive.mjs --current
 ```

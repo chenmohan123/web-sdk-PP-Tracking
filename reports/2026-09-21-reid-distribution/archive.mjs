@@ -13,6 +13,8 @@ const copies = {
   '.tmp/reid-distribution/demo-browser.log': 'demo-browser.log',
   '.tmp/reid-distribution/environment.json': 'environment.json',
   '.tmp/reid-distribution/verify.log': 'sdk-verify.log',
+  '.tmp/reid-distribution/final-fix-cache-ui.json': 'final-fix-cache-ui.json',
+  '.tmp/reid-distribution/final-fix-cache-ui.log': 'final-fix-cache-ui.log',
   '.tmp/browser/report.json': 'sdk-browser.json',
   '.tmp/package-check.json': 'package-check.json',
   '.tmp/task-2/sources-red.log': 'sources-red.log',
@@ -27,7 +29,7 @@ const reference = JSON.parse(gunzipSync(await readFile(new URL('../2026-09-20-re
 const fixture = reference.fixtures.find(row => row.real);
 await writeFile(new URL('reference.json', evidence), JSON.stringify({ provenance: '2026-09-20 固定Paddle原始向量；仅首个真实裁剪，不包含图像', fixture }, null, 2) + '\n');
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
-const sourceFiles = ['package.json', 'pnpm-lock.yaml', 'sdk-manifest.yaml', 'scripts/build.mjs', 'scripts/check-package.mjs', 'scripts/distribute-reid.py', 'demo/vite.config.ts', 'tests/reid-distribution-browser.mjs', 'tests/reid-demo-browser.mjs', 'tests/reid-demo.test.ts'];
+const sourceFiles = ['package.json', 'pnpm-lock.yaml', 'sdk-manifest.yaml', 'scripts/build.mjs', 'scripts/check-package.mjs', 'scripts/distribute-reid.py', 'demo/vite.config.ts', 'tests/reid-distribution-browser.mjs', 'tests/reid-demo-browser.mjs', 'tests/reid-cache-ui-browser.mjs', 'tests/reid-demo.test.ts'];
 async function collect(path) {
   for (const item of await readdir(new URL(path, sdk), { withFileTypes: true })) {
     const child = `${path}${item.name}`;

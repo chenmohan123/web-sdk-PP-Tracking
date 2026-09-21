@@ -41,12 +41,15 @@ Demo默认保留框/向量模式；选择“图像＋检测框”后提供本地
 
 实际tarball 45,703字节（解包151,027），SHA-256 `2af81f61beda65c1256df01eb89c2f85f2414f8ba471e432b836b35deb6b0b1f`；[包回执](evidence/package-check.json)记录sha512和白名单。系统临时消费目录无ORT，根与子入口双格式/NodeNext类型可消费；公开入口包不含模型、WASM、原图或React生产依赖。
 
+[最终整体审查](evidence/final-review.md)无Critical/Important。随后`8126365`修复本轮加载标签、缓存估算陈旧写入和中文根入口说明，ORT体积提示保留。修复后11项控制器单测、Demo类型/构建、标准检查和4项真实CacheStorage竞态回归通过，并重新通过上方生产UI双后端。164项完整verify为修复前阶段记录，未冒称修复后重跑全套；根运行时和包产物没有变化。详见[修复回执](evidence/final-fix-report.md)、[范围复审](evidence/final-fix-review.md)及[竞态证据](evidence/final-fix-cache-ui.json)。
+
 ## 重现与限制
 
 ```powershell
 pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false verify
 node tests/reid-distribution-browser.mjs
 node tests/reid-demo-browser.mjs
+node tests/reid-cache-ui-browser.mjs
 node reports/2026-09-21-reid-distribution/verify_archive.mjs
 node reports/2026-09-21-reid-distribution/verify_archive.mjs --current
 ```

@@ -122,7 +122,7 @@ def main():
     report = dict(url=URL, archiveBytes=SIZE, archiveEtag=ETAG, frameCount=len(records),
                   transferredBytesThisRun=transferred, entries=records,
                   scope='七段训练序列完整画面，仅本地评测；不读取GT；原图不分发。')
-    (WORK / 'media.lock.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    (WORK / 'media.lock.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
     print('媒体清单已完成', flush=True)
 
 

@@ -36,6 +36,7 @@ export default function ReIdWorkspace({ language }: { language: 'zh' | 'en' }) {
   const [, render] = useState(0);
   const mounted = useRef(true);
   const request = useRef(0);
+  const cacheRequest = useRef(0);
   const refresh = () => { if (mounted.current) render(value => value + 1); };
   const [controller] = useState(() => new ReIdController({ create: (source, backend) => createReIdExtractor({ modelId: 'pplcnet-reid-fp32', source, backend }), clear: clearReIdCache }, refresh));
   const [images] = useState(() => new ImageSelection({ decode: decodeImage, url: URL.createObjectURL, revoke: URL.revokeObjectURL }));
@@ -52,12 +53,13 @@ export default function ReIdWorkspace({ language }: { language: 'zh' | 'en' }) {
   const result = controller.tracking;
   const locked = controller.busy || reading;
   const modelSource = getReIdModelSource(controller.source);
-  useEffect(() => () => { mounted.current = false; request.current++; images.dispose(); void controller.dispose(); }, [controller, images]);
+  useEffect(() => () => { mounted.current = false; request.current++; cacheRequest.current++; images.dispose(); void controller.dispose(); }, [controller, images]);
   async function usage() {
+    const id = ++cacheRequest.current;
     setCacheBusy(true);
-    try { const info = await estimateReIdCache(); if (mounted.current) setCache(info.bytes); }
-    catch { if (mounted.current) setCache(null); }
-    finally { if (mounted.current) setCacheBusy(false); }
+    try { const info = await estimateReIdCache(); if (mounted.current && id === cacheRequest.current) setCache(info.bytes); }
+    catch { if (mounted.current && id === cacheRequest.current) setCache(null); }
+    finally { if (mounted.current && id === cacheRequest.current) setCacheBusy(false); }
   }
   async function select(file?: File) {
     if (!file) return;
@@ -82,7 +84,7 @@ export default function ReIdWorkspace({ language }: { language: 'zh' | 'en' }) {
         if (id === request.current && mounted.current) { setStatus(controller.frameCount > previous ? 'success' : 'cancelled'); setPreviewResult(controller.frameCount > previous); }
       } else {
         setTransitioning(true); images.cancel(); setReading(false); setStatus(kind === 'clear' ? 'clearing' : 'ready');
-        if (kind === 'clear') await controller.clear();
+        if (kind === 'clear') { cacheRequest.current++; setCacheBusy(false); await controller.clear(); }
         else if (kind === 'reset') await controller.reset();
         else await controller.configure(source, backend);
         if (mounted.current && id === request.current) { setPreviewResult(false); setStatus('ready'); }
@@ -102,7 +104,7 @@ export default function ReIdWorkspace({ language }: { language: 'zh' | 'en' }) {
       <p className="muted small">{t.contract}</p>
       <div className="buttons"><button className="primary" data-testid="reid-run" disabled={locked || !image} onClick={() => void action('run')}>{t.run}</button><button data-testid="reid-cancel" disabled={!locked || transitioning} onClick={cancel}>{t.cancel}</button><button data-testid="reid-reset" disabled={transitioning} data-sdk-state-reset onClick={() => void action('reset')}>{t.reset}</button></div>
       <div data-sdk-cache-clear="all"><button className="export" data-testid="reid-clear" data-sdk-cache-clear="current" disabled={transitioning || cacheBusy} onClick={() => void action('clear')}>{t.clear}</button></div>
-      <p className="muted small">{t.cache}: {cache === null ? '—' : `${(cache / 1048576).toFixed(2)} MiB`} <button className="compact" disabled={cacheBusy || locked} onClick={() => void usage()}>{t.estimate}</button></p>
+      <p className="muted small">{t.cache}: {cache === null ? '—' : `${(cache / 1048576).toFixed(2)} MiB`} <button className="compact" disabled={cacheBusy || locked || transitioning} onClick={() => void usage()}>{t.estimate}</button></p>
       <p className="privacy">{t.privacy}</p>
     </aside>
     <section className="panel workspace"><div className="section-title"><h2>{t.preview}</h2><span className="runtime-chip">ReID: {controller.backend === 'wasm' ? 'CPU (WASM)' : 'GPU (WebGPU)'} · DeepSORT: CPU</span></div>
@@ -117,7 +119,7 @@ export default function ReIdWorkspace({ language }: { language: 'zh' | 'en' }) {
     <aside className="panel results"><h2>{t.tracks}<span>{result?.tracks.length ?? 0}</span></h2><div className="track-list">{result?.tracks.map(track => <article className="track" key={track.id}><div><b>#{track.id}</b><span>{track.state}</span></div><p>{track.classId} · {track.score?.toFixed(2)} · {track.hits} hits</p></article>)}</div><p className="muted small">{t.state}</p></aside>
     <section className="details">
       <details data-sdk-runtime-info><summary>{t.runtime}</summary><p>ReID: requestedBackend={controller.backend} · actualBackend={controller.model?.runtime.actualBackend ?? controller.loadResult?.runtime.actualBackend ?? '—'} · main · ORT {controller.loadResult?.runtime.ortVersion ?? '1.27.0'}<br />DeepSORT: requestedBackend=cpu · actualBackend=cpu · main</p>
-        <div data-sdk-timing>{[[language === 'zh' ? '加载' : 'Load', controller.loadResult?.timings], [language === 'zh' ? '图像解码' : 'Image decode', { decodeMs }], [language === 'zh' ? '模型提取' : 'Extraction', controller.model?.timings], ['CPU DeepSORT', result?.timings]].map(([label, timings]) => <div key={String(label)}><b>{String(label)}</b><dl>{Object.entries(timings ?? {}).map(([key, value]) => <div key={key}><dt>{key}</dt><dd>{Number(value).toFixed(2)} ms</dd></div>)}</dl></div>)}</div><p>{t.timing}</p><p>{t.verified}</p>
+        <div data-sdk-timing>{[[language === 'zh' ? '本轮加载检查 / 会话复用' : 'Current load check / session reuse', controller.loadResult?.timings], [language === 'zh' ? '图像解码' : 'Image decode', { decodeMs }], [language === 'zh' ? '模型提取' : 'Extraction', controller.model?.timings], ['CPU DeepSORT', result?.timings]].map(([label, timings]) => <div key={String(label)}><b>{String(label)}</b><dl>{Object.entries(timings ?? {}).map(([key, value]) => <div key={key}><dt>{key}</dt><dd>{Number(value).toFixed(2)} ms</dd></div>)}</dl></div>)}</div><p>{t.timing}</p><p>{t.verified}</p>
       </details>
       <details data-sdk-model-info><summary>{t.model} · PP-LCNet ReID</summary><p>{t.modelInfo}</p><p>{t.local}</p><a href={modelSource.downloadUrl} target="_blank" rel="noreferrer">{modelSource.kind} · {modelSource.revision}</a><p>SHA256: {modelSource.sha256}</p></details>
       <details data-sdk-algorithm-info><summary>{t.algorithm}</summary><p>{t.algorithmInfo}</p><a href="https://arxiv.org/abs/1703.07402" target="_blank" rel="noreferrer">Deep SORT</a><p>{t.state}</p></details>

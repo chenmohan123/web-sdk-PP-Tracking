@@ -1,0 +1,52 @@
+diff --git a/src/reid/ort.ts b/src/reid/ort.ts
+index 067ac5d..ebdc413 100644
+--- a/src/reid/ort.ts
++++ b/src/reid/ort.ts
+@@ -21,7 +21,7 @@ export async function createSession(bytes: ArrayBuffer, backend: 'wasm' | 'webgp
+     });
+     aborted(signal);
+     if (session.inputNames.length !== 1 || session.inputNames[0] !== INPUT_NAME || session.outputNames.length !== 1 || session.outputNames[0] !== OUTPUT_NAME) throw new ReIdError('SESSION_FAILED', '模型会话输入输出名称不匹配');
+-    return { session, ort, runtime: { requestedBackend: backend, actualBackend: backend, executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-alpha.0', ortVersion: ort.env.versions.web } };
++    return { session, ort, runtime: { requestedBackend: backend, actualBackend: backend, executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.0', ortVersion: ort.env.versions.web } };
+   } catch (error) {
+     if (session) await session.release().catch(() => undefined);
+     aborted(signal); throw safeError(error, 'SESSION_FAILED');
+diff --git a/src/reid/types.ts b/src/reid/types.ts
+index 5329df0..cd1a4c2 100644
+--- a/src/reid/types.ts
++++ b/src/reid/types.ts
+@@ -12,7 +12,7 @@ export interface LoadProgress { stage: 'download' | 'cache' | 'integrity' | 'ses
+ export interface ReIdLoadOptions { signal?: AbortSignal; onProgress?: (event: LoadProgress) => void }
+ export interface ReIdRuntimeInfo {
+   requestedBackend: 'wasm' | 'webgpu'; actualBackend: 'wasm' | 'webgpu'; executionMode: 'main';
+-  runtimeVersion: 'web-sdk-pp-tracking@0.2.0-alpha.0'; ortVersion: string;
++  runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.0'; ortVersion: string;
+ }
+ export interface ReIdLoadTimings { modelDownloadMs: number; modelCacheReadMs: number; integrityMs: number; sessionMs: number; totalMs: number }
+ export interface ReIdTimings { decodeMs: number; preprocessMs: number; inferenceMs: number; postprocessMs: number; totalMs: number }
+diff --git a/src/tracker.ts b/src/tracker.ts
+index 0597702..0a1f220 100644
+--- a/src/tracker.ts
++++ b/src/tracker.ts
+@@ -209,7 +209,7 @@ export function createTracker(input: TrackerOptions = {}): Tracker {
+       const updateEnd = now();
+       const result: TrackingResult = {
+         generation, algorithm: options.algorithm, timestampMs: time, tracks, removed, droppedDetections,
+-        runtime: { requestedBackend: 'cpu', actualBackend: 'cpu', executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-alpha.0' },
++        runtime: { requestedBackend: 'cpu', actualBackend: 'cpu', executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.0' },
+         timings: { validationMs: validationEnd - start, predictionMs: predictionEnd - validationEnd, associationMs: associationEnd - predictionEnd, updateMs: updateEnd - associationEnd, totalMs: now() - start },
+       };
+       entries = working; nextId = localNextId; timestamp = time; size = frame.imageSize;
+diff --git a/src/types.ts b/src/types.ts
+index 9a85da1..53b659e 100644
+--- a/src/types.ts
++++ b/src/types.ts
+@@ -36,7 +36,7 @@ export interface Track {
+ export interface RemovedTrack extends Omit<Track, 'state'> { state: 'removed' }
+ export interface RuntimeInfo {
+   requestedBackend: 'cpu'; actualBackend: 'cpu'; executionMode: 'main';
+-  runtimeVersion: 'web-sdk-pp-tracking@0.2.0-alpha.0';
++  runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.0';
+ }
+ export interface TrackingTimings {
+   validationMs: number; predictionMs: number; associationMs: number; updateMs: number; totalMs: number;

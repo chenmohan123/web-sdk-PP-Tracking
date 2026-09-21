@@ -1,0 +1,68 @@
+$ vitest run "tests/release.test.ts"
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0-alpha.0 显式发布到 next 通道且已有版本只读
+npm OIDC 发布完成且完整性一致。
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0-rc.0 显式发布到 next 通道且已有版本只读
+npm OIDC 发布完成且完整性一致。
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0 显式发布到 latest 通道且已有版本只读
+npm OIDC 发布完成且完整性一致。
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 已有版本不发布，新版本发布后核验，真实发布错误不吞掉
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+npm OIDC 发布完成且完整性一致。
+
+ ❯ tests/release.test.ts (8 tests | 3 failed) 41ms
+   × 发布候选完整性门禁 > 版本 0.2.0-alpha.0 显式发布到 next 通道且已有版本只读 18ms
+     → expected [ 'publish', …(5) ] to deeply equal [ 'publish', …(7) ]
+   × 发布候选完整性门禁 > 版本 0.2.0-rc.0 显式发布到 next 通道且已有版本只读 2ms
+     → expected [ 'publish', …(5) ] to deeply equal [ 'publish', …(7) ]
+   × 发布候选完整性门禁 > 版本 0.2.0 显式发布到 latest 通道且已有版本只读 2ms
+     → expected [ 'publish', …(5) ] to deeply equal [ 'publish', …(7) ]
+   ✓ 发布候选完整性门禁 > 标签必须精确匹配包版本 9ms
+   ✓ 发布候选完整性门禁 > 只对相同完整性的已存在版本跳过发布 2ms
+   ✓ 发布候选完整性门禁 > 仅接受结构化 E404 或 ENOVERSIONS 缺失响应 0ms
+   ✓ 发布候选完整性门禁 > 网络、权限、无结构错误及损坏 JSON 都阻止发布 1ms
+   ✓ 发布候选完整性门禁 > 已有版本不发布，新版本发布后核验，真实发布错误不吞掉 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0-alpha.0 显式发布到 next 通道且已有版本只读
+ FAIL  tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0-rc.0 显式发布到 next 通道且已有版本只读
+ FAIL  tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0 显式发布到 latest 通道且已有版本只读
+AssertionError: expected [ 'publish', …(5) ] to deeply equal [ 'publish', …(7) ]
+
+- Expected
++ Received
+
+@@ -2,9 +2,7 @@
+    "publish",
+    ".tmp/web-sdk-pp-tracking-0.2.0-alpha.0.tgz",
+    "--provenance",
+    "--access",
+    "public",
+-   "--tag",
+-   "next",
+    "--registry=https://registry.npmjs.org",
+  ]
+
+ ❯ tests/release.test.ts:17:22
+     15|     const results = [missing, { status: 0, stdout: '', stderr: '' }, p…
+     16|     expect(publishCandidate({ ...candidate, runNpm: (args: string[]) =…
+     17|     expect(calls[1]).toEqual(['publish', `.tmp/${candidate.info.filena…
+       |                      ^
+     18|     calls.length = 0;
+     19|     expect(publishCandidate({ ...candidate, runNpm: (args: string[]) =…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 5 passed (8)
+   Start at  13:37:00
+   Duration  1.04s (transform 89ms, setup 0ms, collect 157ms, tests 41ms, environment 0ms, prepare 339ms)
+
+[ELIFECYCLE] Test failed. See above for more details.

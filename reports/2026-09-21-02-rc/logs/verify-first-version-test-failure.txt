@@ -1,0 +1,93 @@
+$ npm run build && npm run typecheck && npm test && npm run check:package && npm run typecheck:demo && npm run build:demo && npm run build:vanilla && npm run build:react && npm run test:browser
+
+> web-sdk-pp-tracking@0.2.0-rc.0 build
+> node scripts/build.mjs
+
+算法与 ReID 独立 ESM、CommonJS 和 NodeNext 类型声明构建完成。
+
+> web-sdk-pp-tracking@0.2.0-rc.0 typecheck
+> tsc --noEmit
+
+
+> web-sdk-pp-tracking@0.2.0-rc.0 test
+> vitest run
+
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ✓ tests/assignment.test.ts (7 tests) 151ms
+ ✓ tests/deepsort.test.ts (15 tests) 49ms
+ ✓ tests/ocsort.test.ts (23 tests) 50ms
+ ✓ tests/tracker.test.ts (16 tests) 55ms
+ ✓ tests/reid-preprocess.test.ts (4 tests) 51ms
+ ✓ tests/reid-sources.test.ts (8 tests) 68ms
+ ✓ tests/kalman.test.ts (4 tests) 1292ms
+   ✓ 长期重复更新协方差有限、对称，尺寸保持正数  1258ms
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0-alpha.0 显式发布到 next 通道且已有版本只读
+npm OIDC 发布完成且完整性一致。
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0-rc.0 显式发布到 next 通道且已有版本只读
+npm OIDC 发布完成且完整性一致。
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0 显式发布到 latest 通道且已有版本只读
+npm OIDC 发布完成且完整性一致。
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 已有版本不发布，新版本发布后核验，真实发布错误不吞掉
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+npm OIDC 发布完成且完整性一致。
+
+ ✓ tests/release.test.ts (8 tests) 40ms
+ ✓ tests/reid-demo.test.ts (11 tests) 25ms
+ ❯ tests/mot17-adapter.test.ts (13 tests | 1 failed) 24ms
+   ✓ MOT17 数据边界 > 按一基帧和像素原点转换，保留低分、空帧并裁剪越界框 4ms
+   ✓ MOT17 数据边界 > 坏检测不静默截断：1,-1,1,1,5,5, 1ms
+   ✓ MOT17 数据边界 > 坏检测不静默截断：1,-1,1,1,5,5,NaN 0ms
+   ✓ MOT17 数据边界 > 坏检测不静默截断：1.5,-1,1,1,5,5,1 0ms
+   ✓ MOT17 数据边界 > 坏检测不静默截断：4,-1,1,1,5,5,1 0ms
+   ✓ MOT17 数据边界 > 坏检测不静默截断：1,-1,1,1,-5,5,1 0ms
+   ✓ MOT17 数据边界 > 坏检测不静默截断：1,-1,1,1,5,5,1,2 0ms
+   ✓ MOT17 数据边界 > 坏检测不静默截断：1,-1,1,1,5,5,1
+坏行 0ms
+   ✓ MOT17 数据边界 > 拒绝缺失、非有限、重复或零值元数据 1ms
+   ✓ MOT17 数据边界 > 仅导出已观测且确认的轨迹，恢复 MOT 一基像素坐标 1ms
+   × MOT17 数据边界 > 真实 SDK 顺序更新空帧，未确认和 lost 不计入 MOT 检测 11ms
+     → 运行时版本不匹配：期望 web-sdk-pp-tracking@0.2.0-alpha.0，实际 web-sdk-pp-tracking@0.2.0-rc.0
+   ✓ MOT17 数据边界 > 实际运行时版本与候选 package 不一致时拒绝生成评测结果 1ms
+   ✓ MOT17 数据边界 > 小数框裁到下边界后仍满足 SDK 的浮点边界契约 1ms
+ ✓ tests/mot17-reid.test.ts (9 tests) 1736ms
+   ✓ 评测身份与落盘边界 > 未知模式及非固定子集在创建输出前拒绝  1652ms
+ ✓ tests/reid-lifecycle.test.ts (37 tests) 2150ms
+ ✓ tests/mot17-cli.test.ts (7 tests) 3145ms
+   ✓ 真实评测 CLI 配置模式 > 未知模式在创建输出目录前失败  370ms
+   ✓ 真实评测 CLI 输出保护 > 在读取数据或调用 Python 之前拒绝历史报告目录  490ms
+   ✓ 真实评测 CLI 输出保护 > 在已有输出目录上失败，防止覆盖原始结果  405ms
+   ✓ 真实评测 CLI 输出保护 > 所有下载和自动源码目标先验检查：拒绝报告树、外部、junction及已有目标，且不创建运行目录  1648ms
+ ✓ tests/demo.test.ts (14 tests) 3278ms
+   ✓ Demo 数据与回放 > 紧凑导出千帧512维输入并可按相同特征空间重新准备  1256ms
+   ✓ Demo 数据与回放 > 按UTF-8字节限制紧凑序列，并在规范化输入超限时保留现有会话  1916ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/mot17-adapter.test.ts > MOT17 数据边界 > 真实 SDK 顺序更新空帧，未确认和 lost 不计入 MOT 检测
+Error: 运行时版本不匹配：期望 web-sdk-pp-tracking@0.2.0-alpha.0，实际 web-sdk-pp-tracking@0.2.0-rc.0
+ ❯ runSequence scripts/evaluation/mot17/execute.mjs:16:101
+     14|       }
+     15|       if (result.runtime.actualBackend !== 'cpu' || result.runtime.exe…
+     16|       if (expectedRuntimeVersion && result.runtime.runtimeVersion !== …
+       |                                                                                                     ^
+     17|       if (runtimeVersion && runtimeVersion !== result.runtime.runtimeV…
+     18|       runtimeVersion = result.runtime.runtimeVersion;
+ ❯ tests/mot17-adapter.test.ts:39:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 13 passed (14)
+      Tests  1 failed | 175 passed (176)
+   Start at  13:45:23
+   Duration  5.08s (transform 2.99s, setup 0ms, collect 6.64s, tests 12.11s, environment 6ms, prepare 6.12s)
+
+[ELIFECYCLE] Command failed with exit code 1.

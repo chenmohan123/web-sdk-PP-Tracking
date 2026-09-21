@@ -1,0 +1,201 @@
+{
+  "capturedAt": "2026-09-21T06:00:47.348Z",
+  "files": {
+    "browser/deepsort.png": {
+      "bytes": 78844,
+      "sha256": "29347937c093b5b4edd308c587966f627c81463cc24943d5db23d677bf40efd8"
+    },
+    "browser/desktop.png": {
+      "bytes": 54944,
+      "sha256": "97ff0b6868e58082040779021945d2537134561bae34b47e15c58845f600e65c"
+    },
+    "browser/english.png": {
+      "bytes": 68988,
+      "sha256": "231f9e99b9d593232769ee21f11dc61e2bcae6618c04847826c4caa619f785b5"
+    },
+    "browser/mobile.png": {
+      "bytes": 59743,
+      "sha256": "1ea91fb308e0f61f17abdcc99c500062d8f963cf71c97d5b54bf8b33b2a75fb4"
+    },
+    "browser/occlusion.png": {
+      "bytes": 69987,
+      "sha256": "ed9543e7b218fbed95a972e203e8166986919acd05736b7bb9dbbc8fc83b56fb"
+    },
+    "browser/report.json": {
+      "bytes": 1981,
+      "sha256": "234decc9f82f05679363c358e3a9504c11d1b66ceabb7bc7a5aa52728a74f95e"
+    },
+    "browser/vanilla.png": {
+      "bytes": 26587,
+      "sha256": "c2f563a4ce74f9bb09fa238e2b74153268b0e17f333a9637bf8cbd0b7b7fd76b"
+    },
+    "closure/identity-generation.mjs": {
+      "bytes": 5466,
+      "sha256": "2c9418e2174060534520abdafc4879d927314bc1b8ced93f69331bda1e5e7047"
+    },
+    "closure/progress.md": {
+      "bytes": 2338,
+      "sha256": "1a3d959046b3ad70e2ce4fa11e43f600087b68ddd1e691e6c9fde838b77dc951"
+    },
+    "closure/task-1-report.md": {
+      "bytes": 8558,
+      "sha256": "030f9392d4a44e10ca172a2de1289b89d15272f3bcd64353094f9af74f32c577"
+    },
+    "closure/task-1-review.md": {
+      "bytes": 5180,
+      "sha256": "078fb03d9fb38d9c15ae55a90ca56e4e7cb82a2f0cc1f70972ede362c1e30ad9"
+    },
+    "identity.json": {
+      "bytes": 9806,
+      "sha256": "4dfc8845a2ab9e8d04226146fc1ed376859fa3aa77839e5611d4a6e40f0b509d"
+    },
+    "logs/reid-demo.txt": {
+      "bytes": 843,
+      "sha256": "3d8db931afa54120e1cfdd49aac316cbf745b54932e1c59292e4c0d6a4866d71"
+    },
+    "logs/release-green.txt": {
+      "bytes": 1367,
+      "sha256": "d78bea482e610e8a3af688cc806f9a0d25511df1509774575d4bcc1ae2261de0"
+    },
+    "logs/release-red.txt": {
+      "bytes": 3585,
+      "sha256": "93f967655c34a126c0dd6de68a729212e8ed0f2898cf03a8b4cedbf44ac03f62"
+    },
+    "logs/source-identity-check.txt": {
+      "bytes": 233,
+      "sha256": "07abeeca6133449363155ae64fba23c650caf2bd54306def5b6f79d7d3947ca0"
+    },
+    "logs/verify-first-version-test-failure.txt": {
+      "bytes": 5590,
+      "sha256": "8cf2efd934a6b2e5570659f43d4d1303e4ec5ae069d6d399312ed21e74483638"
+    },
+    "logs/verify.txt": {
+      "bytes": 9265,
+      "sha256": "f1678eb79f57b56c13e36dcc1152ef98d4d7cf088105c324c8a3751e2b4f5f1a"
+    },
+    "package-check.json": {
+      "bytes": 1264,
+      "sha256": "a42f1fa9ac6a655b66cd56173d5930bbbeb304485b9439c375878264154b9681"
+    },
+    "README.en.md": {
+      "bytes": 4678,
+      "sha256": "45826e6786e2b73c0f122da438b642c13ab3ffbe013a24ed6ec6e9a67615627d"
+    },
+    "README.md": {
+      "bytes": 4423,
+      "sha256": "f132e27c0912df47201efc83ae3cd64e85e678d9576be287467225c51f833de8"
+    },
+    "reid-demo/desktop-en.png": {
+      "bytes": 114658,
+      "sha256": "6c9a05e5bbcde4c7f3c7add7b23b8bff2f88282636ce6eb1c472d013c77b073a"
+    },
+    "reid-demo/desktop-webgpu.png": {
+      "bytes": 115961,
+      "sha256": "a5203b27980f5fcc7a88d18e7f4440a04c9d3dfa0329d23eeff307637f2a6ee1"
+    },
+    "reid-demo/desktop.png": {
+      "bytes": 116010,
+      "sha256": "fcb2679416091be70b581985a4f5fea1efa621cb5742caf2b923c8870d61150c"
+    },
+    "reid-demo/mobile-en.png": {
+      "bytes": 96432,
+      "sha256": "ff717b0c4101a1935681cb0d95d43ec0d39c7f23a53692226a764cbc2a7eaca5"
+    },
+    "reid-demo/mobile-zh-CN.png": {
+      "bytes": 101016,
+      "sha256": "d0c152889e8195735c113b98461a4b932eab91f3b9de32581f61a5ae8a9418ee"
+    },
+    "reid-demo/report.json": {
+      "bytes": 2656,
+      "sha256": "d960748b675a37f4b9d48687abc94d1830de33eb70fb46e9e239f73524500ea2"
+    },
+    "release-checklist.md": {
+      "bytes": 2252,
+      "sha256": "f754a0646caad9cc958d7a5e697f4e9954858cb5466ad0f4847b698251d4e3ee"
+    },
+    "remote/branchRules.json": {
+      "bytes": 1221,
+      "sha256": "23dffb7360deb296801ff23533897ba584685145de0d9acd3c1ad21e3852e5fb"
+    },
+    "remote/deployment-statuses.json": {
+      "bytes": 789,
+      "sha256": "211122b5aedf875f458bd1158b487b5da7252d78b2139636e24259b6c87260e0"
+    },
+    "remote/deployments.json": {
+      "bytes": 259,
+      "sha256": "76e60b383ec2055318522ce04e392ae0ffcc6134360f6fc773bb5ef321b4eb53"
+    },
+    "remote/environments.json": {
+      "bytes": 1155,
+      "sha256": "f4f63b90a368ff25008f0074bcbd69dbe196dc4e4556f2cd608dbe9bb9608b52"
+    },
+    "remote/main.json": {
+      "bytes": 82,
+      "sha256": "866f51472a435da7573856fe87a5d123df2b50efa93359670fc4002618b9b952"
+    },
+    "remote/npm-environment-policies.json": {
+      "bytes": 133,
+      "sha256": "ea048ebea6885d590d2f8d2934310926293bd752dbeeacaa9e0debbc5f58fb38"
+    },
+    "remote/npm.json": {
+      "bytes": 231,
+      "sha256": "bb51ef00c2ac1a3469fa9615692464cf52e136161b571777864924f3af2c3913"
+    },
+    "remote/pages.json": {
+      "bytes": 354,
+      "sha256": "4e8ce92108db6d14dd1e20d9b0dc3c7a3c90781ff29ae7949da5e79f28c4a496"
+    },
+    "remote/pagesRuns.json": {
+      "bytes": 13862,
+      "sha256": "f2072b631c3b963d9775d8586963ff98088de7c4ec3d81cf61070c7c9bac0389"
+    },
+    "remote/queries.json": {
+      "bytes": 1456,
+      "sha256": "99d911cefbe9bbfa07eb9b4c0be212b8809d461d9090f88c4e4d89611800ab93"
+    },
+    "remote/releaseRuns.json": {
+      "bytes": 13846,
+      "sha256": "f08f0fcdeaaeeae8d536d3a736006411effdf7410788da9063271daf62b6e77a"
+    },
+    "remote/releases.json": {
+      "bytes": 6285,
+      "sha256": "31b725e18889a0c675d2d5caa5aa2ff011767e258cce8c66a7d5ce3710f7a6cf"
+    },
+    "remote/repository.json": {
+      "bytes": 6785,
+      "sha256": "083da78496d9fd4ca33f06ae52e146b51825205f8b0fe4ecb7e26d7879276b0a"
+    },
+    "remote/rulesets.json": {
+      "bytes": 976,
+      "sha256": "941635e528af2316c52e28903005f0dc0661a08aa565aebbb49e5329ed52d4d7"
+    },
+    "remote/tagRules.json": {
+      "bytes": 655,
+      "sha256": "78c9acf06fed580e90a5f7fb7a39d788e5d235e6c1190e4318d3dfbf9fce2f7b"
+    },
+    "remote-preflight.md": {
+      "bytes": 2512,
+      "sha256": "2e67d68044959a993d0bb77f3164280d7c4dee6369b80b9dff75731eab2b78be"
+    },
+    "runtime-diff.patch": {
+      "bytes": 3519,
+      "sha256": "59b7a41bb86e711d27ffbab5d960ed931f08a9d21a26dc858bb4a7a4b0c20bb6"
+    },
+    "runtime-equivalence.json": {
+      "bytes": 7744,
+      "sha256": "309e1b1ac283e05c99864270158b9405c727552a58645bca18b42141a740595c"
+    },
+    "standard/after.json": {
+      "bytes": 12275,
+      "sha256": "af51d60eb90213eacc77a18c6d044fdac0753be497cb51a1eebc53ce94ed5a2b"
+    },
+    "standard/before.json": {
+      "bytes": 12275,
+      "sha256": "af51d60eb90213eacc77a18c6d044fdac0753be497cb51a1eebc53ce94ed5a2b"
+    },
+    "verify.mjs": {
+      "bytes": 2887,
+      "sha256": "23f495ecf2483dff0c5e5de09918685860b7d946dde4b42ba01bba98cfbbe42f"
+    }
+  }
+}

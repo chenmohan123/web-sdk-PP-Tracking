@@ -1,0 +1,52 @@
+{
+  "verifiedAt": "2026-09-21T05:37:08.9721680Z",
+  "account": "chenmohan123",
+  "operation": "只读API，复用宿主keyring",
+  "results": [
+    {
+      "name": "repository",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking",
+      "exitCode": 0
+    },
+    {
+      "name": "rulesets",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/rulesets",
+      "exitCode": 0
+    },
+    {
+      "name": "branchRules",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/rulesets/23691947",
+      "exitCode": 0
+    },
+    {
+      "name": "tagRules",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/rulesets/23691948",
+      "exitCode": 0
+    },
+    {
+      "name": "pages",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/pages",
+      "exitCode": 0
+    },
+    {
+      "name": "environments",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/environments",
+      "exitCode": 0
+    },
+    {
+      "name": "releases",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/releases?per_page=5",
+      "exitCode": 0
+    },
+    {
+      "name": "pagesRuns",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/actions/workflows/pages.yml/runs?per_page=1",
+      "exitCode": 0
+    },
+    {
+      "name": "releaseRuns",
+      "endpoint": "repos/chenmohan123/web-sdk-PP-Tracking/actions/workflows/release.yml/runs?per_page=1",
+      "exitCode": 0
+    }
+  ]
+}

@@ -1,14 +1,14 @@
-# ReID source candidate
+# Optional ReID module (local release candidate)
 
 [中文](../zh-CN/reid-candidate.md) · [Home](../../README.en.md)
 
 This local development module extracts 512-dimensional appearance vectors from decoded person crops for the existing DeepSORT strategy. It does not detect boxes, open videos/cameras or assign track IDs. The three root tracking strategies remain CPU/main; feature extraction separately selects WASM or WebGPU.
 
-The module lives under `src/reid/` and a candidate script builds it into ignored `.tmp/reid-module/dist/`. **It is not included in npm package.exports or the release dist.** The current algorithm manifest covers only the release core; its compliance does not establish model distribution, Demo or release readiness. The planned public entry is `web-sdk-pp-tracking/reid`, which cannot currently be imported from the npm package.
+Local builds and tarballs now expose `web-sdk-pp-tracking/reid` with independent ESM/CJS/types. The standard1.3.0 hybrid manifest declares both algorithm and model. Hosted npm/Demo remain0.1.0: install the local0.2.0-alpha.0 tarball described on the homepage, then optional `onnxruntime-web@1.27.0`. Root consumers need no engine dependency; weights are not in the tarball.
 
 ## Input and model identity
 
-Fixed model: `pplcnet-reid-fp32`, 33,704,835-byte FP32 ONNX, SHA-256 `24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4`, input `[1,3,192,64]`, output `[1,512]`. Weights are neither committed nor packaged. See the [model card](../../reports/2026-09-20-reid-preprocessing/model-card.en.md) for provenance, conversion, training disclosure and license scope.
+Fixed model: `pplcnet-reid-fp32`, 33,704,835-byte FP32 ONNX, SHA-256 `24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4`, input `[1,3,192,64]`, output `[1,512]`. Weights are neither committed nor packaged. See the [model card](../../models/pplcnet-reid/0.1.0/README.en.md) for provenance, conversion, training disclosure and license scope.
 
 Images use `RgbaImage={width,height,data}` with Uint8Array or Uint8ClampedArray backed by a non-shared buffer. Dimensions are positive integers, each ≤8192, with ≤16777216 pixels and exactly width×height×4 bytes. The caller handles EXIF/orientation and supplies decoded non-premultiplied sRGB RGBA. Arbitrary transparent PNG hidden-color fidelity through Canvas is not guaranteed.
 
@@ -16,16 +16,16 @@ Each detection is `{box:{x,y,width,height},score,classId}`, completely inside th
 
 Output preserves input order and binds embeddings to the original floating-point boxes, scores and classes. Embeddings have 512 finite values, normalized with a float64 L2 norm then written to Float32Array; zero vectors are rejected. featureSpace binds the complete model hash, `rgba8-white-upright-rgb-halfpixel-f64-imagenet-f32-v1` and `l2-f32-v1`. Equal dimensions do not make different models or preprocessing compatible.
 
-## Local source usage
+## Local package usage
 
-Import the factory from `src/reid/index.ts` in a repository source consumer with TypeScript bundling. This is not a published npm installation example:
+After installing the local candidate tarball and optional ORT, import the same-package subpath. Published0.1.0 does not expose this feature:
 
 ```ts
-import { createReIdExtractor } from './src/reid/index.js';
-import { createTracker } from './src/index.js';
+import { createReIdExtractor } from 'web-sdk-pp-tracking/reid';
+import { createTracker } from 'web-sdk-pp-tracking';
 
 const extractor = createReIdExtractor({
-  modelId: 'pplcnet-reid-fp32', backend: 'wasm', modelBytes,
+  modelId: 'pplcnet-reid-fp32', backend: 'wasm', source: 'modelscope',
 });
 const tracker = createTracker({ algorithm: 'deepsort', featureSpace: extractor.featureSpace });
 try {
@@ -42,7 +42,7 @@ try {
 }
 ```
 
-`modelBytes` is the exact model ArrayBuffer prepared by the caller; `image` and `detections` follow the contract above. `timestampMs` follows Tracker's increasing-time rules; `signal` is optional. Call tracker.update only after the entire extraction succeeds. Failed or cancelled extraction returns no partial vectors and must not advance association for that frame.
+Omitting source defaults to ModelScope; select `huggingface` explicitly when desired. `getReIdModelSource()` returns an immutable source snapshot. An exact `modelBytes` ArrayBuffer may replace source; they are mutually exclusive. `image` and `detections` follow the contract above. `timestampMs` follows Tracker's increasing-time rules; `signal` is optional. Call tracker.update only after the entire extraction succeeds. Failed or cancelled extraction returns no partial vectors and must not advance association for that frame.
 
 Model bytes are copied at factory entry, and image/detection metadata at extract entry, so later caller mutations do not change in-flight input. The root never loads ORT, and the candidate loads ORT Web dynamically only during load. This candidate supports main execution only, single-threaded WASM and no silent GPU-to-CPU fallback.
 
@@ -56,7 +56,7 @@ Stable codes: INVALID_INPUT, INVALID_MANIFEST, UNSUPPORTED_BACKEND, DOWNLOAD_FAI
 
 ## Resources, cache and timing
 
-Supply either modelBytes or an explicit source, never both. source contains kind (modelscope/huggingface), repository, immutable revision, path, HTTPS downloadUrl, bytes and sha256 matching the fixed model. Local tests may use controlled resources; no default hub URL is invented. ModelScope remains the planned default, with Hugging Face optional once distributed.
+Supply modelBytes or a source string/object, never both. A source object contains kind (modelscope/huggingface), repository, immutable revision, path, HTTPS downloadUrl, bytes and sha256 matching the fixed model. The built-in [dual-source registry](../../models/pplcnet-reid/0.1.0/sources.json) has been uploaded and anonymously read back. ModelScope is default, Hugging Face optional, without silent switching on failure.
 
 Local bytes are not persisted. Remote models use a CacheStorage namespace owned by this module; cache hits still verify bytes/SHA. Corruption fails integrity, and a failed explicit source never switches providers. `estimateReIdCache()` reports bytes/entries and `clearReIdCache()` clears only this module's cache. Clearing cache neither releases loaded instances nor resets Tracker; the host must cancel/dispose and reset dependent tracking state for complete cleanup.
 
@@ -68,4 +68,4 @@ The [stage report](../../reports/2026-09-21-reid-module/README.en.md) records ac
 
 Compressed-download verification uses local HTTPS and an ephemeral self-signed certificate; setup commands are in the stage report. Defaults are `.tmp/reid-module/localhost-test.key` and `.crt`, overridable with `TRACKING_REID_TLS_KEY` / `TRACKING_REID_TLS_CERT`. Only the automated test browser context ignores certificate errors; no system certificate installation is needed, and credentials are not committed.
 
-Release still requires the adopted license basis and attribution, actual dual-source immutable revisions/hashes and browser CORS evidence, followed by the hybrid manifest, public entry and Demo. Tracking IDF1/IDSW/MOTA and complete costs on real detection sequences remain future work. Repeated-frame interface tests are not evidence of real tracking quality. Phones, Safari, Firefox, Workers, NPU and complete video/camera pipelines are not claimed as compatible.
+The current [distribution and integration report](../../reports/2026-09-21-reid-distribution/README.en.md) records real dual sources, public subpath and Demo acceptance. `node tests/reid-distribution-browser.mjs` tests both sources/backends through the release dist and requires the previous local RGBA resources. Demo image-and-box mode extracts features and advances tracking from a local picture and caller-supplied detection array; it has no automatic detector. Tracking IDF1/IDSW/MOTA and complete costs on real detection sequences remain future work. Repeated-frame tests are not evidence of tracking quality gains. Phones, Safari, Firefox, Workers, NPU and complete video/camera pipelines are unverified.

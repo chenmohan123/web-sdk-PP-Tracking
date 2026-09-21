@@ -6,6 +6,8 @@
 
 ## 输入
 
+本页描述根算法入口。可选 `web-sdk-pp-tracking/reid` 的工厂、load/extract/dispose、输入、缓存与错误见[ReID接口指南](reid-candidate.md)；需本地候选包及可选ORT依赖，线上0.1.0不含此子入口。
+
 `TrackingFrame = {timestampMs, imageSize:{width,height}, featureSpaceId?, detections:[{box:{x,y,width,height},score,classId,embedding?}]}`。
 坐标为像素 xywh，不是 xyxy；框必须完全在图像内，宽高正，x/y非负；不自动裁剪。
 图像宽高为有限正数，时间为非负有限数且严格递增，尺寸整段一致。score在[0,1]；classId为非负安全整数。所有数值必须有限。

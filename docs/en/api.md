@@ -6,6 +6,8 @@
 
 ## Input
 
+This page documents the root algorithm entry. The optional `web-sdk-pp-tracking/reid` factory, load/extract/dispose, inputs, cache and errors are documented in the [ReID guide](reid-candidate.md). It requires the local candidate plus optional ORT; published0.1.0 has no such subpath.
+
 `TrackingFrame = {timestampMs, imageSize:{width,height}, featureSpaceId?, detections:[{box:{x,y,width,height},score,classId,embedding?}]}`.
 Coordinates are pixel xywh, not xyxy. Boxes must be fully in-bounds with positive sizes and nonnegative x/y; no automatic clipping.
 Image dimensions are finite and positive, timestamps finite, nonnegative and strictly increasing; dimensions stay fixed per sequence. Scores are in[0,1], classes are nonnegative safe integers. All numbers must be finite.

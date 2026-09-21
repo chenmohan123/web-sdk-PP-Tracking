@@ -1,16 +1,20 @@
 # 变更记录 / Changelog
 
-## 0.2.0-alpha.0 — 2026-09-19（仅本地候选）
+## 0.2.0-alpha.0 — 2026-09-21（仅本地候选）
 
 - 在同一框输入 SDK 中新增 OC-SORT 观察中心策略；`TrackerOptions.algorithm` 支持 `bytetrack` / `ocsort` / `deepsort`，`TrackingResult.algorithm` 返回实际策略，`TrackerAlgorithm` 作为类型导出。
-- 新增消费调用者外部向量的 DeepSORT 策略、严格 `FeatureSpace`/embedding 契约、最近邻图库、运动门控、新鲜度级联和有限 IoU 后备；不内置或运行 ReID 模型。
+- 新增消费调用者外部向量的 DeepSORT 策略、严格 `FeatureSpace`/embedding 契约、最近邻图库、运动门控、新鲜度级联和有限 IoU 后备；根入口保持CPU/main，不加载模型。
+- 新增可选 `web-sdk-pp-tracking/reid` 子入口，PPLCNet人体FP32特征提取支持WASM/WebGPU；ORT1.27.0为可选peer。固定33,704,835字节模型已分发到ModelScope/Hugging Face，默认ModelScope，固定revision及SHA见模型卡；权重不进入npm。采用官方仓库整体Apache-2.0，保留训练披露范围及署名。
+- 本地Demo增加图像＋调用者检测框逐帧提取/DeepSORT工作台，区分模型与CPU关联、状态复位与模型缓存清理；标准清单升级1.3 hybrid。真实同输入MOT精度、视频/摄像头调度仍待后续验证。
 - Demo 可切换三种已实现算法，完整验证后原子提交导入/切换，导出实际参数、特征空间与可重新导入的帧；内置 DeepSORT 外观向量为原创合成数据。
 - 本地 tarball、实际 ESM/CJS/类型消费和浏览器验证覆盖三算法；线上 npm、GitHub Release 与 HTTPS Demo 仍为 0.1.0，本条不构成远程 alpha 发布说明。
 
 English equivalent:
 
 - Added the OC-SORT observation-centric strategy to the same box-input SDK. `TrackerOptions.algorithm` accepts `bytetrack` / `ocsort` / `deepsort`, `TrackingResult.algorithm` reports the actual strategy, and `TrackerAlgorithm` is exported as a type.
-- Added DeepSORT over caller-provided vectors with strict `FeatureSpace`/embedding contracts, nearest-neighbour galleries, motion gating, recency cascade and a limited IoU fallback. No ReID model is bundled or run.
+- Added DeepSORT over caller-provided vectors with strict `FeatureSpace`/embedding contracts, nearest-neighbour galleries, motion gating, recency cascade and a limited IoU fallback. The root entry remains CPU/main and never loads a model.
+- Added optional `web-sdk-pp-tracking/reid` with PPLCNet human FP32 extraction on WASM/WebGPU and ORT1.27.0 as an optional peer. The fixed33,704,835-byte model is distributed on ModelScope/Hugging Face, defaulting to ModelScope; immutable revisions and SHA are in the model card. Weights are excluded from npm. Distribution relies on the official repository's Apache-2.0 license with attribution and training-disclosure limits retained.
+- The local Demo adds image plus caller-provided boxes for per-frame extraction and DeepSORT, separating model/CPU association and state reset/model-cache cleanup. The manifest uses standard1.3 hybrid. Real identical-input MOT accuracy and video/camera scheduling still require evaluation.
 - The Demo switches among all three implementations, validates imports/switches before atomic commit, and exports actual options, feature space and re-importable frames. Built-in DeepSORT vectors are original synthetic data.
 - Local tarball ESM/CJS/declaration consumption and browser verification cover all three algorithms. Published npm, GitHub Release and HTTPS Demo remain 0.1.0; this entry does not announce a remote alpha release.
 

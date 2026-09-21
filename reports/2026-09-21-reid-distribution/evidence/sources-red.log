@@ -1,0 +1,115 @@
+$ vitest run "tests/reid-sources.test.ts"
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ❯ tests/reid-sources.test.ts (8 tests | 8 failed) 37ms
+   × ReID 公开来源选择 > 查询默认 ModelScope，两个来源固定同一模型身份 6ms
+     → getReIdModelSource is not a function
+   × ReID 公开来源选择 > 来源查询快照改写不会污染后续来源和工厂 1ms
+     → getReIdModelSource is not a function
+   × ReID 公开来源选择 > 工厂来源 undefined 只请求对应来源，不静默换源 0ms
+     → getReIdModelSource is not a function
+   × ReID 公开来源选择 > 工厂来源 modelscope 只请求对应来源，不静默换源 0ms
+     → getReIdModelSource is not a function
+   × ReID 公开来源选择 > 工厂来源 huggingface 只请求对应来源，不静默换源 0ms
+     → getReIdModelSource is not a function
+   × ReID 公开来源选择 > 未知来源查询与工厂同步拒绝 6ms
+     → expected error to match asymmetric matcher
+   × ReID 公开来源选择 > 本地字节独立可用且仍与字符串或显式来源互斥 19ms
+     → getReIdModelSource is not a function
+   × ReID 公开来源选择 > 既有显式来源保留并在工厂入口复制 2ms
+     → getReIdModelSource is not a function
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/reid-sources.test.ts > ReID 公开来源选择 > 查询默认 ModelScope，两个来源固定同一模型身份
+TypeError: getReIdModelSource is not a function
+ ❯ tests/reid-sources.test.ts:13:17
+     11| describe('ReID 公开来源选择', () => {
+     12|   it('查询默认 ModelScope，两个来源固定同一模型身份', () => {
+     13|     expect(reid.getReIdModelSource().kind).toBe('modelscope');
+       |                 ^
+     14|     for (const kind of ['modelscope', 'huggingface'] as const) {
+     15|       const source = reid.getReIdModelSource(kind);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  tests/reid-sources.test.ts > ReID 公开来源选择 > 来源查询快照改写不会污染后续来源和工厂
+TypeError: getReIdModelSource is not a function
+ ❯ tests/reid-sources.test.ts:23:25
+     21| 
+     22|   it('来源查询快照改写不会污染后续来源和工厂', async () => {
+     23|     const source = reid.getReIdModelSource();
+       |                         ^
+     24|     const original = { ...source };
+     25|     Reflect.set(source, 'downloadUrl', 'https://invalid.example/model.…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  tests/reid-sources.test.ts > ReID 公开来源选择 > 工厂来源 undefined 只请求对应来源，不静默换源
+ FAIL  tests/reid-sources.test.ts > ReID 公开来源选择 > 工厂来源 modelscope 只请求对应来源，不静默换源
+ FAIL  tests/reid-sources.test.ts > ReID 公开来源选择 > 工厂来源 huggingface 只请求对应来源，不静默换源
+TypeError: getReIdModelSource is not a function
+ ❯ tests/reid-sources.test.ts:34:27
+     32| 
+     33|   it.each([undefined, 'modelscope', 'huggingface'] as const)('工厂来源 %s …
+     34|     const expected = reid.getReIdModelSource(kind);
+       |                           ^
+     35|     const fetch = vi.fn(async () => new Response(null, { status: 503 }…
+     36|     vi.stubGlobal('fetch', fetch);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  tests/reid-sources.test.ts > ReID 公开来源选择 > 未知来源查询与工厂同步拒绝
+AssertionError: expected error to match asymmetric matcher
+
+- Expected
++ Received
+
+- ObjectContaining {
+-   "code": "INVALID_MANIFEST",
++ TypeError {
++   "message": "__vite_ssr_import_1__.getReIdModelSource is not a function",
+  }
+
+ ❯ tests/reid-sources.test.ts:46:70
+     44| 
+     45|   it('未知来源查询与工厂同步拒绝', () => {
+     46|     expect(() => reid.getReIdModelSource('unknown' as 'modelscope')).t…
+       |                                                                      ^
+     47|     expect(() => reid.createReIdExtractor({ ...options, source: 'unkno…
+     48|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  tests/reid-sources.test.ts > ReID 公开来源选择 > 本地字节独立可用且仍与字符串或显式来源互斥
+TypeError: getReIdModelSource is not a function
+ ❯ tests/reid-sources.test.ts:54:61
+     52|     const extractor = reid.createReIdExtractor({ ...options, modelByte…
+     53|     await extractor.dispose();
+     54|     for (const source of ['modelscope', 'huggingface', reid.getReIdMod…
+       |                                                             ^
+     55|       expect(() => reid.createReIdExtractor({ ...options, modelBytes, …
+     56|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  tests/reid-sources.test.ts > ReID 公开来源选择 > 既有显式来源保留并在工厂入口复制
+TypeError: getReIdModelSource is not a function
+ ❯ tests/reid-sources.test.ts:60:42
+     58| 
+     59|   it('既有显式来源保留并在工厂入口复制', async () => {
+     60|     const source: ReIdSource = { ...reid.getReIdModelSource(), reposit…
+       |                                          ^
+     61|     const fetch = vi.fn(async () => new Response(null, { status: 503 }…
+     62|     vi.stubGlobal('fetch', fetch);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  8 failed (8)
+   Start at  10:40:30
+   Duration  1.65s (transform 140ms, setup 0ms, collect 255ms, tests 37ms, environment 0ms, prepare 733ms)
+
+[ELIFECYCLE] Test failed. See above for more details.

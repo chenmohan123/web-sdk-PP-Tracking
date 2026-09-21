@@ -2,10 +2,26 @@
 
 [English](../en/release-checklist.md)
 
-基于门户 `standards/v1/templates/release-checklist.md`。0.1.0 已于 2026-09-19 完成首次发布与日期化远程核验；本清单不承诺未来版本或未验证环境继续满足相同状态。
+基于门户 `standards/v1/templates/release-checklist.md`。当前本地候选为0.2.0-alpha.0；npm、GitHub Release及HTTPS Demo仍为0.1.0。本清单不自动授权远程发布。
+
+## 当前混合SDK候选
+
+- [x] 默认根入口提供三种CPU/main跟踪算法；可选 `./reid` 独立导出ESM/CJS/types，ORT1.27.0为optional peer，根调用者无需引擎。
+- [x] 固定FP32模型已分发到ModelScope/Hugging Face，默认ModelScope；固定revision、bytes、SHA及匿名回读证据见[阶段报告](../../reports/2026-09-21-reid-distribution/README.md)。
+- [x] 模型卡保留官方仓库整体Apache-2.0采用依据、转换署名和训练披露缺口；parameterCount为null。
+- [x] 1.3 hybrid清单、Demo完成标准after、完整verify和真实生产构建浏览器验收，见当前阶段报告。
+- [x] 最终实际tarball消费、无ORT隔离与完整性已归档。
+- [ ] 当前候选通过最终独立审查。
+- [ ] 本版本获明确发布授权后，经PR、最新提交CI、合并及不可变新标签发布，并更新npm/线上Demo回执。
+
+模型分发不等于SDK/npm/Demo发布。真实检测同输入的三算法IDF1/IDSW/MOTA与完整成本、视频/摄像头调度仍待后续评测。
+
+## 历史交付与基础检查
+
+以下远程勾选项只记录0.1.0于2026-09-19的交付状态；本地通用检查须由上方当前阶段证据确认。
 
 - [x] 中文README和英文等价指南互链；算法来源、许可、输入输出、状态/reset和cold/warm已记录。
-- [x] 1.2.0 algorithm清单，无model/cache；CHANGELOG包含 ByteTrack、OC-SORT、DeepSORT 来源、实现差异及限制。
+- [x] 0.1.0使用1.2.0 algorithm清单，无model/cache；后续候选的CHANGELOG另记三算法与ReID变更。
 - [x] `npm run verify` 为完整本地验证命令；CI覆盖类型、单测、包产物、Demo、示例与浏览器。
 - [x] package发行文件仅dist、README、LICENSE、NOTICE和package.json，无React生产依赖；本地实际tarball已消费三种算法的ESM/CJS/类型声明。
 - [x] 兼容性包含日期、OS、设备、浏览器、实际后端与runtime。
@@ -18,9 +34,9 @@
 - [x] Pages Source=GitHub Actions、github-pages 环境、HTTPS、串行部署、最小权限及提交关联的成功部署记录已核验。
 - [x] GitHub、npm 与 HTTPS Demo 链接已实际核验，日期化回执不含凭据，见[首版交付记录](../../reports/2026-09-19-release/README.md)。
 
-本地检查器将远程规则保留skip；没有required本地失败只能称locally-compliant。模型资产项不适用。清单中的待办不会自动触发任何远程动作。
+本地检查器将远程规则保留skip；没有required本地失败只能称locally-compliant。模型资产项对当前hybrid候选适用，不能沿用历史algorithm豁免。待办不会自动触发远程动作。
 
-以上 algorithm 清单只覆盖发行核心。[ReID 源码候选](reid-candidate.md)单独构建、尚未加入 npm exports/dist；其浏览器证据不能替代正式模型源、许可说明或 Demo 验收。启用公开模型入口时，必须同步启用标准1.3.0 hybrid声明和模型发布门槛，不得继续用纯algorithm豁免模型要求。
+当前[可选ReID模块](reid-candidate.md)已加入本地package.exports/dist，配套真实双源、许可说明与1.3 hybrid清单。其带日期浏览器验收独立归档，不能据此声称npm或线上Demo已更新。
 
 0.2.0-alpha.0 的三策略、外部向量与 Demo 变更仍是本地候选，未执行 push、Release、npm 发布或 Pages 部署；上述远程勾选项只记录 0.1.0 历史事实，不能作为该 alpha 已发布的证据。
 

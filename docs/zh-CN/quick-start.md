@@ -2,6 +2,8 @@
 
 [English](../en/quick-start.md) · [首页](../../README.md)
 
+本地候选另提供[可选ReID子入口](reid-candidate.md)，从人体图像与检测框提取外观向量供DeepSORT消费。它需要本地tarball和可选ORT依赖；下方已发布0.1.0安装命令只提供根ByteTrack算法。
+
 线上已发布包仍为 0.1.0：
 
 ```sh

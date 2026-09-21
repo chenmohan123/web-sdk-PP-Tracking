@@ -122,7 +122,7 @@ OC-SORT 复用本项目独立的八维 `cx/cy/w/h` 恒速滤波、秒级 `dt`、
 
 ## DeepSORT（外部向量，本地 alpha）
 
-`createTracker({algorithm:'deepsort',featureSpace})` 依据 [Deep SORT 论文](https://arxiv.org/abs/1703.07402) 的概念独立实现。SDK 不加载 ReID 权重、不裁剪图片、不生成 embedding；调用者必须为每帧和每个检测提供与 `featureSpace` 一致的标识和向量。向量经缩放避免范数溢出后归一化并复制；缺失、错维、非有限或零范数使整帧以 `INVALID_INPUT` 失败且不提交状态。每条轨迹保存最近 `gallerySize` 个向量，距离为检测向量与图库样本的最小余弦距离。
+`createTracker({algorithm:'deepsort',featureSpace})` 依据 [Deep SORT 论文](https://arxiv.org/abs/1703.07402) 的概念独立实现。跟踪根入口不加载模型或生成embedding；可选[ReID子入口](reid-candidate.md)负责人体框特征。调用者为每帧和每个检测提供与 `featureSpace` 一致的标识和向量。向量经缩放避免范数溢出后归一化并复制；缺失、错维、非有限或零范数使整帧以 `INVALID_INPUT` 失败且不提交状态。每条轨迹保存最近 `gallerySize` 个向量，距离为检测向量与图库样本的最小余弦距离。
 
 已确认轨迹按 `lastSeenMs` 从新到旧分组级联。候选边同时要求类别相同、最小余弦距离不大于 `maxCosineDistance`，且四维观测的平方 Mahalanobis 距离不大于 `9.487729036781154`；观测协方差使用预测位置协方差加 `4I`。每组继续使用最大可行匹配数、再最小代价的确定性全局分配。
 

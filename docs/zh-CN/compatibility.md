@@ -4,7 +4,7 @@
 
 本地候选验证日期：2026-09-19。环境：Windows11专业版10.0.26200，Intel Core i5-10400F @2.90GHz；Node24.16.0、pnpm11.21.0；Playwright1.63.0桌面Chromium153.0.8010.12。runtime为 `web-sdk-pp-tracking@0.2.0-alpha.0`，实际CPU / JavaScript / main，无GPU/驱动依赖；线上已发布版本仍为0.1.0。
 
-本页矩阵描述发行核心及当时的Demo。[ReID源码候选](reid-candidate.md)的WASM/WebGPU、输入及日期证据单独记录，不扩展本页CPU关联器的后端声明，也不表示npm模型入口已发布。
+下表保留2026-09-19的CPU关联器证据。2026-09-21已将[可选ReID子入口](reid-candidate.md)接入本地发布候选：同机 Chromium153、ORT Web1.27.0、RTX5060Ti（驱动32.0.16.1692）通过真实ModelScope/Hugging Face各WASM/WebGPU共四组下载、SHA校验和512维提取；GPU为非fallback适配器。模型后端和CPU关联后端分别报告，见[当前阶段报告](../../reports/2026-09-21-reid-distribution/README.md)。npm及线上Demo仍为0.1.0。
 
 | 范围 | 证据与边界 |
 | --- | --- |
@@ -12,11 +12,12 @@
 | 390px布局 | 桌面浏览器调整视口验证无横向溢出，不等同真实移动设备验证 |
 | ESM/CJS/TypeScript | `npm run check:package` 从实际tarball安装并消费三种算法，运行时导出白名单不变 |
 | Safari/Firefox/移动设备/微信 | 尚未验证，不声明支持 |
-| Worker/WebGPU/WASM/NPU | 首版不实现，不声明兼容 |
+| 算法Worker/GPU/WASM/NPU | 根算法仍只实现CPU/main；可选模型的WASM/WebGPU不改变关联后端 |
+| 可选模型Worker/NPU | 尚未实现，不声明兼容 |
 
 截图、浏览器版本和交互计数由 `tests/browser.mjs` 写入 `.tmp/browser/`。这是本地日期化证据，不是线上部署或跨设备兼容承诺。所有示例为合成机制，不证明真实场景MOT精度。
 
-本次三策略候选的完整 verify 原始日志保存于 `reports/2026-09-19-deepsort/verify.txt`，Chromium153 报告和截图由 `.tmp/browser/` 生成，包含11组检查。`2026-09-19-ocsort` 只证明此前两策略候选；`2026-09-19-desktop` 与 `2026-09-19-release-candidate` 只属于已发布 0.1.0 历史证据。另一份 Chromium151 headless 证据仅覆盖10/50/100框合成性能，不能替代本次产品交互验证；不存在真实手机或真实外观向量验证。
+2026-09-19三策略候选的完整 verify 原始日志保存于 `reports/2026-09-19-deepsort/verify.txt`，当时包含11组浏览器检查。`2026-09-19-ocsort` 只证明此前两策略候选；`2026-09-19-desktop` 与 `2026-09-19-release-candidate` 只属于已发布0.1.0历史证据。Chromium151 headless仅覆盖10/50/100框合成性能。当前ReID已有真实裁剪数值与双源证据，但没有真实手机或完整时间序列精度结论。
 
 同日[两算法候选对比](../../reports/2026-09-19-ocsort/README.md)固定 Node 七段 MOT17 FRCNN 训练序列 5316 帧及两算法各自的 Chromium153 完整 02 序列 600 帧对齐；ByteTrack 历史默认/消融证据仍见[0.1.0 真实序列报告](../../reports/2026-09-19-mot17/README.md)。范围仍限上述 Windows 桌面 CPU/main；真实数据指标不扩展设备兼容性，也不构成测试集排行榜成绩。
 

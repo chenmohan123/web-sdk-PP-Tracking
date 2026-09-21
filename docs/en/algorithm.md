@@ -6,7 +6,7 @@ This implementation uses the high/low confidence association idea from the
 [ByteTrack paper](https://arxiv.org/abs/2110.06864). The Kalman filter, assignment
 solver and lifecycle were independently written from mathematical definitions;
 no old Kalman/SORT source was read or translated. This is not an official port.
-There is no built-in feature-extraction model or camera-motion compensation. DeepSORT
+The root entry has no model runtime or camera-motion compensation. DeepSORT
 only consumes caller-provided vectors; vector quality, identity through crossings or
 turns, and real-sequence MOT accuracy are not established.
 
@@ -151,7 +151,7 @@ cancellation semantics match the original strategy.
 
 ## DeepSORT (external vectors, local alpha)
 
-`createTracker({algorithm:'deepsort',featureSpace})` independently implements concepts from the [Deep SORT paper](https://arxiv.org/abs/1703.07402). The SDK loads no ReID weights, crops no images and generates no embeddings. Callers provide a matching feature-space ID on every frame and a compatible vector on every detection. Vectors are scale-normalized to avoid norm overflow and copied. Missing, wrong-dimensional, non-finite or zero-norm vectors reject the whole frame with `INVALID_INPUT` and commit no state. Each track stores the newest `gallerySize` vectors; detection-to-track distance is the minimum cosine distance to any gallery sample.
+`createTracker({algorithm:'deepsort',featureSpace})` independently implements concepts from the [Deep SORT paper](https://arxiv.org/abs/1703.07402). The tracking root loads no model and generates no embeddings; the optional [ReID subpath](reid-candidate.md) extracts human-box features. Callers provide a matching feature-space ID on every frame and a compatible vector on every detection. Vectors are scale-normalized to avoid norm overflow and copied. Missing, wrong-dimensional, non-finite or zero-norm vectors reject the whole frame with `INVALID_INPUT` and commit no state. Each track stores the newest `gallerySize` vectors; detection-to-track distance is the minimum cosine distance to any gallery sample.
 
 Confirmed tracks are grouped by `lastSeenMs` from newest to oldest for cascade matching. An edge requires the same class, minimum cosine distance no greater than `maxCosineDistance`, and four-dimensional squared Mahalanobis distance no greater than `9.487729036781154`. Observation covariance is the predicted positional covariance plus `4I`. Each group uses the same deterministic maximum-cardinality, minimum-cost assignment.
 

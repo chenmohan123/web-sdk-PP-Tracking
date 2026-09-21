@@ -1,0 +1,41 @@
+{
+  "testedAt": "2026-09-21T03:12:37.778Z",
+  "browser": "153.0.8010.12",
+  "input": "人工生成128×192不透明PNG及人工框，非质量评测",
+  "checks": [
+    "默认框/向量模式无模型/ORT请求",
+    "真实MS/WASM生产会话、同尺寸换图保持ID、语言不复位、非法JSON不推进",
+    "390px中英文无横向溢出（桌面视口）",
+    "模型下载挂起时取消，失败任务不推进，重复开始禁用",
+    "真实HF/WebGPU生产会话、来源/后端切换复位、复位后可重跑、清理保留其他缓存"
+  ],
+  "runs": [
+    {
+      "source": "modelscope",
+      "backend": "wasm",
+      "frames": 2,
+      "trackId": 1,
+      "runtime": "运行与分层耗时ReID: requestedBackend=wasm · actualBackend=wasm · main · ORT 1.27.0DeepSORT: requestedBackend=cpu · actualBackend=cpu · main加载modelDownloadMs0.00 msmodelCacheReadMs0.00 msintegrityMs0.00 mssessionMs0.00 mstotalMs0.10 ms图像解码decodeMs5.10 ms模型提取decodeMs0.00 mspreprocessMs4.60 msinferenceMs54.40 mspostprocessMs0.10 mstotalMs59.10 msCPU DeepSORTvalidationMs0.30 mspredictionMs0.70 msassociationMs0.30 msupdateMs0.90 mstotalMs2.20 ms毫秒；加载、图像解码、模型提取、CPU关联分开计时。冷启动=新实例首次加载/首帧；热运行=复用模型和轨迹。2026-09-21 本机 Chromium 153 / Windows 11：双源 WASM/WebGPU 通过；其他浏览器、移动设备未验证。"
+    },
+    {
+      "source": "huggingface",
+      "backend": "webgpu",
+      "frames": 2,
+      "trackId": 1,
+      "runtime": "运行与分层耗时ReID: requestedBackend=webgpu · actualBackend=webgpu · main · ORT 1.27.0DeepSORT: requestedBackend=cpu · actualBackend=cpu · main加载modelDownloadMs0.00 msmodelCacheReadMs0.00 msintegrityMs0.00 mssessionMs0.00 mstotalMs0.00 ms图像解码decodeMs1.40 ms模型提取decodeMs0.00 mspreprocessMs8.60 msinferenceMs13.50 mspostprocessMs0.10 mstotalMs22.20 msCPU DeepSORTvalidationMs0.50 mspredictionMs0.30 msassociationMs0.10 msupdateMs0.30 mstotalMs1.20 ms毫秒；加载、图像解码、模型提取、CPU关联分开计时。冷启动=新实例首次加载/首帧；热运行=复用模型和轨迹。2026-09-21 本机 Chromium 153 / Windows 11：双源 WASM/WebGPU 通过；其他浏览器、移动设备未验证。"
+    }
+  ],
+  "errors": [],
+  "modelRequests": [
+    {
+      "kind": "modelscope",
+      "revision": "dc3d9f7a97be4033e654525f0e9d3fbd5eaf7c9b",
+      "count": 2
+    },
+    {
+      "kind": "huggingface",
+      "revision": "02c299b5b5618315fc754002b7ea7c95c95e8a82",
+      "count": 1
+    }
+  ]
+}

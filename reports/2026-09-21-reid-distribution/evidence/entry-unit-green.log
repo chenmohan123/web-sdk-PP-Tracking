@@ -1,0 +1,13 @@
+$ vitest run "tests/reid-sources.test.ts" "tests/reid-lifecycle.test.ts" "tests/reid-preprocess.test.ts"
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ✓ tests/reid-preprocess.test.ts (4 tests) 31ms
+ ✓ tests/reid-sources.test.ts (8 tests) 42ms
+ ✓ tests/reid-lifecycle.test.ts (37 tests) 1357ms
+
+ Test Files  3 passed (3)
+      Tests  49 passed (49)
+   Start at  10:44:44
+   Duration  2.21s (transform 275ms, setup 0ms, collect 713ms, tests 1.43s, environment 1ms, prepare 671ms)
+

@@ -2,6 +2,8 @@
 
 [中文](../zh-CN/quick-start.md) · [Home](../../README.en.md)
 
+The local candidate also provides an [optional ReID subpath](reid-candidate.md) that extracts appearance vectors from human images and boxes for DeepSORT. It needs the local tarball plus optional ORT; the published0.1.0 installation below provides only root ByteTrack.
+
 The published package remains version 0.1.0:
 
 ```sh

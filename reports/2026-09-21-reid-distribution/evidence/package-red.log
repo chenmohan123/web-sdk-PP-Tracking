@@ -1,0 +1,17 @@
+$ node scripts/check-package.mjs
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: 缺少 ReID 子入口双格式或类型
+    at file:///C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking/scripts/check-package.mjs:18:1 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.16.0
+[ELIFECYCLE] Command failed with exit code 1.

@@ -1,0 +1,4 @@
+{"source":"modelscope","backend":"wasm","maxAbs":2.4586915969848633e-7,"cache":"stored"}
+{"source":"modelscope","backend":"webgpu","maxAbs":2.53552570939064e-7,"cache":"stored"}
+{"source":"huggingface","backend":"wasm","maxAbs":2.4586915969848633e-7,"cache":"stored"}
+{"source":"huggingface","backend":"webgpu","maxAbs":2.53552570939064e-7,"cache":"stored"}

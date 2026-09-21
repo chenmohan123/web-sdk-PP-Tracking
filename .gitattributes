@@ -5,3 +5,4 @@ reports/2026-09-19-mot17/** -text whitespace=blank-at-eol,space-before-tab,cr-at
 reports/2026-09-19-reid-feasibility/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol
 reports/2026-09-21-02-rc/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol
 reports/2026-09-21-02-rc/logs/*.txt -text -whitespace
+reports/2026-09-21-botsort-feasibility/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol

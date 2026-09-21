@@ -1,0 +1,8 @@
+file:///C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking/.tmp/botsort-feasibility/run.mjs:59
+    if(key==='base')assert.equal(hash(o.mot),previous.nodeRuns.bytetrack[0].motSha256,'本轮基线偏离历史');
+                                                               ^
+
+TypeError: Cannot read properties of undefined (reading 'bytetrack')
+    at file:///C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking/.tmp/botsort-feasibility/run.mjs:59:64
+
+Node.js v24.16.0

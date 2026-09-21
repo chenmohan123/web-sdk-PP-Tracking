@@ -1,0 +1,162 @@
+{
+  "archivedAt": "2026-09-21T13:44:26.005Z",
+  "baselineCommit": "b8ef9c292ba4cae41d5c4a9c83a70809486f509e",
+  "runtimeVersion": "0.2.0-rc.0",
+  "resultAlgorithm": "bytetrack",
+  "interpretation": "研究配置由 run-summary.configurations 区分；这些标识不代表第四算法已发布",
+  "environment": {
+    "node": "v24.16.0",
+    "platform": "win32",
+    "release": "10.0.26200",
+    "cpu": "Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz",
+    "esbuild": "0.25.12",
+    "browser": "Chromium 153.0.8010.12",
+    "python": "3.11.15 (main, Jul 18 2026, 17:06:27) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "1.23.5",
+    "opencv": "4.10.0",
+    "scipy": "1.10.1",
+    "opencvThreads": 1
+  },
+  "frozenFeatures": {
+    "model": "pplcnet-reid-fp32@0.1.0",
+    "extractionBackend": "webgpu",
+    "featureSpace": {
+      "id": "pplcnet-reid:24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4:rgba8-white-upright-rgb-halfpixel-f64-imagenet-f32-v1:l2-f32-v1",
+      "dimension": 512
+    },
+    "extractionEvidence": "../2026-09-21-mot-reid/raw/sequences/",
+    "note": "沿用已完成的图像提取，未重测模型/预处理速度"
+  },
+  "inputHashes": {
+    "MOT17-02-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "669c5135aa1b7f1726ee50ab6cec86780fc448dadaf93ea9c4fb6e2a0d4256aa"
+      },
+      "det/det.txt": {
+        "bytes": 267111,
+        "sha256": "1e46e773a7297b975291884266ca728f56347e700c44f10ad96f207e1f6995ae"
+      },
+      "gt/gt.txt": {
+        "bytes": 916738,
+        "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+      }
+    },
+    "MOT17-04-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 109,
+        "sha256": "f2d5bbe2c4d2a884422571987bc5363b61bb7e2c6748d1cff444e55b4886b888"
+      },
+      "det/det.txt": {
+        "bytes": 894422,
+        "sha256": "e1494db52e85cc13dad52ac01e7efe972e4e432f6ce788da8a4dfa0d38edce75"
+      },
+      "gt/gt.txt": {
+        "bytes": 3473246,
+        "sha256": "f8cfbe36ef38a2e1857d7ebfe7d754b2355a3ffb9e1f9cedea435e86e4fbc948"
+      }
+    },
+    "MOT17-05-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 106,
+        "sha256": "2f49de730bcdfcd684069aed291627d2e5f13f8524e5163129e4bac88af815d0"
+      },
+      "det/det.txt": {
+        "bytes": 121432,
+        "sha256": "6dfc37078b989f9e7f0e2f0492836ef28a2b51ffcf30ded428fd61d53e3aca98"
+      },
+      "gt/gt.txt": {
+        "bytes": 251681,
+        "sha256": "ed74c54176b21b38cb690eda79a4755cf16e4c4a9ca2f019b0ba8904636174f5"
+      }
+    },
+    "MOT17-09-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "96cec357e5661afad673cc2259310d2c0fb93854ffe18b765fd973c38f3957d9"
+      },
+      "det/det.txt": {
+        "bytes": 100965,
+        "sha256": "d4bf28e2ccb4c46a5e36ecb6b35177ac27ad1ac3c74fc09a601c0a9d4cf9ec6d"
+      },
+      "gt/gt.txt": {
+        "bytes": 324307,
+        "sha256": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d"
+      }
+    },
+    "MOT17-10-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "7af062d088f3b7a88522f8095246eb01a6113d89823a96b7099a09d54421ecbd"
+      },
+      "det/det.txt": {
+        "bytes": 318265,
+        "sha256": "4ad164363e6985e6ffbcae65963397d0d0f2cbb6313a33e0913fa8d1473e304c"
+      },
+      "gt/gt.txt": {
+        "bytes": 541756,
+        "sha256": "f8cca05d98fa36d8b6f2b807e03d32407d00d40299d679e4da320e42862677c0"
+      }
+    },
+    "MOT17-11-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "5e376f2489be7c5c5e64456a3842e9f62aa79ce7455903820c9bd218ff0c806f"
+      },
+      "det/det.txt": {
+        "bytes": 198413,
+        "sha256": "0559214506fe189b4ebe81e38538c4fdc04cd0cde6b28d9ab6c8c94fb04b8b65"
+      },
+      "gt/gt.txt": {
+        "bytes": 338857,
+        "sha256": "4952d6e4efc705c90688e434fd138a55ada2c0d5f576ba3847ee102fc18aff93"
+      }
+    },
+    "MOT17-13-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "a7a0f607a31e3f311be6e9836214e23d4642c088db56126f51f150f13fe7a3af"
+      },
+      "det/det.txt": {
+        "bytes": 280547,
+        "sha256": "d95a3a26b64a2164d6608ed5cc732fe7f63fc5157c884f218e43cd04507b9989"
+      },
+      "gt/gt.txt": {
+        "bytes": 637671,
+        "sha256": "4827603ef87bbd61123cb4c5f194b3bf23531bd78ed9cd916084e53dca998013"
+      }
+    }
+  },
+  "dependencies": {
+    "dist/index.js": "ee982b23678b4ff7a111c635ed3e8d12a450464a4d54a13c55067ccc30dd46e9",
+    "scripts/evaluation/mot17/adapter.mjs": "4752633b663f42a144bb8d8f52bb8bf5861e4d42bc6764c9f7f4eca4725bba21",
+    "scripts/evaluation/mot17/evaluator.py": "b86269b667c7f66c70bfded979cfd05e724294fb8dee15757190f2ffbc1fc360",
+    "scripts/evaluation/mot17/lock.json": "9e88d9f2bca4e7a275a473c65709511484d1cd5c20a4b78f5f62b8ddd2d74495",
+    "scripts/evaluation/mot17-reid/core.mjs": "33b6bf695d750840bc5a85cbd1f4c59d514e2ad3e40a73aada0b4af1d7bed497",
+    "scripts/evaluation/mot17-reid/io.mjs": "637899870df9ddee3cbf2829d6a8243d277c2e7a00cf4b3313f483e61941a316",
+    "reports/2026-09-21-mot-reid/media.lock.json": "906491d5d02912f38cea5014b2b687fd8b5ae4a3ec55499439ad7c049b328cb5",
+    "reports/2026-09-21-mot-reid/raw/summary.json": "34c3d89ed0f8c5df66f4732cd17e39100cba268f0688c5660efe196807a3a8c5",
+    "reports/2026-09-19-mot17/summary.json": "a8aad88094132d28d9a17d9c75ec8e9ece3b792418deba7a0c0f333e9de1b52d"
+  },
+  "aggregate": {
+    "frames": 5316,
+    "detections": 67639,
+    "motionStatus": {
+      "estimated": 5270,
+      "first_frame": 7,
+      "low_support": 39
+    },
+    "motionTimings": {
+      "readIntegrityMs": 5480.852901178878,
+      "decodeResizeMs": 43961.51040092809,
+      "estimateMs": 239277.9796004179,
+      "totalMs": 288720.34290252486
+    },
+    "nodeTotalsMs": {
+      "base": 10067.135999999968,
+      "cmc": 10304.918900000052,
+      "cmc-reid": 12986.264100000135
+    }
+  },
+  "repeatability": "7段Node单次完整三配置；恒等补偿逐帧对齐原基线，全部基线MOT对齐历史；05完整837帧Chromium三配置对齐Node所有非耗时结果。未做全量第二次重复。"
+}

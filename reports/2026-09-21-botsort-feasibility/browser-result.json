@@ -1,0 +1,25 @@
+{
+  "testedAt": "2026-09-21T13:36:11.231Z",
+  "browser": "153.0.8010.12",
+  "sequence": "MOT17-05-FRCNN",
+  "frames": 837,
+  "rows": {
+    "base": {
+      "motSha256": "2a1880c6ade5ac7ae496ce9e3aa6eaee307fe10f443a40e5a764364f61997e21",
+      "nonTimingSha256": "cce2bac9b341441da144e994b647da01c54ed0d8e7d140df05d5e4587250ba0a",
+      "totalMs": 583.5999999046326
+    },
+    "cmc": {
+      "motSha256": "8b6e21661f135f55e041d8bd2f2b9b1b192f6ee1d32dca80ac9be49da49f313a",
+      "nonTimingSha256": "918ba75598c94a7c04ea1bf33e1c7a79c951e5faf60b17c86f7b2ab6cb4c8794",
+      "totalMs": 607.1999996304512
+    },
+    "cmc-reid": {
+      "motSha256": "7a0a43ddd2c552c2dccf564af74107a8f44a90f38f050d6e93f99bc39f5386ff",
+      "nonTimingSha256": "42ed49101214ff42d5cd687a3a188e25c6ac5d4b2f0247ae991d393311686268",
+      "totalMs": 738.0999997258186
+    }
+  },
+  "errors": [],
+  "scope": "浏览器CPU关联+矩阵应用；运动矩阵离线Python生成，外观向量为旧归档，未重测模型速度"
+}

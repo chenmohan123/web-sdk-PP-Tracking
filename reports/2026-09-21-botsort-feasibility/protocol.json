@@ -1,0 +1,25 @@
+{
+  "status": "一次性研究探针，不进入 SDK 运行时或发布清单",
+  "baselineCommit": "b8ef9c292ba4cae41d5c4a9c83a70809486f509e",
+  "paper": "arXiv:2206.14651v2",
+  "dataset": "固定 MOT17 七段 FRCNN 训练序列，全部 5316 帧；相同检测，GT 仅评分进程读取",
+  "motion": {
+    "type": "上一已处理帧到当前帧，原图零基坐标的部分仿射矩阵",
+    "estimator": "OpenCV 4.10 ORB + Hamming KNN + RANSAC estimateAffinePartial2D；Python 离线探针，不是浏览器估计器或论文 VideoStab 复现",
+    "maxWidth": 640,
+    "orbFeatures": 1500,
+    "ratio": 0.75,
+    "ransacThreshold": 3,
+    "minMatches": 12,
+    "minInliers": 10,
+    "minInlierRatio": 0.5,
+    "minGridCells": 4,
+    "mask": "上一帧和当前帧全部有效检测矩形排除；16格检查背景点覆盖",
+    "bounds": "0.8<=scale<=1.25，abs(rotation)<=15度，平移<=0.25图像对角线；失败显式identity并记原因",
+    "frameLimit": null
+  },
+  "comparisons": ["原 ByteTrack", "相同内核 + CMC", "相同内核 + CMC + 论文门控最小距离融合/EMA（冻结已有 PPLCNet 向量）"],
+  "hypothesis": "CMC 可在运动相机场景减少身份切换，外观融合收益不能预设；同一探针不调参挑成绩",
+  "limits": "沿用已有秒级滤波噪声及生命周期，非完整官方 BoT-SORT；ReID 不新增权重、模型精度或速度声明；无手机/摄像头/Workflow发布",
+  "verification": "identity矩阵基线逐字一致，仿射几何/协方差反例，浏览器与 Node 同输入对齐；逐段/合计 TrackEval IDF1/MOTA/IDSW/FP/FN，估计与关联耗时分开"
+}

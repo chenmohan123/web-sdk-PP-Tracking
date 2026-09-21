@@ -1,0 +1,7 @@
+MOT17-02-FRCNN {'estimated': 599, 'first_frame': 1}
+MOT17-04-FRCNN {'estimated': 1049, 'first_frame': 1}
+MOT17-05-FRCNN {'estimated': 797, 'first_frame': 1, 'low_support': 39}
+MOT17-09-FRCNN {'estimated': 524, 'first_frame': 1}
+MOT17-10-FRCNN {'estimated': 653, 'first_frame': 1}
+MOT17-11-FRCNN {'estimated': 899, 'first_frame': 1}
+MOT17-13-FRCNN {'estimated': 749, 'first_frame': 1}

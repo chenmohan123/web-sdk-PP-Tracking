@@ -2,13 +2,15 @@
 
 [中文（默认）](README.md)
 
-Local candidate version **0.2.0-alpha.0**. A framework-neutral multi-object tracking SDK independently implementing ByteTrack, OC-SORT and DeepSORT. The root entry uses CPU/main; the optional ReID subpath extracts human appearance features using CPU/WASM or GPU/WebGPU. There is no React runtime dependency. The published npm package and hosted HTTPS Demo remain **0.1.0**; no remote alpha package is available.
+[0.2.0-rc.0 candidate notes](docs/en/releases/0.2.0-rc.0.md): only local tarballs are available; future prereleases use`next`. Historical alpha evaluation and current RC package evidence remain separate.
+
+Local candidate version **0.2.0-rc.0**. A framework-neutral multi-object tracking SDK independently implementing ByteTrack, OC-SORT and DeepSORT. The root entry uses CPU/main; the optional ReID subpath extracts human appearance features using CPU/WASM or GPU/WebGPU. There is no React runtime dependency. The published npm package and hosted HTTPS Demo remain **0.1.0**; no remote RC package is available.
 
 Local builds now expose [the ReID subpath](docs/en/reid-candidate.md), `web-sdk-pp-tracking/reid`, with ModelScope as default and Hugging Face selectable. The fixed FP32 model is distributed on both hubs; weights are downloaded only when explicitly loading the model and are not packed into npm. Root tracking consumers need no inference engine installation.
 
 ## Installation and usage
 
-The [2026-09-21 real-image comparison](reports/2026-09-21-mot-reid/README.en.md) covers seven sequences,5316 frames and67639 detections. DeepSORT+PPLCNet IDF1 is45.4637%, below default ByteTrack48.2922%; full metrics and image-fetch/decode/ReID/tracking costs are archived. Proceed toward local0.2 candidate closure with ByteTrack default, OC-SORT/DeepSORT explicit options and experimental human ReID. It remains unpublished, with no mobile, cross-device or end-to-end video-performance promise.
+The [2026-09-21 real-image comparison](reports/2026-09-21-mot-reid/README.en.md) used0.2.0-alpha.0 and covers seven sequences,5316 frames and67639 detections. DeepSORT+PPLCNet IDF1 is45.4637%, below default ByteTrack48.2922%; full metrics and image-fetch/decode/ReID/tracking costs are archived. This stage prepares local0.2.0-rc.0 with ByteTrack default, OC-SORT/DeepSORT explicit options and experimental human ReID. It remains unpublished, with no mobile, cross-device or end-to-end video-performance promise.
 
 ```sh
 npm install web-sdk-pp-tracking@0.1.0
@@ -33,7 +35,7 @@ pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versi
 npm run build
 npm pack
 # Install the generated local tarball in a consumer project:
-npm install /absolute/path/web-sdk-pp-tracking/web-sdk-pp-tracking-0.2.0-alpha.0.tgz
+npm install /absolute/path/web-sdk-pp-tracking/web-sdk-pp-tracking-0.2.0-rc.0.tgz
 # Only for the optional ReID module:
 npm install onnxruntime-web@1.27.0
 ```

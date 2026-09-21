@@ -2,9 +2,11 @@
 
 [中文](../zh-CN/release-checklist.md)
 
-Based on portal `standards/v1/templates/release-checklist.md`. The local candidate is0.2.0-alpha.0; npm, GitHub Release and the HTTPS Demo still publish0.1.0. This checklist does not authorize remote publication.
+Based on portal `standards/v1/templates/release-checklist.md`. The local candidate is0.2.0-rc.0; npm, GitHub Release and the HTTPS Demo still publish0.1.0. This checklist does not authorize remote publication.
 
 ## Current hybrid SDK candidate
+
+Existing checked evidence in this section belongs to the0.2.0-alpha.0 distribution stage and archive; it does not automatically establish RC verification or review. Check the current [RC notes](releases/0.2.0-rc.0.md) and separate RC tarball, browser and standards receipts.
 
 - [x] The root provides three CPU/main trackers; optional `./reid` independently exports ESM/CJS/types. ORT1.27.0 is an optional peer, unnecessary for root consumers.
 - [x] Fixed FP32 weights are distributed on ModelScope/Hugging Face, defaulting to ModelScope. Immutable revisions, bytes, SHA and anonymous readback appear in the [stage report](../../reports/2026-09-21-reid-distribution/README.en.md).
@@ -16,7 +18,7 @@ Based on portal `standards/v1/templates/release-checklist.md`. The local candida
 
 - [x] The [three-tracker real-image evaluation](../../reports/2026-09-21-mot-reid/README.en.md) covers5316 frames/67639 detections, official combined/per-sequence metrics, browser/two-Node equality, zero capacity drops and complete measured costs.
 
-Model distribution and evaluation are not SDK/npm/Demo publication. Proceed toward local0.2 candidate closure with ByteTrack default, OC-SORT/DeepSORT explicit options and experimental human ReID. First settle candidate version, changelog and release preflight, then obtain authorization for this version. Video/camera scheduling and cross-device compatibility require separate design and verification.
+Model distribution and evaluation are not SDK/npm/Demo publication. The current local candidate is0.2.0-rc.0 with ByteTrack default, OC-SORT/DeepSORT explicit options and experimental human ReID. Candidate version, changelog and publication channels are prepared; remote publication still requires explicit authorization for this version. Video/camera scheduling and cross-device compatibility require separate design and verification.
 
 ## Historical delivery and baseline checks
 
@@ -40,6 +42,6 @@ The local checker preserves remote rules as skip. No local required failures mea
 
 The [optional ReID module](reid-candidate.md) is now in local package.exports/dist, with real sources, licensing documentation and the1.3 hybrid manifest. Dated browser acceptance is archived independently and does not establish an updated npm package or hosted Demo.
 
-The three-strategy, external-vector and Demo changes in 0.2.0-alpha.0 remain a local candidate. No push, Release, npm publication or Pages deployment occurred; the checked remote items above record historical 0.1.0 facts and do not prove that the alpha was published.
+The three-strategy, external-vector and Demo changes in 0.2.0-rc.0 remain a local candidate. No push, Release, npm publication or Pages deployment occurred; the checked remote items above record historical 0.1.0 facts and do not prove that the RC was published.
 
 Release text uses LF; historical reports preserve original bytes. Actual ESM/CJS/declaration consumption, SHA256, sha512 integrity, and the LF-checkout comparison are archived separately. The old desktop package size is not evidence for the final package. The locally authenticated first publication has `provenance: null`; Trusted Publisher is configured, while a future OIDC publication has not yet been exercised by a new version. Its final status must come from that version's npm receipt. Real-sequence metrics and limitations are in the [MOT17 report](../../reports/2026-09-19-mot17/README.en.md).

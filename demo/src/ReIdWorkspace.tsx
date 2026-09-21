@@ -13,7 +13,7 @@ const copy = {
     algorithmInfo: 'DeepSORT 独立实现 · Apache-2.0 · 像素框+模型向量→轨迹/状态。关联始终 CPU/main；ID 不等于人的身份。',
     timing: '毫秒；加载、图像解码、模型提取、CPU关联分开计时。冷启动=新实例首次加载/首帧；热运行=复用模型和轨迹。',
     verified: '2026-09-21 本机 Chromium 153 / Windows 11：双源 WASM/WebGPU 通过；其他浏览器、移动设备未验证。',
-    errorHelp: '检查图像、JSON、网络及所选后端。IMAGE_SIZE_CHANGED：先复位轨迹。', local: '本地候选 0.2.0-alpha.0 · 线上 npm 0.1.0',
+    errorHelp: '检查图像、JSON、网络及所选后端。IMAGE_SIZE_CHANGED：先复位轨迹。', local: '本地候选 0.2.0-rc.0 · 线上 npm 0.1.0',
   },
   en: {
     controls: 'Image + detections', image: 'Choose image', source: 'Model source', backend: 'Model backend', boxes: 'Person detections for this frame (JSON)', run: 'Extract & track', cancel: 'Cancel', reset: 'Reset tracks', clear: 'Clear model', cache: 'Model cache', estimate: 'Refresh usage',
@@ -25,7 +25,7 @@ const copy = {
     algorithmInfo: 'Independent DeepSORT · Apache-2.0 · pixel boxes + model vectors → tracks/states. Association always CPU/main; track IDs are not personal identities.',
     timing: 'Milliseconds; load, image decode, extraction and CPU association are separate. Cold = new-instance load/first frame; warm = reused model and tracks.',
     verified: '2026-09-21 local Chromium 153 / Windows 11: both sources on WASM/WebGPU passed. Other browsers and mobile devices unverified.',
-    errorHelp: 'Check image, JSON, network and backend. IMAGE_SIZE_CHANGED: reset tracks first.', local: 'Local candidate 0.2.0-alpha.0 · npm 0.1.0',
+    errorHelp: 'Check image, JSON, network and backend. IMAGE_SIZE_CHANGED: reset tracks first.', local: 'Local candidate 0.2.0-rc.0 · npm 0.1.0',
   },
 };
 type Status = 'ready' | 'loading' | 'running' | 'success' | 'error' | 'decoding' | 'cancelled' | 'clearing';
@@ -95,7 +95,7 @@ export default function ReIdWorkspace({ language }: { language: 'zh' | 'en' }) {
   }
   function cancel() { request.current++; images.cancel(); controller.cancel(); setReading(false); setStatus('cancelled'); }
   return <main className="reid-workspace">
-    <aside className="panel controls"><h2>{t.controls}</h2>
+    <aside className="panel controls"><h2>{t.controls}</h2><p className="muted small">{language === 'zh' ? '人体 ReID · 实验' : 'Person ReID · Experimental'}</p>
       <label htmlFor="reid-source">{t.source}</label><select id="reid-source" value={controller.source} disabled={transitioning} onChange={event => void action('configure', event.target.value as typeof controller.source)}><option value="modelscope">ModelScope</option><option value="huggingface">Hugging Face</option></select>
       <label htmlFor="reid-backend">{t.backend}</label><select id="reid-backend" value={controller.backend} disabled={transitioning} onChange={event => void action('configure', controller.source, event.target.value as typeof controller.backend)}><option value="wasm">CPU (WASM)</option><option value="webgpu">GPU (WebGPU)</option></select>
       <label className="file-button">{t.image}<input data-testid="reid-image" type="file" accept="image/*" disabled={controller.busy} onChange={event => { void select(event.target.files?.[0]); event.target.value = ''; }} /></label>

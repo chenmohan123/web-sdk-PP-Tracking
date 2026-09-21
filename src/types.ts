@@ -36,7 +36,7 @@ export interface Track {
 export interface RemovedTrack extends Omit<Track, 'state'> { state: 'removed' }
 export interface RuntimeInfo {
   requestedBackend: 'cpu'; actualBackend: 'cpu'; executionMode: 'main';
-  runtimeVersion: 'web-sdk-pp-tracking@0.2.0-alpha.0';
+  runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.0';
 }
 export interface TrackingTimings {
   validationMs: number; predictionMs: number; associationMs: number; updateMs: number; totalMs: number;

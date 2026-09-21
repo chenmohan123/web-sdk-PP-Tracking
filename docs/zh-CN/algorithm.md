@@ -56,7 +56,7 @@ dispose 幂等，随后 update/reset 抛 DISPOSED。同步主线程仅支持开�
 稳定错误码另有 INVALID_OPTIONS、INVALID_INPUT、NUMERICAL_FAILURE、ID_EXHAUSTED。
 未知配置键拒绝；选项值必须有效，显式 undefined 不视为缺省。
 
-本地候选 runtime 固定实际 CPU/main，版本 `web-sdk-pp-tracking@0.2.0-alpha.0`；线上 0.1.0 的历史发布证据不因此改写。五项耗时均实测毫秒：
+本地候选 runtime 固定实际 CPU/main，版本 `web-sdk-pp-tracking@0.2.0-rc.0`；线上 0.1.0 的历史发布证据不因此改写。五项耗时均实测毫秒：
 validationMs 从方法入口到完成校验；predictionMs 包含状态复制/预先移除/预测；
 associationMs 包含候选分组与三个关联阶段；updateMs 包含修正/创建/结果轨迹快照；
 totalMs 从方法入口计至结果对象构建时，不以阶段和代替。无轨迹时仍有阶段调度开销。

@@ -1,8 +1,8 @@
-# API 0.2.0-alpha.0（本地候选）
+# API 0.2.0-rc.0（本地候选）
 
 [English](../en/api.md) · [首页](../../README.md)
 
-`createTracker(options?: TrackerOptions): Tracker` 返回同步 `update(frame, {signal}?)`、`reset()`、`dispose()`。ESM/CJS 均导出 createTracker、TrackingError；声明还导出 `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort'` 与 `FeatureSpace`。本地候选为 0.2.0-alpha.0；线上安装包仍是 0.1.0。
+`createTracker(options?: TrackerOptions): Tracker` 返回同步 `update(frame, {signal}?)`、`reset()`、`dispose()`。ESM/CJS 均导出 createTracker、TrackingError；声明还导出 `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort'` 与 `FeatureSpace`。本地候选为 0.2.0-rc.0；线上安装包仍是 0.1.0。
 
 ## 输入
 
@@ -56,7 +56,7 @@ Track字段：`id,classId,box,state,observed,score,ageMs,hits,missedMs`。
 state为tentative/tracked/lost；removed数组仅包含本帧移除事件，state为removed。
 预测轨迹 observed=false、score=null；输出框可能超出画面，不裁剪。hits为累计实际观测次数，新建为1。
 droppedDetections只计算因容量满而跳过的新轨迹，不包含低分过滤数量。
-runtime实际报告cpu/main、`web-sdk-pp-tracking@0.2.0-alpha.0`。五项timings见 [性能](performance.md)。
+runtime实际报告cpu/main、`web-sdk-pp-tracking@0.2.0-rc.0`。五项timings见 [性能](performance.md)。
 
 Demo 的紧凑输入序列导出只包含规范化后的 `frames` 与可选顶层 `featureSpace`，按 UTF-8 字节限制为5MiB并可重新导入。结果报告另含实际参数和已处理结果，可能超过5MiB，不保证可重新导入。
 

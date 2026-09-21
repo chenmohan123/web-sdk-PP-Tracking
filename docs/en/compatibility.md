@@ -2,6 +2,12 @@
 
 [中文](../zh-CN/compatibility.md) · [Home](../../README.en.md)
 
+## Current RC verification
+
+On2026-09-21, local0.2.0-rc.0 passed complete verify:176 unit tests, actual tarball ESM/CJS/types consumption for all three trackers and ReID, isolation without ORT, and12 Chromium153.0.8010.12 browser groups. The production image Demo additionally passed ModelScope/WASM and Hugging Face/WebGPU (ORT1.27.0, Windows11, Intel i5-10400F, RTX5060Ti driver32.0.16.1692), both with CPU/main association.1440px and390px Chinese/English screenshots were inspected without horizontal overflow or page errors. Generated images verify interfaces only, not person accuracy. Current local evidence is under`.tmp/tracking-02-rc/verify.txt`, `browser/report.json` and`reid-demo/report.json`; see [RC notes](releases/0.2.0-rc.0.md) for publication boundaries.
+
+## Historical alpha and0.1 evidence
+
 Local candidate verification date:2026-09-19. Environment: Windows11 Pro10.0.26200, Intel Core i5-10400F @2.90GHz; Node24.16.0, pnpm11.21.0; Playwright1.63.0 desktop Chromium153.0.8010.12. Runtime: `web-sdk-pp-tracking@0.2.0-alpha.0`, actual CPU / JavaScript / main. No GPU/driver dependency; the published version remains 0.1.0.
 
 The table below preserves CPU association evidence from2026-09-19. On2026-09-21 the [optional ReID subpath](reid-candidate.md) entered the local release candidate. The same machine, Chromium153, ORT Web1.27.0 and RTX5060Ti (driver32.0.16.1692) passed four real ModelScope/Hugging Face × WASM/WebGPU download, SHA and512-dimensional extraction runs; the GPU adapter was not a fallback. Model and CPU association backends are reported separately; see the [current stage report](../../reports/2026-09-21-reid-distribution/README.en.md). npm and the hosted Demo remain0.1.0.

@@ -4,7 +4,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 import { preview } from 'vite';
 
-const out = '.tmp/reid-distribution/demo';
+const out = process.env.TRACKING_REID_DEMO_OUT ?? '.tmp/reid-distribution/demo';
 await mkdir(out, { recursive: true });
 const sources = JSON.parse(await readFile('models/pplcnet-reid/0.1.0/sources.json', 'utf8'));
 const server = await preview({ configFile: 'demo/vite.config.ts', preview: { host: '127.0.0.1', port: 4206, strictPort: true } });
@@ -60,6 +60,7 @@ try {
   await page.screenshot({ path: `${out}/desktop.png`, fullPage: true });
   const beforeLanguage = await frame(); await page.getByTestId('language').click();
   assert.equal((await frame()).split(':')[1], beforeLanguage.split(':')[1]);
+  await page.screenshot({ path: `${out}/desktop-en.png`, fullPage: true });
   await page.locator('#reid-boxes').fill('{invalid'); await page.getByTestId('reid-run').click();
   assert.equal(await status(), 'error'); assert.match(await frame(), /: 2 · 100 ms/);
   await page.locator('#reid-boxes').fill(boxes);
@@ -95,6 +96,7 @@ try {
   assert.match(gpuRuntime, /actualBackend=webgpu/); assert(requests.includes(sources[1].downloadUrl));
   assert.match(await page.locator('.reid-workspace .track-list').textContent(), /#1/);
   report.runs.push({ source: 'huggingface', backend: 'webgpu', frames: 2, trackId: 1, runtime: gpuRuntime });
+  await page.screenshot({ path: `${out}/desktop-webgpu.png`, fullPage: true });
   await page.getByTestId('reid-reset').click(); await ready(); assert.match(await frame(), /: 0 · — ms/);
   await run(1);
   await page.evaluate(async () => { const unrelated = await caches.open('unrelated-demo-evidence'); await unrelated.put('/unrelated', new Response('keep')); });

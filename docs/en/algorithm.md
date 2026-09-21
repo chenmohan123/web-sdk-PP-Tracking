@@ -70,7 +70,7 @@ only before synchronous computation and raises ABORTED. Other stable codes:
 INVALID_OPTIONS, INVALID_INPUT, NUMERICAL_FAILURE, ID_EXHAUSTED. Unknown option keys
 are rejected; explicit undefined values are invalid rather than defaults.
 
-The local candidate runtime is CPU/main, version `web-sdk-pp-tracking@0.2.0-alpha.0`; this does not rewrite historical published 0.1.0 evidence. Measured milliseconds:
+The local candidate runtime is CPU/main, version `web-sdk-pp-tracking@0.2.0-rc.0`; this does not rewrite historical published 0.1.0 evidence. Measured milliseconds:
 validationMs covers entry through validation; predictionMs includes cloning,
 pre-removal and prediction; associationMs includes grouping and all three stages;
 updateMs includes corrections, births and track snapshots; totalMs independently

@@ -2,9 +2,11 @@
 
 [English](../en/release-checklist.md)
 
-基于门户 `standards/v1/templates/release-checklist.md`。当前本地候选为0.2.0-alpha.0；npm、GitHub Release及HTTPS Demo仍为0.1.0。本清单不自动授权远程发布。
+基于门户 `standards/v1/templates/release-checklist.md`。当前本地候选为0.2.0-rc.0；npm、GitHub Release及HTTPS Demo仍为0.1.0。本清单不自动授权远程发布。
 
 ## 当前混合SDK候选
+
+本节已有勾选记录来自0.2.0-alpha.0分发阶段及其归档；不自动证明RC验证或审查通过。当前[RC说明](releases/0.2.0-rc.0.md)与本轮独立tarball、浏览器、标准检查回执需分别核对。
 
 - [x] 默认根入口提供三种CPU/main跟踪算法；可选 `./reid` 独立导出ESM/CJS/types，ORT1.27.0为optional peer，根调用者无需引擎。
 - [x] 固定FP32模型已分发到ModelScope/Hugging Face，默认ModelScope；固定revision、bytes、SHA及匿名回读证据见[阶段报告](../../reports/2026-09-21-reid-distribution/README.md)。
@@ -16,7 +18,7 @@
 
 - [x] [三算法真实画面评测](../../reports/2026-09-21-mot-reid/README.md)已完成5316帧/67639检测、官方七段合计、逐段指标、浏览器/两次Node一致、零容量丢弃与完整成本归档。
 
-模型分发和真实评测不等于SDK/npm/Demo发布。建议进入0.2本地候选收口：ByteTrack保持默认，OC-SORT/DeepSORT显式可选，ReID人体场景实验能力；先确定候选版本、变更日志和发布预检，再取得本版本发布授权。视频/摄像头调度与跨设备兼容仍待独立设计验证。
+模型分发和真实评测不等于SDK/npm/Demo发布。当前整理为0.2.0-rc.0本地候选：ByteTrack保持默认，OC-SORT/DeepSORT显式可选，ReID人体场景实验能力；候选版本、变更日志和发布通道已整理，远程发布仍需本版本明确授权。视频/摄像头调度与跨设备兼容仍待独立设计验证。
 
 ## 历史交付与基础检查
 
@@ -40,6 +42,6 @@
 
 当前[可选ReID模块](reid-candidate.md)已加入本地package.exports/dist，配套真实双源、许可说明与1.3 hybrid清单。其带日期浏览器验收独立归档，不能据此声称npm或线上Demo已更新。
 
-0.2.0-alpha.0 的三策略、外部向量与 Demo 变更仍是本地候选，未执行 push、Release、npm 发布或 Pages 部署；上述远程勾选项只记录 0.1.0 历史事实，不能作为该 alpha 已发布的证据。
+0.2.0-rc.0 的三策略、外部向量与 Demo 变更仍是本地候选，未执行 push、Release、npm 发布或 Pages 部署；上述远程勾选项只记录 0.1.0 历史事实，不能作为该 RC 已发布的证据。
 
 发布包使用 LF 文本换行；历史 reports 保持原始字节。最终包的实际 ESM/CJS/类型消费、SHA256、sha512 integrity 与 LF checkout 对比单独归档，不拿旧桌面报告的包大小作为最终证据。首版本机认证发布的 `provenance` 为 `null`；Trusted Publisher 仅已保存配置，未来 OIDC 发布尚未由新版本实测，最终状态须以对应版本 npm 回执为准。真实序列指标和局限见 [MOT17 报告](../../reports/2026-09-19-mot17/README.md)。

@@ -1,6 +1,24 @@
 # 变更记录 / Changelog
 
+## 0.2.0-rc.0 — 2026-09-21（仅本地发布候选）
+
+- 从0.1升级后默认仍为ByteTrack CPU/main；新增显式OC-SORT、DeepSORT外部向量策略与可选同包 `./reid` 人体实验模块。根入口无需ORT；启用模型时安装可选peer `onnxruntime-web@1.27.0`。
+- 模型保持PPLCNet ReID 0.1.0 FP32、33,704,835字节和原SHA；默认ModelScope，Hugging Face可选。许可采用官方仓库Apache-2.0，训练披露与专属权重授权边界见模型卡；权重不进入npm包。
+- 2026-09-21的0.2.0-alpha.0七段5316帧真实画面评测已完成：DeepSORT+PPLCNet IDF1 45.4637%，低于ByteTrack 48.2922%；没有外观禁用消融，不能单独归因模型。旧报告保留原版本和构建hash。本轮数学、参数、模型与预处理不变，仅运行时版本标识升级，未重跑全部评测。
+- 图像Demo显式标记人体ReID实验能力；视频/摄像头调度、移动真机及跨设备性能尚未验证。0.1调用方式继续可用；OC-SORT/DeepSORT需显式选择，后者要求一致FeatureSpace。
+- 发布脚本预发布显式 `--tag next`、正式版 `--tag latest`；已有相同完整性版本只读核验，不修改tag。RC尚未发布，线上仍为0.1.0；候选安装、后端、撤回策略见双语RC说明。
+
+English equivalent:
+
+- The 0.1 default remains ByteTrack on CPU/main. Explicit OC-SORT, DeepSORT with external vectors, and the optional same-package `./reid` experimental person module are available. Root consumers need no ORT; model users install optional peer `onnxruntime-web@1.27.0`.
+- PPLCNet ReID model0.1.0 remains FP32, 33,704,835 bytes with the same SHA. ModelScope is default and Hugging Face optional. Distribution relies on the official repository Apache-2.0 license; see the model card for training disclosure and weight-specific authorization limits. Weights are excluded from npm.
+- The 2026-09-21 real-image evaluation used0.2.0-alpha.0 across seven sequences/5316 frames: DeepSORT+PPLCNet IDF1 45.4637%, below ByteTrack48.2922%. No appearance-disabled ablation allows attributing results solely to the model. Historical versions/hashes are retained. RC changes runtime version identifiers without changing mathematics, parameters, models or preprocessing; the full evaluation was not repeated.
+- Image Demo labels person ReID experimental. Video/camera scheduling, real phones and cross-device performance remain unverified. Existing0.1 calls continue to work; OC-SORT/DeepSORT require explicit selection and DeepSORT requires a consistent FeatureSpace.
+- Publication explicitly uses `--tag next` for prereleases and `--tag latest` for stable versions. An existing identical version is verified read-only without tag mutation. RC remains unpublished and online0.1.0 remains available; bilingual RC notes document installation, backends and withdrawal by a new version.
+
 ## 0.2.0-alpha.0 — 2026-09-21（仅本地候选）
+
+以下保留分发阶段历史记录；其中当时待完成的真实MOT评测已由上方RC条目及2026-09-21评测报告补充。The following distribution-stage history is retained; the later real-MOT evaluation is documented in the RC entry and the dated evaluation report.
 
 - 在同一框输入 SDK 中新增 OC-SORT 观察中心策略；`TrackerOptions.algorithm` 支持 `bytetrack` / `ocsort` / `deepsort`，`TrackingResult.algorithm` 返回实际策略，`TrackerAlgorithm` 作为类型导出。
 - 新增消费调用者外部向量的 DeepSORT 策略、严格 `FeatureSpace`/embedding 契约、最近邻图库、运动门控、新鲜度级联和有限 IoU 后备；根入口保持CPU/main，不加载模型。

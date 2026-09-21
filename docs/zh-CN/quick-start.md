@@ -11,7 +11,7 @@ npm install web-sdk-pp-tracking@0.1.0
 ```
 
 本地开发依赖和 tarball 消费流程见首页。Node >=22.12.0 用于构建；浏览器只执行生成的 JavaScript。
-本地候选为 `0.2.0-alpha.0`，只能以本仓库 `npm pack` 生成的 tarball 消费，不能按 npm 远程 alpha 名称安装。
+本地候选为 `0.2.0-rc.0`，只能以本仓库 `npm pack` 生成的 tarball 消费，不能按 npm 远程 RC 名称安装。
 
 ```ts
 import { createTracker } from 'web-sdk-pp-tracking';

@@ -24,9 +24,9 @@ DeepSORT 的 `associationMs` 包含外观最近邻图库、Mahalanobis 门控、
 
 2026-09-19在Windows11 / i5-10400F / Chromium151.0.7922.34 headless实测：10、50、100框每档600个warm更新，totalMs p50/p95分别为1.0/1.3、5.3/8.9、11.3/14.9ms。每档3个cold新实例创建+首帧，p50约0.2/0.6/1.1ms；cold没有已有轨迹匹配，不与warm换算加速比。输入生成在计时外，不含检测模型与渲染。
 
-[0.1.0 桌面验收报告](../../reports/2026-09-19-desktop/README.md)提供固定输入、全部样本、分位数口径、核心 commit、历史构建摘要及复跑命令。校验这份历史归档须使用 `node scripts/evaluation/verify-archive.mjs --sdk <匹配历史提交及构建的独立目录>`；当前 0.2.0-alpha.0 候选目录与旧入口 hash 不同，校验器拒绝它属于预期结果。`node scripts/evaluation/benchmark.mjs --out .tmp/new-benchmark.json` 可另存新的性能报告。此前两策略候选的[完整 verify](../../reports/2026-09-19-ocsort/verification/task-2-verify.txt)、[10 组 Chromium153 浏览器检查](../../reports/2026-09-19-ocsort/verification/task-2-browser-green.txt)、本次三策略 `reports/2026-09-19-deepsort/verify.txt` 和 Chromium151 历史性能是不同证据，归档校验不会重新测量性能。
+[0.1.0 桌面验收报告](../../reports/2026-09-19-desktop/README.md)提供固定输入、全部样本、分位数口径、核心 commit、历史构建摘要及复跑命令。校验这份历史归档须使用 `node scripts/evaluation/verify-archive.mjs --sdk <匹配历史提交及构建的独立目录>`；当前 0.2.0-rc.0 候选目录与旧入口 hash 不同，校验器拒绝它属于预期结果。`node scripts/evaluation/benchmark.mjs --out .tmp/new-benchmark.json` 可另存新的性能报告。此前两策略候选的[完整 verify](../../reports/2026-09-19-ocsort/verification/task-2-verify.txt)、[10 组 Chromium153 浏览器检查](../../reports/2026-09-19-ocsort/verification/task-2-browser-green.txt)、本次三策略 `reports/2026-09-19-deepsort/verify.txt` 和 Chromium151 历史性能是不同证据，归档校验不会重新测量性能。
 
-仅限[兼容性](compatibility.md)中注明环境，无真实移动设备性能、最坏情况或 MOT 测试集精度结论；不把页面帧率当作算法吞吐量。0.2.0-alpha.0 是本地候选，尚未把历史两算法耗时/精度比较或本次 DeepSORT 合成证据扩大为线上发布结论；0.1.0 的包大小及完整性仅属于历史发布测量。
+仅限[兼容性](compatibility.md)中注明环境，无真实移动设备性能、最坏情况或 MOT 测试集精度结论；不把页面帧率当作算法吞吐量。0.2.0-rc.0 是本地候选，尚未把历史两算法耗时/精度比较或本次 DeepSORT 合成证据扩大为线上发布结论；0.1.0 的包大小及完整性仅属于历史发布测量。
 
 2026-09-19新增[真实检测序列评测](../../reports/2026-09-19-mot17/README.md)：固定MOT17七段FRCNN训练序列5316帧，官方TrackEval默认合计IDF1 48.2922%、IDSW 1101、MOTA 44.4010%、FP 4169、FN 57166；low=high消融为48.3465%、1066、44.3405%、3785、57653。默认低分续接减少漏检但增加误检/切ID，不作普遍精度提升声明。Node默认SDK totalMs累计8627.59ms；Chromium153完整02序列600帧与Node非耗时输出一致。报告包含固定数据/评分器/构建摘要、逐段指标、容量和失败恢复实例；不含检测模型、解码和渲染耗时。
 

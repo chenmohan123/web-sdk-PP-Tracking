@@ -2,10 +2,10 @@ schemaVersion: "1.3.0"
 kind: hybrid
 id: pp-tracking
 name: PP-Tracking 多目标跟踪
-summary: 独立 CPU 主线程 ByteTrack、OC-SORT 和 DeepSORT 跟踪，另提供同包可选 PP-LCNet 人体 ReID 子入口与图像 Demo；本地 0.2.0-alpha.0 候选。
+summary: 独立 CPU 主线程 ByteTrack、OC-SORT 和 DeepSORT 跟踪，另提供同包可选 PP-LCNet 人体 ReID 子入口与图像 Demo；本地 0.2.0-rc.0 候选。
 package:
   name: web-sdk-pp-tracking
-  version: 0.2.0-alpha.0
+  version: 0.2.0-rc.0
 # 项目远程地址；日期化交付证据按发布清单核对。
 repository: https://github.com/chenmohan123/web-sdk-PP-Tracking
 demo:
@@ -20,10 +20,10 @@ runtime:
   backends: [cpu, wasm, webgpu]
   executionModes: [main]
   actualBackendReported: true
-  runtimeVersion: web-sdk-pp-tracking@0.2.0-alpha.0
+  runtimeVersion: web-sdk-pp-tracking@0.2.0-rc.0
 algorithm:
   id: pp-tracking
-  version: 0.2.0-alpha.0
+  version: 0.2.0-rc.0
   family: ByteTrack、OC-SORT 与 DeepSORT 机制多目标跟踪
   source: 独立实现；ByteTrack论文 https://arxiv.org/abs/2110.06864、OC-SORT论文 https://arxiv.org/abs/2203.14360、Deep SORT论文 https://arxiv.org/abs/1703.07402；实现差异与来源见 docs/zh-CN/algorithm.md 和 NOTICE，非官方移植。
   license: Apache-2.0
@@ -86,7 +86,7 @@ modules:
       backends: [cpu]
       executionModes: [main]
       actualBackendReported: true
-      runtimeVersion: web-sdk-pp-tracking@0.2.0-alpha.0
+      runtimeVersion: web-sdk-pp-tracking@0.2.0-rc.0
     performance:
       timings: [validationMs, predictionMs, associationMs, updateMs, totalMs]
       coldStartDefined: true
@@ -108,6 +108,27 @@ examples:
   react: { status: available, path: examples/react }
 verification:
   environments:
+    - browser: Chromium 153.0.8010.12 / Playwright 1.63.0（RC 三算法 Demo）
+      os: Windows 11 专业版 10.0.26200
+      device: Intel Core i5-10400F @2.90GHz
+      testedAt: "2026-09-21"
+      backend: cpu/main
+      module: algorithm
+      runtimeVersion: web-sdk-pp-tracking@0.2.0-rc.0
+    - browser: Chromium 153.0.8010.12 / Playwright 1.63.0（RC ModelScope 图像 Demo）
+      os: Windows 11 专业版 10.0.26200
+      device: Intel Core i5-10400F @2.90GHz
+      testedAt: "2026-09-21"
+      backend: wasm/main
+      module: model
+      runtimeVersion: web-sdk-pp-tracking@0.2.0-rc.0 / onnxruntime-web@1.27.0
+    - browser: Chromium 153.0.8010.12 / Playwright 1.63.0（RC Hugging Face 图像 Demo）
+      os: Windows 11 专业版 10.0.26200
+      device: NVIDIA GeForce RTX 5060 Ti / 驱动 32.0.16.1692
+      testedAt: "2026-09-21"
+      backend: webgpu/main
+      module: model
+      runtimeVersion: web-sdk-pp-tracking@0.2.0-rc.0 / onnxruntime-web@1.27.0
     - browser: Chromium 151.0.7922.34 / headless（仅合成性能测量）
       os: Windows 11 专业版 10.0.26200
       device: Intel Core i5-10400F @2.90GHz

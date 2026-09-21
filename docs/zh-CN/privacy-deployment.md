@@ -8,7 +8,7 @@ Demo 的图片、检测框和 embedding 在本机处理，刷新清空内存会�
 
 `npm run build:demo` 生成 `demo/dist`，可由静态 HTTPS 托管服务部署，资源路径相对。Demo 构建包含 ORT 引擎资源，不含模型权重；仅启用模型并加载时请求引擎和所选模型来源。部署需允许静态 JS/MJS/WASM 及模型源的 CORS 请求，按自身需求配置 CSP 与访问控制。WebGPU、SHA-256 和 CacheStorage 使用浏览器安全上下文（HTTPS 或 localhost）；普通局域网 HTTP 不等价。
 
-Pages 使用官方 configure-pages/upload-pages-artifact/deploy-pages actions，部署任务才获得 pages/id-token 写权限，使用 github-pages 环境及串行并发组。0.1.0 的远程治理与交付已归档；本轮仅分发模型双源，SDK、npm 与线上 Demo 仍未发布本地 0.2.0-alpha.0 候选。
+Pages 使用官方 configure-pages/upload-pages-artifact/deploy-pages actions，部署任务才获得 pages/id-token 写权限，使用 github-pages 环境及串行并发组。0.1.0 的远程治理与交付已归档；本轮仅分发模型双源，SDK、npm 与线上 Demo 仍未发布本地 0.2.0-rc.0 候选。
 
 release 工作流在发布 v* tag 对应 GitHub Release 后执行，验证成功才以 npm OIDC Trusted Publishing 发布。可信发布者已配置，首版实际以本机认证发布；未来新版本的 OIDC 成功仍须实际回执证明。发布前重新核验受保护默认分支、不可变标签及对应环境，不在代码或产物内嵌 token。
 

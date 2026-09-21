@@ -15,7 +15,7 @@ const copy = {
     empty: '暂无轨迹，单步或播放开始跟踪', noTracks: '本帧无活动轨迹', active: '活动轨迹', removed: '本帧移除', dropped: '容量跳过',
     tracked: '跟踪中', tentative: '待确认', lost: '丢失', score: '分数', class: '类别', runtime: '运行与耗时',
     algorithm: '算法与限制', privacy: '文件仅在本机内存处理，不上传；刷新即清空。',
-    detail: '当前算法的独立实现、来源、参数边界和已知限制如下。Apache-2.0；本地候选版本 0.2.0-alpha.0，线上 npm 仍为 0.1.0。',
+    detail: '当前算法的独立实现、来源、参数边界和已知限制如下。Apache-2.0；本地候选版本 0.2.0-rc.0，线上 npm 仍为 0.1.0。',
     contract: '输入：像素 xywh 检测框、分数、类别及严格递增的毫秒时间。输出：轨迹、状态、代次及耗时。',
     limitation: '无外观 ReID。交叉与掉头可能换 ID；轨迹 ID 不是人的身份。低分框应保留，不要提前按高分阈值过滤。',
     resetInfo: '重播、切换序列或跳转会 reset 并清空历史；跳转按顺序重算。语言切换保留状态。',
@@ -35,7 +35,7 @@ const copy = {
     empty: 'No tracks yet. Step or play to start.', noTracks: 'No active tracks in this frame', active: 'Active tracks', removed: 'Removed now', dropped: 'Capacity skipped',
     tracked: 'Tracked', tentative: 'Tentative', lost: 'Lost', score: 'Score', class: 'Class', runtime: 'Runtime & timings',
     algorithm: 'Algorithm & limitations', privacy: 'Files stay in local memory; no upload. Refresh clears all data.',
-    detail: 'The selected algorithm\'s independent implementation, source, parameter bounds and limitations appear below. Apache-2.0; local candidate 0.2.0-alpha.0, while npm remains 0.1.0.',
+    detail: 'The selected algorithm\'s independent implementation, source, parameter bounds and limitations appear below. Apache-2.0; local candidate 0.2.0-rc.0, while npm remains 0.1.0.',
     contract: 'Input: pixel xywh boxes, scores, classes and strictly increasing millisecond timestamps. Output: tracks, states, generation and timings.',
     limitation: 'No appearance ReID. Crossing and turning may switch IDs; track IDs are not personal identities. Preserve low-score detections before tracking.',
     resetInfo: 'Restart, sequence changes and seek reset state and history. Seek replays in order. Language changes preserve state.',
@@ -65,12 +65,12 @@ const parameterLabels: Record<DemoParameterKey, keyof typeof copy.zh> = {
 const algorithmInfo = {
   zh: {
     bytetrack: { detail: 'ByteTrack 高低分两阶段关联、恒速 Kalman 和全局分配。', defaults: '默认参数：低/高/新建分数 0.1 / 0.5 / 0.6；确认 2 次；丢失保留 1000 ms。', limitation: '无外观 ReID。低分框仅由 ByteTrack 用于续接，不要提前按高分阈值过滤。', source: 'ByteTrack', href: 'https://arxiv.org/abs/2110.06864' },
-    ocsort: { detail: 'OC-SORT 的观测中心关联、观测中心恢复和遮挡重现机制，复用独立八维 Kalman 状态。', defaults: '默认参数：高/新建分数 0.5 / 0.6；确认 2 次；丢失保留 1000 ms；方向权重 0.2；历史间隔 300 ms；历史容量与最大重放均为 30。', limitation: '无外观 ReID，也不使用 ByteTrack 低分续接。与论文七维固定帧间隔实现不逐值兼容，未声明真实 MOT 精度。', source: 'OC-SORT', href: 'https://arxiv.org/abs/2203.14360' },
+    ocsort: { detail: 'OC-SORT 的观测中心关联、观测中心恢复和遮挡重现机制，复用独立八维 Kalman 状态。', defaults: '默认参数：高/新建分数 0.5 / 0.6；确认 2 次；丢失保留 1000 ms；方向权重 0.2；历史间隔 300 ms；历史容量与最大重放均为 30。', limitation: '无外观 ReID，也不使用 ByteTrack 低分续接。与论文七维固定帧间隔实现不逐值兼容，已完成固定 MOT17 训练序列评测，不代表测试集精度。', source: 'OC-SORT', href: 'https://arxiv.org/abs/2203.14360' },
     deepsort: { detail: 'DeepSORT 外观最近邻图库、运动门控、新鲜度级联与有限 IoU 后备，使用调用者提供的外观向量。', defaults: '默认参数：最大余弦距离 0.2；每轨迹图库 30 个向量；高/新建分数 0.5 / 0.6；确认 2 次；丢失保留 1000 ms。', limitation: '当前框/向量模式不加载 ReID 模型；图像模式可显式启用。IoU 后备仅用于未确认轨迹和本帧进入时仍为 tracked 的轨迹；已 lost 轨迹不能绕过外观门限。使用宽高状态、毫秒年龄与本项目噪声模型，不保证论文逐值复现或真实精度。', source: 'Deep SORT', href: 'https://arxiv.org/abs/1703.07402' },
   },
   en: {
     bytetrack: { detail: 'ByteTrack high/low-score association, constant-velocity Kalman filtering and global assignment.', defaults: 'Defaults: low/high/new score 0.1 / 0.5 / 0.6; 2 hits to confirm; lost retention 1000 ms.', limitation: 'No appearance ReID. Only ByteTrack uses low-score detections for continuation; do not pre-filter them at the high-score threshold.', source: 'ByteTrack', href: 'https://arxiv.org/abs/2110.06864' },
-    ocsort: { detail: 'OC-SORT observation-centric association, recovery and re-association over the independent eight-dimensional Kalman state.', defaults: 'Defaults: high/new score 0.5 / 0.6; 2 hits; lost retention 1000 ms; direction weight 0.2; history interval 300 ms; history and replay limits 30.', limitation: 'No appearance ReID and no ByteTrack low-score continuation. It is not value-compatible with the paper\'s seven-dimensional fixed-frame implementation and makes no real-MOT accuracy claim.', source: 'OC-SORT', href: 'https://arxiv.org/abs/2203.14360' },
+    ocsort: { detail: 'OC-SORT observation-centric association, recovery and re-association over the independent eight-dimensional Kalman state.', defaults: 'Defaults: high/new score 0.5 / 0.6; 2 hits; lost retention 1000 ms; direction weight 0.2; history interval 300 ms; history and replay limits 30.', limitation: 'No appearance ReID and no ByteTrack low-score continuation. It is not value-compatible with the paper\'s seven-dimensional fixed-frame implementation and has fixed MOT17 training-sequence evidence, without a test-set accuracy claim.', source: 'OC-SORT', href: 'https://arxiv.org/abs/2203.14360' },
     deepsort: { detail: 'DeepSORT appearance nearest-neighbour galleries, motion gating, recency cascade and a limited IoU fallback over caller-provided appearance vectors.', defaults: 'Defaults: maximum cosine distance 0.2; 30 gallery vectors per track; high/new score 0.5 / 0.6; 2 hits; lost retention 1000 ms.', limitation: 'Boxes/vector mode does not load ReID; image mode can explicitly enable it. IoU fallback covers tentative tracks and tracks that entered the frame as tracked; lost tracks cannot bypass appearance matching. Width/height state, millisecond age and this SDK\'s noise model differ from the paper, with no value-level or real-data accuracy claim.', source: 'Deep SORT', href: 'https://arxiv.org/abs/1703.07402' },
   },
 } as const;
@@ -149,7 +149,7 @@ export function App() {
     } finally { if (request === importRequest.current) setReading(false); }
   }
   function download() {
-    const output = { schemaVersion: 1, sdkVersion: '0.2.0-alpha.0', algorithm: current?.algorithm ?? session.options.algorithm ?? algorithm, sequence: selected, options: session.options, ...(session.featureSpace ? { featureSpace: session.featureSpace } : {}), frames: session.frames, startedAt: session.startedAt, exportedAt: new Date().toISOString(), processedFrames: session.results.length, totalFrames: session.frames.length, results: session.results };
+    const output = { schemaVersion: 1, sdkVersion: '0.2.0-rc.0', algorithm: current?.algorithm ?? session.options.algorithm ?? algorithm, sequence: selected, options: session.options, ...(session.featureSpace ? { featureSpace: session.featureSpace } : {}), frames: session.frames, startedAt: session.startedAt, exportedAt: new Date().toISOString(), processedFrames: session.results.length, totalFrames: session.frames.length, results: session.results };
     const url = URL.createObjectURL(new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' }));
     const a = document.createElement('a'); a.href = url; a.download = 'pp-tracking-results.json'; a.click();
     window.setTimeout(() => URL.revokeObjectURL(url), 1000);
@@ -166,7 +166,7 @@ export function App() {
     }
   }
   return <div className="shell">
-    <header className="topbar"><div><h1>{t.title}</h1><div className="brand-note">{t.subtitle} <span>v0.2.0-alpha.0</span></div></div><nav><a className="planned" href="https://github.com/chenmohan123/web-sdk-PP-Tracking">GitHub</a><a className="planned" href="https://www.npmjs.com/package/web-sdk-pp-tracking">npm 0.1.0</a><button data-testid="language" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}>{language === 'zh' ? 'English' : '中文'}</button></nav></header>
+    <header className="topbar"><div><h1>{t.title}</h1><div className="brand-note">{t.subtitle} <span>v0.2.0-rc.0</span></div></div><nav><a className="planned" href="https://github.com/chenmohan123/web-sdk-PP-Tracking">GitHub</a><a className="planned" href="https://www.npmjs.com/package/web-sdk-pp-tracking">npm 0.1.0</a><button data-testid="language" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}>{language === 'zh' ? 'English' : '中文'}</button></nav></header>
     <div className="mode-bar"><label htmlFor="input-mode">{language === 'zh' ? '输入模式' : 'Input mode'}</label><select id="input-mode" value={mode} onChange={event => { setPlaying(false); importRequest.current++; setReading(false); setMode(event.target.value as typeof mode); }}><option value="boxes">{language === 'zh' ? '检测框 / 外部向量' : 'Boxes / external vectors'}</option><option value="image">{language === 'zh' ? '图像 + 检测框' : 'Image + detections'}</option></select></div>
     {mode === 'image' ? <Suspense fallback={<p className="image-empty">{language === 'zh' ? '加载图像工作台' : 'Loading image workspace'}</p>}><ReIdWorkspace language={language} /></Suspense> : <main>
       <aside className="panel controls"><h2>{t.sequence}</h2>
@@ -211,7 +211,7 @@ export function App() {
         <div className="track-list">{current?.tracks.length ? current.tracks.map(track => <article className="track" key={track.id}><div><b style={{ color: colors[(track.id - 1) % colors.length] }}>#{track.id}</b><span>{t[track.state]}</span></div><p>{t.class} {track.classId} · {t.score} {track.score?.toFixed(2) ?? '—'}</p><small>{track.observed ? t.observation : t.prediction} · {track.hits} hits</small></article>) : <p className="muted">{current ? t.noTracks : t.empty}</p>}</div>
         <div className="counts">{t.generation}: {current?.generation ?? '—'}<br />{t.removed}: {current?.removed.length ?? 0}<br />{t.dropped}: {current?.droppedDetections ?? 0}</div>
       </aside>
-      <section className="details"><details data-sdk-runtime-info><summary>{t.runtime}</summary><p>requestedBackend: cpu · actualBackend: cpu · executionMode: main<br />web-sdk-pp-tracking@0.2.0-alpha.0</p><dl data-sdk-timing>{(['validationMs', 'predictionMs', 'associationMs', 'updateMs', 'totalMs'] as const).map(key => <div key={key}><dt>{key}</dt><dd>{current ? current.timings[key].toFixed(3) : '—'} ms</dd></div>)}</dl><p>{t.timing}</p><p>{t.verified}</p></details>
+      <section className="details"><details data-sdk-runtime-info><summary>{t.runtime}</summary><p>requestedBackend: cpu · actualBackend: cpu · executionMode: main<br />web-sdk-pp-tracking@0.2.0-rc.0</p><dl data-sdk-timing>{(['validationMs', 'predictionMs', 'associationMs', 'updateMs', 'totalMs'] as const).map(key => <div key={key}><dt>{key}</dt><dd>{current ? current.timings[key].toFixed(3) : '—'} ms</dd></div>)}</dl><p>{t.timing}</p><p>{t.verified}</p></details>
       <details data-sdk-algorithm-info><summary>{t.algorithm}</summary><p>{t.detail}</p><p>{info.detail}</p>{displayedAlgorithm === 'deepsort' && session.featureSpace && <p className="feature-space"><b>{t.featureSpace}：</b><code data-testid="feature-space">{session.featureSpace.id} · {session.featureSpace.dimension}D</code></p>}<p>{t.contract}</p><p>{info.defaults}</p><p>{info.limitation}</p><p>{t.resetInfo}</p><a href={info.href} target="_blank" rel="noreferrer">{t.source}: {info.source}</a></details></section>
     </main>}
   </div>;

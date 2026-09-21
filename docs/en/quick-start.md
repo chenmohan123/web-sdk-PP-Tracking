@@ -11,7 +11,7 @@ npm install web-sdk-pp-tracking@0.1.0
 ```
 
 See the README for local development dependencies and tarball consumption. Building requires Node >=22.12.0; browsers execute generated JavaScript.
-The local candidate is `0.2.0-alpha.0`; consume only a tarball produced by `npm pack` in this repository, never an unavailable remote npm alpha name.
+The local candidate is `0.2.0-rc.0`; consume only a tarball produced by `npm pack` in this repository, never an unavailable remote npm RC name.
 
 ```ts
 import { createTracker } from 'web-sdk-pp-tracking';

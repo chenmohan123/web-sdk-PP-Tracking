@@ -1,8 +1,8 @@
-# API 0.2.0-alpha.0 (local candidate)
+# API 0.2.0-rc.0 (local candidate)
 
 [中文](../zh-CN/api.md) · [Home](../../README.en.md)
 
-`createTracker(options?: TrackerOptions): Tracker` returns synchronous `update(frame, {signal}?)`, `reset()` and `dispose()`. ESM/CJS export createTracker and TrackingError; declarations also export `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort'` and `FeatureSpace`. The local candidate is 0.2.0-alpha.0; the published installable package remains 0.1.0.
+`createTracker(options?: TrackerOptions): Tracker` returns synchronous `update(frame, {signal}?)`, `reset()` and `dispose()`. ESM/CJS export createTracker and TrackingError; declarations also export `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort'` and `FeatureSpace`. The local candidate is 0.2.0-rc.0; the published installable package remains 0.1.0.
 
 ## Input
 
@@ -56,7 +56,7 @@ Track fields: `id,classId,box,state,observed,score,ageMs,hits,missedMs`.
 States: tentative/tracked/lost. The removed array contains only this update's removal events, with state removed.
 Predictions have observed=false and score=null. Output boxes may extend outside the image and are not clipped. Hits count accumulated actual observations, starting at1.
 droppedDetections counts only new tracks skipped at capacity, not score filtering.
-Runtime reports actual cpu/main and `web-sdk-pp-tracking@0.2.0-alpha.0`. See [performance](performance.md) for five timing fields.
+Runtime reports actual cpu/main and `web-sdk-pp-tracking@0.2.0-rc.0`. See [performance](performance.md) for five timing fields.
 
 The Demo's compact input-sequence export contains only normalized `frames` and an optional top-level `featureSpace`. It is limited to 5MiB by UTF-8 byte size and can be re-imported. The separate result report also contains actual options and processed results; it can exceed 5MiB and is not guaranteed to be re-importable.
 

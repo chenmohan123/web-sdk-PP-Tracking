@@ -7,7 +7,7 @@ export interface ReIdSource {
   downloadUrl: string; bytes: number; sha256: string;
 }
 export type ReIdOptions = { modelId: 'pplcnet-reid-fp32'; backend: 'wasm' | 'webgpu'; maxDetections?: number } &
-  ({ modelBytes: ArrayBuffer; source?: never } | { source: ReIdSource; modelBytes?: never });
+  ({ modelBytes: ArrayBuffer; source?: never } | { source?: ReIdSource['kind'] | ReIdSource; modelBytes?: never });
 export interface LoadProgress { stage: 'download' | 'cache' | 'integrity' | 'session'; loaded?: number; total?: number; status: 'start' | 'progress' | 'complete' | 'unavailable' | 'miss' }
 export interface ReIdLoadOptions { signal?: AbortSignal; onProgress?: (event: LoadProgress) => void }
 export interface ReIdRuntimeInfo {

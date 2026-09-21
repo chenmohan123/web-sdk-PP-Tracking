@@ -12,6 +12,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./reid": {
+      "types": "./dist/reid/index.d.ts",
+      "import": "./dist/reid/index.js",
+      "require": "./dist/reid/index.cjs"
     }
   },
   "files": [
@@ -53,6 +58,14 @@
     "typescript": "5.9.3",
     "vite": "7.3.6",
     "vitest": "3.2.4"
+  },
+  "peerDependencies": {
+    "onnxruntime-web": "1.27.0"
+  },
+  "peerDependenciesMeta": {
+    "onnxruntime-web": {
+      "optional": true
+    }
   },
   "engines": {
     "node": ">=22.12.0"

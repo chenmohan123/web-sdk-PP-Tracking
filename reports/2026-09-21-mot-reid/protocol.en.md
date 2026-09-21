@@ -8,6 +8,14 @@ Use all5316 frames/67639 detections from MOT17 FRCNN training sequences02/04/05/
 
 Labels: fixed `MOT17Labels.zip`,10107022 bytes, SHA256 `0aa79322e91583369f42f17c4d79a0b145380d8732487bba59272048dc82b2b9`. Images: `https://motchallenge.net/data/MOT17.zip`,5860214001 bytes, ETag `"15d4bc4f1-5b6c01991f807"`. Allowlisted entries use Range/If-Match and validate Content-Range, compression, local filename, expanded length, central-directory CRC32 and per-image SHA256. ETag/CRC establish source/transport consistency, not an upstream signature; no full-ZIP SHA256 is claimed. All originals stay in ignored `.tmp/mot17-reid-media/data/`;42 overlapping images byte-match the earlier preprocessing study. No original images, full GT or detection files are distributed.
 
+For reruns, after preparing the images and before executing the formal runner, restore the fixed media lock from the SDK root:
+
+```powershell
+Copy-Item -LiteralPath 'reports/2026-09-21-mot-reid/media.lock.json' -Destination '.tmp/mot17-reid-media/media.lock.json' -Force
+```
+
+The historical `prepare_media.py` writes `transferredBytesThisRun` into the content-identity lock. A fully cached rerun writes 0 and changes the whole-file hash; the archived value 876659951 records the historical download, not this rerun's transferred bytes. After restoring the archived lock, run still verifies each image's byte count, SHA256 and CRC. Do not edit the archived lock to bypass validation. Separating transfer statistics from identity is a known nonblocking tooling follow-up; the historical script and formal run identity remain unchanged, with no effect on this completed measurement.
+
 PPLCNet FP32:33704835 bytes, SHA256 `24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4`. Production SDK handles preprocessing/normalization; model registry and license evidence remain under `models/pplcnet-reid/0.1.0/`. Reuse the locked MOT17 adapter's timestamps, zero-based half-open clipping and floating-edge handling. Preserve row order/empty frames, extract low-score detections too, decode actual browser RGBA and update only after every detection's feature succeeds. Chunk at most64 detections in order without dropping the remainder.
 
 Shared options: high score0.5, new track0.6, minHits2, matching IoU0.3, maxLostMs1000, largeGapMs2000, maxDetections100, maxTracks200. ByteTrack additionally uses low score0.1 and low-match IoU0.2. OC-SORT/DeepSORT retain candidate defaults; DeepSORT distance0.2/gallery30. No parameter tuning against scores.

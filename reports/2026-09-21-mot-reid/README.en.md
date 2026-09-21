@@ -125,4 +125,10 @@ These are fixed-training-set observations on one machine, not test-set leaderboa
 
 From the SDK root run `node reports/2026-09-21-mot-reid/verify.mjs` to verify hashes, frame coverage, repeated-output declarations, raw timing sums/cold/warm/quantiles and per-sequence/combined IDF1/MOTA formulas/count sums. Add `--current` to check current source/scripts/build against measured identity. Build matching dist first if absent; changed code requires an independent checkout of the measured commit. This offline check does not rerun TrackEval, inference or tracking, and hash verification is not rescoring.
 
-To actually rerun, prepare the locked media/labels/model/TrackEval/dependencies and follow the [tool guide](../../scripts/evaluation/mot17-reid/README.en.md) with fresh .tmp directories for the seven sequences, merge and official scoring. Original media/trajectories remain in local .tmp; the evidence lock cannot replace scoring again from GT.
+To actually rerun, prepare the locked media/labels/model/TrackEval/dependencies. After preparing the images, first restore the archived fixed lock into the working media directory from the SDK root. Then follow the [tool guide](../../scripts/evaluation/mot17-reid/README.en.md) with fresh .tmp directories for the seven sequences, merge and official scoring:
+
+```powershell
+Copy-Item -LiteralPath 'reports/2026-09-21-mot-reid/media.lock.json' -Destination '.tmp/mot17-reid-media/media.lock.json' -Force
+```
+
+The historical preparation script mixes transfer statistics into the content-identity lock. A fully cached rerun can change `transferredBytesThisRun` to 0, causing the formal runner's whole-file pin to reject it. The archived value 876659951 is a historical download observation, not the bytes transferred by this rerun; restoring the archive does not create a new transfer measurement. Copying the fixed lock preserves content identity: run still verifies every image's byte count, SHA256 and CRC. This neither skips image validation nor permits editing the archived lock to bypass the check. Separating transfer statistics from identity is a known nonblocking tooling follow-up and does not affect this fixed measurement. Original media/trajectories remain in local .tmp; the evidence lock cannot replace scoring again from GT.

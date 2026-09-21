@@ -10,6 +10,14 @@
 
 全部原图只保存在忽略的 `.tmp/mot17-reid-media/data/`，不分发原图、完整 GT 或检测文件。42 张与此前预处理研究重叠的图片逐字节身份一致。没有以先看评分的方式挑帧、挑序列或调整参数。
 
+复跑时，图片准备完成后、执行正式 run 前，须从 SDK 根目录运行以下命令恢复固定媒体锁：
+
+```powershell
+Copy-Item -LiteralPath 'reports/2026-09-21-mot-reid/media.lock.json' -Destination '.tmp/mot17-reid-media/media.lock.json' -Force
+```
+
+历史 `prepare_media.py` 将 `transferredBytesThisRun` 写入内容身份锁，完整缓存重跑会写0，改变锁的整文件hash；归档值876659951仅代表历史下载观测，不是本次传输量。恢复归档固定锁后，run 仍逐项核验图片字节数、SHA256和CRC，不修改归档锁绕过门禁。统计与身份分离是已知非阻塞工具待办；保留历史脚本与正式运行身份，不影响本轮已经完成的实测。
+
 ## 模型与输入
 
 采用已核验的 PPLCNet FP32 模型，33704835 字节，SHA256 `24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4`；预处理和归一化由生产 SDK 完成。模型来源与许可沿用 `models/pplcnet-reid/0.1.0/` 的唯一注册数据。

@@ -125,4 +125,10 @@ DeepSORT 外围分层成本如下。阶段是同帧独立测量，外围包含�
 
 在 SDK 根目录运行 `node reports/2026-09-21-mot-reid/verify.mjs`，验证归档hash、完整帧覆盖、重复结果声明、逐帧累计/cold/warm/分位数、逐段与合计的 IDF1/MOTA 公式和计数相加；追加 `--current` 验证当前源码/脚本/构建仍匹配实测identity。缺少匹配dist时先构建，代码不同应使用实测提交的独立目录。该离线校验不重新运行 TrackEval、推理或跟踪，不能把hash校验称作重新评分。
 
-真正复跑须准备锁定媒体/labels/模型/TrackEval/依赖，然后按[工具说明](../../scripts/evaluation/mot17-reid/README.md)使用新的 .tmp 输出目录执行七段、merge 与官方评分。原始媒体与轨迹只保留本机 .tmp；证据锁本身无法代替从GT重新评分。
+真正复跑须准备锁定媒体/labels/模型/TrackEval/依赖。图片准备完成后，先在 SDK 根目录将归档固定锁复制恢复到工作媒体目录，再按[工具说明](../../scripts/evaluation/mot17-reid/README.md)使用新的 .tmp 输出目录执行七段、merge 与官方评分：
+
+```powershell
+Copy-Item -LiteralPath 'reports/2026-09-21-mot-reid/media.lock.json' -Destination '.tmp/mot17-reid-media/media.lock.json' -Force
+```
+
+历史准备脚本把传输统计混入内容身份锁；完整缓存重跑可能将 `transferredBytesThisRun` 改为0，导致正式 run 的整文件 pin 拒绝。归档值876659951是历史下载观测，不代表这次复跑传输了多少字节；恢复归档锁不应被解读为新的传输统计。该复制步骤保留固定内容身份，run 仍逐张核验图片字节数、SHA256和CRC，不会跳过图片校验，也不应修改归档锁绕过门禁。把传输统计移出身份锁是已知非阻塞工具待办，不影响本轮固定实测。原始媒体与轨迹只保留本机 .tmp；证据锁本身无法代替从GT重新评分。

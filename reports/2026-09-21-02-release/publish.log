@@ -1,0 +1,294 @@
+publish	Set up job	﻿2026-09-21T07:46:51.6311363Z Current runner version: '2.337.0'
+publish	Set up job	2026-09-21T07:46:51.6340454Z ##[group]Runner Image Provisioner
+publish	Set up job	2026-09-21T07:46:51.6341427Z Hosted Compute Agent
+publish	Set up job	2026-09-21T07:46:51.6342054Z Version: 20260828.587
+publish	Set up job	2026-09-21T07:46:51.6342751Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+publish	Set up job	2026-09-21T07:46:51.6343527Z Build Date: 2026-08-28T16:44:25Z
+publish	Set up job	2026-09-21T07:46:51.6344234Z Worker ID: {4822388f-0ef7-4773-8381-08d36bd40651}
+publish	Set up job	2026-09-21T07:46:51.6345232Z Azure Region: eastus
+publish	Set up job	2026-09-21T07:46:51.6345837Z ##[endgroup]
+publish	Set up job	2026-09-21T07:46:51.6347502Z ##[group]Operating System
+publish	Set up job	2026-09-21T07:46:51.6348213Z Ubuntu
+publish	Set up job	2026-09-21T07:46:51.6349143Z 24.04.5
+publish	Set up job	2026-09-21T07:46:51.6349818Z LTS
+publish	Set up job	2026-09-21T07:46:51.6350361Z ##[endgroup]
+publish	Set up job	2026-09-21T07:46:51.6351027Z ##[group]Runner Image
+publish	Set up job	2026-09-21T07:46:51.6351676Z Image: ubuntu-24.04
+publish	Set up job	2026-09-21T07:46:51.6352282Z Version: 20260907.300.1
+publish	Set up job	2026-09-21T07:46:51.6353405Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260907.300/images/ubuntu/Ubuntu2404-Readme.md
+publish	Set up job	2026-09-21T07:46:51.6355519Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260907.300
+publish	Set up job	2026-09-21T07:46:51.6356951Z ##[endgroup]
+publish	Set up job	2026-09-21T07:46:51.6358201Z ##[group]GITHUB_TOKEN Permissions
+publish	Set up job	2026-09-21T07:46:51.6360584Z Contents: read
+publish	Set up job	2026-09-21T07:46:51.6361344Z Metadata: read
+publish	Set up job	2026-09-21T07:46:51.6361974Z ##[endgroup]
+publish	Set up job	2026-09-21T07:46:51.6364200Z Secret source: Actions
+publish	Set up job	2026-09-21T07:46:51.6365689Z Cache mode: write
+publish	Set up job	2026-09-21T07:46:51.6366683Z Prepare workflow directory
+publish	Set up job	2026-09-21T07:46:51.6709238Z Prepare all required actions
+publish	Set up job	2026-09-21T07:46:51.6759359Z Getting action download info
+publish	Set up job	2026-09-21T07:46:51.9225316Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+publish	Set up job	2026-09-21T07:46:52.0497959Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+publish	Set up job	2026-09-21T07:46:52.1423990Z Download action repository 'pnpm/action-setup@v4' (SHA:b906affcce14559ad1aafd4ab0e942779e9f58b1)
+publish	Set up job	2026-09-21T07:46:52.4422664Z Complete job name: publish
+publish	Run actions/checkout@v4	﻿2026-09-21T07:46:52.5218293Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5227458Z ##[group]Run actions/checkout@v4
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5228279Z with:
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5228822Z   ref: v0.2.0-rc.0
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5229432Z   repository: chenmohan123/web-sdk-PP-Tracking
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5233252Z   token: ***
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5233715Z   ssh-strict: true
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5234172Z   ssh-user: git
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5234638Z   persist-credentials: true
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5235474Z   clean: true
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5235955Z   sparse-checkout-cone-mode: true
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5236502Z   fetch-depth: 1
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5236952Z   fetch-tags: false
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5237411Z   show-progress: true
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5237895Z   lfs: false
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5238363Z   submodules: false
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5238824Z   set-safe-directory: true
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5239348Z   allow-unsafe-pr-checkout: false
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.5240185Z ##[endgroup]
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6339409Z Syncing repository: chenmohan123/web-sdk-PP-Tracking
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6342266Z ##[group]Getting Git version info
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6343779Z Working directory is '/home/runner/work/web-sdk-PP-Tracking/web-sdk-PP-Tracking'
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6346141Z [command]/usr/bin/git version
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6385901Z git version 2.55.0
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6409050Z ##[endgroup]
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6424641Z Temporarily overriding HOME='/home/runner/work/_temp/33afc33c-6c76-46f8-8d7d-fed5218808c7' before making global git config changes
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6428238Z Adding repository directory to the temporary git global config as a safe directory
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6431158Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/web-sdk-PP-Tracking/web-sdk-PP-Tracking
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6486201Z Deleting the contents of '/home/runner/work/web-sdk-PP-Tracking/web-sdk-PP-Tracking'
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6492505Z ##[group]Initializing the repository
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6498153Z [command]/usr/bin/git init /home/runner/work/web-sdk-PP-Tracking/web-sdk-PP-Tracking
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6635069Z hint: Using 'master' as the name for the initial branch. This default branch name
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6636252Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6637774Z hint: to use in all of your new repositories, which will suppress this warning,
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6638727Z hint: call:
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6639336Z hint:
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6640253Z hint: 	git config --global init.defaultBranch <name>
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6641352Z hint:
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6642436Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6644067Z hint: 'development'. The just-created branch can be renamed via this command:
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6645754Z hint:
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6646525Z hint: 	git branch -m <name>
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6647340Z hint:
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6648389Z hint: Disable this message with "git config set advice.defaultBranchName false"
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6650330Z Initialized empty Git repository in /home/runner/work/web-sdk-PP-Tracking/web-sdk-PP-Tracking/.git/
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6653866Z [command]/usr/bin/git remote add origin https://github.com/chenmohan123/web-sdk-PP-Tracking
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6713301Z ##[endgroup]
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6715520Z ##[group]Disabling automatic garbage collection
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6718672Z [command]/usr/bin/git config --local gc.auto 0
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6757519Z ##[endgroup]
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6759256Z ##[group]Setting up auth
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6765396Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.6807053Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.7215777Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.7248214Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.7494221Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.7527808Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.7754090Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.7790166Z ##[endgroup]
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.7799966Z ##[group]Fetching the repository
+publish	Run actions/checkout@v4	2026-09-21T07:46:52.7801610Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/v0.2.0-rc.0*:refs/remotes/origin/v0.2.0-rc.0* +refs/tags/v0.2.0-rc.0*:refs/tags/v0.2.0-rc.0*
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.4256277Z From https://github.com/chenmohan123/web-sdk-PP-Tracking
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.4258121Z  * [new tag]         v0.2.0-rc.0 -> v0.2.0-rc.0
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.4268310Z ##[endgroup]
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.4269827Z ##[group]Determining the checkout info
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.4271668Z [command]/usr/bin/git branch --list --remote origin/v0.2.0-rc.0
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.4318500Z [command]/usr/bin/git tag --list v0.2.0-rc.0
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.4335224Z v0.2.0-rc.0
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.4345644Z ##[endgroup]
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.4346671Z [command]/usr/bin/git sparse-checkout disable
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.4398032Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.4429603Z ##[group]Checking out the ref
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.4433658Z [command]/usr/bin/git checkout --progress --force refs/tags/v0.2.0-rc.0
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5000247Z Note: switching to 'refs/tags/v0.2.0-rc.0'.
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5001551Z 
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5002523Z You are in 'detached HEAD' state. You can look around, make experimental
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5005046Z changes and commit them, and you can discard any commits you make in this
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5007237Z state without impacting any branches by switching back to a branch.
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5008221Z 
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5008758Z If you want to create a new branch to retain commits you create, you may
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5010006Z do so (now or later) by using -c with the switch command. Example:
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5010912Z 
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5011517Z   git switch -c <new-branch-name>
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5012448Z 
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5012836Z Or undo this operation with:
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5013381Z 
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5013692Z   git switch -
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5014111Z 
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5015113Z Turn off this advice by setting config variable advice.detachedHead to false
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5016092Z 
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5017179Z HEAD is now at 041686f Merge pull request #3 from chenmohan123/codex/tracking-algorithms
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5020567Z ##[endgroup]
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5058888Z [command]/usr/bin/git log -1 --format=%H
+publish	Run actions/checkout@v4	2026-09-21T07:46:53.5083713Z 041686f6c335a66dbe1f3796d6be5b5ae908c2cb
+publish	Run actions/setup-node@v4	﻿2026-09-21T07:46:53.5454567Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+publish	Run actions/setup-node@v4	2026-09-21T07:46:53.5460376Z ##[group]Run actions/setup-node@v4
+publish	Run actions/setup-node@v4	2026-09-21T07:46:53.5461601Z with:
+publish	Run actions/setup-node@v4	2026-09-21T07:46:53.5530569Z   node-version: 24
+publish	Run actions/setup-node@v4	2026-09-21T07:46:53.5532431Z   always-auth: false
+publish	Run actions/setup-node@v4	2026-09-21T07:46:53.5533922Z   check-latest: false
+publish	Run actions/setup-node@v4	2026-09-21T07:46:53.5549001Z   token: ***
+publish	Run actions/setup-node@v4	2026-09-21T07:46:53.5550132Z ##[endgroup]
+publish	Run actions/setup-node@v4	2026-09-21T07:46:53.7016141Z Found in cache @ /opt/hostedtoolcache/node/24.20.0/x64
+publish	Run actions/setup-node@v4	2026-09-21T07:46:53.7020813Z (node:2156) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+publish	Run actions/setup-node@v4	2026-09-21T07:46:53.7025404Z (Use `node --trace-deprecation ...` to show where the warning was created)
+publish	Run actions/setup-node@v4	2026-09-21T07:46:53.7029278Z ##[group]Environment details
+publish	Run actions/setup-node@v4	2026-09-21T07:46:56.2631721Z node: v24.20.0
+publish	Run actions/setup-node@v4	2026-09-21T07:46:56.2632343Z npm: 11.19.0
+publish	Run actions/setup-node@v4	2026-09-21T07:46:56.2632677Z yarn: 1.22.22
+publish	Run actions/setup-node@v4	2026-09-21T07:46:56.2633848Z ##[endgroup]
+publish	Run npm install --global npm@11.13.0	﻿2026-09-21T07:46:56.2771498Z ##[group]Run npm install --global npm@11.13.0
+publish	Run npm install --global npm@11.13.0	2026-09-21T07:46:56.2771969Z ^[[36;1mnpm install --global npm@11.13.0^[[0m
+publish	Run npm install --global npm@11.13.0	2026-09-21T07:46:56.2859665Z shell: /usr/bin/bash -e {0}
+publish	Run npm install --global npm@11.13.0	2026-09-21T07:46:56.2860002Z ##[endgroup]
+publish	Run npm install --global npm@11.13.0	2026-09-21T07:47:01.1810263Z 
+publish	Run npm install --global npm@11.13.0	2026-09-21T07:47:01.1817538Z changed 34 packages in 5s
+publish	Run npm install --global npm@11.13.0	2026-09-21T07:47:01.1817928Z 
+publish	Run npm install --global npm@11.13.0	2026-09-21T07:47:01.1818197Z 15 packages are looking for funding
+publish	Run npm install --global npm@11.13.0	2026-09-21T07:47:01.1818550Z   run `npm fund` for details
+publish	Run pnpm/action-setup@v4	﻿2026-09-21T07:47:01.2405624Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.2407009Z ##[group]Run pnpm/action-setup@v4
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.2407319Z with:
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.2407528Z   version: 11.21.0
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.2407753Z   dest: ~/setup-pnpm
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.2407987Z   run_install: null
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.2408214Z   cache: false
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.2408452Z   cache_dependency_path: pnpm-lock.yaml
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.2408763Z   package_json_file: package.json
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.2409031Z   standalone: false
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.2409260Z ##[endgroup]
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.4036192Z ##[group]Running self-installer...
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.8320629Z (node:2217) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.8322538Z (Use `node --trace-deprecation ...` to show where the warning was created)
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.9547470Z Progress: resolved 1, reused 0, downloaded 0, added 0
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.9641795Z Packages: +1
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:01.9647285Z +
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:02.3979235Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:02.4361606Z 
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:02.4363050Z dependencies:
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:02.4364395Z + pnpm 11.21.0 (12.5.1 is available)
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:02.4365572Z 
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:02.4416046Z Done in 856ms
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:02.5528242Z ##[endgroup]
+publish	Run pnpm/action-setup@v4	2026-09-21T07:47:02.5607060Z Installation Completed!
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	﻿2026-09-21T07:47:02.5648175Z ##[group]Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:02.5649257Z ^[[36;1mpnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile^[[0m
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:02.5687007Z shell: /usr/bin/bash -e {0}
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:02.5687284Z env:
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:02.5687566Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:02.5687900Z ##[endgroup]
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:03.4232869Z ? Verifying lockfile against supply-chain policies (156 entries)...
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:03.4336647Z Lockfile is up to date, resolution step is skipped
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:03.5606627Z Progress: resolved 1, reused 0, downloaded 0, added 0
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:03.5864469Z Packages: +81
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:03.5868272Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:04.1476264Z Packages are copied from the content-addressable store to the virtual store.
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:04.1479357Z   Content-addressable store is at: /home/runner/setup-pnpm/node_modules/.bin/store/v11
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:04.1495038Z   Virtual store is at:             node_modules/.pnpm
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:04.5616851Z Progress: resolved 81, reused 0, downloaded 78, added 78
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.4754525Z ✓ Lockfile passes supply-chain policies (156 entries in 2s)
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.4894138Z Progress: resolved 81, reused 0, downloaded 81, added 81, done
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.5438134Z .../esbuild@0.28.2/node_modules/esbuild postinstall$ node install.js
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.5450709Z .../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.6108423Z .../esbuild@0.28.2/node_modules/esbuild postinstall: Done
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.6220199Z .../esbuild@0.25.12/node_modules/esbuild postinstall: Done
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.7456818Z 
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.7457351Z devDependencies:
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.7457875Z + @types/node 24.10.0
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.7458267Z + @types/react 19.2.14
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.7458730Z + @types/react-dom 19.2.3
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.7459189Z + esbuild 0.25.12
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.7459591Z + onnxruntime-web 1.27.0
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.7459983Z + playwright 1.63.0
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.7460331Z + react 19.2.4
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.7460674Z + react-dom 19.2.4
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.7461025Z + typescript 5.9.3
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.7461348Z + vite 7.3.6
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.7461678Z + vitest 3.2.4
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.7461885Z 
+publish	Run pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false install --frozen-lockfile	2026-09-21T07:47:05.8421567Z Done in 3.2s using pnpm v11.21.0
+publish	Run npm run build && npm run check:package	﻿2026-09-21T07:47:05.9031768Z ##[group]Run npm run build && npm run check:package
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:05.9032209Z ^[[36;1mnpm run build && npm run check:package^[[0m
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:05.9068510Z shell: /usr/bin/bash -e {0}
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:05.9068762Z env:
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:05.9069014Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:05.9069333Z ##[endgroup]
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:06.0128330Z 
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:06.0128997Z > web-sdk-pp-tracking@0.2.0-rc.0 build
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:06.0129606Z > node scripts/build.mjs
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:06.0129866Z 
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:07.5414043Z 算法与 ReID 独立 ESM、CommonJS 和 NodeNext 类型声明构建完成。
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:07.6607924Z 
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:07.6608669Z > web-sdk-pp-tracking@0.2.0-rc.0 check:package
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:07.6609257Z > node scripts/check-package.mjs
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:07.6609453Z 
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6471040Z {
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6471746Z   "filename": "web-sdk-pp-tracking-0.2.0-rc.0.tgz",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6477230Z   "size": 46274,
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6477727Z   "unpackedSize": 152483,
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6478284Z   "files": [
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6478613Z     "LICENSE",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6478828Z     "NOTICE",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6479058Z     "README.en.md",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6479299Z     "README.md",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6479520Z     "dist/assignment.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6480043Z     "dist/deepsort.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6480546Z     "dist/errors.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6481014Z     "dist/index.cjs",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6481512Z     "dist/index.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6482013Z     "dist/index.js",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6482471Z     "dist/kalman.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6482975Z     "dist/ocsort.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6483447Z     "dist/reid/assets.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6484045Z     "dist/reid/errors.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6484651Z     "dist/reid/extractor.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6485573Z     "dist/reid/index.cjs",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6486088Z     "dist/reid/index.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6486601Z     "dist/reid/index.js",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6487214Z     "dist/reid/model.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6487739Z     "dist/reid/ort.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6488299Z     "dist/reid/preprocess.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6488872Z     "dist/reid/sources.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6489428Z     "dist/reid/types.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6489854Z     "dist/tracker.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6490307Z     "dist/types.d.ts",
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6490724Z     "package.json"
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6491113Z   ]
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6491445Z }
+publish	Run npm run build && npm run check:package	2026-09-21T07:47:19.6492417Z 三算法与 ReID 实际 npm pack、双格式导入、独立类型消费、可选 ORT 与发行文件检查通过。
+publish	核对已有版本或通过 OIDC 发布唯一候选	﻿2026-09-21T07:47:19.6661220Z ##[group]Run node scripts/release.mjs
+publish	核对已有版本或通过 OIDC 发布唯一候选	2026-09-21T07:47:19.6661598Z ^[[36;1mnode scripts/release.mjs^[[0m
+publish	核对已有版本或通过 OIDC 发布唯一候选	2026-09-21T07:47:19.6698232Z shell: /usr/bin/bash -e {0}
+publish	核对已有版本或通过 OIDC 发布唯一候选	2026-09-21T07:47:19.6698513Z env:
+publish	核对已有版本或通过 OIDC 发布唯一候选	2026-09-21T07:47:19.6698782Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+publish	核对已有版本或通过 OIDC 发布唯一候选	2026-09-21T07:47:19.6699124Z   RELEASE_TAG: v0.2.0-rc.0
+publish	核对已有版本或通过 OIDC 发布唯一候选	2026-09-21T07:47:19.6699371Z ##[endgroup]
+publish	核对已有版本或通过 OIDC 发布唯一候选	2026-09-21T07:48:56.8482202Z npm OIDC 发布完成且完整性一致。
+publish	Post Run pnpm/action-setup@v4	﻿2026-09-21T07:48:56.8604237Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+publish	Post Run pnpm/action-setup@v4	2026-09-21T07:48:56.8605860Z Post job cleanup.
+publish	Post Run pnpm/action-setup@v4	2026-09-21T07:48:57.0151667Z Pruning is unnecessary.
+publish	Post Run actions/setup-node@v4	﻿2026-09-21T07:48:57.0282182Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+publish	Post Run actions/setup-node@v4	2026-09-21T07:48:57.0283469Z Post job cleanup.
+publish	Post Run actions/setup-node@v4	2026-09-21T07:48:57.1544500Z (node:2630) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+publish	Post Run actions/setup-node@v4	2026-09-21T07:48:57.1545713Z (Use `node --trace-deprecation ...` to show where the warning was created)
+publish	Post Run actions/checkout@v4	﻿2026-09-21T07:48:57.1746835Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+publish	Post Run actions/checkout@v4	2026-09-21T07:48:57.1749121Z Post job cleanup.
+publish	Post Run actions/checkout@v4	2026-09-21T07:48:57.2818826Z [command]/usr/bin/git version
+publish	Post Run actions/checkout@v4	2026-09-21T07:48:57.2873381Z git version 2.55.0
+publish	Post Run actions/checkout@v4	2026-09-21T07:48:57.2924289Z Temporarily overriding HOME='/home/runner/work/_temp/6b475401-7189-4e4f-9369-23c4766a0858' before making global git config changes
+publish	Post Run actions/checkout@v4	2026-09-21T07:48:57.2925909Z Adding repository directory to the temporary git global config as a safe directory
+publish	Post Run actions/checkout@v4	2026-09-21T07:48:57.2931624Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/web-sdk-PP-Tracking/web-sdk-PP-Tracking
+publish	Post Run actions/checkout@v4	2026-09-21T07:48:57.2973017Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+publish	Post Run actions/checkout@v4	2026-09-21T07:48:57.3007666Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+publish	Post Run actions/checkout@v4	2026-09-21T07:48:57.3244415Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+publish	Post Run actions/checkout@v4	2026-09-21T07:48:57.3271765Z http.https://github.com/.extraheader
+publish	Post Run actions/checkout@v4	2026-09-21T07:48:57.3283608Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+publish	Post Run actions/checkout@v4	2026-09-21T07:48:57.3316587Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+publish	Post Run actions/checkout@v4	2026-09-21T07:48:57.3551077Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+publish	Post Run actions/checkout@v4	2026-09-21T07:48:57.3585243Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+publish	Complete job	﻿2026-09-21T07:48:57.3952309Z Cleaning up orphan processes
+publish	Complete job	2026-09-21T07:48:57.4367035Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, pnpm/action-setup@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

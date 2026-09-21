@@ -1,0 +1,37 @@
+{
+  "id": 23691948,
+  "name": "保护发布标签",
+  "target": "tag",
+  "source_type": "Repository",
+  "source": "chenmohan123/web-sdk-PP-Tracking",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": [
+        "refs/tags/v*"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "type": "deletion"
+    },
+    {
+      "type": "update"
+    }
+  ],
+  "node_id": "RRS_lACqUmVwb3NpdG9yec5SDywCzgFpgqw",
+  "created_at": "2026-09-19T12:30:34.431+08:00",
+  "updated_at": "2026-09-19T12:30:34.454+08:00",
+  "bypass_actors": [],
+  "current_user_can_bypass": "never",
+  "_links": {
+    "self": {
+      "href": "https://api.github.com/repos/chenmohan123/web-sdk-PP-Tracking/rulesets/23691948"
+    },
+    "html": {
+      "href": "https://github.com/chenmohan123/web-sdk-PP-Tracking/rules/23691948"
+    }
+  }
+}

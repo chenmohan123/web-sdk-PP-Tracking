@@ -1,0 +1,10 @@
+{
+  "ref": "refs/tags/v0.2.0-rc.0",
+  "node_id": "REF_kwDOUg8sArVyZWZzL3RhZ3MvdjAuMi4wLXJjLjA",
+  "url": "https://api.github.com/repos/chenmohan123/web-sdk-PP-Tracking/git/refs/tags/v0.2.0-rc.0",
+  "object": {
+    "sha": "980676c9ae01811c42d25db44c8f054236b1a882",
+    "type": "tag",
+    "url": "https://api.github.com/repos/chenmohan123/web-sdk-PP-Tracking/git/tags/980676c9ae01811c42d25db44c8f054236b1a882"
+  }
+}

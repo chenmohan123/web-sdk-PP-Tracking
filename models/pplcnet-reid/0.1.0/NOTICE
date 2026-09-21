@@ -1,0 +1,16 @@
+PPLCNet ReID FP32 ONNX 转换
+来源：PaddlePaddle / PaddleDetection、PaddleClas
+原模型结构声明：Copyright (c) 2021 PaddlePaddle Authors. All Rights Reserved.
+许可证：Apache License, Version 2.0（附完整 LICENSE）
+
+上游固定提交 b25522a0f4bde8c80603f3ba5e3472059972e3b5。
+官方原权重 deepsort_pplcnet.pdparams：
+https://paddledet.bj.bcebos.com/models/mot/deepsort/deepsort_pplcnet.pdparams
+SHA-256 abce7d12af14b5b5c10c287ba01517470db3247ee06e3beeaa5ffc1c76628758
+
+2026年由chenmohan转换为固定batch1 FP32 ONNX/opset17；移除注册依赖，
+不导出不属于Embedding forward的训练分类头，未重新训练或量化。
+ONNX SHA-256 24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4。
+本项目正常朝向RGB预处理与上游转置BGR部署不同，未嵌入ONNX。
+未包含上游tracker、Kalman、matching代码、原始训练或评测图像。
+分发依据和训练披露范围见README.md；本转换不表示上游背书。

@@ -1,0 +1,57 @@
+[
+  {
+    "path": "configuration.json",
+    "bytes": 4,
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+  },
+  {
+    "path": "LICENSE",
+    "bytes": 11357,
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  },
+  {
+    "path": "NOTICE",
+    "bytes": 988,
+    "sha256": "00d86ed3d0ac45ad73e758205e75271971bd5bfffea964d9e48140e81c383ad0"
+  },
+  {
+    "path": "pplcnet-reid/0.1.0/LICENSE",
+    "bytes": 11357,
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  },
+  {
+    "path": "pplcnet-reid/0.1.0/model.json",
+    "bytes": 890,
+    "sha256": "0b0b68babcf55d2f4432f0123308a41d2b0da4802407aea6724387eb3bfaa7c1"
+  },
+  {
+    "path": "pplcnet-reid/0.1.0/NOTICE",
+    "bytes": 988,
+    "sha256": "00d86ed3d0ac45ad73e758205e75271971bd5bfffea964d9e48140e81c383ad0"
+  },
+  {
+    "path": "pplcnet-reid/0.1.0/pplcnet-reid-fp32.onnx",
+    "bytes": 33704835,
+    "sha256": "24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4"
+  },
+  {
+    "path": "pplcnet-reid/0.1.0/README.en.md",
+    "bytes": 4334,
+    "sha256": "f6d6bc1ce6e39b70755200da4335b76ef0136c82674b662a3f317924c8a5a5b9"
+  },
+  {
+    "path": "pplcnet-reid/0.1.0/README.md",
+    "bytes": 4128,
+    "sha256": "d4dd78455a51ade5c17c445314e45a225e7441ff42bbcdb0765fefa11b36a943"
+  },
+  {
+    "path": "README.en.md",
+    "bytes": 4334,
+    "sha256": "f6d6bc1ce6e39b70755200da4335b76ef0136c82674b662a3f317924c8a5a5b9"
+  },
+  {
+    "path": "README.md",
+    "bytes": 4128,
+    "sha256": "d4dd78455a51ade5c17c445314e45a225e7441ff42bbcdb0765fefa11b36a943"
+  }
+]

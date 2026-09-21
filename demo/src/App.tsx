@@ -15,7 +15,7 @@ const copy = {
     empty: '暂无轨迹，单步或播放开始跟踪', noTracks: '本帧无活动轨迹', active: '活动轨迹', removed: '本帧移除', dropped: '容量跳过',
     tracked: '跟踪中', tentative: '待确认', lost: '丢失', score: '分数', class: '类别', runtime: '运行与耗时',
     algorithm: '算法与限制', privacy: '文件仅在本机内存处理，不上传；刷新即清空。',
-    detail: '当前算法的独立实现、来源、参数边界和已知限制如下。Apache-2.0；本地候选版本 0.2.0-rc.0，线上 npm 仍为 0.1.0。',
+    detail: '当前算法的独立实现、来源、参数边界和已知限制如下。Apache-2.0；发布候选版本 0.2.0-rc.0，ReID 为实验能力。',
     contract: '输入：像素 xywh 检测框、分数、类别及严格递增的毫秒时间。输出：轨迹、状态、代次及耗时。',
     limitation: '无外观 ReID。交叉与掉头可能换 ID；轨迹 ID 不是人的身份。低分框应保留，不要提前按高分阈值过滤。',
     resetInfo: '重播、切换序列或跳转会 reset 并清空历史；跳转按顺序重算。语言切换保留状态。',
@@ -35,7 +35,7 @@ const copy = {
     empty: 'No tracks yet. Step or play to start.', noTracks: 'No active tracks in this frame', active: 'Active tracks', removed: 'Removed now', dropped: 'Capacity skipped',
     tracked: 'Tracked', tentative: 'Tentative', lost: 'Lost', score: 'Score', class: 'Class', runtime: 'Runtime & timings',
     algorithm: 'Algorithm & limitations', privacy: 'Files stay in local memory; no upload. Refresh clears all data.',
-    detail: 'The selected algorithm\'s independent implementation, source, parameter bounds and limitations appear below. Apache-2.0; local candidate 0.2.0-rc.0, while npm remains 0.1.0.',
+    detail: 'The selected algorithm\'s independent implementation, source, parameter bounds and limitations appear below. Apache-2.0; release candidate 0.2.0-rc.0; ReID is experimental.',
     contract: 'Input: pixel xywh boxes, scores, classes and strictly increasing millisecond timestamps. Output: tracks, states, generation and timings.',
     limitation: 'No appearance ReID. Crossing and turning may switch IDs; track IDs are not personal identities. Preserve low-score detections before tracking.',
     resetInfo: 'Restart, sequence changes and seek reset state and history. Seek replays in order. Language changes preserve state.',
@@ -166,7 +166,7 @@ export function App() {
     }
   }
   return <div className="shell">
-    <header className="topbar"><div><h1>{t.title}</h1><div className="brand-note">{t.subtitle} <span>v0.2.0-rc.0</span></div></div><nav><a className="planned" href="https://github.com/chenmohan123/web-sdk-PP-Tracking">GitHub</a><a className="planned" href="https://www.npmjs.com/package/web-sdk-pp-tracking">npm 0.1.0</a><button data-testid="language" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}>{language === 'zh' ? 'English' : '中文'}</button></nav></header>
+    <header className="topbar"><div><h1>{t.title}</h1><div className="brand-note">{t.subtitle} <span>v0.2.0-rc.0</span></div></div><nav><a className="planned" href="https://github.com/chenmohan123/web-sdk-PP-Tracking">GitHub</a><a className="planned" href="https://www.npmjs.com/package/web-sdk-pp-tracking/v/0.2.0-rc.0">npm RC</a><button data-testid="language" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}>{language === 'zh' ? 'English' : '中文'}</button></nav></header>
     <div className="mode-bar"><label htmlFor="input-mode">{language === 'zh' ? '输入模式' : 'Input mode'}</label><select id="input-mode" value={mode} onChange={event => { setPlaying(false); importRequest.current++; setReading(false); setMode(event.target.value as typeof mode); }}><option value="boxes">{language === 'zh' ? '检测框 / 外部向量' : 'Boxes / external vectors'}</option><option value="image">{language === 'zh' ? '图像 + 检测框' : 'Image + detections'}</option></select></div>
     {mode === 'image' ? <Suspense fallback={<p className="image-empty">{language === 'zh' ? '加载图像工作台' : 'Loading image workspace'}</p>}><ReIdWorkspace language={language} /></Suspense> : <main>
       <aside className="panel controls"><h2>{t.sequence}</h2>

@@ -8,7 +8,7 @@ Demo images, boxes and embeddings are processed locally; refresh clears the in-m
 
 `npm run build:demo` emits `demo/dist` for static HTTPS hosting with relative assets. The build includes ORT engine resources but no model weights; engine and selected-source requests occur only when the model is enabled and loaded. Allow static JS/MJS/WASM and model-source CORS requests, configuring CSP and access controls as needed. WebGPU, SHA-256 and CacheStorage require browser secure contexts (HTTPS or localhost); plain LAN HTTP is not equivalent.
 
-Pages uses official configure-pages/upload-pages-artifact/deploy-pages actions. Only its deployment job receives pages/id-token write permissions, with the github-pages environment and serialized concurrency. Remote governance and delivery for 0.1.0 are archived. This stage distributes models to both hubs but does not publish the local 0.2.0-rc.0 SDK, npm package or hosted Demo.
+Pages uses official configure-pages/upload-pages-artifact/deploy-pages actions. Only its deployment job receives pages/id-token write permissions, with the github-pages environment and serialized concurrency. Remote governance and delivery for 0.1.0 are archived. The RC uses protected-branch CI, immutable tags and trusted publishing; see the release checklist for status.
 
 The release workflow runs when a GitHub Release for a v* tag is published, verifies first, then uses npm OIDC Trusted Publishing. The publisher is configured; the first version used local authentication. A future version still needs an actual receipt proving OIDC success. Recheck protected branches, immutable tags and the environment before publishing; do not embed tokens in code or artifacts.
 

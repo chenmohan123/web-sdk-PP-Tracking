@@ -2,16 +2,16 @@
 
 [English](../en/quick-start.md) · [首页](../../README.md)
 
-本地候选另提供[可选ReID子入口](reid-candidate.md)，从人体图像与检测框提取外观向量供DeepSORT消费。它需要本地tarball和可选ORT依赖；下方已发布0.1.0安装命令只提供根ByteTrack算法。
+RC 提供[可选ReID子入口](reid-candidate.md)，从人体图像与检测框提取外观向量供 DeepSORT 消费。该入口需要可选 ORT 依赖，根算法入口不需要。
 
-线上已发布包仍为 0.1.0：
+安装指定 RC（预发布通道为 `next`，稳定 `latest` 保留 `0.1.0`）：
 
 ```sh
-npm install web-sdk-pp-tracking@0.1.0
+npm install web-sdk-pp-tracking@0.2.0-rc.0
 ```
 
 本地开发依赖和 tarball 消费流程见首页。Node >=22.12.0 用于构建；浏览器只执行生成的 JavaScript。
-本地候选为 `0.2.0-rc.0`，只能以本仓库 `npm pack` 生成的 tarball 消费，不能按 npm 远程 RC 名称安装。
+发布交付状态见[发布清单](release-checklist.md)；从源码消费时也可安装 `npm pack` 生成的 tarball。
 
 ```ts
 import { createTracker } from 'web-sdk-pp-tracking';

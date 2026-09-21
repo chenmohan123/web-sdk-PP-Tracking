@@ -15,7 +15,7 @@
 | IDs switch at crossings | ByteTrack/OC-SORT have no appearance; DeepSORT depends on feature quality. The optional ReID module does not guarantee personal identity or an accuracy gain on real, identical-input sequences |
 | Model-source download failure | Check the chosen ModelScope/Hugging Face host and CORS. Explicit selections never silently switch sources; release/reset before selecting another |
 | INTEGRITY_FAILED | Byte size or SHA-256 mismatch; clear this SDK's cache and retry without bypassing integrity checks |
-| SESSION_FAILED / unresolved onnxruntime-web | ReID in the local candidate needs optional peer onnxruntime-web@1.27.0 and reachable built engine MJS/WASM resources |
+| SESSION_FAILED / unresolved onnxruntime-web | ReID in the RC needs optional peer onnxruntime-web@1.27.0 and reachable built engine MJS/WASM resources |
 | UNSUPPORTED_BACKEND | Use HTTPS/localhost and check WebGPU availability. GPU never silently falls back; explicitly choose CPU(WASM) if needed |
 | Image extraction fails or is cancelled | Frame number and association state do not advance. Correct the image/detection array and retry. Images are limited to20MiB,8192 per side and16777216 pixels, with at most32 boxes per frame in the Demo model mode |
 | Missing package build | Run npm run build before Demo, tests or packing |

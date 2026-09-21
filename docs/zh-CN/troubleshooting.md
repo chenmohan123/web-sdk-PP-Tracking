@@ -15,7 +15,7 @@
 | 交叉换ID | ByteTrack/OC-SORT无外观；DeepSORT依赖外观特征质量。可选ReID模块也不保证真实身份，尚无同输入真实序列精度提升结论 |
 | 模型源下载失败 | 核对所选ModelScope/Hugging Face可达性和CORS；显式选择不会自动换源，可在释放/复位后自行切换 |
 | INTEGRITY_FAILED | 字节或SHA-256不匹配；清理本SDK缓存后重试，不跳过校验 |
-| SESSION_FAILED / 无法解析 onnxruntime-web | 本地候选使用ReID需安装可选peer onnxruntime-web@1.27.0，并确保构建后的引擎MJS/WASM资源可达 |
+| SESSION_FAILED / 无法解析 onnxruntime-web | RC 使用 ReID需安装可选peer onnxruntime-web@1.27.0，并确保构建后的引擎MJS/WASM资源可达 |
 | UNSUPPORTED_BACKEND | 使用HTTPS/localhost，核对WebGPU可用性；GPU不会静默回退，必要时显式选择CPU(WASM) |
 | 图像提取失败或取消 | 不推进帧序号及关联状态；修正图像/检测数组后重试。图像≤20MiB、每维≤8192且总像素≤16777216，Demo模型模式每帧最多32个框 |
 | 找不到包产物 | 先npm run build，再运行Demo、测试或本地打包 |

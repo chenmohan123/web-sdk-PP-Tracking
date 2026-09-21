@@ -8,9 +8,9 @@ On2026-09-21, local0.2.0-rc.0 passed complete verify:176 unit tests, actual tarb
 
 ## Historical alpha and0.1 evidence
 
-Local candidate verification date:2026-09-19. Environment: Windows11 Pro10.0.26200, Intel Core i5-10400F @2.90GHz; Node24.16.0, pnpm11.21.0; Playwright1.63.0 desktop Chromium153.0.8010.12. Runtime: `web-sdk-pp-tracking@0.2.0-alpha.0`, actual CPU / JavaScript / main. No GPU/driver dependency; the published version remains 0.1.0.
+Local candidate verification date:2026-09-19. Environment: Windows11 Pro10.0.26200, Intel Core i5-10400F @2.90GHz; Node24.16.0, pnpm11.21.0; Playwright1.63.0 desktop Chromium153.0.8010.12. Runtime: `web-sdk-pp-tracking@0.2.0-alpha.0`, actual CPU / JavaScript / main. No GPU/driver dependency; this row records the historical validation environment.
 
-The table below preserves CPU association evidence from2026-09-19. On2026-09-21 the [optional ReID subpath](reid-candidate.md) entered the local release candidate. The same machine, Chromium153, ORT Web1.27.0 and RTX5060Ti (driver32.0.16.1692) passed four real ModelScope/Hugging Face × WASM/WebGPU download, SHA and512-dimensional extraction runs; the GPU adapter was not a fallback. Model and CPU association backends are reported separately; see the [current stage report](../../reports/2026-09-21-reid-distribution/README.en.md). npm and the hosted Demo remain0.1.0.
+The table below preserves CPU association evidence from2026-09-19. On2026-09-21 the [optional ReID subpath](reid-candidate.md) entered the local release candidate. The same machine, Chromium153, ORT Web1.27.0 and RTX5060Ti (driver32.0.16.1692) passed four real ModelScope/Hugging Face × WASM/WebGPU download, SHA and512-dimensional extraction runs; the GPU adapter was not a fallback. Model and CPU association backends are reported separately; see the [current stage report](../../reports/2026-09-21-reid-distribution/README.en.md). See the [release checklist](release-checklist.md) for remote delivery status.
 
 | Scope | Evidence and limits |
 | --- | --- |

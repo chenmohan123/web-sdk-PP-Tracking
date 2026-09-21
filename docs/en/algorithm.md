@@ -70,7 +70,7 @@ only before synchronous computation and raises ABORTED. Other stable codes:
 INVALID_OPTIONS, INVALID_INPUT, NUMERICAL_FAILURE, ID_EXHAUSTED. Unknown option keys
 are rejected; explicit undefined values are invalid rather than defaults.
 
-The local candidate runtime is CPU/main, version `web-sdk-pp-tracking@0.2.0-rc.0`; this does not rewrite historical published 0.1.0 evidence. Measured milliseconds:
+The RC runtime is CPU/main, version `web-sdk-pp-tracking@0.2.0-rc.0`; this does not rewrite historical published 0.1.0 evidence. Measured milliseconds:
 validationMs covers entry through validation; predictionMs includes cloning,
 pre-removal and prediction; associationMs includes grouping and all three stages;
 updateMs includes corrections, births and track snapshots; totalMs independently
@@ -86,7 +86,7 @@ reset clears the motion state.
 covariance errors are below 5e-9; tests also check 500 repeated updates. Evidence
 is mathematical and synthetic only. A separate fixed MOT17 FRCNN training-sequence evaluation repeats ByteTrack and OC-SORT on the same 5316 detection frames; the [candidate comparison](../../reports/2026-09-19-ocsort/README.en.md) records metrics, input/output hashes, pinned TrackEval identity and limits. It is not a licensed end-to-end real-video evaluation, a test-set leaderboard result or an official algorithm reproduction.
 
-## OC-SORT (local alpha)
+## OC-SORT (RC)
 
 Use `createTracker({algorithm: 'ocsort'})` to select the box-input OC-SORT
 design; omitting `algorithm` keeps the existing ByteTrack-style strategy. The
@@ -149,7 +149,7 @@ documents mechanism correspondence without claiming official value compatibility
 or MOT metrics. CPU/main, reset, dispose, instance isolation and synchronous
 cancellation semantics match the original strategy.
 
-## DeepSORT (external vectors, local alpha)
+## DeepSORT (external vectors, RC)
 
 `createTracker({algorithm:'deepsort',featureSpace})` independently implements concepts from the [Deep SORT paper](https://arxiv.org/abs/1703.07402). The tracking root loads no model and generates no embeddings; the optional [ReID subpath](reid-candidate.md) extracts human-box features. Callers provide a matching feature-space ID on every frame and a compatible vector on every detection. Vectors are scale-normalized to avoid norm overflow and copied. Missing, wrong-dimensional, non-finite or zero-norm vectors reject the whole frame with `INVALID_INPUT` and commit no state. Each track stores the newest `gallerySize` vectors; detection-to-track distance is the minimum cosine distance to any gallery sample.
 

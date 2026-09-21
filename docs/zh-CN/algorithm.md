@@ -56,7 +56,7 @@ dispose 幂等，随后 update/reset 抛 DISPOSED。同步主线程仅支持开�
 稳定错误码另有 INVALID_OPTIONS、INVALID_INPUT、NUMERICAL_FAILURE、ID_EXHAUSTED。
 未知配置键拒绝；选项值必须有效，显式 undefined 不视为缺省。
 
-本地候选 runtime 固定实际 CPU/main，版本 `web-sdk-pp-tracking@0.2.0-rc.0`；线上 0.1.0 的历史发布证据不因此改写。五项耗时均实测毫秒：
+RC runtime 固定实际 CPU/main，版本 `web-sdk-pp-tracking@0.2.0-rc.0`；线上 0.1.0 的历史发布证据不因此改写。五项耗时均实测毫秒：
 validationMs 从方法入口到完成校验；predictionMs 包含状态复制/预先移除/预测；
 associationMs 包含候选分组与三个关联阶段；updateMs 包含修正/创建/结果轨迹快照；
 totalMs 从方法入口计至结果对象构建时，不以阶段和代替。无轨迹时仍有阶段调度开销。
@@ -69,7 +69,7 @@ cold 指新实例首帧，warm 指复用实例，reset 清除运动状态。
 测试逐元素均值/协方差绝对差小于5e-9，并做500轮稳定性检查。
 数学 fixture 仍只验证公式与原创合成机制。另有不含图像媒体的固定 MOT17 FRCNN 训练序列评测：ByteTrack 与 OC-SORT 在相同 5316 帧检测输入上分别重复运行，指标、输入/输出 SHA、固定 TrackEval 身份和限制见[候选对比报告](../../reports/2026-09-19-ocsort/README.md)。它不是授权真实视频端到端评测、测试集排行榜或官方算法复现。
 
-## OC-SORT（本地 alpha）
+## OC-SORT（RC）
 
 `createTracker({algorithm: 'ocsort'})` 选择框输入的 OC-SORT 思路实现；省略
 `algorithm` 仍使用原 ByteTrack 思路。结果的 `algorithm` 字段报告实际策略。
@@ -120,7 +120,7 @@ OC-SORT 复用本项目独立的八维 `cx/cy/w/h` 恒速滤波、秒级 `dt`、
 与官方代码的逐值结果或 MOT 指标兼容。CPU/main、reset、dispose、实例隔离
 和同步取消语义与原算法一致。
 
-## DeepSORT（外部向量，本地 alpha）
+## DeepSORT（外部向量，RC）
 
 `createTracker({algorithm:'deepsort',featureSpace})` 依据 [Deep SORT 论文](https://arxiv.org/abs/1703.07402) 的概念独立实现。跟踪根入口不加载模型或生成embedding；可选[ReID子入口](reid-candidate.md)负责人体框特征。调用者为每帧和每个检测提供与 `featureSpace` 一致的标识和向量。向量经缩放避免范数溢出后归一化并复制；缺失、错维、非有限或零范数使整帧以 `INVALID_INPUT` 失败且不提交状态。每条轨迹保存最近 `gallerySize` 个向量，距离为检测向量与图库样本的最小余弦距离。
 

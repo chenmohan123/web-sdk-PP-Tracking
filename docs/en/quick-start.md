@@ -2,16 +2,16 @@
 
 [中文](../zh-CN/quick-start.md) · [Home](../../README.en.md)
 
-The local candidate also provides an [optional ReID subpath](reid-candidate.md) that extracts appearance vectors from human images and boxes for DeepSORT. It needs the local tarball plus optional ORT; the published0.1.0 installation below provides only root ByteTrack.
+The RC provides an [optional ReID subpath](reid-candidate.md) that extracts human appearance vectors from images and boxes for DeepSORT. This entry needs optional ORT; root algorithm consumers do not.
 
-The published package remains version 0.1.0:
+Install the explicit RC (`next` is the prerelease channel; stable `latest` stays at `0.1.0`):
 
 ```sh
-npm install web-sdk-pp-tracking@0.1.0
+npm install web-sdk-pp-tracking@0.2.0-rc.0
 ```
 
 See the README for local development dependencies and tarball consumption. Building requires Node >=22.12.0; browsers execute generated JavaScript.
-The local candidate is `0.2.0-rc.0`; consume only a tarball produced by `npm pack` in this repository, never an unavailable remote npm RC name.
+See the [release checklist](release-checklist.md) for delivery status; source consumers may also install a tarball generated with `npm pack`.
 
 ```ts
 import { createTracker } from 'web-sdk-pp-tracking';

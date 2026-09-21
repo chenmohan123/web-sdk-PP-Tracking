@@ -1,12 +1,12 @@
-# API 0.2.0-rc.0 (local candidate)
+# API 0.2.0-rc.0 (release candidate)
 
 [中文](../zh-CN/api.md) · [Home](../../README.en.md)
 
-`createTracker(options?: TrackerOptions): Tracker` returns synchronous `update(frame, {signal}?)`, `reset()` and `dispose()`. ESM/CJS export createTracker and TrackingError; declarations also export `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort'` and `FeatureSpace`. The local candidate is 0.2.0-rc.0; the published installable package remains 0.1.0.
+`createTracker(options?: TrackerOptions): Tracker` returns synchronous `update(frame, {signal}?)`, `reset()` and `dispose()`. ESM/CJS export createTracker and TrackingError; declarations also export `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort'` and `FeatureSpace`. This page covers 0.2.0-rc.0 on the next prerelease channel.
 
 ## Input
 
-This page documents the root algorithm entry. The optional `web-sdk-pp-tracking/reid` factory, load/extract/dispose, inputs, cache and errors are documented in the [ReID guide](reid-candidate.md). It requires the local candidate plus optional ORT; published0.1.0 has no such subpath.
+This page documents the root algorithm entry. The optional `web-sdk-pp-tracking/reid` factory, load/extract/dispose, inputs, cache and errors are documented in the [ReID guide](reid-candidate.md). It requires the RC plus optional ORT; version 0.1.0 has no such subpath.
 
 `TrackingFrame = {timestampMs, imageSize:{width,height}, featureSpaceId?, detections:[{box:{x,y,width,height},score,classId,embedding?}]}`.
 Coordinates are pixel xywh, not xyxy. Boxes must be fully in-bounds with positive sizes and nonnegative x/y; no automatic clipping.

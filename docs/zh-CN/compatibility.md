@@ -8,9 +8,9 @@
 
 ## 历史alpha与0.1证据
 
-本地候选验证日期：2026-09-19。环境：Windows11专业版10.0.26200，Intel Core i5-10400F @2.90GHz；Node24.16.0、pnpm11.21.0；Playwright1.63.0桌面Chromium153.0.8010.12。runtime为 `web-sdk-pp-tracking@0.2.0-alpha.0`，实际CPU / JavaScript / main，无GPU/驱动依赖；线上已发布版本仍为0.1.0。
+本地候选验证日期：2026-09-19。环境：Windows11专业版10.0.26200，Intel Core i5-10400F @2.90GHz；Node24.16.0、pnpm11.21.0；Playwright1.63.0桌面Chromium153.0.8010.12。runtime为 `web-sdk-pp-tracking@0.2.0-alpha.0`，实际CPU / JavaScript / main，无GPU/驱动依赖；此行为历史验证环境记录。
 
-下表保留2026-09-19的CPU关联器证据。2026-09-21已将[可选ReID子入口](reid-candidate.md)接入本地发布候选：同机 Chromium153、ORT Web1.27.0、RTX5060Ti（驱动32.0.16.1692）通过真实ModelScope/Hugging Face各WASM/WebGPU共四组下载、SHA校验和512维提取；GPU为非fallback适配器。模型后端和CPU关联后端分别报告，见[当前阶段报告](../../reports/2026-09-21-reid-distribution/README.md)。npm及线上Demo仍为0.1.0。
+下表保留2026-09-19的CPU关联器证据。2026-09-21已将[可选ReID子入口](reid-candidate.md)接入本地发布候选：同机 Chromium153、ORT Web1.27.0、RTX5060Ti（驱动32.0.16.1692）通过真实ModelScope/Hugging Face各WASM/WebGPU共四组下载、SHA校验和512维提取；GPU为非fallback适配器。模型后端和CPU关联后端分别报告，见[当前阶段报告](../../reports/2026-09-21-reid-distribution/README.md)。远程交付状态见[发布清单](release-checklist.md)。
 
 | 范围 | 证据与边界 |
 | --- | --- |

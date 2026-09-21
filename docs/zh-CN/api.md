@@ -1,12 +1,12 @@
-# API 0.2.0-rc.0（本地候选）
+# API 0.2.0-rc.0（发布候选）
 
 [English](../en/api.md) · [首页](../../README.md)
 
-`createTracker(options?: TrackerOptions): Tracker` 返回同步 `update(frame, {signal}?)`、`reset()`、`dispose()`。ESM/CJS 均导出 createTracker、TrackingError；声明还导出 `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort'` 与 `FeatureSpace`。本地候选为 0.2.0-rc.0；线上安装包仍是 0.1.0。
+`createTracker(options?: TrackerOptions): Tracker` 返回同步 `update(frame, {signal}?)`、`reset()`、`dispose()`。ESM/CJS 均导出 createTracker、TrackingError；声明还导出 `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort'` 与 `FeatureSpace`。本页适用于 0.2.0-rc.0，预发布通道为 next。
 
 ## 输入
 
-本页描述根算法入口。可选 `web-sdk-pp-tracking/reid` 的工厂、load/extract/dispose、输入、缓存与错误见[ReID接口指南](reid-candidate.md)；需本地候选包及可选ORT依赖，线上0.1.0不含此子入口。
+本页描述根算法入口。可选 `web-sdk-pp-tracking/reid` 的工厂、load/extract/dispose、输入、缓存与错误见[ReID接口指南](reid-candidate.md)；需 RC 包及可选 ORT 依赖，0.1.0 不含此子入口。
 
 `TrackingFrame = {timestampMs, imageSize:{width,height}, featureSpaceId?, detections:[{box:{x,y,width,height},score,classId,embedding?}]}`。
 坐标为像素 xywh，不是 xyxy；框必须完全在图像内，宽高正，x/y非负；不自动裁剪。

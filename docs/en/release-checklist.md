@@ -2,7 +2,7 @@
 
 [中文](../zh-CN/release-checklist.md)
 
-Based on portal `standards/v1/templates/release-checklist.md`. The local candidate is0.2.0-rc.0; npm, GitHub Release and the HTTPS Demo still publish0.1.0. This checklist does not authorize remote publication.
+Based on portal `standards/v1/templates/release-checklist.md`. The release target is 0.2.0-rc.0 on next, with stable latest remaining at 0.1.0. The user authorized this version's PR, merge and release; delivery results are recorded from actual receipts.
 
 ## Current hybrid SDK candidate
 
@@ -18,7 +18,7 @@ Existing checked evidence in this section belongs to the0.2.0-alpha.0 distributi
 
 - [x] The [three-tracker real-image evaluation](../../reports/2026-09-21-mot-reid/README.en.md) covers5316 frames/67639 detections, official combined/per-sequence metrics, browser/two-Node equality, zero capacity drops and complete measured costs.
 
-Model distribution and evaluation are not SDK/npm/Demo publication. The current local candidate is0.2.0-rc.0 with ByteTrack default, OC-SORT/DeepSORT explicit options and experimental human ReID. Candidate version, changelog and publication channels are prepared; remote publication still requires explicit authorization for this version. Video/camera scheduling and cross-device compatibility require separate design and verification.
+Model distribution and evaluation are not SDK/npm/Demo publication. The current release candidate is 0.2.0-rc.0 with ByteTrack default, OC-SORT/DeepSORT explicit options and experimental human ReID. Candidate version, changelog and publication channels are prepared; remote publication is authorized for this version and completion requires actual receipts. Video/camera scheduling and cross-device compatibility require separate design and verification.
 
 ## Historical delivery and baseline checks
 
@@ -42,6 +42,6 @@ The local checker preserves remote rules as skip. No local required failures mea
 
 The [optional ReID module](reid-candidate.md) is now in local package.exports/dist, with real sources, licensing documentation and the1.3 hybrid manifest. Dated browser acceptance is archived independently and does not establish an updated npm package or hosted Demo.
 
-The three-strategy, external-vector and Demo changes in 0.2.0-rc.0 remain a local candidate. No push, Release, npm publication or Pages deployment occurred; the checked remote items above record historical 0.1.0 facts and do not prove that the RC was published.
+The three-strategy, external-vector and Demo changes in 0.2.0-rc.0 follow a separate candidate release process. Checked remote items above record historical 0.1.0 facts and do not prove RC delivery.
 
 Release text uses LF; historical reports preserve original bytes. Actual ESM/CJS/declaration consumption, SHA256, sha512 integrity, and the LF-checkout comparison are archived separately. The old desktop package size is not evidence for the final package. The locally authenticated first publication has `provenance: null`; Trusted Publisher is configured, while a future OIDC publication has not yet been exercised by a new version. Its final status must come from that version's npm receipt. Real-sequence metrics and limitations are in the [MOT17 report](../../reports/2026-09-19-mot17/README.en.md).

@@ -15,13 +15,13 @@ const copy = {
     empty: '暂无轨迹，单步或播放开始跟踪', noTracks: '本帧无活动轨迹', active: '活动轨迹', removed: '本帧移除', dropped: '容量跳过',
     tracked: '跟踪中', tentative: '待确认', lost: '丢失', score: '分数', class: '类别', runtime: '运行与耗时',
     algorithm: '算法与限制', privacy: '文件仅在本机内存处理，不上传；刷新即清空。',
-    detail: '当前算法的独立实现、来源、参数边界和已知限制如下。Apache-2.0；本地候选版本 0.2.0-rc.1，尚未发布；ReID 为实验能力。',
+    detail: '当前算法的独立实现、来源、参数边界和已知限制如下。Apache-2.0；预发布候选版本 0.2.0-rc.1；ReID 为实验能力。',
     contract: '输入：像素 xywh 检测框、分数、类别及严格递增的毫秒时间。输出：轨迹、状态、代次及耗时。',
     limitation: '无外观 ReID。交叉与掉头可能换 ID；轨迹 ID 不是人的身份。低分框应保留，不要提前按高分阈值过滤。',
     resetInfo: '重播、切换序列或跳转会 reset 并清空历史；跳转按顺序重算。语言切换保留状态。',
     defaults: '默认参数：低/高/新建分数 0.1 / 0.5 / 0.6；确认 2 次；丢失保留 1000 ms。',
     timing: '毫秒；冷启动=新实例首帧，热运行=复用状态。复位清除运动状态。',
-    verified: '2026-09-22 本地 rc.1 验证：Chromium 153.0.8010.12 / Windows 11 / Intel i5-10400F，CPU main。390px仅为桌面视口测试，其他浏览器与移动设备未验证。',
+    verified: '2026-09-22 rc.1 验证：Chromium 153.0.8010.12 / Windows 11 / Intel i5-10400F，CPU main。390px仅为桌面视口测试，其他浏览器与移动设备未验证。',
     invalid: 'JSON 须包含有效 frames 数组，时间递增、尺寸一致、框在范围内。原序列与结果已保留。',
     tooLarge: '文件超过 5 MiB；原序列与结果已保留。', failed: '计算未完成，请重新开始或检查输入。', exportFailed: '输入序列导出失败；原序列与结果已保留。', generation: '代次', source: '论文来源',
   },
@@ -35,13 +35,13 @@ const copy = {
     empty: 'No tracks yet. Step or play to start.', noTracks: 'No active tracks in this frame', active: 'Active tracks', removed: 'Removed now', dropped: 'Capacity skipped',
     tracked: 'Tracked', tentative: 'Tentative', lost: 'Lost', score: 'Score', class: 'Class', runtime: 'Runtime & timings',
     algorithm: 'Algorithm & limitations', privacy: 'Files stay in local memory; no upload. Refresh clears all data.',
-    detail: 'The selected algorithm\'s independent implementation, source, parameter bounds and limitations appear below. Apache-2.0; local unpublished candidate 0.2.0-rc.1; ReID is experimental.',
+    detail: 'The selected algorithm\'s independent implementation, source, parameter bounds and limitations appear below. Apache-2.0; prerelease candidate 0.2.0-rc.1; ReID is experimental.',
     contract: 'Input: pixel xywh boxes, scores, classes and strictly increasing millisecond timestamps. Output: tracks, states, generation and timings.',
     limitation: 'No appearance ReID. Crossing and turning may switch IDs; track IDs are not personal identities. Preserve low-score detections before tracking.',
     resetInfo: 'Restart, sequence changes and seek reset state and history. Seek replays in order. Language changes preserve state.',
     defaults: 'Defaults: low/high/new score 0.1 / 0.5 / 0.6; 2 hits to confirm; lost retention 1000 ms.',
     timing: 'Milliseconds; cold = first frame of a new instance, warm = reused state. Reset clears motion state.',
-    verified: 'Local rc.1 verification 2026-09-22: Chromium 153.0.8010.12 / Windows 11 / Intel i5-10400F, CPU main. 390px is a desktop viewport test; other browsers and mobile devices are unverified.',
+    verified: 'rc.1 verification 2026-09-22: Chromium 153.0.8010.12 / Windows 11 / Intel i5-10400F, CPU main. 390px is a desktop viewport test; other browsers and mobile devices are unverified.',
     invalid: 'JSON must contain valid frames, increasing timestamps, consistent sizes and in-bounds boxes. Previous input and results preserved.',
     tooLarge: 'File exceeds 5 MiB. Previous input and results preserved.', failed: 'Computation failed. Restart or check the input.', exportFailed: 'Input sequence export failed. Previous input and results preserved.', generation: 'Generation', source: 'Paper',
   },
@@ -66,13 +66,13 @@ const parameterLabels: Record<DemoParameterKey, keyof typeof copy.zh> = {
 };
 const algorithmInfo = {
   zh: {
-    botsort: { detail: 'BoT-SORT 风格的独立实现：高低分关联、调用者提供的相机运动矩阵和可选外观 EMA。', defaults: '默认不启用外观；运动不可用时报错，可显式选择恒等回退。', limitation: '本地候选，不自动从图像估计运动。矩阵须连接上次成功处理帧与当前帧；样例为原创合成平移，不代表真实视频精度或端到端性能。MOT17 固定评测中 09 序列仍退步。', source: 'BoT-SORT', href: 'https://arxiv.org/abs/2206.14651' },
+    botsort: { detail: 'BoT-SORT 风格的独立实现：高低分关联、调用者提供的相机运动矩阵和可选外观 EMA。', defaults: '默认不启用外观；运动不可用时报错，可显式选择恒等回退。', limitation: '预发布候选不会自动从图像估计运动。矩阵须连接上次成功处理帧与当前帧；样例为原创合成平移，不代表真实视频精度或端到端性能。MOT17 固定评测中 09 序列仍退步。', source: 'BoT-SORT', href: 'https://arxiv.org/abs/2206.14651' },
     bytetrack: { detail: 'ByteTrack 高低分两阶段关联、恒速 Kalman 和全局分配。', defaults: '默认参数：低/高/新建分数 0.1 / 0.5 / 0.6；确认 2 次；丢失保留 1000 ms。', limitation: '无外观 ReID。低分框仅由 ByteTrack 用于续接，不要提前按高分阈值过滤。', source: 'ByteTrack', href: 'https://arxiv.org/abs/2110.06864' },
     ocsort: { detail: 'OC-SORT 的观测中心关联、观测中心恢复和遮挡重现机制，复用独立八维 Kalman 状态。', defaults: '默认参数：高/新建分数 0.5 / 0.6；确认 2 次；丢失保留 1000 ms；方向权重 0.2；历史间隔 300 ms；历史容量与最大重放均为 30。', limitation: '无外观 ReID，也不使用 ByteTrack 低分续接。与论文七维固定帧间隔实现不逐值兼容，已完成固定 MOT17 训练序列评测，不代表测试集精度。', source: 'OC-SORT', href: 'https://arxiv.org/abs/2203.14360' },
     deepsort: { detail: 'DeepSORT 外观最近邻图库、运动门控、新鲜度级联与有限 IoU 后备，使用调用者提供的外观向量。', defaults: '默认参数：最大余弦距离 0.2；每轨迹图库 30 个向量；高/新建分数 0.5 / 0.6；确认 2 次；丢失保留 1000 ms。', limitation: '当前框/向量模式不加载 ReID 模型；图像模式可显式启用。IoU 后备仅用于未确认轨迹和本帧进入时仍为 tracked 的轨迹；已 lost 轨迹不能绕过外观门限。使用宽高状态、毫秒年龄与本项目噪声模型，不保证论文逐值复现或真实精度。', source: 'Deep SORT', href: 'https://arxiv.org/abs/1703.07402' },
   },
   en: {
-    botsort: { detail: 'Independent BoT-SORT-style association with caller-provided camera motion and optional appearance EMA.', defaults: 'Appearance is disabled by default; unavailable motion raises an error unless identity fallback is explicitly selected.', limitation: 'Local candidate; no automatic image motion estimation. Motion must connect the previous successful frame to the current frame. Original synthetic translation is not real-video or end-to-end evidence. MOT17 sequence 09 still regresses.', source: 'BoT-SORT', href: 'https://arxiv.org/abs/2206.14651' },
+    botsort: { detail: 'Independent BoT-SORT-style association with caller-provided camera motion and optional appearance EMA.', defaults: 'Appearance is disabled by default; unavailable motion raises an error unless identity fallback is explicitly selected.', limitation: 'This prerelease candidate has no automatic image motion estimation. Motion must connect the previous successful frame to the current frame. Original synthetic translation is not real-video or end-to-end evidence. MOT17 sequence 09 still regresses.', source: 'BoT-SORT', href: 'https://arxiv.org/abs/2206.14651' },
     bytetrack: { detail: 'ByteTrack high/low-score association, constant-velocity Kalman filtering and global assignment.', defaults: 'Defaults: low/high/new score 0.1 / 0.5 / 0.6; 2 hits to confirm; lost retention 1000 ms.', limitation: 'No appearance ReID. Only ByteTrack uses low-score detections for continuation; do not pre-filter them at the high-score threshold.', source: 'ByteTrack', href: 'https://arxiv.org/abs/2110.06864' },
     ocsort: { detail: 'OC-SORT observation-centric association, recovery and re-association over the independent eight-dimensional Kalman state.', defaults: 'Defaults: high/new score 0.5 / 0.6; 2 hits; lost retention 1000 ms; direction weight 0.2; history interval 300 ms; history and replay limits 30.', limitation: 'No appearance ReID and no ByteTrack low-score continuation. It is not value-compatible with the paper\'s seven-dimensional fixed-frame implementation and has fixed MOT17 training-sequence evidence, without a test-set accuracy claim.', source: 'OC-SORT', href: 'https://arxiv.org/abs/2203.14360' },
     deepsort: { detail: 'DeepSORT appearance nearest-neighbour galleries, motion gating, recency cascade and a limited IoU fallback over caller-provided appearance vectors.', defaults: 'Defaults: maximum cosine distance 0.2; 30 gallery vectors per track; high/new score 0.5 / 0.6; 2 hits; lost retention 1000 ms.', limitation: 'Boxes/vector mode does not load ReID; image mode can explicitly enable it. IoU fallback covers tentative tracks and tracks that entered the frame as tracked; lost tracks cannot bypass appearance matching. Width/height state, millisecond age and this SDK\'s noise model differ from the paper, with no value-level or real-data accuracy claim.', source: 'Deep SORT', href: 'https://arxiv.org/abs/1703.07402' },
@@ -185,7 +185,7 @@ export function App() {
     } finally { if (request === importRequest.current) setReading(false); }
   }
   return <div className="shell">
-    <header className="topbar"><div><h1>{t.title}</h1><div className="brand-note">{t.subtitle} <span>v0.2.0-rc.1 · {language === 'zh' ? '本地候选' : 'local candidate'}</span></div></div><nav><a className="planned" href="https://github.com/chenmohan123/web-sdk-PP-Tracking">GitHub</a><a className="planned" href="https://www.npmjs.com/package/web-sdk-pp-tracking">npm</a><button data-testid="language" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}>{language === 'zh' ? 'English' : '中文'}</button></nav></header>
+    <header className="topbar"><div><h1>{t.title}</h1><div className="brand-note">{t.subtitle} <span>v0.2.0-rc.1 · {language === 'zh' ? '预发布候选' : 'prerelease candidate'}</span></div></div><nav><a className="planned" href="https://github.com/chenmohan123/web-sdk-PP-Tracking">GitHub</a><a className="planned" href="https://www.npmjs.com/package/web-sdk-pp-tracking">npm</a><button data-testid="language" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}>{language === 'zh' ? 'English' : '中文'}</button></nav></header>
     <div className="mode-bar"><label htmlFor="input-mode">{language === 'zh' ? '输入模式' : 'Input mode'}</label><select id="input-mode" value={mode} onChange={event => { setPlaying(false); importRequest.current++; setReading(false); setMode(event.target.value as typeof mode); }}><option value="boxes">{language === 'zh' ? '检测框 / 外部向量' : 'Boxes / external vectors'}</option><option value="image">{language === 'zh' ? '图像 + 检测框' : 'Image + detections'}</option></select></div>
     {mode === 'image' ? <Suspense fallback={<p className="image-empty">{language === 'zh' ? '加载图像工作台' : 'Loading image workspace'}</p>}><ReIdWorkspace language={language} /></Suspense> : <main>
       <aside className="panel controls"><h2>{t.sequence}</h2>

@@ -2,14 +2,14 @@
 
 [中文](../zh-CN/quick-start.md) · [Home](../../README.en.md)
 
-Local rc.1 adds `createTracker({algorithm:'botsort'})`. Build/install its local tarball from the README, then use the [motion example](botsort-candidate.md). The published npm rc.0 below does not include BoT-SORT.
+Published rc.1 adds `createTracker({algorithm:'botsort'})`. The prerelease `next` channel includes all four algorithms; use the [motion example](botsort-candidate.md). Stable `latest` remains 0.1.0.
 
 The RC provides an [optional ReID subpath](reid-candidate.md) that extracts human appearance vectors from images and boxes for DeepSORT. This entry needs optional ORT; root algorithm consumers do not.
 
 Install the explicit RC (`next` is the prerelease channel; stable `latest` stays at `0.1.0`):
 
 ```sh
-npm install web-sdk-pp-tracking@0.2.0-rc.0
+npm install web-sdk-pp-tracking@next
 ```
 
 See the README for local development dependencies and tarball consumption. Building requires Node >=22.12.0; browsers execute generated JavaScript.

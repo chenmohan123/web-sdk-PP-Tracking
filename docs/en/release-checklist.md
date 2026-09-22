@@ -4,7 +4,7 @@
 
 Local [0.2.0-rc.1](releases/0.2.0-rc.1.md) integrates four algorithms and motion import/export as of 2026-09-22. [Current validation](../../reports/2026-09-22-botsort-integration/README.en.md) separately records package, desktop-browser and fixed-sequence parity evidence. Historical checks below retain their original versions and dates and do not mean rc.1 is published.
 
-Based on portal `standards/v1/templates/release-checklist.md`. Version 0.2.0-rc.0 was published on 2026-09-21: npm next, GitHub prerelease and the HTTPS Demo are verified, while stable latest remains 0.1.0. See the [delivery receipt](../../reports/2026-09-21-02-release/README.en.md).
+Based on portal `standards/v1/templates/release-checklist.md`. Version 0.2.0-rc.1 was published on 2026-09-22: npm next, GitHub prerelease and the HTTPS Demo are verified, while stable latest remains 0.1.0. See the [delivery receipt](../../reports/2026-09-22-botsort-integration/release-receipt.en.md).
 
 ## Current hybrid SDK candidate
 

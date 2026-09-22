@@ -1,8 +1,8 @@
 # BoT-SORT external-motion API
 
-[中文](../zh-CN/botsort-candidate.md). Local integration: 2026-09-22, `0.2.0-rc.1`, CPU/main. The root factory now exposes BoT-SORT. This version is prepared locally; the hosted package and Demo remain at rc.0 until publication.
+[中文](../zh-CN/botsort-candidate.md). Integration version: 2026-09-22, `0.2.0-rc.1`, CPU/main. The root factory now exposes BoT-SORT; rc.1 is published through npm `next`, GitHub Release and the hosted Demo.
 
-Run `npm run build` and `npm pack`, then install the local rc.1 tarball as described in the README. The following uses the public root API:
+Install npm `next`, then use the public root API:
 
 ```js
 import { createTracker } from 'web-sdk-pp-tracking';

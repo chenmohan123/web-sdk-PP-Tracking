@@ -2,7 +2,7 @@
 
 [中文](../zh-CN/api.md) · [Home](../../README.en.md)
 
-`createTracker(options?: TrackerOptions): Tracker` returns synchronous `update(frame, {signal}?)`, `reset()` and `dispose()`. ESM/CJS export createTracker and TrackingError; declarations also export `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort' | 'botsort'` and `FeatureSpace`. This page covers local rc.1; published next remains rc.0. The new overload `createTracker(options: BoTSortTrackerOptions): BoTSortTracker` requires BoTSortFrame. `AnyTrackerOptions` joins both option types while original TrackerOptions retains three algorithms. See the [motion API](botsort-candidate.md).
+`createTracker(options?: TrackerOptions): Tracker` returns synchronous `update(frame, {signal}?)`, `reset()` and `dispose()`. ESM/CJS export createTracker and TrackingError; declarations also export `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort' | 'botsort'` and `FeatureSpace`. This page covers published rc.1; npm `next` and the hosted Demo are both rc.1. The new overload `createTracker(options: BoTSortTrackerOptions): BoTSortTracker` requires BoTSortFrame. `AnyTrackerOptions` joins both option types while original TrackerOptions retains three algorithms. See the [motion API](botsort-candidate.md).
 
 ## Input
 

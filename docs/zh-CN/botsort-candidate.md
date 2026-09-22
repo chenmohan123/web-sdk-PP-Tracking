@@ -1,8 +1,8 @@
 # BoT-SORT 外部运动矩阵接口
 
-[English](../en/botsort-candidate.md)。本地集成：2026-09-22，`0.2.0-rc.1`，CPU/main。根工厂现已接入 BoT-SORT；rc.1 为本地准备版本，远程包和 Demo 发布前仍为 rc.0。
+[English](../en/botsort-candidate.md)。集成版本：2026-09-22，`0.2.0-rc.1`，CPU/main。根工厂现已接入 BoT-SORT；rc.1 已通过 npm `next`、GitHub Release 和线上 Demo 发布。
 
-在本仓运行 `npm run build` 和 `npm pack`，按首页安装本地 rc.1 tarball，再通过公开根入口运行：
+可安装 npm `next` 后通过公开根入口运行：
 
 ```js
 import { createTracker } from 'web-sdk-pp-tracking';

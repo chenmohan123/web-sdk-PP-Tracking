@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\Users\chenm\.codex\worktrees\tracking-algorithms\web-sdk-PP-Tracking\.tmp\botsort-feasibility\score.py", line 9, in <module>
+    summary=json.loads((OUT/'summary.json').read_text())
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chenm\AppData\Local\hermes\hermes-agent\.hermes-runtime\python\generation-1785207891-41424-8897265c\cpython-3.11-windows-x86_64-none\Lib\pathlib.py", line 1059, in read_text
+    return f.read()
+           ^^^^^^^^
+UnicodeDecodeError: 'gbk' codec can't decode byte 0xbb in position 135: illegal multibyte sequence

@@ -1,0 +1,556 @@
+{
+  "testedAt": "2026-09-22T07:24:35.662Z",
+  "node": "v24.16.0",
+  "version": "0.2.0-rc.1",
+  "complete": true,
+  "configurations": {
+    "identity": {
+      "algorithm": "botsort",
+      "lowScoreThreshold": 0.1,
+      "highScoreThreshold": 0.5,
+      "newTrackThreshold": 0.6,
+      "minHits": 2,
+      "matchIouThreshold": 0.3,
+      "lowMatchIouThreshold": 0.2,
+      "maxLostMs": 1000,
+      "largeGapMs": 2000,
+      "maxDetections": 100,
+      "maxTracks": 200,
+      "motionFailure": "identity"
+    },
+    "cmc": {
+      "algorithm": "botsort",
+      "lowScoreThreshold": 0.1,
+      "highScoreThreshold": 0.5,
+      "newTrackThreshold": 0.6,
+      "minHits": 2,
+      "matchIouThreshold": 0.3,
+      "lowMatchIouThreshold": 0.2,
+      "maxLostMs": 1000,
+      "largeGapMs": 2000,
+      "maxDetections": 100,
+      "maxTracks": 200,
+      "motionFailure": "identity"
+    },
+    "cmc-reid": {
+      "algorithm": "botsort",
+      "lowScoreThreshold": 0.1,
+      "highScoreThreshold": 0.5,
+      "newTrackThreshold": 0.6,
+      "minHits": 2,
+      "matchIouThreshold": 0.3,
+      "lowMatchIouThreshold": 0.2,
+      "maxLostMs": 1000,
+      "largeGapMs": 2000,
+      "maxDetections": 100,
+      "maxTracks": 200,
+      "motionFailure": "identity",
+      "appearance": {
+        "featureSpace": {
+          "id": "pplcnet-reid:24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4:rgba8-white-upright-rgb-halfpixel-f64-imagenet-f32-v1:l2-f32-v1",
+          "dimension": 512
+        }
+      }
+    }
+  },
+  "inputs": {
+    "MOT17-02-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "669c5135aa1b7f1726ee50ab6cec86780fc448dadaf93ea9c4fb6e2a0d4256aa"
+      },
+      "det/det.txt": {
+        "bytes": 267111,
+        "sha256": "1e46e773a7297b975291884266ca728f56347e700c44f10ad96f207e1f6995ae"
+      },
+      "gt/gt.txt": {
+        "bytes": 916738,
+        "sha256": "2e3ecb488da8886d3200d402b2b08890c6d2879923839444e9b74fa43a551440"
+      }
+    },
+    "MOT17-04-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 109,
+        "sha256": "f2d5bbe2c4d2a884422571987bc5363b61bb7e2c6748d1cff444e55b4886b888"
+      },
+      "det/det.txt": {
+        "bytes": 894422,
+        "sha256": "e1494db52e85cc13dad52ac01e7efe972e4e432f6ce788da8a4dfa0d38edce75"
+      },
+      "gt/gt.txt": {
+        "bytes": 3473246,
+        "sha256": "f8cfbe36ef38a2e1857d7ebfe7d754b2355a3ffb9e1f9cedea435e86e4fbc948"
+      }
+    },
+    "MOT17-05-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 106,
+        "sha256": "2f49de730bcdfcd684069aed291627d2e5f13f8524e5163129e4bac88af815d0"
+      },
+      "det/det.txt": {
+        "bytes": 121432,
+        "sha256": "6dfc37078b989f9e7f0e2f0492836ef28a2b51ffcf30ded428fd61d53e3aca98"
+      },
+      "gt/gt.txt": {
+        "bytes": 251681,
+        "sha256": "ed74c54176b21b38cb690eda79a4755cf16e4c4a9ca2f019b0ba8904636174f5"
+      }
+    },
+    "MOT17-09-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "96cec357e5661afad673cc2259310d2c0fb93854ffe18b765fd973c38f3957d9"
+      },
+      "det/det.txt": {
+        "bytes": 100965,
+        "sha256": "d4bf28e2ccb4c46a5e36ecb6b35177ac27ad1ac3c74fc09a601c0a9d4cf9ec6d"
+      },
+      "gt/gt.txt": {
+        "bytes": 324307,
+        "sha256": "592f0d5b519c03b35bb1578c33d726460f63abb91ea0c515f87e8d6d76be001d"
+      }
+    },
+    "MOT17-10-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "7af062d088f3b7a88522f8095246eb01a6113d89823a96b7099a09d54421ecbd"
+      },
+      "det/det.txt": {
+        "bytes": 318265,
+        "sha256": "4ad164363e6985e6ffbcae65963397d0d0f2cbb6313a33e0913fa8d1473e304c"
+      },
+      "gt/gt.txt": {
+        "bytes": 541756,
+        "sha256": "f8cca05d98fa36d8b6f2b807e03d32407d00d40299d679e4da320e42862677c0"
+      }
+    },
+    "MOT17-11-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "5e376f2489be7c5c5e64456a3842e9f62aa79ce7455903820c9bd218ff0c806f"
+      },
+      "det/det.txt": {
+        "bytes": 198413,
+        "sha256": "0559214506fe189b4ebe81e38538c4fdc04cd0cde6b28d9ab6c8c94fb04b8b65"
+      },
+      "gt/gt.txt": {
+        "bytes": 338857,
+        "sha256": "4952d6e4efc705c90688e434fd138a55ada2c0d5f576ba3847ee102fc18aff93"
+      }
+    },
+    "MOT17-13-FRCNN": {
+      "seqinfo.ini": {
+        "bytes": 108,
+        "sha256": "a7a0f607a31e3f311be6e9836214e23d4642c088db56126f51f150f13fe7a3af"
+      },
+      "det/det.txt": {
+        "bytes": 280547,
+        "sha256": "d95a3a26b64a2164d6608ed5cc732fe7f63fc5157c884f218e43cd04507b9989"
+      },
+      "gt/gt.txt": {
+        "bytes": 637671,
+        "sha256": "4827603ef87bbd61123cb4c5f194b3bf23531bd78ed9cd916084e53dca998013"
+      }
+    }
+  },
+  "sequences": {
+    "MOT17-02-FRCNN": {
+      "frames": 600,
+      "detections": 8186,
+      "motionSha256": "a9318e12b0958ad5614ffe71b5f1fe422a5b5f1a45ad55fd22242bc6c21051f0",
+      "featureSha256": "267fb43544556caae271732ba9c1bb67dd8c28220b1c49897a41914ff12bcf9a",
+      "results": {
+        "identity": [
+          {
+            "motSha256": "4863a9877c6ea36685af524db63cc2db5bf3fbd4e637e01e1670935767a271c1",
+            "nonTimingSha256": "90b2eb31946b047e7b8496f7d0f7c7349bba370fbadf2781aba61aefdd8f8514",
+            "normalizedHistoricalSha256": "b0f815ceec9e09f1bb3de1c0994b9b06714ea1707db15fa77a4f7e0f67eb794c",
+            "totalMs": 1052.3667999999973,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "4863a9877c6ea36685af524db63cc2db5bf3fbd4e637e01e1670935767a271c1",
+            "nonTimingSha256": "90b2eb31946b047e7b8496f7d0f7c7349bba370fbadf2781aba61aefdd8f8514",
+            "normalizedHistoricalSha256": "b0f815ceec9e09f1bb3de1c0994b9b06714ea1707db15fa77a4f7e0f67eb794c",
+            "totalMs": 1039.0355999999938,
+            "capacityDrops": 0
+          }
+        ],
+        "cmc": [
+          {
+            "motSha256": "426a130d9aeb94a954c571c512d6338598ce227b42e2ba1d029c9728390ee813",
+            "nonTimingSha256": "656de670cd47f53ca453d92552556808e7a52678196cc1e21e54f5b4f7b75e24",
+            "normalizedHistoricalSha256": "2896b1b5c5d0d63f22a20f1a1861839f705e6eb78a0d5ceeb6eedb81d5b34509",
+            "totalMs": 1123.7785999999926,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "426a130d9aeb94a954c571c512d6338598ce227b42e2ba1d029c9728390ee813",
+            "nonTimingSha256": "656de670cd47f53ca453d92552556808e7a52678196cc1e21e54f5b4f7b75e24",
+            "normalizedHistoricalSha256": "2896b1b5c5d0d63f22a20f1a1861839f705e6eb78a0d5ceeb6eedb81d5b34509",
+            "totalMs": 1097.4060000000063,
+            "capacityDrops": 0
+          }
+        ],
+        "cmc-reid": [
+          {
+            "motSha256": "679b2623a0e9097c0d34c89588490233685fcbe03fcd05d754bc24fbae4ece7a",
+            "nonTimingSha256": "45848caae58bf273e3df5221d8f75cbd4628b7edd1cd5caa4135d1ddd2159f13",
+            "normalizedHistoricalSha256": "fe5f1e85186dc94ffa6df5f73324fd78e9f69631252623ed0ff8fd83e2ee53c8",
+            "totalMs": 1424.8858,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "679b2623a0e9097c0d34c89588490233685fcbe03fcd05d754bc24fbae4ece7a",
+            "nonTimingSha256": "45848caae58bf273e3df5221d8f75cbd4628b7edd1cd5caa4135d1ddd2159f13",
+            "normalizedHistoricalSha256": "fe5f1e85186dc94ffa6df5f73324fd78e9f69631252623ed0ff8fd83e2ee53c8",
+            "totalMs": 1336.818699999999,
+            "capacityDrops": 0
+          }
+        ]
+      }
+    },
+    "MOT17-04-FRCNN": {
+      "frames": 1050,
+      "detections": 28406,
+      "motionSha256": "e68e290050934862a42ce91ca630b38e5c21567d5043d9907e39cf5570e301ae",
+      "featureSha256": "e5e39bb061edded50cdd6384f91ee2320b59b8b25c7cb059d99d7a15480274e0",
+      "results": {
+        "identity": [
+          {
+            "motSha256": "c7f8871cd98e41a39908e5719f454289e6228bbcf9fe44fb1c18ab0f3606ae10",
+            "nonTimingSha256": "80ee785ad31353f2844a68c421472cf7af971f695d6d7e2656afa466f98b8ab5",
+            "normalizedHistoricalSha256": "7513feeb67df5be514f3783a547e965929413178143e91e8f233df6a91ea9b42",
+            "totalMs": 3272.0464999999804,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "c7f8871cd98e41a39908e5719f454289e6228bbcf9fe44fb1c18ab0f3606ae10",
+            "nonTimingSha256": "80ee785ad31353f2844a68c421472cf7af971f695d6d7e2656afa466f98b8ab5",
+            "normalizedHistoricalSha256": "7513feeb67df5be514f3783a547e965929413178143e91e8f233df6a91ea9b42",
+            "totalMs": 3478.9270999999862,
+            "capacityDrops": 0
+          }
+        ],
+        "cmc": [
+          {
+            "motSha256": "6dcb6af1ac7d453d628cbd5351d2bb38c4e6658d5d7d5bcabcbf7b815015e2fb",
+            "nonTimingSha256": "699fe5a59eebeeeef18b03b6731790097e949b81819b928d62027c0db2ce3c29",
+            "normalizedHistoricalSha256": "da9550ffb6f5a8b0a0ee6ac96f41b73ff1894252a4aaf023c9b67e1bff2c684e",
+            "totalMs": 3511.3454999999412,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "6dcb6af1ac7d453d628cbd5351d2bb38c4e6658d5d7d5bcabcbf7b815015e2fb",
+            "nonTimingSha256": "699fe5a59eebeeeef18b03b6731790097e949b81819b928d62027c0db2ce3c29",
+            "normalizedHistoricalSha256": "da9550ffb6f5a8b0a0ee6ac96f41b73ff1894252a4aaf023c9b67e1bff2c684e",
+            "totalMs": 3531.533099999986,
+            "capacityDrops": 0
+          }
+        ],
+        "cmc-reid": [
+          {
+            "motSha256": "3578d68385b5b706ae16ebfb8d1c28eb94297c3d7026a402c14872906e7b49de",
+            "nonTimingSha256": "6a348773addec5c943b13ca7aa1585ead9d0373c3f55b2cdc9765859867d3624",
+            "normalizedHistoricalSha256": "c5567348230c24476f2a44e615086e9b72de7b572563db7a7d1c390b5d06b300",
+            "totalMs": 4563.389799999946,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "3578d68385b5b706ae16ebfb8d1c28eb94297c3d7026a402c14872906e7b49de",
+            "nonTimingSha256": "6a348773addec5c943b13ca7aa1585ead9d0373c3f55b2cdc9765859867d3624",
+            "normalizedHistoricalSha256": "c5567348230c24476f2a44e615086e9b72de7b572563db7a7d1c390b5d06b300",
+            "totalMs": 4613.586800000183,
+            "capacityDrops": 0
+          }
+        ]
+      }
+    },
+    "MOT17-05-FRCNN": {
+      "frames": 837,
+      "detections": 3848,
+      "motionSha256": "1bf5e8537007e4f492ecf19f01b463c5a38eeae60ef5adbad43aae6db8dc1ea7",
+      "featureSha256": "a292051a02f2a69cd4a9f5f9d026d31cea2a68d03ef6567a8f378836ef9d8d54",
+      "results": {
+        "identity": [
+          {
+            "motSha256": "2a1880c6ade5ac7ae496ce9e3aa6eaee307fe10f443a40e5a764364f61997e21",
+            "nonTimingSha256": "362f8ba24a4c5ce7f18028f469eee5c880ef4d05955fdcba535c283788d997f0",
+            "normalizedHistoricalSha256": "41cc2464747fce25644dfadf67cc11b6c0988149dd6635aa38c0b0f85f1ae4bf",
+            "totalMs": 488.4573999998538,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "2a1880c6ade5ac7ae496ce9e3aa6eaee307fe10f443a40e5a764364f61997e21",
+            "nonTimingSha256": "362f8ba24a4c5ce7f18028f469eee5c880ef4d05955fdcba535c283788d997f0",
+            "normalizedHistoricalSha256": "41cc2464747fce25644dfadf67cc11b6c0988149dd6635aa38c0b0f85f1ae4bf",
+            "totalMs": 483.91249999996944,
+            "capacityDrops": 0
+          }
+        ],
+        "cmc": [
+          {
+            "motSha256": "8b6e21661f135f55e041d8bd2f2b9b1b192f6ee1d32dca80ac9be49da49f313a",
+            "nonTimingSha256": "aa2c36004ff04b887ce79d834cddf6eb10d020e787fe8a52930dbbdd2a014727",
+            "normalizedHistoricalSha256": "b6120b8e2ffeb19172f4b9543e4200c85b8d0638afb8ec9b4a55e7fdc1aa5489",
+            "totalMs": 490.0400000000518,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "8b6e21661f135f55e041d8bd2f2b9b1b192f6ee1d32dca80ac9be49da49f313a",
+            "nonTimingSha256": "aa2c36004ff04b887ce79d834cddf6eb10d020e787fe8a52930dbbdd2a014727",
+            "normalizedHistoricalSha256": "b6120b8e2ffeb19172f4b9543e4200c85b8d0638afb8ec9b4a55e7fdc1aa5489",
+            "totalMs": 551.0130000000427,
+            "capacityDrops": 0
+          }
+        ],
+        "cmc-reid": [
+          {
+            "motSha256": "7a0a43ddd2c552c2dccf564af74107a8f44a90f38f050d6e93f99bc39f5386ff",
+            "nonTimingSha256": "73a46db47d8275cc2737f55df5750921866f3f0425a48fe1def604e47c018200",
+            "normalizedHistoricalSha256": "076d40e088676a6ef241b93de63b58a535f3681487daf59967e8c0e7d6193c85",
+            "totalMs": 595.696200000064,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "7a0a43ddd2c552c2dccf564af74107a8f44a90f38f050d6e93f99bc39f5386ff",
+            "nonTimingSha256": "73a46db47d8275cc2737f55df5750921866f3f0425a48fe1def604e47c018200",
+            "normalizedHistoricalSha256": "076d40e088676a6ef241b93de63b58a535f3681487daf59967e8c0e7d6193c85",
+            "totalMs": 601.9120000001567,
+            "capacityDrops": 0
+          }
+        ]
+      }
+    },
+    "MOT17-09-FRCNN": {
+      "frames": 525,
+      "detections": 3049,
+      "motionSha256": "dfde41867b31d1bb21d34bbc568921b88c194c8b6b528c28f42e641cc35ec7c9",
+      "featureSha256": "09b9f44c56f4d34fd575a6b87b46ae471f92e16f8fe2df34ba272aa88a80f550",
+      "results": {
+        "identity": [
+          {
+            "motSha256": "8231a4de27e18590f7ae83c2e4e384b7ae52c2a5d2aa5e7e96c6bdd6fd1eb4ee",
+            "nonTimingSha256": "80d1617376a3eec6419cb51cfae2ecee975aef9bb176c27ea9424945613e866a",
+            "normalizedHistoricalSha256": "4ec6d0276e6dafb8d1ddb56e27fca52df42236b298363474867305b3b3b570e8",
+            "totalMs": 374.7469000000201,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "8231a4de27e18590f7ae83c2e4e384b7ae52c2a5d2aa5e7e96c6bdd6fd1eb4ee",
+            "nonTimingSha256": "80d1617376a3eec6419cb51cfae2ecee975aef9bb176c27ea9424945613e866a",
+            "normalizedHistoricalSha256": "4ec6d0276e6dafb8d1ddb56e27fca52df42236b298363474867305b3b3b570e8",
+            "totalMs": 378.8972999999896,
+            "capacityDrops": 0
+          }
+        ],
+        "cmc": [
+          {
+            "motSha256": "cbd87be990fea67fdc82ccc3973041888877ac233ddda293d3744b5a726c161a",
+            "nonTimingSha256": "5e6aa974d4bcfdc512208f18abe46bc95865315b83ebb66df42d61a0abcc2cfa",
+            "normalizedHistoricalSha256": "cd04108d8dd950891f9315de0231f31b3d03d1848f7f59743fa38b50d2b0ff1b",
+            "totalMs": 446.44249999994645,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "cbd87be990fea67fdc82ccc3973041888877ac233ddda293d3744b5a726c161a",
+            "nonTimingSha256": "5e6aa974d4bcfdc512208f18abe46bc95865315b83ebb66df42d61a0abcc2cfa",
+            "normalizedHistoricalSha256": "cd04108d8dd950891f9315de0231f31b3d03d1848f7f59743fa38b50d2b0ff1b",
+            "totalMs": 404.5181000001394,
+            "capacityDrops": 0
+          }
+        ],
+        "cmc-reid": [
+          {
+            "motSha256": "01b27d7d20043ac88fb1810267c237d7f0ed0d3dc6fb54d9b003d996f5c6849b",
+            "nonTimingSha256": "82055e89c765bc7c19bf40a022fe7ca4b7eef42083094e7ddb8b768c16d69390",
+            "normalizedHistoricalSha256": "f5b4f88beedd6d78748e59c769927bb1b142513ff503b84937b041b60f9eb3b8",
+            "totalMs": 506.27039999999397,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "01b27d7d20043ac88fb1810267c237d7f0ed0d3dc6fb54d9b003d996f5c6849b",
+            "nonTimingSha256": "82055e89c765bc7c19bf40a022fe7ca4b7eef42083094e7ddb8b768c16d69390",
+            "normalizedHistoricalSha256": "f5b4f88beedd6d78748e59c769927bb1b142513ff503b84937b041b60f9eb3b8",
+            "totalMs": 523.8325999999579,
+            "capacityDrops": 0
+          }
+        ]
+      }
+    },
+    "MOT17-10-FRCNN": {
+      "frames": 654,
+      "detections": 9701,
+      "motionSha256": "86930b4039efca40865d02f3a9b7476a8ab7c8a316f76d0300f4fe5577e9a70e",
+      "featureSha256": "c8f5a4df7e27adbca976a290b8f452238b11972057c0450d7ad762c0d819765a",
+      "results": {
+        "identity": [
+          {
+            "motSha256": "3ee2abe756d7c6e67986a5b07736516e3d8c9d19e03f209d2302f4aae1db7b78",
+            "nonTimingSha256": "e43ddbf2146d86ca3d74266088aed93817988cbb80a44f658bf53479b0ad0089",
+            "normalizedHistoricalSha256": "8e327279d578693fbf757d43ec9c58e1deaa5978253e14c292c40ae67a9aca80",
+            "totalMs": 1491.6383999999962,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "3ee2abe756d7c6e67986a5b07736516e3d8c9d19e03f209d2302f4aae1db7b78",
+            "nonTimingSha256": "e43ddbf2146d86ca3d74266088aed93817988cbb80a44f658bf53479b0ad0089",
+            "normalizedHistoricalSha256": "8e327279d578693fbf757d43ec9c58e1deaa5978253e14c292c40ae67a9aca80",
+            "totalMs": 1927.6582000000562,
+            "capacityDrops": 0
+          }
+        ],
+        "cmc": [
+          {
+            "motSha256": "d256cb7aa175f896703f9421831ad5bb5d0c5b32c793b03c1ce760cd5127a67e",
+            "nonTimingSha256": "56fb04d7aece5e41840d254a87a317d13c34783281a8aa73530533c6c438ef49",
+            "normalizedHistoricalSha256": "c006db262cbe1a01180c0e01ac30df5d690a555247dbb1de973a75ea8e6bbc42",
+            "totalMs": 1347.3329999999332,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "d256cb7aa175f896703f9421831ad5bb5d0c5b32c793b03c1ce760cd5127a67e",
+            "nonTimingSha256": "56fb04d7aece5e41840d254a87a317d13c34783281a8aa73530533c6c438ef49",
+            "normalizedHistoricalSha256": "c006db262cbe1a01180c0e01ac30df5d690a555247dbb1de973a75ea8e6bbc42",
+            "totalMs": 1491.7072000001353,
+            "capacityDrops": 0
+          }
+        ],
+        "cmc-reid": [
+          {
+            "motSha256": "2e728a10d0fecf0cf4a8eb23a66651192482232bcb59222d48ecbd325f5ae593",
+            "nonTimingSha256": "0bdc4d3f69cdf0c01079a8a6327608ad3aa1f54e7d1deab16e611d23b897347d",
+            "normalizedHistoricalSha256": "46fb7e964d9c492f39c641dc36b76698320150c50c92e4d74db37067ab52279d",
+            "totalMs": 1689.9031000001487,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "2e728a10d0fecf0cf4a8eb23a66651192482232bcb59222d48ecbd325f5ae593",
+            "nonTimingSha256": "0bdc4d3f69cdf0c01079a8a6327608ad3aa1f54e7d1deab16e611d23b897347d",
+            "normalizedHistoricalSha256": "46fb7e964d9c492f39c641dc36b76698320150c50c92e4d74db37067ab52279d",
+            "totalMs": 1890.1892999999545,
+            "capacityDrops": 0
+          }
+        ]
+      }
+    },
+    "MOT17-11-FRCNN": {
+      "frames": 900,
+      "detections": 6007,
+      "motionSha256": "79c9f3feaad4702d954a8dad3ec6d040538068c60f1a373e9e29adfa29fc68e3",
+      "featureSha256": "6213cb8c91c1cb00dae7af91b1a73485e791e32088683bcc5f14b0874e66cdad",
+      "results": {
+        "identity": [
+          {
+            "motSha256": "b10c01ad2cdba47c781c36b99254c422d2d3d2eff34d1f8055c7e21f6be63793",
+            "nonTimingSha256": "f1915e7428f058c39f631ab84d5d8f58f373999652f20a8f08d800471c34668e",
+            "normalizedHistoricalSha256": "b166d1bababb85cb0e562399a0f2c2052d09f93f6ef1a26b72eb5a5a373568b7",
+            "totalMs": 774.7789999999586,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "b10c01ad2cdba47c781c36b99254c422d2d3d2eff34d1f8055c7e21f6be63793",
+            "nonTimingSha256": "f1915e7428f058c39f631ab84d5d8f58f373999652f20a8f08d800471c34668e",
+            "normalizedHistoricalSha256": "b166d1bababb85cb0e562399a0f2c2052d09f93f6ef1a26b72eb5a5a373568b7",
+            "totalMs": 728.1546000000308,
+            "capacityDrops": 0
+          }
+        ],
+        "cmc": [
+          {
+            "motSha256": "0f30d7b4579387456ae94a34ddb1ec3057a195580457a8883ff01da83f2afc35",
+            "nonTimingSha256": "92cfddeb9f4d53b88e6bae224d334b3e94aa05419f3ea126aa4bb28fe962e4c2",
+            "normalizedHistoricalSha256": "26cdf8500d0b989d159cfd015a398c80d69630dbb6bf83f5478690e9f5cf89ad",
+            "totalMs": 910.7782999998599,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "0f30d7b4579387456ae94a34ddb1ec3057a195580457a8883ff01da83f2afc35",
+            "nonTimingSha256": "92cfddeb9f4d53b88e6bae224d334b3e94aa05419f3ea126aa4bb28fe962e4c2",
+            "normalizedHistoricalSha256": "26cdf8500d0b989d159cfd015a398c80d69630dbb6bf83f5478690e9f5cf89ad",
+            "totalMs": 788.6084999997765,
+            "capacityDrops": 0
+          }
+        ],
+        "cmc-reid": [
+          {
+            "motSha256": "221853719157b3cc03c6dc1dcefaa7132e109672ee6acb6f922f7d7ebade76a6",
+            "nonTimingSha256": "6b3327df2d4e6c36ba928b931b4f2d7524ae966039f7807135b36dc6e3fcf074",
+            "normalizedHistoricalSha256": "69686569672888e743e2c384ae406572afb1de0caa2544cd0786b17d7dcd9b75",
+            "totalMs": 980.4443000000756,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "221853719157b3cc03c6dc1dcefaa7132e109672ee6acb6f922f7d7ebade76a6",
+            "nonTimingSha256": "6b3327df2d4e6c36ba928b931b4f2d7524ae966039f7807135b36dc6e3fcf074",
+            "normalizedHistoricalSha256": "69686569672888e743e2c384ae406572afb1de0caa2544cd0786b17d7dcd9b75",
+            "totalMs": 1176.1823999998596,
+            "capacityDrops": 0
+          }
+        ]
+      }
+    },
+    "MOT17-13-FRCNN": {
+      "frames": 750,
+      "detections": 8442,
+      "motionSha256": "779ff34b4c9e77a07ed0881c01c3dc9bd021e326e7f63dc2ca2e5e081883c613",
+      "featureSha256": "7798fb921fa1ce03dd518b98e5eed07a14c295893301afb130edbeef2ce040c5",
+      "results": {
+        "identity": [
+          {
+            "motSha256": "a3b72d4d821b8d695c8dfaee5df296af9dee5a4f1f77bf6eacb0ce26c0e0467c",
+            "nonTimingSha256": "40593a331fb0b66c1ec54ebc090b29023de4c8f01c4fd924d13210e9ac278522",
+            "normalizedHistoricalSha256": "516cedb654662d9059ee2cdd723b57cd18872b8186d56e5217790c716bed3629",
+            "totalMs": 1800.9718000000212,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "a3b72d4d821b8d695c8dfaee5df296af9dee5a4f1f77bf6eacb0ce26c0e0467c",
+            "nonTimingSha256": "40593a331fb0b66c1ec54ebc090b29023de4c8f01c4fd924d13210e9ac278522",
+            "normalizedHistoricalSha256": "516cedb654662d9059ee2cdd723b57cd18872b8186d56e5217790c716bed3629",
+            "totalMs": 1219.9632000002603,
+            "capacityDrops": 0
+          }
+        ],
+        "cmc": [
+          {
+            "motSha256": "7b276e470d660f59584459a0abbd630bb2948c39afb3f9713bbff9e8c4702bda",
+            "nonTimingSha256": "e2c7c060122dd5521fe119b778cffe97a0b08523e05d3e1600dd15236481179d",
+            "normalizedHistoricalSha256": "a8c55643805712f905aa3300c957667af91cdaafcba18a4f02a44e572e481b26",
+            "totalMs": 1290.179199999875,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "7b276e470d660f59584459a0abbd630bb2948c39afb3f9713bbff9e8c4702bda",
+            "nonTimingSha256": "e2c7c060122dd5521fe119b778cffe97a0b08523e05d3e1600dd15236481179d",
+            "normalizedHistoricalSha256": "a8c55643805712f905aa3300c957667af91cdaafcba18a4f02a44e572e481b26",
+            "totalMs": 1215.9769999998825,
+            "capacityDrops": 0
+          }
+        ],
+        "cmc-reid": [
+          {
+            "motSha256": "f9d0918884a1b3a08e0455e5f13adbd6bee685f399e2c3f6a8080b63dddfab88",
+            "nonTimingSha256": "dbe5fee2914e0644222fbb39c74db5bebec07788efc6b588d1a0adc63f9e5274",
+            "normalizedHistoricalSha256": "35af05072bf5433612da557cc2773c82806f36b7ee0d735bea589608c9e6af1f",
+            "totalMs": 1513.8844999995708,
+            "capacityDrops": 0
+          },
+          {
+            "motSha256": "f9d0918884a1b3a08e0455e5f13adbd6bee685f399e2c3f6a8080b63dddfab88",
+            "nonTimingSha256": "dbe5fee2914e0644222fbb39c74db5bebec07788efc6b588d1a0adc63f9e5274",
+            "normalizedHistoricalSha256": "35af05072bf5433612da557cc2773c82806f36b7ee0d735bea589608c9e6af1f",
+            "totalMs": 1492.55359999981,
+            "capacityDrops": 0
+          }
+        ]
+      }
+    }
+  },
+  "hashes": {
+    "candidate": "db48cf3e47c9ed487f7dbaa968188869ecc70b3ce06c4140cdc986c0f0040a56",
+    "adapter": "f297b2679690b51ae1547e74c528e8153853378ad30b0bcdda5534a4f81703ff",
+    "script": "6d05f4e4591288b735069d879067ca9896e83aee6afba843ef439ffaf1607f4d"
+  },
+  "scope": "公开根入口；冻结矩阵和向量；不含图像估计、ReID与检测"
+}

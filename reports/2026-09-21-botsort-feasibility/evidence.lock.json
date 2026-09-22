@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "scope": "研究归档完整性，不是官方结果或发布签名",
+  "files": {
+    "baseline-hashes.json": {
+      "bytes": 589,
+      "sha256": "c5184b21dd6233fc2858c4216c803d7a7cffa26bcd9eb9efe5503b15ba2c9e4e"
+    },
+    "browser-result.json": {
+      "bytes": 996,
+      "sha256": "21c3f8180c52b1e1d75ff8709672a3ecded22e9c728913079b8a477a84a7ee67"
+    },
+    "logs/browser.log": {
+      "bytes": 137,
+      "sha256": "b93085c7ec96b4e98d019e617e257ced58e2ee394f794ff049cfb5a1702471e2"
+    },
+    "logs/integration.log": {
+      "bytes": 119,
+      "sha256": "69370f95a7a8cff8d0a576314e5b5ff9d1d36bdd14ff64a5b25fe65c28c3a5e4"
+    },
+    "logs/math-green.log": {
+      "bytes": 114,
+      "sha256": "cb9e17b6c55deee848e62da8c586d9977c194d674f2f7f06fa0f868338449905"
+    },
+    "logs/math-red.log": {
+      "bytes": 1288,
+      "sha256": "0f036df81dba03cc3debe9ab0c762471236bb32f54ac0721201648d29275e740"
+    },
+    "logs/motion.log": {
+      "bytes": 391,
+      "sha256": "7e8d80b7d22abbc7269f623b84ace813f32181cd880c5cb5d65189649ba9cde0"
+    },
+    "logs/run-2.log": {
+      "bytes": 568,
+      "sha256": "d3ffa2e106424dc4784571dcd473d2c1d4004ed99facb8aff2e7c4024832e76c"
+    },
+    "logs/run.log": {
+      "bytes": 518,
+      "sha256": "2973d96ce8a0f849d6ca68de263db671fad6f7dd67f93b537eef53f4a4e895d4"
+    },
+    "logs/score-2.log": {
+      "bytes": 8686,
+      "sha256": "abd6f56b74aacbda57de43539745624dcac1842eceb252d5f2f43af657a25247"
+    },
+    "logs/score.log": {
+      "bytes": 622,
+      "sha256": "c9745d0e6d43219eceb0a98e08a4bc145f976814b13493cfd6a004abe47eef76"
+    },
+    "metrics.json": {
+      "bytes": 8684,
+      "sha256": "729771f64ae2561cb8db442a4b17801563937d241fcced7b2afed569fbfb73d4"
+    },
+    "motion-summary.json": {
+      "bytes": 6315,
+      "sha256": "c89bc450e9475101fe6f4a35ba4d7b3619afb24d8ff3e05ebf4963dafb600427"
+    },
+    "probe/browser.mjs": {
+      "bytes": 4073,
+      "sha256": "ca2e6aa66db0c15c3eb1e89e5d56e43d78211c741f2ca29f29e1d62134fdef88"
+    },
+    "probe/build.mjs": {
+      "bytes": 3276,
+      "sha256": "b29a4a516a415778d7465ca753394802b4f0cec49784ba43c038d3e6a437f0cc"
+    },
+    "probe/compensate.mjs": {
+      "bytes": 1123,
+      "sha256": "65ee7485a4239be32a41641ba22a6104eb0527aac6c02de97109acf9cc139398"
+    },
+    "probe/integration.test.mjs": {
+      "bytes": 1442,
+      "sha256": "0bb70ba4926d084e7b5806b9ec4c120c20aaea3e5dee9fabc6352857916bdf57"
+    },
+    "probe/motion.py": {
+      "bytes": 6710,
+      "sha256": "1a4581609bbdb99cc65f6cbfa7e6e99a025d51c728d9c43254e5882b9ad83c64"
+    },
+    "probe/probe.js": {
+      "bytes": 30970,
+      "sha256": "45ab070c3eeca01fb12963d773b6926e2f97f26210c160bb46d0eae7075989b5"
+    },
+    "probe/probe.test.mjs": {
+      "bytes": 1207,
+      "sha256": "2eba3b73caf1f155bbb9da6dd0ef5ef6cdb46ca282f1a0108c8c43dea8d10914"
+    },
+    "probe/run.mjs": {
+      "bytes": 5348,
+      "sha256": "2140cfeb3c2877f47e3a115897a26839072554f9e076d03cc7f9284e02f9ea90"
+    },
+    "probe/score.py": {
+      "bytes": 1343,
+      "sha256": "66cc9724ae52059e2062a1e2a8dd32b9d86c91c4b5c86d3786ff7f3d554486a2"
+    },
+    "protocol.json": {
+      "bytes": 1642,
+      "sha256": "7d600575ac29577accdacb167f1c852b12ebf61860cf875e43bf0c4cd195b59a"
+    },
+    "provenance.json": {
+      "bytes": 6071,
+      "sha256": "f5224b8299760e2126a5190940fc37a29b6e161c336cd2b7b8e7c27cf5853927"
+    },
+    "README.en.md": {
+      "bytes": 12781,
+      "sha256": "81eb98a55bd34c13f694154a43ad77dc347482b669a2a8fc9d390a5001427478"
+    },
+    "README.md": {
+      "bytes": 11892,
+      "sha256": "0e5031382731ea535c32efdfd97a6b0e936977fa1a57637e0c132337dc5f09e3"
+    },
+    "review.md": {
+      "bytes": 2020,
+      "sha256": "5d742f8d6be00f90475f3ce2bd4fff72400bfd3199481df6ce69a888053a2939"
+    },
+    "run-summary.json": {
+      "bytes": 10743,
+      "sha256": "dcec36b62d174bb3d75e4ff6de512befa31c75f67b2939fede4338c3e3148da8"
+    },
+    "sources.lock.json": {
+      "bytes": 2724,
+      "sha256": "b0a337e19e0e219d331dd38f790e2b56cdae9c4636d0699a2c448aa878894bd2"
+    },
+    "synthetic-motion.json": {
+      "bytes": 511,
+      "sha256": "147f75a7cabd9cbf52e8bec3d78cc16bd6795e0adcdea7ee5090cedd95f940f8"
+    },
+    "validation.json": {
+      "bytes": 2322,
+      "sha256": "37974faafe35d6044f5bd3df4e4e1b82851d2c0411ed123b3bf90362e63a7498"
+    },
+    "verify.mjs": {
+      "bytes": 6420,
+      "sha256": "69606e719521093b1c389d0a0e1135862f1a85c9df2a8ab99f4ba8cada1a731b"
+    }
+  }
+}

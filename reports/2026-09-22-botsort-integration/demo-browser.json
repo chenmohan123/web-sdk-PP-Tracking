@@ -1,0 +1,15 @@
+{
+  "testedAt": "2026-09-22T08:29:32.315Z",
+  "browser": "153.0.8010.12",
+  "runtimeVersion": "web-sdk-pp-tracking@0.2.0-rc.1",
+  "checks": [
+    "默认 ByteTrack；四算法真实切换；BoT-SORT 平移完整播放40帧及运动回执",
+    "版本2输入保留应用参数与运动；跨算法导入恢复算法和参数，未应用草稿不污染导出",
+    "缺 motion、非法 from/矩阵/额外字段的末帧及非法参数均保留原结果",
+    "unavailable 显式恒等回退有回执；切换报错策略时验证全部帧并保留原会话",
+    "内置平移样例显式启停外观，切回 DeepSORT 恢复合成向量；默认路径未加载 ReID",
+    "键盘 seek 顺序重算、reset 恢复 initial；中英文切换保留结果；390px 中英文无横向溢出"
+  ],
+  "pageErrors": [],
+  "scope": "桌面 Chromium 合成序列；390px 为桌面视口，非移动设备验证。未运行图像运动估计或 ReID 推理。"
+}

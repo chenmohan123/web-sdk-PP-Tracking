@@ -2,6 +2,8 @@
 
 [中文](../zh-CN/demo-checklist.md)
 
+Local [0.2.0-rc.1](releases/0.2.0-rc.1.md) integrates four algorithms and motion import/export as of 2026-09-22. [Current validation](../../reports/2026-09-22-botsort-integration/README.en.md) separately records package, desktop-browser and fixed-sequence parity evidence. Historical checks below retain their original versions and dates and do not mean rc.1 is published.
+
 Based on portal `standards/v1/templates/demo-checklist.md`, applicable algorithm items in1.2.0. Verify against `npm run test:browser` evidence; DOM markers do not substitute for interactions.
 
 - [x] One independent SDK; Chinese default, state-preserving English toggle, version and GitHub/npm project links in the brand bar.

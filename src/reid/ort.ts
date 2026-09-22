@@ -21,7 +21,7 @@ export async function createSession(bytes: ArrayBuffer, backend: 'wasm' | 'webgp
     });
     aborted(signal);
     if (session.inputNames.length !== 1 || session.inputNames[0] !== INPUT_NAME || session.outputNames.length !== 1 || session.outputNames[0] !== OUTPUT_NAME) throw new ReIdError('SESSION_FAILED', '模型会话输入输出名称不匹配');
-    return { session, ort, runtime: { requestedBackend: backend, actualBackend: backend, executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.0', ortVersion: ort.env.versions.web } };
+    return { session, ort, runtime: { requestedBackend: backend, actualBackend: backend, executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.1', ortVersion: ort.env.versions.web } };
   } catch (error) {
     if (session) await session.release().catch(() => undefined);
     aborted(signal); throw safeError(error, 'SESSION_FAILED');

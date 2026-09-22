@@ -1,0 +1,14 @@
+{
+  "testedAt": "2026-09-22T06:07:40.501Z",
+  "output": "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\botsort-core\\build",
+  "hashes": {
+    "index.js": "6cd6078e6e1bfbfd81f4aff6d15946edef4eb0ae24011723e4a8666f8d5e60ff",
+    "index.cjs": "85e7efc2ed22207624dde662a64021d60809d875bee958f31348e9188a6a115b"
+  },
+  "checks": [
+    "ESM实际消费",
+    "CJS实际消费",
+    "NodeNext mts/cts类型消费",
+    "无模型依赖"
+  ]
+}

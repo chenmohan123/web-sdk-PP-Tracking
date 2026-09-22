@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-21",
+  "scope": "本地研究交付；运行时、Demo、模型与版本未增加能力",
+  "sdk": {
+    "typecheck": "通过",
+    "test": { "files": 14, "passed": 176, "failed": 0 },
+    "build": "通过，算法与ReID独立ESM/CJS/类型声明",
+    "checkPackage": "通过，实际npm pack及双格式/类型消费，未发布",
+    "productionDiff": "对基线b8ef9c292ba4cae41d5c4a9c83a70809486f509e核对src、包、锁、Demo、模型和manifest无差异；构建产物SHA与测量时相等"
+  },
+  "portal": {
+    "test": { "files": 13, "passed": 136, "failed": 0 },
+    "build": "通过，21个静态页面",
+    "astroCheck": { "errors": 0, "warnings": 0, "existingHints": 7 },
+    "standard": { "version": "1.3.0", "beforeAndAfter": "locally-compliant", "requiredPassed": 21, "requiredFailed": 0, "requiredSkipped": 4, "recommendedPassed": 3, "recommendedFailed": 0, "labs": 1 }
+  },
+  "research": {
+    "mathAndIntegration": "通过，含失败后实现记录",
+    "node": "5316帧三配置完成；恒等补偿逐帧对齐历史基线，0容量丢弃",
+    "browser": "Chromium153完整05序列837帧，三配置MOT及非耗时SHA对齐Node，无pageerror；仅CPU关联/补偿",
+    "independentReview": "Critical0、Important0、Minor1由归档verify --local覆盖；七段三配置内存回放及独立官方TrackEval重评分与原结果一致，未重测图像估计/ReID/耗时",
+    "integrity": "verify.mjs --local通过，涵盖归档、模型特征空间、来源、基线、完整输入摘要、冻结特征、运动矩阵文件、21份轨迹与评分合计"
+  },
+  "commands": [
+    "pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false typecheck",
+    "pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false test",
+    "pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false build",
+    "pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false check:package",
+    "pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false sdk:check -- --repo <SDK> --format json --out <before-or-after-report>",
+    "node reports/2026-09-21-botsort-feasibility/verify.mjs --local"
+  ],
+  "remoteMutations": false
+}

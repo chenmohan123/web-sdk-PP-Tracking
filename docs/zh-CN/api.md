@@ -1,8 +1,8 @@
-# API 0.2.0-rc.0（发布候选）
+# API 0.2.0-rc.1（发布候选）
 
 [English](../en/api.md) · [首页](../../README.md)
 
-`createTracker(options?: TrackerOptions): Tracker` 返回同步 `update(frame, {signal}?)`、`reset()`、`dispose()`。ESM/CJS 均导出 createTracker、TrackingError；声明还导出 `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort'` 与 `FeatureSpace`。本页适用于 0.2.0-rc.0，预发布通道为 next。
+`createTracker(options?: TrackerOptions): Tracker` 返回同步 `update(frame, {signal}?)`、`reset()`、`dispose()`。ESM/CJS 均导出 createTracker、TrackingError；声明还导出 `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort' | 'botsort'` 与 `FeatureSpace`。本页适用于本地 rc.1；已发布 next 仍为 rc.0。新增重载 `createTracker(options: BoTSortTrackerOptions): BoTSortTracker`，`AnyTrackerOptions` 为两类选项的联合；原 `TrackerOptions` 保留三算法。BoT-SORT 类型要求 `BoTSortFrame`，完整契约见[运动接口](botsort-candidate.md)。传入动态联合选项时返回两类Tracker的联合，调用者须根据所选算法保留对应帧类型。
 
 ## 输入
 
@@ -16,7 +16,7 @@
 
 | 参数 | 默认 | 约束 |
 | --- | --- | --- |
-| algorithm | bytetrack | `'bytetrack'`、`'ocsort'` 或 `'deepsort'`；实例创建后固定 |
+| algorithm | bytetrack | `'bytetrack'`、`'ocsort'`、`'deepsort'` 或 `'botsort'`；实例创建后固定 |
 | lowScoreThreshold | 0.1 | [0,1] |
 | highScoreThreshold | 0.5 | ByteTrack 为 [low,1]；OC-SORT 为 [0,1]；两者均须 <= new |
 | newTrackThreshold | 0.6 | [high,1] |
@@ -28,7 +28,7 @@
 | maxDetections | 100 | 整数1–500 |
 | maxTracks | 200 | 整数1–500 |
 
-`algorithm: 'bytetrack'` 使用低分二阶段关联；`lowScoreThreshold` 与 `lowMatchIouThreshold` 只允许该策略。`algorithm: 'ocsort'` 只使用高分关联，仍接受高分、新建、IoU、生命周期和容量参数，并额外接受：
+`algorithm: 'bytetrack'` 使用低分二阶段关联；`lowScoreThreshold` 与 `lowMatchIouThreshold` 在原三算法中只允许该策略；BoT-SORT 也接受这两个低分字段。`algorithm: 'ocsort'` 只使用高分关联，仍接受高分、新建、IoU、生命周期和容量参数，并额外接受：
 
 | OC-SORT 参数 | 默认 | 约束 |
 | --- | --- | --- |
@@ -47,7 +47,7 @@
 
 图库总容量满足 `maxTracks * gallerySize * dimension <= 4_000_000`。DeepSORT 不接受 ByteTrack 低分字段或 OC-SORT 专用字段；成功匹配/新建才更新图库，reset、dispose、移除会释放对应向量。
 
-未知参数拒绝，显式undefined不是缺省；将另一种策略的专属参数显式传入也返回 `INVALID_OPTIONS`。低分检测仅供 ByteTrack 的tracked续接，lost只允许高分恢复。DeepSORT 的 lost 轨迹也不能通过 IoU 后备绕过外观门限。首次未确认轨迹失配立即移除。容量满时只跳过新建，不驱逐现存轨迹。
+未知参数拒绝，显式undefined不是缺省；将另一种策略的专属参数显式传入也返回 `INVALID_OPTIONS`。低分检测供 ByteTrack/BoT-SORT 的tracked续接，lost只允许高分恢复。DeepSORT 的 lost 轨迹也不能通过 IoU 后备绕过外观门限。首次未确认轨迹失配立即移除。容量满时只跳过新建，不驱逐现存轨迹。
 
 ## 输出
 
@@ -56,9 +56,11 @@ Track字段：`id,classId,box,state,observed,score,ageMs,hits,missedMs`。
 state为tentative/tracked/lost；removed数组仅包含本帧移除事件，state为removed。
 预测轨迹 observed=false、score=null；输出框可能超出画面，不裁剪。hits为累计实际观测次数，新建为1。
 droppedDetections只计算因容量满而跳过的新轨迹，不包含低分过滤数量。
-runtime实际报告cpu/main、`web-sdk-pp-tracking@0.2.0-rc.0`。五项timings见 [性能](performance.md)。
+runtime实际报告cpu/main、`web-sdk-pp-tracking@0.2.0-rc.1`。五项timings见 [性能](performance.md)。
 
-Demo 的紧凑输入序列导出只包含规范化后的 `frames` 与可选顶层 `featureSpace`，按 UTF-8 字节限制为5MiB并可重新导入。结果报告另含实际参数和已处理结果，可能超过5MiB，不保证可重新导入。
+Demo 的紧凑输入序列导出保留规范化后的 `frames`、可选顶层 `featureSpace`，版本化包装另含算法和已应用选项；BoT-SORT完整保留frameId/motion，按 UTF-8 字节限制为5MiB并可重新导入。结果报告另含实际参数和已处理结果，可能超过5MiB，不保证可重新导入。
+
+新导出为 `schemaVersion: 2`，导入时按文件中的 `algorithm` 和 `options` 恢复；未应用草稿不写入导出。无版本或旧 `schemaVersion: 1` 文件继续按当前算法和参数处理。未知版本拒绝；缺少运动信息不会补造恒等矩阵。参数应用先完整校验序列，只修改表单拥有的字段，保留导入的其他阈值与容量；失败保留原会话。版本2外观空间也可仅在选项中声明，包括全空检测序列。
 
 ## 生命周期
 

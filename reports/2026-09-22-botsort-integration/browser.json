@@ -1,0 +1,35 @@
+{
+  "testedAt": "2026-09-22T08:00:37.105Z",
+  "browser": "153.0.8010.12",
+  "sequence": "MOT17-05-FRCNN",
+  "publicEntry": true,
+  "bundleSha256": "db48cf3e47c9ed487f7dbaa968188869ecc70b3ce06c4140cdc986c0f0040a56",
+  "frames": 837,
+  "rows": {
+    "identity": {
+      "motSha256": "2a1880c6ade5ac7ae496ce9e3aa6eaee307fe10f443a40e5a764364f61997e21",
+      "nonTimingSha256": "362f8ba24a4c5ce7f18028f469eee5c880ef4d05955fdcba535c283788d997f0",
+      "totalMs": 572
+    },
+    "cmc": {
+      "motSha256": "8b6e21661f135f55e041d8bd2f2b9b1b192f6ee1d32dca80ac9be49da49f313a",
+      "nonTimingSha256": "aa2c36004ff04b887ce79d834cddf6eb10d020e787fe8a52930dbbdd2a014727",
+      "totalMs": 550.9000001549721
+    },
+    "cmc-reid": {
+      "motSha256": "7a0a43ddd2c552c2dccf564af74107a8f44a90f38f050d6e93f99bc39f5386ff",
+      "nonTimingSha256": "73a46db47d8275cc2737f55df5750921866f3f0425a48fe1def604e47c018200",
+      "totalMs": 716.1999996304512
+    }
+  },
+  "checks": [
+    "三配置完整837帧",
+    "首帧拒绝",
+    "from身份拒绝",
+    "取消重试",
+    "reset代次",
+    "dispose幂等"
+  ],
+  "errors": [],
+  "scope": "冻结运动矩阵与向量，CPU关联；不含图像估计/ReID推理"
+}

@@ -2,6 +2,8 @@
 
 [中文](../zh-CN/troubleshooting.md) · [Home](../../README.en.md)
 
+For BoT-SORT, check frameId and motion.from/to against the previous/current successful frames, use initial after creation/reset, and keep matrices within bounds. Unavailable motion throws unless motionFailure:'identity' is explicit. Seek, resizing or large gaps require reset. Vectors are rejected without appearance; enabled appearance requires a matching space on every frame. Imported JSON never receives invented motion. See the [complete contract](botsort-candidate.md).
+
 | Error/symptom | Action |
 | --- | --- |
 | INVALID_INPUT | Check finite numbers, xywh bounds, scores/classes, counts, increasing timestamps and fixed sizes. DeepSORT also requires matching frame IDs and a finite, non-zero, correctly sized vector on every detection; reset before seek |

@@ -4,6 +4,8 @@
 
 全部单位毫秒，来自performance.now()，不是固定占位值。
 
+BoT-SORT 的 validationMs 包含运动/外观校验，predictionMs 包含矩阵补偿，totalMs 包含结果封装；不包含外部运动估计、检测、ReID提取和渲染。固定矩阵/向量回放不能用于宣称视频端到端帧率。09序列存在退步，ByteTrack继续默认，见[运动接口](botsort-candidate.md)。
+
 | 字段 | 边界 |
 | --- | --- |
 | validationMs | update入口到输入/取消校验结束 |

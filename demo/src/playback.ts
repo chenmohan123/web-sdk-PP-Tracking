@@ -1,34 +1,32 @@
-import { createTracker, type FeatureSpace, type TrackerOptions, type TrackingFrame, type TrackingResult } from 'web-sdk-pp-tracking';
-import { DEMO_DEFAULT_OPTIONS, SYNTHETIC_FEATURE_SPACE, type PreparedSequence } from './data';
+import { createTracker, type AnyTrackerOptions, type BoTSortFrame, type BoTSortResult, type FeatureSpace, type TrackingResult } from 'web-sdk-pp-tracking';
+import { DEMO_DEFAULT_OPTIONS, SYNTHETIC_FEATURE_SPACE, type DemoFrame, type PreparedSequence } from './data';
 
-const cloneOptions = (options: TrackerOptions): TrackerOptions => ({
-  ...options,
-  ...(options.featureSpace ? { featureSpace: { ...options.featureSpace } } : {}),
-});
+const cloneOptions = (options: AnyTrackerOptions): AnyTrackerOptions => structuredClone(options);
 
 export class Playback {
   private tracker;
   index = -1;
-  results: TrackingResult[] = [];
+  results: (TrackingResult | BoTSortResult)[] = [];
   startedAt: string | null = null;
-  options: TrackerOptions;
+  options: AnyTrackerOptions;
   featureSpace: FeatureSpace | undefined = { ...SYNTHETIC_FEATURE_SPACE };
-  constructor(public frames: TrackingFrame[], options: TrackerOptions = DEMO_DEFAULT_OPTIONS.bytetrack) {
+  constructor(public frames: DemoFrame[], options: AnyTrackerOptions = DEMO_DEFAULT_OPTIONS.bytetrack) {
     this.options = cloneOptions(options);
     this.tracker = createTracker(this.options);
   }
   step() {
     if (this.index + 1 >= this.frames.length) return;
-    const result = this.tracker.update(this.frames[this.index + 1]);
+    const result = this.tracker.update(this.frames[this.index + 1] as BoTSortFrame);
     this.startedAt ??= new Date().toISOString();
     this.index++;
     this.results.push(result);
   }
   reset() { this.tracker.reset(); this.index = -1; this.results = []; this.startedAt = null; }
-  configure(options: TrackerOptions) {
+  configure(options: AnyTrackerOptions) {
     const next = createTracker(options);
     this.tracker.dispose(); this.tracker = next; this.options = cloneOptions(options);
-    if (options.featureSpace) this.featureSpace = { ...options.featureSpace };
+    const featureSpace = options.algorithm === 'botsort' ? options.appearance?.featureSpace : options.featureSpace;
+    if (featureSpace) this.featureSpace = { ...featureSpace };
     this.index = -1; this.results = []; this.startedAt = null;
   }
   replace(prepared: PreparedSequence) {

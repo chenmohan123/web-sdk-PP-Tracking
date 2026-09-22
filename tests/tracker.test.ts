@@ -98,7 +98,7 @@ test('开始前取消不改变状态，释放幂等并稳定拒绝后续操作',
 });
 test('结果准确声明 CPU/main 与五项非负有限耗时', () => {
   const out = createTracker().update(frame(0));
-    expect(out.runtime).toEqual({ requestedBackend: 'cpu', actualBackend: 'cpu', executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.0' });
+    expect(out.runtime).toEqual({ requestedBackend: 'cpu', actualBackend: 'cpu', executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.1' });
   expect(Object.keys(out.timings).sort()).toEqual(['associationMs', 'predictionMs', 'totalMs', 'updateMs', 'validationMs']);
   for (const value of Object.values(out.timings)) expect(Number.isFinite(value) && (value as number) >= 0).toBe(true);
 });

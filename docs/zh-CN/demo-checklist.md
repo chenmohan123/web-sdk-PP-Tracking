@@ -2,6 +2,8 @@
 
 [English](../en/demo-checklist.md)
 
+2026-09-22 本地 [0.2.0-rc.1](releases/0.2.0-rc.1.md) 已接入四算法与运动导入导出；[本轮验收](../../reports/2026-09-22-botsort-integration/README.md)单独记录公开包、桌面浏览器和固定序列对齐。下方历史勾选保留原版本与日期，不代表 rc.1 已发布。
+
 基于门户 `standards/v1/templates/demo-checklist.md`（1.2.0算法适用项）。以 `npm run test:browser` 的运行报告核对，不能用DOM标记代替交互证据。
 
 - [x] 当前独立 SDK，中文默认、英文切换保留状态，品牌栏显示版本及 GitHub/npm 项目链接。

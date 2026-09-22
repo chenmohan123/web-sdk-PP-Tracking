@@ -1,0 +1,26 @@
+{
+  "testedAt": "2026-09-22T08:42:13.043Z",
+  "sdkVersion": "0.2.0-rc.1",
+  "tests": 220,
+  "browserGroups": 18,
+  "sdkVerifyExit": 0,
+  "portal": {
+    "tests": 136,
+    "buildPages": 21,
+    "errors": 0,
+    "warnings": 0,
+    "existingHints": 7
+  },
+  "standard": {
+    "version": "1.3.0",
+    "requiredPassed": 21,
+    "requiredFailed": 0,
+    "remoteSkipped": 4,
+    "status": "locally-compliant"
+  },
+  "review": {
+    "unresolvedBlocking": 0,
+    "fixed": 4
+  },
+  "scope": "仅本地桌面；未发布、未重新验证模型推理或手机。"
+}

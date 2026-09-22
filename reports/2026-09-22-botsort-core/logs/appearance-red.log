@@ -1,0 +1,126 @@
+$ vitest run "tests/botsort-appearance.test.ts"
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ❯ tests/botsort-appearance.test.ts (7 tests | 5 failed) 37ms
+   × BoT-SORT 候选门控外观融合 > 近邻高分歧义用特征分配身份 19ms
+     → expected [ [ 1, 0.8 ], [ 2, 0.9 ] ] to deeply equal [ [ 1, 0.9 ], [ 2, 0.8 ] ]
+   ✓ BoT-SORT 候选门控外观融合 > IoU门控外和余弦门控外不能改变纯几何分配 5ms
+   ✓ BoT-SORT 候选门控外观融合 > 类别硬约束不能被同特征绕过，远框不能外观复活 1ms
+   × BoT-SORT 候选门控外观融合 > 低分错向量不参与关联也不污染EMA 4ms
+     → expected [ 0.8, 0.9 ] to deeply equal [ 0.9, 0.8 ]
+   × BoT-SORT 候选门控外观融合 > 高分更新EMA，alpha为0时使用最新特征 4ms
+     → expected { id: 1, classId: +0, …(7) } to match object { id: 1, score: 0.9 }
+(11 matching properties omitted from actual)
+   × BoT-SORT 候选门控外观融合 > 空间、零向量和混合零范数失败不推进图库/轨迹 2ms
+     → expected [Function] to throw an error
+   × BoT-SORT 候选门控外观融合 > 外观参数/输入被复制，稀疏与无穷向量拒绝 1ms
+     → expected [Function] to throw an error
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/botsort-appearance.test.ts > BoT-SORT 候选门控外观融合 > 近邻高分歧义用特征分配身份
+AssertionError: expected [ [ 1, 0.8 ], [ 2, 0.9 ] ] to deeply equal [ [ 1, 0.9 ], [ 2, 0.8 ] ]
+
+- Expected
++ Received
+
+  [
+    [
+      1,
+-     0.9,
++     0.8,
+    ],
+    [
+      2,
+-     0.8,
++     0.9,
+    ],
+  ]
+
+ ❯ tests/botsort-appearance.test.ts:14:50
+     12|     tracker.update(make(0,[[50,[1,0],1],[50,[0,1],1]]));
+     13|     const result=tracker.update(make(1,[[52,[0,1],.8],[54,[1,0],.9]]));
+     14|     expect(result.tracks.map(t=>[t.id,t.score])).toEqual([[1,.9],[2,.8…
+       |                                                  ^
+     15|   });
+     16|   it('IoU门控外和余弦门控外不能改变纯几何分配',()=>{
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/botsort-appearance.test.ts > BoT-SORT 候选门控外观融合 > 低分错向量不参与关联也不污染EMA
+AssertionError: expected [ 0.8, 0.9 ] to deeply equal [ 0.9, 0.8 ]
+
+- Expected
++ Received
+
+  [
+-   0.9,
+    0.8,
++   0.9,
+  ]
+
+ ❯ tests/botsort-appearance.test.ts:38:90
+     36|     const next=make(2,[[52,[0,1],.8],[54,[1,0],.9]]);
+     37|     expect(strip(tracker.update(next))).toEqual(strip(control.update(n…
+     38|     expect(control.update(make(3,[[52,[0,1],.8],[54,[1,0],.9]])).track…
+       |                                                                                          ^
+     39|   });
+     40|   it('高分更新EMA，alpha为0时使用最新特征',()=>{
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/botsort-appearance.test.ts > BoT-SORT 候选门控外观融合 > 高分更新EMA，alpha为0时使用最新特征
+AssertionError: expected { id: 1, classId: +0, …(7) } to match object { id: 1, score: 0.9 }
+(11 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "id": 1,
+-   "score": 0.9,
++   "score": 0.8,
+  }
+
+ ❯ tests/botsort-appearance.test.ts:45:30
+     43|     tracker.update(make(1,[[50,[0,1],1]]));
+     44|     const result=tracker.update(make(2,[[52,[1,0],.8],[54,[0,1],.9]]));
+     45|     expect(result.tracks[0]).toMatchObject({id:1,score:.9});
+       |                              ^
+     46|   });
+     47|   it('空间、零向量和混合零范数失败不推进图库/轨迹',()=>{
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/botsort-appearance.test.ts > BoT-SORT 候选门控外观融合 > 空间、零向量和混合零范数失败不推进图库/轨迹
+AssertionError: expected [Function] to throw an error
+ ❯ tests/botsort-appearance.test.ts:51:159
+     49|     const tracker=createBoTSortTracker(options),control=createBoTSortT…
+     50|     tracker.update(make(0,[[50,[1,0],1]]));control.update(make(0,[[50,…
+     51|     for(const input of [{...make(1,[[50,[1,0],1]]),featureSpaceId:'wro…
+       |                                                                                                                                                               ^
+     52|     expect(strip(tracker.update(make(1,[[50,[1,0],1]])))).toEqual(stri…
+     53|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/botsort-appearance.test.ts > BoT-SORT 候选门控外观融合 > 外观参数/输入被复制，稀疏与无穷向量拒绝
+AssertionError: expected [Function] to throw an error
+ ❯ tests/botsort-appearance.test.ts:57:106
+     55|     const options={minHits:1,appearance:{featureSpace:{...space}}};
+     56|     const tracker=createBoTSortTracker(options);options.appearance.fea…
+     57|     for(const vector of [Array(2),[Infinity,0],[1]]) expect(()=>tracke…
+       |                                                                                                          ^
+     58|     const first=make(0,[[50,[1,0],1]]);tracker.update(first);(first.de…
+     59|     expect(tracker.update(make(1,[[52,[0,1],.8],[54,[1,0],.9]])).track…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 2 passed (7)
+   Start at  14:03:25
+   Duration  832ms (transform 122ms, setup 0ms, collect 246ms, tests 37ms, environment 0ms, prepare 203ms)
+
+[ELIFECYCLE] Test failed. See above for more details.

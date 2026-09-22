@@ -4,6 +4,7 @@ import { TrackingError } from './errors.js';
 import { correct, initialize, predict, squaredMahalanobisDistance, toBox, type GaussianState } from './kalman.js';
 import { ocmScoreFromHistory, replayObservationFilter, type Observation } from './ocsort.js';
 import type { Detection, FeatureSpace, RemovedTrack, Track, Tracker, TrackerOptions, TrackingFrame, TrackingResult, UpdateOptions } from './types.js';
+import type { TrackingStrategy } from './tracking-strategy.js';
 
 type ParsedOptions = Omit<Required<TrackerOptions>, 'featureSpace'> & { featureSpace: FeatureSpace | null };
 const defaults: ParsedOptions = {
@@ -63,23 +64,24 @@ function parseOptions(value: TrackerOptions): ParsedOptions {
   return options;
 }
 
-function validateFrame(value: TrackingFrame, previous: number | null, size: TrackingFrame['imageSize'] | null, options: ParsedOptions): TrackingFrame {
+function validateFrame(value: TrackingFrame, previous: number | null, size: TrackingFrame['imageSize'] | null, options: ParsedOptions, strategy?: TrackingStrategy): TrackingFrame {
   const fail = () => { throw new TrackingError('INVALID_INPUT', '帧、时间戳、图像尺寸或检测框非法；跳转或尺寸变化请先 reset'); };
   if (!record(value) || !finite(value.timestampMs) || value.timestampMs < 0 || (previous !== null && value.timestampMs <= previous)) return fail();
   if (!record(value.imageSize) || !positive(value.imageSize.width) || !positive(value.imageSize.height)) return fail();
   if (size && (value.imageSize.width !== size.width || value.imageSize.height !== size.height)) return fail();
   if (!Array.isArray(value.detections) || value.detections.length > options.maxDetections) return fail();
-  if (options.algorithm === 'deepsort' && value.featureSpaceId !== options.featureSpace?.id) return fail();
+  const featureSpace = options.algorithm === 'deepsort' ? options.featureSpace : strategy?.featureSpace;
+  if (featureSpace && value.featureSpaceId !== featureSpace.id) return fail();
   const detections: Detection[] = [];
   for (const detection of value.detections) {
     if (!record(detection) || !probability(detection.score) || !Number.isSafeInteger(detection.classId) || detection.classId < 0 || !record(detection.box)) return fail();
     const box = detection.box;
     if (!finite(box.x) || !finite(box.y) || box.x < 0 || box.y < 0 || !positive(box.width) || !positive(box.height)) return fail();
     if (box.width > value.imageSize.width || box.height > value.imageSize.height || box.x > value.imageSize.width - box.width || box.y > value.imageSize.height - box.height) return fail();
-    const embedding = options.algorithm === 'deepsort' ? normalizeEmbedding(detection.embedding, options.featureSpace!.dimension) : undefined;
+    const embedding = featureSpace ? normalizeEmbedding(detection.embedding, featureSpace.dimension) : undefined;
     detections.push({ box: { ...box }, score: detection.score, classId: detection.classId, ...(embedding ? { embedding } : {}) });
   }
-  return { timestampMs: value.timestampMs, imageSize: { ...value.imageSize }, detections, ...(options.algorithm === 'deepsort' ? { featureSpaceId: value.featureSpaceId } : {}) };
+  return { timestampMs: value.timestampMs, imageSize: { ...value.imageSize }, detections, ...(featureSpace ? { featureSpaceId: value.featureSpaceId } : {}) };
 }
 
 function snapshot(entry: Entry, timestamp: number): Track {
@@ -95,7 +97,13 @@ function cloneEntry(entry: Entry): Entry {
 }
 
 export function createTracker(input: TrackerOptions = {}): Tracker {
+  return createTrackingCore(input);
+}
+
+// 内部候选策略复用；不从包根入口导出。
+export function createTrackingCore(input: TrackerOptions = {}, strategy?: TrackingStrategy): Tracker {
   const options = parseOptions(input);
+  if (strategy && options.algorithm !== 'bytetrack') throw new TrackingError('INVALID_OPTIONS', '内部候选策略仅复用ByteTrack生命周期');
   let entries: Entry[] = [], timestamp: number | null = null, size: TrackingFrame['imageSize'] | null = null;
   let generation = 0, nextId = 1, disposed = false;
   const ensureActive = () => { if (disposed) throw new TrackingError('DISPOSED', '跟踪实例已释放'); };
@@ -105,7 +113,7 @@ export function createTracker(input: TrackerOptions = {}): Tracker {
       const start = now();
       if (!record(updateOptions) || (updateOptions.signal !== undefined && (!record(updateOptions.signal) || typeof updateOptions.signal.aborted !== 'boolean'))) throw new TrackingError('INVALID_INPUT', '取消参数非法');
       if (updateOptions.signal?.aborted) throw new TrackingError('ABORTED', '计算开始前已取消');
-      const frame = validateFrame(inputFrame, timestamp, size, options);
+      const frame = validateFrame(strategy ? strategy.prepareFrame(inputFrame, timestamp, size) : inputFrame, timestamp, size, options, strategy);
       const validationEnd = now(), time = frame.timestampMs;
       const dt = timestamp === null ? 0 : (time - timestamp) / 1000;
       const gap = timestamp !== null && time - timestamp > options.largeGapMs;
@@ -118,7 +126,10 @@ export function createTracker(input: TrackerOptions = {}): Tracker {
         }
         return true;
       });
-      for (const entry of working) entry.filter = predict(entry.filter, dt);
+      for (const entry of working) {
+        const predicted = predict(entry.filter, dt);
+        entry.filter = strategy ? strategy.transformPrediction(predicted) : predicted;
+      }
       const predictionEnd = now();
       const high = frame.detections.map((detection, index) => ({ detection, index })).filter(({ detection }) => detection.score >= options.highScoreThreshold);
       const low = frame.detections.map((detection, index) => ({ detection, index })).filter(({ detection }) => detection.score >= options.lowScoreThreshold && detection.score < options.highScoreThreshold);
@@ -128,6 +139,7 @@ export function createTracker(input: TrackerOptions = {}): Tracker {
           ? (recovery && entry.observations.length ? iou(entry.observations[entry.observations.length - 1].box, detection.box) : iou(toBox(entry.filter), detection.box)) : -1));
         const similarities = candidates.map((entry, row) => observations.map(({ detection }, column) => {
           const rawValue = raw[row][column];
+          if (strategy?.similarity && detection.score >= options.highScoreThreshold) return strategy.similarity(rawValue, detection, entry.gallery);
           return options.algorithm === 'ocsort' && !recovery && rawValue >= 0
             ? ocmScoreFromHistory(rawValue, entry.observations, detection.box, options.ocmWeight, options.ocmDeltaMs)
             : rawValue;
@@ -180,6 +192,7 @@ export function createTracker(input: TrackerOptions = {}): Tracker {
           entry.lastObservedFilter = copyFilter(entry.filter);
           entry.missingTimestamps = [];
           if (options.algorithm === 'deepsort') appendToGallery(entry.gallery, detection.embedding!, options.gallerySize);
+          if (strategy?.updateGallery && detection.score >= options.highScoreThreshold) strategy.updateGallery(entry.gallery, detection);
           if (entry.hits >= options.minHits) entry.state = 'tracked';
           return true;
         }
@@ -201,7 +214,7 @@ export function createTracker(input: TrackerOptions = {}): Tracker {
           id: localNextId++, classId: detection.classId, state: options.minHits === 1 ? 'tracked' : 'tentative', filter,
           lastObservedFilter: copyFilter(filter), firstMs: time, lastSeenMs: time, hits: 1, score: detection.score,
           observations: [{ timestampMs: time, box: { ...detection.box }, score: detection.score }], missingTimestamps: [],
-          gallery: options.algorithm === 'deepsort' ? [[...detection.embedding!]] : [],
+          gallery: options.algorithm === 'deepsort' ? [[...detection.embedding!]] : strategy?.initializeGallery?.(detection) ?? [],
         });
       }
       const tracks = working.map(entry => snapshot(entry, time));
@@ -209,7 +222,7 @@ export function createTracker(input: TrackerOptions = {}): Tracker {
       const updateEnd = now();
       const result: TrackingResult = {
         generation, algorithm: options.algorithm, timestampMs: time, tracks, removed, droppedDetections,
-        runtime: { requestedBackend: 'cpu', actualBackend: 'cpu', executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.0' },
+        runtime: { requestedBackend: 'cpu', actualBackend: 'cpu', executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.1' },
         timings: { validationMs: validationEnd - start, predictionMs: predictionEnd - validationEnd, associationMs: associationEnd - predictionEnd, updateMs: updateEnd - associationEnd, totalMs: now() - start },
       };
       entries = working; nextId = localNextId; timestamp = time; size = frame.imageSize;

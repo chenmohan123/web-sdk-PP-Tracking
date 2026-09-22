@@ -31,6 +31,7 @@ const assert = ${format === 'esm' ? "(await import('node:assert/strict')).defaul
 assert.deepEqual(Object.keys(api).sort(), ['TrackingError', 'createTracker']);
 const featureSpace = { id: 'package-consumer-appearance-v1', dimension: 2 };
 const cases = {
+  botsort: { options: { minHits: 1 }, frame: { frameId: 0, timestampMs: 0, imageSize: { width: 10, height: 10 }, detections: [{ box: { x: 0, y: 0, width: 2, height: 2 }, score: 1, classId: 0 }], motion: { status: 'initial', from: null, to: { frameId: 0, timestampMs: 0 } } } },
   bytetrack: { options: { minHits: 1 }, frame: { timestampMs: 0, imageSize: { width: 10, height: 10 }, detections: [{ box: { x: 0, y: 0, width: 2, height: 2 }, score: 1, classId: 0 }] } },
   ocsort: { options: { minHits: 1, ocmWeight: 0.2, ocmDeltaMs: 300, ocmHistoryLength: 30, oruMaxReplaySteps: 30 }, frame: { timestampMs: 0, imageSize: { width: 10, height: 10 }, detections: [{ box: { x: 0, y: 0, width: 2, height: 2 }, score: 1, classId: 0 }] } },
   deepsort: { options: { minHits: 1, featureSpace, maxCosineDistance: 0.2, gallerySize: 30 }, frame: { timestampMs: 0, imageSize: { width: 10, height: 10 }, featureSpaceId: featureSpace.id, detections: [{ box: { x: 0, y: 0, width: 2, height: 2 }, score: 1, classId: 0, embedding: [1, 0] }] } },
@@ -41,6 +42,12 @@ for (const [algorithm, { options, frame }] of Object.entries(cases)) {
   assert.equal(result.algorithm, algorithm);
   assert.equal(result.tracks[0].id, 1);
   assert.equal(result.runtime.actualBackend, 'cpu');
+  if (algorithm === 'botsort') {
+    assert.equal(result.motion.status, 'initial');
+    assert.throws(() => tracker.update({ ...frame, frameId: 1, timestampMs: 100 }), { code: 'INVALID_INPUT' });
+    const next = tracker.update({ ...frame, frameId: 1, timestampMs: 100, motion: { status: 'identity', from: frame.motion.to, to: { frameId: 1, timestampMs: 100 } } });
+    assert.equal(next.tracks[0].id, 1);
+  }
   tracker.dispose();
 }`;
   const path = join(consumer, `consumer.${format === 'esm' ? 'mjs' : 'cjs'}`);
@@ -69,6 +76,24 @@ for (const extension of ['mts', 'cts']) {
   await writeFile(join(consumer, `consumer.${extension}`), "import { createTracker, type FeatureSpace, type Tracker, type TrackerAlgorithm, type TrackingResult } from 'web-sdk-pp-tracking';\nconst byteAlgorithm: TrackerAlgorithm = 'bytetrack';\nconst byteTracker: Tracker = createTracker({ algorithm: byteAlgorithm });\nconst byteResult: TrackingResult = byteTracker.update({ timestampMs: 0, imageSize: { width: 1, height: 1 }, detections: [] });\nconst byteActual: TrackerAlgorithm = byteResult.algorithm;\nif (byteActual !== byteAlgorithm) throw new Error('ByteTrack 类型消费失败');\nbyteTracker.dispose();\nconst ocAlgorithm: TrackerAlgorithm = 'ocsort';\nconst ocTracker: Tracker = createTracker({ algorithm: ocAlgorithm, ocmWeight: 0.2, ocmDeltaMs: 300, ocmHistoryLength: 30, oruMaxReplaySteps: 30 });\nconst ocResult: TrackingResult = ocTracker.update({ timestampMs: 0, imageSize: { width: 1, height: 1 }, detections: [] });\nconst ocActual: TrackerAlgorithm = ocResult.algorithm;\nif (ocActual !== ocAlgorithm) throw new Error('OC-SORT 类型消费失败');\nocTracker.dispose();\nconst featureSpace: FeatureSpace = { id: 'typed-consumer-v1', dimension: 2 };\nconst deepAlgorithm: TrackerAlgorithm = 'deepsort';\nconst deepTracker: Tracker = createTracker({ algorithm: deepAlgorithm, featureSpace, maxCosineDistance: 0.2, gallerySize: 30 });\nconst deepResult: TrackingResult = deepTracker.update({ timestampMs: 0, imageSize: { width: 2, height: 2 }, featureSpaceId: featureSpace.id, detections: [{ box: { x: 0, y: 0, width: 1, height: 1 }, score: 1, classId: 0, embedding: new Float32Array([1, 0]) }] });\nconst deepActual: TrackerAlgorithm = deepResult.algorithm;\nif (deepActual !== deepAlgorithm) throw new Error('DeepSORT 类型消费失败');\ndeepTracker.dispose();\n");
   const typed = spawnSync(process.execPath, ['node_modules/typescript/bin/tsc', '--noEmit', '--strict', '--target', 'ES2022', '--module', 'NodeNext', '--moduleResolution', 'NodeNext', join(consumer, `consumer.${extension}`)], { encoding: 'utf8' });
   assert.equal(typed.status, 0, typed.stdout + typed.stderr);
+  await writeFile(join(consumer, `botsort-consumer.${extension}`), `import { createTracker, type AnyTrackerOptions, type BoTSortTrackerOptions, type BoTSortTracker, type BoTSortResult, type BoTSortFrame, type CameraMotion } from 'web-sdk-pp-tracking';
+const options: BoTSortTrackerOptions = { algorithm: 'botsort', motionFailure: 'identity' };
+const general: AnyTrackerOptions = options;
+const tracker: BoTSortTracker = createTracker(options);
+const motion: CameraMotion = { status: 'initial', from: null, to: { frameId: 0, timestampMs: 0 } };
+const frame: BoTSortFrame = { frameId: 0, timestampMs: 0, imageSize: { width: 10, height: 10 }, detections: [], motion };
+const result: BoTSortResult = tracker.update(frame);
+const actual: 'botsort' = result.algorithm;
+// @ts-expect-error 旧 Tracker 注解不能抹掉 BoT-SORT 必需的运动帧契约。
+const ordinary: import('web-sdk-pp-tracking').Tracker = tracker;
+// @ts-expect-error BoT-SORT 必需 frameId 和 motion。
+tracker.update({ timestampMs: 0, imageSize: { width: 10, height: 10 }, detections: [] });
+// @ts-expect-error 不允许 DeepSORT 图库参数混入 BoT-SORT。
+createTracker({ algorithm: 'botsort', gallerySize: 30 });
+tracker.dispose(); void general; void actual;
+`);
+  const botTyped = spawnSync(process.execPath, ['node_modules/typescript/bin/tsc', '--noEmit', '--strict', '--target', 'ES2022', '--module', 'NodeNext', '--moduleResolution', 'NodeNext', join(consumer, `botsort-consumer.${extension}`)], { encoding: 'utf8' });
+  assert.equal(botTyped.status, 0, botTyped.stdout + botTyped.stderr);
   await writeFile(join(consumer, `reid-consumer.${extension}`), `import { createReIdExtractor, getReIdModelSource, type ReIdOptions, type ReIdSource, type ReIdExtractor } from 'web-sdk-pp-tracking/reid';
 const source: ReIdSource = getReIdModelSource('huggingface');
 const options: ReIdOptions[] = [
@@ -90,6 +115,6 @@ const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
 assert.equal(Object.keys(packageJson.dependencies ?? {}).length, 0, '生产依赖必须为空');
 assert.equal(packageJson.peerDependencies['onnxruntime-web'], '1.27.0');
 assert.equal(packageJson.peerDependenciesMeta['onnxruntime-web'].optional, true);
-await writeFile('.tmp/package-check.json', JSON.stringify({ filename: info.filename, integrity: info.integrity, sha256: createHash('sha256').update(tarballBytes).digest('hex'), size: info.size, unpackedSize: info.unpackedSize, files, checks: ['三算法与 ReID 实际包 ESM', '三算法与 ReID 实际包 CommonJS', '两个入口 NodeNext ESM/CJS 类型消费', '未安装 ORT 的根入口与 ReID 工厂和释放', 'ORT 1.27.0 可选 peer', '无生产依赖', '发行文件白名单与模型/原图排除'] }, null, 2) + '\n');
+await writeFile('.tmp/package-check.json', JSON.stringify({ filename: info.filename, integrity: info.integrity, sha256: createHash('sha256').update(tarballBytes).digest('hex'), size: info.size, unpackedSize: info.unpackedSize, files, checks: ['四算法与 ReID 实际包 ESM', '四算法与 ReID 实际包 CommonJS', '两个入口 NodeNext ESM/CJS 类型消费', '未安装 ORT 的根入口与 ReID 工厂和释放', 'ORT 1.27.0 可选 peer', '无生产依赖', '发行文件白名单与模型/原图排除'] }, null, 2) + '\n');
 console.log(JSON.stringify({ filename: info.filename, size: info.size, unpackedSize: info.unpackedSize, files }, null, 2));
-console.log('三算法与 ReID 实际 npm pack、双格式导入、独立类型消费、可选 ORT 与发行文件检查通过。');
+console.log('四算法与 ReID 实际 npm pack、双格式导入、独立类型消费、可选 ORT 与发行文件检查通过。');

@@ -1,0 +1,13 @@
+{
+  "testedAt": "2026-09-22T08:42:13.232Z",
+  "snippets": [
+    {
+      "path": "docs/zh-CN/botsort-candidate.md",
+      "output": "botsort 1 100"
+    },
+    {
+      "path": "docs/en/botsort-candidate.md",
+      "output": "botsort 1 100"
+    }
+  ]
+}

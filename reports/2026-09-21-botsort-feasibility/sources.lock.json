@@ -1,0 +1,61 @@
+{
+  "files": [
+    {
+      "path": "botsort-license.txt",
+      "url": "https://raw.githubusercontent.com/NirAharon/BoT-SORT/251985436d6712aaf682aaaf5f71edb4987224bd/LICENSE",
+      "bytes": 1067,
+      "sha256": "12a15474ca15cec568da311e6cd89e593e3cd2bb5b790e75b90e1608306a3a5f"
+    },
+    {
+      "path": "botsort-readme.md",
+      "url": "https://raw.githubusercontent.com/NirAharon/BoT-SORT/251985436d6712aaf682aaaf5f71edb4987224bd/README.md",
+      "bytes": 9719,
+      "sha256": "b742de781491ad017d606fb2b46d2b1d5eea9f4be1817106321d96547d8d1465"
+    },
+    {
+      "path": "fastreid-license.txt",
+      "url": "https://raw.githubusercontent.com/NirAharon/BoT-SORT/251985436d6712aaf682aaaf5f71edb4987224bd/fast_reid/LICENSE",
+      "bytes": 11347,
+      "sha256": "14a8a9a670fa989f040bc7a5d964fa7a478ffd7cb44407a9061303240d9e21df"
+    },
+    {
+      "path": "yolov7-license.txt",
+      "url": "https://raw.githubusercontent.com/NirAharon/BoT-SORT/251985436d6712aaf682aaaf5f71edb4987224bd/yolov7/LICENSE.md",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "paper.pdf",
+      "url": "https://arxiv.org/pdf/2206.14651v2",
+      "bytes": 2800126,
+      "sha256": "4d6c8cdf0ee444dc886b5bc67b56cd11694d74d0e5e047718cd0311a5e5ed9b8"
+    },
+    {
+      "path": "paper-abstract.html",
+      "url": "https://arxiv.org/abs/2206.14651v2",
+      "bytes": 39653,
+      "sha256": "4be4d0d6f964d7621dfb8428ecb27ed355e8ab83dbf046e5a47eac301c52f415"
+    },
+    {
+      "path": "paddle-botsort-readme.md",
+      "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/configs/mot/botsort/README_cn.md",
+      "bytes": 4686,
+      "sha256": "d24c5147bb638c61fadcc8ae2e9ad0d115e9036b66741584d84968e808c38eae"
+    },
+    {
+      "path": "paddle-botsort-config.yml",
+      "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/configs/mot/botsort/botsort_ppyoloe.yml",
+      "bytes": 2076,
+      "sha256": "c2ba46c46e1a51052c2c2a53e2a2f35b7d05d2edb4f6ee10a58a8496ea2c5632"
+    },
+    {
+      "path": "paddle-license.txt",
+      "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleDetection/b25522a0f4bde8c80603f3ba5e3472059972e3b5/LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    }
+  ],
+  "botsortCommit": "251985436d6712aaf682aaaf5f71edb4987224bd",
+  "paddleCommit": "b25522a0f4bde8c80603f3ba5e3472059972e3b5",
+  "scope": "只读论文、README、配置和许可证；未复制/翻译第三方跟踪实现；文件仅记录身份，未随本报告分发全文"
+}

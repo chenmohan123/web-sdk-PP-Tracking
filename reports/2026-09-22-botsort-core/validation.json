@@ -1,0 +1,59 @@
+{
+  "date": "2026-09-22",
+  "status": "通过",
+  "scope": "同包本地核心候选；没有远程发布",
+  "candidateVersion": "0.2.0-rc.0+botsort-core.1",
+  "sdk": {
+    "command": "pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versions=false verify",
+    "exitCode": 0,
+    "testFilesPassed": 17,
+    "testsPassed": 208,
+    "newTests": 32,
+    "evidence": "logs/verify.log",
+    "packageConsumption": "package-consumption.json",
+    "candidateConsumption": "build-result.json",
+    "previousDemoBrowserFlows": 12,
+    "previousDemoEvidence": "previous-demo-browser.json",
+    "candidateExamples": "中英文候选文档首个 JavaScript 示例实际执行均输出 botsort 1 100"
+  },
+  "evaluation": {
+    "sequences": 7,
+    "frames": 5316,
+    "detections": 67639,
+    "configurations": 3,
+    "repetitionsPerConfiguration": 2,
+    "capacityDrops": 0,
+    "nonTimingOutputsEqual": true,
+    "historicalProbeOutputsEqual": true,
+    "browserFramesPerConfiguration": 837,
+    "browserErrors": 0,
+    "evidence": ["run-summary.json", "metrics.json", "browser.json", "ablation-summary.json", "ablation-metrics.json"]
+  },
+  "portal": {
+    "testExitCode": 0,
+    "testsPassed": 136,
+    "buildExitCode": 0,
+    "astroErrors": 0,
+    "astroWarnings": 0,
+    "existingAstroHints": 7,
+    "staticPages": 21,
+    "receipt": "门户 reports/tracking/2026-09-22-botsort-core/README.md"
+  },
+  "standard": {
+    "status": "locally-compliant",
+    "requiredPassed": 21,
+    "requiredFailed": 0,
+    "requiredSkipped": 4,
+    "recommendedPassed": 3,
+    "labs": 1,
+    "evidence": "门户 reports/sdk-standard/tracking-botsort-core-after-20260922.json"
+  },
+  "review": { "status": "通过，无未解决阻塞项", "evidence": "review.md" },
+  "limits": [
+    "09 序列 IDF1 退步仍保留，不根据该序列调参；未定位全部 ID 分裂事件",
+    "冻结矩阵和特征验证不等于浏览器图像运动估计、模型推理或摄像头验证",
+    "性能仅包含 CPU 跟踪，不含检测、运动估计、ReID 和渲染；两次测量不能证明稳定加速比",
+    "原动态模型引擎大于 500 kB 的构建提示仍存在",
+    "公开包和 Demo 尚未提供第四算法，远程治理规则未在本轮重新核验"
+  ]
+}

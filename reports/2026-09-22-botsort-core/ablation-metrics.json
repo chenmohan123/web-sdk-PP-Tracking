@@ -1,0 +1,116 @@
+{
+  "scorer": {
+    "commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+    "licenseSha256": "e7d2399dd1ce12eb5f5bb555f708bb0fdc1a95c1490cdb85b2f755b1a6b32019",
+    "loadedFiles": {
+      "trackeval/_timing.py": "8bd796826de1bd636d798795696bfe7e9bdc9c91baa4d753cb4283197dfadcd3",
+      "trackeval/utils.py": "84f324de538b4364af2e4ec5b83966df0f260fd8adbfd6b20a386bfa9a0e48bb",
+      "trackeval/datasets/_base_dataset.py": "f36c60dcb70d209c2145ab9408e2497eb3f7844b30f697cf7f42794205e3bf23",
+      "trackeval/datasets/mot_challenge_2d_box.py": "e269f145caf4db54848412cc6b0ce9f0cb45787b28522ebaee4cdaeaae3aef44",
+      "trackeval/metrics/_base_metric.py": "0f7a13d9a7465ff29a70e8f5ab33f884462bf19d941c7935d0a8a634bec736a2",
+      "trackeval/metrics/identity.py": "9e38466a88fb88581a85a8aac7814ea4f95e2a6a3b95eb2a23481d929f536af2",
+      "trackeval/metrics/clear.py": "da78468866f61ecf84e197446e630382e0c976ca1f47b70e1dd4904ab7ba598e"
+    },
+    "python": "3.11.15 (main, Jul 18 2026, 17:06:27) [MSC v.1944 64 bit (AMD64)]",
+    "dependencies": {
+      "numpy": "1.23.5",
+      "scipy": "1.10.1"
+    }
+  },
+  "protocol": {
+    "dataset": "MotChallenge2DBox",
+    "DO_PREPROC": true,
+    "class": "pedestrian",
+    "iouThreshold": 0.5
+  },
+  "identity": {
+    "sequences": {
+      "MOT17-09-FRCNN": {
+        "IDF1": 0.4875513657239546,
+        "IDSW": 44,
+        "MOTA": 0.4824413145539906,
+        "FP": 168,
+        "FN": 2544,
+        "TP": 2781,
+        "GT": 5325,
+        "Frag": 60,
+        "IDTP": 2017,
+        "IDFP": 932,
+        "IDFN": 3308
+      }
+    },
+    "combined": {
+      "IDF1": 0.4875513657239546,
+      "IDSW": 44,
+      "MOTA": 0.4824413145539906,
+      "FP": 168,
+      "FN": 2544,
+      "TP": 2781,
+      "GT": 5325,
+      "Frag": 60,
+      "IDTP": 2017,
+      "IDFP": 932,
+      "IDFN": 3308
+    }
+  },
+  "translation": {
+    "sequences": {
+      "MOT17-09-FRCNN": {
+        "IDF1": 0.4582477341389728,
+        "IDSW": 40,
+        "MOTA": 0.48826291079812206,
+        "FP": 155,
+        "FN": 2530,
+        "TP": 2795,
+        "GT": 5325,
+        "Frag": 59,
+        "IDTP": 1896,
+        "IDFP": 1054,
+        "IDFN": 3429
+      }
+    },
+    "combined": {
+      "IDF1": 0.4582477341389728,
+      "IDSW": 40,
+      "MOTA": 0.48826291079812206,
+      "FP": 155,
+      "FN": 2530,
+      "TP": 2795,
+      "GT": 5325,
+      "Frag": 59,
+      "IDTP": 1896,
+      "IDFP": 1054,
+      "IDFN": 3429
+    }
+  },
+  "full": {
+    "sequences": {
+      "MOT17-09-FRCNN": {
+        "IDF1": 0.45274353396180805,
+        "IDSW": 45,
+        "MOTA": 0.49690140845070424,
+        "FP": 129,
+        "FN": 2505,
+        "TP": 2820,
+        "GT": 5325,
+        "Frag": 59,
+        "IDTP": 1873,
+        "IDFP": 1076,
+        "IDFN": 3452
+      }
+    },
+    "combined": {
+      "IDF1": 0.45274353396180805,
+      "IDSW": 45,
+      "MOTA": 0.49690140845070424,
+      "FP": 129,
+      "FN": 2505,
+      "TP": 2820,
+      "GT": 5325,
+      "Frag": 59,
+      "IDTP": 1873,
+      "IDFP": 1076,
+      "IDFN": 3452
+    }
+  }
+}

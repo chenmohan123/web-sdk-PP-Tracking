@@ -1,0 +1,194 @@
+$ npm run build && npm run typecheck && npm test && npm run check:package && npm run typecheck:demo && npm run build:demo && npm run build:vanilla && npm run build:react && npm run test:browser
+
+> web-sdk-pp-tracking@0.2.0-rc.0 build
+> node scripts/build.mjs
+
+算法与 ReID 独立 ESM、CommonJS 和 NodeNext 类型声明构建完成。
+
+> web-sdk-pp-tracking@0.2.0-rc.0 typecheck
+> tsc --noEmit
+
+
+> web-sdk-pp-tracking@0.2.0-rc.0 test
+> vitest run
+
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ✓ tests/assignment.test.ts (7 tests) 131ms
+ ✓ tests/deepsort.test.ts (15 tests) 40ms
+ ✓ tests/ocsort.test.ts (23 tests) 52ms
+ ✓ tests/tracker.test.ts (16 tests) 63ms
+ ✓ tests/reid-preprocess.test.ts (4 tests) 48ms
+ ✓ tests/reid-sources.test.ts (8 tests) 48ms
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0-alpha.0 显式发布到 next 通道且已有版本只读
+npm OIDC 发布完成且完整性一致。
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0-rc.0 显式发布到 next 通道且已有版本只读
+npm OIDC 发布完成且完整性一致。
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 版本 0.2.0 显式发布到 latest 通道且已有版本只读
+npm OIDC 发布完成且完整性一致。
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+
+stdout | tests/release.test.ts > 发布候选完整性门禁 > 已有版本不发布，新版本发布后核验，真实发布错误不吞掉
+npm 已存在相同完整性的版本，仅核验，不重复发布。
+npm OIDC 发布完成且完整性一致。
+
+ ✓ tests/release.test.ts (8 tests) 34ms
+ ✓ tests/kalman.test.ts (4 tests) 1211ms
+   ✓ 长期重复更新协方差有限、对称，尺寸保持正数  1178ms
+ ✓ tests/reid-demo.test.ts (11 tests) 23ms
+ ✓ tests/mot17-adapter.test.ts (13 tests) 21ms
+ ✓ tests/botsort-core.test.ts (10 tests) 47ms
+ ✓ tests/botsort-appearance.test.ts (7 tests) 72ms
+ ✓ tests/mot17-reid.test.ts (9 tests) 1541ms
+   ✓ 评测身份与落盘边界 > 未知模式及非固定子集在创建输出前拒绝  1494ms
+ ✓ tests/botsort-motion.test.ts (15 tests) 26ms
+ ✓ tests/reid-lifecycle.test.ts (37 tests) 1951ms
+ ✓ tests/mot17-cli.test.ts (7 tests) 2937ms
+   ✓ 真实评测 CLI 配置模式 > 未知模式在创建输出目录前失败  397ms
+   ✓ 真实评测 CLI 输出保护 > 在读取数据或调用 Python 之前拒绝历史报告目录  460ms
+   ✓ 真实评测 CLI 输出保护 > 在已有输出目录上失败，防止覆盖原始结果  480ms
+   ✓ 真实评测 CLI 输出保护 > 所有下载和自动源码目标先验检查：拒绝报告树、外部、junction及已有目标，且不创建运行目录  1435ms
+ ✓ tests/demo.test.ts (14 tests) 2885ms
+   ✓ Demo 数据与回放 > 紧凑导出千帧512维输入并可按相同特征空间重新准备  1113ms
+   ✓ Demo 数据与回放 > 按UTF-8字节限制紧凑序列，并在规范化输入超限时保留现有会话  1671ms
+
+ Test Files  17 passed (17)
+      Tests  208 passed (208)
+   Start at  14:11:39
+   Duration  4.46s (transform 3.19s, setup 0ms, collect 7.76s, tests 11.13s, environment 5ms, prepare 6.69s)
+
+
+> web-sdk-pp-tracking@0.2.0-rc.0 check:package
+> node scripts/check-package.mjs
+
+{
+  "filename": "web-sdk-pp-tracking-0.2.0-rc.0.tgz",
+  "size": 46913,
+  "unpackedSize": 154929,
+  "files": [
+    "LICENSE",
+    "NOTICE",
+    "README.en.md",
+    "README.md",
+    "dist/assignment.d.ts",
+    "dist/deepsort.d.ts",
+    "dist/errors.d.ts",
+    "dist/index.cjs",
+    "dist/index.d.ts",
+    "dist/index.js",
+    "dist/kalman.d.ts",
+    "dist/ocsort.d.ts",
+    "dist/reid/assets.d.ts",
+    "dist/reid/errors.d.ts",
+    "dist/reid/extractor.d.ts",
+    "dist/reid/index.cjs",
+    "dist/reid/index.d.ts",
+    "dist/reid/index.js",
+    "dist/reid/model.d.ts",
+    "dist/reid/ort.d.ts",
+    "dist/reid/preprocess.d.ts",
+    "dist/reid/sources.d.ts",
+    "dist/reid/types.d.ts",
+    "dist/tracker.d.ts",
+    "dist/tracking-strategy.d.ts",
+    "dist/types.d.ts",
+    "package.json"
+  ]
+}
+三算法与 ReID 实际 npm pack、双格式导入、独立类型消费、可选 ORT 与发行文件检查通过。
+
+> web-sdk-pp-tracking@0.2.0-rc.0 typecheck:demo
+> tsc --noEmit -p demo/tsconfig.json
+
+
+> web-sdk-pp-tracking@0.2.0-rc.0 build:demo
+> vite build --config demo/vite.config.ts
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 38 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                             0.38 kB │ gzip:     0.30 kB
+dist/assets/ort-wasm-simd-threaded.jsep-DC5y_g6C.wasm  26,827.54 kB │ gzip: 6,326.62 kB
+dist/assets/index-5urDtXFQ.css                              5.96 kB │ gzip:     1.75 kB
+dist/assets/ReIdWorkspace-CnSq3-Je.js                      28.26 kB │ gzip:    11.21 kB
+dist/assets/index-CbUAXNH8.js                             238.18 kB │ gzip:    77.14 kB
+dist/assets/ort.all.bundle.min-D1XdTPDg.js                847.14 kB │ gzip:   204.48 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.66s
+
+> web-sdk-pp-tracking@0.2.0-rc.0 build:vanilla
+> vite build examples/vanilla --base ./
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 5 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                 0.79 kB │ gzip: 0.57 kB
+dist/assets/index-BfCeDdvs.js  15.81 kB │ gzip: 6.33 kB
+✓ built in 235ms
+
+> web-sdk-pp-tracking@0.2.0-rc.0 build:react
+> vite build --config examples/react/vite.config.ts
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 38 modules transformed.
+rendering chunks...
+computing gzip size...
+../examples/react/dist/index.html                                             0.38 kB │ gzip:     0.30 kB
+../examples/react/dist/assets/ort-wasm-simd-threaded.jsep-DC5y_g6C.wasm  26,827.54 kB │ gzip: 6,326.62 kB
+../examples/react/dist/assets/index-5urDtXFQ.css                              5.96 kB │ gzip:     1.75 kB
+../examples/react/dist/assets/ReIdWorkspace-CnSq3-Je.js                      28.26 kB │ gzip:    11.21 kB
+../examples/react/dist/assets/index-CbUAXNH8.js                             238.18 kB │ gzip:    77.14 kB
+../examples/react/dist/assets/ort.all.bundle.min-D1XdTPDg.js                847.14 kB │ gzip:   204.48 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.09s
+
+> web-sdk-pp-tracking@0.2.0-rc.0 test:browser
+> node tests/browser.mjs
+
+{
+  "testedAt": "2026-09-22T06:13:14.297Z",
+  "browser": "153.0.8010.12",
+  "platform": "win32",
+  "runtimeVersion": "web-sdk-pp-tracking@0.2.0-rc.0",
+  "checks": [
+    "算法切换停止播放、清空状态；OC-SORT 仅显示有效参数并完成播放、导入和导出；未应用草稿不混入导出",
+    "512维千帧输入在单步前后均可紧凑下载并重新导入，特征空间、时间和向量往返一致",
+    "DeepSORT 合成向量运行；有效参数、特征空间和结果报告导出；自定义空间导入后切内置样例恢复合成空间；非法末帧与语言切换保留状态",
+    "中文默认、英文切换不改变帧/ID/结果",
+    "单步、播放、暂停继续、重播清空轨迹和历史",
+    "四场景实际播放到末帧；低分续接和遮挡高分恢复；导出原始时间",
+    "真实键盘seek复位顺序重算，lost虚线、空分数",
+    "异步读取时算法选择禁用；单帧导入/重复同文件/导出；无向量切换、逆序、坏JSON、超5MiB失败均保留原结果",
+    "参数错误原子性；合法参数实际生效并清空本轮",
+    "空检测序列真实空结果",
+    "390px中英文无横向溢出",
+    "Vanilla构建包单步/复位/CPU实际结果"
+  ],
+  "pageErrors": [],
+  "screenshots": [
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\desktop.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\english.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\deepsort.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\occlusion.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\mobile.png",
+    "C:\\Users\\chenm\\.codex\\worktrees\\tracking-algorithms\\web-sdk-PP-Tracking\\.tmp\\browser\\vanilla.png"
+  ]
+}

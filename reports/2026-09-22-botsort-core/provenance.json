@@ -1,0 +1,64 @@
+{
+  "date": "2026-09-22",
+  "baselineCommit": "99928c639d84f30efcd5b4686d9e7144c5b818e5",
+  "candidateVersion": "0.2.0-rc.0+botsort-core.1",
+  "scope": "同包本地CPU核心候选；未公开导出/发布",
+  "environment": {
+    "node": "v24.16.0",
+    "platform": "win32",
+    "release": "10.0.26200",
+    "cpu": "Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz",
+    "browser": "153.0.8010.12"
+  },
+  "sourceHashes": {
+    "src/tracker.ts": "8cb5bb47290348532410a34747897c0feada4df2e58795016f08ad742333783b",
+    "src/tracking-strategy.ts": "993e454c70c7192fd286ad6a4805f184230e1d1b169cf4f38a480c0367d939be",
+    "src/kalman.ts": "e331f6540a5f3533cff2aa2b9f8cb58a2b97536c437eb24d32ecf58d59a621a6",
+    "src/assignment.ts": "8f2b6a1ffbb1ba3dae79f1ed240b678ec49121a90cd9a16255806572f6500b0d",
+    "src/deepsort.ts": "ded5e2964769330870c59f8f28ab46de6d529f8608cf2225d934916b88eaf8d5",
+    "src/ocsort.ts": "3e9c294c3b3593dbfe4dbf27cba3c121d38fed2f524a59d96c2f467af0ee19f4",
+    "src/types.ts": "2ff0e3430fdd5981ca0b259c9739d71b26407bff3fc5090051d2cbdcc3953248",
+    "src/errors.ts": "23a2c3863354b96ecffebf63f7c4652091b4165bc26c2860beefa06a18c8b3cc",
+    "src/index.ts": "8d6165b4df146e9e74b5847dd0b7c4ea3874e8c0a29a5a5c3a64735ab591eda7",
+    "src/botsort/types.ts": "d0f1cfe4327faf1f2154ee8ef281e946fba276fe6e7aadb8995f8f42dcbca25a",
+    "src/botsort/contract.ts": "3ae1291f9aeb0a366048f83ce0fd4460eb11968e8955cc27ad21ade0a49146c4",
+    "src/botsort/motion.ts": "a6c4e28983df645700d21483863f364a833fc5efd26225bf1b4fc95f69b105ac",
+    "src/botsort/index.ts": "b08f53d63e3aa558f4c3e6328b0f15dabe66131d77bc5174b02f3d8d51614ab0",
+    "tests/botsort-motion.test.ts": "9630ecc6f7985c5623417e1970dba775c60815325dfb9810a57893e5095f7161",
+    "tests/botsort-core.test.ts": "655671a6493d47ce807c09f278820ed84f2c39eed2a5add7af0fae9cafd83f9c",
+    "tests/botsort-appearance.test.ts": "69e6cc8ae087b810ba4a7cb8af984d3345e80ee3926e89c95a9b6d184035ba5b",
+    "scripts/build-botsort-candidate.mjs": "35c5f8e12b07607dc32e4d411e1895c0e60716adcebb640a7f7cbf300735f60c",
+    "scripts/evaluation/botsort-core/adapter.mjs": "f297b2679690b51ae1547e74c528e8153853378ad30b0bcdda5534a4f81703ff",
+    "scripts/evaluation/botsort-core/run.mjs": "ade8efe27748a836281cfe6c323ba0beeee797806205baa0dbdb2b64552c3620",
+    "scripts/evaluation/botsort-core/ablation.mjs": "4a863dbd70ea2cfa5412201a8b496091cf54547b6323d5e135bb1c1a17397673",
+    "scripts/evaluation/botsort-core/browser.mjs": "46f7500be6687043db9a25e950105ce0316dafc4da0df2695abec39df1fc5b48",
+    "scripts/evaluation/botsort-core/score.py": "27aa77501cf5f197e2c9cd804826874840ca790305cbc6d81d3826bbc1602f63",
+    "scripts/evaluation/mot17/evaluator.py": "b86269b667c7f66c70bfded979cfd05e724294fb8dee15757190f2ffbc1fc360",
+    "scripts/evaluation/mot17/adapter.mjs": "4752633b663f42a144bb8d8f52bb8bf5861e4d42bc6764c9f7f4eca4725bba21",
+    "scripts/evaluation/mot17/lock.json": "9e88d9f2bca4e7a275a473c65709511484d1cd5c20a4b78f5f62b8ddd2d74495",
+    "scripts/evaluation/mot17-reid/core.mjs": "33b6bf695d750840bc5a85cbd1f4c59d514e2ad3e40a73aada0b4af1d7bed497",
+    "scripts/evaluation/mot17-reid/io.mjs": "637899870df9ddee3cbf2829d6a8243d277c2e7a00cf4b3313f483e61941a316",
+    "package.json": "6187586d4692f91e885647ead9c5750e07b47697d81a22ad72cab8df887e2041",
+    "pnpm-lock.yaml": "4196863f454522eb1916ea482163b4b790ed3c43c71a4310ce325ce8a88d016b",
+    "docs/zh-CN/botsort-candidate.md": "c03a0f0c7afba4b2a9a6803b0dbf08fee0b79729f9f6a95fb0d4015c4b4ad13a",
+    "docs/en/botsort-candidate.md": "2935d71797b009b47970b81e9504a0039eca19085bde2d4cfbb2e86b939da828"
+  },
+  "inputEvidence": "../2026-09-21-botsort-feasibility/provenance.json",
+  "motionSource": "../2026-09-21-botsort-feasibility/motion-summary.json",
+  "paperSources": "../2026-09-21-botsort-feasibility/sources.lock.json",
+  "features": "../2026-09-21-mot-reid/raw/sequences/",
+  "totalsMs": {
+    "identity": [
+      9056.924600000097,
+      8905.072599999952
+    ],
+    "cmc": [
+      9762.913099999576,
+      9062.647999999572
+    ],
+    "cmc-reid": [
+      11934.593399999792,
+      11615.688499999464
+    ]
+  }
+}

@@ -1,4 +1,8 @@
-import { createTracker, type Detection, type FeatureSpace, type TrackerAlgorithm, type TrackerOptions, type TrackingFrame } from 'web-sdk-pp-tracking';
+import { createTracker, TrackingError, type AnyTrackerOptions, type BoTSortFrame, type Detection, type FeatureSpace, type TrackerAlgorithm, type TrackingFrame } from 'web-sdk-pp-tracking';
+
+export type DemoFrame = TrackingFrame & Partial<Pick<BoTSortFrame, 'frameId' | 'motion'>>;
+export interface BoTSettings { motionFailure: 'error' | 'identity'; useAppearance: boolean; proximityIouThreshold: string; emaAlpha: string }
+export const DEFAULT_BOT_SETTINGS: BoTSettings = { motionFailure: 'error', useAppearance: false, proximityIouThreshold: '0.5', emaAlpha: '0.9' };
 
 export const MAX_BYTES = 5 * 1024 * 1024;
 const record = (v: unknown): v is Record<string, unknown> => v !== null && typeof v === 'object' && !Array.isArray(v);
@@ -29,29 +33,47 @@ const sharedOptions = {
   maxTracks: 200,
 };
 
-export const DEMO_DEFAULT_OPTIONS: Record<TrackerAlgorithm, TrackerOptions> = {
+export const DEMO_DEFAULT_OPTIONS = {
   bytetrack: { algorithm: 'bytetrack', ...sharedOptions, lowScoreThreshold: defaultValue('lowScoreThreshold'), lowMatchIouThreshold: 0.2 },
   ocsort: { algorithm: 'ocsort', ...sharedOptions, ocmWeight: defaultValue('ocmWeight'), ocmDeltaMs: defaultValue('ocmDeltaMs'), ocmHistoryLength: defaultValue('ocmHistoryLength'), oruMaxReplaySteps: defaultValue('oruMaxReplaySteps') },
   deepsort: { algorithm: 'deepsort', ...sharedOptions, featureSpace: { ...SYNTHETIC_FEATURE_SPACE }, maxCosineDistance: defaultValue('maxCosineDistance'), gallerySize: defaultValue('gallerySize') },
-};
+  botsort: { algorithm: 'botsort', ...sharedOptions, lowScoreThreshold: defaultValue('lowScoreThreshold'), lowMatchIouThreshold: 0.2, motionFailure: 'error' },
+} satisfies Record<TrackerAlgorithm, AnyTrackerOptions>;
 
-export function optionsFrom(algorithm: TrackerAlgorithm, parameters: DemoParameterDraft, featureSpace?: FeatureSpace): TrackerOptions {
+export function optionsFrom(algorithm: TrackerAlgorithm, parameters: DemoParameterDraft, featureSpace?: FeatureSpace, bot: BoTSettings = DEFAULT_BOT_SETTINGS, currentOptions?: AnyTrackerOptions): AnyTrackerOptions {
   const value = (key: DemoParameterKey) => parameters[key].trim() === '' ? NaN : Number(parameters[key]);
-  const shared = { ...DEMO_DEFAULT_OPTIONS[algorithm], algorithm, highScoreThreshold: value('highScoreThreshold'), newTrackThreshold: value('newTrackThreshold'), minHits: value('minHits'), maxLostMs: value('maxLostMs') };
-  if (algorithm === 'bytetrack') return { ...shared, lowScoreThreshold: value('lowScoreThreshold') };
-  if (algorithm === 'ocsort') return { ...shared, ocmWeight: value('ocmWeight'), ocmDeltaMs: value('ocmDeltaMs'), ocmHistoryLength: value('ocmHistoryLength'), oruMaxReplaySteps: value('oruMaxReplaySteps') };
-  return { ...shared, featureSpace: featureSpace ?? SYNTHETIC_FEATURE_SPACE, maxCosineDistance: value('maxCosineDistance'), gallerySize: value('gallerySize') };
+  // 同算法应用只修改可见字段；切算法仍采用对应默认配置。
+  const base = currentOptions && (currentOptions.algorithm ?? 'bytetrack') === algorithm ? currentOptions : undefined;
+  const shared = { ...sharedOptions, matchIouThreshold: base?.matchIouThreshold ?? sharedOptions.matchIouThreshold, largeGapMs: base?.largeGapMs ?? sharedOptions.largeGapMs, maxDetections: base?.maxDetections ?? sharedOptions.maxDetections, maxTracks: base?.maxTracks ?? sharedOptions.maxTracks, highScoreThreshold: value('highScoreThreshold'), newTrackThreshold: value('newTrackThreshold'), minHits: value('minHits'), maxLostMs: value('maxLostMs') };
+  if (algorithm === 'bytetrack') return { ...DEMO_DEFAULT_OPTIONS.bytetrack, ...shared, lowMatchIouThreshold: base?.lowMatchIouThreshold ?? 0.2, lowScoreThreshold: value('lowScoreThreshold') };
+  if (algorithm === 'ocsort') return { ...DEMO_DEFAULT_OPTIONS.ocsort, ...shared, ocmWeight: value('ocmWeight'), ocmDeltaMs: value('ocmDeltaMs'), ocmHistoryLength: value('ocmHistoryLength'), oruMaxReplaySteps: value('oruMaxReplaySteps') };
+  if (algorithm === 'botsort') return { ...DEMO_DEFAULT_OPTIONS.botsort, ...shared, lowMatchIouThreshold: base?.lowMatchIouThreshold ?? 0.2, lowScoreThreshold: value('lowScoreThreshold'), motionFailure: bot.motionFailure, ...(bot.useAppearance ? { appearance: { featureSpace: featureSpace ?? SYNTHETIC_FEATURE_SPACE, maxCosineDistance: value('maxCosineDistance'), proximityIouThreshold: bot.proximityIouThreshold.trim() === '' ? NaN : Number(bot.proximityIouThreshold), emaAlpha: bot.emaAlpha.trim() === '' ? NaN : Number(bot.emaAlpha) } } : {}) };
+  return { ...DEMO_DEFAULT_OPTIONS.deepsort, ...shared, featureSpace: featureSpace ?? SYNTHETIC_FEATURE_SPACE, maxCosineDistance: value('maxCosineDistance'), gallerySize: value('gallerySize') };
+}
+
+export function parametersFrom(options: AnyTrackerOptions): DemoParameterDraft {
+  const parameters = { ...DEMO_DEFAULT_PARAMETERS, ...(options.algorithm === 'botsort' ? { maxCosineDistance: '0.25' } : {}) };
+  for (const key of Object.keys(parameters) as DemoParameterKey[]) {
+    const value = (options as unknown as Record<string, unknown>)[key];
+    if (typeof value === 'number') parameters[key] = String(value);
+  }
+  if (options.algorithm === 'botsort' && options.appearance) parameters.maxCosineDistance = String(options.appearance.maxCosineDistance ?? 0.25);
+  return parameters;
+}
+
+export function botSettingsFrom(options: AnyTrackerOptions): BoTSettings {
+  return options.algorithm === 'botsort' ? { motionFailure: options.motionFailure ?? 'error', useAppearance: !!options.appearance, proximityIouThreshold: String(options.appearance?.proximityIouThreshold ?? 0.5), emaAlpha: String(options.appearance?.emaAlpha ?? 0.9) } : { ...DEFAULT_BOT_SETTINGS };
 }
 
 export interface PreparedSequence {
-  frames: TrackingFrame[];
+  frames: DemoFrame[];
   featureSpace?: FeatureSpace;
-  options: TrackerOptions;
+  options: AnyTrackerOptions;
 }
 
-export function serializeSequence(frames: readonly TrackingFrame[], featureSpace?: FeatureSpace): string {
+export function serializeSequence(frames: readonly DemoFrame[], featureSpace?: FeatureSpace, options?: AnyTrackerOptions): string {
   const serialized = JSON.stringify(
-    { ...(featureSpace ? { featureSpace } : {}), frames },
+    { ...(options ? { schemaVersion: 2, algorithm: options.algorithm ?? 'bytetrack', options: { ...options, algorithm: options.algorithm ?? 'bytetrack' } } : {}), ...(featureSpace ? { featureSpace } : {}), frames },
     (_key, value) => value instanceof Float32Array ? Array.from(value) : value,
   );
   if (new TextEncoder().encode(serialized).byteLength > MAX_BYTES) throw new Error('FILE_TOO_LARGE');
@@ -59,7 +81,7 @@ export function serializeSequence(frames: readonly TrackingFrame[], featureSpace
 }
 
 // 仅做线性结构校验；完整算法校验由 prepareSequence 在临时实例中完成。
-export function parseSequence(value: unknown): TrackingFrame[] {
+export function parseSequence(value: unknown): DemoFrame[] {
   const fail = (): never => { throw new Error('INVALID_SEQUENCE'); };
   if (!record(value) || !Array.isArray(value.frames) || value.frames.length < 1 || value.frames.length > 3000) return fail();
   let previous = -1;
@@ -83,7 +105,8 @@ export function parseSequence(value: unknown): TrackingFrame[] {
     });
     if (Object.hasOwn(frame, 'featureSpaceId') && typeof frame.featureSpaceId !== 'string') return fail();
     previous = frame.timestampMs; size = { width, height };
-    return { timestampMs: frame.timestampMs, imageSize: { width, height }, detections, ...(typeof frame.featureSpaceId === 'string' ? { featureSpaceId: frame.featureSpaceId } : {}) };
+    // 保留原始运动字段及未知字段，交给核心严格验证；不得通过挑选字段绕过契约。
+    return { ...structuredClone(frame), timestampMs: frame.timestampMs, imageSize: structuredClone(frame.imageSize) as TrackingFrame['imageSize'], detections } as DemoFrame;
   });
 }
 
@@ -112,25 +135,44 @@ function inferFeatureSpace(frames: readonly TrackingFrame[]): FeatureSpace {
 
 const yieldMainThread = () => new Promise<void>(resolve => setTimeout(resolve, 0));
 
-export async function prepareSequence(value: unknown, algorithm: TrackerAlgorithm, currentOptions: TrackerOptions): Promise<PreparedSequence> {
+export async function prepareSequence(value: unknown, algorithm: TrackerAlgorithm, currentOptions: AnyTrackerOptions): Promise<PreparedSequence> {
   if (!record(value)) throw new Error('INVALID_SEQUENCE');
+  if (Object.hasOwn(value, 'schemaVersion') && value.schemaVersion !== 1 && value.schemaVersion !== 2) throw new Error('INVALID_SEQUENCE');
+  const versioned = value.schemaVersion === 2;
+  if (versioned) {
+    if (value.schemaVersion !== 2 || !['bytetrack', 'ocsort', 'deepsort', 'botsort'].includes(value.algorithm as string) || !record(value.options) || value.options.algorithm !== value.algorithm) throw new Error('INVALID_SEQUENCE');
+    algorithm = value.algorithm as TrackerAlgorithm;
+    currentOptions = structuredClone(value.options) as unknown as AnyTrackerOptions;
+  }
   const frames = parseSequence(value);
   const declaredFeatureSpace = readFeatureSpace(value.featureSpace);
-  const featureSpace = algorithm === 'deepsort' ? declaredFeatureSpace ?? inferFeatureSpace(frames) : declaredFeatureSpace;
-  serializeSequence(frames, featureSpace);
-  const options: TrackerOptions = algorithm === 'deepsort'
-    ? { ...currentOptions, algorithm, featureSpace }
-    : { ...currentOptions, algorithm };
+  let options = structuredClone({ ...currentOptions, algorithm }) as AnyTrackerOptions;
+  const usesAppearance = algorithm === 'deepsort' || (options.algorithm === 'botsort' && !!options.appearance);
+  const configuredSpace = options.algorithm === 'botsort' ? options.appearance?.featureSpace : options.featureSpace;
+  const featureSpace = usesAppearance ? declaredFeatureSpace ?? (versioned ? readFeatureSpace(configuredSpace) : undefined) ?? inferFeatureSpace(frames) : declaredFeatureSpace;
+  if (usesAppearance) {
+    if (versioned && (!configuredSpace || configuredSpace.id !== featureSpace!.id || configuredSpace.dimension !== featureSpace!.dimension)) throw new Error('INVALID_SEQUENCE');
+    // 版本化选项必须原样交给工厂校验，不能用包装字段清洗非法配置。
+    if (!versioned) {
+      if (options.algorithm === 'botsort') options = { ...options, appearance: { ...options.appearance!, featureSpace: featureSpace! } };
+      else options = { ...options, featureSpace };
+    }
+  }
+  serializeSequence(frames, featureSpace, versioned ? options : undefined);
   const tracker = createTracker(options);
   try {
     for (let index = 0; index < frames.length; index++) {
-      tracker.update(frames[index]);
+      // 工厂联合类型要求交集；BoT-SORT 的实际必填字段始终由运行时校验。
+      tracker.update(frames[index] as BoTSortFrame);
       if ((index + 1) % 100 === 0 && index + 1 < frames.length) await yieldMainThread();
     }
+  } catch (error) {
+    if (error instanceof TrackingError && error.code === 'INVALID_INPUT') throw new Error('INVALID_SEQUENCE');
+    throw error;
   } finally {
     tracker.dispose();
   }
-  return { frames, ...(featureSpace ? { featureSpace: { ...featureSpace } } : {}), options: { ...options, ...(options.featureSpace ? { featureSpace: { ...options.featureSpace } } : {}) } };
+  return { frames, ...(featureSpace ? { featureSpace: { ...featureSpace } } : {}), options: structuredClone(options) };
 }
 
 const box = (x: number, y: number, score = 0.92, embedding: readonly number[] = [1, 0, 0, 0]): Detection => ({ box: { x, y, width: 64, height: 80 }, score, classId: 0, embedding: [...embedding] });
@@ -140,5 +182,24 @@ const sequence = (kind: string): TrackingFrame[] => Array.from({ length: 40 }, (
     ? [box(80 + Math.min(i, 28) * 8 - Math.max(0, i - 28) * 8, 100), box(480 - i * 8, 135, 0.92, [0, 1, 0, 0])]
     : [box(70 + i * 9, 140, kind === 'low' && i >= 6 && i <= 12 ? 0.25 : 0.92)],
 }));
-export const samples = { straight: sequence('straight'), low: sequence('low'), occlusion: sequence('occlusion'), crossing: sequence('crossing') };
+const translation: BoTSortFrame[] = Array.from({ length: 40 }, (_, i) => ({
+  frameId: i, timestampMs: i * 100, imageSize: { width: 640, height: 360 },
+  detections: [{ box: { x: 100 + i * 8, y: 140, width: 64, height: 80 }, score: 0.92, classId: 0 }],
+  motion: i === 0 ? { status: 'initial', from: null, to: { frameId: i, timestampMs: i * 100 } } : { status: 'estimated', from: { frameId: i - 1, timestampMs: (i - 1) * 100 }, to: { frameId: i, timestampMs: i * 100 }, matrix: [1, 0, 8, 0, 1, 0], source: 'original-synthetic-camera-translation', confidence: 1 },
+}));
+export const samples = { straight: sequence('straight'), low: sequence('low'), occlusion: sequence('occlusion'), crossing: sequence('crossing'), translation };
 export type Sample = keyof typeof samples;
+
+// 仅内置原创样例可生成运动/向量；外部导入绝不经过此适配。
+export function sampleInput(sample: Sample, algorithm: TrackerAlgorithm, options: AnyTrackerOptions) {
+  const appearance = algorithm === 'deepsort' || (options.algorithm === 'botsort' && !!options.appearance);
+  const frames: DemoFrame[] = structuredClone(samples[sample]).map((frame, index) => {
+    const result: DemoFrame = { timestampMs: frame.timestampMs, imageSize: frame.imageSize, detections: frame.detections.map((d, i) => ({ box: d.box, score: d.score, classId: d.classId, ...(appearance ? { embedding: d.embedding ?? (i % 2 ? [0, 1, 0, 0] : [1, 0, 0, 0]) } : {}) })), ...(appearance ? { featureSpaceId: SYNTHETIC_FEATURE_SPACE.id } : {}) };
+    if (algorithm === 'botsort') {
+      result.frameId = index;
+      result.motion = 'motion' in frame ? (frame as BoTSortFrame).motion : index === 0 ? { status: 'initial', from: null, to: { frameId: index, timestampMs: frame.timestampMs } } : { status: 'identity', from: { frameId: index - 1, timestampMs: samples[sample][index - 1].timestampMs }, to: { frameId: index, timestampMs: frame.timestampMs } };
+    }
+    return result;
+  });
+  return { ...(appearance ? { featureSpace: { ...SYNTHETIC_FEATURE_SPACE } } : {}), frames };
+}

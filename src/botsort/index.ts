@@ -42,7 +42,7 @@ export function createBoTSortTracker(input: BoTSortOptions = {}): BoTSortTracker
         // 后续构造只读取已校验的私有副本；成功后才推进候选帧身份。
         const validated=prepared!;
         const motion={...validated.motion,applied:validated.motion.status==='estimated'};
-        const output={...result,algorithm:'botsort' as const,frameId:validated.frame.frameId,motion,runtime:{...result.runtime,runtimeVersion:'web-sdk-pp-tracking@0.2.0-rc.0+botsort-core.1' as const}};
+        const output={...result,algorithm:'botsort' as const,frameId:validated.frame.frameId,motion,runtime:result.runtime};
         previous={frameId:validated.frame.frameId,timestampMs:validated.frame.timestampMs};
         output.timings.totalMs=performance.now()-start;
         return output;

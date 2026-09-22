@@ -2,6 +2,8 @@
 
 [English](../en/troubleshooting.md) · [首页](../../README.md)
 
+BoT-SORT 报错时先检查 frameId 与 motion.from/to 是否绑定前后成功帧、首帧是否 initial、矩阵是否在范围内。unavailable 默认报错，只有显式 motionFailure:'identity' 才接受降级；seek/尺寸变化/大间隔须 reset。未启用 appearance 不能传向量，启用则须逐帧匹配空间。外部JSON不自动补造motion，详见[完整契约](botsort-candidate.md)。
+
 | 错误/现象 | 处理 |
 | --- | --- |
 | INVALID_INPUT | 检查有限数值、xywh边界、分数/类别、数量、时间升序和尺寸一致；DeepSORT还要求每帧标识匹配且每个检测都有有限、非零范数、维度一致的向量；seek先reset |

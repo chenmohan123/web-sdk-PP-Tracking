@@ -260,7 +260,7 @@ try {
   await page.screenshot({ path: '.tmp/browser/vanilla.png', fullPage: true });
   checks.push('Vanilla构建包单步/复位/CPU实际结果');
   assert.deepEqual(errors, []);
-  const report = { testedAt: new Date().toISOString(), browser: browser.version(), platform: process.platform, runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.0', checks, pageErrors: errors, screenshots: ['desktop', 'english', 'deepsort', 'occlusion', 'mobile', 'vanilla'].map(s => resolve(`.tmp/browser/${s}.png`)) };
+  const report = { testedAt: new Date().toISOString(), browser: browser.version(), platform: process.platform, runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.1', checks, pageErrors: errors, screenshots: ['desktop', 'english', 'deepsort', 'occlusion', 'mobile', 'vanilla'].map(s => resolve(`.tmp/browser/${s}.png`)) };
   await writeFile('.tmp/browser/report.json', JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify(report, null, 2));
 } finally {

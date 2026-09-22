@@ -2,6 +2,8 @@
 
 [中文](../zh-CN/compatibility.md) · [Home](../../README.en.md)
 
+Local [0.2.0-rc.1](releases/0.2.0-rc.1.md) integrates four algorithms and motion import/export as of 2026-09-22. [Current validation](../../reports/2026-09-22-botsort-integration/README.en.md) separately records package, desktop-browser and fixed-sequence parity evidence. Historical checks below retain their original versions and dates and do not mean rc.1 is published.
+
 ## Current RC verification
 
 On2026-09-21, local0.2.0-rc.0 passed complete verify:176 unit tests, actual tarball ESM/CJS/types consumption for all three trackers and ReID, isolation without ORT, and12 Chromium153.0.8010.12 browser groups. The production image Demo additionally passed ModelScope/WASM and Hugging Face/WebGPU (ORT1.27.0, Windows11, Intel i5-10400F, RTX5060Ti driver32.0.16.1692), both with CPU/main association.1440px and390px Chinese/English screenshots were inspected without horizontal overflow or page errors. Generated images verify interfaces only, not person accuracy. Current local evidence is under`.tmp/tracking-02-rc/verify.txt`, `browser/report.json` and`reid-demo/report.json`; see [RC notes](releases/0.2.0-rc.0.md) for publication boundaries.

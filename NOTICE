@@ -16,7 +16,7 @@ arXiv:2110.06864，2021-10-13。https://arxiv.org/abs/2110.06864
 
 主要差异：像素 cx/cy/w/h 八维恒速状态、时间戳 dt、固定噪声、Joseph 更新、
 门限内最大基数最小代价分配、毫秒超时、实例私有 ID、事务性更新。
-无相机运动补偿；DeepSORT关联器消费调用者向量，可选ReID子入口从人体框提取向量。本项目不承诺向量真实性、上游逐值兼容或普遍真实序列 MOT 精度；固定训练集评测只覆盖对应报告明确列出的策略。
+BoT-SORT 风格关联器消费外部运动矩阵进行补偿；DeepSORT关联器消费调用者向量，可选ReID子入口从人体框提取向量。本项目不承诺向量真实性、上游逐值兼容或普遍真实序列 MOT 精度；固定训练集评测只覆盖对应报告明确列出的策略。
 论文引用不替代第三方代码许可；本项目 Apache 声明仅覆盖本项目独立代码。
 
 离线评测来源（不进入运行时）：MOT17 官方公开 FRCNN 训练检测与GT，无图像包。
@@ -60,3 +60,12 @@ b25522a0f4bde8c80603f3ba5e3472059972e3b5；Apache-2.0仓库整体授权作为转
 https://huggingface.co/chenmohan/web-sdk-pp-tracking
 https://modelscope.cn/models/chenmohan/web-sdk-pp-tracking
 固定FP32 ONNX SHA-256：24d347f47405bb1bd24fd582783507edbcb16571d2e845d0528b0ad7856336e4。
+
+BoT-SORT 思想来源：
+Nir Aharon, Roy Orfaig, Ben-Zion Bobrovsky,
+BoT-SORT: Robust Associations Multi-Pedestrian Tracking，arXiv:2206.14651，
+https://arxiv.org/abs/2206.14651。
+本项目独立实现外部运动矩阵补偿、邻近/外观门控与单向量 EMA；没有读取、复制或翻译
+上游跟踪实现。固定秒级噪声、轴对齐宽高包络、生命周期和关联细节与论文不同，
+不包含自动图像运动估计，不承诺官方逐值等价。源码与论文来源锁见
+reports/2026-09-21-botsort-feasibility/；原图、矩阵和外观向量不随 npm 包分发。

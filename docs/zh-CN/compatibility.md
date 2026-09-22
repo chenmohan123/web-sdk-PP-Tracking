@@ -2,6 +2,8 @@
 
 [English](../en/compatibility.md) · [首页](../../README.md)
 
+2026-09-22 本地 [0.2.0-rc.1](releases/0.2.0-rc.1.md) 已接入四算法与运动导入导出；[本轮验收](../../reports/2026-09-22-botsort-integration/README.md)单独记录公开包、桌面浏览器和固定序列对齐。下方历史勾选保留原版本与日期，不代表 rc.1 已发布。
+
 ## 当前RC验证
 
 2026-09-21本地0.2.0-rc.0完整verify通过：176单测、三算法与ReID实际tarball双格式/类型消费、无ORT隔离、12组Chromium153.0.8010.12浏览器检查。真实生产图像Demo另外通过ModelScope/WASM和Hugging Face/WebGPU（ORT1.27.0、Windows11、Intel i5-10400F、RTX5060Ti驱动32.0.16.1692），两者关联均CPU/main。1440px中英文与390px中英文截图已检查，页面无横向溢出、未捕获页面错误；人工生成图片仅用于接口验收，不是人体精度评测。当前本地证据位于`.tmp/tracking-02-rc/verify.txt`、`browser/report.json`和`reid-demo/report.json`；[RC说明](releases/0.2.0-rc.0.md)记录发布边界。

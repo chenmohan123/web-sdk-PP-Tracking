@@ -1,12 +1,12 @@
-# BoT-SORT 外部运动矩阵候选
+# BoT-SORT 外部运动矩阵接口
 
-[English](../en/botsort-candidate.md)。本地阶段：2026-09-22，CPU/main。此模块是同 SDK 的后续算法核心，尚未加入 npm 导出、根工厂算法选项或正式 Demo。
+[English](../en/botsort-candidate.md)。本地集成：2026-09-22，`0.2.0-rc.1`，CPU/main。根工厂现已接入 BoT-SORT；rc.1 为本地准备版本，远程包和 Demo 发布前仍为 rc.0。
 
-在本仓运行 `node scripts/build-botsort-candidate.mjs`，候选 ESM/CJS/声明写入 `.tmp/botsort-core/build/`，并实际验证两种运行时及 NodeNext 类型消费。可在仓库根目录保存下面示例为 `.mjs` 后运行：
+在本仓运行 `npm run build` 和 `npm pack`，按首页安装本地 rc.1 tarball，再通过公开根入口运行：
 
 ```js
-import { createBoTSortTracker } from './.tmp/botsort-core/build/index.js';
-const tracker = createBoTSortTracker({ minHits: 1 });
+import { createTracker } from 'web-sdk-pp-tracking';
+const tracker = createTracker({ algorithm: 'botsort', minHits: 1 });
 const imageSize = { width: 640, height: 480 };
 const detection = x => ({ box: { x, y: 100, width: 20, height: 80 }, score: 1, classId: 0 });
 tracker.update({
@@ -26,10 +26,10 @@ tracker.dispose();
 
 ## 输入与状态
 
-候选沿用原 ByteTrack 的通用参数及低分续接，工厂不接受 `algorithm`、OC-SORT 方向参数或 DeepSORT 图库参数。新增 `motionFailure?: 'error' | 'identity'`，默认 error；可选外观如下：
+BoT-SORT 沿用原 ByteTrack 的通用参数及低分续接，以 `algorithm: 'botsort'` 显式选择，不接受 OC-SORT 方向参数或 DeepSORT 图库参数。`motionFailure?: 'error' | 'identity'` 默认 error；可选外观如下：
 
 ```js
-const tracker = createBoTSortTracker({
+const tracker = createTracker({ algorithm: 'botsort',
   appearance: {
     featureSpace: { id: '调用者固定特征空间', dimension: 512 },
     proximityIouThreshold: 0.5, maxCosineDistance: 0.25, emaAlpha: 0.9,
@@ -59,6 +59,6 @@ estimated 的 matrix 为 `[a,b,tx,c,d,ty]`，表示上一处理帧到当前帧�
 
 高分检测仅在同类别、原IoU≥0.5且cosine距离≤0.25（默认）时融合，代价为 `min(1-IoU, cosine/2)`；包含 tentative 关联。不满足外观门限仍可通过几何关联。保留本项目秒级固定滤波噪声与生命周期，未实现论文全部机制；宽高映射、包含等号的门限、噪声与官方实现有差异，来源与许可沿用[研究报告](../../reports/2026-09-21-botsort-feasibility/README.md)，不复制第三方跟踪源码。
 
-结果 algorithm 为 botsort，runtimeVersion 为 `web-sdk-pp-tracking@0.2.0-rc.0+botsort-core.1`，实际cpu/main；frameId及motion回执保留状态与原因，只有estimated的applied为true。五阶段耗时兼容原含义：validationMs包含运动/特征校验，predictionMs包含矩阵应用，totalMs由候选外围独立测量。**不包含图像估计、检测、ReID提取、传输或渲染。**
+结果 algorithm 为 botsort，runtimeVersion 为 `web-sdk-pp-tracking@0.2.0-rc.1`，实际cpu/main；frameId及motion回执保留状态与原因，只有estimated的applied为true。五阶段耗时兼容原含义：validationMs包含运动/特征校验，predictionMs包含矩阵应用，totalMs由候选外围独立测量。**不包含图像估计、检测、ReID提取、传输或渲染。**
 
-[本轮验收](../../reports/2026-09-22-botsort-core/README.md)覆盖固定七段5316帧及桌面Chromium；09段仍退步。先完成核心候选不表示生产算法已上线；下一阶段才整合根工厂、四算法Demo、版本和发布验收。浏览器自动估计、手机、视频/摄像头与门户Workflow另行推进。
+[本轮验收](../../reports/2026-09-22-botsort-core/README.md)覆盖固定七段5316帧及桌面Chromium；09段仍退步。本地 rc.1 已接入根工厂和四算法 Demo 的运动导入导出；该集成的验证证据独立归档，核心报告保留原始身份。浏览器自动估计、手机、视频/摄像头与门户Workflow另行推进。

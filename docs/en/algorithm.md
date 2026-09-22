@@ -6,7 +6,7 @@ This implementation uses the high/low confidence association idea from the
 [ByteTrack paper](https://arxiv.org/abs/2110.06864). The Kalman filter, assignment
 solver and lifecycle were independently written from mathematical definitions;
 no old Kalman/SORT source was read or translated. This is not an official port.
-The root entry has no model runtime or camera-motion compensation. DeepSORT
+The root entry has no model runtime. BoT-SORT explicitly consumes external motion matrices; see the [motion API](botsort-candidate.md). DeepSORT
 only consumes caller-provided vectors; vector quality, identity through crossings or
 turns, and real-sequence MOT accuracy are not established.
 

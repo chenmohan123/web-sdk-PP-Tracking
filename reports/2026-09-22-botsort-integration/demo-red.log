@@ -1,0 +1,81 @@
+
+ RUN  v3.2.4 C:/Users/chenm/.codex/worktrees/tracking-algorithms/web-sdk-PP-Tracking
+
+ ❯ tests/botsort-demo.test.ts (5 tests | 5 failed) 22ms
+   × BoT-SORT Demo 运动序列 > 合成平移样例提供连续帧身份和运动回执 9ms
+     → Target cannot be null or undefined.
+   × BoT-SORT Demo 运动序列 > BoT-SORT 导入缺少运动信息时拒绝且不补造恒等运动 9ms
+     → expected [Function] to throw error including 'INVALID_SEQUENCE' but got '运动信息必须连接上一次成功处理帧；首次、跳转、尺寸变化或大间隔请reset'
+   × BoT-SORT Demo 运动序列 > 运动矩阵和生效选项跨当前算法深复制往返 1ms
+     → Cannot read properties of undefined (reading 'slice')
+   × BoT-SORT Demo 运动序列 > 拒绝非法末帧矩阵、额外字段与未知导出版本 1ms
+     → Cannot read properties of undefined (reading 'at')
+   × BoT-SORT Demo 运动序列 > 运动连接非法时准备失败且已有回放结果不改变 1ms
+     → Cannot read properties of undefined (reading 'length')
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/botsort-demo.test.ts > BoT-SORT Demo 运动序列 > 合成平移样例提供连续帧身份和运动回执
+AssertionError: Target cannot be null or undefined.
+ ❯ tests/botsort-demo.test.ts:8:20
+      6|   it('合成平移样例提供连续帧身份和运动回执', async () => {
+      7|     const frames = samples.translation;
+      8|     expect(frames).toHaveLength(40);
+       |                    ^
+      9|     expect(frames[0]).toMatchObject({ frameId: 0, motion: { status: 'i…
+     10|     expect(frames[1]).toMatchObject({ frameId: 1, motion: { status: 'e…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/botsort-demo.test.ts > BoT-SORT Demo 运动序列 > BoT-SORT 导入缺少运动信息时拒绝且不补造恒等运动
+AssertionError: expected [Function] to throw error including 'INVALID_SEQUENCE' but got '运动信息必须连接上一次成功处理帧；首次、跳转、尺寸变化或大间隔请reset'
+
+Expected: "INVALID_SEQUENCE"
+Received: "运动信息必须连接上一次成功处理帧；首次、跳转、尺寸变化或大间隔请reset"
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/botsort-demo.test.ts > BoT-SORT Demo 运动序列 > 运动矩阵和生效选项跨当前算法深复制往返
+TypeError: Cannot read properties of undefined (reading 'slice')
+ ❯ tests/botsort-demo.test.ts:26:40
+     24| 
+     25|   it('运动矩阵和生效选项跨当前算法深复制往返', async () => {
+     26|     const frames = samples.translation.slice(0, 2);
+       |                                        ^
+     27|     const options = { ...DEMO_DEFAULT_OPTIONS.botsort, minHits: 1 };
+     28|     const serialized = serializeSequence(frames, undefined, options);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/botsort-demo.test.ts > BoT-SORT Demo 运动序列 > 拒绝非法末帧矩阵、额外字段与未知导出版本
+TypeError: Cannot read properties of undefined (reading 'at')
+ ❯ tests/botsort-demo.test.ts:45:30
+     43|     const value = JSON.parse(serializeSequence(samples.translation, un…
+     44|     for (const mutate of [
+     45|       (v: any) => { v.frames.at(-1).motion.matrix = [1, 0, 0, 0, -1, 0…
+       |                              ^
+     46|       (v: any) => { v.frames.at(-1).motion.typo = true; },
+     47|       (v: any) => { v.frames.at(-1).typo = true; },
+ ❯ tests/botsort-demo.test.ts:52:43
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/botsort-demo.test.ts > BoT-SORT Demo 运动序列 > 运动连接非法时准备失败且已有回放结果不改变
+TypeError: Cannot read properties of undefined (reading 'length')
+ ❯ Playback.step demo/src/playback.ts:21:39
+     19|   }
+     20|   step() {
+     21|     if (this.index + 1 >= this.frames.length) return;
+       |                                       ^
+     22|     const result = this.tracker.update(this.frames[this.index + 1]);
+     23|     this.startedAt ??= new Date().toISOString();
+ ❯ tests/botsort-demo.test.ts:59:14
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed (5)
+   Start at  15:50:53
+   Duration  724ms (transform 78ms, setup 0ms, collect 145ms, tests 22ms, environment 0ms, prepare 200ms)
+

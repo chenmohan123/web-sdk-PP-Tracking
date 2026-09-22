@@ -1,5 +1,17 @@
 # 变更记录 / Changelog
 
+## 0.2.0-rc.1 — 2026-09-22（本地准备，未发布）
+
+- 根工厂新增 `algorithm:'botsort'` 与严格的运动帧类型，支持外部矩阵补偿和可选外观 EMA；保持 ByteTrack 默认及既有三算法语义。
+- 框/外部向量 Demo 增加第四算法、合成平移和版本化运动数据导入导出，参数/导入完整校验后才替换状态；不加入自动图像估计或视频调度。
+- BoT-SORT 为论文思想的独立实现；固定噪声、宽高包络等差异与09序列退步均保留。权重、来源及原ReID图像流程不变。
+
+English equivalent:
+
+- Added public `algorithm:'botsort'` with strict motion-frame types, external-matrix compensation and optional appearance EMA; ByteTrack remains default and existing strategies retain their semantics.
+- Added a fourth algorithm, synthetic translation and versioned motion import/export to boxes/vector Demo. Full validation precedes state replacement; automatic image estimation and video scheduling are not included.
+- The implementation follows paper concepts independently and documents fixed-noise/envelope differences and sequence09 regression. Weights, sources and the existing ReID image workflow remain unchanged. This version is local and unpublished.
+
 ## 0.2.0-rc.0 — 2026-09-21（仅本地发布候选）
 
 - 从0.1升级后默认仍为ByteTrack CPU/main；新增显式OC-SORT、DeepSORT外部向量策略与可选同包 `./reid` 人体实验模块。根入口无需ORT；启用模型时安装可选peer `onnxruntime-web@1.27.0`。

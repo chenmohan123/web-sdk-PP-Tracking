@@ -222,7 +222,7 @@ export function createTrackingCore(input: TrackerOptions = {}, strategy?: Tracki
       const updateEnd = now();
       const result: TrackingResult = {
         generation, algorithm: options.algorithm, timestampMs: time, tracks, removed, droppedDetections,
-        runtime: { requestedBackend: 'cpu', actualBackend: 'cpu', executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.0' },
+        runtime: { requestedBackend: 'cpu', actualBackend: 'cpu', executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.1' },
         timings: { validationMs: validationEnd - start, predictionMs: predictionEnd - validationEnd, associationMs: associationEnd - predictionEnd, updateMs: updateEnd - associationEnd, totalMs: now() - start },
       };
       entries = working; nextId = localNextId; timestamp = time; size = frame.imageSize;

@@ -4,11 +4,12 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import { hashFile } from '../mot17-reid/io.mjs';
-const name='MOT17-05-FRCNN',work='.tmp/botsort-core';
+const publicEntry=process.argv.includes('--public');
+const name='MOT17-05-FRCNN',work=publicEntry?'.tmp/botsort-integration':'.tmp/botsort-core';
 const summary=JSON.parse(await readFile(work+'/run/summary.json','utf8'));
 assert.equal(summary.complete,true);
 const routes=new Map([
-  ['/candidate.js',work+'/build/index.js'],['/adapter.js','scripts/evaluation/botsort-core/adapter.mjs'],
+  ['/candidate.js',publicEntry?'dist/index.js':work+'/build/index.js'],['/adapter.js','scripts/evaluation/botsort-core/adapter.mjs'],
   ['/mot.js','scripts/evaluation/mot17/adapter.mjs'],['/summary.json',work+'/run/summary.json'],
   ['/motion.jsonl',`.tmp/botsort-feasibility/motion/${name}.jsonl`],
   ['/features.jsonl',`.tmp/mot17-reid-official-05-0194ea5/features/${name}.jsonl`],
@@ -29,8 +30,9 @@ try {
   browser=await chromium.launch({headless:true});
   const page=await browser.newPage();page.on('pageerror',error=>errors.push(error.message));
   await page.goto(`http://127.0.0.1:${server.address().port}/`);
-  const data=await page.evaluate(async()=>{
-    const [{createBoTSortTracker},{candidateFrame},{exportMot,withoutTiming}]=await Promise.all([import('/candidate.js'),import('/adapter.js'),import('/mot.js')]);
+  const data=await page.evaluate(async(publicEntry)=>{
+    const [api,{candidateFrame},{exportMot,withoutTiming}]=await Promise.all([import('/candidate.js'),import('/adapter.js'),import('/mot.js')]);
+    const createBoTSortTracker=publicEntry?(options={})=>api.createTracker({algorithm:'botsort',...options}):api.createBoTSortTracker;
     const summary=await(await fetch('/summary.json')).json();
     const records=(await(await fetch('/features.jsonl')).text()).trim().split('\n').map(JSON.parse);
     const motion=(await(await fetch('/motion.jsonl')).text()).trim().split('\n').map(JSON.parse);
@@ -55,10 +57,10 @@ try {
     tracker.update(second);tracker.reset();if(tracker.update(first).generation!==1)throw Error('reset失败');
     tracker.dispose();tracker.dispose();check(()=>tracker.update(second),'DISPOSED');check(()=>tracker.reset(),'DISPOSED');
     return {frames:records.length,rows,checks:['三配置完整837帧','首帧拒绝','from身份拒绝','取消重试','reset代次','dispose幂等']};
-  });
+  },publicEntry);
   assert.equal(data.frames,837);assert.deepEqual(errors,[]);
   for(const [key,row] of Object.entries(data.rows))for(const field of ['motSha256','nonTimingSha256'])assert.equal(row[field],summary.sequences[name].results[key][0][field]);
-  const report={testedAt:new Date().toISOString(),browser:browser.version(),sequence:name,...data,errors,scope:'冻结运动矩阵与向量，CPU候选关联；不含图像估计/ReID推理'};
+  const report={testedAt:new Date().toISOString(),browser:browser.version(),sequence:name,publicEntry,bundleSha256:summary.hashes.candidate,...data,errors,scope:'冻结运动矩阵与向量，CPU关联；不含图像估计/ReID推理'};
   await writeFile(work+'/browser-verified.json',JSON.stringify(report,null,2),{flag:'wx'});
   console.log(JSON.stringify(report,null,2));
 } finally {await browser?.close();await new Promise(resolve=>server.close(resolve));}

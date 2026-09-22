@@ -4,6 +4,8 @@
 
 All values are milliseconds measured with performance.now(), not placeholders.
 
+BoT-SORT validationMs includes motion/appearance validation, predictionMs includes matrix compensation, and totalMs includes result wrapping. External motion estimation, detection, ReID extraction and rendering are excluded. Frozen-matrix/vector playback cannot establish end-to-end video frame rate. Sequence09 still regresses, so ByteTrack stays default; see the [motion API](botsort-candidate.md).
+
 | Field | Boundary |
 | --- | --- |
 | validationMs | update entry through input/cancellation validation |

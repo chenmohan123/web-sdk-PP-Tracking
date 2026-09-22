@@ -1,8 +1,8 @@
-# API 0.2.0-rc.0 (release candidate)
+# API 0.2.0-rc.1 (release candidate)
 
 [中文](../zh-CN/api.md) · [Home](../../README.en.md)
 
-`createTracker(options?: TrackerOptions): Tracker` returns synchronous `update(frame, {signal}?)`, `reset()` and `dispose()`. ESM/CJS export createTracker and TrackingError; declarations also export `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort'` and `FeatureSpace`. This page covers 0.2.0-rc.0 on the next prerelease channel.
+`createTracker(options?: TrackerOptions): Tracker` returns synchronous `update(frame, {signal}?)`, `reset()` and `dispose()`. ESM/CJS export createTracker and TrackingError; declarations also export `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort' | 'botsort'` and `FeatureSpace`. This page covers local rc.1; published next remains rc.0. The new overload `createTracker(options: BoTSortTrackerOptions): BoTSortTracker` requires BoTSortFrame. `AnyTrackerOptions` joins both option types while original TrackerOptions retains three algorithms. See the [motion API](botsort-candidate.md).
 
 ## Input
 
@@ -16,7 +16,7 @@ Invalid input, cancellation or numerical failures do not advance clock, tracks o
 
 | Option | Default | Constraint |
 | --- | --- | --- |
-| algorithm | bytetrack | `'bytetrack'`, `'ocsort'` or `'deepsort'`; fixed when an instance is created |
+| algorithm | bytetrack | `'bytetrack'`, `'ocsort'`, `'deepsort'` or `'botsort'`; fixed when an instance is created |
 | lowScoreThreshold | 0.1 | [0,1] |
 | highScoreThreshold | 0.5 | ByteTrack: [low,1]; OC-SORT: [0,1]; both must be <= new |
 | newTrackThreshold | 0.6 | [high,1] |
@@ -28,7 +28,7 @@ Invalid input, cancellation or numerical failures do not advance clock, tracks o
 | maxDetections | 100 | Integer1–500 |
 | maxTracks | 200 | Integer1–500 |
 
-`algorithm: 'bytetrack'` uses low-score second-stage association; only that strategy accepts `lowScoreThreshold` and `lowMatchIouThreshold`. `algorithm: 'ocsort'` uses high-score association only, keeps high-score/new-track/IoU/lifecycle/capacity options, and additionally accepts:
+`algorithm: 'bytetrack'` uses low-score second-stage association; among the original three algorithms, only that strategy accepts `lowScoreThreshold` and `lowMatchIouThreshold`. BoT-SORT also accepts these fields. `algorithm: 'ocsort'` uses high-score association only, keeps high-score/new-track/IoU/lifecycle/capacity options, and additionally accepts:
 
 | OC-SORT option | Default | Constraint |
 | --- | --- | --- |
@@ -47,7 +47,7 @@ Invalid input, cancellation or numerical failures do not advance clock, tracks o
 
 Gallery capacity must satisfy `maxTracks * gallerySize * dimension <= 4_000_000`. DeepSORT rejects ByteTrack low-score fields and OC-SORT-specific fields. Only matches and births update galleries; reset, dispose and removal release their vectors.
 
-Unknown options are rejected; explicit undefined is not omission; explicit strategy-exclusive options also return `INVALID_OPTIONS`. Only ByteTrack tracked candidates may continue through low scores, while lost tracks require high scores. DeepSORT lost tracks also cannot bypass appearance matching through IoU fallback. Unconfirmed tracks are removed on the first miss. Full capacity skips new tracks without evicting existing tracks.
+Unknown options are rejected; explicit undefined is not omission; explicit strategy-exclusive options also return `INVALID_OPTIONS`. ByteTrack/BoT-SORT tracked candidates may continue through low scores, while lost tracks require high scores. DeepSORT lost tracks also cannot bypass appearance matching through IoU fallback. Unconfirmed tracks are removed on the first miss. Full capacity skips new tracks without evicting existing tracks.
 
 ## Output
 
@@ -56,9 +56,11 @@ Track fields: `id,classId,box,state,observed,score,ageMs,hits,missedMs`.
 States: tentative/tracked/lost. The removed array contains only this update's removal events, with state removed.
 Predictions have observed=false and score=null. Output boxes may extend outside the image and are not clipped. Hits count accumulated actual observations, starting at1.
 droppedDetections counts only new tracks skipped at capacity, not score filtering.
-Runtime reports actual cpu/main and `web-sdk-pp-tracking@0.2.0-rc.0`. See [performance](performance.md) for five timing fields.
+Runtime reports actual cpu/main and `web-sdk-pp-tracking@0.2.0-rc.1`. See [performance](performance.md) for five timing fields.
 
-The Demo's compact input-sequence export contains only normalized `frames` and an optional top-level `featureSpace`. It is limited to 5MiB by UTF-8 byte size and can be re-imported. The separate result report also contains actual options and processed results; it can exceed 5MiB and is not guaranteed to be re-importable.
+The Demo's compact input-sequence export preserves normalized `frames` and optional top-level `featureSpace`; its versioned wrapper also keeps the algorithm and applied options. BoT-SORT preserves complete frameId/motion metadata. It is limited to 5MiB by UTF-8 byte size and can be re-imported. The separate result report also contains actual options and processed results; it can exceed 5MiB and is not guaranteed to be re-importable.
+
+New exports use `schemaVersion: 2`; imports restore the file's `algorithm` and `options`, excluding unapplied drafts. Unversioned and legacy `schemaVersion: 1` files use the current algorithm and options. Unknown versions are rejected and missing motion is never synthesized. Applying parameters validates the entire sequence, changes only form-owned fields and preserves other imported thresholds and capacities; failures preserve the session. Version 2 may declare appearance space only in options, including all-empty detection sequences.
 
 ## Lifecycle
 

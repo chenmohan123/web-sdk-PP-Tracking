@@ -7,9 +7,9 @@ export interface TrackingFrame {
   featureSpaceId?: string;
   detections: Detection[];
 }
-export type TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort';
+export type TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort' | 'botsort';
 export interface TrackerOptions {
-  algorithm?: TrackerAlgorithm;
+  algorithm?: Exclude<TrackerAlgorithm, 'botsort'>;
   featureSpace?: FeatureSpace;
   maxCosineDistance?: number;
   gallerySize?: number;
@@ -28,6 +28,8 @@ export interface TrackerOptions {
   ocmHistoryLength?: number;
   oruMaxReplaySteps?: number;
 }
+export type BoTSortTrackerOptions = import('./botsort/types.js').BoTSortTrackerOptions;
+export type AnyTrackerOptions = TrackerOptions | BoTSortTrackerOptions;
 export type TrackState = 'tentative' | 'tracked' | 'lost';
 export interface Track {
   id: number; classId: number; box: Box; state: TrackState;
@@ -36,7 +38,7 @@ export interface Track {
 export interface RemovedTrack extends Omit<Track, 'state'> { state: 'removed' }
 export interface RuntimeInfo {
   requestedBackend: 'cpu'; actualBackend: 'cpu'; executionMode: 'main';
-  runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.0';
+  runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.1';
 }
 export interface TrackingTimings {
   validationMs: number; predictionMs: number; associationMs: number; updateMs: number; totalMs: number;
@@ -47,7 +49,7 @@ export interface TrackingResult {
 }
 export interface UpdateOptions { signal?: AbortSignal }
 export interface Tracker {
-  update(frame: TrackingFrame, options?: UpdateOptions): TrackingResult;
+  update: (frame: TrackingFrame, options?: UpdateOptions) => TrackingResult;
   reset(): void;
   dispose(): void;
 }

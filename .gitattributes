@@ -8,3 +8,5 @@ reports/2026-09-21-02-rc/logs/*.txt -text -whitespace
 reports/2026-09-21-botsort-feasibility/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol
 reports/2026-09-22-botsort-core/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol
 reports/2026-09-22-botsort-core/logs/** -text -whitespace
+reports/2026-09-22-botsort-integration/** -text whitespace=blank-at-eol,space-before-tab,cr-at-eol
+reports/2026-09-22-botsort-integration/*.log -text -whitespace

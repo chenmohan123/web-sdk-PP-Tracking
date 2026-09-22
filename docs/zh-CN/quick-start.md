@@ -2,14 +2,14 @@
 
 [English](../en/quick-start.md) · [首页](../../README.md)
 
-本地 rc.1 新增 `createTracker({algorithm:'botsort'})`；按首页构建安装 rc.1 tarball，再使用[运动接口示例](botsort-candidate.md)。下方 npm rc.0 是已发布版本，不含 BoT-SORT。
+已发布 rc.1 新增 `createTracker({algorithm:'botsort'})`；预发布通道 `next` 包含四种算法，再使用[运动接口示例](botsort-candidate.md)。稳定 `latest` 仍为 0.1.0。
 
 RC 提供[可选ReID子入口](reid-candidate.md)，从人体图像与检测框提取外观向量供 DeepSORT 消费。该入口需要可选 ORT 依赖，根算法入口不需要。
 
 安装指定 RC（预发布通道为 `next`，稳定 `latest` 保留 `0.1.0`）：
 
 ```sh
-npm install web-sdk-pp-tracking@0.2.0-rc.0
+npm install web-sdk-pp-tracking@next
 ```
 
 本地开发依赖和 tarball 消费流程见首页。Node >=22.12.0 用于构建；浏览器只执行生成的 JavaScript。

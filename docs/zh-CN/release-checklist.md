@@ -4,7 +4,7 @@
 
 2026-09-22 本地 [0.2.0-rc.1](releases/0.2.0-rc.1.md) 已接入四算法与运动导入导出；[本轮验收](../../reports/2026-09-22-botsort-integration/README.md)单独记录公开包、桌面浏览器和固定序列对齐。下方历史勾选保留原版本与日期，不代表 rc.1 已发布。
 
-基于门户 `standards/v1/templates/release-checklist.md`。2026-09-21 已发布 0.2.0-rc.0：npm next、GitHub 预发布与 HTTPS Demo 均已回读，稳定 latest 保留 0.1.0，见[本轮发布回执](../../reports/2026-09-21-02-release/README.md)。
+基于门户 `standards/v1/templates/release-checklist.md`。2026-09-22 已发布 0.2.0-rc.1：npm next、GitHub 预发布与 HTTPS Demo 均已回读，稳定 latest 保留 0.1.0，见[本轮发布回执](../../reports/2026-09-22-botsort-integration/release-receipt.md)。
 
 ## 当前混合SDK候选
 

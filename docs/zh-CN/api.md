@@ -2,7 +2,7 @@
 
 [English](../en/api.md) · [首页](../../README.md)
 
-`createTracker(options?: TrackerOptions): Tracker` 返回同步 `update(frame, {signal}?)`、`reset()`、`dispose()`。ESM/CJS 均导出 createTracker、TrackingError；声明还导出 `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort' | 'botsort'` 与 `FeatureSpace`。本页适用于本地 rc.1；已发布 next 仍为 rc.0。新增重载 `createTracker(options: BoTSortTrackerOptions): BoTSortTracker`，`AnyTrackerOptions` 为两类选项的联合；原 `TrackerOptions` 保留三算法。BoT-SORT 类型要求 `BoTSortFrame`，完整契约见[运动接口](botsort-candidate.md)。传入动态联合选项时返回两类Tracker的联合，调用者须根据所选算法保留对应帧类型。
+`createTracker(options?: TrackerOptions): Tracker` 返回同步 `update(frame, {signal}?)`、`reset()`、`dispose()`。ESM/CJS 均导出 createTracker、TrackingError；声明还导出 `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort' | 'botsort'` 与 `FeatureSpace`。本页适用于已发布的 rc.1；npm `next` 与线上 Demo 均为 rc.1。新增重载 `createTracker(options: BoTSortTrackerOptions): BoTSortTracker`，`AnyTrackerOptions` 为两类选项的联合；原 `TrackerOptions` 保留三算法。BoT-SORT 类型要求 `BoTSortFrame`，完整契约见[运动接口](botsort-candidate.md)。传入动态联合选项时返回两类Tracker的联合，调用者须根据所选算法保留对应帧类型。
 
 ## 输入
 

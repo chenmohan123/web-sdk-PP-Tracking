@@ -2,9 +2,9 @@
 
 [English](../en/compatibility.md) · [首页](../../README.md)
 
-2026-09-23 本地 `0.2.0-rc.2` 增加独立[运动估计实验](motion-estimation.md)：只验证 Windows 11、Chromium 153、CPU/main；不声明手机、Worker、GPU/NPU、Safari、Firefox、视频或摄像头兼容，也不自动接入 BoT-SORT。
+2026-09-23 发布的 `0.2.0-rc.2` 增加独立[运动估计实验](motion-estimation.md)：只验证 Windows 11、Chromium 153、CPU/main；不声明手机、Worker、GPU/NPU、Safari、Firefox、视频或摄像头兼容，也不自动接入 BoT-SORT。
 
-2026-09-22 本地 [0.2.0-rc.1](releases/0.2.0-rc.1.md) 已接入四算法与运动导入导出；[本轮验收](../../reports/2026-09-22-botsort-integration/README.md)单独记录公开包、桌面浏览器和固定序列对齐。下方历史勾选保留原版本与日期，不代表 rc.1 已发布。
+2026-09-22 的 [0.2.0-rc.1](releases/0.2.0-rc.1.md) 集成了四算法与运动导入导出；[本轮验收](../../reports/2026-09-22-botsort-integration/README.md)单独记录公开包、桌面浏览器和固定序列对齐。该段为历史版本记录，当前预发布状态见 rc.2 回执。
 
 ## 当前RC验证
 

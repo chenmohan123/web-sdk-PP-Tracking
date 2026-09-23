@@ -4,7 +4,7 @@
 
 2026-09-22 本地 [0.2.0-rc.1](releases/0.2.0-rc.1.md) 已接入四算法与运动导入导出；[本轮验收](../../reports/2026-09-22-botsort-integration/README.md)单独记录公开包、桌面浏览器和固定序列对齐。下方历史勾选保留原版本与日期，不代表 rc.1 已发布。
 
-2026-09-23 本地 [0.2.0-rc.2](releases/0.2.0-rc.2.md) 增加独立 `/motion.html` 实验页；其三算法合成证据与主 Demo 分开，不改变线上 rc.1。
+2026-09-23 发布的 [0.2.0-rc.2](releases/0.2.0-rc.2.md) 增加独立 `/motion.html` 实验页；其三算法合成证据与主 Demo 分开，不改变稳定 `latest` 0.1.0。
 
 基于门户 `standards/v1/templates/demo-checklist.md`（1.2.0算法适用项）。以 `npm run test:browser` 的运行报告核对，不能用DOM标记代替交互证据。
 

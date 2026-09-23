@@ -2,9 +2,9 @@
 
 [中文](../zh-CN/compatibility.md) · [Home](../../README.en.md)
 
-Local `0.2.0-rc.2` adds an independent [motion estimation lab](motion-estimation.md) as of 2026-09-23. Evidence covers Windows 11, Chromium 153, and CPU/main only. It does not claim phone, worker, GPU/NPU, Safari, Firefox, video, or camera support and is not automatically connected to BoT-SORT.
+Released `0.2.0-rc.2` adds an independent [motion estimation lab](motion-estimation.md) as of 2026-09-23. Evidence covers Windows 11, Chromium 153, and CPU/main only. It does not claim phone, worker, GPU/NPU, Safari, Firefox, video, or camera support and is not automatically connected to BoT-SORT.
 
-Local [0.2.0-rc.1](releases/0.2.0-rc.1.md) integrates four algorithms and motion import/export as of 2026-09-22. [Current validation](../../reports/2026-09-22-botsort-integration/README.en.md) separately records package, desktop-browser and fixed-sequence parity evidence. Historical checks below retain their original versions and dates and do not mean rc.1 is published.
+The 2026-09-22 [0.2.0-rc.1](releases/0.2.0-rc.1.md) integration added four algorithms and motion import/export. [Its validation](../../reports/2026-09-22-botsort-integration/README.en.md) separately records package, desktop-browser and fixed-sequence parity evidence. This is a historical version record; the current prerelease is covered by the rc.2 receipt.
 
 ## Current RC verification
 

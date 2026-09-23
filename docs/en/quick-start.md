@@ -2,7 +2,7 @@
 
 [中文](../zh-CN/quick-start.md) · [Home](../../README.en.md)
 
-Published rc.1 adds `createTracker({algorithm:'botsort'})`. The prerelease `next` channel includes all four algorithms; use the [motion example](botsort-candidate.md). Stable `latest` remains 0.1.0.
+The rc.2 preview adds the independent `motion` subpath. `createTracker({algorithm:'botsort'})` and all four algorithms remain in the prerelease `next` channel; use the [motion example](botsort-candidate.md). Stable `latest` remains 0.1.0.
 
 The RC provides an [optional ReID subpath](reid-candidate.md) that extracts human appearance vectors from images and boxes for DeepSORT. This entry needs optional ORT; root algorithm consumers do not.
 

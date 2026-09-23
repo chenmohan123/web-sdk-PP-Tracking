@@ -2,19 +2,21 @@
 
 [English](README.en.md)
 
-本地准备版本 **0.2.0-rc.2**，在 [BoT-SORT](docs/zh-CN/botsort-candidate.md) 四算法 Demo 基础上新增独立[浏览器运动估计实验](docs/zh-CN/motion-estimation.md)。线上 `next`/Demo 仍为已发布 rc.1，稳定 `latest` 为0.1.0；rc.2 仅为本地实验候选，不代表已上线。
+已发布预览版本 **0.2.0-rc.2**，在 [BoT-SORT](docs/zh-CN/botsort-candidate.md) 四算法 Demo 基础上新增独立[浏览器运动估计实验](docs/zh-CN/motion-estimation.md)。npm `next` 和线上 Demo 已对应 rc.2，稳定 `latest` 仍为 0.1.0；运动估计仍是实验能力。
 
-本地发布候选版本 **0.2.0-rc.2**。框架无关的多目标跟踪 SDK，独立实现 ByteTrack、OC-SORT、DeepSORT 与 BoT-SORT 风格跟踪；根入口运行于 CPU 主线程，可选 ReID 子入口从人体图像提取外观特征，选择 CPU/WASM 或 GPU/WebGPU；独立 `motion` 子入口在 CPU 主线程比较相邻帧运动估计算法。无 React 运行依赖。ReID 与运动估计仍为实验能力。
+预览版本 **0.2.0-rc.2**。框架无关的多目标跟踪 SDK，独立实现 ByteTrack、OC-SORT、DeepSORT 与 BoT-SORT 风格跟踪；根入口运行于 CPU 主线程，可选 ReID 子入口从人体图像提取外观特征，选择 CPU/WASM 或 GPU/WebGPU；独立 `motion` 子入口在 CPU 主线程比较相邻帧运动估计算法。无 React 运行依赖。ReID 与运动估计仍为实验能力。
 
 RC 提供 [ReID 子入口](docs/zh-CN/reid-candidate.md) `web-sdk-pp-tracking/reid`，默认 ModelScope、Hugging Face 可选。固定 FP32 模型已分发到双源；权重不随 npm 包提供，只有显式加载模型时才下载。仅使用根跟踪入口不需要安装推理引擎。
 
 ## 安装与运行
 
-2026-09-21使用0.2.0-alpha.0已完成[三算法真实画面评测](reports/2026-09-21-mot-reid/README.md)：七段5316帧、67639检测，DeepSORT+PPLCNet IDF1为45.4637%，低于默认ByteTrack的48.2922%；完整指标与图片获取/解码/ReID/关联成本已归档。rc.1 继续 ByteTrack 默认，另显式提供 OC-SORT/DeepSORT/BoT-SORT，ReID 作为人体场景实验能力；不承诺手机、跨设备或视频端到端性能。
+2026-09-21使用0.2.0-alpha.0已完成[三算法真实画面评测](reports/2026-09-21-mot-reid/README.md)：七段5316帧、67639检测，DeepSORT+PPLCNet IDF1为45.4637%，低于默认ByteTrack的48.2922%；完整指标与图片获取/解码/ReID/关联成本已归档。rc.2 继续 ByteTrack 默认，另显式提供 OC-SORT/DeepSORT/BoT-SORT，ReID 作为人体场景实验能力；不承诺手机、跨设备或视频端到端性能。
 
 ```sh
-# 已发布版本；rc.2 使用下方本地 tarball
-npm install web-sdk-pp-tracking@0.2.0-rc.1
+# 稳定版本
+npm install web-sdk-pp-tracking@latest
+# 预览版本
+npm install web-sdk-pp-tracking@next
 # 仅使用可选 ReID 时安装：
 npm install onnxruntime-web@1.27.0
 ```

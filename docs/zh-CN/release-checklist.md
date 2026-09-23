@@ -4,13 +4,13 @@
 
 2026-09-23 `0.2.0-rc.2` 已完成完整 verify、Motion 实验验证和包完整性核对，并通过不可变标签、GitHub Release、npm Trusted Publishing 与独立 Demo 部署；详见[预发布回执](../../reports/2026-09-23-release-rc2/README.md)。npm `next` 指向 rc.2，稳定 `latest` 仍为 0.1.0。
 
-2026-09-22 本地 [0.2.0-rc.1](releases/0.2.0-rc.1.md) 已接入四算法与运动导入导出；[本轮验收](../../reports/2026-09-22-botsort-integration/README.md)单独记录公开包、桌面浏览器和固定序列对齐。下方历史勾选保留原版本与日期，不代表 rc.1 已发布。
+2026-09-22 的 [0.2.0-rc.1](releases/0.2.0-rc.1.md) 集成了四算法与运动导入导出；[本轮验收](../../reports/2026-09-22-botsort-integration/README.md)单独记录公开包、桌面浏览器和固定序列对齐。rc.1 的历史记录与 rc.2 发布回执分开保留。
 
 基于门户 `standards/v1/templates/release-checklist.md`。2026-09-22 的 rc.1 历史记录和本轮 rc.2 预发布回执分别保留，不覆盖既有真实序列证据。
 
 ## 当前混合SDK候选
 
-模型与真实序列的历史证据仍属于 alpha 阶段；RC 的最终 tarball、线上浏览器、标准检查与远程交付独立归档于[发布回执](../../reports/2026-09-21-02-release/README.md)，不改写历史包身份。当前功能与限制见[RC说明](releases/0.2.0-rc.0.md)。
+模型与真实序列的历史证据仍属于 alpha 阶段；RC 的最终 tarball、线上浏览器、标准检查与远程交付独立归档于[rc.2 发布回执](../../reports/2026-09-23-release-rc2/README.md)，不改写历史包身份。当前功能与限制见[rc.2 说明](releases/0.2.0-rc.2.md)。
 
 - [x] 默认根入口提供三种CPU/main跟踪算法；可选 `./reid` 独立导出ESM/CJS/types，ORT1.27.0为optional peer，根调用者无需引擎。
 - [x] 固定FP32模型已分发到ModelScope/Hugging Face，默认ModelScope；固定revision、bytes、SHA及匿名回读证据见[阶段报告](../../reports/2026-09-21-reid-distribution/README.md)。
@@ -22,7 +22,7 @@
 
 - [x] [三算法真实画面评测](../../reports/2026-09-21-mot-reid/README.md)已完成5316帧/67639检测、官方七段合计、逐段指标、浏览器/两次Node一致、零容量丢弃与完整成本归档。
 
-当前 0.2.0-rc.0 已完成预发布：ByteTrack 保持默认，OC-SORT/DeepSORT 显式可选，ReID 为人体场景实验能力。视频/摄像头调度与跨设备兼容仍待独立设计验证。
+当前 0.2.0-rc.2 已完成预发布：ByteTrack 保持默认，OC-SORT/DeepSORT/BoT-SORT 显式可选，ReID 与运动估计为实验能力。视频/摄像头调度与跨设备兼容仍待独立设计验证。
 
 ## 历史交付与基础检查
 
@@ -46,6 +46,6 @@
 
 当前[可选ReID模块](reid-candidate.md)已随 RC 发布，配套真实双源、许可说明与 1.3 hybrid 清单；模型依旧保持实验状态。
 
-0.2.0-rc.0 的三策略、外部向量与 Demo 采用独立候选发布流程；上述远程勾选项只记录 0.1.0 历史事实，不能作为 RC 已发布的证据。
+0.2.0-rc.2 的多算法、外部向量与 Demo 采用独立预发布流程；上述远程勾选项只记录 0.1.0 历史事实，不能替代 rc.2 发布回执。
 
 发布包使用 LF 文本换行；历史 reports 保持原始字节。最终包的实际 ESM/CJS/类型消费、SHA256、sha512 integrity 单独归档，不拿旧报告的包大小作为最终证据。首版本机认证发布的 provenance 为 null；本次 RC 已通过 Trusted Publishing 实际上传并验证 attestation，见本轮回执。真实序列指标和局限见 [MOT17 报告](../../reports/2026-09-19-mot17/README.md)。

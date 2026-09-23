@@ -2,19 +2,21 @@
 
 [中文（默认）](README.md)
 
-Local preparation: **0.2.0-rc.2** adds an independent [browser motion-estimation lab](docs/en/motion-estimation.md) to the four-algorithm [BoT-SORT](docs/en/botsort-candidate.md) Demo. Hosted `next`/Demo remain at released rc.1 and stable `latest` at0.1.0; rc.2 is a local experimental candidate and is not published.
+Preview release **0.2.0-rc.2** adds an independent [browser motion-estimation lab](docs/en/motion-estimation.md) to the four-algorithm [BoT-SORT](docs/en/botsort-candidate.md) Demo. npm `next` and the hosted Demo point to rc.2; stable `latest` remains 0.1.0. Motion estimation is still experimental.
 
-Local release candidate **0.2.0-rc.2**. A framework-neutral multi-object tracking SDK independently implementing ByteTrack, OC-SORT, DeepSORT and BoT-SORT-style tracking. The root entry uses CPU/main; the optional ReID subpath extracts human appearance features using CPU/WASM or GPU/WebGPU; the independent `motion` subpath compares adjacent-frame estimators on CPU/main. There is no React runtime dependency. ReID and motion estimation remain experimental.
+Preview release **0.2.0-rc.2**. A framework-neutral multi-object tracking SDK independently implementing ByteTrack, OC-SORT, DeepSORT and BoT-SORT-style tracking. The root entry uses CPU/main; the optional ReID subpath extracts human appearance features using CPU/WASM or GPU/WebGPU; the independent `motion` subpath compares adjacent-frame estimators on CPU/main. There is no React runtime dependency. ReID and motion estimation remain experimental.
 
 The RC exposes [the ReID subpath](docs/en/reid-candidate.md), `web-sdk-pp-tracking/reid`, with ModelScope as default and Hugging Face selectable. The fixed FP32 model is distributed on both hubs; weights are downloaded only when explicitly loading the model and are not packed into npm. Root tracking consumers need no inference engine installation.
 
 ## Installation and usage
 
-The [2026-09-21 real-image comparison](reports/2026-09-21-mot-reid/README.en.md) used 0.2.0-alpha.0 and covers seven sequences, 5316 frames and 67639 detections. DeepSORT+PPLCNet IDF1 is 45.4637%, below default ByteTrack 48.2922%; full metrics and image-fetch/decode/ReID/tracking costs are archived. Local rc.1 keeps ByteTrack as default, OC-SORT/DeepSORT/BoT-SORT as explicit options, and human ReID experimental, without mobile, cross-device or end-to-end video-performance promises.
+The [2026-09-21 real-image comparison](reports/2026-09-21-mot-reid/README.en.md) used 0.2.0-alpha.0 and covers seven sequences, 5316 frames and 67639 detections. DeepSORT+PPLCNet IDF1 is 45.4637%, below default ByteTrack 48.2922%; full metrics and image-fetch/decode/ReID/tracking costs are archived. The rc.2 preview keeps ByteTrack as default, OC-SORT/DeepSORT/BoT-SORT as explicit options, and human ReID experimental, without mobile, cross-device or end-to-end video-performance promises.
 
 ```sh
-# Published version (without BoT-SORT); use the local tarball below for rc.1
-npm install web-sdk-pp-tracking@0.2.0-rc.0
+# Stable version
+npm install web-sdk-pp-tracking@latest
+# Preview version
+npm install web-sdk-pp-tracking@next
 # Only for optional ReID:
 npm install onnxruntime-web@1.27.0
 ```

@@ -2,7 +2,7 @@
 
 [English](../en/quick-start.md) · [首页](../../README.md)
 
-已发布 rc.1 新增 `createTracker({algorithm:'botsort'})`；预发布通道 `next` 包含四种算法，再使用[运动接口示例](botsort-candidate.md)。稳定 `latest` 仍为 0.1.0。
+已发布 rc.2 新增独立 `motion` 子入口；`createTracker({algorithm:'botsort'})` 和四种算法仍在预发布通道 `next`，再使用[运动接口示例](botsort-candidate.md)。稳定 `latest` 仍为 0.1.0。
 
 RC 提供[可选ReID子入口](reid-candidate.md)，从人体图像与检测框提取外观向量供 DeepSORT 消费。该入口需要可选 ORT 依赖，根算法入口不需要。
 

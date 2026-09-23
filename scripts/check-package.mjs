@@ -16,6 +16,7 @@ assert.equal(info.integrity, `sha512-${createHash('sha512').update(tarballBytes)
 const files = info.files.map(file => file.path).sort();
 assert(files.includes('dist/index.js') && files.includes('dist/index.cjs') && files.includes('dist/index.d.ts'));
 assert(files.includes('dist/reid/index.js') && files.includes('dist/reid/index.cjs') && files.includes('dist/reid/index.d.ts'), '缺少 ReID 子入口双格式或类型');
+assert(files.includes('dist/motion/index.js') && files.includes('dist/motion/index.cjs') && files.includes('dist/motion/index.d.ts'), '缺少运动估计子入口双格式或类型');
 assert(files.includes('LICENSE') && files.includes('NOTICE'));
 assert(files.every(file => file.startsWith('dist/') || ['package.json', 'README.md', 'README.en.md', 'LICENSE', 'NOTICE'].includes(file)), '打包混入非发行文件');
 assert(files.every(file => !/\.(?:onnx|wasm|png|jpe?g|webp|bin|env)$/i.test(file)), '发行包不能包含模型、引擎、原图或凭据文件');
@@ -71,6 +72,17 @@ assert.equal(api.getReIdModelSource('huggingface').kind, 'huggingface');
   await writeFile(reidPath, reidCode);
   const reidResult = spawnSync(process.execPath, [reidPath], { encoding: 'utf8' });
   assert.equal(reidResult.status, 0, reidResult.stderr);
+  const motionCode = `${format === 'esm' ? "import * as api from 'web-sdk-pp-tracking/motion';" : "const api = require('web-sdk-pp-tracking/motion');"}
+const assert = ${format === 'esm' ? "(await import('node:assert/strict')).default" : "require('node:assert/strict')"};
+assert.deepEqual(Object.keys(api).sort(), ['MotionEstimateError', 'estimateMotion']);
+const image = { width: 8, height: 8, data: new Uint8ClampedArray(8 * 8 * 4).fill(127) };
+api.estimateMotion({ previous: { image, frameId: 0, timestampMs: 0 }, current: { image, frameId: 1, timestampMs: 33 }, imageSize: { width: 8, height: 8 } }, { identityWhenStatic: true }).then(result => {
+  assert.equal(result.status, 'identity'); assert.deepEqual(result.matrix, [1, 0, 0, 0, 1, 0]);
+}).catch(error => { console.error(error); process.exitCode = 1; });`;
+  const motionPath = join(consumer, `motion-consumer.${format === 'esm' ? 'mjs' : 'cjs'}`);
+  await writeFile(motionPath, motionCode);
+  const motionResult = spawnSync(process.execPath, [motionPath], { encoding: 'utf8' });
+  assert.equal(motionResult.status, 0, motionResult.stderr);
 }
 for (const extension of ['mts', 'cts']) {
   await writeFile(join(consumer, `consumer.${extension}`), "import { createTracker, type FeatureSpace, type Tracker, type TrackerAlgorithm, type TrackingResult } from 'web-sdk-pp-tracking';\nconst byteAlgorithm: TrackerAlgorithm = 'bytetrack';\nconst byteTracker: Tracker = createTracker({ algorithm: byteAlgorithm });\nconst byteResult: TrackingResult = byteTracker.update({ timestampMs: 0, imageSize: { width: 1, height: 1 }, detections: [] });\nconst byteActual: TrackerAlgorithm = byteResult.algorithm;\nif (byteActual !== byteAlgorithm) throw new Error('ByteTrack 类型消费失败');\nbyteTracker.dispose();\nconst ocAlgorithm: TrackerAlgorithm = 'ocsort';\nconst ocTracker: Tracker = createTracker({ algorithm: ocAlgorithm, ocmWeight: 0.2, ocmDeltaMs: 300, ocmHistoryLength: 30, oruMaxReplaySteps: 30 });\nconst ocResult: TrackingResult = ocTracker.update({ timestampMs: 0, imageSize: { width: 1, height: 1 }, detections: [] });\nconst ocActual: TrackerAlgorithm = ocResult.algorithm;\nif (ocActual !== ocAlgorithm) throw new Error('OC-SORT 类型消费失败');\nocTracker.dispose();\nconst featureSpace: FeatureSpace = { id: 'typed-consumer-v1', dimension: 2 };\nconst deepAlgorithm: TrackerAlgorithm = 'deepsort';\nconst deepTracker: Tracker = createTracker({ algorithm: deepAlgorithm, featureSpace, maxCosineDistance: 0.2, gallerySize: 30 });\nconst deepResult: TrackingResult = deepTracker.update({ timestampMs: 0, imageSize: { width: 2, height: 2 }, featureSpaceId: featureSpace.id, detections: [{ box: { x: 0, y: 0, width: 1, height: 1 }, score: 1, classId: 0, embedding: new Float32Array([1, 0]) }] });\nconst deepActual: TrackerAlgorithm = deepResult.algorithm;\nif (deepActual !== deepAlgorithm) throw new Error('DeepSORT 类型消费失败');\ndeepTracker.dispose();\n");
@@ -110,11 +122,23 @@ for (const option of options) { const extractor: ReIdExtractor = createReIdExtra
 `);
   const reidTyped = spawnSync(process.execPath, ['node_modules/typescript/bin/tsc', '--noEmit', '--strict', '--target', 'ES2022', '--module', 'NodeNext', '--moduleResolution', 'NodeNext', join(consumer, `reid-consumer.${extension}`)], { encoding: 'utf8' });
   assert.equal(reidTyped.status, 0, reidTyped.stdout + reidTyped.stderr);
+  await writeFile(join(consumer, `motion-consumer.${extension}`), `import { estimateMotion, MotionEstimateError, type MotionEstimateInput, type MotionEstimateResult } from 'web-sdk-pp-tracking/motion';
+const image = { width: 8, height: 8, data: new Uint8ClampedArray(8 * 8 * 4) } as ImageData;
+const input: MotionEstimateInput = { previous: { image, frameId: 0, timestampMs: 0 }, current: { image, frameId: 1, timestampMs: 33 }, imageSize: { width: 8, height: 8 } };
+const result: Promise<MotionEstimateResult> = estimateMotion(input);
+const error: MotionEstimateError = new MotionEstimateError('INVALID_INPUT', 'test');
+void result; void error;
+// @ts-expect-error 运动估计不从包根导出。
+import { estimateMotion as invalidRootImport } from 'web-sdk-pp-tracking';
+void invalidRootImport;
+`);
+  const motionTyped = spawnSync(process.execPath, ['node_modules/typescript/bin/tsc', '--noEmit', '--strict', '--target', 'ES2022', '--module', 'NodeNext', '--moduleResolution', 'NodeNext', join(consumer, `motion-consumer.${extension}`)], { encoding: 'utf8' });
+  assert.equal(motionTyped.status, 0, motionTyped.stdout + motionTyped.stderr);
 }
 const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
 assert.equal(Object.keys(packageJson.dependencies ?? {}).length, 0, '生产依赖必须为空');
 assert.equal(packageJson.peerDependencies['onnxruntime-web'], '1.27.0');
 assert.equal(packageJson.peerDependenciesMeta['onnxruntime-web'].optional, true);
-await writeFile('.tmp/package-check.json', JSON.stringify({ filename: info.filename, integrity: info.integrity, sha256: createHash('sha256').update(tarballBytes).digest('hex'), size: info.size, unpackedSize: info.unpackedSize, files, checks: ['四算法与 ReID 实际包 ESM', '四算法与 ReID 实际包 CommonJS', '两个入口 NodeNext ESM/CJS 类型消费', '未安装 ORT 的根入口与 ReID 工厂和释放', 'ORT 1.27.0 可选 peer', '无生产依赖', '发行文件白名单与模型/原图排除'] }, null, 2) + '\n');
+await writeFile('.tmp/package-check.json', JSON.stringify({ filename: info.filename, integrity: info.integrity, sha256: createHash('sha256').update(tarballBytes).digest('hex'), size: info.size, unpackedSize: info.unpackedSize, files, checks: ['四算法、ReID 与运动估计实际包 ESM', '四算法、ReID 与运动估计实际包 CommonJS', '三个入口 NodeNext ESM/CJS 类型消费', '未安装 ORT 的根入口与 ReID 工厂和释放', 'ORT 1.27.0 可选 peer', '无生产依赖', '发行文件白名单与模型/原图排除'] }, null, 2) + '\n');
 console.log(JSON.stringify({ filename: info.filename, size: info.size, unpackedSize: info.unpackedSize, files }, null, 2));
 console.log('四算法与 ReID 实际 npm pack、双格式导入、独立类型消费、可选 ORT 与发行文件检查通过。');

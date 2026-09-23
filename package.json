@@ -1,6 +1,6 @@
 {
   "name": "web-sdk-pp-tracking",
-  "version": "0.2.0-rc.1",
+  "version": "0.2.0-rc.2",
   "description": "框架无关的独立 CPU 多目标跟踪算法",
   "type": "module",
   "license": "Apache-2.0",
@@ -17,6 +17,11 @@
       "types": "./dist/reid/index.d.ts",
       "import": "./dist/reid/index.js",
       "require": "./dist/reid/index.cjs"
+    },
+    "./motion": {
+      "types": "./dist/motion/index.d.ts",
+      "import": "./dist/motion/index.js",
+      "require": "./dist/motion/index.cjs"
     }
   },
   "files": [
@@ -36,6 +41,7 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "build": "node scripts/build.mjs",
+    "benchmark:motion": "npm run build && node scripts/motion-benchmark.mjs",
     "build:reid-candidate": "node scripts/build-reid-candidate.mjs",
     "check:package": "node scripts/check-package.mjs",
     "dev:demo": "vite --config demo/vite.config.ts --host 127.0.0.1 --port 4196",
@@ -43,7 +49,7 @@
     "build:demo": "vite build --config demo/vite.config.ts",
     "build:vanilla": "vite build examples/vanilla --base ./",
     "build:react": "vite build --config examples/react/vite.config.ts",
-    "test:browser": "node tests/browser.mjs && node tests/botsort-demo-browser.mjs",
+    "test:browser": "node tests/browser.mjs && node tests/botsort-demo-browser.mjs && node tests/motion-browser.mjs",
     "verify": "npm run build && npm run typecheck && npm test && npm run check:package && npm run typecheck:demo && npm run build:demo && npm run build:vanilla && npm run build:react && npm run test:browser"
   },
   "devDependencies": {

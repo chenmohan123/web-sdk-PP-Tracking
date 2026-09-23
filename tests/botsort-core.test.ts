@@ -16,7 +16,7 @@ describe('BoT-SORT 候选帧契约',()=>{
     const result=tracker.update(moved);
     expect(result.tracks).toHaveLength(1);
     expect(result.tracks[0]).toMatchObject({id:1,state:'tracked',box:{x:100}});
-    expect(result).toMatchObject({algorithm:'botsort',frameId:1,motion:{status:'estimated',applied:true},runtime:{actualBackend:'cpu',runtimeVersion:'web-sdk-pp-tracking@0.2.0-rc.1'}});
+  expect(result).toMatchObject({algorithm:'botsort',frameId:1,motion:{status:'estimated',applied:true},runtime:{actualBackend:'cpu',runtimeVersion:'web-sdk-pp-tracking@0.2.0-rc.2'}});
     expect(Object.values(result.timings).every(x=>Number.isFinite(x)&&x>=0)).toBe(true);
   });
   it('恒等情况下轨迹和生命周期与现有ByteTrack相同',()=>{

@@ -1,6 +1,7 @@
 import type { FeatureSpace, TrackerOptions, TrackingFrame, TrackingResult, UpdateOptions, RuntimeInfo } from '../types.js';
 
-export type AffineMatrix = readonly [number, number, number, number, number, number];
+export type { AffineMatrix } from '../motion/types.js';
+import type { AffineMatrix } from '../motion/types.js';
 export interface MotionEndpoint { frameId: number; timestampMs: number }
 export type CameraMotion =
   | { status: 'initial'; from: null; to: MotionEndpoint }

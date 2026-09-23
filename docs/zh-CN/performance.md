@@ -2,6 +2,8 @@
 
 [English](../en/performance.md) · [首页](../../README.md)
 
+运动估计实验另行报告 `preprocessMs`、`estimateMs`、`totalMs`，见[实验报告](../../reports/2026-09-23-motion-estimation/README.md)。这些字段不替代跟踪算法的五项标准耗时，也不与 ReID 模型耗时合并。当前 640×360 合成输入中纯平移、稀疏光流、特征匹配的 Node p95 分别约 15.5、71.8、191.1 ms；成功率分别为 41.7%、33.3%、41.7%，只是指定机器上的 Spike 观测。
+
 全部单位毫秒，来自performance.now()，不是固定占位值。
 
 BoT-SORT 的 validationMs 包含运动/外观校验，predictionMs 包含矩阵补偿，totalMs 包含结果封装；不包含外部运动估计、检测、ReID提取和渲染。固定矩阵/向量回放不能用于宣称视频端到端帧率。09序列存在退步，ByteTrack继续默认，见[运动接口](botsort-candidate.md)。

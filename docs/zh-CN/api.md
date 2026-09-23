@@ -1,8 +1,8 @@
-# API 0.2.0-rc.1（发布候选）
+# API 0.2.0-rc.2（本地实验候选）
 
-[English](../en/api.md) · [首页](../../README.md)
+[English](../en/api.md) · [运动估计实验](motion-estimation.md) · [首页](../../README.md)
 
-`createTracker(options?: TrackerOptions): Tracker` 返回同步 `update(frame, {signal}?)`、`reset()`、`dispose()`。ESM/CJS 均导出 createTracker、TrackingError；声明还导出 `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort' | 'botsort'` 与 `FeatureSpace`。本页适用于已发布的 rc.1；npm `next` 与线上 Demo 均为 rc.1。新增重载 `createTracker(options: BoTSortTrackerOptions): BoTSortTracker`，`AnyTrackerOptions` 为两类选项的联合；原 `TrackerOptions` 保留三算法。BoT-SORT 类型要求 `BoTSortFrame`，完整契约见[运动接口](botsort-candidate.md)。传入动态联合选项时返回两类Tracker的联合，调用者须根据所选算法保留对应帧类型。
+`createTracker(options?: TrackerOptions): Tracker` 返回同步 `update(frame, {signal}?)`、`reset()`、`dispose()`。ESM/CJS 均导出 createTracker、TrackingError；声明还导出 `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort' | 'botsort'` 与 `FeatureSpace`。线上 npm `next` 与 Demo 仍为已发布 rc.1；本文顶部的 rc.2 仅是本地实验候选。新增重载 `createTracker(options: BoTSortTrackerOptions): BoTSortTracker`，`AnyTrackerOptions` 为两类选项的联合；原 `TrackerOptions` 保留三算法。BoT-SORT 类型要求 `BoTSortFrame`，完整契约见[运动接口](botsort-candidate.md)。传入动态联合选项时返回两类Tracker的联合，调用者须根据所选算法保留对应帧类型。
 
 ## 输入
 
@@ -56,7 +56,7 @@ Track字段：`id,classId,box,state,observed,score,ageMs,hits,missedMs`。
 state为tentative/tracked/lost；removed数组仅包含本帧移除事件，state为removed。
 预测轨迹 observed=false、score=null；输出框可能超出画面，不裁剪。hits为累计实际观测次数，新建为1。
 droppedDetections只计算因容量满而跳过的新轨迹，不包含低分过滤数量。
-runtime实际报告cpu/main、`web-sdk-pp-tracking@0.2.0-rc.1`。五项timings见 [性能](performance.md)。
+runtime实际报告cpu/main、`web-sdk-pp-tracking@0.2.0-rc.2`（线上已发布 rc.1）。五项timings见 [性能](performance.md)。
 
 Demo 的紧凑输入序列导出保留规范化后的 `frames`、可选顶层 `featureSpace`，版本化包装另含算法和已应用选项；BoT-SORT完整保留frameId/motion，按 UTF-8 字节限制为5MiB并可重新导入。结果报告另含实际参数和已处理结果，可能超过5MiB，不保证可重新导入。
 

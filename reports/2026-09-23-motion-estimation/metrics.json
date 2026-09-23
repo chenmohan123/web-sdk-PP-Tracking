@@ -1,0 +1,2041 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-23T04:21:13.262Z",
+  "seed": 20260923,
+  "environment": {
+    "node": "v24.16.0",
+    "platform": "win32",
+    "executionMode": "main",
+    "backend": "cpu",
+    "note": "Node 合成基准；不是浏览器兼容或跨设备性能承诺"
+  },
+  "input": {
+    "sizes": [
+      {
+        "width": 320,
+        "height": 180
+      },
+      {
+        "width": 640,
+        "height": 360
+      }
+    ],
+    "cases": [
+      "translation-small",
+      "translation-medium",
+      "translation-large",
+      "rotation",
+      "scale",
+      "affine",
+      "static",
+      "brightness",
+      "occlusion",
+      "repeated-texture",
+      "low-texture",
+      "out-of-range"
+    ]
+  },
+  "algorithms": [
+    "translation",
+    "sparse-flow",
+    "feature-match"
+  ],
+  "results": [
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "translation-small",
+      "expectedMatrix": [
+        1,
+        0,
+        4,
+        0,
+        1,
+        3
+      ],
+      "algorithm": "translation",
+      "status": "estimated",
+      "matrix": [
+        1,
+        0,
+        4,
+        0,
+        1,
+        3
+      ],
+      "matrixError": 0,
+      "confidence": 1,
+      "inlierCount": 40,
+      "residual": 0,
+      "timings": {
+        "preprocessMs": 2.4614000000000047,
+        "estimateMs": 14.0627,
+        "totalMs": 16.524100000000004
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "translation-small",
+      "expectedMatrix": [
+        1,
+        0,
+        4,
+        0,
+        1,
+        3
+      ],
+      "algorithm": "sparse-flow",
+      "status": "estimated",
+      "matrix": [
+        1.0000000000000007,
+        -2.1510571102112408e-16,
+        3.9999999999999085,
+        2.5500435096859064e-16,
+        1.0000000000000002,
+        2.9999999999999365
+      ],
+      "matrixError": 1.113664394777777e-13,
+      "confidence": 0.9999999999999516,
+      "inlierCount": 120,
+      "residual": 4.8367449737301725e-14,
+      "timings": {
+        "preprocessMs": 0.6897999999999982,
+        "estimateMs": 55.3299,
+        "totalMs": 56.0197
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "translation-small",
+      "expectedMatrix": [
+        1,
+        0,
+        4,
+        0,
+        1,
+        3
+      ],
+      "algorithm": "feature-match",
+      "status": "estimated",
+      "matrix": [
+        1.0000000000000007,
+        7.563394355258879e-16,
+        3.999999999999808,
+        2.177077962350893e-16,
+        1.0000000000000004,
+        2.999999999999916
+      ],
+      "matrixError": 2.094064943795995e-13,
+      "confidence": 0.9999999999999429,
+      "inlierCount": 96,
+      "residual": 5.706460281479959e-14,
+      "timings": {
+        "preprocessMs": 0.8260999999999967,
+        "estimateMs": 174.2321,
+        "totalMs": 175.0582
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "translation-medium",
+      "expectedMatrix": [
+        1,
+        0,
+        10,
+        0,
+        1,
+        6
+      ],
+      "algorithm": "translation",
+      "status": "estimated",
+      "matrix": [
+        1,
+        0,
+        10,
+        0,
+        1,
+        6
+      ],
+      "matrixError": 0,
+      "confidence": 1,
+      "inlierCount": 40,
+      "residual": 0,
+      "timings": {
+        "preprocessMs": 0.6639999999999873,
+        "estimateMs": 12.20150000000001,
+        "totalMs": 12.865499999999997
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "translation-medium",
+      "expectedMatrix": [
+        1,
+        0,
+        10,
+        0,
+        1,
+        6
+      ],
+      "algorithm": "sparse-flow",
+      "status": "estimated",
+      "matrix": [
+        1.0000000000000004,
+        -2.2898349882893854e-16,
+        9.99999999999998,
+        6.591949208711867e-17,
+        0.9999999999999997,
+        6.000000000000013
+      ],
+      "matrixError": 2.36572887164817e-14,
+      "confidence": 0.9999999999999432,
+      "inlierCount": 120,
+      "residual": 5.684341886080802e-14,
+      "timings": {
+        "preprocessMs": 0.6963999999999828,
+        "estimateMs": 37.859699999999975,
+        "totalMs": 38.55609999999996
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "translation-medium",
+      "expectedMatrix": [
+        1,
+        0,
+        10,
+        0,
+        1,
+        6
+      ],
+      "algorithm": "feature-match",
+      "status": "estimated",
+      "matrix": [
+        0.9999999999999994,
+        -1.124100812432971e-15,
+        10.000000000000199,
+        1.43982048506075e-16,
+        1.000000000000001,
+        5.999999999999863
+      ],
+      "matrixError": 2.414401273318363e-13,
+      "confidence": 0.9999999999999414,
+      "inlierCount": 96,
+      "residual": 5.859285502108464e-14,
+      "timings": {
+        "preprocessMs": 0.6993999999999687,
+        "estimateMs": 120.84140000000002,
+        "totalMs": 121.54079999999999
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "translation-large",
+      "expectedMatrix": [
+        1,
+        0,
+        20,
+        0,
+        1,
+        12
+      ],
+      "algorithm": "translation",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.6725999999999885,
+        "estimateMs": 11.765500000000031,
+        "totalMs": 12.43810000000002
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "translation-large",
+      "expectedMatrix": [
+        1,
+        0,
+        20,
+        0,
+        1,
+        12
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 1.2989999999999782,
+        "estimateMs": 42.35680000000002,
+        "totalMs": 43.6558
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "translation-large",
+      "expectedMatrix": [
+        1,
+        0,
+        20,
+        0,
+        1,
+        12
+      ],
+      "algorithm": "feature-match",
+      "status": "estimated",
+      "matrix": [
+        1,
+        -1.3322676295501878e-15,
+        20.00000000000011,
+        4.0245584642661925e-16,
+        1.0000000000000009,
+        11.999999999999849
+      ],
+      "matrixError": 1.868965789098768e-13,
+      "confidence": 0.9999999999999414,
+      "inlierCount": 96,
+      "residual": 5.859285502108464e-14,
+      "timings": {
+        "preprocessMs": 1.2947000000000344,
+        "estimateMs": 169.42359999999996,
+        "totalMs": 170.7183
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "rotation",
+      "expectedMatrix": [
+        0.996,
+        -0.087,
+        8,
+        0.087,
+        0.996,
+        -5
+      ],
+      "algorithm": "translation",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.7425000000000637,
+        "estimateMs": 11.38289999999995,
+        "totalMs": 12.125400000000013
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "rotation",
+      "expectedMatrix": [
+        0.996,
+        -0.087,
+        8,
+        0.087,
+        0.996,
+        -5
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.6168999999999869,
+        "estimateMs": 46.176900000000046,
+        "totalMs": 46.79380000000003
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "rotation",
+      "expectedMatrix": [
+        0.996,
+        -0.087,
+        8,
+        0.087,
+        0.996,
+        -5
+      ],
+      "algorithm": "feature-match",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.5788000000000011,
+        "estimateMs": 170.56910000000005,
+        "totalMs": 171.14790000000005
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "scale",
+      "expectedMatrix": [
+        1.04,
+        0,
+        -6,
+        0,
+        1.04,
+        -4
+      ],
+      "algorithm": "translation",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.5916999999999462,
+        "estimateMs": 10.847200000000043,
+        "totalMs": 11.43889999999999
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "scale",
+      "expectedMatrix": [
+        1.04,
+        0,
+        -6,
+        0,
+        1.04,
+        -4
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.6305999999999585,
+        "estimateMs": 43.30040000000008,
+        "totalMs": 43.93100000000004
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "scale",
+      "expectedMatrix": [
+        1.04,
+        0,
+        -6,
+        0,
+        1.04,
+        -4
+      ],
+      "algorithm": "feature-match",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.5457999999999856,
+        "estimateMs": 170.60940000000005,
+        "totalMs": 171.15520000000004
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "affine",
+      "expectedMatrix": [
+        1.01,
+        0.035,
+        -5,
+        -0.02,
+        0.99,
+        4
+      ],
+      "algorithm": "translation",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.6452999999999065,
+        "estimateMs": 10.916999999999916,
+        "totalMs": 11.562299999999823
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "affine",
+      "expectedMatrix": [
+        1.01,
+        0.035,
+        -5,
+        -0.02,
+        0.99,
+        4
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.5491000000001804,
+        "estimateMs": 43.5797,
+        "totalMs": 44.12880000000018
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "affine",
+      "expectedMatrix": [
+        1.01,
+        0.035,
+        -5,
+        -0.02,
+        0.99,
+        4
+      ],
+      "algorithm": "feature-match",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.5025999999998021,
+        "estimateMs": 169.58920000000012,
+        "totalMs": 170.09179999999992
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "static",
+      "expectedMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "algorithm": "translation",
+      "status": "identity",
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "matrixError": 0,
+      "confidence": 1,
+      "inlierCount": 0,
+      "timings": {
+        "preprocessMs": 0.995200000000068,
+        "estimateMs": 0.1936000000000604,
+        "totalMs": 1.1888000000001284
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "static",
+      "expectedMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "algorithm": "sparse-flow",
+      "status": "identity",
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "matrixError": 0,
+      "confidence": 1,
+      "inlierCount": 0,
+      "timings": {
+        "preprocessMs": 1.1881000000000768,
+        "estimateMs": 0.17079999999987194,
+        "totalMs": 1.3588999999999487
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "static",
+      "expectedMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "algorithm": "feature-match",
+      "status": "identity",
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "matrixError": 0,
+      "confidence": 1,
+      "inlierCount": 0,
+      "timings": {
+        "preprocessMs": 1.0785000000000764,
+        "estimateMs": 0.13419999999996435,
+        "totalMs": 1.2127000000000407
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "brightness",
+      "expectedMatrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "algorithm": "translation",
+      "status": "estimated",
+      "matrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "matrixError": 0,
+      "confidence": 1,
+      "inlierCount": 40,
+      "residual": 0,
+      "timings": {
+        "preprocessMs": 0.6110999999998512,
+        "estimateMs": 10.860100000000102,
+        "totalMs": 11.471199999999953
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "brightness",
+      "expectedMatrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "algorithm": "sparse-flow",
+      "status": "estimated",
+      "matrix": [
+        1,
+        7.389922007661198e-16,
+        4.9999999999999165,
+        -5.811323644522304e-17,
+        0.9999999999999997,
+        2.0000000000000457
+      ],
+      "matrixError": 9.520132202123629e-14,
+      "confidence": 0.9999999999999716,
+      "inlierCount": 120,
+      "residual": 2.842170943040401e-14,
+      "timings": {
+        "preprocessMs": 0.5755000000001473,
+        "estimateMs": 53.125299999999925,
+        "totalMs": 53.70080000000007
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "brightness",
+      "expectedMatrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "algorithm": "feature-match",
+      "status": "estimated",
+      "matrix": [
+        0.9999999999999997,
+        -2.0816681711721685e-17,
+        5.000000000000054,
+        3.2959746043559335e-17,
+        1.0000000000000002,
+        1.9999999999999756
+      ],
+      "matrixError": 5.943138266060487e-14,
+      "confidence": 0.9999999999999716,
+      "inlierCount": 96,
+      "residual": 2.842170943040401e-14,
+      "timings": {
+        "preprocessMs": 1.2888000000000375,
+        "estimateMs": 202.71129999999994,
+        "totalMs": 204.00009999999997
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "occlusion",
+      "expectedMatrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "algorithm": "translation",
+      "status": "estimated",
+      "matrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "matrixError": 0,
+      "confidence": 1,
+      "inlierCount": 34,
+      "residual": 0,
+      "timings": {
+        "preprocessMs": 0.7515000000000782,
+        "estimateMs": 12.548299999999927,
+        "totalMs": 13.299800000000005
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "occlusion",
+      "expectedMatrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.7928000000001703,
+        "estimateMs": 47.77679999999987,
+        "totalMs": 48.56960000000004
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "occlusion",
+      "expectedMatrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "algorithm": "feature-match",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.5375000000001364,
+        "estimateMs": 200.45319999999992,
+        "totalMs": 200.99070000000006
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "repeated-texture",
+      "expectedMatrix": [
+        1,
+        0,
+        6,
+        0,
+        1,
+        4
+      ],
+      "algorithm": "translation",
+      "status": "failed",
+      "reason": "insufficient-matches",
+      "timings": {
+        "preprocessMs": 0.5592000000001462,
+        "estimateMs": 10.743799999999965,
+        "totalMs": 11.303000000000111
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "repeated-texture",
+      "expectedMatrix": [
+        1,
+        0,
+        6,
+        0,
+        1,
+        4
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "insufficient-matches",
+      "timings": {
+        "preprocessMs": 0.6060000000002219,
+        "estimateMs": 34.15909999999985,
+        "totalMs": 34.765100000000075
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "repeated-texture",
+      "expectedMatrix": [
+        1,
+        0,
+        6,
+        0,
+        1,
+        4
+      ],
+      "algorithm": "feature-match",
+      "status": "failed",
+      "reason": "insufficient-matches",
+      "timings": {
+        "preprocessMs": 0.5802000000001044,
+        "estimateMs": 166.2170000000001,
+        "totalMs": 166.7972000000002
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "low-texture",
+      "expectedMatrix": [
+        1,
+        0,
+        2,
+        0,
+        1,
+        1
+      ],
+      "algorithm": "translation",
+      "status": "failed",
+      "reason": "insufficient-texture",
+      "timings": {
+        "preprocessMs": 0.5271999999999935,
+        "estimateMs": 0.3445000000001528,
+        "totalMs": 0.8717000000001462
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "low-texture",
+      "expectedMatrix": [
+        1,
+        0,
+        2,
+        0,
+        1,
+        1
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "insufficient-texture",
+      "timings": {
+        "preprocessMs": 0.8335999999999331,
+        "estimateMs": 0.38570000000026994,
+        "totalMs": 1.219300000000203
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "low-texture",
+      "expectedMatrix": [
+        1,
+        0,
+        2,
+        0,
+        1,
+        1
+      ],
+      "algorithm": "feature-match",
+      "status": "failed",
+      "reason": "insufficient-texture",
+      "timings": {
+        "preprocessMs": 0.5911000000000968,
+        "estimateMs": 0.33969999999999345,
+        "totalMs": 0.9308000000000902
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "out-of-range",
+      "expectedMatrix": [
+        1,
+        0,
+        90,
+        0,
+        1,
+        60
+      ],
+      "algorithm": "translation",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.5587999999997919,
+        "estimateMs": 11.084499999999935,
+        "totalMs": 11.643299999999726
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "out-of-range",
+      "expectedMatrix": [
+        1,
+        0,
+        90,
+        0,
+        1,
+        60
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.5578000000000429,
+        "estimateMs": 39.69119999999975,
+        "totalMs": 40.248999999999796
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 180
+      },
+      "scenario": "out-of-range",
+      "expectedMatrix": [
+        1,
+        0,
+        90,
+        0,
+        1,
+        60
+      ],
+      "algorithm": "feature-match",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 0.5471000000002277,
+        "estimateMs": 166.23459999999977,
+        "totalMs": 166.7817
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "translation-small",
+      "expectedMatrix": [
+        1,
+        0,
+        4,
+        0,
+        1,
+        3
+      ],
+      "algorithm": "translation",
+      "status": "estimated",
+      "matrix": [
+        1,
+        0,
+        4,
+        0,
+        1,
+        3
+      ],
+      "matrixError": 0,
+      "confidence": 1,
+      "inlierCount": 40,
+      "residual": 0,
+      "timings": {
+        "preprocessMs": 2.391900000000078,
+        "estimateMs": 12.71270000000004,
+        "totalMs": 15.104600000000119
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "translation-small",
+      "expectedMatrix": [
+        1,
+        0,
+        4,
+        0,
+        1,
+        3
+      ],
+      "algorithm": "sparse-flow",
+      "status": "estimated",
+      "matrix": [
+        0.9999999999999999,
+        2.7755575615628914e-16,
+        3.999999999999965,
+        -1.734723475976807e-16,
+        0.9999999999999996,
+        3.000000000000138
+      ],
+      "matrixError": 1.4249909052998394e-13,
+      "confidence": 0.9999999999999196,
+      "inlierCount": 120,
+      "residual": 8.038873388460929e-14,
+      "timings": {
+        "preprocessMs": 2.274199999999837,
+        "estimateMs": 69.49150000000009,
+        "totalMs": 71.76569999999992
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "translation-small",
+      "expectedMatrix": [
+        1,
+        0,
+        4,
+        0,
+        1,
+        3
+      ],
+      "algorithm": "feature-match",
+      "status": "estimated",
+      "matrix": [
+        1.0000000000000004,
+        8.881784197001252e-16,
+        3.999999999999666,
+        -7.24247051220317e-17,
+        0.9999999999999999,
+        3.000000000000051
+      ],
+      "matrixError": 3.378389769577125e-13,
+      "confidence": 0.9999999999999196,
+      "inlierCount": 96,
+      "residual": 8.038873388460929e-14,
+      "timings": {
+        "preprocessMs": 2.091899999999896,
+        "estimateMs": 204.79740000000038,
+        "totalMs": 206.88930000000028
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "translation-medium",
+      "expectedMatrix": [
+        1,
+        0,
+        10,
+        0,
+        1,
+        6
+      ],
+      "algorithm": "translation",
+      "status": "estimated",
+      "matrix": [
+        1,
+        0,
+        10,
+        0,
+        1,
+        6
+      ],
+      "matrixError": 0,
+      "confidence": 1,
+      "inlierCount": 40,
+      "residual": 0,
+      "timings": {
+        "preprocessMs": 2.2771999999999935,
+        "estimateMs": 12.675699999999779,
+        "totalMs": 14.952899999999772
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "translation-medium",
+      "expectedMatrix": [
+        1,
+        0,
+        10,
+        0,
+        1,
+        6
+      ],
+      "algorithm": "sparse-flow",
+      "status": "estimated",
+      "matrix": [
+        1.0000000000000002,
+        8.500145032286355e-16,
+        9.99999999999975,
+        -9.367506770274758e-17,
+        1,
+        6.000000000000037
+      ],
+      "matrixError": 2.5323053897009774e-13,
+      "confidence": 0.9999999999999172,
+      "inlierCount": 120,
+      "residual": 8.282693108791065e-14,
+      "timings": {
+        "preprocessMs": 2.1498999999998887,
+        "estimateMs": 60.184499999999844,
+        "totalMs": 62.33439999999973
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "translation-medium",
+      "expectedMatrix": [
+        1,
+        0,
+        10,
+        0,
+        1,
+        6
+      ],
+      "algorithm": "feature-match",
+      "status": "estimated",
+      "matrix": [
+        1.0000000000000004,
+        4.579669976578771e-16,
+        9.99999999999977,
+        2.8189256484623115e-16,
+        1,
+        5.9999999999999005
+      ],
+      "matrixError": 2.498113186039399e-13,
+      "confidence": 0.9999999999999196,
+      "inlierCount": 96,
+      "residual": 8.038873388460929e-14,
+      "timings": {
+        "preprocessMs": 2.3225000000002183,
+        "estimateMs": 183.23540000000003,
+        "totalMs": 185.55790000000025
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "translation-large",
+      "expectedMatrix": [
+        1,
+        0,
+        20,
+        0,
+        1,
+        12
+      ],
+      "algorithm": "translation",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 2.2523000000001048,
+        "estimateMs": 12.864999999999782,
+        "totalMs": 15.117299999999886
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "translation-large",
+      "expectedMatrix": [
+        1,
+        0,
+        20,
+        0,
+        1,
+        12
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 2.2527000000000044,
+        "estimateMs": 58.76770000000033,
+        "totalMs": 61.020400000000336
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "translation-large",
+      "expectedMatrix": [
+        1,
+        0,
+        20,
+        0,
+        1,
+        12
+      ],
+      "algorithm": "feature-match",
+      "status": "estimated",
+      "matrix": [
+        0.9999999999999997,
+        1.0408340855860843e-16,
+        20.000000000000046,
+        3.41740524767431e-16,
+        1.0000000000000004,
+        11.999999999999801
+      ],
+      "matrixError": 2.0424348321750784e-13,
+      "confidence": 0.9999999999999101,
+      "inlierCount": 96,
+      "residual": 8.987733679556355e-14,
+      "timings": {
+        "preprocessMs": 2.133100000000013,
+        "estimateMs": 188.98300000000017,
+        "totalMs": 191.1161000000002
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "rotation",
+      "expectedMatrix": [
+        0.996,
+        -0.087,
+        8,
+        0.087,
+        0.996,
+        -5
+      ],
+      "algorithm": "translation",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 2.3278000000000247,
+        "estimateMs": 12.424299999999675,
+        "totalMs": 14.7520999999997
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "rotation",
+      "expectedMatrix": [
+        0.996,
+        -0.087,
+        8,
+        0.087,
+        0.996,
+        -5
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 2.336699999999837,
+        "estimateMs": 64.09180000000015,
+        "totalMs": 66.42849999999999
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "rotation",
+      "expectedMatrix": [
+        0.996,
+        -0.087,
+        8,
+        0.087,
+        0.996,
+        -5
+      ],
+      "algorithm": "feature-match",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 2.1114000000002306,
+        "estimateMs": 186.7452999999996,
+        "totalMs": 188.85669999999982
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "scale",
+      "expectedMatrix": [
+        1.04,
+        0,
+        -6,
+        0,
+        1.04,
+        -4
+      ],
+      "algorithm": "translation",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 2.150499999999738,
+        "estimateMs": 13.373399999999947,
+        "totalMs": 15.523899999999685
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "scale",
+      "expectedMatrix": [
+        1.04,
+        0,
+        -6,
+        0,
+        1.04,
+        -4
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 2.6197000000001935,
+        "estimateMs": 67.08120000000008,
+        "totalMs": 69.70090000000027
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "scale",
+      "expectedMatrix": [
+        1.04,
+        0,
+        -6,
+        0,
+        1.04,
+        -4
+      ],
+      "algorithm": "feature-match",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 2.0072000000000116,
+        "estimateMs": 183.42740000000003,
+        "totalMs": 185.43460000000005
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "affine",
+      "expectedMatrix": [
+        1.01,
+        0.035,
+        -5,
+        -0.02,
+        0.99,
+        4
+      ],
+      "algorithm": "translation",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 2.0785000000000764,
+        "estimateMs": 12.423499999999876,
+        "totalMs": 14.501999999999953
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "affine",
+      "expectedMatrix": [
+        1.01,
+        0.035,
+        -5,
+        -0.02,
+        0.99,
+        4
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 2.216700000000401,
+        "estimateMs": 58.358700000000226,
+        "totalMs": 60.57540000000063
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "affine",
+      "expectedMatrix": [
+        1.01,
+        0.035,
+        -5,
+        -0.02,
+        0.99,
+        4
+      ],
+      "algorithm": "feature-match",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 2.255699999999706,
+        "estimateMs": 185.58159999999953,
+        "totalMs": 187.83729999999923
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "static",
+      "expectedMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "algorithm": "translation",
+      "status": "identity",
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "matrixError": 0,
+      "confidence": 1,
+      "inlierCount": 0,
+      "timings": {
+        "preprocessMs": 2.251299999999901,
+        "estimateMs": 0.3286000000007334,
+        "totalMs": 2.5799000000006345
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "static",
+      "expectedMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "algorithm": "sparse-flow",
+      "status": "identity",
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "matrixError": 0,
+      "confidence": 1,
+      "inlierCount": 0,
+      "timings": {
+        "preprocessMs": 2.2475000000004,
+        "estimateMs": 0.32449999999971624,
+        "totalMs": 2.5720000000001164
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "static",
+      "expectedMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "algorithm": "feature-match",
+      "status": "identity",
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "matrixError": 0,
+      "confidence": 1,
+      "inlierCount": 0,
+      "timings": {
+        "preprocessMs": 2.1177999999999884,
+        "estimateMs": 0.3162000000002081,
+        "totalMs": 2.4340000000001965
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "brightness",
+      "expectedMatrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "algorithm": "translation",
+      "status": "estimated",
+      "matrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "matrixError": 0,
+      "confidence": 1,
+      "inlierCount": 40,
+      "residual": 0,
+      "timings": {
+        "preprocessMs": 2.3828999999996086,
+        "estimateMs": 12.412500000000364,
+        "totalMs": 14.795399999999972
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "brightness",
+      "expectedMatrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "algorithm": "sparse-flow",
+      "status": "estimated",
+      "matrix": [
+        0.9999999999999997,
+        4.579669976578771e-16,
+        4.999999999999998,
+        -1.474514954580286e-16,
+        0.9999999999999999,
+        2.000000000000071
+      ],
+      "matrixError": 7.107896997189996e-14,
+      "confidence": 0.9999999999999232,
+      "inlierCount": 120,
+      "residual": 7.681490133048255e-14,
+      "timings": {
+        "preprocessMs": 2.5716999999995096,
+        "estimateMs": 69.5007000000005,
+        "totalMs": 72.07240000000002
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "brightness",
+      "expectedMatrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "algorithm": "feature-match",
+      "status": "estimated",
+      "matrix": [
+        1.0000000000000002,
+        -9.957312752106873e-16,
+        5.00000000000016,
+        -6.982261990806649e-17,
+        1.0000000000000002,
+        1.9999999999999891
+      ],
+      "matrixError": 1.6024533295024335e-13,
+      "confidence": 0.9999999999999147,
+      "inlierCount": 96,
+      "residual": 8.526512829121202e-14,
+      "timings": {
+        "preprocessMs": 2.0608000000001994,
+        "estimateMs": 184.8177999999998,
+        "totalMs": 186.8786
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "occlusion",
+      "expectedMatrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "algorithm": "translation",
+      "status": "estimated",
+      "matrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "matrixError": 0,
+      "confidence": 1,
+      "inlierCount": 34,
+      "residual": 0,
+      "timings": {
+        "preprocessMs": 2.165200000000368,
+        "estimateMs": 10.995600000000195,
+        "totalMs": 13.160800000000563
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "occlusion",
+      "expectedMatrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 2.1377999999995154,
+        "estimateMs": 62.01180000000022,
+        "totalMs": 64.14959999999974
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "occlusion",
+      "expectedMatrix": [
+        1,
+        0,
+        5,
+        0,
+        1,
+        2
+      ],
+      "algorithm": "feature-match",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 2.1648999999997613,
+        "estimateMs": 181.38950000000023,
+        "totalMs": 183.5544
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "repeated-texture",
+      "expectedMatrix": [
+        1,
+        0,
+        6,
+        0,
+        1,
+        4
+      ],
+      "algorithm": "translation",
+      "status": "failed",
+      "reason": "insufficient-matches",
+      "timings": {
+        "preprocessMs": 2.0593000000008033,
+        "estimateMs": 11.737299999999777,
+        "totalMs": 13.79660000000058
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "repeated-texture",
+      "expectedMatrix": [
+        1,
+        0,
+        6,
+        0,
+        1,
+        4
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "insufficient-matches",
+      "timings": {
+        "preprocessMs": 2.053100000000086,
+        "estimateMs": 48.621000000000095,
+        "totalMs": 50.67410000000018
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "repeated-texture",
+      "expectedMatrix": [
+        1,
+        0,
+        6,
+        0,
+        1,
+        4
+      ],
+      "algorithm": "feature-match",
+      "status": "failed",
+      "reason": "insufficient-matches",
+      "timings": {
+        "preprocessMs": 2.092299999999341,
+        "estimateMs": 168.0559000000003,
+        "totalMs": 170.14819999999963
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "low-texture",
+      "expectedMatrix": [
+        1,
+        0,
+        2,
+        0,
+        1,
+        1
+      ],
+      "algorithm": "translation",
+      "status": "failed",
+      "reason": "insufficient-texture",
+      "timings": {
+        "preprocessMs": 2.169799999999668,
+        "estimateMs": 1.4989999999997963,
+        "totalMs": 3.6687999999994645
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "low-texture",
+      "expectedMatrix": [
+        1,
+        0,
+        2,
+        0,
+        1,
+        1
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "insufficient-texture",
+      "timings": {
+        "preprocessMs": 2.162800000000061,
+        "estimateMs": 1.4155999999993583,
+        "totalMs": 3.5783999999994194
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "low-texture",
+      "expectedMatrix": [
+        1,
+        0,
+        2,
+        0,
+        1,
+        1
+      ],
+      "algorithm": "feature-match",
+      "status": "failed",
+      "reason": "insufficient-texture",
+      "timings": {
+        "preprocessMs": 2.874499999999898,
+        "estimateMs": 1.324399999999514,
+        "totalMs": 4.198899999999412
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "out-of-range",
+      "expectedMatrix": [
+        1,
+        0,
+        90,
+        0,
+        1,
+        60
+      ],
+      "algorithm": "translation",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 3.089999999999236,
+        "estimateMs": 18.61120000000028,
+        "totalMs": 21.701199999999517
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "out-of-range",
+      "expectedMatrix": [
+        1,
+        0,
+        90,
+        0,
+        1,
+        60
+      ],
+      "algorithm": "sparse-flow",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 3.2300999999997657,
+        "estimateMs": 65.57860000000073,
+        "totalMs": 68.8087000000005
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "scenario": "out-of-range",
+      "expectedMatrix": [
+        1,
+        0,
+        90,
+        0,
+        1,
+        60
+      ],
+      "algorithm": "feature-match",
+      "status": "failed",
+      "reason": "quality-threshold",
+      "timings": {
+        "preprocessMs": 2.0685999999996056,
+        "estimateMs": 188.83790000000045,
+        "totalMs": 190.90650000000005
+      }
+    }
+  ],
+  "summary": {
+    "translation": {
+      "320x180": {
+        "successRate": 0.4166666666666667,
+        "totalMsP50": 11.562299999999823,
+        "totalMsP95": 13.299800000000005
+      },
+      "640x360": {
+        "successRate": 0.4166666666666667,
+        "totalMsP50": 14.7520999999997,
+        "totalMsP95": 15.523899999999685
+      }
+    },
+    "sparse-flow": {
+      "320x180": {
+        "successRate": 0.3333333333333333,
+        "totalMsP50": 43.6558,
+        "totalMsP95": 53.70080000000007
+      },
+      "640x360": {
+        "successRate": 0.3333333333333333,
+        "totalMsP50": 62.33439999999973,
+        "totalMsP95": 71.76569999999992
+      }
+    },
+    "feature-match": {
+      "320x180": {
+        "successRate": 0.4166666666666667,
+        "totalMsP50": 170.09179999999992,
+        "totalMsP95": 200.99070000000006
+      },
+      "640x360": {
+        "successRate": 0.4166666666666667,
+        "totalMsP50": 185.55790000000025,
+        "totalMsP95": 191.1161000000002
+      }
+    }
+  }
+}

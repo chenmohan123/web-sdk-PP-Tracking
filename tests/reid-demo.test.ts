@@ -5,7 +5,7 @@ import type { ReIdExtractor, ReIdResult } from '../src/reid/types';
 const image = { width: 20, height: 20, data: new Uint8Array(1600) };
 const detections = [{ box: { x: 1, y: 1, width: 8, height: 16 }, score: 0.9, classId: 0 }];
 const featureSpace = { id: 'demo-test', dimension: 2 };
-const result: ReIdResult = { featureSpace, detections: detections.map(d => ({ ...d, embedding: [1, 0] })), runtime: { requestedBackend: 'wasm', actualBackend: 'wasm', executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.1', ortVersion: '1.27.0' }, timings: { decodeMs: 0, preprocessMs: 0, inferenceMs: 1, postprocessMs: 0, totalMs: 1 } };
+const result: ReIdResult = { featureSpace, detections: detections.map(d => ({ ...d, embedding: [1, 0] })), runtime: { requestedBackend: 'wasm', actualBackend: 'wasm', executionMode: 'main', runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.2', ortVersion: '1.27.0' }, timings: { decodeMs: 0, preprocessMs: 0, inferenceMs: 1, postprocessMs: 0, totalMs: 1 } };
 function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(r => { resolve = r; }); return { promise, resolve }; }
 function setup(extract: ReIdExtractor['extract'] = async () => result) {
   const events: string[] = [];

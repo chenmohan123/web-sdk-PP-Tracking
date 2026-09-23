@@ -12,7 +12,7 @@ export interface LoadProgress { stage: 'download' | 'cache' | 'integrity' | 'ses
 export interface ReIdLoadOptions { signal?: AbortSignal; onProgress?: (event: LoadProgress) => void }
 export interface ReIdRuntimeInfo {
   requestedBackend: 'wasm' | 'webgpu'; actualBackend: 'wasm' | 'webgpu'; executionMode: 'main';
-  runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.1'; ortVersion: string;
+  runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.2'; ortVersion: string;
 }
 export interface ReIdLoadTimings { modelDownloadMs: number; modelCacheReadMs: number; integrityMs: number; sessionMs: number; totalMs: number }
 export interface ReIdTimings { decodeMs: number; preprocessMs: number; inferenceMs: number; postprocessMs: number; totalMs: number }

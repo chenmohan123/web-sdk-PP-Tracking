@@ -1,0 +1,15 @@
+{
+  "verifiedAt": "2026-09-23T05:00:00+08:00",
+  "package": "web-sdk-pp-tracking",
+  "version": "0.2.0-rc.2",
+  "registry": "https://registry.npmjs.org",
+  "tarball": "https://registry.npmjs.org/web-sdk-pp-tracking/-/web-sdk-pp-tracking-0.2.0-rc.2.tgz",
+  "distIntegrity": "sha512-X+iwLoxu865pr//nHFDHMsN9q1u3ej4X9IvWC9juDduprWiMNgTR/vgStHfwNjJ13iqTItTaUhuOqCZsxId82Q==",
+  "unpackedSize": 231274,
+  "distTags": {
+    "latest": "0.1.0",
+    "next": "0.2.0-rc.2"
+  },
+  "provenance": "oidc-workflow",
+  "workflow": "https://github.com/chenmohan123/web-sdk-PP-Tracking/actions/runs/35820131859"
+}

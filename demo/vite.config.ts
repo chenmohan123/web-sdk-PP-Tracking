@@ -1,3 +1,5 @@
 import { defineConfig } from 'vite';
 import { fileURLToPath } from 'node:url';
-export default defineConfig({ root: fileURLToPath(new URL('.', import.meta.url)), base: './', build: { outDir: 'dist' } });
+import { resolve } from 'node:path';
+const root = fileURLToPath(new URL('.', import.meta.url));
+export default defineConfig({ root, base: './', build: { outDir: 'dist', rollupOptions: { input: { index: resolve(root, 'index.html'), motion: resolve(root, 'motion.html') } } } });

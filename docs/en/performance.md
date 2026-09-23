@@ -2,6 +2,8 @@
 
 [中文](../zh-CN/performance.md) · [Home](../../README.en.md)
 
+The motion-estimation lab reports `preprocessMs`, `estimateMs`, and `totalMs` separately; see the [experiment report](../../reports/2026-09-23-motion-estimation/README.en.md). These fields do not replace the five standard tracking timings and are not merged with ReID model timings. On the current 640×360 synthetic input, Node p95 is about 15.5, 71.8, and 191.1 ms for translation, sparse flow, and feature matching respectively; success rates are 41.7%, 33.3%, and 41.7%. These are observations for the stated Spike environment only.
+
 All values are milliseconds measured with performance.now(), not placeholders.
 
 BoT-SORT validationMs includes motion/appearance validation, predictionMs includes matrix compensation, and totalMs includes result wrapping. External motion estimation, detection, ReID extraction and rendering are excluded. Frozen-matrix/vector playback cannot establish end-to-end video frame rate. Sequence09 still regresses, so ByteTrack stays default; see the [motion API](botsort-candidate.md).

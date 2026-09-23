@@ -4,6 +4,8 @@
 
 Local [0.2.0-rc.1](releases/0.2.0-rc.1.md) integrates four algorithms and motion import/export as of 2026-09-22. [Current validation](../../reports/2026-09-22-botsort-integration/README.en.md) separately records package, desktop-browser and fixed-sequence parity evidence. Historical checks below retain their original versions and dates and do not mean rc.1 is published.
 
+The local [0.2.0-rc.2](releases/0.2.0-rc.2.md) candidate adds an independent `/motion.html` lab as of 2026-09-23. Its synthetic three-algorithm evidence is separate from the main Demo and does not change hosted rc.1.
+
 Based on portal `standards/v1/templates/demo-checklist.md`, applicable algorithm items in1.2.0. Verify against `npm run test:browser` evidence; DOM markers do not substitute for interactions.
 
 - [x] One independent SDK; Chinese default, state-preserving English toggle, version and GitHub/npm project links in the brand bar.
@@ -15,6 +17,7 @@ Based on portal `standards/v1/templates/demo-checklist.md`, applicable algorithm
 - [x] data-sdk-state-reset clears state, paths and history; seek resets and replays in order.
 - [x] Invalid options, invalid final import frames and vectorless DeepSORT switches preserve options/input/results; valid application creates a fresh instance and clears results.
 - [x] In-memory local processing, privacy text, focusable controls and keyboard seek.
+- [x] Independent Motion Demo with Chinese default, English toggle, three-algorithm comparison, reset, JSON export and no 390px horizontal overflow; quality failures expose no applicable matrix.
 - Verify remote GitHub/npm/Demo links and publication evidence using the [release checklist](release-checklist.md).
 
 Model assets/download/cache/precision controls are inapplicable and not fabricated. See [compatibility](compatibility.md) for dated browser limits and `.tmp/browser/` for screenshots.

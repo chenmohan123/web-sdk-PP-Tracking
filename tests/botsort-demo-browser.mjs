@@ -26,7 +26,7 @@ try {
   const algorithm = async value => { await page.locator('#algorithm').selectOption(value); await ready(); assert.equal(await page.locator('#algorithm').inputValue(), value); };
   await page.goto('http://127.0.0.1:4206');
   assert.equal(await page.locator('#algorithm').inputValue(), 'bytetrack');
-  assert.match(await page.locator('.brand-note').textContent(), /0\.2\.0-rc\.1/);
+  assert.match(await page.locator('.brand-note').textContent(), /0\.2\.0-rc\.2/);
   assert.equal(await page.locator('#algorithm option').count(), 4);
   for (const value of ['ocsort', 'deepsort', 'botsort']) { await algorithm(value); await click('单步'); assert.equal((await download('导出本轮结果')).results[0].algorithm, value); }
   await page.locator('#sample').selectOption('translation'); await ready();
@@ -122,7 +122,7 @@ try {
   checks.push('键盘 seek 顺序重算、reset 恢复 initial；中英文切换保留结果；390px 中英文无横向溢出');
   assert(!requests.some(url => /onnxruntime|\.onnx(?:$|\?)|ort-wasm/.test(url)));
   assert.deepEqual(errors, []);
-  const report = { testedAt: new Date().toISOString(), browser: browser.version(), runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.1', checks, pageErrors: errors, scope: '桌面 Chromium 合成序列；390px 为桌面视口，非移动设备验证。未运行图像运动估计或 ReID 推理。' };
+  const report = { testedAt: new Date().toISOString(), browser: browser.version(), runtimeVersion: 'web-sdk-pp-tracking@0.2.0-rc.2', checks, pageErrors: errors, scope: '桌面 Chromium 合成序列；390px 为桌面视口，非移动设备验证。未运行图像运动估计或 ReID 推理。' };
   await writeFile(`${output}/report.json`, JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify(report, null, 2));
 } finally {

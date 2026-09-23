@@ -2,9 +2,9 @@
 
 [中文（默认）](README.md)
 
-Local preparation: **0.2.0-rc.1** adds public [BoT-SORT](docs/en/botsort-candidate.md) and a four-algorithm Demo. See [rc.1 notes](docs/en/releases/0.2.0-rc.1.md). Hosted `next`/Demo remain at released rc.0 and stable `latest` at0.1.0; local preparation is not publication.
+Local preparation: **0.2.0-rc.2** adds an independent [browser motion-estimation lab](docs/en/motion-estimation.md) to the four-algorithm [BoT-SORT](docs/en/botsort-candidate.md) Demo. Hosted `next`/Demo remain at released rc.1 and stable `latest` at0.1.0; rc.2 is a local experimental candidate and is not published.
 
-Local release candidate **0.2.0-rc.1**. A framework-neutral multi-object tracking SDK independently implementing ByteTrack, OC-SORT, DeepSORT and BoT-SORT-style tracking. The root entry uses CPU/main; the optional ReID subpath extracts human appearance features using CPU/WASM or GPU/WebGPU. There is no React runtime dependency. This RC is for prerelease validation; human ReID remains experimental.
+Local release candidate **0.2.0-rc.2**. A framework-neutral multi-object tracking SDK independently implementing ByteTrack, OC-SORT, DeepSORT and BoT-SORT-style tracking. The root entry uses CPU/main; the optional ReID subpath extracts human appearance features using CPU/WASM or GPU/WebGPU; the independent `motion` subpath compares adjacent-frame estimators on CPU/main. There is no React runtime dependency. ReID and motion estimation remain experimental.
 
 The RC exposes [the ReID subpath](docs/en/reid-candidate.md), `web-sdk-pp-tracking/reid`, with ModelScope as default and Hugging Face selectable. The fixed FP32 model is distributed on both hubs; weights are downloaded only when explicitly loading the model and are not packed into npm. Root tracking consumers need no inference engine installation.
 
@@ -38,7 +38,7 @@ pnpm --config.verify-deps-before-run=false --config.manage-package-manager-versi
 npm run build
 npm pack
 # Install the generated local tarball in a consumer project:
-npm install /absolute/path/web-sdk-pp-tracking/web-sdk-pp-tracking-0.2.0-rc.1.tgz
+npm install /absolute/path/web-sdk-pp-tracking/web-sdk-pp-tracking-0.2.0-rc.2.tgz
 # Only for the optional ReID module:
 npm install onnxruntime-web@1.27.0
 ```

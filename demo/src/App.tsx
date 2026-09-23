@@ -15,7 +15,7 @@ const copy = {
     empty: '暂无轨迹，单步或播放开始跟踪', noTracks: '本帧无活动轨迹', active: '活动轨迹', removed: '本帧移除', dropped: '容量跳过',
     tracked: '跟踪中', tentative: '待确认', lost: '丢失', score: '分数', class: '类别', runtime: '运行与耗时',
     algorithm: '算法与限制', privacy: '文件仅在本机内存处理，不上传；刷新即清空。',
-    detail: '当前算法的独立实现、来源、参数边界和已知限制如下。Apache-2.0；预发布候选版本 0.2.0-rc.1；ReID 为实验能力。',
+    detail: '当前算法的独立实现、来源、参数边界和已知限制如下。Apache-2.0；预发布候选版本 0.2.0-rc.2；ReID 与运动估计为实验能力。',
     contract: '输入：像素 xywh 检测框、分数、类别及严格递增的毫秒时间。输出：轨迹、状态、代次及耗时。',
     limitation: '无外观 ReID。交叉与掉头可能换 ID；轨迹 ID 不是人的身份。低分框应保留，不要提前按高分阈值过滤。',
     resetInfo: '重播、切换序列或跳转会 reset 并清空历史；跳转按顺序重算。语言切换保留状态。',
@@ -35,7 +35,7 @@ const copy = {
     empty: 'No tracks yet. Step or play to start.', noTracks: 'No active tracks in this frame', active: 'Active tracks', removed: 'Removed now', dropped: 'Capacity skipped',
     tracked: 'Tracked', tentative: 'Tentative', lost: 'Lost', score: 'Score', class: 'Class', runtime: 'Runtime & timings',
     algorithm: 'Algorithm & limitations', privacy: 'Files stay in local memory; no upload. Refresh clears all data.',
-    detail: 'The selected algorithm\'s independent implementation, source, parameter bounds and limitations appear below. Apache-2.0; prerelease candidate 0.2.0-rc.1; ReID is experimental.',
+    detail: 'The selected algorithm\'s independent implementation, source, parameter bounds and limitations appear below. Apache-2.0; prerelease candidate 0.2.0-rc.2; ReID and motion estimation are experimental.',
     contract: 'Input: pixel xywh boxes, scores, classes and strictly increasing millisecond timestamps. Output: tracks, states, generation and timings.',
     limitation: 'No appearance ReID. Crossing and turning may switch IDs; track IDs are not personal identities. Preserve low-score detections before tracking.',
     resetInfo: 'Restart, sequence changes and seek reset state and history. Seek replays in order. Language changes preserve state.',
@@ -155,7 +155,7 @@ export function App() {
     } finally { if (request === importRequest.current) setReading(false); }
   }
   function download() {
-    const output = { schemaVersion: 2, sdkVersion: '0.2.0-rc.1', algorithm: current?.algorithm ?? session.options.algorithm ?? algorithm, sequence: selected, options: session.options, ...(session.featureSpace ? { featureSpace: session.featureSpace } : {}), frames: session.frames, startedAt: session.startedAt, exportedAt: new Date().toISOString(), processedFrames: session.results.length, totalFrames: session.frames.length, results: session.results };
+    const output = { schemaVersion: 2, sdkVersion: '0.2.0-rc.2', algorithm: current?.algorithm ?? session.options.algorithm ?? algorithm, sequence: selected, options: session.options, ...(session.featureSpace ? { featureSpace: session.featureSpace } : {}), frames: session.frames, startedAt: session.startedAt, exportedAt: new Date().toISOString(), processedFrames: session.results.length, totalFrames: session.frames.length, results: session.results };
     const url = URL.createObjectURL(new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' }));
     const a = document.createElement('a'); a.href = url; a.download = 'pp-tracking-results.json'; a.click();
     window.setTimeout(() => URL.revokeObjectURL(url), 1000);
@@ -185,7 +185,7 @@ export function App() {
     } finally { if (request === importRequest.current) setReading(false); }
   }
   return <div className="shell">
-    <header className="topbar"><div><h1>{t.title}</h1><div className="brand-note">{t.subtitle} <span>v0.2.0-rc.1 · {language === 'zh' ? '预发布候选' : 'prerelease candidate'}</span></div></div><nav><a className="planned" href="https://github.com/chenmohan123/web-sdk-PP-Tracking">GitHub</a><a className="planned" href="https://www.npmjs.com/package/web-sdk-pp-tracking">npm</a><button data-testid="language" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}>{language === 'zh' ? 'English' : '中文'}</button></nav></header>
+    <header className="topbar"><div><h1>{t.title}</h1><div className="brand-note">{t.subtitle} <span>v0.2.0-rc.2 · {language === 'zh' ? '实验候选' : 'experimental candidate'}</span></div></div><nav><a className="planned" href="https://github.com/chenmohan123/web-sdk-PP-Tracking">GitHub</a><a className="planned" href="https://www.npmjs.com/package/web-sdk-pp-tracking">npm</a><button data-testid="language" onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}>{language === 'zh' ? 'English' : '中文'}</button></nav></header>
     <div className="mode-bar"><label htmlFor="input-mode">{language === 'zh' ? '输入模式' : 'Input mode'}</label><select id="input-mode" value={mode} onChange={event => { setPlaying(false); importRequest.current++; setReading(false); setMode(event.target.value as typeof mode); }}><option value="boxes">{language === 'zh' ? '检测框 / 外部向量' : 'Boxes / external vectors'}</option><option value="image">{language === 'zh' ? '图像 + 检测框' : 'Image + detections'}</option></select></div>
     {mode === 'image' ? <Suspense fallback={<p className="image-empty">{language === 'zh' ? '加载图像工作台' : 'Loading image workspace'}</p>}><ReIdWorkspace language={language} /></Suspense> : <main>
       <aside className="panel controls"><h2>{t.sequence}</h2>
@@ -236,7 +236,7 @@ export function App() {
         <div className="track-list">{current?.tracks.length ? current.tracks.map(track => <article className="track" key={track.id}><div><b style={{ color: colors[(track.id - 1) % colors.length] }}>#{track.id}</b><span>{t[track.state]}</span></div><p>{t.class} {track.classId} · {t.score} {track.score?.toFixed(2) ?? '—'}</p><small>{track.observed ? t.observation : t.prediction} · {track.hits} hits</small></article>) : <p className="muted">{current ? t.noTracks : t.empty}</p>}</div>
         <div className="counts">{t.generation}: {current?.generation ?? '—'}<br />{t.removed}: {current?.removed.length ?? 0}<br />{t.dropped}: {current?.droppedDetections ?? 0}</div>
       </aside>
-      <section className="details"><details data-sdk-runtime-info><summary>{t.runtime}</summary><p>requestedBackend: cpu · actualBackend: cpu · executionMode: main<br />web-sdk-pp-tracking@0.2.0-rc.1</p><dl data-sdk-timing>{(['validationMs', 'predictionMs', 'associationMs', 'updateMs', 'totalMs'] as const).map(key => <div key={key}><dt>{key}</dt><dd>{current ? current.timings[key].toFixed(3) : '—'} ms</dd></div>)}</dl><p>{t.timing}</p><p>{t.verified}</p></details>
+      <section className="details"><details data-sdk-runtime-info><summary>{t.runtime}</summary><p>requestedBackend: cpu · actualBackend: cpu · executionMode: main<br />web-sdk-pp-tracking@0.2.0-rc.2</p><dl data-sdk-timing>{(['validationMs', 'predictionMs', 'associationMs', 'updateMs', 'totalMs'] as const).map(key => <div key={key}><dt>{key}</dt><dd>{current ? current.timings[key].toFixed(3) : '—'} ms</dd></div>)}</dl><p>{t.timing}</p><p>{t.verified}</p></details>
       <details data-sdk-algorithm-info><summary>{t.algorithm}</summary><p>{t.detail}</p><p>{info.detail}</p>{(displayedAlgorithm === 'deepsort' || (session.options.algorithm === 'botsort' && session.options.appearance)) && session.featureSpace && <p className="feature-space"><b>{t.featureSpace}：</b><code data-testid="feature-space">{session.featureSpace.id} · {session.featureSpace.dimension}D</code></p>}<p>{t.contract}</p><p>{info.defaults}</p><p>{info.limitation}</p><p>{t.resetInfo}</p><a href={info.href} target="_blank" rel="noreferrer">{t.source}: {info.source}</a></details></section>
     </main>}
   </div>;

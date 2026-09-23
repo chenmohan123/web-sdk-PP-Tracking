@@ -1,8 +1,8 @@
-# API 0.2.0-rc.1 (release candidate)
+# API 0.2.0-rc.2 (local experimental candidate)
 
-[中文](../zh-CN/api.md) · [Home](../../README.en.md)
+[中文](../zh-CN/api.md) · [Motion estimation lab](motion-estimation.md) · [Home](../../README.en.md)
 
-`createTracker(options?: TrackerOptions): Tracker` returns synchronous `update(frame, {signal}?)`, `reset()` and `dispose()`. ESM/CJS export createTracker and TrackingError; declarations also export `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort' | 'botsort'` and `FeatureSpace`. This page covers published rc.1; npm `next` and the hosted Demo are both rc.1. The new overload `createTracker(options: BoTSortTrackerOptions): BoTSortTracker` requires BoTSortFrame. `AnyTrackerOptions` joins both option types while original TrackerOptions retains three algorithms. See the [motion API](botsort-candidate.md).
+`createTracker(options?: TrackerOptions): Tracker` returns synchronous `update(frame, {signal}?)`, `reset()` and `dispose()`. ESM/CJS export createTracker and TrackingError; declarations also export `TrackerAlgorithm = 'bytetrack' | 'ocsort' | 'deepsort' | 'botsort'` and `FeatureSpace`. The hosted npm `next` and Demo remain the published rc.1; the rc.2 label at the top is a local experimental candidate only. The new overload `createTracker(options: BoTSortTrackerOptions): BoTSortTracker` requires BoTSortFrame. `AnyTrackerOptions` joins both option types while original TrackerOptions retains three algorithms. See the [motion API](botsort-candidate.md).
 
 ## Input
 
@@ -56,7 +56,7 @@ Track fields: `id,classId,box,state,observed,score,ageMs,hits,missedMs`.
 States: tentative/tracked/lost. The removed array contains only this update's removal events, with state removed.
 Predictions have observed=false and score=null. Output boxes may extend outside the image and are not clipped. Hits count accumulated actual observations, starting at1.
 droppedDetections counts only new tracks skipped at capacity, not score filtering.
-Runtime reports actual cpu/main and `web-sdk-pp-tracking@0.2.0-rc.1`. See [performance](performance.md) for five timing fields.
+Runtime reports actual cpu/main and `web-sdk-pp-tracking@0.2.0-rc.2` (the hosted release remains rc.1). See [performance](performance.md) for five timing fields.
 
 The Demo's compact input-sequence export preserves normalized `frames` and optional top-level `featureSpace`; its versioned wrapper also keeps the algorithm and applied options. BoT-SORT preserves complete frameId/motion metadata. It is limited to 5MiB by UTF-8 byte size and can be re-imported. The separate result report also contains actual options and processed results; it can exceed 5MiB and is not guaranteed to be re-importable.
 

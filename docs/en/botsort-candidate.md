@@ -1,6 +1,6 @@
 # BoT-SORT external-motion API
 
-[中文](../zh-CN/botsort-candidate.md). Integration version: 2026-09-22, `0.2.0-rc.1`, CPU/main. The root factory now exposes BoT-SORT; rc.1 is published through npm `next`, GitHub Release and the hosted Demo.
+[中文](../zh-CN/botsort-candidate.md). Integration version: 2026-09-22, `0.2.0-rc.2`, CPU/main. The root factory now exposes BoT-SORT; rc.2 is published through npm `next`, GitHub Release and the hosted Demo.
 
 Install npm `next`, then use the public root API:
 
@@ -59,6 +59,6 @@ Compensation runs after prediction and before association. Centers/velocities us
 
 High-score appearance fusion requires matching classes, raw IoU≥0.5, and cosine distance≤0.25 by default. Cost is `min(1-IoU, cosine/2)`, including tentative association. Failed appearance gates still allow geometric matching. This retains the SDK's seconds-based fixed noise/lifecycle and does not implement all paper mechanisms. Width/height mapping, inclusive thresholds, and noise differ from the reference implementation. See the [research report](../../reports/2026-09-21-botsort-feasibility/README.en.md) for source/license scope; no third-party tracking implementation was copied.
 
-Results report algorithm botsort, runtimeVersion `web-sdk-pp-tracking@0.2.0-rc.1`, cpu/main, frameId, and motion status/reason. Only estimated motion reports applied:true. validationMs includes motion/features validation; predictionMs includes matrix application; totalMs is independently measured around the candidate call. **Image estimation, detection, ReID extraction, transport, and rendering are excluded.**
+Results report algorithm botsort, runtimeVersion `web-sdk-pp-tracking@0.2.0-rc.2`, cpu/main, frameId, and motion status/reason. Only estimated motion reports applied:true. validationMs includes motion/features validation; predictionMs includes matrix application; totalMs is independently measured around the candidate call. **Image estimation, detection, ReID extraction, transport, and rendering are excluded.**
 
-[Current validation](../../reports/2026-09-22-botsort-core/README.en.md) covers seven fixed sequences/5316 frames and desktop Chromium; 09 still regresses. The local rc.1 integrates root-factory selection and a four-algorithm Demo with motion import/export; its own delivery evidence is separate from the core report. Browser estimation, phones, video/camera, and portal Workflow remain separate work.
+[Current validation](../../reports/2026-09-22-botsort-core/README.en.md) covers seven fixed sequences/5316 frames and desktop Chromium; 09 still regresses. Rc.2 retains root-factory selection and a four-algorithm Demo with motion import/export; its delivery evidence is separate from the core report. Browser estimation remains an independent experiment; phones, video/camera, and portal Workflow remain separate work.

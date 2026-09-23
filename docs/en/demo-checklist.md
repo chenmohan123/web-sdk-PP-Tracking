@@ -4,7 +4,7 @@
 
 Local [0.2.0-rc.1](releases/0.2.0-rc.1.md) integrates four algorithms and motion import/export as of 2026-09-22. [Current validation](../../reports/2026-09-22-botsort-integration/README.en.md) separately records package, desktop-browser and fixed-sequence parity evidence. Historical checks below retain their original versions and dates and do not mean rc.1 is published.
 
-The local [0.2.0-rc.2](releases/0.2.0-rc.2.md) candidate adds an independent `/motion.html` lab as of 2026-09-23. Its synthetic three-algorithm evidence is separate from the main Demo and does not change hosted rc.1.
+The released [0.2.0-rc.2](releases/0.2.0-rc.2.md) adds an independent `/motion.html` lab as of 2026-09-23. Its synthetic three-algorithm evidence is separate from the main Demo and does not change stable `latest` 0.1.0.
 
 Based on portal `standards/v1/templates/demo-checklist.md`, applicable algorithm items in1.2.0. Verify against `npm run test:browser` evidence; DOM markers do not substitute for interactions.
 

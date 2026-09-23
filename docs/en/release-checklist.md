@@ -4,13 +4,13 @@
 
 On 2026-09-23 `0.2.0-rc.2` completed full verification, Motion lab validation and package-integrity checks, then shipped through the immutable tag, GitHub Release, npm Trusted Publishing and standalone Demo deployment. See the [prerelease receipt](../../reports/2026-09-23-release-rc2/README.md). npm `next` points to rc.2 while stable `latest` remains 0.1.0.
 
-Local [0.2.0-rc.1](releases/0.2.0-rc.1.md) integrates four algorithms and motion import/export as of 2026-09-22. [Current validation](../../reports/2026-09-22-botsort-integration/README.en.md) separately records package, desktop-browser and fixed-sequence parity evidence. Historical checks below retain their original versions and dates and do not mean rc.1 is published.
+The [0.2.0-rc.1](releases/0.2.0-rc.1.md) integration on 2026-09-22 added four algorithms and motion import/export. [Current validation](../../reports/2026-09-22-botsort-integration/README.en.md) separately records package, desktop-browser and fixed-sequence parity evidence. The rc.1 historical record and rc.2 release receipt remain separate.
 
 Based on portal `standards/v1/templates/release-checklist.md`. The rc.1 historical record and this rc.2 prerelease receipt are retained separately without overwriting the real-sequence evidence.
 
 ## Current hybrid SDK candidate
 
-Historical model and real-sequence evidence retains its alpha identity. The final RC tarball, hosted browser checks, standards and remote delivery are independently archived in the [delivery receipt](../../reports/2026-09-21-02-release/README.en.md). See [RC notes](releases/0.2.0-rc.0.md) for current behavior and limits.
+Historical model and real-sequence evidence retains its alpha identity. The final RC tarball, hosted browser checks, standards and remote delivery are independently archived in the [rc.2 release receipt](../../reports/2026-09-23-release-rc2/README.en.md). See [rc.2 notes](releases/0.2.0-rc.2.md) for current behavior and limits.
 
 - [x] The root provides three CPU/main trackers; optional `./reid` independently exports ESM/CJS/types. ORT1.27.0 is an optional peer, unnecessary for root consumers.
 - [x] Fixed FP32 weights are distributed on ModelScope/Hugging Face, defaulting to ModelScope. Immutable revisions, bytes, SHA and anonymous readback appear in the [stage report](../../reports/2026-09-21-reid-distribution/README.en.md).
@@ -22,7 +22,7 @@ Historical model and real-sequence evidence retains its alpha identity. The fina
 
 - [x] The [three-tracker real-image evaluation](../../reports/2026-09-21-mot-reid/README.en.md) covers5316 frames/67639 detections, official combined/per-sequence metrics, browser/two-Node equality, zero capacity drops and complete measured costs.
 
-Version 0.2.0-rc.0 is now prereleased with ByteTrack default, explicit OC-SORT/DeepSORT options and experimental human ReID. Video/camera scheduling and cross-device compatibility require separate design and verification.
+Version 0.2.0-rc.2 is now prereleased with ByteTrack default, explicit OC-SORT/DeepSORT/BoT-SORT options and experimental human ReID and motion estimation. Video/camera scheduling and cross-device compatibility require separate design and verification.
 
 ## Historical delivery and baseline checks
 
@@ -46,6 +46,6 @@ The local checker preserves remote rules as skip. No local required failures mea
 
 The [optional ReID module](reid-candidate.md) is published with the RC, real sources, licensing documentation and the 1.3 hybrid manifest. The model remains experimental.
 
-The three-strategy, external-vector and Demo changes in 0.2.0-rc.0 follow a separate candidate release process. Checked remote items above record historical 0.1.0 facts and do not prove RC delivery.
+The multi-algorithm, external-vector and Demo changes in 0.2.0-rc.2 follow a separate prerelease process. Checked remote items above record historical 0.1.0 facts and do not replace the rc.2 release receipt.
 
 Release text uses LF; historical reports preserve original bytes. Final ESM/CJS/declaration consumption, SHA256 and sha512 integrity are archived independently; old package sizes do not identify the published artifact. The locally authenticated first publication had null provenance. This RC exercised Trusted Publishing and verified the resulting attestation; see the current receipt. Real-sequence metrics and limitations are in the [MOT17 report](../../reports/2026-09-19-mot17/README.en.md).

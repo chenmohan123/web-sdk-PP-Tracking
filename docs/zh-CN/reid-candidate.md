@@ -1,10 +1,10 @@
-# ReID 可选模块（本地发布候选）
+# ReID 可选模块（预发布能力）
 
 [English](../en/reid-candidate.md) · [首页](../../README.md)
 
-本地开发模块用于从已解码人体图像裁剪提取 512 维外观向量，供现有 DeepSORT 策略消费。它不产生检测框、不读取视频或摄像头，也不分配轨迹 ID。根入口的跟踪算法继续使用 CPU/main，特征提取单独选择 WASM 或 WebGPU。
+预发布模块用于从已解码人体图像裁剪提取 512 维外观向量，供现有 DeepSORT 策略消费。它不产生检测框、不读取视频或摄像头，也不分配轨迹 ID。根入口的跟踪算法继续使用 CPU/main，特征提取单独选择 WASM 或 WebGPU。
 
-本地构建与 tarball 已提供 `web-sdk-pp-tracking/reid` 独立 ESM/CJS/类型入口，`sdk-manifest.yaml` 使用标准1.3.0 hybrid，同时声明算法和模型。需要先按首页安装 0.2.0-rc.0，再安装可选依赖 `onnxruntime-web@1.27.0`。根入口用户不需要这个依赖，权重不进入tarball。
+预发布构建与 tarball 已提供 `web-sdk-pp-tracking/reid` 独立 ESM/CJS/类型入口，`sdk-manifest.yaml` 使用标准1.3.0 hybrid，同时声明算法和模型。需要先按首页安装 0.2.0-rc.2，再安装可选依赖 `onnxruntime-web@1.27.0`。根入口用户不需要这个依赖，权重不进入tarball。
 
 ## 输入与模型身份
 
@@ -68,4 +68,4 @@ load报告下载、缓存读取、完整性、会话与总耗时；extract报告
 
 压缩下载验收使用本机 HTTPS 及临时自签名证书；准备命令见阶段报告。默认读取 `.tmp/reid-module/localhost-test.key` 与 `.crt`，或用 `TRACKING_REID_TLS_KEY` / `TRACKING_REID_TLS_CERT` 指定。仅自动测试的浏览器上下文忽略证书错误，无需安装证书，证书和私钥不提交。
 
-本轮[分发与接入报告](../../reports/2026-09-21-reid-distribution/README.md)记录真实双源与公开入口、Demo的验收。`node tests/reid-distribution-browser.mjs`使用正式dist子入口实测双源CPU/GPU，需上轮本地RGBA资源。Demo的“图像+检测框”模式采用本地图片与调用者检测数组逐帧提取并跟踪；没有自动检测器。[真实同输入评测](../../reports/2026-09-21-mot-reid/README.md)使用0.2.0-alpha.0已完成七段5316帧/67639检测：DeepSORT+PPLCNet的IDF1为45.4637%，低于ByteTrack的48.2922%；其余指标及完整成本见报告，不能据局部指标宣称总体提升。已发布版本为 0.2.0-rc.1，本文模型验证仍对应该阶段；rc.1新增外部运动矩阵BoT-SORT，ByteTrack默认，ReID保留人体场景实验能力；没有禁用外观消融，不能把结果单独归因模型。未声明手机、Safari、Firefox、Worker、NPU或完整视频/摄像头兼容。
+本轮[分发与接入报告](../../reports/2026-09-21-reid-distribution/README.md)记录真实双源与公开入口、Demo的验收。`node tests/reid-distribution-browser.mjs`使用正式dist子入口实测双源CPU/GPU，需上轮本地RGBA资源。Demo的“图像+检测框”模式采用本地图片与调用者检测数组逐帧提取并跟踪；没有自动检测器。[真实同输入评测](../../reports/2026-09-21-mot-reid/README.md)使用0.2.0-alpha.0已完成七段5316帧/67639检测：DeepSORT+PPLCNet的IDF1为45.4637%，低于ByteTrack的48.2922%；其余指标及完整成本见报告，不能据局部指标宣称总体提升。当前预发布版本为 0.2.0-rc.2，本文模型验证仍保留原始阶段身份；rc.2 新增独立运动估计实验，ByteTrack默认，ReID保留人体场景实验能力；没有禁用外观消融，不能把结果单独归因模型。未声明手机、Safari、Firefox、Worker、NPU或完整视频/摄像头兼容。

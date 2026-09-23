@@ -2,6 +2,8 @@
 
 [English](../en/release-checklist.md)
 
+2026-09-23 本地 `0.2.0-rc.2` 候选已完成完整 verify、Motion 实验验证和包完整性核对；候选包摘要见[本地候选证据](../../reports/2026-09-23-motion-estimation/candidate-package.json)。尚未创建远程标签、GitHub Release、npm 版本或线上 Demo 更新。
+
 2026-09-22 本地 [0.2.0-rc.1](releases/0.2.0-rc.1.md) 已接入四算法与运动导入导出；[本轮验收](../../reports/2026-09-22-botsort-integration/README.md)单独记录公开包、桌面浏览器和固定序列对齐。下方历史勾选保留原版本与日期，不代表 rc.1 已发布。
 
 基于门户 `standards/v1/templates/release-checklist.md`。2026-09-22 已发布 0.2.0-rc.1：npm next、GitHub 预发布与 HTTPS Demo 均已回读，稳定 latest 保留 0.1.0，见[本轮发布回执](../../reports/2026-09-22-botsort-integration/release-receipt.md)。

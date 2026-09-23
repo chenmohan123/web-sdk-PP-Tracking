@@ -1,0 +1,23 @@
+{
+  "date": "2026-09-23",
+  "version": "0.2.0-rc.2",
+  "status": "local-only",
+  "tagValidation": "v0.2.0-rc.2",
+  "filename": "web-sdk-pp-tracking-0.2.0-rc.2.tgz",
+  "bytes": 65099,
+  "sha256": "b52419f5d6c4fdc64a5457c1a2806ad7d67d915fae2f172a0e9277b1d07a4604",
+  "sha512Integrity": "sha512-X+iwLoxu865pr//nHFDHMsN9q1u3ej4X9IvWC9juDduprWiMNgTR/vgStHfwNjJ13iqTItTaUhuOqCZsxId82Q==",
+  "checks": [
+    "npm pack 文件白名单",
+    "ESM/CJS/NodeNext 类型消费",
+    "根入口与运动估计子入口独立导出",
+    "v 标签与 package.json 版本严格一致"
+  ],
+  "remote": {
+    "pushed": false,
+    "pullRequest": false,
+    "npmPublished": false,
+    "githubRelease": false,
+    "hostedDemoUpdated": false
+  }
+}

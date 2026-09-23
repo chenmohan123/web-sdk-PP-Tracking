@@ -1,0 +1,31 @@
+{
+  "verifiedAt": "2026-09-23T05:00:00+08:00",
+  "package": "web-sdk-pp-tracking",
+  "version": "0.2.0-rc.2",
+  "tag": "v0.2.0-rc.2",
+  "targetCommit": "a262e0e40039b17b83332ea8b18ca994ab4dbc88",
+  "release": {
+    "url": "https://github.com/chenmohan123/web-sdk-PP-Tracking/releases/tag/v0.2.0-rc.2",
+    "prerelease": true,
+    "draft": false
+  },
+  "workflow": {
+    "url": "https://github.com/chenmohan123/web-sdk-PP-Tracking/actions/runs/35820131859",
+    "id": 35820131859,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": ["prepare", "verify / verify", "publish"]
+  },
+  "demoDeployment": {
+    "url": "https://github.com/chenmohan123/web-sdk-PP-Tracking/actions/runs/35820030775",
+    "status": "completed",
+    "conclusion": "success",
+    "motionUrl": "https://chenmohan123.github.io/web-sdk-PP-Tracking/motion.html",
+    "motionStatus": 200
+  },
+  "localCandidate": {
+    "bytes": 65099,
+    "sha256": "b52419f5d6c4fdc64a5457c1a2806ad7d67d915fae2f172a0e9277b1d07a4604"
+  },
+  "boundary": "预发布候选进入 npm next；latest 保持 0.1.0。实验入口不声明手机、Worker、GPU/NPU、Safari、Firefox、视频或摄像头兼容。"
+}

@@ -1,16 +1,18 @@
 # 变更记录 / Changelog
 
-## 0.2.0-rc.2 — 2026-09-23（本地实验候选，未发布）
+## 0.2.0-rc.2 — 2026-09-23（预发布）
 
 - 新增独立 `web-sdk-pp-tracking/motion` 子入口，接收相邻 `ImageData`/`VideoFrame` 并比较纯平移、稀疏光流和特征匹配。
 - 新增 `/motion.html` 实验 Demo、合成对比脚本和失败原因/耗时证据；运动估计不会自动接入 BoT-SORT，也不改变 ByteTrack 默认。
 - 仅形成 Windows 11 + Chromium 153 + CPU/main 的实验验证；手机、Worker、GPU/NPU、Safari/Firefox 与视频/摄像头不作兼容承诺。
+- 已通过不可变标签 `v0.2.0-rc.2` 发布到 GitHub Release，并由可信发布工作流进入 npm `next`；`latest` 继续保持 0.1.0。远程回执见 [2026-09-23 预发布记录](reports/2026-09-23-release-rc2/README.md)。
 
 English equivalent:
 
 - Added an independent `web-sdk-pp-tracking/motion` subpath for adjacent `ImageData`/`VideoFrame` translation, sparse-flow, and feature-matching experiments.
 - Added `/motion.html`, a synthetic comparison script, explicit failures, and timing evidence. Motion estimation is not automatically connected to BoT-SORT and does not change the ByteTrack default.
 - Evidence covers Windows 11, Chromium 153, and CPU/main only; no compatibility claim is made for phones, workers, GPU/NPU, Safari/Firefox, video, or cameras.
+- Published from immutable tag `v0.2.0-rc.2` through the trusted release workflow to npm `next`; `latest` remains 0.1.0. See the [2026-09-23 prerelease record](reports/2026-09-23-release-rc2/README.md).
 
 ## 0.2.0-rc.1 — 2026-09-22（本地准备，未发布）
 

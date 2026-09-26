@@ -42,6 +42,7 @@ interface SequenceFrameEvidence {
   activeTrackIds: number[];
   observedTrackIds: number[];
   lostTrackIds: number[];
+  trackedTrackIds: number[];
   removedTrackIds: number[];
 }
 

@@ -12,7 +12,6 @@ import {
   SEQUENCE_FRAME_COUNT,
   SEQUENCE_SERIALIZERS,
   SEQUENCE_VARIANTS,
-  TRACKER_OPTIONS,
   sequenceContract,
 } from './yolox-candidate-config.mjs';
 import { createYoloxSyntheticSequence } from './yolox-sequence.mjs';
@@ -171,10 +170,15 @@ assert.ok(
 const sequenceFrames = createYoloxSyntheticSequence();
 assert.equal(sequenceFrames.length, SEQUENCE_FRAME_COUNT, '合成序列必须固定七帧');
 // 证据必须绑定被测产物：两端各自核对同一批 bundle 的哈希，才能声明跨运行时等值。
+// 规范形式由 helper 模块定义，故一并入绑定，避免哈希相同但口径被换。
 const artifacts = {
   candidateEsmSha256: sha256(await readFile(CANDIDATE_PATH)),
   candidateCjsSha256: sha256(await readFile(CANDIDATE_CJS_PATH)),
   trackerEntrySha256: sha256(await readFile(TRACKER_ENTRY_PATH)),
+  configSha256: sha256(await readFile(resolve('tests/yolox-candidate-config.mjs'))),
+  serializationSha256: sha256(await readFile(resolve('tests/yolox-serialization.mjs'))),
+  sequenceSha256: sha256(await readFile(resolve('tests/yolox-sequence.mjs'))),
+  runnerSha256: sha256(await readFile(resolve('tests/yolox-tracking-sequence.mjs'))),
 };
 const rootEntry = await import(pathToFileURL(TRACKER_ENTRY_PATH).href);
 assert.equal(
@@ -202,7 +206,7 @@ for (const variant of SEQUENCE_VARIANTS) {
     const runSequence = async () => runYoloxTrackingSequence({
       frames: sequenceFrames,
       detector: sequenceDetector,
-      tracker: rootEntry.createTracker({ ...TRACKER_OPTIONS }),
+      tracker: rootEntry.createTracker({ ...variant.trackerOptions }),
       digest: async value => digest(value),
       serializeDetections,
     });
@@ -223,12 +227,29 @@ for (const variant of SEQUENCE_VARIANTS) {
       first.sequence.trackingSha256,
       `${variant.id} 变体重放序列必须复现逐字节一致的 tracking 序列哈希`,
     );
+    if (variant.buildsTracks) {
+      // 防止第三组变体悄悄退化成空转：状态机必须真的走过 tracked、lost 与 removed。
+      assert.ok(
+        first.frames.some(frame => frame.trackedTrackIds.length > 0),
+        `${variant.id} 变体必须至少确认一条 tracked 轨迹`,
+      );
+      assert.ok(
+        first.frames.some(frame => frame.lostTrackIds.length > 0),
+        `${variant.id} 变体必须至少出现一次 lost 状态`,
+      );
+      assert.ok(
+        first.frames.some(frame => frame.removedTrackIds.length > 0),
+        `${variant.id} 变体必须至少发生一次轨迹移除`,
+      );
+    }
     sequences.push({
       id: variant.id,
       purpose: variant.purpose,
       hashing: variant.hashing,
       detectsRealBoxes: variant.detectsRealBoxes,
+      buildsTracks: variant.buildsTracks,
       detectorOptions: variant.detectorOptions,
+      trackerOptions: variant.trackerOptions,
       trackerEntry: 'dist/index.js',
       runtime: sequenceLoad.runtime,
       frames: first.frames,

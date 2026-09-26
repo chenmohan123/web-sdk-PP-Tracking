@@ -53,6 +53,7 @@ export async function runYoloxTrackingSequence({
       activeTrackIds: sortedIds(tracking.tracks),
       observedTrackIds: sortedIds(tracking.tracks.filter(track => track.observed)),
       lostTrackIds: sortedIds(tracking.tracks.filter(track => track.state === 'lost')),
+      trackedTrackIds: sortedIds(tracking.tracks.filter(track => track.state === 'tracked')),
       removedTrackIds: sortedIds(tracking.removed),
     });
   }

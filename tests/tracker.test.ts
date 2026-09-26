@@ -71,6 +71,9 @@ test('贴边裁剪框按浮点容差接受，超出容差仍拒绝', () => {
   expect(accepted.tracks[0].box.y).toBeCloseTo(40.42656526587306, 10);
   const over = { box: { x: 196.4773154358571, y: 40.42656526587306, width: 97.68965682453731, height: 199.57343473412695 + 1e-6 }, score: 0.9, classId: 1 };
   expect(() => createTracker({ minHits: 1 }).update({ timestampMs: 0, imageSize: { width: 320, height: 240 }, detections: [over] })).toThrowError(expect.objectContaining({ code: 'INVALID_INPUT' }));
+  // 四算法共用 validateFrame，容差必须对 ocsort 同样生效（深/BoT-SORT 见 src/tracker.ts:118 唯一调用点）。
+  expect(() => createTracker({ algorithm: 'ocsort', minHits: 1 }).update({ timestampMs: 0, imageSize: { width: 320, height: 240 }, detections: [clipped] })).not.toThrow();
+  expect(() => createTracker({ algorithm: 'ocsort', minHits: 1 }).update({ timestampMs: 0, imageSize: { width: 320, height: 240 }, detections: [over] })).toThrowError(expect.objectContaining({ code: 'INVALID_INPUT' }));
 });
 test('输入、结果及 runtime 均与内部状态引用隔离', () => {
   const a = createTracker({ minHits: 1 }); const input = frame(0); const out = a.update(input);

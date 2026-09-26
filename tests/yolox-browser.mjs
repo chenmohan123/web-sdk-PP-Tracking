@@ -141,6 +141,18 @@ try {
       ).join('');
     };
     const { serializeYoloxDetections } = await import('/yolox-serialization.mjs');
+    // 单帧与序列都从同一份共享配置取阈值，本端不采信 Node 结果文件里的数值。
+    const sharedConfig = await import('/yolox-candidate-config.mjs');
+    if (
+      expected.configuration.scoreThreshold !== sharedConfig.DETECTOR_OPTIONS.scoreThreshold ||
+      expected.configuration.nmsThreshold !== sharedConfig.DETECTOR_OPTIONS.nmsThreshold ||
+      expected.configuration.maxDetections !== sharedConfig.DETECTOR_OPTIONS.maxDetections ||
+      expected.configuration.measuredRuns !== sharedConfig.SAMPLE_COUNT ||
+      expected.fixture.width !== sharedConfig.FIXTURE_WIDTH ||
+      expected.fixture.height !== sharedConfig.FIXTURE_HEIGHT
+    ) {
+      throw new Error('Node 记录的单帧配置与共享配置模块不一致');
+    }
     const percentile = (values, fraction) => {
       const sorted = [...values].sort((left, right) => left - right);
       const index = (sorted.length - 1) * fraction;
@@ -181,9 +193,9 @@ try {
         modelId: expected.model.id,
         backend,
         modelBytes: modelBytes.slice(0),
-        scoreThreshold: expected.configuration.scoreThreshold,
-        nmsThreshold: expected.configuration.nmsThreshold,
-        maxDetections: expected.configuration.maxDetections,
+        scoreThreshold: sharedConfig.DETECTOR_OPTIONS.scoreThreshold,
+        nmsThreshold: sharedConfig.DETECTOR_OPTIONS.nmsThreshold,
+        maxDetections: sharedConfig.DETECTOR_OPTIONS.maxDetections,
       });
       const progress = [];
       const samples = [];
@@ -199,7 +211,7 @@ try {
         if (warmup.generation !== 0 || warmup.detections.length === 0) {
           throw new Error('浏览器预热推理未产生预期非空 generation 0 结果');
         }
-        for (let index = 0; index < expected.configuration.measuredRuns; index += 1) {
+        for (let index = 0; index < sharedConfig.SAMPLE_COUNT; index += 1) {
           const result = await detector.detect({ image });
           if (result.generation !== index + 1) {
             throw new Error('浏览器 generation 未连续递增');
@@ -286,7 +298,7 @@ try {
           const run = () => runYoloxTrackingSequence({
             frames,
             detector,
-            tracker: createTracker({ ...contract.trackerOptions }),
+            tracker: createTracker({ ...variant.trackerOptions }),
             digest: async value =>
               sha256(typeof value === 'string' ? new TextEncoder().encode(value) : value),
             serializeDetections,
@@ -299,10 +311,23 @@ try {
           ) {
             throw new Error(`${variant.id} 变体重放未复现一致的序列哈希`);
           }
+          if (variant.buildsTracks) {
+            if (!first.frames.some(frame => frame.trackedTrackIds.length > 0)) {
+              throw new Error(`${variant.id} 变体未确认任何 tracked 轨迹`);
+            }
+            if (!first.frames.some(frame => frame.lostTrackIds.length > 0)) {
+              throw new Error(`${variant.id} 变体未出现 lost 状态`);
+            }
+            if (!first.frames.some(frame => frame.removedTrackIds.length > 0)) {
+              throw new Error(`${variant.id} 变体未发生轨迹移除`);
+            }
+          }
           sequences.push({
             id: variant.id,
             hashing: variant.hashing,
             detectsRealBoxes: variant.detectsRealBoxes,
+            buildsTracks: variant.buildsTracks,
+            trackerOptions: variant.trackerOptions,
             runtime: load.runtime,
             frames: first.frames,
             summary: first.sequence,
@@ -342,16 +367,21 @@ try {
       data: new Uint8Array(fixtureBytes),
     };
     // 两端必须执行同一批字节：对服务端实际返回的模块字节取哈希，再与 Node 侧磁盘哈希比对。
+    // CJS 变体不经浏览器执行，其身份由 scripts/build-yolox-candidate.mjs 的真实 require 消费与哈希记录把关。
     const fetchText = async url =>
       new TextDecoder().decode(await fetch(url).then(response => response.arrayBuffer()));
-    const moduleHashes = {
-      candidateEsmSha256: await sha256(
-        new TextEncoder().encode(await fetchText('/yolox.mjs')),
-      ),
-      trackerEntrySha256: await sha256(
-        new TextEncoder().encode(await fetchText('/tracking.mjs')),
-      ),
+    const moduleRoutes = {
+      candidateEsmSha256: '/yolox.mjs',
+      trackerEntrySha256: '/tracking.mjs',
+      configSha256: '/yolox-candidate-config.mjs',
+      serializationSha256: '/yolox-serialization.mjs',
+      sequenceSha256: '/yolox-sequence.mjs',
+      runnerSha256: '/yolox-tracking-sequence.mjs',
     };
+    const moduleHashes = {};
+    for (const [key, url] of Object.entries(moduleRoutes)) {
+      moduleHashes[key] = await sha256(new TextEncoder().encode(await fetchText(url)));
+    }
     const wasm = await run('wasm', modelBytes, image);
     if (
       wasm.runtime.requestedBackend !== 'wasm' ||
@@ -551,11 +581,19 @@ try {
 
   const sharedSequenceConfigMatch =
     JSON.stringify(browserResult.sequenceContract) === JSON.stringify(nodeResult.contract);
-  const servedModuleIdentityMatch =
-    browserResult.moduleHashes.candidateEsmSha256 === nodeResult.artifacts.candidateEsmSha256 &&
-    browserResult.moduleHashes.trackerEntrySha256 === nodeResult.artifacts.trackerEntrySha256;
+  const servedModuleIdentityMatch = Object.entries(nodeResult.artifacts)
+    .filter(([key]) => key in browserResult.moduleHashes)
+    .every(([key, value]) => browserResult.moduleHashes[key] === value) &&
+    Object.keys(browserResult.moduleHashes).every(
+      key => nodeResult.artifacts[key] === browserResult.moduleHashes[key],
+    );
   assert.ok(sharedSequenceConfigMatch, '两端共享的组合验收配置必须一致');
-  assert.ok(servedModuleIdentityMatch, '两端实际执行的 bundle 字节必须一致');
+  assert.ok(servedModuleIdentityMatch, '两端实际执行与定义的模块字节必须一致');
+  assert.deepEqual(
+    Object.keys(browserResult.moduleHashes).sort(),
+    ['candidateEsmSha256', 'configSha256', 'runnerSha256', 'sequenceSha256', 'serializationSha256', 'trackerEntrySha256'],
+    '浏览器侧必须逐一绑定执行与定义所用的每一份模块',
+  );
 
   const {
     canonicalDetections: _nodeCanonical,
@@ -623,9 +661,11 @@ try {
       nodeChromiumSerializedOutputMatch: true,
       nodeChromiumDetectionHashMatch: true,
       nodeChromiumEmptySequenceContractMatch:
-        sequenceComparison.find(variant => !variant.detectsRealBoxes)?.framesMatch === true,
+        sequenceComparison.find(variant => variant.id === 'candidate-default-threshold')?.framesMatch === true,
       nodeChromiumRealBoxSequenceMatch:
-        sequenceComparison.find(variant => variant.detectsRealBoxes)?.framesMatch === true,
+        sequenceComparison.find(variant => variant.id === 'zero-threshold-coverage')?.framesMatch === true,
+      nodeChromiumLifecycleSequenceMatch:
+        sequenceComparison.find(variant => variant.id === 'zero-threshold-lifecycle')?.framesMatch === true,
       sharedSequenceConfigMatch,
       servedModuleIdentityMatch,
       passed: true,

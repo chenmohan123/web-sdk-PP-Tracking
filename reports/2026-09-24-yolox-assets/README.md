@@ -18,8 +18,8 @@
 - ONNX 图内包含 objectness 和类别 sigmoid；grid decode、阈值、topK 和 NMS 留在 JS 侧。
 - Node WASM/main、Chromium WASM/main 和 Chromium WebGPU/main 均完成本机实测。
 - Node 与 Chromium WASM 的 canonical detection 序列化和 SHA-256 一致。
-- 真实 YOLOX 输出经正式根入口 `createTracker()` 送入 ByteTrack 的七帧合成序列已在 Node 与 Chromium 双端跑通，逐帧记录图像哈希、检测哈希、跟踪哈希、最小相邻分数间隔与轨迹状态，且两端配置与所执行的 bundle 字节互相核对。
-- 该序列在候选默认阈值下为七帧零检出，其跨运行时一致只证明空检测契约；带真实框的零阈值组为 6/7 帧一致，余下一帧的差异已如实记录，见第 15 节。
+- 真实 YOLOX 输出经正式根入口 `createTracker()` 送入 ByteTrack 的七帧合成序列已在 Node 与 Chromium 双端跑通，分三组变体：候选默认阈值（空检测契约）、零阈值（真实框进跟踪）、零阈值加低跟踪阈值（真实走完 `tracked/lost/removed`）。两端配置各自 import 同一份共享模块后互核，执行与定义所用的六份模块字节全部按 SHA-256 绑定比对。
+- 带真实框的两组在 `motion-approach` 上跨运行时不一致（6/7），成因是 `8e-11 ~ 1e-9` 级近平局处 greedy NMS 保留了不同的框；该差异未级联到后续帧。以上均如实入证据，见第 15 节。
 - 序列接入过程中发现并修复了贴边检测框的浮点边界缺陷，见第 16 节；该修复位于 `src/tracker.ts` 的输入校验，不改算法、阈值或生命周期默认值。
 - 候选 bundle 完成 ESM、CommonJS 与 NodeNext mts/cts 类型消费，并带一个必须失败的反面对照，见第 17 节。
 - WebGPU 结果单独记录，不要求与 WASM 输出逐字节一致。
@@ -204,6 +204,10 @@ fixture 校验结果：
 - fixture 原子写入：通过
 - `passed: true`
 
+需要明确这条 fixture 的覆盖边界：该真实前向输出在 `scoreThreshold: 0.1` 下 `scoreQualifiedAnchors` 为 0，期望集是空集，所以 `tests/yolox-decode.test.ts` 里"与 Python 期望一致"的断言实际上是空对空，它只证明这份张量在 JS 侧解码同样不产生候选，不证明排序、person-only 与 NMS 行为。为此同一夹具另加了一条零阈值断言：`scoreThreshold: 0` 时必须解出非空、分数降序、`classId` 为 1、且按**无容差的精确比较**满足 `x + width <= imageWidth` 与 `y + height <= imageHeight`。两点实测依据：该断言在变异检查中确实会失败（把阈值换成 `0.1` 后立即在 `toBeGreaterThan(0)` 上红）；而精确包含在零阈值真实张量上全部成立，说明生产端 `clipBox` 本身没有越界，第 16 节的问题只出在消费端的减法判定形式。排序、抑制与等分 tie-break 的行为覆盖在合成张量单测 `tests/yolox-decode.test.ts` 与 `tests/yolox-nms.test.ts` 中。
+
+另一处需要如实标注：上表中 `deterministicSort`、`personOnly`、`strictNmsThreshold` 三个布尔来自 `fixture-manifest.json` 的历史记录，本仓库内没有可重跑该清单的生成脚本，因此它们目前不可独立复现；可复现的是 fixture 文件自身的 SHA-256 与上述 JS 单测。
+
 ## 7. Node WASM/main 实测
 
 运行证据由 `tests/yolox-node.mjs` 生成，并写入 `runtime-evidence.json`。
@@ -377,7 +381,8 @@ Node 和 Chromium 不直接对 detector 返回的原始浮点对象执行 JSON.s
 - ORT `1.27.0`
 - 固定 320×240 RGBA8 合成 fixture
 - 模型身份、fixture 身份、重复输出、Node/Chromium WASM canonical 序列化
-- ByteTrack + YOLOX 七帧合成组合序列（Node WASM/main 与 Chromium WASM/main，含共享配置与 bundle 字节身份互核）
+- ByteTrack + YOLOX 七帧合成组合序列三组变体（Node WASM/main 与 Chromium WASM/main，含共享配置互核与六份模块字节身份绑定）
+- 真实 Python 前向张量在零阈值下的非空、降序、person 与精确边界包含断言
 - 候选 bundle 的 ESM、CommonJS 与 NodeNext mts/cts 类型消费
 - 本机网络边界
 
@@ -413,9 +418,9 @@ Node 和 Chromium 不直接对 detector 返回的原始浮点对象执行 JSON.s
 - 不写入 ModelScope 或 Hugging Face。
 - 不把候选能力写入稳定版本说明。
 
-一处已授权的例外必须记录在这里：为修复第 16 节的浮点边界缺陷，`src/tracker.ts:28` 与 `:82` 的输入校验被修改，属于已发布跟踪入口的代码变更，但不改匹配算法、阈值默认值、生命周期状态机或公开返回结构。该变更随工作树保留，尚未提交、合并或发布；覆盖该变更之后整仓状态的门户检查见 `sdk-check.json`（必需项 0 失败，5 项因需要远程核验而跳过）。进入正式版本前需要按门户标准走版本与发布门槛，并在发行说明中说明校验接受条件的变化。
+一处已授权的例外必须记录在这里：为修复第 16 节的浮点边界缺陷，`src/tracker.ts:28` 与 `:82` 的输入校验被修改，属于已发布跟踪入口的代码变更，但不改匹配算法、阈值默认值、生命周期状态机或公开返回结构。四算法共用同一处 `validateFrame`（`src/tracker.ts:118` 是唯一调用点），故同时生效；`tests/tracker.test.ts` 已对 bytetrack 与 ocsort 两侧分别断言接受与拒绝。该变更随工作树保留，尚未推送或发布；覆盖该变更之后整仓状态的门户检查见 `sdk-check.json`（必需项 21 通过、0 失败，4 项必需检查因需远程核验而跳过，另有 1 项 lab 为信息性跳过）。进入正式版本前需要按门户标准走版本与发布门槛，并在发行说明中说明校验接受条件的变化。
 
-另一个提交时的注意事项：本轮新增的 7 个 `tests/yolox-*.test.ts` 已进入官方 `npm test` 与 `typecheck` 门禁，但它们与被测的 `src/yolox/`、`models/yolox-tiny/` 一样仍是未跟踪文件。若只提交 `src/tracker.ts` 与 `tests/tracker.test.ts` 两个被跟踪文件，CI 会因缺少这些测试而失败；三者必须同进退，或反过来把候选测试暂时排除在门禁之外。
+另一个提交时的注意事项：本轮新增的 8 个 `tests/yolox-*.test.ts` 已进入官方 `npm test` 与 `typecheck` 门禁，它们必须与 `src/yolox/`、`models/yolox-tiny/`、`tests/fixtures/yolox-forward.json` 同进退；若只提交其中一部分，CI 会因缺少被测源或夹具而失败。
 
 后续若进入集成阶段，必须先按门户标准扩展标准层，再决定 manifest、exports、Demo、分发来源和版本边界；本目录中的运行证据不能替代这些集成和发布门槛。
 
@@ -436,22 +441,27 @@ Node 和 Chromium 不直接对 detector 返回的原始浮点对象执行 JSON.s
 
 七帧原创合成序列（320×240 RGBA8）固定帧 id 与时间戳：`motion-start` 0、`motion-approach` 100、`crossing` 200、`occlusion` 300、`reappearance` 400、`long-loss` 2601、`sparse-resume` 5002。后两帧用于覆盖 `largeGapMs` 与稀疏时间戳路径。
 
-检测与跟踪由真实产物承担：`tests/yolox-node.mjs` 与 `tests/yolox-browser.mjs` 调用同一个 `tests/yolox-tracking-sequence.mjs` runner，检测端是已锁定 ONNX 的真实 YOLOX 推理，跟踪端是正式根入口 `dist/index.js` 导出的 `createTracker()`，使用 ByteTrack 默认参数，不新增组合生产 API。
+检测与跟踪由真实产物承担：`tests/yolox-node.mjs` 与 `tests/yolox-browser.mjs` 调用同一个 `tests/yolox-tracking-sequence.mjs` runner，检测端是已锁定 ONNX 的真实 YOLOX 推理，跟踪端是正式根入口 `dist/index.js` 导出的 `createTracker()`，不新增组合生产 API。
 
-两端的变体清单、阈值与哈希口径都来自共享模块 `tests/yolox-candidate-config.mjs`，各自 `import` 后再交叉核对，浏览器不采信 Node 的结果文件。证据同时绑定被测产物身份：`node.artifacts` 记录候选 ESM/CJS 与根入口 bundle 的 SHA-256，Chromium 侧对服务端实际返回的同一批字节取哈希并在 `verification.servedModuleIdentityMatch` 中比对；`verification.sharedSequenceConfigMatch` 核对两端配置。每组变体在单个运行时内重放两次，两次序列哈希一致，重放值记录在各变体的 `repeat` 字段。
+三组变体各自声明检测阈值、跟踪阈值与哈希口径：
 
-| 变体 | 阈值 | 哈希口径 | Node/Chromium 逐帧一致 | 是否送入真实框 |
-| --- | --- | --- | --- | --- |
-| `candidate-default-threshold` | 候选默认 `0.1 / 0.7 / 100` | 顺序敏感 | 7/7 | 否，七帧全零检出 |
-| `zero-threshold-coverage` | `0 / 0.7 / 100` | 顺序无关多集合 | 6/7，`motion-approach` 不一致 | 是，每帧 100 框 |
+| 变体 | 检测阈值 | 跟踪阈值 | 送入真实框 | 建立轨迹 | Node/Chromium 检测·跟踪逐帧一致 |
+| --- | --- | --- | --- | --- | --- |
+| `candidate-default-threshold` | `0.1 / 0.7 / 100` | ByteTrack 默认 | 否 | 否 | 7/7 · 7/7（空对空） |
+| `zero-threshold-coverage` | `0 / 0.7 / 100` | ByteTrack 默认 | 是 | 否 | 6/7 · 7/7 |
+| `zero-threshold-lifecycle` | `0 / 0.7 / 100` | `newTrackThreshold: 1e-9` | 是 | 是 | 6/7 · 6/7 |
 
-默认阈值组的 `7/7` 是空集合对空集合的一致，只证明调用契约与时间戳路径可跑通，不证明有数据的帧在两端逐字节相同；该语义由 `verification.nodeChromiumEmptySequenceContractMatch` 命名表达，脚本同时断言该变体每帧 `detectionCount` 必须为 0，否则报错。带真实框的是零阈值组。
+两端的变体清单与阈值来自共享模块 `tests/yolox-candidate-config.mjs`，各自 `import` 后交叉核对（`verification.sharedSequenceConfigMatch`），浏览器不采信 Node 的结果文件；页内还断言配置模块使用的序列化器与验收脚本是同一函数引用。证据同时绑定被测产物身份：`node.artifacts` 记录候选 ESM/CJS 与根入口 bundle 的 SHA-256，Chromium 对服务端实际返回的同一批字节取哈希并比对（`verification.servedModuleIdentityMatch`）。每组变体在单个运行时内重放两次，两次序列哈希一致，重放值记录在各变体的 `repeat` 字段。
 
-零阈值组每帧固定输出 100 框、丢弃 1686 至 1894 框，两端框数与丢弃数完全相同，只有 `motion-approach` 存活框集合不同。成因数据已随证据留存：`comparison.sequenceVariants[].minimumAdjacentScoreGaps` 记录每帧保留集合中相邻分数的最小正间隔，本次实测为 `8.26e-11` 到 `1.03e-9`。greedy NMS 在这种近平局处保留哪一个框，对 Node 与 Chromium 的 WASM 浮点尾差敏感；顺序无关哈希只能消除排序差异，无法消除“哪个框存活”的差异。
+第一组的 `7/7` 是空集合对空集合的一致，只证明调用契约与时间戳路径可跑通；该语义由 `verification.nodeChromiumEmptySequenceContractMatch` 命名表达，脚本同时断言该变体每帧 `detectionCount` 必须为 0，否则报错。
 
-两组变体的 `activeTrackIds`、`observedTrackIds`、`lostTrackIds`、`removedTrackIds` 在七帧上全部为空：合成色块不是行人，模型分数集中在 `1e-6` 量级，远低于 ByteTrack 的 `newTrackThreshold: 0.6`，因此不会建立任何轨迹。
+后两组每帧固定输出 100 框、丢弃 1686 至 1894 框，两端框数与丢弃数完全相同，只有 `motion-approach` 的存活框集合不同。成因数据已随证据留存：`comparison.sequenceVariants[].minimumAdjacentScoreGaps` 记录每帧保留集合中相邻分数的最小正间隔，本次实测为 `8.26e-11` 到 `1.03e-9`。greedy NMS 在这种近平局处保留哪一个框，对 Node 与 Chromium 的 WASM 浮点尾差敏感；顺序无关哈希只能消除排序差异，无法消除“哪个框存活”的差异。
 
-本组合序列能证明的是：真实 YOLOX 输出满足 ByteTrack 的 `Detection` 输入契约（含 700 框/帧量级的边界框校验）、时间戳与大间隔路径可跑通、每个运行时内部完全确定、两端执行的是同一批 bundle 与同一份配置。它不能证明有数据的帧在两个运行时逐字节相同（零阈值组 6/7），不能证明跟踪生命周期行为，也不能证明任何行人精度；跟踪生命周期仍由 `tests/tracker.test.ts` 等单元测试与 MOT17 评测覆盖。
+第三组的存在是为了让跟踪侧不再空转。`tests/tracker.test.ts` 之外，这是唯一用真实检测框驱动 ByteTrack 状态机的实测：`zero-threshold-lifecycle` 的活跃轨迹在七帧间为 100、100、109、116、132、100、100，`lost` 峰值 32，`removed` 每帧 41 至 132，脚本断言必须同时出现 `tracked`、`lost` 与 `removed`，否则失败。该变体把 `newTrackThreshold` 人为降到 `1e-9` 只为了让噪声分数能够建轨，不代表任何真实置信度语义。
+
+一个值得记录的观测：单帧的存活框差异没有级联。`zero-threshold-coverage` 只有第 2 帧检测不同、七帧跟踪全一致（跟踪侧本来就无轨迹）；`zero-threshold-lifecycle` 也只有第 2 帧的检测与该帧跟踪不同，第 3 帧起两端的跟踪哈希重新逐字节一致，说明该差异没有通过轨迹状态传播下去。
+
+本组合序列能证明的是：真实 YOLOX 输出满足 ByteTrack 的 `Detection` 输入契约（每帧 100 框量级）、时间戳与大间隔路径可跑通、跟踪状态机在真实框上确实走完 `tentative/tracked/lost/removed`、每个运行时内部完全确定、两端执行同一批 bundle 与同一份配置。它不能证明有数据的帧在两个运行时逐字节相同（6/7），不能证明任何行人精度，也不能替代 MOT17 指标评测。
 
 Chromium 侧请求全部命中 `127.0.0.1` 本地 origin，`pageErrors` 为空，逐帧与序列级哈希记录在 `runtime-evidence.json` 的 `node.sequence.variants`、`chromium.sequences` 和 `comparison.sequenceVariants`。
 
@@ -474,7 +484,7 @@ Chromium 侧请求全部命中 `127.0.0.1` 本地 origin，`pageErrors` 为空�
 
 消费检查在临时目录里安装一个本地候选包 `tracking-yolox-local-candidate`，然后：
 
-- 用 `import` 与 `require` 实际执行工厂，断言缺少授权来源时抛 `INVALID_MANIFEST`、字节长度不符时抛 `INVALID_INPUT`；同时把 `globalThis.fetch` 换成哨兵并断言其从未被调用，用来证明消费路径没有触达任何网络或会话加载。
+- 用 `import` 与 `require` 实际执行工厂，断言缺少授权来源时抛 `INVALID_MANIFEST`、字节长度不符时抛 `INVALID_INPUT`；同时把 `globalThis.fetch` 换成哨兵并断言其从未被调用。需要说清这条证明力的边界：它只证明消费路径没有发生任何网络取数，不证明 ORT 内核未被加载——`src/yolox/ort.ts` 走的是动态 `import()`，哨兵拦不到；真正保证这点的是消费脚本从未调用 `load()`。
 - 用 `--module NodeNext --moduleResolution NodeNext --noEmit` 检查 `.mts` 与 `.cts` 消费者，含两个 `@ts-expect-error` 负例。
 - 反面对照：把已补好的声明扩展名剥掉后，同一消费者必须以 `TS2834` 失败，证明类型消费不是空过。
 

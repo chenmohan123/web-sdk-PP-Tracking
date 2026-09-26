@@ -122,76 +122,76 @@ describe('YOLOX 解码', () => {
     });
   });
 
-  it('匹配 Python 固定夹具的解码结果', () => {
+  function loadForwardFixture() {
     const fixture = JSON.parse(
-      readFileSync(
-        new URL(
-          './fixtures/yolox-forward.json',
-          import.meta.url,
-        ),
-        'utf8',
-      ),
+      readFileSync(new URL('./fixtures/yolox-forward.json', import.meta.url), 'utf8'),
     ) as {
       decode: {
-        letterbox: {
-          scale: number;
-          resizedWidth: number;
-          resizedHeight: number;
-        };
-        originalImageSize: {
-          width: number;
-          height: number;
-        };
+        letterbox: { scale: number; resizedWidth: number; resizedHeight: number };
+        originalImageSize: { width: number; height: number };
         scoreThreshold: number;
         nmsThreshold: number;
         maxDetections: number;
+        sdkClassId: number;
       };
-      rawOutput: {
-        base64: string;
-        bytes: number;
-        elements: number;
-      };
-      expected: {
-        detections: unknown[];
-        droppedDetections: number;
-      };
+      rawOutput: { base64: string; bytes: number; elements: number };
+      expected: { detections: unknown[]; droppedDetections: number };
     };
-    const bytes = Buffer.from(
-      fixture.rawOutput.base64,
-      'base64',
-    );
-
+    const bytes = Buffer.from(fixture.rawOutput.base64, 'base64');
     expect(bytes.byteLength).toBe(fixture.rawOutput.bytes);
-    const values = new Float32Array(
-      bytes.buffer,
-      bytes.byteOffset,
-      fixture.rawOutput.elements,
-    );
-    const result = decodeYolox(
-      values,
-      metadata({
+    return {
+      fixture,
+      values: new Float32Array(bytes.buffer, bytes.byteOffset, fixture.rawOutput.elements),
+      frame: metadata({
         scale: fixture.decode.letterbox.scale,
-        resizedWidth:
-          fixture.decode.letterbox.resizedWidth,
-        resizedHeight:
-          fixture.decode.letterbox.resizedHeight,
-        imageWidth:
-          fixture.decode.originalImageSize.width,
-        imageHeight:
-          fixture.decode.originalImageSize.height,
+        resizedWidth: fixture.decode.letterbox.resizedWidth,
+        resizedHeight: fixture.decode.letterbox.resizedHeight,
+        imageWidth: fixture.decode.originalImageSize.width,
+        imageHeight: fixture.decode.originalImageSize.height,
       }),
-      {
-        scoreThreshold: fixture.decode.scoreThreshold,
-        nmsThreshold: fixture.decode.nmsThreshold,
-        maxDetections: fixture.decode.maxDetections,
-      },
-    );
+    };
+  }
+
+  // 该真实 Python 输出在候选默认阈值 0.1 下期望集为空，因此空对空断言之外必须另测有框路径。
+  it('零阈值下必须从真实 Python 张量解出非空且有序的 person 框', () => {
+    const { fixture, values, frame } = loadForwardFixture();
+    const result = decodeYolox(values, frame, {
+      scoreThreshold: 0,
+      nmsThreshold: fixture.decode.nmsThreshold,
+      maxDetections: fixture.decode.maxDetections,
+    });
+
+    expect(result.detections.length).toBeGreaterThan(0);
+    expect(result.detections.length).toBeLessThanOrEqual(fixture.decode.maxDetections);
+    let previousScore = 1;
+    for (const detection of result.detections) {
+      expect(detection.classId).toBe(fixture.decode.sdkClassId);
+      expect(detection.score).toBeLessThanOrEqual(previousScore);
+      previousScore = detection.score;
+      const { x, y, width, height } = detection.box;
+      expect(x).toBeGreaterThanOrEqual(0);
+      expect(y).toBeGreaterThanOrEqual(0);
+      expect(width).toBeGreaterThan(0);
+      expect(height).toBeGreaterThan(0);
+      // 精确包含（无容差）：生产端保证 x+width 不超过边界，故消费端不得改用减法形式判定。
+      expect(x + width).toBeLessThanOrEqual(fixture.decode.originalImageSize.width);
+      expect(y + height).toBeLessThanOrEqual(fixture.decode.originalImageSize.height);
+    }
+  });
+
+  it('候选默认阈值下真实 Python 张量的解码结果与 Python 期望一致', () => {
+    const { fixture, values, frame } = loadForwardFixture();
+    const result = decodeYolox(values, frame, {
+      scoreThreshold: fixture.decode.scoreThreshold,
+      nmsThreshold: fixture.decode.nmsThreshold,
+      maxDetections: fixture.decode.maxDetections,
+    });
 
     expect(result).toEqual({
       detections: fixture.expected.detections,
-      droppedDetections:
-        fixture.expected.droppedDetections,
+      droppedDetections: fixture.expected.droppedDetections,
     });
+    expect(fixture.expected.detections).toEqual([]);
   });
 
   it('拒绝错误输出长度、非有限值和无效元数据', () => {

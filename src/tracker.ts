@@ -24,6 +24,8 @@ const finite = (value: unknown): value is number => typeof value === 'number' &&
 const positive = (value: unknown): value is number => finite(value) && value > 0;
 const probability = (value: unknown): value is number => finite(value) && value >= 0 && value <= 1;
 const now = () => performance.now();
+// 裁剪到图像边界的框用减法产出，y + height 与边界可差 1 ULP；容差为边界值的 8 倍机器精度（约 15 ULP）。
+const boundsFactor = 1 + Number.EPSILON * 8;
 
 function copyFilter(state: GaussianState): GaussianState {
   return { mean: [...state.mean], covariance: state.covariance.map(row => [...row]) };
@@ -77,7 +79,7 @@ function validateFrame(value: TrackingFrame, previous: number | null, size: Trac
     if (!record(detection) || !probability(detection.score) || !Number.isSafeInteger(detection.classId) || detection.classId < 0 || !record(detection.box)) return fail();
     const box = detection.box;
     if (!finite(box.x) || !finite(box.y) || box.x < 0 || box.y < 0 || !positive(box.width) || !positive(box.height)) return fail();
-    if (box.width > value.imageSize.width || box.height > value.imageSize.height || box.x > value.imageSize.width - box.width || box.y > value.imageSize.height - box.height) return fail();
+    if (box.width > value.imageSize.width || box.height > value.imageSize.height || box.x + box.width > value.imageSize.width * boundsFactor || box.y + box.height > value.imageSize.height * boundsFactor) return fail();
     const embedding = featureSpace ? normalizeEmbedding(detection.embedding, featureSpace.dimension) : undefined;
     detections.push({ box: { ...box }, score: detection.score, classId: detection.classId, ...(embedding ? { embedding } : {}) });
   }

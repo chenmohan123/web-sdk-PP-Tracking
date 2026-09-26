@@ -60,6 +60,18 @@ test('所有非法输入失败不推进时钟或 ID', () => {
   expect(() => a.update({ ...frame(1), imageSize: { width: 1000, height: 480 } })).toThrowError(expect.objectContaining({ code: 'INVALID_INPUT' }));
   expect(a.update(frame(1)).tracks[0].hits).toBe(2);
 });
+test('贴边裁剪框按浮点容差接受，超出容差仍拒绝', () => {
+  // 裁剪产出 height = 240 - y，减法舍入使 y + height 与 240 相差 1 ULP。
+  const clipped = { box: { x: 196.4773154358571, y: 40.42656526587306, width: 97.68965682453731, height: 199.57343473412695 }, score: 0.9, classId: 1 };
+  const accepted = createTracker({ minHits: 1 }).update({ timestampMs: 0, imageSize: { width: 320, height: 240 }, detections: [clipped] });
+  expect(accepted.tracks).toHaveLength(1);
+  expect(accepted.tracks[0]).toMatchObject({ id: 1, classId: 1, score: 0.9, state: 'tracked' });
+  // 轨迹框经卡尔曼中心/宽高状态往返，末位与输入相差 1 ULP，只能按近似值断言。
+  expect(accepted.tracks[0].box.x).toBeCloseTo(196.4773154358571, 10);
+  expect(accepted.tracks[0].box.y).toBeCloseTo(40.42656526587306, 10);
+  const over = { box: { x: 196.4773154358571, y: 40.42656526587306, width: 97.68965682453731, height: 199.57343473412695 + 1e-6 }, score: 0.9, classId: 1 };
+  expect(() => createTracker({ minHits: 1 }).update({ timestampMs: 0, imageSize: { width: 320, height: 240 }, detections: [over] })).toThrowError(expect.objectContaining({ code: 'INVALID_INPUT' }));
+});
 test('输入、结果及 runtime 均与内部状态引用隔离', () => {
   const a = createTracker({ minHits: 1 }); const input = frame(0); const out = a.update(input);
   input.detections[0].box.x = 500; input.imageSize.width = 100;

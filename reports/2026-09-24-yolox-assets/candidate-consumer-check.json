@@ -1,0 +1,22 @@
+{
+  "testedAt": "2026-09-26T04:03:04.966Z",
+  "package": "tracking-yolox-local-candidate",
+  "packageDirectory": "F:\\git\\00_chenmohan\\github\\chenmohan123.github.io\\.worktrees\\web-sdk-PP-Tracking-yolox-candidate-20260924\\.tmp\\yolox-module\\candidate",
+  "consumerDirectory": "C:\\Users\\chenm\\AppData\\Local\\Temp\\tracking-yolox-consumer-iqITft",
+  "consumerDirectoryCleaned": true,
+  "hashes": {
+    "yolox.js": "5bbf389e79e26a7da4dadfd166cffbd0ab8a75766e879a00589abb8d3be7d714",
+    "yolox.cjs": "b208174379856ed7970123580d0e0c4c9884313afd4972a59140a7e3596c46a3"
+  },
+  "nodenextControl": {
+    "strippedExtensionErrorCode": "TS2834",
+    "note": "剥掉声明的 .js 后缀后 tsc 必须失败，用于证明 NodeNext 类型消费不是空过"
+  },
+  "checks": [
+    "ESM 实际消费",
+    "CommonJS 实际消费",
+    "NodeNext mts/cts 类型消费",
+    "NodeNext 反面对照必须失败",
+    "消费期间 fetch 哨兵未被调用"
+  ]
+}

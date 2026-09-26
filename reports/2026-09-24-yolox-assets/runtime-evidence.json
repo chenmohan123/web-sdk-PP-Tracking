@@ -1,0 +1,1518 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "yolox-node-chromium-runtime-validation",
+  "generatedAt": "2026-09-26T04:02:49.234Z",
+  "model": {
+    "id": "yolox-tiny-416-fp32",
+    "path": ".tmp/yolox-reference/yolox_tiny_416_opset17.onnx",
+    "bytes": 20258925,
+    "sha256": "2e99f041301698ff4a9e898aa1efb4bcdd503d46f5c5c1829be17af9b7adfab6"
+  },
+  "fixture": {
+    "path": ".tmp/yolox-module/fixture-rgba.bin",
+    "generator": "rgba-pattern-v1: r=x*29+y*17+(x*y)%251; g=x*7+y*31+(x^y); b=x*19+y*11+(x+y)^2; a=((x+y)%13===0?96:255)",
+    "width": 320,
+    "height": 240,
+    "bytes": 307200,
+    "sha256": "14fe928c3e967653c288fae97134892ba2541ea50af50eadea2976bbf52dc459"
+  },
+  "configuration": {
+    "scoreThreshold": 0,
+    "nmsThreshold": 0.7,
+    "maxDetections": 100,
+    "warmupRuns": 1,
+    "measuredRuns": 5
+  },
+  "node": {
+    "schemaVersion": "1.0",
+    "kind": "yolox-node-wasm-runtime",
+    "generatedAt": "2026-09-26T04:02:28.629Z",
+    "model": {
+      "id": "yolox-tiny-416-fp32",
+      "path": ".tmp/yolox-reference/yolox_tiny_416_opset17.onnx",
+      "bytes": 20258925,
+      "sha256": "2e99f041301698ff4a9e898aa1efb4bcdd503d46f5c5c1829be17af9b7adfab6"
+    },
+    "fixture": {
+      "path": ".tmp/yolox-module/fixture-rgba.bin",
+      "generator": "rgba-pattern-v1: r=x*29+y*17+(x*y)%251; g=x*7+y*31+(x^y); b=x*19+y*11+(x+y)^2; a=((x+y)%13===0?96:255)",
+      "width": 320,
+      "height": 240,
+      "bytes": 307200,
+      "sha256": "14fe928c3e967653c288fae97134892ba2541ea50af50eadea2976bbf52dc459"
+    },
+    "configuration": {
+      "scoreThreshold": 0,
+      "nmsThreshold": 0.7,
+      "maxDetections": 100,
+      "warmupRuns": 1,
+      "measuredRuns": 5
+    },
+    "runtime": {
+      "requestedBackend": "wasm",
+      "actualBackend": "wasm",
+      "executionMode": "main",
+      "runtimeVersion": "web-sdk-pp-tracking@0.2.0-rc.2",
+      "ortVersion": "1.27.0"
+    },
+    "coldLoad": {
+      "wallMs": 980.1124,
+      "timings": {
+        "modelDownloadMs": 0,
+        "modelCacheReadMs": 0,
+        "integrityMs": 49.15549999999999,
+        "sessionMs": 930.3964,
+        "totalMs": 979.9585000000001
+      }
+    },
+    "warmup": {
+      "generation": 0,
+      "timings": {
+        "validationMs": 0.344300000000203,
+        "preprocessMs": 142.60490000000004,
+        "inferenceMs": 660.4224999999999,
+        "postprocessMs": 126.35469999999987,
+        "totalMs": 930.0942
+      }
+    },
+    "warmDetection": {
+      "samples": [
+        {
+          "validationMs": 0.1070999999999458,
+          "preprocessMs": 11.199699999999893,
+          "inferenceMs": 412.654,
+          "postprocessMs": 89.42610000000013,
+          "totalMs": 513.4257
+        },
+        {
+          "validationMs": 0.18360000000029686,
+          "preprocessMs": 6.93100000000004,
+          "inferenceMs": 380.9292999999998,
+          "postprocessMs": 69.52300000000014,
+          "totalMs": 457.6047000000003
+        },
+        {
+          "validationMs": 0.13559999999961292,
+          "preprocessMs": 6.9573999999997795,
+          "inferenceMs": 335.40740000000005,
+          "postprocessMs": 82.58180000000038,
+          "totalMs": 425.12559999999985
+        },
+        {
+          "validationMs": 0.1538999999997941,
+          "preprocessMs": 15.284500000000207,
+          "inferenceMs": 342.6587999999997,
+          "postprocessMs": 87.88410000000022,
+          "totalMs": 446.02070000000003
+        },
+        {
+          "validationMs": 0.18840000000000146,
+          "preprocessMs": 8.521099999999933,
+          "inferenceMs": 318.9694000000004,
+          "postprocessMs": 81.96020000000044,
+          "totalMs": 409.6931000000004
+        }
+      ],
+      "summary": {
+        "validationMs": {
+          "minMs": 0.1070999999999458,
+          "meanMs": 0.15371999999993022,
+          "p50Ms": 0.1538999999997941,
+          "p95Ms": 0.18744000000006053,
+          "maxMs": 0.18840000000000146
+        },
+        "preprocessMs": {
+          "minMs": 6.93100000000004,
+          "meanMs": 9.77873999999997,
+          "p50Ms": 8.521099999999933,
+          "p95Ms": 14.467540000000144,
+          "maxMs": 15.284500000000207
+        },
+        "inferenceMs": {
+          "minMs": 318.9694000000004,
+          "meanMs": 358.12378,
+          "p50Ms": 342.6587999999997,
+          "p95Ms": 406.30905999999993,
+          "maxMs": 412.654
+        },
+        "postprocessMs": {
+          "minMs": 69.52300000000014,
+          "meanMs": 82.27504000000026,
+          "p50Ms": 82.58180000000038,
+          "p95Ms": 89.11770000000016,
+          "maxMs": 89.42610000000013
+        },
+        "totalMs": {
+          "minMs": 409.6931000000004,
+          "meanMs": 450.37396000000007,
+          "p50Ms": 446.02070000000003,
+          "p95Ms": 502.26150000000007,
+          "maxMs": 513.4257
+        }
+      }
+    },
+    "detection": {
+      "count": 100,
+      "droppedDetections": 1556,
+      "serializedBytes": 13272,
+      "sha256": "f762c76fc4ed703fc886534b0e9b791dd2685f0ab472aa31a96f79c93687b152"
+    },
+    "artifacts": {
+      "candidateEsmSha256": "5bbf389e79e26a7da4dadfd166cffbd0ab8a75766e879a00589abb8d3be7d714",
+      "candidateCjsSha256": "b208174379856ed7970123580d0e0c4c9884313afd4972a59140a7e3596c46a3",
+      "trackerEntrySha256": "e644c2806f11e52065c4f2449e492c712cb88a34af655aa49cfca31d50e273f9"
+    },
+    "contract": {
+      "sampleCount": 5,
+      "fixtureWidth": 320,
+      "fixtureHeight": 240,
+      "detectorOptions": {
+        "scoreThreshold": 0,
+        "nmsThreshold": 0.7,
+        "maxDetections": 100
+      },
+      "sequenceFrameCount": 7,
+      "sequenceVariants": [
+        {
+          "id": "candidate-default-threshold",
+          "hashing": "ordered",
+          "detectorOptions": {
+            "scoreThreshold": 0.1,
+            "nmsThreshold": 0.7,
+            "maxDetections": 100
+          },
+          "detectsRealBoxes": false
+        },
+        {
+          "id": "zero-threshold-coverage",
+          "hashing": "unordered-bag",
+          "detectorOptions": {
+            "scoreThreshold": 0,
+            "nmsThreshold": 0.7,
+            "maxDetections": 100
+          },
+          "detectsRealBoxes": true
+        }
+      ],
+      "trackerOptions": {}
+    },
+    "sequence": {
+      "frameCount": 7,
+      "variants": [
+        {
+          "id": "candidate-default-threshold",
+          "purpose": "候选默认阈值下真实 YOLOX 对合成色块零检出，只覆盖空检测调用契约",
+          "hashing": "ordered",
+          "detectsRealBoxes": false,
+          "detectorOptions": {
+            "scoreThreshold": 0.1,
+            "nmsThreshold": 0.7,
+            "maxDetections": 100
+          },
+          "trackerEntry": "dist/index.js",
+          "runtime": {
+            "requestedBackend": "wasm",
+            "actualBackend": "wasm",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.2.0-rc.2",
+            "ortVersion": "1.27.0"
+          },
+          "frames": [
+            {
+              "id": "motion-start",
+              "timestampMs": 0,
+              "events": [
+                "motion"
+              ],
+              "image": {
+                "width": 320,
+                "height": 240,
+                "bytes": 307200,
+                "sha256": "274feb02cca2bcaffd7078d2a2abf55aabd7de126955de17b6fd03f36de41f0a"
+              },
+              "detectorGeneration": 0,
+              "detectionCount": 0,
+              "droppedDetections": 0,
+              "minimumAdjacentScoreGap": null,
+              "detectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+              "trackingSha256": "59f44e98b9b4e6f7b234f67c68e72d73687487a57ee608050760088da7320888",
+              "activeTrackIds": [],
+              "observedTrackIds": [],
+              "lostTrackIds": [],
+              "removedTrackIds": []
+            },
+            {
+              "id": "motion-approach",
+              "timestampMs": 100,
+              "events": [
+                "motion"
+              ],
+              "image": {
+                "width": 320,
+                "height": 240,
+                "bytes": 307200,
+                "sha256": "6d94dc256e921296f74b53acca28ea990ea6d6d8078538e0d3d7b3a51b7e206a"
+              },
+              "detectorGeneration": 1,
+              "detectionCount": 0,
+              "droppedDetections": 0,
+              "minimumAdjacentScoreGap": null,
+              "detectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+              "trackingSha256": "3fd95c3ffe19b126cb3d7c15882cfe7cb093b2b3c0696ca0cf396a8e2e4e2cef",
+              "activeTrackIds": [],
+              "observedTrackIds": [],
+              "lostTrackIds": [],
+              "removedTrackIds": []
+            },
+            {
+              "id": "crossing",
+              "timestampMs": 200,
+              "events": [
+                "crossing"
+              ],
+              "image": {
+                "width": 320,
+                "height": 240,
+                "bytes": 307200,
+                "sha256": "792872ff004914126185bca2e66809934fed6da8b33f3dafe9157974a7f4c3bc"
+              },
+              "detectorGeneration": 2,
+              "detectionCount": 0,
+              "droppedDetections": 0,
+              "minimumAdjacentScoreGap": null,
+              "detectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+              "trackingSha256": "5f52b65026474e3f808f23281d5309153bc49edc52083db1851bdf8704839f38",
+              "activeTrackIds": [],
+              "observedTrackIds": [],
+              "lostTrackIds": [],
+              "removedTrackIds": []
+            },
+            {
+              "id": "occlusion",
+              "timestampMs": 300,
+              "events": [
+                "occlusion"
+              ],
+              "image": {
+                "width": 320,
+                "height": 240,
+                "bytes": 307200,
+                "sha256": "17dc410f9050806bf77463af444e7f905e2a555524325f752f70713292389a7b"
+              },
+              "detectorGeneration": 3,
+              "detectionCount": 0,
+              "droppedDetections": 0,
+              "minimumAdjacentScoreGap": null,
+              "detectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+              "trackingSha256": "fcf657518a3e2d736f2b1fa55973e181d31f6adc974290eaad1ad3ea1a2fff22",
+              "activeTrackIds": [],
+              "observedTrackIds": [],
+              "lostTrackIds": [],
+              "removedTrackIds": []
+            },
+            {
+              "id": "reappearance",
+              "timestampMs": 400,
+              "events": [
+                "reappearance"
+              ],
+              "image": {
+                "width": 320,
+                "height": 240,
+                "bytes": 307200,
+                "sha256": "53d6fbf57494b4eb721e9e4d0e3f32228819e3c478de596c27682169ad6953e3"
+              },
+              "detectorGeneration": 4,
+              "detectionCount": 0,
+              "droppedDetections": 0,
+              "minimumAdjacentScoreGap": null,
+              "detectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+              "trackingSha256": "4a08207ebe0e149700fc85a008b9cb05d166f46be0258edbaab7a3a1c886d206",
+              "activeTrackIds": [],
+              "observedTrackIds": [],
+              "lostTrackIds": [],
+              "removedTrackIds": []
+            },
+            {
+              "id": "long-loss",
+              "timestampMs": 2601,
+              "events": [
+                "long-loss"
+              ],
+              "image": {
+                "width": 320,
+                "height": 240,
+                "bytes": 307200,
+                "sha256": "787ce3522e373376966b41fd5ee876be9f15af765b138cb242786a6259be79fb"
+              },
+              "detectorGeneration": 5,
+              "detectionCount": 0,
+              "droppedDetections": 0,
+              "minimumAdjacentScoreGap": null,
+              "detectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+              "trackingSha256": "f9dbcb8398e8c39f97da348b9ab8a0deda86f80def38da5ed90ddc86bd31aef3",
+              "activeTrackIds": [],
+              "observedTrackIds": [],
+              "lostTrackIds": [],
+              "removedTrackIds": []
+            },
+            {
+              "id": "sparse-resume",
+              "timestampMs": 5002,
+              "events": [
+                "sparse-timestamp",
+                "reappearance"
+              ],
+              "image": {
+                "width": 320,
+                "height": 240,
+                "bytes": 307200,
+                "sha256": "52050da92ad52f5f322d91761e7a81cad67096e5e624f318183678fc5b169f63"
+              },
+              "detectorGeneration": 6,
+              "detectionCount": 0,
+              "droppedDetections": 0,
+              "minimumAdjacentScoreGap": null,
+              "detectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+              "trackingSha256": "ab52a94f64f445288dc53d7c2a0fbda09cc94a2f4678ad4a15a3524e49fbd6f0",
+              "activeTrackIds": [],
+              "observedTrackIds": [],
+              "lostTrackIds": [],
+              "removedTrackIds": []
+            }
+          ],
+          "summary": {
+            "frameCount": 7,
+            "detectionSha256": "ec2d1428110eb7b905b0353f28345b3af825209a3a84d54ee1c9a9e9d2518dfc",
+            "trackingSha256": "1c2524d3866d201ae4bf25176b00cae851537151fd21ea5750ea0fb222e770aa"
+          },
+          "repeat": {
+            "detectionSha256": "ec2d1428110eb7b905b0353f28345b3af825209a3a84d54ee1c9a9e9d2518dfc",
+            "trackingSha256": "1c2524d3866d201ae4bf25176b00cae851537151fd21ea5750ea0fb222e770aa"
+          }
+        },
+        {
+          "id": "zero-threshold-coverage",
+          "purpose": "零阈值让真实检测框进入跟踪通路；噪声区 topK 边界是 1e-10 级近平局，故按多集合哈希比较",
+          "hashing": "unordered-bag",
+          "detectsRealBoxes": true,
+          "detectorOptions": {
+            "scoreThreshold": 0,
+            "nmsThreshold": 0.7,
+            "maxDetections": 100
+          },
+          "trackerEntry": "dist/index.js",
+          "runtime": {
+            "requestedBackend": "wasm",
+            "actualBackend": "wasm",
+            "executionMode": "main",
+            "runtimeVersion": "web-sdk-pp-tracking@0.2.0-rc.2",
+            "ortVersion": "1.27.0"
+          },
+          "frames": [
+            {
+              "id": "motion-start",
+              "timestampMs": 0,
+              "events": [
+                "motion"
+              ],
+              "image": {
+                "width": 320,
+                "height": 240,
+                "bytes": 307200,
+                "sha256": "274feb02cca2bcaffd7078d2a2abf55aabd7de126955de17b6fd03f36de41f0a"
+              },
+              "detectorGeneration": 0,
+              "detectionCount": 100,
+              "droppedDetections": 1686,
+              "minimumAdjacentScoreGap": 2.0051427185308057e-10,
+              "detectionSha256": "eb243f8f1780ce2ce5a5cbbd0cb2ce36646a312b1c513c5ae999e9073711a051",
+              "trackingSha256": "59f44e98b9b4e6f7b234f67c68e72d73687487a57ee608050760088da7320888",
+              "activeTrackIds": [],
+              "observedTrackIds": [],
+              "lostTrackIds": [],
+              "removedTrackIds": []
+            },
+            {
+              "id": "motion-approach",
+              "timestampMs": 100,
+              "events": [
+                "motion"
+              ],
+              "image": {
+                "width": 320,
+                "height": 240,
+                "bytes": 307200,
+                "sha256": "6d94dc256e921296f74b53acca28ea990ea6d6d8078538e0d3d7b3a51b7e206a"
+              },
+              "detectorGeneration": 1,
+              "detectionCount": 100,
+              "droppedDetections": 1736,
+              "minimumAdjacentScoreGap": 1.9625367997377907e-10,
+              "detectionSha256": "a611b02895c3804165d38db4dfe89af67d64bfabace8c4729a4bb78053091d6b",
+              "trackingSha256": "3fd95c3ffe19b126cb3d7c15882cfe7cb093b2b3c0696ca0cf396a8e2e4e2cef",
+              "activeTrackIds": [],
+              "observedTrackIds": [],
+              "lostTrackIds": [],
+              "removedTrackIds": []
+            },
+            {
+              "id": "crossing",
+              "timestampMs": 200,
+              "events": [
+                "crossing"
+              ],
+              "image": {
+                "width": 320,
+                "height": 240,
+                "bytes": 307200,
+                "sha256": "792872ff004914126185bca2e66809934fed6da8b33f3dafe9157974a7f4c3bc"
+              },
+              "detectorGeneration": 2,
+              "detectionCount": 100,
+              "droppedDetections": 1825,
+              "minimumAdjacentScoreGap": 8.260059303211165e-11,
+              "detectionSha256": "79208a1c03b4ad4ac79e4e1d34e598f89d29250dba9cb6a236c64fad62da2374",
+              "trackingSha256": "5f52b65026474e3f808f23281d5309153bc49edc52083db1851bdf8704839f38",
+              "activeTrackIds": [],
+              "observedTrackIds": [],
+              "lostTrackIds": [],
+              "removedTrackIds": []
+            },
+            {
+              "id": "occlusion",
+              "timestampMs": 300,
+              "events": [
+                "occlusion"
+              ],
+              "image": {
+                "width": 320,
+                "height": 240,
+                "bytes": 307200,
+                "sha256": "17dc410f9050806bf77463af444e7f905e2a555524325f752f70713292389a7b"
+              },
+              "detectorGeneration": 3,
+              "detectionCount": 100,
+              "droppedDetections": 1803,
+              "minimumAdjacentScoreGap": 3.909139678626161e-10,
+              "detectionSha256": "d193676ea70120966e698a6027d4a76a379c4b52c33462b217c9afac2e052e4a",
+              "trackingSha256": "fcf657518a3e2d736f2b1fa55973e181d31f6adc974290eaad1ad3ea1a2fff22",
+              "activeTrackIds": [],
+              "observedTrackIds": [],
+              "lostTrackIds": [],
+              "removedTrackIds": []
+            },
+            {
+              "id": "reappearance",
+              "timestampMs": 400,
+              "events": [
+                "reappearance"
+              ],
+              "image": {
+                "width": 320,
+                "height": 240,
+                "bytes": 307200,
+                "sha256": "53d6fbf57494b4eb721e9e4d0e3f32228819e3c478de596c27682169ad6953e3"
+              },
+              "detectorGeneration": 4,
+              "detectionCount": 100,
+              "droppedDetections": 1747,
+              "minimumAdjacentScoreGap": 6.710090261208279e-10,
+              "detectionSha256": "05c4b7dc98abd551da090fa42c6a254e80e4f0b17e7f550e947f55233c1323d7",
+              "trackingSha256": "4a08207ebe0e149700fc85a008b9cb05d166f46be0258edbaab7a3a1c886d206",
+              "activeTrackIds": [],
+              "observedTrackIds": [],
+              "lostTrackIds": [],
+              "removedTrackIds": []
+            },
+            {
+              "id": "long-loss",
+              "timestampMs": 2601,
+              "events": [
+                "long-loss"
+              ],
+              "image": {
+                "width": 320,
+                "height": 240,
+                "bytes": 307200,
+                "sha256": "787ce3522e373376966b41fd5ee876be9f15af765b138cb242786a6259be79fb"
+              },
+              "detectorGeneration": 5,
+              "detectionCount": 100,
+              "droppedDetections": 1894,
+              "minimumAdjacentScoreGap": 1.0293916830050875e-9,
+              "detectionSha256": "ffaaeb614226ee0009d25d091220606b7e9171d708a05a933807e97e6dd412ad",
+              "trackingSha256": "f9dbcb8398e8c39f97da348b9ab8a0deda86f80def38da5ed90ddc86bd31aef3",
+              "activeTrackIds": [],
+              "observedTrackIds": [],
+              "lostTrackIds": [],
+              "removedTrackIds": []
+            },
+            {
+              "id": "sparse-resume",
+              "timestampMs": 5002,
+              "events": [
+                "sparse-timestamp",
+                "reappearance"
+              ],
+              "image": {
+                "width": 320,
+                "height": 240,
+                "bytes": 307200,
+                "sha256": "52050da92ad52f5f322d91761e7a81cad67096e5e624f318183678fc5b169f63"
+              },
+              "detectorGeneration": 6,
+              "detectionCount": 100,
+              "droppedDetections": 1734,
+              "minimumAdjacentScoreGap": 6.421743137252633e-10,
+              "detectionSha256": "f6a4bbf7ee545af1b5437a011b7ce3735f86cc2e3bf552317de33339273dfc58",
+              "trackingSha256": "ab52a94f64f445288dc53d7c2a0fbda09cc94a2f4678ad4a15a3524e49fbd6f0",
+              "activeTrackIds": [],
+              "observedTrackIds": [],
+              "lostTrackIds": [],
+              "removedTrackIds": []
+            }
+          ],
+          "summary": {
+            "frameCount": 7,
+            "detectionSha256": "e9649a0e5a61fb85bc7009634017f8541933c1eff4b79b7c7055059005733d13",
+            "trackingSha256": "1c2524d3866d201ae4bf25176b00cae851537151fd21ea5750ea0fb222e770aa"
+          },
+          "repeat": {
+            "detectionSha256": "e9649a0e5a61fb85bc7009634017f8541933c1eff4b79b7c7055059005733d13",
+            "trackingSha256": "1c2524d3866d201ae4bf25176b00cae851537151fd21ea5750ea0fb222e770aa"
+          }
+        }
+      ]
+    },
+    "verification": {
+      "modelIdentityMatch": true,
+      "fixtureWritten": true,
+      "runtimeIdentityMatch": true,
+      "repeatedOutputStable": true,
+      "sequenceRepeatedOutputStable": true,
+      "passed": true
+    }
+  },
+  "chromium": {
+    "version": "153.0.8010.12",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "crossOriginIsolated": true,
+    "wasm": {
+      "runtime": {
+        "requestedBackend": "wasm",
+        "actualBackend": "wasm",
+        "executionMode": "main",
+        "runtimeVersion": "web-sdk-pp-tracking@0.2.0-rc.2",
+        "ortVersion": "1.27.0"
+      },
+      "coldLoad": {
+        "wallMs": 1574.9550000000745,
+        "timings": {
+          "modelDownloadMs": 0,
+          "modelCacheReadMs": 0,
+          "integrityMs": 52.80499999970198,
+          "sessionMs": 1521.7099999990314,
+          "totalMs": 1574.7949999999255
+        }
+      },
+      "progress": [
+        {
+          "stage": "integrity",
+          "status": "start",
+          "loaded": 0,
+          "total": 20258925
+        },
+        {
+          "stage": "integrity",
+          "status": "complete",
+          "loaded": 20258925,
+          "total": 20258925
+        },
+        {
+          "stage": "session",
+          "status": "start"
+        },
+        {
+          "stage": "session",
+          "status": "complete"
+        }
+      ],
+      "warmup": {
+        "generation": 0,
+        "timings": {
+          "validationMs": 0.2599999997764826,
+          "preprocessMs": 26.554999999701977,
+          "inferenceMs": 436.4150000009686,
+          "postprocessMs": 79.94999999925494,
+          "totalMs": 550.7199999988079
+        }
+      },
+      "warmDetection": {
+        "samples": [
+          {
+            "validationMs": 0.13499999977648258,
+            "preprocessMs": 14.044999999925494,
+            "inferenceMs": 461.59999999962747,
+            "postprocessMs": 87.01000000163913,
+            "totalMs": 564.7200000006706
+          },
+          {
+            "validationMs": 0.19499999843537807,
+            "preprocessMs": 18.364999998360872,
+            "inferenceMs": 402.89499999955297,
+            "postprocessMs": 110.10999999940395,
+            "totalMs": 531.5949999988079
+          },
+          {
+            "validationMs": 0.2149999998509884,
+            "preprocessMs": 11.21000000089407,
+            "inferenceMs": 451.2549999989569,
+            "postprocessMs": 63.899999998509884,
+            "totalMs": 526.6299999989569
+          },
+          {
+            "validationMs": 0.17999999970197678,
+            "preprocessMs": 9.400000000372529,
+            "inferenceMs": 356.08500000089407,
+            "postprocessMs": 63.47000000067055,
+            "totalMs": 429.1749999988824
+          },
+          {
+            "validationMs": 0.1100000012665987,
+            "preprocessMs": 11.344999998807907,
+            "inferenceMs": 464.6150000002235,
+            "postprocessMs": 91.52999999932945,
+            "totalMs": 567.6350000016391
+          }
+        ],
+        "summary": {
+          "validationMs": {
+            "minMs": 0.1100000012665987,
+            "meanMs": 0.1669999998062849,
+            "p50Ms": 0.17999999970197678,
+            "p95Ms": 0.21099999956786633,
+            "maxMs": 0.2149999998509884
+          },
+          "preprocessMs": {
+            "minMs": 9.400000000372529,
+            "meanMs": 12.872999999672174,
+            "p50Ms": 11.344999998807907,
+            "p95Ms": 17.500999998673795,
+            "maxMs": 18.364999998360872
+          },
+          "inferenceMs": {
+            "minMs": 356.08500000089407,
+            "meanMs": 427.289999999851,
+            "p50Ms": 451.2549999989569,
+            "p95Ms": 464.0120000001043,
+            "maxMs": 464.6150000002235
+          },
+          "postprocessMs": {
+            "minMs": 63.47000000067055,
+            "meanMs": 83.2039999999106,
+            "p50Ms": 87.01000000163913,
+            "p95Ms": 106.39399999938905,
+            "maxMs": 110.10999999940395
+          },
+          "totalMs": {
+            "minMs": 429.1749999988824,
+            "meanMs": 523.9509999997914,
+            "p50Ms": 531.5949999988079,
+            "p95Ms": 567.0520000014454,
+            "maxMs": 567.6350000016391
+          }
+        }
+      },
+      "detection": {
+        "count": 100,
+        "droppedDetections": 1556,
+        "serializedBytes": 13272,
+        "sha256": "f762c76fc4ed703fc886534b0e9b791dd2685f0ab472aa31a96f79c93687b152"
+      }
+    },
+    "sequences": [
+      {
+        "id": "candidate-default-threshold",
+        "hashing": "ordered",
+        "detectsRealBoxes": false,
+        "runtime": {
+          "requestedBackend": "wasm",
+          "actualBackend": "wasm",
+          "executionMode": "main",
+          "runtimeVersion": "web-sdk-pp-tracking@0.2.0-rc.2",
+          "ortVersion": "1.27.0"
+        },
+        "frames": [
+          {
+            "id": "motion-start",
+            "timestampMs": 0,
+            "events": [
+              "motion"
+            ],
+            "image": {
+              "width": 320,
+              "height": 240,
+              "bytes": 307200,
+              "sha256": "274feb02cca2bcaffd7078d2a2abf55aabd7de126955de17b6fd03f36de41f0a"
+            },
+            "detectorGeneration": 0,
+            "detectionCount": 0,
+            "droppedDetections": 0,
+            "minimumAdjacentScoreGap": null,
+            "detectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "trackingSha256": "59f44e98b9b4e6f7b234f67c68e72d73687487a57ee608050760088da7320888",
+            "activeTrackIds": [],
+            "observedTrackIds": [],
+            "lostTrackIds": [],
+            "removedTrackIds": []
+          },
+          {
+            "id": "motion-approach",
+            "timestampMs": 100,
+            "events": [
+              "motion"
+            ],
+            "image": {
+              "width": 320,
+              "height": 240,
+              "bytes": 307200,
+              "sha256": "6d94dc256e921296f74b53acca28ea990ea6d6d8078538e0d3d7b3a51b7e206a"
+            },
+            "detectorGeneration": 1,
+            "detectionCount": 0,
+            "droppedDetections": 0,
+            "minimumAdjacentScoreGap": null,
+            "detectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "trackingSha256": "3fd95c3ffe19b126cb3d7c15882cfe7cb093b2b3c0696ca0cf396a8e2e4e2cef",
+            "activeTrackIds": [],
+            "observedTrackIds": [],
+            "lostTrackIds": [],
+            "removedTrackIds": []
+          },
+          {
+            "id": "crossing",
+            "timestampMs": 200,
+            "events": [
+              "crossing"
+            ],
+            "image": {
+              "width": 320,
+              "height": 240,
+              "bytes": 307200,
+              "sha256": "792872ff004914126185bca2e66809934fed6da8b33f3dafe9157974a7f4c3bc"
+            },
+            "detectorGeneration": 2,
+            "detectionCount": 0,
+            "droppedDetections": 0,
+            "minimumAdjacentScoreGap": null,
+            "detectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "trackingSha256": "5f52b65026474e3f808f23281d5309153bc49edc52083db1851bdf8704839f38",
+            "activeTrackIds": [],
+            "observedTrackIds": [],
+            "lostTrackIds": [],
+            "removedTrackIds": []
+          },
+          {
+            "id": "occlusion",
+            "timestampMs": 300,
+            "events": [
+              "occlusion"
+            ],
+            "image": {
+              "width": 320,
+              "height": 240,
+              "bytes": 307200,
+              "sha256": "17dc410f9050806bf77463af444e7f905e2a555524325f752f70713292389a7b"
+            },
+            "detectorGeneration": 3,
+            "detectionCount": 0,
+            "droppedDetections": 0,
+            "minimumAdjacentScoreGap": null,
+            "detectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "trackingSha256": "fcf657518a3e2d736f2b1fa55973e181d31f6adc974290eaad1ad3ea1a2fff22",
+            "activeTrackIds": [],
+            "observedTrackIds": [],
+            "lostTrackIds": [],
+            "removedTrackIds": []
+          },
+          {
+            "id": "reappearance",
+            "timestampMs": 400,
+            "events": [
+              "reappearance"
+            ],
+            "image": {
+              "width": 320,
+              "height": 240,
+              "bytes": 307200,
+              "sha256": "53d6fbf57494b4eb721e9e4d0e3f32228819e3c478de596c27682169ad6953e3"
+            },
+            "detectorGeneration": 4,
+            "detectionCount": 0,
+            "droppedDetections": 0,
+            "minimumAdjacentScoreGap": null,
+            "detectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "trackingSha256": "4a08207ebe0e149700fc85a008b9cb05d166f46be0258edbaab7a3a1c886d206",
+            "activeTrackIds": [],
+            "observedTrackIds": [],
+            "lostTrackIds": [],
+            "removedTrackIds": []
+          },
+          {
+            "id": "long-loss",
+            "timestampMs": 2601,
+            "events": [
+              "long-loss"
+            ],
+            "image": {
+              "width": 320,
+              "height": 240,
+              "bytes": 307200,
+              "sha256": "787ce3522e373376966b41fd5ee876be9f15af765b138cb242786a6259be79fb"
+            },
+            "detectorGeneration": 5,
+            "detectionCount": 0,
+            "droppedDetections": 0,
+            "minimumAdjacentScoreGap": null,
+            "detectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "trackingSha256": "f9dbcb8398e8c39f97da348b9ab8a0deda86f80def38da5ed90ddc86bd31aef3",
+            "activeTrackIds": [],
+            "observedTrackIds": [],
+            "lostTrackIds": [],
+            "removedTrackIds": []
+          },
+          {
+            "id": "sparse-resume",
+            "timestampMs": 5002,
+            "events": [
+              "sparse-timestamp",
+              "reappearance"
+            ],
+            "image": {
+              "width": 320,
+              "height": 240,
+              "bytes": 307200,
+              "sha256": "52050da92ad52f5f322d91761e7a81cad67096e5e624f318183678fc5b169f63"
+            },
+            "detectorGeneration": 6,
+            "detectionCount": 0,
+            "droppedDetections": 0,
+            "minimumAdjacentScoreGap": null,
+            "detectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "trackingSha256": "ab52a94f64f445288dc53d7c2a0fbda09cc94a2f4678ad4a15a3524e49fbd6f0",
+            "activeTrackIds": [],
+            "observedTrackIds": [],
+            "lostTrackIds": [],
+            "removedTrackIds": []
+          }
+        ],
+        "summary": {
+          "frameCount": 7,
+          "detectionSha256": "ec2d1428110eb7b905b0353f28345b3af825209a3a84d54ee1c9a9e9d2518dfc",
+          "trackingSha256": "1c2524d3866d201ae4bf25176b00cae851537151fd21ea5750ea0fb222e770aa"
+        },
+        "repeat": {
+          "detectionSha256": "ec2d1428110eb7b905b0353f28345b3af825209a3a84d54ee1c9a9e9d2518dfc",
+          "trackingSha256": "1c2524d3866d201ae4bf25176b00cae851537151fd21ea5750ea0fb222e770aa"
+        }
+      },
+      {
+        "id": "zero-threshold-coverage",
+        "hashing": "unordered-bag",
+        "detectsRealBoxes": true,
+        "runtime": {
+          "requestedBackend": "wasm",
+          "actualBackend": "wasm",
+          "executionMode": "main",
+          "runtimeVersion": "web-sdk-pp-tracking@0.2.0-rc.2",
+          "ortVersion": "1.27.0"
+        },
+        "frames": [
+          {
+            "id": "motion-start",
+            "timestampMs": 0,
+            "events": [
+              "motion"
+            ],
+            "image": {
+              "width": 320,
+              "height": 240,
+              "bytes": 307200,
+              "sha256": "274feb02cca2bcaffd7078d2a2abf55aabd7de126955de17b6fd03f36de41f0a"
+            },
+            "detectorGeneration": 0,
+            "detectionCount": 100,
+            "droppedDetections": 1686,
+            "minimumAdjacentScoreGap": 2.0051427185308057e-10,
+            "detectionSha256": "eb243f8f1780ce2ce5a5cbbd0cb2ce36646a312b1c513c5ae999e9073711a051",
+            "trackingSha256": "59f44e98b9b4e6f7b234f67c68e72d73687487a57ee608050760088da7320888",
+            "activeTrackIds": [],
+            "observedTrackIds": [],
+            "lostTrackIds": [],
+            "removedTrackIds": []
+          },
+          {
+            "id": "motion-approach",
+            "timestampMs": 100,
+            "events": [
+              "motion"
+            ],
+            "image": {
+              "width": 320,
+              "height": 240,
+              "bytes": 307200,
+              "sha256": "6d94dc256e921296f74b53acca28ea990ea6d6d8078538e0d3d7b3a51b7e206a"
+            },
+            "detectorGeneration": 1,
+            "detectionCount": 100,
+            "droppedDetections": 1736,
+            "minimumAdjacentScoreGap": 1.9625367997377907e-10,
+            "detectionSha256": "294dac3fd5ad5fcc64cf5f8f6c2c7876d7c93a0f445d3de4f2d8288a12d60e3a",
+            "trackingSha256": "3fd95c3ffe19b126cb3d7c15882cfe7cb093b2b3c0696ca0cf396a8e2e4e2cef",
+            "activeTrackIds": [],
+            "observedTrackIds": [],
+            "lostTrackIds": [],
+            "removedTrackIds": []
+          },
+          {
+            "id": "crossing",
+            "timestampMs": 200,
+            "events": [
+              "crossing"
+            ],
+            "image": {
+              "width": 320,
+              "height": 240,
+              "bytes": 307200,
+              "sha256": "792872ff004914126185bca2e66809934fed6da8b33f3dafe9157974a7f4c3bc"
+            },
+            "detectorGeneration": 2,
+            "detectionCount": 100,
+            "droppedDetections": 1825,
+            "minimumAdjacentScoreGap": 8.260059303211165e-11,
+            "detectionSha256": "79208a1c03b4ad4ac79e4e1d34e598f89d29250dba9cb6a236c64fad62da2374",
+            "trackingSha256": "5f52b65026474e3f808f23281d5309153bc49edc52083db1851bdf8704839f38",
+            "activeTrackIds": [],
+            "observedTrackIds": [],
+            "lostTrackIds": [],
+            "removedTrackIds": []
+          },
+          {
+            "id": "occlusion",
+            "timestampMs": 300,
+            "events": [
+              "occlusion"
+            ],
+            "image": {
+              "width": 320,
+              "height": 240,
+              "bytes": 307200,
+              "sha256": "17dc410f9050806bf77463af444e7f905e2a555524325f752f70713292389a7b"
+            },
+            "detectorGeneration": 3,
+            "detectionCount": 100,
+            "droppedDetections": 1803,
+            "minimumAdjacentScoreGap": 3.909139678626161e-10,
+            "detectionSha256": "d193676ea70120966e698a6027d4a76a379c4b52c33462b217c9afac2e052e4a",
+            "trackingSha256": "fcf657518a3e2d736f2b1fa55973e181d31f6adc974290eaad1ad3ea1a2fff22",
+            "activeTrackIds": [],
+            "observedTrackIds": [],
+            "lostTrackIds": [],
+            "removedTrackIds": []
+          },
+          {
+            "id": "reappearance",
+            "timestampMs": 400,
+            "events": [
+              "reappearance"
+            ],
+            "image": {
+              "width": 320,
+              "height": 240,
+              "bytes": 307200,
+              "sha256": "53d6fbf57494b4eb721e9e4d0e3f32228819e3c478de596c27682169ad6953e3"
+            },
+            "detectorGeneration": 4,
+            "detectionCount": 100,
+            "droppedDetections": 1747,
+            "minimumAdjacentScoreGap": 6.710090261208279e-10,
+            "detectionSha256": "05c4b7dc98abd551da090fa42c6a254e80e4f0b17e7f550e947f55233c1323d7",
+            "trackingSha256": "4a08207ebe0e149700fc85a008b9cb05d166f46be0258edbaab7a3a1c886d206",
+            "activeTrackIds": [],
+            "observedTrackIds": [],
+            "lostTrackIds": [],
+            "removedTrackIds": []
+          },
+          {
+            "id": "long-loss",
+            "timestampMs": 2601,
+            "events": [
+              "long-loss"
+            ],
+            "image": {
+              "width": 320,
+              "height": 240,
+              "bytes": 307200,
+              "sha256": "787ce3522e373376966b41fd5ee876be9f15af765b138cb242786a6259be79fb"
+            },
+            "detectorGeneration": 5,
+            "detectionCount": 100,
+            "droppedDetections": 1894,
+            "minimumAdjacentScoreGap": 1.0293916830050875e-9,
+            "detectionSha256": "ffaaeb614226ee0009d25d091220606b7e9171d708a05a933807e97e6dd412ad",
+            "trackingSha256": "f9dbcb8398e8c39f97da348b9ab8a0deda86f80def38da5ed90ddc86bd31aef3",
+            "activeTrackIds": [],
+            "observedTrackIds": [],
+            "lostTrackIds": [],
+            "removedTrackIds": []
+          },
+          {
+            "id": "sparse-resume",
+            "timestampMs": 5002,
+            "events": [
+              "sparse-timestamp",
+              "reappearance"
+            ],
+            "image": {
+              "width": 320,
+              "height": 240,
+              "bytes": 307200,
+              "sha256": "52050da92ad52f5f322d91761e7a81cad67096e5e624f318183678fc5b169f63"
+            },
+            "detectorGeneration": 6,
+            "detectionCount": 100,
+            "droppedDetections": 1734,
+            "minimumAdjacentScoreGap": 6.421743137252633e-10,
+            "detectionSha256": "f6a4bbf7ee545af1b5437a011b7ce3735f86cc2e3bf552317de33339273dfc58",
+            "trackingSha256": "ab52a94f64f445288dc53d7c2a0fbda09cc94a2f4678ad4a15a3524e49fbd6f0",
+            "activeTrackIds": [],
+            "observedTrackIds": [],
+            "lostTrackIds": [],
+            "removedTrackIds": []
+          }
+        ],
+        "summary": {
+          "frameCount": 7,
+          "detectionSha256": "59015a2c87c3c0663c659586e7de82944697ae777ee4354b5b3e18c7af172cac",
+          "trackingSha256": "1c2524d3866d201ae4bf25176b00cae851537151fd21ea5750ea0fb222e770aa"
+        },
+        "repeat": {
+          "detectionSha256": "59015a2c87c3c0663c659586e7de82944697ae777ee4354b5b3e18c7af172cac",
+          "trackingSha256": "1c2524d3866d201ae4bf25176b00cae851537151fd21ea5750ea0fb222e770aa"
+        }
+      }
+    ],
+    "sequenceContract": {
+      "sampleCount": 5,
+      "fixtureWidth": 320,
+      "fixtureHeight": 240,
+      "detectorOptions": {
+        "scoreThreshold": 0,
+        "nmsThreshold": 0.7,
+        "maxDetections": 100
+      },
+      "sequenceFrameCount": 7,
+      "sequenceVariants": [
+        {
+          "id": "candidate-default-threshold",
+          "hashing": "ordered",
+          "detectorOptions": {
+            "scoreThreshold": 0.1,
+            "nmsThreshold": 0.7,
+            "maxDetections": 100
+          },
+          "detectsRealBoxes": false
+        },
+        {
+          "id": "zero-threshold-coverage",
+          "hashing": "unordered-bag",
+          "detectorOptions": {
+            "scoreThreshold": 0,
+            "nmsThreshold": 0.7,
+            "maxDetections": 100
+          },
+          "detectsRealBoxes": true
+        }
+      ],
+      "trackerOptions": {}
+    },
+    "moduleHashes": {
+      "candidateEsmSha256": "5bbf389e79e26a7da4dadfd166cffbd0ab8a75766e879a00589abb8d3be7d714",
+      "trackerEntrySha256": "e644c2806f11e52065c4f2449e492c712cb88a34af655aa49cfca31d50e273f9"
+    },
+    "webgpu": {
+      "status": "verified",
+      "adapterInfo": {
+        "vendor": "nvidia",
+        "architecture": "blackwell",
+        "device": "",
+        "description": "",
+        "isFallbackAdapter": false
+      },
+      "result": {
+        "runtime": {
+          "requestedBackend": "webgpu",
+          "actualBackend": "webgpu",
+          "executionMode": "main",
+          "runtimeVersion": "web-sdk-pp-tracking@0.2.0-rc.2",
+          "ortVersion": "1.27.0"
+        },
+        "coldLoad": {
+          "wallMs": 246.18000000156462,
+          "timings": {
+            "modelDownloadMs": 0,
+            "modelCacheReadMs": 0,
+            "integrityMs": 52.7649999987334,
+            "sessionMs": 193.3099999986589,
+            "totalMs": 246.14999999850988
+          }
+        },
+        "progress": [
+          {
+            "stage": "integrity",
+            "status": "start",
+            "loaded": 0,
+            "total": 20258925
+          },
+          {
+            "stage": "integrity",
+            "status": "complete",
+            "loaded": 20258925,
+            "total": 20258925
+          },
+          {
+            "stage": "session",
+            "status": "start"
+          },
+          {
+            "stage": "session",
+            "status": "complete"
+          }
+        ],
+        "warmup": {
+          "generation": 0,
+          "timings": {
+            "validationMs": 0.05999999865889549,
+            "preprocessMs": 13.474999999627471,
+            "inferenceMs": 470.52999999932945,
+            "postprocessMs": 70.56499999947846,
+            "totalMs": 554.6499999985099
+          }
+        },
+        "warmDetection": {
+          "samples": [
+            {
+              "validationMs": 0.10999999940395355,
+              "preprocessMs": 7.389999998733401,
+              "inferenceMs": 15.650000000372529,
+              "postprocessMs": 65.625,
+              "totalMs": 88.79999999888241
+            },
+            {
+              "validationMs": 0.09999999962747097,
+              "preprocessMs": 10.31499999947846,
+              "inferenceMs": 15.445000000298023,
+              "postprocessMs": 57.39000000059605,
+              "totalMs": 83.3300000000745
+            },
+            {
+              "validationMs": 0.10500000044703484,
+              "preprocessMs": 8.029999999329448,
+              "inferenceMs": 16.47499999962747,
+              "postprocessMs": 52.04500000178814,
+              "totalMs": 76.66500000096858
+            },
+            {
+              "validationMs": 0.04999999888241291,
+              "preprocessMs": 8.400000000372529,
+              "inferenceMs": 12.785000000149012,
+              "postprocessMs": 54.625,
+              "totalMs": 75.88499999977648
+            },
+            {
+              "validationMs": 0.06000000052154064,
+              "preprocessMs": 7.594999998807907,
+              "inferenceMs": 13.06499999947846,
+              "postprocessMs": 63.919999999925494,
+              "totalMs": 84.66499999910593
+            }
+          ],
+          "summary": {
+            "validationMs": {
+              "minMs": 0.04999999888241291,
+              "meanMs": 0.08499999977648258,
+              "p50Ms": 0.09999999962747097,
+              "p95Ms": 0.10899999961256981,
+              "maxMs": 0.10999999940395355
+            },
+            "preprocessMs": {
+              "minMs": 7.389999998733401,
+              "meanMs": 8.345999999344349,
+              "p50Ms": 8.029999999329448,
+              "p95Ms": 9.931999999657274,
+              "maxMs": 10.31499999947846
+            },
+            "inferenceMs": {
+              "minMs": 12.785000000149012,
+              "meanMs": 14.6839999999851,
+              "p50Ms": 15.445000000298023,
+              "p95Ms": 16.309999999776483,
+              "maxMs": 16.47499999962747
+            },
+            "postprocessMs": {
+              "minMs": 52.04500000178814,
+              "meanMs": 58.721000000461935,
+              "p50Ms": 57.39000000059605,
+              "p95Ms": 65.2839999999851,
+              "maxMs": 65.625
+            },
+            "totalMs": {
+              "minMs": 75.88499999977648,
+              "meanMs": 81.86899999976158,
+              "p50Ms": 83.3300000000745,
+              "p95Ms": 87.97299999892712,
+              "maxMs": 88.79999999888241
+            }
+          }
+        },
+        "detection": {
+          "count": 100,
+          "droppedDetections": 1550,
+          "serializedBytes": 13282,
+          "sha256": "eb09a45a12e47275a7d38a8068311d4838f4fb0f58185c86f0d15882b63815e5"
+        }
+      }
+    },
+    "localRequests": [
+      "http://127.0.0.1:58861/",
+      "http://127.0.0.1:58861/yolox-serialization.mjs",
+      "http://127.0.0.1:58861/ort/ort.all.min.mjs",
+      "http://127.0.0.1:58861/model.onnx",
+      "http://127.0.0.1:58861/fixture.rgba",
+      "http://127.0.0.1:58861/yolox.mjs",
+      "http://127.0.0.1:58861/tracking.mjs",
+      "http://127.0.0.1:58861/yolox.mjs",
+      "http://127.0.0.1:58861/ort/ort-wasm-simd-threaded.jsep.mjs",
+      "http://127.0.0.1:58861/ort/ort-wasm-simd-threaded.jsep.wasm",
+      "http://127.0.0.1:58861/yolox-sequence.mjs",
+      "http://127.0.0.1:58861/yolox-tracking-sequence.mjs",
+      "http://127.0.0.1:58861/tracking.mjs",
+      "http://127.0.0.1:58861/yolox-candidate-config.mjs"
+    ],
+    "serverErrors": [],
+    "consoleMessages": [
+      {
+        "type": "warning",
+        "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"
+      }
+    ],
+    "pageErrors": []
+  },
+  "comparison": {
+    "canonicalSerializationMatch": true,
+    "nodeDetectionSha256": "f762c76fc4ed703fc886534b0e9b791dd2685f0ab472aa31a96f79c93687b152",
+    "chromiumDetectionSha256": "f762c76fc4ed703fc886534b0e9b791dd2685f0ab472aa31a96f79c93687b152",
+    "detectionSha256": "f762c76fc4ed703fc886534b0e9b791dd2685f0ab472aa31a96f79c93687b152",
+    "sequenceVariants": [
+      {
+        "id": "candidate-default-threshold",
+        "hashing": "ordered",
+        "detectsRealBoxes": false,
+        "framesMatch": true,
+        "matchedFrameCount": 7,
+        "frameCount": 7,
+        "minimumAdjacentScoreGaps": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "nodeSequenceDetectionSha256": "ec2d1428110eb7b905b0353f28345b3af825209a3a84d54ee1c9a9e9d2518dfc",
+        "chromiumSequenceDetectionSha256": "ec2d1428110eb7b905b0353f28345b3af825209a3a84d54ee1c9a9e9d2518dfc",
+        "nodeSequenceTrackingSha256": "1c2524d3866d201ae4bf25176b00cae851537151fd21ea5750ea0fb222e770aa",
+        "chromiumSequenceTrackingSha256": "1c2524d3866d201ae4bf25176b00cae851537151fd21ea5750ea0fb222e770aa",
+        "frames": [
+          {
+            "id": "motion-start",
+            "detectionSha256Match": true,
+            "trackingSha256Match": true,
+            "nodeDetectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "chromiumDetectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "nodeTrackingSha256": "59f44e98b9b4e6f7b234f67c68e72d73687487a57ee608050760088da7320888",
+            "chromiumTrackingSha256": "59f44e98b9b4e6f7b234f67c68e72d73687487a57ee608050760088da7320888"
+          },
+          {
+            "id": "motion-approach",
+            "detectionSha256Match": true,
+            "trackingSha256Match": true,
+            "nodeDetectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "chromiumDetectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "nodeTrackingSha256": "3fd95c3ffe19b126cb3d7c15882cfe7cb093b2b3c0696ca0cf396a8e2e4e2cef",
+            "chromiumTrackingSha256": "3fd95c3ffe19b126cb3d7c15882cfe7cb093b2b3c0696ca0cf396a8e2e4e2cef"
+          },
+          {
+            "id": "crossing",
+            "detectionSha256Match": true,
+            "trackingSha256Match": true,
+            "nodeDetectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "chromiumDetectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "nodeTrackingSha256": "5f52b65026474e3f808f23281d5309153bc49edc52083db1851bdf8704839f38",
+            "chromiumTrackingSha256": "5f52b65026474e3f808f23281d5309153bc49edc52083db1851bdf8704839f38"
+          },
+          {
+            "id": "occlusion",
+            "detectionSha256Match": true,
+            "trackingSha256Match": true,
+            "nodeDetectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "chromiumDetectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "nodeTrackingSha256": "fcf657518a3e2d736f2b1fa55973e181d31f6adc974290eaad1ad3ea1a2fff22",
+            "chromiumTrackingSha256": "fcf657518a3e2d736f2b1fa55973e181d31f6adc974290eaad1ad3ea1a2fff22"
+          },
+          {
+            "id": "reappearance",
+            "detectionSha256Match": true,
+            "trackingSha256Match": true,
+            "nodeDetectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "chromiumDetectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "nodeTrackingSha256": "4a08207ebe0e149700fc85a008b9cb05d166f46be0258edbaab7a3a1c886d206",
+            "chromiumTrackingSha256": "4a08207ebe0e149700fc85a008b9cb05d166f46be0258edbaab7a3a1c886d206"
+          },
+          {
+            "id": "long-loss",
+            "detectionSha256Match": true,
+            "trackingSha256Match": true,
+            "nodeDetectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "chromiumDetectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "nodeTrackingSha256": "f9dbcb8398e8c39f97da348b9ab8a0deda86f80def38da5ed90ddc86bd31aef3",
+            "chromiumTrackingSha256": "f9dbcb8398e8c39f97da348b9ab8a0deda86f80def38da5ed90ddc86bd31aef3"
+          },
+          {
+            "id": "sparse-resume",
+            "detectionSha256Match": true,
+            "trackingSha256Match": true,
+            "nodeDetectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "chromiumDetectionSha256": "981b1e2ad34082678d01c07252e6c072e32a8e4d95c01f887bd08247ce2a1739",
+            "nodeTrackingSha256": "ab52a94f64f445288dc53d7c2a0fbda09cc94a2f4678ad4a15a3524e49fbd6f0",
+            "chromiumTrackingSha256": "ab52a94f64f445288dc53d7c2a0fbda09cc94a2f4678ad4a15a3524e49fbd6f0"
+          }
+        ]
+      },
+      {
+        "id": "zero-threshold-coverage",
+        "hashing": "unordered-bag",
+        "detectsRealBoxes": true,
+        "framesMatch": false,
+        "matchedFrameCount": 6,
+        "frameCount": 7,
+        "minimumAdjacentScoreGaps": [
+          2.0051427185308057e-10,
+          1.9625367997377907e-10,
+          8.260059303211165e-11,
+          3.909139678626161e-10,
+          6.710090261208279e-10,
+          1.0293916830050875e-9,
+          6.421743137252633e-10
+        ],
+        "nodeSequenceDetectionSha256": "e9649a0e5a61fb85bc7009634017f8541933c1eff4b79b7c7055059005733d13",
+        "chromiumSequenceDetectionSha256": "59015a2c87c3c0663c659586e7de82944697ae777ee4354b5b3e18c7af172cac",
+        "nodeSequenceTrackingSha256": "1c2524d3866d201ae4bf25176b00cae851537151fd21ea5750ea0fb222e770aa",
+        "chromiumSequenceTrackingSha256": "1c2524d3866d201ae4bf25176b00cae851537151fd21ea5750ea0fb222e770aa",
+        "frames": [
+          {
+            "id": "motion-start",
+            "detectionSha256Match": true,
+            "trackingSha256Match": true,
+            "nodeDetectionSha256": "eb243f8f1780ce2ce5a5cbbd0cb2ce36646a312b1c513c5ae999e9073711a051",
+            "chromiumDetectionSha256": "eb243f8f1780ce2ce5a5cbbd0cb2ce36646a312b1c513c5ae999e9073711a051",
+            "nodeTrackingSha256": "59f44e98b9b4e6f7b234f67c68e72d73687487a57ee608050760088da7320888",
+            "chromiumTrackingSha256": "59f44e98b9b4e6f7b234f67c68e72d73687487a57ee608050760088da7320888"
+          },
+          {
+            "id": "motion-approach",
+            "detectionSha256Match": false,
+            "trackingSha256Match": true,
+            "nodeDetectionSha256": "a611b02895c3804165d38db4dfe89af67d64bfabace8c4729a4bb78053091d6b",
+            "chromiumDetectionSha256": "294dac3fd5ad5fcc64cf5f8f6c2c7876d7c93a0f445d3de4f2d8288a12d60e3a",
+            "nodeTrackingSha256": "3fd95c3ffe19b126cb3d7c15882cfe7cb093b2b3c0696ca0cf396a8e2e4e2cef",
+            "chromiumTrackingSha256": "3fd95c3ffe19b126cb3d7c15882cfe7cb093b2b3c0696ca0cf396a8e2e4e2cef"
+          },
+          {
+            "id": "crossing",
+            "detectionSha256Match": true,
+            "trackingSha256Match": true,
+            "nodeDetectionSha256": "79208a1c03b4ad4ac79e4e1d34e598f89d29250dba9cb6a236c64fad62da2374",
+            "chromiumDetectionSha256": "79208a1c03b4ad4ac79e4e1d34e598f89d29250dba9cb6a236c64fad62da2374",
+            "nodeTrackingSha256": "5f52b65026474e3f808f23281d5309153bc49edc52083db1851bdf8704839f38",
+            "chromiumTrackingSha256": "5f52b65026474e3f808f23281d5309153bc49edc52083db1851bdf8704839f38"
+          },
+          {
+            "id": "occlusion",
+            "detectionSha256Match": true,
+            "trackingSha256Match": true,
+            "nodeDetectionSha256": "d193676ea70120966e698a6027d4a76a379c4b52c33462b217c9afac2e052e4a",
+            "chromiumDetectionSha256": "d193676ea70120966e698a6027d4a76a379c4b52c33462b217c9afac2e052e4a",
+            "nodeTrackingSha256": "fcf657518a3e2d736f2b1fa55973e181d31f6adc974290eaad1ad3ea1a2fff22",
+            "chromiumTrackingSha256": "fcf657518a3e2d736f2b1fa55973e181d31f6adc974290eaad1ad3ea1a2fff22"
+          },
+          {
+            "id": "reappearance",
+            "detectionSha256Match": true,
+            "trackingSha256Match": true,
+            "nodeDetectionSha256": "05c4b7dc98abd551da090fa42c6a254e80e4f0b17e7f550e947f55233c1323d7",
+            "chromiumDetectionSha256": "05c4b7dc98abd551da090fa42c6a254e80e4f0b17e7f550e947f55233c1323d7",
+            "nodeTrackingSha256": "4a08207ebe0e149700fc85a008b9cb05d166f46be0258edbaab7a3a1c886d206",
+            "chromiumTrackingSha256": "4a08207ebe0e149700fc85a008b9cb05d166f46be0258edbaab7a3a1c886d206"
+          },
+          {
+            "id": "long-loss",
+            "detectionSha256Match": true,
+            "trackingSha256Match": true,
+            "nodeDetectionSha256": "ffaaeb614226ee0009d25d091220606b7e9171d708a05a933807e97e6dd412ad",
+            "chromiumDetectionSha256": "ffaaeb614226ee0009d25d091220606b7e9171d708a05a933807e97e6dd412ad",
+            "nodeTrackingSha256": "f9dbcb8398e8c39f97da348b9ab8a0deda86f80def38da5ed90ddc86bd31aef3",
+            "chromiumTrackingSha256": "f9dbcb8398e8c39f97da348b9ab8a0deda86f80def38da5ed90ddc86bd31aef3"
+          },
+          {
+            "id": "sparse-resume",
+            "detectionSha256Match": true,
+            "trackingSha256Match": true,
+            "nodeDetectionSha256": "f6a4bbf7ee545af1b5437a011b7ce3735f86cc2e3bf552317de33339273dfc58",
+            "chromiumDetectionSha256": "f6a4bbf7ee545af1b5437a011b7ce3735f86cc2e3bf552317de33339273dfc58",
+            "nodeTrackingSha256": "ab52a94f64f445288dc53d7c2a0fbda09cc94a2f4678ad4a15a3524e49fbd6f0",
+            "chromiumTrackingSha256": "ab52a94f64f445288dc53d7c2a0fbda09cc94a2f4678ad4a15a3524e49fbd6f0"
+          }
+        ]
+      }
+    ],
+    "passed": true
+  },
+  "claims": {
+    "nodeWasmMainVerified": true,
+    "chromiumWasmMainVerified": true,
+    "chromiumWebgpuVerified": true,
+    "workerVerified": false,
+    "mobileVerified": false,
+    "safariVerified": false,
+    "firefoxVerified": false,
+    "npuVerified": false,
+    "webnnVerified": false
+  },
+  "verification": {
+    "modelIdentityMatch": true,
+    "fixtureIdentityMatch": true,
+    "localNetworkOnly": true,
+    "nodeRepeatedOutputStable": true,
+    "chromiumRepeatedOutputStable": true,
+    "nodeChromiumSerializedOutputMatch": true,
+    "nodeChromiumDetectionHashMatch": true,
+    "nodeChromiumEmptySequenceContractMatch": true,
+    "nodeChromiumRealBoxSequenceMatch": false,
+    "sharedSequenceConfigMatch": true,
+    "servedModuleIdentityMatch": true,
+    "passed": true
+  }
+}

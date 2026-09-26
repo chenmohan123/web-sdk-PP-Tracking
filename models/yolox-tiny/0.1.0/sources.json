@@ -1,0 +1,15 @@
+{
+  "status": "pending-authorization",
+  "upstream": {
+    "organization": "Megvii-BaseDetection",
+    "repository": "YOLOX",
+    "release": "0.1.1rc0",
+    "revision": "e1052df71842031413f6030723c3607b839c80ce",
+    "asset": {
+      "name": "yolox_tiny.pth",
+      "bytes": 40755013,
+      "sha256": "9de513de589ac98bb92d3bca53b5af7b9acfa9b0bacb831f7999d0f7afaee8f0"
+    }
+  },
+  "distributions": []
+}

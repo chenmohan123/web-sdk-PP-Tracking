@@ -1,0 +1,145 @@
+{
+  "checkpoint": {
+    "bytes": 40755013,
+    "format": "PyTorch checkpoint",
+    "missingKeys": [],
+    "path": ".tmp/yolox-reference/yolox_tiny.pth",
+    "sha256": "9de513de589ac98bb92d3bca53b5af7b9acfa9b0bacb831f7999d0f7afaee8f0",
+    "stateTensorCount": 462,
+    "strictLoad": true,
+    "topLevelKeys": [
+      "amp",
+      "model",
+      "optimizer",
+      "start_epoch"
+    ],
+    "unexpectedKeys": [],
+    "weightsOnlyLoad": true
+  },
+  "determinism": {
+    "device": "cpu",
+    "distribution": "standard-normal",
+    "inputGenerator": "torch.randn with a dedicated CPU torch.Generator",
+    "numpyRandomSeeded": true,
+    "pythonRandomSeeded": true,
+    "seed": 20260924,
+    "torchDeterministicAlgorithms": true,
+    "torchNumInteropThreads": 1,
+    "torchNumThreads": 1,
+    "torchRandomSeeded": true
+  },
+  "environment": {
+    "numpy": "2.5.2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.13",
+    "pythonImplementation": "CPython",
+    "torch": "2.5.1+cpu",
+    "torchvision": "0.20.1+cpu"
+  },
+  "experiment": {
+    "decodeInInference": false,
+    "depth": 0.33,
+    "evaluationMode": true,
+    "file": ".tmp/yolox-reference/upstream/YOLOX/exps/default/yolox_tiny.py",
+    "name": "yolox_tiny",
+    "nativeSiLUModulesAfter": 0,
+    "nativeSiLUModulesBefore": 74,
+    "numClasses": 80,
+    "officialExportSiLUModulesAfter": 74,
+    "officialSiLUReplacement": true,
+    "parameterCount": 5055855,
+    "strides": [
+      8,
+      16,
+      32
+    ],
+    "testSize": [
+      416,
+      416
+    ],
+    "width": 0.375
+  },
+  "generatedAt": "2026-09-24T08:50:40Z",
+  "graphBoundary": {
+    "classSigmoid": "inside-model",
+    "decodeInInference": false,
+    "gridDecode": "outside-model",
+    "nms": "outside-model",
+    "objectnessSigmoid": "inside-model",
+    "thresholding": "outside-model",
+    "topK": "outside-model"
+  },
+  "input": {
+    "byteOrder": "little-endian",
+    "bytes": 2076672,
+    "dtype": "float32",
+    "elements": 519168,
+    "layout": "NCHW",
+    "name": "images",
+    "path": ".tmp/yolox-reference/golden-input-f32.bin",
+    "sha256": "a8c8d479826e6fe83e627c44f549cc1435b29cb2bbb9759b1457817787aadb51",
+    "shape": [
+      1,
+      3,
+      416,
+      416
+    ],
+    "statistics": {
+      "max": 4.937317848205566,
+      "mean": -0.00015379291566447735,
+      "min": -4.814766883850098
+    }
+  },
+  "kind": "yolox-pytorch-golden",
+  "output": {
+    "byteOrder": "little-endian",
+    "bytes": 1206660,
+    "channelLayout": [
+      "dx",
+      "dy",
+      "dw",
+      "dh",
+      "objectness",
+      "class[0..79]"
+    ],
+    "dtype": "float32",
+    "elements": 301665,
+    "layout": "NAC",
+    "name": "output",
+    "path": ".tmp/yolox-reference/golden-output-f32.bin",
+    "sha256": "72a66a37d2d2da175a844223d2e2b601f9e21fd94ed9d6255a55952509cb9834",
+    "shape": [
+      1,
+      3549,
+      85
+    ],
+    "statistics": {
+      "max": 3.855266809463501,
+      "mean": 0.06045565618819822,
+      "min": -2.3400168418884277
+    }
+  },
+  "schemaVersion": "1.0",
+  "source": {
+    "organization": "Megvii-BaseDetection",
+    "release": "0.1.1rc0",
+    "repository": "YOLOX",
+    "upstreamPath": ".tmp/yolox-reference/upstream/YOLOX",
+    "upstreamRevision": "e1052df71842031413f6030723c3607b839c80ce",
+    "upstreamWorktreeClean": true
+  },
+  "verification": {
+    "assetIdentityMatch": true,
+    "checkpointStrictLoad": true,
+    "cpuOnly": true,
+    "finiteInput": true,
+    "finiteOutput": true,
+    "inputDtypeMatch": true,
+    "inputShapeMatch": true,
+    "officialSiLUReplacement": true,
+    "outputDtypeMatch": true,
+    "outputShapeMatch": true,
+    "passed": true,
+    "upstreamRevisionMatch": true
+  }
+}

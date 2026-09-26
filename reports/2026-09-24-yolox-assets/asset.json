@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0",
+  "asset": {
+    "name": "yolox_tiny.pth",
+    "path": ".tmp/yolox-reference/yolox_tiny.pth",
+    "bytes": 40755013,
+    "sha256": "9de513de589ac98bb92d3bca53b5af7b9acfa9b0bacb831f7999d0f7afaee8f0"
+  },
+  "source": {
+    "organization": "Megvii-BaseDetection",
+    "repository": "YOLOX",
+    "release": "0.1.1rc0",
+    "releaseName": "0.1.1 pre release",
+    "releasePublishedAt": "2021-08-18T12:41:41Z",
+    "releaseUrl": "https://github.com/Megvii-BaseDetection/YOLOX/releases/tag/0.1.1rc0",
+    "officialAssetUrl": "https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_tiny.pth",
+    "upstreamRevision": "e1052df71842031413f6030723c3607b839c80ce"
+  },
+  "download": {
+    "startedAt": "2026-09-24T06:25:23Z",
+    "completedAt": "2026-09-24T06:25:26Z",
+    "chunkSizeBytes": 1048576,
+    "httpStatus": 200,
+    "contentType": "application/octet-stream",
+    "declaredContentLength": 40755013
+  },
+  "verification": {
+    "expectedBytes": 40755013,
+    "streamingDownload": {
+      "method": "Python hashlib.sha256 with fixed 1048576-byte chunks",
+      "bytes": 40755013,
+      "sha256": "9de513de589ac98bb92d3bca53b5af7b9acfa9b0bacb831f7999d0f7afaee8f0"
+    },
+    "independentLocal": {
+      "method": "wc -c and sha256sum",
+      "bytes": 40755013,
+      "sha256": "9de513de589ac98bb92d3bca53b5af7b9acfa9b0bacb831f7999d0f7afaee8f0"
+    },
+    "officialReleaseMetadata": {
+      "method": "git ls-remote and GitHub read-only API",
+      "tagRevision": "e1052df71842031413f6030723c3607b839c80ce",
+      "assetBytes": 40755013
+    },
+    "bytesMatch": true,
+    "sha256Match": true,
+    "sourceLockMatch": true,
+    "passed": true
+  }
+}

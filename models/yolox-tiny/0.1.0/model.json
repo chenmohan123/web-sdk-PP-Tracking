@@ -1,0 +1,41 @@
+{
+  "id": "yolox-tiny-416-fp32",
+  "version": "0.1.0",
+  "format": "onnx",
+  "precision": "fp32",
+  "opset": 17,
+  "path": "yolox-tiny/0.1.0/yolox-tiny-416-fp32.onnx",
+  "bytes": 20258925,
+  "sha256": "2e99f041301698ff4a9e898aa1efb4bcdd503d46f5c5c1829be17af9b7adfab6",
+  "parameterCount": 5055855,
+  "license": "Apache-2.0",
+  "licenseBasis": "采用官方 YOLOX 仓库整体授权；候选模型由官方 0.1.1rc0 yolox_tiny.pth 导出",
+  "upstreamRevision": "e1052df71842031413f6030723c3607b839c80ce",
+  "input": {
+    "name": "images",
+    "dtype": "float32",
+    "shape": [1, 3, 416, 416]
+  },
+  "output": {
+    "name": "output",
+    "dtype": "float32",
+    "shape": [1, 3549, 85]
+  },
+  "preprocessingId": "yolox-letterbox-416-imagenet-meanstd-f32-v1",
+  "weights": {
+    "dataset": "COCO",
+    "upstreamClassCount": 80,
+    "purpose": "generic-object-detection",
+    "mot17Specific": false
+  },
+  "outputContract": {
+    "retainedClass": {
+      "upstreamIndex": 0,
+      "upstreamName": "person",
+      "sdkClassId": 1
+    },
+    "frameScope": "single-frame",
+    "trackingState": "none"
+  },
+  "distributionStatus": "pending-authorization"
+}

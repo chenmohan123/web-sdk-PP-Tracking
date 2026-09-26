@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "portal-sdk-check-covering-tracker-validation-change",
+  "checkedAt": "2026-09-26T03:56:02.392Z",
+  "standardVersion": "1.3.0",
+  "portalCommit": "3a49e509900c19473c9c377266366087609a2f2f",
+  "worktreeCommit": "56bdb288e63daf1a4ba79f074f59a1776495126e",
+  "repository": "web-sdk-PP-Tracking-yolox-candidate-20260924",
+  "summary": {
+    "requiredPassed": 21,
+    "requiredFailed": 0,
+    "requiredSkipped": 4,
+    "requiredUnknown": 0,
+    "requiredNotApplicable": 0,
+    "recommendedPassed": 3,
+    "recommendedFailed": 0,
+    "labs": 1,
+    "status": "locally-compliant"
+  },
+  "failedFindings": [],
+  "skippedFindings": [
+    {
+      "id": "DEPLOY-001",
+      "reason": "Requires read-only remote-api verification; offline sdk:check did not evaluate this rule."
+    },
+    {
+      "id": "GOV-001",
+      "reason": "Requires read-only github-api verification; offline sdk:check did not evaluate this rule."
+    },
+    {
+      "id": "GOV-002",
+      "reason": "Requires read-only github-api verification; offline sdk:check did not evaluate this rule."
+    },
+    {
+      "id": "LABS-001",
+      "reason": "Labs rule is informational"
+    },
+    {
+      "id": "PAGES-001",
+      "reason": "Requires read-only github-api verification; offline sdk:check did not evaluate this rule."
+    }
+  ],
+  "scopeNote": "覆盖本轮 src/tracker.ts 输入校验浮点容差变更之后的整仓规范项"
+}

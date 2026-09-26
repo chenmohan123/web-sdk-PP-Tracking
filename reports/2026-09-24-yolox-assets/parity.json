@@ -1,0 +1,190 @@
+{
+  "comparison": {
+    "comparison": "absolute-error",
+    "elementsAboveTolerance": 0,
+    "elementsCompared": 301665,
+    "maximumAbsoluteError": 2.5272369384765625e-05,
+    "meanAbsoluteError": 1.2306379911639282e-07,
+    "passed": true,
+    "rootMeanSquareError": 5.931297342509856e-07,
+    "tolerance": 0.0001,
+    "worstElement": {
+      "absoluteError": 2.5272369384765625e-05,
+      "flatIndex": 5866,
+      "index": [
+        0,
+        69,
+        1
+      ],
+      "onnxRuntimeValue": 1.3393642902374268,
+      "pytorchValue": 1.3393895626068115
+    }
+  },
+  "determinism": {
+    "previousOutputSha256": "613f8ee10c4bbfca430dfd85647b7180ac3bb82296757c596f7da02409fb3dfa",
+    "reproducedPreviousOutput": true
+  },
+  "environment": {
+    "numpy": "2.5.2",
+    "onnxruntime": "1.27.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.13",
+    "pythonImplementation": "CPython"
+  },
+  "generatedAt": "2026-09-24T14:44:18Z",
+  "kind": "yolox-pytorch-onnxruntime-parity",
+  "onnxRuntime": {
+    "actualProviders": [
+      "CPUExecutionProvider"
+    ],
+    "availableProviders": [
+      "AzureExecutionProvider",
+      "CPUExecutionProvider"
+    ],
+    "executionMode": "sequential",
+    "graphOptimizationLevel": "ORT_ENABLE_ALL",
+    "inputName": "images",
+    "interOpThreads": 1,
+    "intraOpThreads": 1,
+    "output": {
+      "byteOrder": "little-endian",
+      "bytes": 1206660,
+      "dtype": "float32",
+      "elements": 301665,
+      "layout": "NAC",
+      "sha256": "613f8ee10c4bbfca430dfd85647b7180ac3bb82296757c596f7da02409fb3dfa",
+      "shape": [
+        1,
+        3549,
+        85
+      ],
+      "statistics": {
+        "max": 3.855271100997925,
+        "mean": 0.06045564640284181,
+        "min": -2.3400168418884277
+      }
+    },
+    "outputName": "output",
+    "requestedProvider": "CPUExecutionProvider",
+    "version": "1.27.0"
+  },
+  "schemaVersion": "1.0",
+  "source": {
+    "goldenManifest": "reports/2026-09-24-yolox-assets/golden-manifest.json",
+    "input": {
+      "byteOrder": "little-endian",
+      "bytes": 2076672,
+      "dtype": "float32",
+      "elements": 519168,
+      "layout": "NCHW",
+      "name": "images",
+      "path": ".tmp/yolox-reference/golden-input-f32.bin",
+      "sha256": "a8c8d479826e6fe83e627c44f549cc1435b29cb2bbb9759b1457817787aadb51",
+      "shape": [
+        1,
+        3,
+        416,
+        416
+      ],
+      "statistics": {
+        "max": 4.937317848205566,
+        "mean": -0.00015379291566447735,
+        "min": -4.814766883850098
+      }
+    },
+    "onnx": {
+      "bytes": 20258925,
+      "channelLayout": [
+        "dx",
+        "dy",
+        "dw",
+        "dh",
+        "objectness",
+        "class[0..79]"
+      ],
+      "checker": {
+        "fullCheck": true,
+        "passed": true
+      },
+      "graphBoundary": {
+        "classSigmoid": "inside-model",
+        "decodeInInference": false,
+        "gridDecode": "outside-model",
+        "nms": "outside-model",
+        "objectnessSigmoid": "inside-model",
+        "thresholding": "outside-model",
+        "topK": "outside-model"
+      },
+      "input": {
+        "dtype": "float32",
+        "name": "images",
+        "shape": [
+          1,
+          3,
+          416,
+          416
+        ]
+      },
+      "onnxVersion": "1.17.0",
+      "onnxsim": {
+        "availableInEnvironment": false,
+        "enabled": false,
+        "reason": "explicitly disabled for Task 2"
+      },
+      "opsetTarget": 17,
+      "output": {
+        "dtype": "float32",
+        "name": "output",
+        "shape": [
+          1,
+          3549,
+          85
+        ]
+      },
+      "path": ".tmp/yolox-reference/yolox_tiny_416_opset17.onnx",
+      "precision": "fp32",
+      "sha256": "2e99f041301698ff4a9e898aa1efb4bcdd503d46f5c5c1829be17af9b7adfab6"
+    },
+    "onnxManifest": "reports/2026-09-24-yolox-assets/onnx-manifest.json",
+    "pytorchOutput": {
+      "byteOrder": "little-endian",
+      "bytes": 1206660,
+      "channelLayout": [
+        "dx",
+        "dy",
+        "dw",
+        "dh",
+        "objectness",
+        "class[0..79]"
+      ],
+      "dtype": "float32",
+      "elements": 301665,
+      "layout": "NAC",
+      "name": "output",
+      "path": ".tmp/yolox-reference/golden-output-f32.bin",
+      "sha256": "72a66a37d2d2da175a844223d2e2b601f9e21fd94ed9d6255a55952509cb9834",
+      "shape": [
+        1,
+        3549,
+        85
+      ],
+      "statistics": {
+        "max": 3.855266809463501,
+        "mean": 0.06045565618819822,
+        "min": -2.3400168418884277
+      }
+    }
+  },
+  "verification": {
+    "cpuProviderOnly": true,
+    "finiteOutput": true,
+    "fullTensorCompared": true,
+    "inputIdentityMatch": true,
+    "outputDtypeMatch": true,
+    "outputShapeMatch": true,
+    "passed": true,
+    "pytorchOutputIdentityMatch": true,
+    "task2EvidenceMatch": true,
+    "tolerancePassed": true
+  }
+}

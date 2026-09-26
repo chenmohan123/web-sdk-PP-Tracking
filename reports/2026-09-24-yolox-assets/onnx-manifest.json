@@ -1,0 +1,425 @@
+{
+  "claims": {
+    "firefoxVerified": false,
+    "mobileVerified": false,
+    "npuVerified": false,
+    "safariVerified": false,
+    "wasmBrowserRuntimeVerified": false,
+    "webgpuBrowserRuntimeVerified": false,
+    "webnnVerified": false,
+    "workerVerified": false
+  },
+  "generatedAt": "2026-09-24T08:53:16Z",
+  "graph": {
+    "irVersion": 8,
+    "nodeCount": 324,
+    "nonStandardDomains": [],
+    "operatorCounts": [
+      {
+        "count": 7,
+        "domain": "ai.onnx",
+        "operator": "Add"
+      },
+      {
+        "count": 21,
+        "domain": "ai.onnx",
+        "operator": "Concat"
+      },
+      {
+        "count": 38,
+        "domain": "ai.onnx",
+        "operator": "Constant"
+      },
+      {
+        "count": 83,
+        "domain": "ai.onnx",
+        "operator": "Conv"
+      },
+      {
+        "count": 3,
+        "domain": "ai.onnx",
+        "operator": "MaxPool"
+      },
+      {
+        "count": 74,
+        "domain": "ai.onnx",
+        "operator": "Mul"
+      },
+      {
+        "count": 3,
+        "domain": "ai.onnx",
+        "operator": "Reshape"
+      },
+      {
+        "count": 2,
+        "domain": "ai.onnx",
+        "operator": "Resize"
+      },
+      {
+        "count": 3,
+        "domain": "ai.onnx",
+        "operator": "Shape"
+      },
+      {
+        "count": 80,
+        "domain": "ai.onnx",
+        "operator": "Sigmoid"
+      },
+      {
+        "count": 9,
+        "domain": "ai.onnx",
+        "operator": "Slice"
+      },
+      {
+        "count": 1,
+        "domain": "ai.onnx",
+        "operator": "Transpose"
+      }
+    ],
+    "opsetImports": [
+      {
+        "domain": "ai.onnx",
+        "version": 17
+      }
+    ],
+    "postprocessingAudit": {
+      "forbiddenOperators": [
+        {
+          "operator": "ArgMax",
+          "reason": "class selection"
+        },
+        {
+          "operator": "Exp",
+          "reason": "grid box-size decode"
+        },
+        {
+          "operator": "Greater",
+          "reason": "score thresholding"
+        },
+        {
+          "operator": "GreaterOrEqual",
+          "reason": "score thresholding"
+        },
+        {
+          "operator": "Less",
+          "reason": "score thresholding"
+        },
+        {
+          "operator": "LessOrEqual",
+          "reason": "score thresholding"
+        },
+        {
+          "operator": "NonMaxSuppression",
+          "reason": "NMS"
+        },
+        {
+          "operator": "NonZero",
+          "reason": "score filtering"
+        },
+        {
+          "operator": "TopK",
+          "reason": "TopK selection"
+        }
+      ],
+      "passed": true,
+      "present": []
+    },
+    "producerName": "pytorch",
+    "producerVersion": "2.5.1",
+    "uniqueOperators": [
+      "Add",
+      "Concat",
+      "Constant",
+      "Conv",
+      "MaxPool",
+      "Mul",
+      "Reshape",
+      "Resize",
+      "Shape",
+      "Sigmoid",
+      "Slice",
+      "Transpose"
+    ]
+  },
+  "kind": "yolox-onnx-export-audit",
+  "onnx": {
+    "bytes": 20258925,
+    "channelLayout": [
+      "dx",
+      "dy",
+      "dw",
+      "dh",
+      "objectness",
+      "class[0..79]"
+    ],
+    "checker": {
+      "fullCheck": true,
+      "passed": true
+    },
+    "graphBoundary": {
+      "classSigmoid": "inside-model",
+      "decodeInInference": false,
+      "gridDecode": "outside-model",
+      "nms": "outside-model",
+      "objectnessSigmoid": "inside-model",
+      "thresholding": "outside-model",
+      "topK": "outside-model"
+    },
+    "input": {
+      "dtype": "float32",
+      "name": "images",
+      "shape": [
+        1,
+        3,
+        416,
+        416
+      ]
+    },
+    "onnxVersion": "1.17.0",
+    "onnxsim": {
+      "availableInEnvironment": false,
+      "enabled": false,
+      "reason": "explicitly disabled for Task 2"
+    },
+    "opsetTarget": 17,
+    "output": {
+      "dtype": "float32",
+      "name": "output",
+      "shape": [
+        1,
+        3549,
+        85
+      ]
+    },
+    "path": ".tmp/yolox-reference/yolox_tiny_416_opset17.onnx",
+    "precision": "fp32",
+    "sha256": "2e99f041301698ff4a9e898aa1efb4bcdd503d46f5c5c1829be17af9b7adfab6"
+  },
+  "runtimeStaticAudit": {
+    "onnxRuntimeWeb": {
+      "evidenceWorktreeClean": true,
+      "revision": "8f0278c77bf44b0cc83c098c6c722b92a36ac4b5",
+      "tag": "v1.27.0",
+      "version": "1.27.0"
+    },
+    "wasm": {
+      "evidence": {
+        "bytes": 5358,
+        "path": ".tmp/yolox-reference/upstream/onnxruntime/js/web/README.md",
+        "sha256": "fe6b2fad3d99bd381e176677de9058fc473f8d3176c9753aa338b6130080419d",
+        "statement": "ONNX Runtime Web currently support all operators in ai.onnx and ai.onnx.ml."
+      },
+      "missingOperators": [],
+      "requiredOperators": [
+        "Add",
+        "Concat",
+        "Constant",
+        "Conv",
+        "MaxPool",
+        "Mul",
+        "Reshape",
+        "Resize",
+        "Shape",
+        "Sigmoid",
+        "Slice",
+        "Transpose"
+      ],
+      "runtimeVerified": false,
+      "staticCoverageComplete": true,
+      "status": "documented-static-coverage-only"
+    },
+    "webgpu": {
+      "documentedNoGpuKernel": [
+        "Reshape",
+        "Shape"
+      ],
+      "evidence": {
+        "operatorTable": {
+          "bytes": 5624,
+          "path": ".tmp/yolox-reference/upstream/onnxruntime/js/web/docs/webgpu-operators.md",
+          "sha256": "f9f2d7a65146f9ea22e1921c411277804f12ef4d24dd2689f3b9376acdd40713"
+        },
+        "tableGeneratedFromRegistrationSources": true,
+        "tableGenerator": {
+          "bytes": 4952,
+          "path": ".tmp/yolox-reference/upstream/onnxruntime/js/web/script/generate-webgpu-operator-md.ts",
+          "sha256": "bfeec092522ae9b5cf0c3540852b2466403115d770fb07ac691c3ec836c8a07d"
+        },
+        "typescriptDispatch": {
+          "bytes": 7380,
+          "path": ".tmp/yolox-reference/upstream/onnxruntime/js/web/lib/wasm/jsep/webgpu/op-resolve-rules.ts",
+          "sha256": "7e9c6e6f0716f1cab8ec30f24ad68f7a70e8b0c64aa60b4f1f2b9ef0d0eba18b"
+        }
+      },
+      "missingRegistrations": [
+        "Constant"
+      ],
+      "noCpuFallbackReadiness": "not-established",
+      "operatorAudit": [
+        {
+          "comments": null,
+          "count": 7,
+          "domain": "ai.onnx",
+          "gpuKernelStatus": "not-documented-as-unavailable",
+          "operator": "Add",
+          "opset17Covered": true,
+          "registeredOpsets": "ai.onnx(7-12,13,14+)",
+          "registrationListed": true,
+          "typescriptDispatchRule": true
+        },
+        {
+          "comments": null,
+          "count": 21,
+          "domain": "ai.onnx",
+          "gpuKernelStatus": "not-documented-as-unavailable",
+          "operator": "Concat",
+          "opset17Covered": true,
+          "registeredOpsets": "ai.onnx(1-3,4-10,11-12,13+)",
+          "registrationListed": true,
+          "typescriptDispatchRule": true
+        },
+        {
+          "comments": null,
+          "count": 38,
+          "domain": "ai.onnx",
+          "gpuKernelStatus": "not-documented-as-unavailable",
+          "operator": "Constant",
+          "opset17Covered": false,
+          "registeredOpsets": null,
+          "registrationListed": false,
+          "typescriptDispatchRule": false
+        },
+        {
+          "comments": "need perf optimization; conv3d is not supported; need implementing activation",
+          "count": 83,
+          "domain": "ai.onnx",
+          "gpuKernelStatus": "not-documented-as-unavailable",
+          "operator": "Conv",
+          "opset17Covered": true,
+          "registeredOpsets": "ai.onnx(1-10,11+); com.ms.internal.nhwc(1-10,11+)",
+          "registrationListed": true,
+          "typescriptDispatchRule": true
+        },
+        {
+          "comments": "need perf optimization; need implementing activation",
+          "count": 3,
+          "domain": "ai.onnx",
+          "gpuKernelStatus": "not-documented-as-unavailable",
+          "operator": "MaxPool",
+          "opset17Covered": true,
+          "registeredOpsets": "ai.onnx(1-7,8-9,10,11,12+); com.ms.internal.nhwc(1-7,8-9,10,11,12+)",
+          "registrationListed": true,
+          "typescriptDispatchRule": true
+        },
+        {
+          "comments": null,
+          "count": 74,
+          "domain": "ai.onnx",
+          "gpuKernelStatus": "not-documented-as-unavailable",
+          "operator": "Mul",
+          "opset17Covered": true,
+          "registeredOpsets": "ai.onnx(7-12,13,14+)",
+          "registrationListed": true,
+          "typescriptDispatchRule": true
+        },
+        {
+          "comments": "no GPU kernel",
+          "count": 3,
+          "domain": "ai.onnx",
+          "gpuKernelStatus": "documented-unavailable",
+          "operator": "Reshape",
+          "opset17Covered": true,
+          "registeredOpsets": "ai.onnx(5-12,13,14-18,19-20,21+)",
+          "registrationListed": true,
+          "typescriptDispatchRule": false
+        },
+        {
+          "comments": "CoordinateTransformMode align_corners is not supported with downsampling",
+          "count": 2,
+          "domain": "ai.onnx",
+          "gpuKernelStatus": "not-documented-as-unavailable",
+          "operator": "Resize",
+          "opset17Covered": true,
+          "registeredOpsets": "ai.onnx(10,11-12,13-17,18,19+); com.ms.internal.nhwc(10,11-12,13-17,18,19+)",
+          "registrationListed": true,
+          "typescriptDispatchRule": true
+        },
+        {
+          "comments": "no GPU kernel; an ORT warning is generated - need to fix",
+          "count": 3,
+          "domain": "ai.onnx",
+          "gpuKernelStatus": "documented-unavailable",
+          "operator": "Shape",
+          "opset17Covered": true,
+          "registeredOpsets": "ai.onnx(1-12,13-14,15-18,19-20,21+)",
+          "registrationListed": true,
+          "typescriptDispatchRule": false
+        },
+        {
+          "comments": null,
+          "count": 80,
+          "domain": "ai.onnx",
+          "gpuKernelStatus": "not-documented-as-unavailable",
+          "operator": "Sigmoid",
+          "opset17Covered": true,
+          "registeredOpsets": "ai.onnx(6-12,13+)",
+          "registrationListed": true,
+          "typescriptDispatchRule": true
+        },
+        {
+          "comments": null,
+          "count": 9,
+          "domain": "ai.onnx",
+          "gpuKernelStatus": "not-documented-as-unavailable",
+          "operator": "Slice",
+          "opset17Covered": true,
+          "registeredOpsets": "ai.onnx(1-9,10,11-12,13+)",
+          "registrationListed": true,
+          "typescriptDispatchRule": true
+        },
+        {
+          "comments": "need perf optimization",
+          "count": 1,
+          "domain": "ai.onnx",
+          "gpuKernelStatus": "not-documented-as-unavailable",
+          "operator": "Transpose",
+          "opset17Covered": true,
+          "registeredOpsets": "ai.onnx(1-12,13-20,21+)",
+          "registrationListed": true,
+          "typescriptDispatchRule": true
+        }
+      ],
+      "opsetGaps": [],
+      "runtimeVerified": false,
+      "staticRegistrationCoverageComplete": false,
+      "status": "static-registration-audit-only"
+    }
+  },
+  "schemaVersion": "1.0",
+  "source": {
+    "assetManifest": "reports/2026-09-24-yolox-assets/asset.json",
+    "checkpoint": {
+      "bytes": 40755013,
+      "path": ".tmp/yolox-reference/yolox_tiny.pth",
+      "sha256": "9de513de589ac98bb92d3bca53b5af7b9acfa9b0bacb831f7999d0f7afaee8f0"
+    },
+    "goldenManifest": "reports/2026-09-24-yolox-assets/golden-manifest.json",
+    "organization": "Megvii-BaseDetection",
+    "release": "0.1.1rc0",
+    "repository": "YOLOX",
+    "upstreamRevision": "e1052df71842031413f6030723c3607b839c80ce"
+  },
+  "verification": {
+    "assetIdentityMatch": true,
+    "checkerPassed": true,
+    "goldenIdentityMatch": true,
+    "opset17Match": true,
+    "passed": true,
+    "postprocessingOutsideGraph": true,
+    "standardDomainsOnly": true,
+    "staticInputShapeMatch": true,
+    "staticOutputShapeMatch": true,
+    "wasmRequiredOperatorsCovered": true,
+    "webgpuFindingsAreNonBlockingAtTask2": true
+  }
+}

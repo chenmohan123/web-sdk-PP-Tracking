@@ -26,6 +26,7 @@ function result(box: Box, score: number) {
 }
 
 describe('serializeYoloxDetections', () => {
+  // 数值为手工构造的跨运行时尾差样本，非取自某个留档证据；这里只固定规范化口径本身。
   it('normalizes sub-picometer cross-runtime float differences', () => {
     const nodeResult = result(
       {

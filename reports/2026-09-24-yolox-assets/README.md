@@ -18,7 +18,7 @@
 - ONNX 图内包含 objectness 和类别 sigmoid；grid decode、阈值、topK 和 NMS 留在 JS 侧。
 - Node WASM/main、Chromium WASM/main 和 Chromium WebGPU/main 均完成本机实测。
 - Node 与 Chromium WASM 的 canonical detection 序列化和 SHA-256 一致。
-- 真实 YOLOX 输出经正式根入口 `createTracker()` 送入 ByteTrack 的七帧合成序列已在 Node 与 Chromium 双端跑通，分三组变体：候选默认阈值（空检测契约）、零阈值（真实框进跟踪）、零阈值加低跟踪阈值（真实走完 `tracked/lost/removed`）。两端配置各自 import 同一份共享模块后互核，执行与定义所用的六份模块字节全部按 SHA-256 绑定比对。
+- 真实 YOLOX 输出经正式根入口 `createTracker()` 送入 ByteTrack 的七帧合成序列已在 Node 与 Chromium 双端跑通，分三组变体：候选默认阈值（空检测契约）、零阈值（真实框进跟踪）、零阈值加低跟踪阈值（真实走完 `tracked/lost/removed`）。两端配置各自 import 同一份共享模块后互核，六份模块按磁盘字节 SHA-256 比对（该比对的证明力边界见第 15 节）。
 - 带真实框的两组在 `motion-approach` 上跨运行时不一致（6/7），成因是 `8e-11 ~ 1e-9` 级近平局处 greedy NMS 保留了不同的框；该差异未级联到后续帧。以上均如实入证据，见第 15 节。
 - 序列接入过程中发现并修复了贴边检测框的浮点边界缺陷，见第 16 节；该修复位于 `src/tracker.ts` 的输入校验，不改算法、阈值或生命周期默认值。
 - 候选 bundle 完成 ESM、CommonJS 与 NodeNext mts/cts 类型消费，并带一个必须失败的反面对照，见第 17 节。
@@ -381,7 +381,7 @@ Node 和 Chromium 不直接对 detector 返回的原始浮点对象执行 JSON.s
 - ORT `1.27.0`
 - 固定 320×240 RGBA8 合成 fixture
 - 模型身份、fixture 身份、重复输出、Node/Chromium WASM canonical 序列化
-- ByteTrack + YOLOX 七帧合成组合序列三组变体（Node WASM/main 与 Chromium WASM/main，含共享配置互核与六份模块字节身份绑定）
+- ByteTrack + YOLOX 七帧合成组合序列三组变体（Node WASM/main 与 Chromium WASM/main，含共享配置互核与六份模块磁盘字节哈希比对）
 - 真实 Python 前向张量在零阈值下的非空、降序、person 与精确边界包含断言
 - 候选 bundle 的 ESM、CommonJS 与 NodeNext mts/cts 类型消费
 - 本机网络边界
@@ -422,6 +422,8 @@ Node 和 Chromium 不直接对 detector 返回的原始浮点对象执行 JSON.s
 
 另一个提交时的注意事项：本轮新增的 8 个 `tests/yolox-*.test.ts` 已进入官方 `npm test` 与 `typecheck` 门禁，它们必须与 `src/yolox/`、`models/yolox-tiny/`、`tests/fixtures/yolox-forward.json` 同进退；若只提交其中一部分，CI 会因缺少被测源或夹具而失败。
 
+该风险目前只有本地证据支撑：`.github/workflows/ci.yml` 只在 push 到 `main`、`pull_request` 或 `workflow_call` 时触发，而本分支按决定未开 PR，所以远端 CI 没有跑过这组提交。"门禁不再依赖未跟踪文件"是由本地干净树复跑（typecheck 通过、280 项单测通过、`git status` 无未跟踪残留）证明的，不是由 CI 证明的；要拿到 CI 证据必须先开 PR 或并入 main。
+
 后续若进入集成阶段，必须先按门户标准扩展标准层，再决定 manifest、exports、Demo、分发来源和版本边界；本目录中的运行证据不能替代这些集成和发布门槛。
 
 ## 14. 机器可读证据索引
@@ -452,6 +454,8 @@ Node 和 Chromium 不直接对 detector 返回的原始浮点对象执行 JSON.s
 | `zero-threshold-lifecycle` | `0 / 0.7 / 100` | `newTrackThreshold: 1e-9` | 是 | 是 | 6/7 · 6/7 |
 
 两端的变体清单与阈值来自共享模块 `tests/yolox-candidate-config.mjs`，各自 `import` 后交叉核对（`verification.sharedSequenceConfigMatch`），浏览器不采信 Node 的结果文件；页内还断言配置模块使用的序列化器与验收脚本是同一函数引用。证据同时绑定被测产物身份：`node.artifacts` 记录候选 ESM/CJS 与根入口 bundle 的 SHA-256，Chromium 对服务端实际返回的同一批字节取哈希并比对（`verification.servedModuleIdentityMatch`）。每组变体在单个运行时内重放两次，两次序列哈希一致，重放值记录在各变体的 `repeat` 字段。
+
+`servedModuleIdentityMatch` 的证明力要说清边界：页面是在 `import()` 之后再对同一 URL 发一次 `fetch` 取哈希，两次读取之间服务器每次都从同一磁盘路径重新读文件，因此它证明的是"导入时刻与哈希时刻磁盘上的内容一致，且与 Node 记录的磁盘哈希一致"，不是密码学意义上"被执行的字节就是这份哈希"。真正不依赖哈希的独立性来自另外两条：配置数值与变体清单由两端各自 import 同一模块后互核，以及序列化器的函数引用同一性断言。
 
 第一组的 `7/7` 是空集合对空集合的一致，只证明调用契约与时间戳路径可跑通；该语义由 `verification.nodeChromiumEmptySequenceContractMatch` 命名表达，脚本同时断言该变体每帧 `detectionCount` 必须为 0，否则报错。
 

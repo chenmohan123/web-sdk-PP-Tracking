@@ -1,0 +1,9 @@
+{
+  "source": "Google Drive",
+  "googleDriveId": "1rJ0fzRcpRQPjaN17lcqfKgsz-wJRifHh",
+  "bytes": 79987301,
+  "sha256": "2272af8918b5a0e57b8285684b801b24ac5d0b6c30887b63ad566152af19eed6",
+  "downloadedAt": "2026-09-23T15:55:00.141290+00:00",
+  "upstreamRevision": "e4e7534cc2ebfbd31e0cde680988f286c65fe34f",
+  "note": "MOT17 half val MOTA 66.1；MOT17 为非商业许可数据集"
+}

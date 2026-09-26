@@ -1,0 +1,132 @@
+{
+  "status": "BLOCKED",
+  "task": "CenterTrack 资产门槛 Gate2：官方前向环境与 golden 输出（任务2）",
+  "blockedByRuling": "R11（checkpoint 实测需要 DCN 权重 → 停止并报告 BLOCKED）",
+  "upstreamRevision": "e4e7534cc2ebfbd31e0cde680988f286c65fe34f",
+  "officialSourcePath": ".tmp/centertrack-reference/CenterTrack/src",
+  "weights": {
+    "path": ".tmp/centertrack-reference/mot17_half.pth",
+    "bytes": 79987301,
+    "sha256": "2272af8918b5a0e57b8285684b801b24ac5d0b6c30887b63ad566152af19eed6",
+    "note": "与 Gate1 reports/2026-09-23-centertrack-assets/asset.json 一致（79,987,301 / 2272af…eed6）"
+  },
+  "input": {
+    "images": [
+      1,
+      3,
+      544,
+      960
+    ],
+    "pre_images": [
+      1,
+      3,
+      544,
+      960
+    ],
+    "pre_hms": [
+      1,
+      544,
+      960
+    ],
+    "imagesNote": "torch.manual_seed(20260923) 后 torch.rand；pre_images=images.clone()；pre_hms=torch.zeros"
+  },
+  "inputsSha256": {
+    "images": "863d35f5ca5798ec4b1ab2ca653e3127d9db0322ff90bc0b0195a77a5d972bdc",
+    "pre_hms": "f3325e5c5ee33d9fe7176e23ff4f33815246eb001cc40a4496749416c666595e",
+    "provenance": "in-process fixed seed torch.manual_seed(20260923); deterministic=True"
+  },
+  "outputs": null,
+  "outputsAvailable": false,
+  "goldenNpz": null,
+  "missingKeys": null,
+  "unexpectedKeys": null,
+  "missingKeysNote": "整网构造在两处阻断点前失败，full-model load_state_dict 未执行；最近的键级证据见 nearestKeyEvidence（neck 子模块直接加载官方 neck 权重切片）",
+  "torchVersion": "2.14.0+cpu",
+  "torchvisionVersion": "0.29.0+cpu",
+  "pythonVersion": "3.12.13",
+  "cudaAvailable": false,
+  "weightsOnlyMode": "true",
+  "torchvisionShim": true,
+  "torchvisionShimNote": "一次性 venv 垫片 .tmp/centertrack-reference/venv/Lib/site-packages/torchvision/models/utils.py = from torch.hub import load_state_dict_from_url（torchvision 0.29 移除旧路径；Ruling R10，未删除）",
+  "inputDeterminismVerified": true,
+  "checkpointHeadInventory": {
+    "topLevelKeys": [
+      "epoch",
+      "state_dict"
+    ],
+    "totalTensors": 418,
+    "groups": {
+      "base": 246,
+      "dla_up": 114,
+      "ida_up": 38,
+      "hm": 4,
+      "wh": 4,
+      "reg": 4,
+      "ltrb_amodal": 4,
+      "tracking": 4
+    },
+    "ltrbKeyCorrection": "简报/R13 转写为 ltrb_amodel；实测（repr）为 ltrb_amodal，官方 opts.py:359 同为 ltrb_amodal",
+    "ltrb_amodal.2_weight_shape": [
+      4,
+      256,
+      1,
+      1
+    ]
+  },
+  "adjustments": [
+    {
+      "attempt": 2,
+      "field": "heads",
+      "change": "键 'ltrb_amodel' -> 'ltrb_amodal'（其余 hm/wh/reg/tracking 不变）",
+      "reason": "checkpoint 顶层组实测为 ltrb_amodal（键 ltrb_amodal.{0,2}.{weight,bias}），官方 opts.py:359 亦为 ltrb_amodal",
+      "appliedIn": "golden.py attempt-2/3"
+    },
+    {
+      "attempt": 2,
+      "field": "opt",
+      "change": "新增 dla_node='dcn'（opts.py:86 官方默认值）",
+      "reason": "DLASeg.__init__ 读取 opt.dla_node，缺失即 AttributeError；attempt-1 原文 opt 未含该字段",
+      "appliedIn": "golden.py attempt-2/3"
+    },
+    {
+      "attempt": 3,
+      "field": "opt",
+      "change": "dla_node: 'dcn' -> 'gcn'",
+      "reason": "dcn 构造即 TypeError（DCN=None）；改用纯 torch 的 gcn 分支实证检验键匹配",
+      "appliedIn": "golden.py attempt-3"
+    }
+  ],
+  "blocked": {
+    "reasons": [
+      "阻断点1（致命，R11）：官方 mot17_half 权重实测含 DCNv2 键（dla_up 12 个 + ida_up 4 个 DeformConv，共 16 个 DCN 模块；conv_offset_mask 张量 32 个，offset+mask 通道 27=3*3*3）；而 .tmp venv 内官方 necks/dlaup.py 的 try/except 回退使 DCN=None，attempt-2 与 neck 探针均实证 dla_node=dcn 构造即 TypeError(NoneType)；Ruling R11 明令不初始化/不编译 DCNv2，此信号与可行性结论（“纯 torch 算子、无 DCN/deformable”）矛盾。",
+      "阻断点2（环境，非致命但阻断官方构造路径）：GenericNetwork 构造 backbone 时无条件以 pretrained=True 下载 http://dl.yf.io/dla/models/imagenet/dla34-ba72cf86.pth，实测 HTTP 404；该权重仅为构造副作用，与 mot17_half state_dict 无交集（backbone 246 参数+缓冲与 checkpoint base.* 246 键完全一致，覆盖 0/0），绕过它也无法解决阻断点1。"
+    ],
+    "nearestKeyEvidence": {
+      "note": "直接构造官方 DLASeg 并加载 checkpoint 的 dla_up/ida_up 切片（strict=False）",
+      "dcn": "CONSTRUCT_FAIL TypeError",
+      "gcn": {
+        "missing": 104,
+        "unexpected": 144,
+        "unexpectedDcnOffsetMaskKeys": 32
+      },
+      "conv": {
+        "missing": 80,
+        "unexpected": 144
+      },
+      "conclusion": "不存在既能免 DCNv2 构造、又与 checkpoint 键全匹配的节点类型；硬门槛 missing/unexpected=空 不可达"
+    },
+    "backboneCoverage": {
+      "backboneParamsBuffers": 246,
+      "checkpointBaseKeys": 246,
+      "backboneOnly": 0,
+      "checkpointOnly": 0
+    },
+    "goldenNpzProduced": false,
+    "necksExportImplication": "DCNv2 亦非标准 ai.onnx 算子，任务3 的“仅标准算子”判据同样会失败（deform_conv 不在 ORT web 支持表）"
+  },
+  "evidenceScript": ".tmp/centertrack-reference/golden.py",
+  "evidenceFiles": [
+    ".tmp/centertrack-reference/golden-evidence.json",
+    ".tmp/centertrack-reference/probe-out.txt"
+  ]
+}
